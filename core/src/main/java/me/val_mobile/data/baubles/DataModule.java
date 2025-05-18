@@ -7,22 +7,22 @@ import me.val_mobile.data.RSVConfig;
 import me.val_mobile.data.RSVDataModule;
 import me.val_mobile.data.RSVModule;
 import me.val_mobile.utils.RSVItem;
+import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.util.io.BukkitObjectInputStream;
-import org.bukkit.util.io.BukkitObjectOutputStream;
 
 import java.io.*;
 import java.lang.reflect.Type;
 import java.util.*;
+import java.util.logging.Logger;
 import java.util.regex.Pattern;
-import java.util.Base64;
 
 public class DataModule implements RSVDataModule {
 
     private static final Gson GSON = new GsonBuilder().disableHtmlEscaping().create();
+    private static final Logger LOGGER = Bukkit.getLogger();
 
     private final RSVConfig config;
     private final BaubleInventory baubleBag;
@@ -53,26 +53,67 @@ public class DataModule implements RSVDataModule {
 
         String jsonString = config.getString(id + ".Items");
         if (jsonString == null || jsonString.isEmpty()) {
-            // no saved data, just fill defaults
+            LOGGER.info("[Baubles] No existing data found for " + id + ". Filling default items.");
             baubleBag.fillDefaultItems();
             return;
         }
 
         try {
-            // Deserialize JSON string into Map<String, String> where key=slot, value=Base64 ItemStack
-            Type type = new TypeToken<Map<String, String>>(){}.getType();
-            Map<String, String> serializedItems = GSON.fromJson(jsonString, type);
+            // Try deserializing as new format first
+            Type newType = new TypeToken<Map<String, Map<String, Object>>>() {}.getType();
+            Map<String, Map<String, Object>> serializedItems = GSON.fromJson(jsonString, newType);
 
-            for (Map.Entry<String, String> entry : serializedItems.entrySet()) {
+            if (serializedItems == null || serializedItems.isEmpty()) {
+                LOGGER.warning("[Baubles] JSON was parsed but empty for " + id + ". Filling defaults.");
+                baubleBag.fillDefaultItems();
+                return;
+            }
+
+            for (Map.Entry<String, Map<String, Object>> entry : serializedItems.entrySet()) {
                 int slot = Integer.parseInt(entry.getKey());
-                String base64 = entry.getValue();
-                if (base64 != null && !base64.isEmpty()) {
-                    ItemStack item = deserializeItem(base64);
+                Map<String, Object> itemData = entry.getValue();
+                if (itemData != null && !itemData.isEmpty()) {
+                    ItemStack item = ItemStack.deserialize(itemData);
                     inv.setItem(slot, item);
                 }
             }
 
+            LOGGER.info("[Baubles] Successfully loaded data for " + id + " (JSON format)");
+
+        } catch (JsonSyntaxException ex) {
+            LOGGER.warning("[Baubles] Detected legacy Base64 format for " + id + ". Converting...");
+
+            try {
+                // Fall back to Base64 format
+                Type legacyType = new TypeToken<Map<String, String>>() {}.getType();
+                Map<String, String> legacyItems = GSON.fromJson(jsonString, legacyType);
+                Map<String, Map<String, Object>> convertedMap = new HashMap<>();
+
+                if (legacyItems != null) {
+                    for (Map.Entry<String, String> entry : legacyItems.entrySet()) {
+                        int slot = Integer.parseInt(entry.getKey());
+                        String base64 = entry.getValue();
+
+                        if (base64 != null && !base64.isEmpty()) {
+                            ItemStack item = deserializeItem(base64);
+                            inv.setItem(slot, item);
+                            convertedMap.put(entry.getKey(), item.serialize());
+                        }
+                    }
+
+                    // Save converted data
+                    String newJson = GSON.toJson(convertedMap);
+                    config.set(id + ".Items", newJson);
+                    saveFile(config);
+
+                    LOGGER.info("[Baubles] Successfully converted Base64 -> JSON for " + id);
+                }
+            } catch (Exception e) {
+                LOGGER.severe("[Baubles] Failed to convert Base64 data for " + id);
+                e.printStackTrace();
+            }
         } catch (Exception e) {
+            LOGGER.severe("[Baubles] Unexpected error loading data for " + id);
             e.printStackTrace();
         }
 
@@ -87,50 +128,37 @@ public class DataModule implements RSVDataModule {
         BaubleSlot[] values = BaubleSlot.values();
         Pattern ignoreSlotPattern = Pattern.compile("^(charm|body|ring|belt|amulet|head)_slot$");
 
-        Map<String, String> serializedMap = new HashMap<>();
+        Map<String, Map<String, Object>> serializedMap = new HashMap<>();
 
         for (BaubleSlot slot : values) {
             for (int i : slot.getValues()) {
                 ItemStack item = inv.getItem(i);
                 if (RSVItem.isRSVItem(item) && !ignoreSlotPattern.matcher(RSVItem.getNameFromItem(item)).find()) {
-                    try {
-                        String encoded = serializeItem(item);
-                        serializedMap.put(String.valueOf(i), encoded);
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
+                    serializedMap.put(String.valueOf(i), item.serialize());
                 }
             }
         }
 
-        // Save the entire map as a single JSON string at UUID.Items
         String jsonString = GSON.toJson(serializedMap);
         config.set(id + ".Items", jsonString);
-
         saveFile(config);
+
+        LOGGER.info("[Baubles] Saved bauble data for " + id);
     }
 
     public void saveFile(FileConfiguration config) {
         try {
             config.save(this.config.getFile());
         } catch (IOException e) {
+            LOGGER.severe("[Baubles] Failed to save config for " + id);
             e.printStackTrace();
         }
     }
 
-    private String serializeItem(ItemStack item) throws IOException {
-        ByteArrayOutputStream byteStream = new ByteArrayOutputStream();
-        BukkitObjectOutputStream dataOutput = new BukkitObjectOutputStream(byteStream);
-        dataOutput.writeObject(item);
-        dataOutput.close();
-        return Base64.getEncoder().encodeToString(byteStream.toByteArray());
-    }
-
     private ItemStack deserializeItem(String base64) throws IOException, ClassNotFoundException {
         byte[] data = Base64.getDecoder().decode(base64);
-        BukkitObjectInputStream inputStream = new BukkitObjectInputStream(new ByteArrayInputStream(data));
-        ItemStack item = (ItemStack) inputStream.readObject();
-        inputStream.close();
-        return item;
+        try (ObjectInputStream inputStream = new org.bukkit.util.io.BukkitObjectInputStream(new ByteArrayInputStream(data))) {
+            return (ItemStack) inputStream.readObject();
+        }
     }
 }
