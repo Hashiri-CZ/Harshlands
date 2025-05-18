@@ -1,40 +1,28 @@
-/*
-    Copyright (C) 2025  Val_Mobile
-
-    This program is free software: you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-    the Free Software Foundation, either version 3 of the License, or
-    (at your option) any later version.
-
-    This program is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU General Public License for more details.
-
-    You should have received a copy of the GNU General Public License
-    along with this program.  If not, see <https://www.gnu.org/licenses/>.
- */
 package me.val_mobile.data.baubles;
 
+import com.google.gson.*;
+import com.google.gson.reflect.TypeToken;
 import me.val_mobile.baubles.BaubleModule;
 import me.val_mobile.data.RSVConfig;
 import me.val_mobile.data.RSVDataModule;
 import me.val_mobile.data.RSVModule;
 import me.val_mobile.utils.RSVItem;
-import org.bukkit.Bukkit;
-import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.util.io.BukkitObjectInputStream;
+import org.bukkit.util.io.BukkitObjectOutputStream;
 
-import java.io.IOException;
-import java.util.HashSet;
-import java.util.Set;
-import java.util.UUID;
+import java.io.*;
+import java.lang.reflect.Type;
+import java.util.*;
 import java.util.regex.Pattern;
+import java.util.Base64;
 
 public class DataModule implements RSVDataModule {
+
+    private static final Gson GSON = new GsonBuilder().disableHtmlEscaping().create();
 
     private final RSVConfig config;
     private final BaubleInventory baubleBag;
@@ -61,25 +49,32 @@ public class DataModule implements RSVDataModule {
     @Override
     public void retrieveData() {
         FileConfiguration config = this.config.getConfig();
-        ConfigurationSection section = config.getConfigurationSection(id + ".Items");
-        Set<String> keys = section == null ? new HashSet<>() : section.getKeys(false);
         Inventory inv = baubleBag.getInventory();
 
-        int dataVersion = Bukkit.getUnsafe().getDataVersion();
-
-        for (String key : keys) {
-            if (config.getInt(id + ".Items." + key + ".v") != dataVersion) {
-                config.set(id + ".Items." + key + ".v", dataVersion);
-            }
-
-            int k = Integer.parseInt(key);
-
-            ItemStack item = ItemStack.deserialize(config.getConfigurationSection(id + ".Items." + key).getValues(true));
-
-            inv.setItem(k, item);
+        String jsonString = config.getString(id + ".Items");
+        if (jsonString == null || jsonString.isEmpty()) {
+            // no saved data, just fill defaults
+            baubleBag.fillDefaultItems();
+            return;
         }
 
-        saveFile(config);
+        try {
+            // Deserialize JSON string into Map<String, String> where key=slot, value=Base64 ItemStack
+            Type type = new TypeToken<Map<String, String>>(){}.getType();
+            Map<String, String> serializedItems = GSON.fromJson(jsonString, type);
+
+            for (Map.Entry<String, String> entry : serializedItems.entrySet()) {
+                int slot = Integer.parseInt(entry.getKey());
+                String base64 = entry.getValue();
+                if (base64 != null && !base64.isEmpty()) {
+                    ItemStack item = deserializeItem(base64);
+                    inv.setItem(slot, item);
+                }
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
         baubleBag.fillDefaultItems();
     }
@@ -87,23 +82,30 @@ public class DataModule implements RSVDataModule {
     @Override
     public void saveData() {
         FileConfiguration config = this.config.getConfig();
-
         Inventory inv = baubleBag.getInventory();
 
         BaubleSlot[] values = BaubleSlot.values();
-        Pattern pattern = Pattern.compile("^(charm|body|ring|belt|amulet|head)_slot$");
-        ItemStack item;
+        Pattern ignoreSlotPattern = Pattern.compile("^(charm|body|ring|belt|amulet|head)_slot$");
+
+        Map<String, String> serializedMap = new HashMap<>();
+
         for (BaubleSlot slot : values) {
             for (int i : slot.getValues()) {
-                item = inv.getItem(i);
-                if (RSVItem.isRSVItem(item) && !pattern.matcher(RSVItem.getNameFromItem(item)).find()) {
-                    config.set(id + ".Items." + i, item.serialize());
-                }
-                else {
-                    config.set(id + ".Items." + i, null);
+                ItemStack item = inv.getItem(i);
+                if (RSVItem.isRSVItem(item) && !ignoreSlotPattern.matcher(RSVItem.getNameFromItem(item)).find()) {
+                    try {
+                        String encoded = serializeItem(item);
+                        serializedMap.put(String.valueOf(i), encoded);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
                 }
             }
         }
+
+        // Save the entire map as a single JSON string at UUID.Items
+        String jsonString = GSON.toJson(serializedMap);
+        config.set(id + ".Items", jsonString);
 
         saveFile(config);
     }
@@ -114,5 +116,21 @@ public class DataModule implements RSVDataModule {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    private String serializeItem(ItemStack item) throws IOException {
+        ByteArrayOutputStream byteStream = new ByteArrayOutputStream();
+        BukkitObjectOutputStream dataOutput = new BukkitObjectOutputStream(byteStream);
+        dataOutput.writeObject(item);
+        dataOutput.close();
+        return Base64.getEncoder().encodeToString(byteStream.toByteArray());
+    }
+
+    private ItemStack deserializeItem(String base64) throws IOException, ClassNotFoundException {
+        byte[] data = Base64.getDecoder().decode(base64);
+        BukkitObjectInputStream inputStream = new BukkitObjectInputStream(new ByteArrayInputStream(data));
+        ItemStack item = (ItemStack) inputStream.readObject();
+        inputStream.close();
+        return item;
     }
 }
