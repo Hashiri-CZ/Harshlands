@@ -47,6 +47,15 @@ public class RSVItem extends ItemStack {
     private static final Map<String, RSVItem> itemMap = new HashMap<>();
     private static final String MODEL_CONFIG_DEFAULT_OPTION = "DEFAULT";
 
+    // Constructor for RSVItem with only Material - used for default vanilla items
+    public RSVItem(Material material) {
+        super(material);
+        this.itemConfig = null;
+        this.name = material.name();
+        this.module = null;
+        this.repairIng = new Ingredient("");
+    }
+
     private final Ingredient repairIng;
     private final String name;
     private final String module;
@@ -333,8 +342,19 @@ public class RSVItem extends ItemStack {
             return null;
         }
 
-        RSVItem item = itemMap.getOrDefault(name, null);
+        // Default custom item retrieval thingy
+        RSVItem item = itemMap.get(name);
+        if (item != null) {
+            return new RSVItem(item);
+        }
 
-        return item == null ? null : new RSVItem(item);
+        // If the item is not found in the map, try to match it with a Material (bet that this explode too)
+        Material material = Material.matchMaterial(name.toUpperCase());
+        if (material != null) {
+            return new RSVItem(material);
+        }
+
+        return null;
     }
+
 }
