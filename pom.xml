@@ -18,6 +18,7 @@
         <module>spigot_impl_1_21_R6</module>
         <module>spigot_impl_1_21_R5</module>
         <module>spigot_impl_1_21_R8</module>
+        <module>spigot_impl_1_21_R9</module>
         <module>dist</module>
     </modules>
 

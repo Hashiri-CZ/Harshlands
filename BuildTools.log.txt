@@ -1,4 +1,4 @@
-[--rev, 1.21.7, --compile, craftbukkit]
+[--rev, 1.21.8, --compile, craftbukkit]
 Loading BuildTools version: git-BuildTools-1c045dc-192 (#192)
 Java Version: Java 22
 Current Path: C:\Users\macie\Desktop\Stuff\MyStuff\RealisticSurvival-Updated
@@ -6,20 +6,20 @@ git version 2.46.0.windows.1
 openjdk version "22.0.2" 2024-07-16
 OpenJDK Runtime Environment Temurin-22.0.2+9 (build 22.0.2+9)
 OpenJDK 64-Bit Server VM Temurin-22.0.2+9 (build 22.0.2+9, mixed mode, sharing)
-Attempting to build version: '1.21.7' use --rev <version> to override
+Attempting to build version: '1.21.8' use --rev <version> to override
 Found version
 {
-	"name": "4521",
-	"description": "Jenkins build 4521",
+	"name": "4525",
+	"description": "Jenkins build 4525",
 	"refs": {
-		"BuildData": "436eac9815c211be1a2a6ca0702615f995e81c44",
-		"Bukkit": "fc3da16b94dd5041c79b22a5904bcda112086404",
-		"CraftBukkit": "d257c87b12b590c2363102bc4fa7c35a7f02012a",
-		"Spigot": "6e79c50e5e20567b67cb5d67c49e1417399215c1"
+		"BuildData": "62f9b85b300b6bbf1c559e379567699a6e281cec",
+		"Bukkit": "8fff56f36fb2ba2c5ce3ed1aaa86e03038ee8326",
+		"CraftBukkit": "f40494288f9e2694fc8bd859fb983cbf56a2db64",
+		"Spigot": "7c52c662ccee93e52a21c54a1b8f93721e4ec773"
 	},
 	"hashes": {
-		"CraftBukkit": "7f5ec0f4f10cd23e955a203d9b70e49d72d10c6f94ad9234f9a349b5f478b3ce",
-		"Spigot": "0c53cac9d2e33850acffa73ac39dddaae8940fade42baccb8c520f4f8b0db728"
+		"CraftBukkit": "b52515ac9b7a27e34302cbc28e30ce815f7774b283b658eea31237f2a444c3ae",
+		"Spigot": "2ab3a4b077d7135aa553b9b29192638c4d0a21daf8221d529f0db8e8977e60fc"
 	},
 	"toolsVersion": 181,
 	"javaVersions": [65, 68]
@@ -27,19 +27,19 @@ Found version
 
 Pulling updates for C:\Users\macie\Desktop\Stuff\MyStuff\RealisticSurvival-Updated\BuildData\.git
 Successfully fetched updates!
-Checked out: 436eac9815c211be1a2a6ca0702615f995e81c44
+Checked out: 62f9b85b300b6bbf1c559e379567699a6e281cec
 Pulling updates for C:\Users\macie\Desktop\Stuff\MyStuff\RealisticSurvival-Updated\Bukkit\.git
 Successfully fetched updates!
-Checked out: fc3da16b94dd5041c79b22a5904bcda112086404
+Checked out: 8fff56f36fb2ba2c5ce3ed1aaa86e03038ee8326
 Pulling updates for C:\Users\macie\Desktop\Stuff\MyStuff\RealisticSurvival-Updated\CraftBukkit\.git
 Successfully fetched updates!
-Checked out: d257c87b12b590c2363102bc4fa7c35a7f02012a
+Checked out: f40494288f9e2694fc8bd859fb983cbf56a2db64
 Pulling updates for C:\Users\macie\Desktop\Stuff\MyStuff\RealisticSurvival-Updated\Spigot\.git
 Successfully fetched updates!
-Checked out: 6e79c50e5e20567b67cb5d67c49e1417399215c1
-Attempting to build Minecraft with details: VersionInfo(minecraftVersion=1.21.7, accessTransforms=bukkit-1.21.7.at, classMappings=bukkit-1.21.7-cl.csrg, memberMappings=null, packageMappings=package.srg, minecraftHash=6b1a4ff8b628830dd347775c4b00fddf8034549bda6a8c6cacbf78de515cfe11, classMapCommand=java -jar BuildData/bin/SpecialSource-2.jar map --auto-lvt BASIC -e BuildData/mappings/bukkit-1.21.7.exclude -i {0} -m {1} -o {2}, memberMapCommand=java -jar BuildData/bin/SpecialSource-2.jar map --auto-member TOKENS -i {0} -m {1} -o {2}, finalMapCommand=java -jar BuildData/bin/SpecialSource.jar -i {0} --access-transformer {1} -m {2} -o {3}, decompileCommand=java -jar BuildData/bin/fernflower.jar -dgs=1 -hdc=0 -asc=1 -udv=0 -rsy=1 -aoa=1 {0} {1}, serverUrl=https://piston-data.mojang.com/v1/objects/05e4b48fbc01f0385adb74bcff9751d34552486c/server.jar, mappingsUrl=https://piston-data.mojang.com/v1/objects/eb1e1eb47cb740012fc82eacc394859463684132/server.txt, spigotVersion=1.21.7-R0.1-SNAPSHOT, toolsVersion=181)
-Found good Minecraft hash (05e4b48fbc01f0385adb74bcff9751d34552486c)
-**** Warning, Minecraft jar hash of 2b40bc45dcca8e5bcba1b45577223c35bf9de31732965c9ae633aae01e0cc2fa does not match stored hash of 6b1a4ff8b628830dd347775c4b00fddf8034549bda6a8c6cacbf78de515cfe11
+Checked out: 7c52c662ccee93e52a21c54a1b8f93721e4ec773
+Attempting to build Minecraft with details: VersionInfo(minecraftVersion=1.21.8, accessTransforms=bukkit-1.21.8.at, classMappings=bukkit-1.21.8-cl.csrg, memberMappings=null, packageMappings=package.srg, minecraftHash=2fd3d81de2622cdddcb101ecddb74ef8b2d50c0d970ab68d1e1a92b866f711fe, classMapCommand=java -jar BuildData/bin/SpecialSource-2.jar map --auto-lvt BASIC -e BuildData/mappings/bukkit-1.21.8.exclude -i {0} -m {1} -o {2}, memberMapCommand=java -jar BuildData/bin/SpecialSource-2.jar map --auto-member TOKENS -i {0} -m {1} -o {2}, finalMapCommand=java -jar BuildData/bin/SpecialSource.jar -i {0} --access-transformer {1} -m {2} -o {3}, decompileCommand=java -jar BuildData/bin/fernflower.jar -dgs=1 -hdc=0 -asc=1 -udv=0 -rsy=1 -aoa=1 {0} {1}, serverUrl=https://piston-data.mojang.com/v1/objects/6bce4ef400e4efaa63a13d5e6f6b500be969ef81/server.jar, mappingsUrl=https://piston-data.mojang.com/v1/objects/eb1e1eb47cb740012fc82eacc394859463684132/server.txt, spigotVersion=1.21.8-R0.1-SNAPSHOT, toolsVersion=181)
+Found good Minecraft hash (6bce4ef400e4efaa63a13d5e6f6b500be969ef81)
+**** Warning, Minecraft jar hash of 92e6624089e8416d0c6a4d85f6168eae693f0cfb1d70787ed4bb8a38ec7b90a1 does not match stored hash of 2fd3d81de2622cdddcb101ecddb74ef8b2d50c0d970ab68d1e1a92b866f711fe
 [INFO] Scanning for projects...
 [WARNING] 
 [WARNING] Some problems were encountered while building the effective model for me.Val_Mobile:realisticsurvival-core:jar:1.2.9-RELEASE
@@ -77,12 +77,12 @@ Found good Minecraft hash (05e4b48fbc01f0385adb74bcff9751d34552486c)
 [INFO] --------------------------------[ pom ]---------------------------------
 [INFO] 
 [INFO] --- install:3.1.1:install-file (default-cli) @ realisticsurvival-parent ---
-[INFO] pom.xml not found in mapped.541d8131.jar
-[INFO] Installing C:\Users\macie\Desktop\Stuff\MyStuff\RealisticSurvival-Updated\work\mapped.541d8131.jar to C:\Users\macie\.m2\repository\org\spigotmc\minecraft-server\1.21.7-R0.1-SNAPSHOT\minecraft-server-1.21.7-R0.1-SNAPSHOT.jar
+[INFO] pom.xml not found in mapped.7d8f8942.jar
+[INFO] Installing C:\Users\macie\Desktop\Stuff\MyStuff\RealisticSurvival-Updated\work\mapped.7d8f8942.jar to C:\Users\macie\.m2\repository\org\spigotmc\minecraft-server\1.21.8-R0.1-SNAPSHOT\minecraft-server-1.21.8-R0.1-SNAPSHOT.jar
 [INFO] ------------------------------------------------------------------------
 [INFO] Reactor Summary for RealisticSurvival 1.2.9-RELEASE:
 [INFO] 
-[INFO] RealisticSurvival .................................. SUCCESS [  0.228 s]
+[INFO] RealisticSurvival .................................. SUCCESS [  0.223 s]
 [INFO] realisticsurvival-core ............................. SKIPPED
 [INFO] realisticsurvival-spigot_impl_1_21_R6 .............. SKIPPED
 [INFO] realisticsurvival-spigot_impl_1_21_R5 .............. SKIPPED
@@ -91,8 +91,8 @@ Found good Minecraft hash (05e4b48fbc01f0385adb74bcff9751d34552486c)
 [INFO] ------------------------------------------------------------------------
 [INFO] BUILD SUCCESS
 [INFO] ------------------------------------------------------------------------
-[INFO] Total time:  0.489 s
-[INFO] Finished at: 2025-07-13T21:09:16+02:00
+[INFO] Total time:  0.543 s
+[INFO] Finished at: 2025-07-28T18:11:09+02:00
 [INFO] ------------------------------------------------------------------------
 Applying CraftBukkit Patches
 Backing up NMS dir
@@ -692,7 +692,7 @@ Compiling Bukkit
 [INFO] Scanning for projects...
 [INFO] 
 [INFO] -------------------------< org.bukkit:bukkit >--------------------------
-[INFO] Building Bukkit 1.21.7-R0.1-SNAPSHOT
+[INFO] Building Bukkit 1.21.8-R0.1-SNAPSHOT
 [INFO]   from pom.xml
 [INFO] --------------------------------[ jar ]---------------------------------
 [INFO] 
@@ -700,8 +700,8 @@ Compiling Bukkit
 [INFO] Deleting C:\Users\macie\Desktop\Stuff\MyStuff\RealisticSurvival-Updated\Bukkit\target
 [INFO] 
 [INFO] --- scriptus:0.5.0:describe (default) @ bukkit ---
-[INFO] Set property "describe" to "git-Bukkit-fc3da16"
-[INFO] Set property "project.build.outputTimestamp" to "1752365696"
+[INFO] Set property "describe" to "git-Bukkit-8fff56f"
+[INFO] Set property "project.build.outputTimestamp" to "1752967776"
 [INFO] 
 [INFO] --- resources:3.3.1:resources (default-resources) @ bukkit ---
 [INFO] skip non existing resourceDirectory C:\Users\macie\Desktop\Stuff\MyStuff\RealisticSurvival-Updated\Bukkit\src\main\resources
@@ -733,7 +733,7 @@ Compiling Bukkit
 [INFO] Tests are skipped.
 [INFO] 
 [INFO] --- jar:3.4.1:jar (default-jar) @ bukkit ---
-[INFO] Building jar: C:\Users\macie\Desktop\Stuff\MyStuff\RealisticSurvival-Updated\Bukkit\target\bukkit-1.21.7-R0.1-SNAPSHOT.jar
+[INFO] Building jar: C:\Users\macie\Desktop\Stuff\MyStuff\RealisticSurvival-Updated\Bukkit\target\bukkit-1.21.8-R0.1-SNAPSHOT.jar
 [INFO] 
 [INFO] --- shade:3.5.3:shade (default) @ bukkit ---
 [INFO] Including com.google.guava:guava:jar:33.3.1-jre in the shaded jar.
@@ -760,20 +760,20 @@ Compiling Bukkit
 [INFO] Attaching shaded artifact.
 [INFO] 
 [INFO] --- install:3.1.1:install (default-install) @ bukkit ---
-[INFO] Installing C:\Users\macie\Desktop\Stuff\MyStuff\RealisticSurvival-Updated\Bukkit\pom.xml to C:\Users\macie\.m2\repository\org\bukkit\bukkit\1.21.7-R0.1-SNAPSHOT\bukkit-1.21.7-R0.1-SNAPSHOT.pom
-[INFO] Installing C:\Users\macie\Desktop\Stuff\MyStuff\RealisticSurvival-Updated\Bukkit\target\bukkit-1.21.7-R0.1-SNAPSHOT.jar to C:\Users\macie\.m2\repository\org\bukkit\bukkit\1.21.7-R0.1-SNAPSHOT\bukkit-1.21.7-R0.1-SNAPSHOT.jar
-[INFO] Installing C:\Users\macie\Desktop\Stuff\MyStuff\RealisticSurvival-Updated\Bukkit\target\bukkit-1.21.7-R0.1-SNAPSHOT-shaded.jar to C:\Users\macie\.m2\repository\org\bukkit\bukkit\1.21.7-R0.1-SNAPSHOT\bukkit-1.21.7-R0.1-SNAPSHOT-shaded.jar
+[INFO] Installing C:\Users\macie\Desktop\Stuff\MyStuff\RealisticSurvival-Updated\Bukkit\pom.xml to C:\Users\macie\.m2\repository\org\bukkit\bukkit\1.21.8-R0.1-SNAPSHOT\bukkit-1.21.8-R0.1-SNAPSHOT.pom
+[INFO] Installing C:\Users\macie\Desktop\Stuff\MyStuff\RealisticSurvival-Updated\Bukkit\target\bukkit-1.21.8-R0.1-SNAPSHOT.jar to C:\Users\macie\.m2\repository\org\bukkit\bukkit\1.21.8-R0.1-SNAPSHOT\bukkit-1.21.8-R0.1-SNAPSHOT.jar
+[INFO] Installing C:\Users\macie\Desktop\Stuff\MyStuff\RealisticSurvival-Updated\Bukkit\target\bukkit-1.21.8-R0.1-SNAPSHOT-shaded.jar to C:\Users\macie\.m2\repository\org\bukkit\bukkit\1.21.8-R0.1-SNAPSHOT\bukkit-1.21.8-R0.1-SNAPSHOT-shaded.jar
 [INFO] ------------------------------------------------------------------------
 [INFO] BUILD SUCCESS
 [INFO] ------------------------------------------------------------------------
-[INFO] Total time:  22.854 s
-[INFO] Finished at: 2025-07-13T21:09:49+02:00
+[INFO] Total time:  25.469 s
+[INFO] Finished at: 2025-07-28T18:11:46+02:00
 [INFO] ------------------------------------------------------------------------
 Compiling CraftBukkit
 [INFO] Scanning for projects...
 [INFO] 
 [INFO] -----------------------< org.bukkit:craftbukkit >-----------------------
-[INFO] Building CraftBukkit 1.21.7-R0.1-SNAPSHOT
+[INFO] Building CraftBukkit 1.21.8-R0.1-SNAPSHOT
 [INFO]   from pom.xml
 [INFO] --------------------------------[ jar ]---------------------------------
 [INFO] 
@@ -781,8 +781,8 @@ Compiling CraftBukkit
 [INFO] Deleting C:\Users\macie\Desktop\Stuff\MyStuff\RealisticSurvival-Updated\CraftBukkit\target
 [INFO] 
 [INFO] --- scriptus:0.5.0:describe (default) @ craftbukkit ---
-[INFO] Set property "describe" to "4521-Bukkit-d257c87"
-[INFO] Set property "project.build.outputTimestamp" to "1751971258"
+[INFO] Set property "describe" to "4525-Bukkit-f404942"
+[INFO] Set property "project.build.outputTimestamp" to "1753260847"
 [INFO] 
 [INFO] --- clean:3.2.0:clean (default) @ craftbukkit ---
 [INFO] 
@@ -791,7 +791,7 @@ Compiling CraftBukkit
 [INFO] 
 [INFO] --- compiler:3.13.0:compile (default-compile) @ craftbukkit ---
 [INFO] Recompiling the module because of changed source code.
-[INFO] Compiling 1443 source files with javac [debug release 21] to target\classes
+[INFO] Compiling 1442 source files with javac [debug release 21] to target\classes
 [INFO] /C:/Users/macie/Desktop/Stuff/MyStuff/RealisticSurvival-Updated/CraftBukkit/src/main/java/net/minecraft/commands/CommandDispatcher.java: Some input files use or override a deprecated API.
 [INFO] /C:/Users/macie/Desktop/Stuff/MyStuff/RealisticSurvival-Updated/CraftBukkit/src/main/java/net/minecraft/commands/CommandDispatcher.java: Recompile with -Xlint:deprecation for details.
 [INFO] /C:/Users/macie/Desktop/Stuff/MyStuff/RealisticSurvival-Updated/CraftBukkit/src/main/java/org/bukkit/craftbukkit/entity/CraftEntity.java: Some input files use or override a deprecated API that is marked for removal.
@@ -816,11 +816,11 @@ Compiling CraftBukkit
 [INFO] Tests are skipped.
 [INFO] 
 [INFO] --- jar:3.4.1:jar (default-jar) @ craftbukkit ---
-[INFO] Building jar: C:\Users\macie\Desktop\Stuff\MyStuff\RealisticSurvival-Updated\CraftBukkit\target\craftbukkit-1.21.7-R0.1-SNAPSHOT.jar
+[INFO] Building jar: C:\Users\macie\Desktop\Stuff\MyStuff\RealisticSurvival-Updated\CraftBukkit\target\craftbukkit-1.21.8-R0.1-SNAPSHOT.jar
 [INFO] 
 [INFO] --- shade:3.5.3:shade (default) @ craftbukkit ---
-[INFO] Including org.spigotmc:minecraft-server:jar:1.21.7-R0.1-SNAPSHOT in the shaded jar.
-[INFO] Excluding org.bukkit:bukkit:jar:1.21.7-R0.1-SNAPSHOT from the shaded jar.
+[INFO] Including org.spigotmc:minecraft-server:jar:1.21.8-R0.1-SNAPSHOT in the shaded jar.
+[INFO] Excluding org.bukkit:bukkit:jar:1.21.8-R0.1-SNAPSHOT from the shaded jar.
 [INFO] Excluding com.google.guava:guava:jar:33.3.1-jre from the shaded jar.
 [INFO] Excluding com.google.guava:failureaccess:jar:1.0.2 from the shaded jar.
 [INFO] Excluding com.google.guava:listenablefuture:jar:9999.0-empty-to-avoid-conflict-with-guava from the shaded jar.
@@ -830,7 +830,7 @@ Compiling CraftBukkit
 [INFO] Excluding com.google.code.gson:gson:jar:2.11.0 from the shaded jar.
 [INFO] Excluding org.joml:joml:jar:1.10.8 from the shaded jar.
 [INFO] Excluding org.yaml:snakeyaml:jar:2.2 from the shaded jar.
-[INFO] Excluding jline:jline:jar:2.12.1 from the shaded jar.
+[INFO] Excluding org.jline:jline:jar:3.30.4 from the shaded jar.
 [INFO] Excluding org.apache.logging.log4j:log4j-iostreams:jar:2.24.1 from the shaded jar.
 [INFO] Excluding org.ow2.asm:asm-commons:jar:9.7.1 from the shaded jar.
 [INFO] Excluding org.ow2.asm:asm:jar:9.7.1 from the shaded jar.
@@ -900,7 +900,7 @@ Compiling CraftBukkit
 [INFO] Excluding commons-codec:commons-codec:jar:1.16.0 from the shaded jar.
 [INFO] Excluding org.slf4j:jcl-over-slf4j:jar:1.7.36 from the shaded jar.
 [INFO] Dependency-reduced POM written at: C:\Users\macie\Desktop\Stuff\MyStuff\RealisticSurvival-Updated\CraftBukkit\dependency-reduced-pom.xml
-[WARNING] craftbukkit-1.21.7-R0.1-SNAPSHOT.jar, minecraft-server-1.21.7-R0.1-SNAPSHOT.jar define 1204 overlapping class and resource: 
+[WARNING] craftbukkit-1.21.8-R0.1-SNAPSHOT.jar, minecraft-server-1.21.8-R0.1-SNAPSHOT.jar define 1204 overlapping class and resource: 
 [WARNING]   - META-INF/MANIFEST.MF
 [WARNING]   - net.minecraft.CrashReport
 [WARNING]   - net.minecraft.advancements.AdvancementHolder
@@ -920,11 +920,11 @@ Compiling CraftBukkit
 [WARNING] mvn dependency:tree -Ddetail=true and the above output.
 [WARNING] See https://maven.apache.org/plugins/maven-shade-plugin/
 [INFO] Replacing original artifact with shaded artifact.
-[INFO] Replacing C:\Users\macie\Desktop\Stuff\MyStuff\RealisticSurvival-Updated\CraftBukkit\target\craftbukkit-1.21.7-R0.1-SNAPSHOT.jar with C:\Users\macie\Desktop\Stuff\MyStuff\RealisticSurvival-Updated\CraftBukkit\target\craftbukkit-1.21.7-R0.1-SNAPSHOT-shaded.jar
+[INFO] Replacing C:\Users\macie\Desktop\Stuff\MyStuff\RealisticSurvival-Updated\CraftBukkit\target\craftbukkit-1.21.8-R0.1-SNAPSHOT.jar with C:\Users\macie\Desktop\Stuff\MyStuff\RealisticSurvival-Updated\CraftBukkit\target\craftbukkit-1.21.8-R0.1-SNAPSHOT-shaded.jar
 [INFO] 
 [INFO] --- specialsource:2.0.4:remap (remap-members) @ craftbukkit ---
 [INFO] Replacing original artifact with remapped artifact.
-[INFO] Replacing C:\Users\macie\Desktop\Stuff\MyStuff\RealisticSurvival-Updated\CraftBukkit\target\craftbukkit-1.21.7-R0.1-SNAPSHOT.jar with C:\Users\macie\Desktop\Stuff\MyStuff\RealisticSurvival-Updated\CraftBukkit\target\craftbukkit-1.21.7-R0.1-SNAPSHOT-remapped.jar
+[INFO] Replacing C:\Users\macie\Desktop\Stuff\MyStuff\RealisticSurvival-Updated\CraftBukkit\target\craftbukkit-1.21.8-R0.1-SNAPSHOT.jar with C:\Users\macie\Desktop\Stuff\MyStuff\RealisticSurvival-Updated\CraftBukkit\target\craftbukkit-1.21.8-R0.1-SNAPSHOT-remapped.jar
 [INFO] 
 [INFO] --- checksum:1.11:artifacts (default) @ craftbukkit ---
 [INFO] 
@@ -942,16 +942,16 @@ Compiling CraftBukkit
 [INFO] Artifact com.mojang:logging:pom:1.5.10 is present in the local repository, but cached from a remote repository ID that is unavailable in current build context, verifying that is downloadable from [central (https://repo.maven.apache.org/maven2, default, releases)]
 [INFO] Artifact com.mojang:datafixerupper:pom:8.0.16 is present in the local repository, but cached from a remote repository ID that is unavailable in current build context, verifying that is downloadable from [central (https://repo.maven.apache.org/maven2, default, releases)]
 [INFO] Artifact com.mojang:datafixerupper:pom:8.0.16 is present in the local repository, but cached from a remote repository ID that is unavailable in current build context, verifying that is downloadable from [central (https://repo.maven.apache.org/maven2, default, releases)]
-[INFO] Building jar: C:\Users\macie\Desktop\Stuff\MyStuff\RealisticSurvival-Updated\CraftBukkit\target\craftbukkit-1.21.7-R0.1-SNAPSHOT-bootstrap.jar
+[INFO] Building jar: C:\Users\macie\Desktop\Stuff\MyStuff\RealisticSurvival-Updated\CraftBukkit\target\craftbukkit-1.21.8-R0.1-SNAPSHOT-bootstrap.jar
 [INFO] 
 [INFO] --- install:3.1.1:install (default-install) @ craftbukkit ---
-[INFO] Installing C:\Users\macie\Desktop\Stuff\MyStuff\RealisticSurvival-Updated\CraftBukkit\dependency-reduced-pom.xml to C:\Users\macie\.m2\repository\org\bukkit\craftbukkit\1.21.7-R0.1-SNAPSHOT\craftbukkit-1.21.7-R0.1-SNAPSHOT.pom
-[INFO] Installing C:\Users\macie\Desktop\Stuff\MyStuff\RealisticSurvival-Updated\CraftBukkit\target\craftbukkit-1.21.7-R0.1-SNAPSHOT.jar to C:\Users\macie\.m2\repository\org\bukkit\craftbukkit\1.21.7-R0.1-SNAPSHOT\craftbukkit-1.21.7-R0.1-SNAPSHOT.jar
+[INFO] Installing C:\Users\macie\Desktop\Stuff\MyStuff\RealisticSurvival-Updated\CraftBukkit\dependency-reduced-pom.xml to C:\Users\macie\.m2\repository\org\bukkit\craftbukkit\1.21.8-R0.1-SNAPSHOT\craftbukkit-1.21.8-R0.1-SNAPSHOT.pom
+[INFO] Installing C:\Users\macie\Desktop\Stuff\MyStuff\RealisticSurvival-Updated\CraftBukkit\target\craftbukkit-1.21.8-R0.1-SNAPSHOT.jar to C:\Users\macie\.m2\repository\org\bukkit\craftbukkit\1.21.8-R0.1-SNAPSHOT\craftbukkit-1.21.8-R0.1-SNAPSHOT.jar
 [INFO] ------------------------------------------------------------------------
 [INFO] BUILD SUCCESS
 [INFO] ------------------------------------------------------------------------
-[INFO] Total time:  01:07 min
-[INFO] Finished at: 2025-07-13T21:10:58+02:00
+[INFO] Total time:  01:11 min
+[INFO] Finished at: 2025-07-28T18:12:59+02:00
 [INFO] ------------------------------------------------------------------------
  
  
@@ -988,8 +988,8 @@ Compiling CraftBukkit
  
  
  
-Total Time: 1 minute 48 seconds
+Total Time: 1 minute 57 seconds
 
 Success! Everything completed successfully. Copying final .jar files now.
-Copying craftbukkit-1.21.7-R0.1-SNAPSHOT-bootstrap.jar to C:\Users\macie\Desktop\Stuff\MyStuff\RealisticSurvival-Updated\craftbukkit-1.21.7.jar
-  - Saved as .\craftbukkit-1.21.7.jar
+Copying craftbukkit-1.21.8-R0.1-SNAPSHOT-bootstrap.jar to C:\Users\macie\Desktop\Stuff\MyStuff\RealisticSurvival-Updated\craftbukkit-1.21.8.jar
+  - Saved as .\craftbukkit-1.21.8.jar
