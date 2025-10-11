@@ -190,7 +190,7 @@ public class Utils {
             String result = impl ? "v" + prefix + "_" + major + "_R" + (Integer.parseInt(minor) + 1)
                                 : prefix + "." + major + (minor.equals("0") ? "" : "." + minor);
 
-            Bukkit.getLogger().info("[Debug] Used NMS: " + result);
+            // Bukkit.getLogger().info("[Debug] Used NMS: " + result);
             return result;
         }
         return "";
