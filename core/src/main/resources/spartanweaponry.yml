@@ -2,27 +2,27 @@
 #          Spartan's Weaponry         #
 #######################################
 
-ConfigId: "1.2.9-RELEASE"  # Used for config syncing purposes, do NOT edit
+ConfigId: "1.2.10-RELEASE" # Used for config syncing purposes, do NOT edit
 
 # Customize messages
 Initialize:
   Enabled: true
-  Message: "&6[Realistic Survival] &fInitializing &e%NAME% &fmodule"                                  # All placeholders: %NAME%
+  Message: "&6[Realistic Survival] &fInitializing &e%NAME% &fmodule" # All placeholders: %NAME%
 Shutdown:
   Enabled: true
-  Message: "&6[Realistic Survival] &fShutting down &e%NAME% &fmodule"                                 # All placeholders: %NAME%
+  Message: "&6[Realistic Survival] &fShutting down &e%NAME% &fmodule" # All placeholders: %NAME%
 MaxDistanceReached:
   Enabled: true
-  Message: "&fYour weapon has reached the max distance of &b%MAX_DISTANCE% &fblocks!"                 # All placeholders: %MAX_DISTANCE%
+  Message: "&fYour weapon has reached the max distance of &b%MAX_DISTANCE% &fblocks!" # All placeholders: %MAX_DISTANCE%
 MaxReturnDistanceReached:
   Enabled: true
-  Message: "&fYour weapon has not been returned since you're too far!"                                # All placeholders: %MAX_DISTANCE%
+  Message: "&fYour weapon has not been returned since you're too far!" # All placeholders: %MAX_DISTANCE%
 FullInventoryWeaponDropped:
   Enabled: true
-  Message: "&fInventory full! Your weapon has been dropped instead at &bx&f: &b%X_COORD%&f, &by&f: &b%Y_COORD%&f, &bz&f: &b%Z_COORD%&f."        # All placeholders: %X_COORD%, %Y_COORD%, %Z_COORD%
+  Message: "&fInventory full! Your weapon has been dropped instead at &bx&f: &b%X_COORD%&f, &by&f: &b%Y_COORD%&f, &bz&f: &b%Z_COORD%&f." # All placeholders: %X_COORD%, %Y_COORD%, %Z_COORD%
 WeaponDropped:
   Enabled: true
-  Message: "&fWeapon dropped at &bx&f: &b%X_COORD%&f, &by&f: &b%Y_COORD%&f, &bz&f: &b%Z_COORD%&f."    # All placeholders: %X_COORD%, %Y_COORD%, %Z_COORD%
+  Message: "&fWeapon dropped at &bx&f: &b%X_COORD%&f, &by&f: &b%Y_COORD%&f, &bz&f: &b%Z_COORD%&f." # All placeholders: %X_COORD%, %Y_COORD%, %Z_COORD%
 
 # Used to specify custom item drops for any mob
 # By default, there is no use for this, so the chance is set to 0.00
@@ -47,7 +47,7 @@ BlockDrops:
 # Does not protect pets from intentional attacks, vanilla sweep attacks, or the sweeping edge enchant
 PreventSweepAttackingPets: true
 
-UpdateNetheriteItems:             # Specify which factors will be transferred over when a diamond weapon is crafted into a netherite weapon via smithing table
+UpdateNetheriteItems: # Specify which factors will be transferred over when a diamond weapon is crafted into a netherite weapon via smithing table
   Enabled: true
   UpdateMaterial: true
   UpdateMaterialData: false
@@ -72,23 +72,23 @@ UpdateNetheriteItems:             # Specify which factors will be transferred ov
     UpdateCustomDurability: false
     UpdateCustomMaxDurability: true
 
-MobAbilities:                         # NOTE: These settings also affect Spartan and Fire weapons
+MobAbilities: # NOTE: These settings also affect Spartan and Fire weapons
   UseThrowingWeapons:
     Enabled: true
-    TickPeriod: 10                    # Time in ticks that the game will check if weapon can be thrown
-    Chance: 0.35                      # Chance per "TickPeriod" that a weapon can be thrown
+    TickPeriod: 10 # Time in ticks that the game will check if weapon can be thrown
+    Chance: 0.35 # Chance per "TickPeriod" that a weapon can be thrown
     MobBlacklist:
-      - ""                            # Any mobs here will be unable to use throwing weapons (eg: "ZOMBIE" disables zombies from using throwable weapons)
+      - "" # Any mobs here will be unable to use throwing weapons (eg: "ZOMBIE" disables zombies from using throwable weapons)
     WeaponBlacklist:
-      - ""                            # Any throwing weapons here won't be usable by mobs (eg: "diamond_boomerang" disables throwing of diamond boomerangs)
+      - "" # Any throwing weapons here won't be usable by mobs (eg: "diamond_boomerang" disables throwing of diamond boomerangs)
   UseLongReachWeapons:
     Enabled: true
-    TickPeriod: 10                    # Time in ticks that the game will check if weapon can be thrown
-    Chance: 1.0                       # Chance per "TickPeriod" that a weapon can be thrown
+    TickPeriod: 10 # Time in ticks that the game will check if weapon can be thrown
+    Chance: 1.0 # Chance per "TickPeriod" that a weapon can be thrown
     MobBlacklist:
-      - ""                            # Any mobs here will be unable to use long reach weapons (eg: "ZOMBIE" disables zombies from using long reach weapons)
+      - "" # Any mobs here will be unable to use long reach weapons (eg: "ZOMBIE" disables zombies from using long reach weapons)
     WeaponBlacklist:
-      - ""                            # Any long reach weapons here won't be usable by mobs (eg: "iron_greatsword" disables mobs from using reach effect of greatswords)
+      - "" # Any long reach weapons here won't be usable by mobs (eg: "iron_greatsword" disables mobs from using reach effect of greatswords)
 
 # Customize weapon and armor traits of the Spartan Weaponry items
 
@@ -108,8 +108,8 @@ Items:
       AttackSpeed: 2.4
     UnarmoredDamageMultiplier: 3.0
     Protection:
-      PercentAbsorbed: 0.25     # How much does the rapier absorb damage taken (0.25 = 25%)
-      DamageDurability: 2       # Durability used up when attacked
+      PercentAbsorbed: 0.25 # How much does the rapier absorb damage taken (0.25 = 25%)
+      DamageDurability: 2 # Durability used up when attacked
     Sweep: true
   diamond_rapier:
     Enabled:
@@ -2763,7 +2763,7 @@ Recipes:
   netherite_rapier:
     Enabled:
       EnableAllVersions: true # true = enabled, false = disabled
-    Unlock: true  # true = recipes unlocked automatically, false = recipes not unlocked until crafted
+    Unlock: true # true = recipes unlocked automatically, false = recipes not unlocked until crafted
   netherite_katana:
     Enabled:
       EnableAllVersions: true

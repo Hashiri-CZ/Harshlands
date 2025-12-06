@@ -1,17 +1,16 @@
 ###########################################################################
 #                                                                         #
 #   Realistic Survival Plugin   MC 1.17 - 1.21                            #
-#   Version 1.2.9-RELEASE       Made by: Val_Mobile                       #
+#   Version 1.2.10-RELEASE       Made by: Val_Mobile                       #
 #                                                                         #
 ###########################################################################
-
 
 ##############################
 #          Messages          #
 ##############################
 
-RegisteredEnchant: "&7Registered &e%ENCHANT% &7enchant!"                                                            # All internal placeholders: %ENCHANT%
-Integration: "&fDetected &e%PLUGIN%&f. Enabling integration!"                                                       # All internal placeholders: %PLUGIN%
+RegisteredEnchant: "&7Registered &e%ENCHANT% &7enchant!" # All internal placeholders: %ENCHANT%
+Integration: "&fDetected &e%PLUGIN%&f. Enabling integration!" # All internal placeholders: %PLUGIN%
 CorrectVersion:
   - "&fYou are running the latest version"
 OutdatedVersion:
@@ -38,11 +37,12 @@ ResourcePack:
   Enabled: true
   # If you upgrade to newer versions, the URL will need to be manually updated to the newest one,
   # which can be found in the Discord server: https://discord.gg/mMt3f4usqK
-  Url: "https://www.dropbox.com/scl/fi/5ggc7t20bfxmrzsbb1kok/Realistic-Survival-RP-1.2.9-RELEASE.zip?rlkey=55llpn4zj146usfmm8okf1ier&dl=1"
-  Url_1_21_3: "https://www.dropbox.com/scl/fi/peojzs2gkby8vq9qbq7ln/Realistic-Survival-RP-1.2.9-RELEASE.zip?rlkey=gu1cj3dmesvr40kd4wp85nmzn&st=i167ot5m&dl=1"
+  Url: "https://www.dropbox.com/scl/fi/5ggc7t20bfxmrzsbb1kok/Realistic-Survival-RP-1.2.10-RELEASE.zip?rlkey=55llpn4zj146usfmm8okf1ier&dl=1"
+  Url_1_21_3: "https://www.dropbox.com/scl/fi/peojzs2gkby8vq9qbq7ln/Realistic-Survival-RP-1.2.10-RELEASE.zip?rlkey=gu1cj3dmesvr40kd4wp85nmzn&st=i167ot5m&dl=1"
+  Url_1_21_10: "https://www.dropbox.com/scl/fi/24z24awp3y2idk39uf6ck/Realistic-Survival-RP-1.21.10.zip?rlkey=d34dp2cxv0ijk9bctpb4pc7aa&st=g865r5it&dl=1"
 
-AutomaticallyEnableWorlds: true   # Will automatically enable modules for newly added worlds; if set to false, automatically disables modules for newly added worlds
-AutoUpdateConfig: true            # If set to true, will automatically update config; note that this may cause issues with porting across large updates
+AutomaticallyEnableWorlds: true # Will automatically enable modules for newly added worlds; if set to false, automatically disables modules for newly added worlds
+AutoUpdateConfig: true # If set to true, will automatically update config; note that this may cause issues with porting across large updates
 
 NoTreePunching:
   Enabled: true
@@ -91,5 +91,5 @@ FirstAid:
 #          Miscellaneous           #
 ####################################
 
-BStats: true             # Do you want non-confidential server data to be recorded for my use?
-ConfigId: "1.2.9-RELEASE"  # Used for config syncing purposes, do NOT edit
+BStats: true # Do you want non-confidential server data to be recorded for my use?
+ConfigId: "1.2.10-RELEASE" # Used for config syncing purposes, do NOT edit

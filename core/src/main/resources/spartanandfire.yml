@@ -2,26 +2,26 @@
 #          Spartan and Fire           #
 #######################################
 
-ConfigId: "1.2.9-RELEASE"  # Used for config syncing purposes, do NOT edit
+ConfigId: "1.2.10-RELEASE" # Used for config syncing purposes, do NOT edit
 
 Initialize:
   Enabled: true
-  Message: "&6[Realistic Survival] &fInitializing &e%NAME% &fmodule"                                  # All placeholders: %NAME%
+  Message: "&6[Realistic Survival] &fInitializing &e%NAME% &fmodule" # All placeholders: %NAME%
 Shutdown:
   Enabled: true
-  Message: "&6[Realistic Survival] &fShutting down &e%NAME% &fmodule"                                 # All placeholders: %NAME%
+  Message: "&6[Realistic Survival] &fShutting down &e%NAME% &fmodule" # All placeholders: %NAME%
 MaxDistanceReached:
   Enabled: true
-  Message: "&fYour weapon has reached the max distance of &b%MAX_DISTANCE% &fblocks!"                 # All placeholders: %MAX_DISTANCE%
+  Message: "&fYour weapon has reached the max distance of &b%MAX_DISTANCE% &fblocks!" # All placeholders: %MAX_DISTANCE%
 MaxReturnDistanceReached:
   Enabled: true
-  Message: "&fYour weapon has not been returned since you're too far!"                                # All placeholders: %MAX_DISTANCE%
+  Message: "&fYour weapon has not been returned since you're too far!" # All placeholders: %MAX_DISTANCE%
 FullInventoryWeaponDropped:
   Enabled: true
-  Message: "&fInventory full! Your weapon has been dropped instead at &bx&f: &b%X_COORD%&f, &by&f: &b%Y_COORD%&f, &bz&f: &b%Z_COORD%&f."        # All placeholders: %X_COORD%, %Y_COORD%, %Z_COORD%
+  Message: "&fInventory full! Your weapon has been dropped instead at &bx&f: &b%X_COORD%&f, &by&f: &b%Y_COORD%&f, &bz&f: &b%Z_COORD%&f." # All placeholders: %X_COORD%, %Y_COORD%, %Z_COORD%
 WeaponDropped:
   Enabled: true
-  Message: "&fWeapon dropped at &bx&f: &b%X_COORD%&f, &by&f: &b%Y_COORD%&f, &bz&f: &b%Z_COORD%&f."    # All placeholders: %X_COORD%, %Y_COORD%, %Z_COORD%
+  Message: "&fWeapon dropped at &bx&f: &b%X_COORD%&f, &by&f: &b%Y_COORD%&f, &bz&f: &b%Z_COORD%&f." # All placeholders: %X_COORD%, %Y_COORD%, %Z_COORD%
 
 # Used to specify custom item drops for any mob
 # By default, there is no use for this, so the chance is set to 0.00
@@ -102,7 +102,7 @@ Items:
       # Blocks use the enum constant names here: https://hub.spigotmc.org/javadocs/spigot/org/bukkit/Material.html
       EncaseIce:
         Enabled: true
-        Block: "PACKED_ICE"          # What block the mob is encased in, default is packed ice
+        Block: "PACKED_ICE" # What block the mob is encased in, default is packed ice
       Sound:
         Enabled: true
         Sound: "BLOCK_GLASS_BREAK"
@@ -3734,7 +3734,7 @@ Recipes:
   dragonbone_rapier:
     Enabled:
       EnableAllVersions: true # true = enabled, false = disabled
-    Unlock: true  # true = recipes unlocked automatically, false = recipes not unlocked until crafted
+    Unlock: true # true = recipes unlocked automatically, false = recipes not unlocked until crafted
   dragonbone_katana:
     Enabled:
       EnableAllVersions: true

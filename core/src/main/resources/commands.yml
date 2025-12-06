@@ -2,7 +2,7 @@
 #          Commands                   #
 #######################################
 
-ConfigId: "1.2.9-RELEASE"  # Used for config syncing purposes, do NOT edit
+ConfigId: "1.2.10-RELEASE" # Used for config syncing purposes, do NOT edit
 
 # Permissions
 EnableCommandBlockUsage: true
@@ -11,8 +11,8 @@ EnableCommandBlockMinecartUsage: true
 # Error Messages
 NoPermission: "&cYou do not have permission to do this!"
 InvalidTarget: "&cNo valid target was found"
-MisspelledItemName: "&cUnknown item '%MISSPELLED_NAME%'"                                                            # All internal placeholders: %MISSPELLED_NAME%
-MisspelledWorld: "&cUnknown world '%MISSPELLED_WORLD%'"                                                             # All internal placeholders: %MISSPELLED_WORLD%
+MisspelledItemName: "&cUnknown item '%MISSPELLED_NAME%'" # All internal placeholders: %MISSPELLED_NAME%
+MisspelledWorld: "&cUnknown world '%MISSPELLED_WORLD%'" # All internal placeholders: %MISSPELLED_WORLD%
 InvalidArgument: "&cIncorrect argument for command"
 IncompleteCommand: "&cUnknown or incomplete command"
 
@@ -24,11 +24,11 @@ Give:
   TooManyItems:
     Enabled: true
     MaxValue: 100
-    Message: "&cThe number of items cannot be greater than %MAXIMUM_VALUE%"                                         # All internal placeholders: %MAXIMUM_VALUE%
+    Message: "&cThe number of items cannot be greater than %MAXIMUM_VALUE%" # All internal placeholders: %MAXIMUM_VALUE%
   CorrectExecution:
     Enabled: true
-    SingleTargetMessage: "&fGave %VALUE% [%DISPLAY_NAME%] to %PLAYER_NAME%"                                         # All internal placeholders: %VALUE%, %DISPLAY_NAME%, %PLAYER_NAME%
-    MultipleTargetMessage: "&fGave %VALUE% [%DISPLAY_NAME%]"                                                        # All internal placeholders: %VALUE%, %DISPLAY_NAME%
+    SingleTargetMessage: "&fGave %VALUE% [%DISPLAY_NAME%] to %PLAYER_NAME%" # All internal placeholders: %VALUE%, %DISPLAY_NAME%, %PLAYER_NAME%
+    MultipleTargetMessage: "&fGave %VALUE% [%DISPLAY_NAME%]" # All internal placeholders: %VALUE%, %DISPLAY_NAME%
     Sound:
       Enabled: true
       Sound: "ENTITY_ITEM_PICKUP"
@@ -63,58 +63,58 @@ SpawnItem:
   TooManyItems:
     Enabled: true
     MaxValue: 64
-    Message: "&cThe number of items cannot be greater than %MAXIMUM_VALUE%"                                         # All internal placeholders: %MAXIMUM_VALUE%
+    Message: "&cThe number of items cannot be greater than %MAXIMUM_VALUE%" # All internal placeholders: %MAXIMUM_VALUE%
   ExceedsStackSize:
     Enabled: true
-    Message: "&cThe number of items cannot be greater than %STACK_SIZE%"                                            # All internal placeholders: %STACK_SIZE%
+    Message: "&cThe number of items cannot be greater than %STACK_SIZE%" # All internal placeholders: %STACK_SIZE%
   CorrectExecution:
     Enabled: true
-    Message: "&fSummoned new %ITEM_NAME%"                                                                           # All internal placeholders: %ITEM_NAME%, %X_COORD%, %Y_COORD%, %Z_COORD%, %WORLD_NAME%
+    Message: "&fSummoned new %ITEM_NAME%" # All internal placeholders: %ITEM_NAME%, %X_COORD%, %Y_COORD%, %Z_COORD%, %WORLD_NAME%
 
 Summon:
   RequiredModulesDisabled:
     Enabled: true
-    Message: "&cThe following modules must be enabled to spawn the specified mob: %REQUIRED_MODULES%"               # All internal placeholders: %REQUIRED_MODULES%
+    Message: "&cThe following modules must be enabled to spawn the specified mob: %REQUIRED_MODULES%" # All internal placeholders: %REQUIRED_MODULES%
   MisspelledMob:
     Enabled: true
-    Message: "&cUnknown entity '%MISSPELLED_NAME%'"                                                                 # All internal placeholders: %REQUIRED_MODULES%
+    Message: "&cUnknown entity '%MISSPELLED_NAME%'" # All internal placeholders: %REQUIRED_MODULES%
   CorrectExecution:
     Enabled: true
-    Message: "&fSummoned new %MOB_NAME%"                                                                            # All internal placeholders: %MOB_NAME%, %X_COORD%, %Y_COORD%, %Z_COORD%, %WORLD_NAME%
+    Message: "&fSummoned new %MOB_NAME%" # All internal placeholders: %MOB_NAME%, %X_COORD%, %Y_COORD%, %Z_COORD%, %WORLD_NAME%
 
 Temperature:
   BelowMinValue:
     Enabled: true
-    Message: "&cTemperature cannot be less than %MINIMUM_VALUE%"                                                    # All internal placeholders: %MINIMUM_VALUE%
+    Message: "&cTemperature cannot be less than %MINIMUM_VALUE%" # All internal placeholders: %MINIMUM_VALUE%
   AboveMaxValue:
     Enabled: true
-    Message: "&cTemperature cannot be greater than %MAXIMUM_VALUE%"                                                 # All internal placeholders: %MAXIMUM_VALUE%
+    Message: "&cTemperature cannot be greater than %MAXIMUM_VALUE%" # All internal placeholders: %MAXIMUM_VALUE%
   TanModuleDisabled:
     Enabled: true
     Message: "&eTough as Nails &cmust be enabled to set a player's temperature"
   CorrectExecution:
     Enabled: true
-    SingleTargetMessage: "&fSuccessfully set the temperature of %PLAYER_NAME%"                                      # All internal placeholders: %PLAYER_NAME%, %OLD_TEMPERATURE%, %NEW_TEMPERATURE%
-    MultipleTargetMessage: "&fSuccessfully set the temperature of the specified targets"                            # All internal placeholders: %NEW_TEMPERATURE%
-    SingleTargetRelativeMessage: "&fSuccessfully set the temperature of %PLAYER_NAME%"                              # All internal placeholders: %PLAYER_NAME%, %OLD_TEMPERATURE%, %NEW_TEMPERATURE%, %CHANGE%
-    MultipleTargetRelativeMessage: "&fSuccessfully changed the temperature of the specified targets"                # All internal placeholders: %CHANGE%
+    SingleTargetMessage: "&fSuccessfully set the temperature of %PLAYER_NAME%" # All internal placeholders: %PLAYER_NAME%, %OLD_TEMPERATURE%, %NEW_TEMPERATURE%
+    MultipleTargetMessage: "&fSuccessfully set the temperature of the specified targets" # All internal placeholders: %NEW_TEMPERATURE%
+    SingleTargetRelativeMessage: "&fSuccessfully set the temperature of %PLAYER_NAME%" # All internal placeholders: %PLAYER_NAME%, %OLD_TEMPERATURE%, %NEW_TEMPERATURE%, %CHANGE%
+    MultipleTargetRelativeMessage: "&fSuccessfully changed the temperature of the specified targets" # All internal placeholders: %CHANGE%
 
 Thirst:
   BelowMinValue:
     Enabled: true
-    Message: "&cThirst cannot be less than %MINIMUM_VALUE%"                                                         # All internal placeholders: %MINIMUM_VALUE%
+    Message: "&cThirst cannot be less than %MINIMUM_VALUE%" # All internal placeholders: %MINIMUM_VALUE%
   AboveMaxValue:
     Enabled: true
-    Message: "&cThirst cannot be greater than %MAXIMUM_VALUE%"                                                      # All internal placeholders: %MAXIMUM_VALUE%
+    Message: "&cThirst cannot be greater than %MAXIMUM_VALUE%" # All internal placeholders: %MAXIMUM_VALUE%
   TanModuleDisabled:
     Enabled: true
     Message: "&eTough as Nails &cmust be enabled to set a player's thirst"
   CorrectExecution:
     Enabled: true
-    SingleTargetMessage: "&fSuccessfully set the thirst of %PLAYER_NAME%"                                           # All internal placeholders: %PLAYER_NAME%, %OLD_THIRST%, %NEW_THIRST%
-    MultipleTargetMessage: "&fSuccessfully set the thirst of the specified targets"                                 # All internal placeholders: %NEW_THIRST%
-    SingleTargetRelativeMessage: "&fSuccessfully set the thirst of %PLAYER_NAME%"                                   # All internal placeholders: %PLAYER_NAME%, %OLD_THIRST%, %NEW_THIRST%, %CHANGE%
-    MultipleTargetRelativeMessage: "&fSuccessfully changed the thirst of the specified targets"                     # All internal placeholders: %CHANGE%
+    SingleTargetMessage: "&fSuccessfully set the thirst of %PLAYER_NAME%" # All internal placeholders: %PLAYER_NAME%, %OLD_THIRST%, %NEW_THIRST%
+    MultipleTargetMessage: "&fSuccessfully set the thirst of the specified targets" # All internal placeholders: %NEW_THIRST%
+    SingleTargetRelativeMessage: "&fSuccessfully set the thirst of %PLAYER_NAME%" # All internal placeholders: %PLAYER_NAME%, %OLD_THIRST%, %NEW_THIRST%, %CHANGE%
+    MultipleTargetRelativeMessage: "&fSuccessfully changed the thirst of the specified targets" # All internal placeholders: %CHANGE%
 
 ResetItem:
   NoValidItemsFound:
@@ -159,7 +159,7 @@ UpdateItem:
       Unbreakability: true
       AttributeModifiers: true
       LocalizedName: true
-      CustomModelData: true  # For 1.21.2 and below
+      CustomModelData: true # For 1.21.2 and below
       ItemModel: true # For 1.21.3 and above
       EquippableComponent: true # For 1.21.3 and above
       Enchants:
@@ -175,8 +175,7 @@ UpdateItem:
         CustomDurability: false
         CustomMaxDurability: true
 
-Version: "&6[Realistic Survival] &fYou're running on version %PLUGIN_VERSION%"                                      # All internal placeholders: %PLUGIN_VERSION%
-
+Version: "&6[Realistic Survival] &fYou're running on version %PLUGIN_VERSION%" # All internal placeholders: %PLUGIN_VERSION%
 
 # Tab completer
 Count: "[<count>]"

@@ -2,12 +2,12 @@
 #          Ice and Fire               #
 #######################################
 
-ConfigId: "1.2.9-RELEASE"  # Used for config syncing purposes, do NOT edit
+ConfigId: "1.2.10-RELEASE" # Used for config syncing purposes, do NOT edit
 
 # Customize messages
 Initialize:
   Enabled: true
-  Message: "&6[Realistic Survival] &fInitializing &e%NAME% &fmodule"                # All placeholders: %NAME%
+  Message: "&6[Realistic Survival] &fInitializing &e%NAME% &fmodule" # All placeholders: %NAME%
 Shutdown:
   Enabled: true
   Message: "&6[Realistic Survival] &fShutting down &e%NAME% &fmodule"
@@ -41,9 +41,9 @@ BlockDrops:
 # Blocks use the enum constant names here: https://hub.spigotmc.org/javadocs/spigot/org/bukkit/Material.html
 Dragon:
   Enabled: true
-  SpawnChance: 0.8                                  # Chance of an ice and fire (I&F) dragon replacing a vanilla ender dragon spawn; set to 1.0 if you only want I&F dragons and -1.0 to disable I&F dragon spawning
+  SpawnChance: 0.8 # Chance of an ice and fire (I&F) dragon replacing a vanilla ender dragon spawn; set to 1.0 if you only want I&F dragons and -1.0 to disable I&F dragon spawning
   Info:
-    Name: "Realistic Survival %VARIANT% Dragon"     # All internal placeholders: %VARIANT%, %BREED%, %GENDER%, %AGE%, %STAGE%
+    Name: "Realistic Survival %VARIANT% Dragon" # All internal placeholders: %VARIANT%, %BREED%, %GENDER%, %AGE%, %STAGE%
     CustomNameVisible: false
     Health:
       Stage1:
@@ -187,27 +187,27 @@ Dragon:
         Red: true
         Bronze: true
     BreathAttack:
-      Chance: 0.6                   # Only other attack is explosion, if this is set to 1.0 then all attacks will be breath and none will be explosion
+      Chance: 0.6 # Only other attack is explosion, if this is set to 1.0 then all attacks will be breath and none will be explosion
       Particle: "FLAME"
-      LayerBlock: "FIRE"            # The block that replaces air blocks directly above surface blocks
-      BurntBlock: "BLACKSTONE"      # The block which flammable blocks get turned into
+      LayerBlock: "FIRE" # The block that replaces air blocks directly above surface blocks
+      BurntBlock: "BLACKSTONE" # The block which flammable blocks get turned into
       CharredBlock: "SMOOTH_BASALT" # The block which inflammable blocks get turned into
-      Radius:                       # Minimum radius of charring and for nearby entities to take damage
+      Radius: # Minimum radius of charring and for nearby entities to take damage
         Stage1: 2.0
         Stage2: 3.0
         Stage3: 4.0
         Stage4: 5.0
         Stage5: 6.0
-      Velocity:                     # The speed of the breath flame
+      Velocity: # The speed of the breath flame
         Stage1: 20.0
         Stage2: 25.0
         Stage3: 30.0
         Stage4: 35.0
         Stage5: 40.0
-      DespawnTime: 200              # How long it takes for the breath attack to despawn in ticks
-      SpecialBlocks:                # Overrides rules for "BurntBlock" and "CharredBlock"
-        - "RAW_COPPER_BLOCK:COPPER_BLOCK,RAW_COPPER_BLOCK,RAW_COPPER_BLOCK"   # Uses the format of "BLOCK_1:BLOCK_2,BLOCK_3,BLOCK_X" where BLOCK_1 turns into any block from "BLOCK_2" to "BLOCK_X"
-        - "RAW_GOLD_BLOCK:GOLD_BLOCK,RAW_GOLD_BLOCK,RAW_GOLD_BLOCK"           # These must use exact material enum names with no extraneous whitespace characters in between
+      DespawnTime: 200 # How long it takes for the breath attack to despawn in ticks
+      SpecialBlocks: # Overrides rules for "BurntBlock" and "CharredBlock"
+        - "RAW_COPPER_BLOCK:COPPER_BLOCK,RAW_COPPER_BLOCK,RAW_COPPER_BLOCK" # Uses the format of "BLOCK_1:BLOCK_2,BLOCK_3,BLOCK_X" where BLOCK_1 turns into any block from "BLOCK_2" to "BLOCK_X"
+        - "RAW_GOLD_BLOCK:GOLD_BLOCK,RAW_GOLD_BLOCK,RAW_GOLD_BLOCK" # These must use exact material enum names with no extraneous whitespace characters in between
         - "RAW_IRON_BLOCK:IRON_BLOCK,RAW_IRON_BLOCK,RAW_IRON_BLOCK"
         - "TERRACOTTA:TERRACOTTA,TERRACOTTA,TERRACOTTA,TERRACOTTA,BASALT"
         - "BLACK_TERRACOTTA:BLACK_TERRACOTTA,BLACK_TERRACOTTA,BLACK_TERRACOTTA,BLACK_TERRACOTTA,BASALT"
@@ -464,7 +464,7 @@ Dragon:
       BurntBlock: "BLACKSTONE"
       CharredBlock: "SMOOTH_BASALT"
       Explosion:
-        Power: 5.0                  # For reference, explosion power of TNT is 4.0
+        Power: 5.0 # For reference, explosion power of TNT is 4.0
         SetFire: true
         BreakBlocks: true
       DespawnTime: 200
@@ -1131,7 +1131,7 @@ Dragon:
         Volume: 1.0
         Pitch: 1.0
   LightningDragon:
-    Enabled:    # Chance of spawning a lightning dragon is (1 - chance of spawning other dragon breeds)
+    Enabled: # Chance of spawning a lightning dragon is (1 - chance of spawning other dragon breeds)
       Variants:
         Amethyst: true
         Black: true
@@ -1413,7 +1413,7 @@ Dragon:
       LayerBlock: "AIR"
       ElectrifiedBlock: "BASALT"
       Explosion:
-        Power: 5.0                  # For reference, explosion power of TNT is 4.0
+        Power: 5.0 # For reference, explosion power of TNT is 4.0
         SetFire: true
         BreakBlocks: true
       DespawnTime: 200
@@ -1714,9 +1714,9 @@ SeaSerpent:
       Purple: true
       Red: true
       Teal: true
-  SpawnChance: 0.01           # Has this chance to spawn when a squid, guardian, or dolphin spawns
+  SpawnChance: 0.01 # Has this chance to spawn when a squid, guardian, or dolphin spawns
   Info:
-    Name: "Realistic Survival Sea Serpent"     # All internal placeholders: %VARIANT%
+    Name: "Realistic Survival Sea Serpent" # All internal placeholders: %VARIANT%
     CustomNameVisible: false
     Health:
       Min: 20.0
@@ -1735,9 +1735,9 @@ SeaSerpent:
     MinDamage: 4.0
     MaxDamage: 20.0
 
-Siren:                         # Siren loot table can be found under "MobDrops" at the top of this config
+Siren: # Siren loot table can be found under "MobDrops" at the top of this config
   Enabled: true
-  SpawnChance: 0.05           # Has this chance to spawn when a squid, guardian, or dolphin spawns
+  SpawnChance: 0.05 # Has this chance to spawn when a squid, guardian, or dolphin spawns
   Info:
     Name: "Realistic Survival Siren"
     CustomNameVisible: false
@@ -1768,7 +1768,7 @@ Siren:                         # Siren loot table can be found under "MobDrops" 
     Pitch: 1.0
   ChangeScreen:
     Enabled: true
-    Character: ""  # Default Unicode value:
+    Character: "" # Default Unicode value:
   MeleeAttack:
     MinDamage: 6.0
     MaxDamage: 6.0
@@ -1779,11 +1779,11 @@ Abilities:
       Enabled: true
       MaxAmplifier: 3
       MaxDuration: 270
-      MustSubmerge: false    # Should the effect only activate if the player is in water?
+      MustSubmerge: false # Should the effect only activate if the player is in water?
     Strength:
       Enabled: true
       MaxAmplifier: 3
-      MaxDuration : 270
+      MaxDuration: 270
       MustSubmerge: true
     TickPeriod: 20
 

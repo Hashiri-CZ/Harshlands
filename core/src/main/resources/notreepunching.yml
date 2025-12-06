@@ -2,15 +2,15 @@
 #          No Tree Punching           #
 #######################################
 
-ConfigId: "1.2.9-RELEASE"  # Used for config syncing purposes, do NOT edit
+ConfigId: "1.2.10-RELEASE" # Used for config syncing purposes, do NOT edit
 
 # Customize messages
 Initialize:
   Enabled: true
-  Message: "&6[Realistic Survival] &fInitializing &e%NAME% &fmodule"                # All placeholders: %NAME%
+  Message: "&6[Realistic Survival] &fInitializing &e%NAME% &fmodule" # All placeholders: %NAME%
 Shutdown:
   Enabled: true
-  Message: "&6[Realistic Survival] &fShutting down &e%NAME% &fmodule"               # All placeholders: %NAME%
+  Message: "&6[Realistic Survival] &fShutting down &e%NAME% &fmodule" # All placeholders: %NAME%
 
 # Used to specify custom item drops for any mob
 # By default, there is no use for this, so the chance is set to 0.00
@@ -27,9 +27,9 @@ BlockDrops:
       Type: "Range"
       MinAmount: 2
       MaxAmount: 4
-      ReplaceDefaultDrop: true            # Will prevent whatever items normally drop from dropping if set to true
-      IgnoreSilkTouchEnchant: false       # If set to false, item will only drop if a block when mined with a tool without silk touch
-      RequireRightTool: true              # If set to true, item will only drop if block can be mined with the tool in player's hand
+      ReplaceDefaultDrop: true # Will prevent whatever items normally drop from dropping if set to true
+      IgnoreSilkTouchEnchant: false # If set to false, item will only drop if a block when mined with a tool without silk touch
+      RequireRightTool: true # If set to true, item will only drop if block can be mined with the tool in player's hand
   ANDESITE:
     andesite_rock:
       Type: "Range"
@@ -73,7 +73,7 @@ BlockDrops:
 
 # Customize the No Tree Punching features
 
-UpdateNetheriteItems:   # Specify which factors will be transferred over when a diamond mattock is crafted into a netherite mattock via smithing table
+UpdateNetheriteItems: # Specify which factors will be transferred over when a diamond mattock is crafted into a netherite mattock via smithing table
   Enabled: true
   UpdateMaterial: true
   UpdateMaterialData: false
@@ -109,18 +109,18 @@ PreventPunchingWood:
     - "Tag.PLANKS"
 
 Lumberjack:
-  DisablePlankRecipes: true     # Removes recipe from worlds that have NTP enabled
-  RemovePlankRecipes: true      # Completely removes recipe from the server (i:e even worlds that do not NTP enabled will not have the recipe)
+  DisablePlankRecipes: true # Removes recipe from worlds that have NTP enabled
+  RemovePlankRecipes: true # Completely removes recipe from the server (i:e even worlds that do not NTP enabled will not have the recipe)
   DisableStickRecipes: true
   RemoveStickRecipes: true
   PlankDrops:
     Type: "Range"
-    Chance: 0.4           # Chance to break a log into planks when right-clicking a log with an axe
+    Chance: 0.4 # Chance to break a log into planks when right-clicking a log with an axe
     MinAmount: 2
     MaxAmount: 4
   StickDrops:
     Type: "Range"
-    Chance: 0.4           # Chance to break a plank into sticks when right-clicking a log with an axe
+    Chance: 0.4 # Chance to break a plank into sticks when right-clicking a log with an axe
     MinAmount: 2
     MaxAmount: 4
   EnableSawPlankRecipes: true
@@ -129,22 +129,22 @@ Lumberjack:
 FireStarter:
   DisableVanillaCampfireRecipes: true
   RemoveVanillaCampfireRecipes: true
-  Enabled: true             # Right-click and hold the fire starter over the fuel and kindling to create campfires
-  Time: 200                 # Time needed to create a campfire
-  MaxDistance: 1.0          # Maximum distance that the fuel and kindling items can be from one another
-  MaxItems: 20              # Max items that can be on the ground
+  Enabled: true # Right-click and hold the fire starter over the fuel and kindling to create campfires
+  Time: 200 # Time needed to create a campfire
+  MaxDistance: 1.0 # Maximum distance that the fuel and kindling items can be from one another
+  MaxItems: 20 # Max items that can be on the ground
   BurningSound:
     Enabled: true
-    Chance: 0.15  # Probability every "TickPeriod" that a burning sound will be made
+    Chance: 0.15 # Probability every "TickPeriod" that a burning sound will be made
     Sound: "BLOCK_LAVA_EXTINGUISH"
     Volume: 0.5
     Pitch: 1.0
   EmitParticles:
     Enabled: true
-    Chance: 0.15  # Probability every "TickPeriod" that a particle will be emitted
+    Chance: 0.15 # Probability every "TickPeriod" that a particle will be emitted
     Particle: "SMOKE_NORMAL"
     # Dust options only apply if you set the particle to a redstone dust particle
-    DustOptionColor: "GRAY"     # Can also be set as a RGB value (ex: "128|128|128" for gray)
+    DustOptionColor: "GRAY" # Can also be set as a RGB value (ex: "128|128|128" for gray)
     DustOptionSize: 1.0
     MinCount: 1
     MaxCount: 3
@@ -172,27 +172,27 @@ FireStarter:
       - "SOUL_SOIL"
 
 Pottery:
-  DisableFlowerPotRecipe: true       # Removes the vanilla recipe where bricks can be crafted into a flower pot
+  DisableFlowerPotRecipe: true # Removes the vanilla recipe where bricks can be crafted into a flower pot
   RemoveFlowerPotRecipe: true
-  DisableBrickSmeltingRecipe: true   # Removes the vanilla recipe where clay can be smelted into a brick
+  DisableBrickSmeltingRecipe: true # Removes the vanilla recipe where clay can be smelted into a brick
   RemoveBrickSmeltingRecipe: true
-  EnableClayToolRecipe: true        # Clay tools are used to craft clay bricks
+  EnableClayToolRecipe: true # Clay tools are used to craft clay bricks
   CeramicLavaBucketMelting:
     Enabled: true
     TickPeriod: 5
-    Time: 160       # Time it takes for the ceramic lava bucket to melt and disappear in ticks
-    PourLava:       # Should lava be poured on a player after bucket melts, will not pour if player's location is solid
+    Time: 160 # Time it takes for the ceramic lava bucket to melt and disappear in ticks
+    PourLava: # Should lava be poured on a player after bucket melts, will not pour if player's location is solid
       Enabled: true
       OnlyReplacePassableBlocks: true
     BurningSound:
       Enabled: true
-      Chance: 0.15  # Probability every "TickPeriod" that a burning sound will be made
+      Chance: 0.15 # Probability every "TickPeriod" that a burning sound will be made
       Sound: "BLOCK_LAVA_EXTINGUISH"
       Volume: 0.5
       Pitch: 1.0
     EmitParticles:
       Enabled: true
-      Chance: 0.15  # Probability every "TickPeriod" that a particle will be emitted
+      Chance: 0.15 # Probability every "TickPeriod" that a particle will be emitted
       Particle: "LAVA"
       DustOptionColor: "GRAY"
       DustOptionSize: 1.0

@@ -72,20 +72,14 @@ public class RSVConfig extends FileBuilder {
     }
 
     private void updateConfig() {
-        String currentVersion = "";
+        String currentVersion = config.contains("ConfigId") ? config.getString("ConfigId") : "";
         String latestVersion = plugin.getDescription().getVersion();
         updated = true;
 
-        if (config.contains("ConfigId")) {
-            currentVersion = config.getString("ConfigId");
-        }
-
-        if (currentVersion.compareTo(latestVersion) < 0) {
+        if (isOlderVersion(currentVersion, latestVersion)) {
             int num = 0;
-
             String newPath = path.replace(".yml", "_Backup_" + num + ".yml");
-
-            while(new File(plugin.getDataFolder(), newPath).exists()) {
+            while (new File(plugin.getDataFolder(), newPath).exists()) {
                 num++;
                 newPath = newPath.replace("_Backup_" + (num - 1), "_Backup_" + num);
             }
@@ -95,37 +89,58 @@ public class RSVConfig extends FileBuilder {
 
             if (autoUpdate) {
                 try {
+                    // Create backup
                     Files.copy(Path.of(file.getAbsolutePath()), Path.of(file.getAbsolutePath().replace(".yml", "_Backup_" + num + ".yml")));
 
                     InputStream stream = plugin.getResource(path);
-
                     InputStreamReader reader = new InputStreamReader(stream);
                     FileConfiguration embedded = YamlConfiguration.loadConfiguration(reader);
 
                     Set<String> embeddedKeys = embedded.getKeys(true);
                     Set<String> configKeys = config.getKeys(true);
 
-                    for (String str : embeddedKeys) {
-                        if (!configKeys.contains(str)) {
-                            config.set(str, embedded.get(str));
+                    for (String key : embeddedKeys) {
+                        if (!configKeys.contains(key)) {
+                            config.set(key, embedded.get(key));
                         }
                     }
+
                     config.set("ConfigId", latestVersion);
                     config.save(file);
 
+                    plugin.getLogger().info("[RSVConfig] Updating config: " + currentVersion + " -> " + latestVersion);
+
                 } catch (IOException e) {
+                    plugin.getLogger().severe("[RSVConfig] Failed to update config: " + e.getMessage());
                     e.printStackTrace();
                 }
-            }
-            else {
+            } else {
+                // AutoUpdate disabled: just create backup and replace config
                 file.renameTo(new File(plugin.getDataFolder(), newPath));
-
                 createFile(path);
                 createConfig();
+                plugin.getLogger().info("[RSVConfig] AutoUpdate disabled, replaced config with new default: " + currentVersion + " -> " + latestVersion);
             }
-        }
 
+        }
+        // No else block needed – no logs if config is already up-to-date
     }
+
+    /** Semantic version comparison helper */
+    private boolean isOlderVersion(String current, String latest) {
+        String[] currParts = current.replace("-RELEASE", "").split("\\.");
+        String[] latestParts = latest.replace("-RELEASE", "").split("\\.");
+
+        for (int i = 0; i < Math.max(currParts.length, latestParts.length); i++) {
+            int currNum = i < currParts.length ? Integer.parseInt(currParts[i]) : 0;
+            int latestNum = i < latestParts.length ? Integer.parseInt(latestParts[i]) : 0;
+            if (currNum < latestNum) return true;
+            if (currNum > latestNum) return false;
+        }
+        return false;
+    }
+
+
 
     /**
      * Gets the config

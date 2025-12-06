@@ -42,28 +42,28 @@ Found good Minecraft hash (95495a7f485eedd84ce928cef5e223b757d2f764)
 **** Warning, Minecraft jar hash of 828e64b866f11736f73067bf1c025d086a6a473827df7efd62dc76dad8a46e2e does not match stored hash of d75793d197957a624995ae265b35c0086fe8cc976ede8476c09b6c01b7fc61a7
 [INFO] Scanning for projects...
 [WARNING] 
-[WARNING] Some problems were encountered while building the effective model for me.Val_Mobile:realisticsurvival-core:jar:1.2.9-RELEASE
+[WARNING] Some problems were encountered while building the effective model for me.Val_Mobile:realisticsurvival-core:jar:1.2.10-RELEASE
 [WARNING] 'version' contains an expression but should be a constant. @ me.Val_Mobile:realisticsurvival-core:${project.parent.version}, C:\Users\macie\Desktop\Stuff\MyStuff\RealisticSurvival-Updated\core\pom.xml, line 8, column 14
 [WARNING] 
-[WARNING] Some problems were encountered while building the effective model for me.Val_Mobile:realisticsurvival-spigot_impl_1_21_R6:jar:1.2.9-RELEASE
+[WARNING] Some problems were encountered while building the effective model for me.Val_Mobile:realisticsurvival-spigot_impl_1_21_R6:jar:1.2.10-RELEASE
 [WARNING] 'version' contains an expression but should be a constant. @ me.Val_Mobile:realisticsurvival-spigot_impl_1_21_R6:${project.parent.version}, C:\Users\macie\Desktop\Stuff\MyStuff\RealisticSurvival-Updated\spigot_impl_1_21_R6\pom.xml, line 8, column 14
 [WARNING] 
-[WARNING] Some problems were encountered while building the effective model for me.Val_Mobile:realisticsurvival-spigot_impl_1_21_R5:jar:1.2.9-RELEASE
+[WARNING] Some problems were encountered while building the effective model for me.Val_Mobile:realisticsurvival-spigot_impl_1_21_R5:jar:1.2.10-RELEASE
 [WARNING] 'version' contains an expression but should be a constant. @ me.Val_Mobile:realisticsurvival-spigot_impl_1_21_R5:${project.parent.version}, C:\Users\macie\Desktop\Stuff\MyStuff\RealisticSurvival-Updated\spigot_impl_1_21_R5\pom.xml, line 8, column 14
 [WARNING] 
-[WARNING] Some problems were encountered while building the effective model for me.Val_Mobile:realisticsurvival-spigot_impl_1_21_R8:jar:1.2.9-RELEASE
+[WARNING] Some problems were encountered while building the effective model for me.Val_Mobile:realisticsurvival-spigot_impl_1_21_R8:jar:1.2.10-RELEASE
 [WARNING] 'version' contains an expression but should be a constant. @ me.Val_Mobile:realisticsurvival-spigot_impl_1_21_R8:${project.parent.version}, C:\Users\macie\Desktop\Stuff\MyStuff\RealisticSurvival-Updated\spigot_impl_1_21_R8\pom.xml, line 8, column 14
 [WARNING] 
-[WARNING] Some problems were encountered while building the effective model for me.Val_Mobile:realisticsurvival-spigot_impl_1_21_R9:jar:1.2.9-RELEASE
+[WARNING] Some problems were encountered while building the effective model for me.Val_Mobile:realisticsurvival-spigot_impl_1_21_R9:jar:1.2.10-RELEASE
 [WARNING] 'version' contains an expression but should be a constant. @ me.Val_Mobile:realisticsurvival-spigot_impl_1_21_R9:${project.parent.version}, C:\Users\macie\Desktop\Stuff\MyStuff\RealisticSurvival-Updated\spigot_impl_1_21_R9\pom.xml, line 8, column 14
 [WARNING] 
-[WARNING] Some problems were encountered while building the effective model for me.Val_Mobile:realisticsurvival-spigot_impl_1_21_R10:jar:1.2.9-RELEASE
+[WARNING] Some problems were encountered while building the effective model for me.Val_Mobile:realisticsurvival-spigot_impl_1_21_R10:jar:1.2.10-RELEASE
 [WARNING] 'version' contains an expression but should be a constant. @ me.Val_Mobile:realisticsurvival-spigot_impl_1_21_R10:${project.parent.version}, C:\Users\macie\Desktop\Stuff\MyStuff\RealisticSurvival-Updated\spigot_impl_1_21_R10\pom.xml, line 8, column 14
 [WARNING] 
-[WARNING] Some problems were encountered while building the effective model for me.Val_Mobile:realisticsurvival-spigot_impl_1_21_R11:jar:1.2.9-RELEASE
+[WARNING] Some problems were encountered while building the effective model for me.Val_Mobile:realisticsurvival-spigot_impl_1_21_R11:jar:1.2.10-RELEASE
 [WARNING] 'version' contains an expression but should be a constant. @ me.Val_Mobile:realisticsurvival-spigot_impl_1_21_R11:${project.parent.version}, C:\Users\macie\Desktop\Stuff\MyStuff\RealisticSurvival-Updated\spigot_impl_1_21_R11\pom.xml, line 8, column 14
 [WARNING] 
-[WARNING] Some problems were encountered while building the effective model for me.Val_Mobile:realisticsurvival-dist:jar:1.2.9-RELEASE
+[WARNING] Some problems were encountered while building the effective model for me.Val_Mobile:realisticsurvival-dist:jar:1.2.10-RELEASE
 [WARNING] 'version' contains an expression but should be a constant. @ me.Val_Mobile:realisticsurvival-dist:${project.parent.version}, C:\Users\macie\Desktop\Stuff\MyStuff\RealisticSurvival-Updated\dist\pom.xml, line 5, column 14
 [WARNING] 
 [WARNING] It is highly recommended to fix these problems because they threaten the stability of your build.
@@ -84,7 +84,7 @@ Found good Minecraft hash (95495a7f485eedd84ce928cef5e223b757d2f764)
 [INFO] realisticsurvival-dist                                             [jar]
 [INFO] 
 [INFO] ---------------< me.Val_Mobile:realisticsurvival-parent >---------------
-[INFO] Building RealisticSurvival 1.2.9-RELEASE                           [1/9]
+[INFO] Building RealisticSurvival 1.2.10-RELEASE                           [1/9]
 [INFO]   from pom.xml
 [INFO] --------------------------------[ pom ]---------------------------------
 [INFO] 
@@ -92,7 +92,7 @@ Found good Minecraft hash (95495a7f485eedd84ce928cef5e223b757d2f764)
 [INFO] pom.xml not found in mapped.75645fa6.jar
 [INFO] Installing C:\Users\macie\Desktop\Stuff\MyStuff\RealisticSurvival-Updated\work\mapped.75645fa6.jar to C:\Users\macie\.m2\repository\org\spigotmc\minecraft-server\1.21.10-R0.1-SNAPSHOT\minecraft-server-1.21.10-R0.1-SNAPSHOT.jar
 [INFO] ------------------------------------------------------------------------
-[INFO] Reactor Summary for RealisticSurvival 1.2.9-RELEASE:
+[INFO] Reactor Summary for RealisticSurvival 1.2.10-RELEASE:
 [INFO] 
 [INFO] RealisticSurvival .................................. SUCCESS [  0.211 s]
 [INFO] realisticsurvival-core ............................. SKIPPED

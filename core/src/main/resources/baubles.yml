@@ -2,20 +2,20 @@
 #          Baubles                    #
 #######################################
 
-ConfigId: "1.2.9-RELEASE"  # Used for config syncing purposes, do NOT edit
+ConfigId: "1.2.10-RELEASE" # Used for config syncing purposes, do NOT edit
 
 # Customize messages
 Initialize:
   Enabled: true
-  Message: "&6[Realistic Survival] &fInitializing &e%NAME% &fmodule"                # All placeholders: %NAME%
+  Message: "&6[Realistic Survival] &fInitializing &e%NAME% &fmodule" # All placeholders: %NAME%
 Shutdown:
   Enabled: true
-  Message: "&6[Realistic Survival] &fShutting down &e%NAME% &fmodule"               # All placeholders: %NAME%
+  Message: "&6[Realistic Survival] &fShutting down &e%NAME% &fmodule" # All placeholders: %NAME%
 
 # Customize any bauble items
 
 WormholeInventory:
-  SkullName: "&e%PLAYER_NAME%"    # All placeholders: %PLAYER_NAME%
+  SkullName: "&e%PLAYER_NAME%" # All placeholders: %PLAYER_NAME%
   Sound:
     Enabled: true
     Sound: "ITEM_CHORUS_FRUIT_TELEPORT"
@@ -261,7 +261,7 @@ Items:
   # TickPeriod - How frequently potion rings update in ticks
   # Increase this number if you have performance issues with the plugin
   # Do not set below 1
-  dragons_eye:      # REQUIRES ICE AND FIRE TO BE ENABLED
+  dragons_eye: # REQUIRES ICE AND FIRE TO BE ENABLED
     Enabled:
       EnableAllVersions: true
     TickPeriod: 20
@@ -344,22 +344,22 @@ Items:
       EnableAllVersions: true
     TickPeriod: 20
     PreventEndermenAngering: true
-    PreventFriendlyFireToAllies: true   # Prevents allies from attacking each other if they have the same owner
-    PreventFriendlyFireToPets: true    # Prevents allies from attacking the owner's pets
+    PreventFriendlyFireToAllies: true # Prevents allies from attacking each other if they have the same owner
+    PreventFriendlyFireToPets: true # Prevents allies from attacking the owner's pets
     TransformRegularEndermen:
       Enabled: true
       MaxDistance: 15.0
     SummonEndermenAllies:
       Enabled: true
-      Chance: 1.0               # Chance per "Delay" to spawn endermen allies
+      Chance: 1.0 # Chance per "Delay" to spawn endermen allies
       Delay: 500
-      MustTakeDamage: true      # If set to true, allies can only spawn when a player takes damage; prevents allies from passively spawning when a player is at low health
+      MustTakeDamage: true # If set to true, allies can only spawn when a player takes damage; prevents allies from passively spawning when a player is at low health
       MaxHealthPercent: 0.5
       MinAmount: 1
       MaxAmount: 3
     WaterContact:
       Enabled: true
-      Chance: 1.0             # Chance per "Delay" to take damage when submerged in water
+      Chance: 1.0 # Chance per "Delay" to take damage when submerged in water
       Delay: 20
       Damage: 1.0
   sunglasses:
@@ -474,12 +474,12 @@ Items:
   broken_heart:
     Enabled:
       EnableAllVersions: true
-    Break: false            # Should bauble disappear when it reaches 0 durability?
-    PlayTotemEffect: true   # If set to true, the vanilla totem of undying effect will play when the ability is activated
+    Break: false # Should bauble disappear when it reaches 0 durability?
+    PlayTotemEffect: true # If set to true, the vanilla totem of undying effect will play when the ability is activated
     SleepRepair:
       Enabled: true
       EnableAllVersions: true
-      Duration: 1200        # How long the player must lay in bed for the bauble to repair in ticks
+      Duration: 1200 # How long the player must lay in bed for the bauble to repair in ticks
       Amount: 1
   # Length of the invincibility frame the cross necklace gives you in ticks (20 ticks = 1 second)
   # Vanilla i-frames are 10 ticks long
@@ -569,9 +569,9 @@ Items:
     ReenableGravity: true
     Flight:
       Increment: 0.1
-      MaxDownwardVelocity: -2.0     # Sneak and left click air to go down
-      MaxUpwardVelocity: 2.0        # Left click air without sneaking to go up
-    Instability:                    # Occurs when a player simply holds the stone in their main hand without equipping it in the bauble bag
+      MaxDownwardVelocity: -2.0 # Sneak and left click air to go down
+      MaxUpwardVelocity: 2.0 # Left click air without sneaking to go up
+    Instability: # Occurs when a player simply holds the stone in their main hand without equipping it in the bauble bag
       MaxDownwardVelocity: -0.10
       MaxUpwardVelocity: 0.10
     TickPeriod: 5

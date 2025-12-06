@@ -33,6 +33,9 @@ public class UpdateChecker {
     private final JavaPlugin plugin;
     private final int resourceId;
 
+    // This is cuz of my lazyness... The update checker will work later tho
+    private static final boolean MUTE_UPDATES = true;
+
     public UpdateChecker(JavaPlugin plugin, int resourceId) {
         this.plugin = plugin;
         this.resourceId = resourceId;
@@ -40,17 +43,22 @@ public class UpdateChecker {
 
     public void getVersion(final Consumer<String> consumer) {
         Bukkit.getScheduler().runTaskAsynchronously(this.plugin, () -> {
-            try (InputStream inputStream = new URL("https://api.spigotmc.org/legacy/update.php?resource=" + this.resourceId).openStream(); Scanner scanner = new Scanner(inputStream)) {
+            try (InputStream inputStream = new URL("https://api.spigotmc.org/legacy/update.php?resource=" + this.resourceId).openStream();
+                 Scanner scanner = new Scanner(inputStream)) {
                 if (scanner.hasNext()) {
                     consumer.accept(scanner.next());
                 }
             } catch (IOException exception) {
-                this.plugin.getLogger().info(Utils.translateMsg("&cCannot look for updates: " + exception.getMessage(), null, null));
+                if (!MUTE_UPDATES) {
+                    this.plugin.getLogger().info(Utils.translateMsg("&cCannot look for updates: " + exception.getMessage(), null, null));
+                }
             }
         });
     }
 
     public void checkUpdate() {
+        if (MUTE_UPDATES) return;
+
         Logger logger = plugin.getLogger();
 
         getVersion(latestVersion -> {
@@ -58,7 +66,11 @@ public class UpdateChecker {
 
             int compareTo = currentVersion.compareTo(latestVersion);
 
-            List<String> messages = compareTo == 0 ? plugin.getConfig().getStringList("CorrectVersion") : compareTo < 0 ? plugin.getConfig().getStringList("OutdatedVersion") : plugin.getConfig().getStringList("DeveloperBuildVersion");
+            List<String> messages = compareTo == 0
+                    ? plugin.getConfig().getStringList("CorrectVersion")
+                    : compareTo < 0
+                        ? plugin.getConfig().getStringList("OutdatedVersion")
+                        : plugin.getConfig().getStringList("DeveloperBuildVersion");
 
             for (String message : messages) {
                 logger.info(Utils.translateMsg(message, null, null));
