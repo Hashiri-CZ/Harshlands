@@ -2,13 +2,12 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>realisticsurvival-dist</artifactId>
-    <version>${project.parent.version}</version>
     <packaging>jar</packaging>
 
     <parent>
         <groupId>me.Val_Mobile</groupId>
         <artifactId>realisticsurvival-parent</artifactId>
-        <version>1.2.10-RELEASE</version>
+        <version>1.2.11-RELEASE</version>
     </parent>
 
     <build>
@@ -38,7 +37,8 @@
                             </filters>
                             <artifactSet>
                                 <includes>
-                                    <include>me.Val_Mobile:realisticsurvival-*</include>
+                                    <include>me.Val_Mobile:realisticsurvival-core</include>
+                                    <include>me.Val_Mobile:realisticsurvival-spigot_impl_1_21_R11</include>
                                 </includes>
                             </artifactSet>
                         </configuration>
@@ -52,31 +52,6 @@
         <dependency>
             <groupId>me.Val_Mobile</groupId>
             <artifactId>realisticsurvival-core</artifactId>
-            <version>${project.parent.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>me.Val_Mobile</groupId>
-            <artifactId>realisticsurvival-spigot_impl_1_21_R6</artifactId>
-            <version>${project.parent.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>me.Val_Mobile</groupId>
-            <artifactId>realisticsurvival-spigot_impl_1_21_R5</artifactId>
-            <version>${project.parent.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>me.Val_Mobile</groupId>
-            <artifactId>realisticsurvival-spigot_impl_1_21_R8</artifactId>
-            <version>${project.parent.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>me.Val_Mobile</groupId>
-            <artifactId>realisticsurvival-spigot_impl_1_21_R9</artifactId>
-            <version>${project.parent.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>me.Val_Mobile</groupId>
-            <artifactId>realisticsurvival-spigot_impl_1_21_R10</artifactId>
             <version>${project.parent.version}</version>
         </dependency>
         <dependency>

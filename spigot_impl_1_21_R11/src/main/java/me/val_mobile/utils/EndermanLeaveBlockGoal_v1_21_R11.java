@@ -21,14 +21,14 @@ import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.ai.goal.Goal;
 import net.minecraft.world.entity.monster.EnderMan;
-import net.minecraft.world.level.GameRules;
+import net.minecraft.world.level.gamerules.GameRules;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
-import org.bukkit.craftbukkit.v1_21_R6.event.CraftEventFactory;
+import org.bukkit.craftbukkit.v1_21_R7.event.CraftEventFactory;
 
 public class EndermanLeaveBlockGoal_v1_21_R11 extends Goal {
     private final EnderMan enderman;
@@ -38,7 +38,7 @@ public class EndermanLeaveBlockGoal_v1_21_R11 extends Goal {
     }
 
     public boolean canUse() {
-        return this.enderman.getCarriedBlock() != null && (getServerLevel(this.enderman).getGameRules().getBoolean(GameRules.RULE_MOBGRIEFING) && this.enderman.getRandom().nextInt(reducedTickDelay(2000)) == 0);
+        return this.enderman.getCarriedBlock() != null && (getServerLevel(this.enderman).getGameRules().get(GameRules.MOB_GRIEFING) && this.enderman.getRandom().nextInt(reducedTickDelay(2000)) == 0);
     }
 
     public void tick() {

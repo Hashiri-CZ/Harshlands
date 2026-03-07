@@ -6,7 +6,7 @@
 
     <groupId>me.Val_Mobile</groupId>
     <artifactId>realisticsurvival-parent</artifactId>
-    <version>1.2.10-RELEASE</version>
+    <version>1.2.11-RELEASE</version>
     <packaging>pom</packaging>
 
     <name>RealisticSurvival</name>
@@ -15,11 +15,6 @@
 
     <modules>
         <module>core</module>
-        <module>spigot_impl_1_21_R6</module>
-        <module>spigot_impl_1_21_R5</module>
-        <module>spigot_impl_1_21_R8</module>
-        <module>spigot_impl_1_21_R9</module>
-        <module>spigot_impl_1_21_R10</module>
         <module>spigot_impl_1_21_R11</module>
         <module>dist</module>
     </modules>

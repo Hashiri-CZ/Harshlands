@@ -76,21 +76,38 @@ public class Utils {
     private static InternalsProvider internals;
 
     static {
-        String className = null;
-        try {
-            String packageName = Utils.class.getPackage().getName();
-            className = packageName + "." + getMinecraftVersion(true);
+        String packageName = Utils.class.getPackage().getName();
+        String preferredClass = packageName + "." + getMinecraftVersion(true);
+        LinkedHashSet<String> candidates = new LinkedHashSet<>();
+        candidates.add(preferredClass);
 
-            Bukkit.getLogger().info("[RealisticSurvival] Trying to load NMS class: " + className);
+        Matcher matcher = Pattern.compile("(.+\\.v\\d+_\\d+_R)(\\d+)").matcher(preferredClass);
+        if (matcher.matches()) {
+            String prefix = matcher.group(1);
+            int revision = Integer.parseInt(matcher.group(2));
+            for (int i = revision - 1; i >= 1; i--) {
+                candidates.add(prefix + i);
+            }
+        }
 
-            internals = (InternalsProvider) Class.forName(className)
-                            .getDeclaredConstructor().newInstance();
-        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException |
-                ClassCastException | NoSuchMethodException | InvocationTargetException exception) {
+        String craftPkg = Bukkit.getServer().getClass().getPackage().getName();
+        String craftVersion = craftPkg.substring(craftPkg.lastIndexOf('.') + 1);
+        candidates.add(packageName + "." + craftVersion);
 
+        for (String className : candidates) {
+            try {
+                Bukkit.getLogger().info("[RealisticSurvival] Trying to load NMS class: " + className);
+                internals = (InternalsProvider) Class.forName(className).getDeclaredConstructor().newInstance();
+                Bukkit.getLogger().info("[RealisticSurvival] Loaded NMS class: " + className);
+                break;
+            } catch (ClassNotFoundException | InstantiationException | IllegalAccessException |
+                    ClassCastException | NoSuchMethodException | InvocationTargetException ignored) {
+            }
+        }
+
+        if (internals == null) {
             Bukkit.getLogger().log(Level.SEVERE,
-                    "Oopsie! NMS Util could not find a valid implementation for this server version: " + className);
-            exception.printStackTrace();
+                    "Oopsie! NMS Util could not find a valid implementation. Tried: " + candidates);
         }
     }
 
@@ -1215,27 +1232,31 @@ public class Utils {
     }
 
     public static boolean hasItemModel(@Nonnull ItemMeta meta) {
-        return internals.hasItemModel(meta);
+        return internals != null && internals.hasItemModel(meta);
     }
 
     public static NamespacedKey getItemModel(@Nonnull ItemMeta meta) {
-        return internals.getItemModel(meta);
+        return internals == null ? null : internals.getItemModel(meta);
     }
 
     public static void setItemModel(@Nonnull ItemMeta meta, @Nullable NamespacedKey key) {
-        internals.setItemModel(meta, key);
+        if (internals != null) {
+            internals.setItemModel(meta, key);
+        }
     }
 
     public static boolean hasEquippableComponentModel(@Nonnull ItemMeta meta) {
-        return internals.hasEquippableComponentModel(meta);
+        return internals != null && internals.hasEquippableComponentModel(meta);
     }
 
     public static NamespacedKey getEquippableComponentModel(@Nonnull ItemMeta meta) {
-        return internals.getEquippableComponentModel(meta);
+        return internals == null ? null : internals.getEquippableComponentModel(meta);
     }
 
     public static void setEquippableComponentModel(@Nonnull ItemMeta meta, @Nullable NamespacedKey key, @Nonnull EquipmentSlot slot) {
-        internals.setEquippableComponentModel(meta, key, slot);
+        if (internals != null) {
+            internals.setEquippableComponentModel(meta, key, slot);
+        }
     }
 
     public static boolean isBestTool(@Nonnull Block block, @Nullable ItemStack tool) {
@@ -1260,7 +1281,9 @@ public class Utils {
     }
 
     public static void registerEntities() {
-        internals.registerEntities();
+        if (internals != null) {
+            internals.registerEntities();
+        }
     }
 
     // Armorstand methods for setting euler angles

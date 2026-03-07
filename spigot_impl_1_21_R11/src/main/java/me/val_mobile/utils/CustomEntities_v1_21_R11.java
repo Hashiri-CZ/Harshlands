@@ -25,7 +25,7 @@ import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.util.datafix.DataFixers;
 import net.minecraft.util.datafix.fixes.References;
 import net.minecraft.world.entity.Entity;
@@ -56,7 +56,7 @@ public enum CustomEntities_v1_21_R11 {
     private final String name;
     private final int id;
     private final EntityType<?> entityType;
-    private final ResourceLocation minecraftKey;
+    private final Identifier minecraftKey;
     private final Class<? extends Mob> nmsClass;
     private final Class<? extends Entity> customClass;
 
@@ -65,7 +65,7 @@ public enum CustomEntities_v1_21_R11 {
         this.name = name;
         this.id = id;
         this.entityType = entityType;
-        this.minecraftKey = ResourceLocation.tryParse(name);
+        this.minecraftKey = Identifier.tryParse(name);
         this.nmsClass = nmsClass;
         this.customClass = customClass;
 
@@ -88,11 +88,11 @@ public enum CustomEntities_v1_21_R11 {
         }
 
     private static void registerEntity(String type, EntityType.EntityFactory customMob, Map<String, Type<?>> types) {
-        if (BuiltInRegistries.ENTITY_TYPE.getOptional(ResourceLocation.tryParse(type)).isEmpty()) {
+        if (BuiltInRegistries.ENTITY_TYPE.getOptional(Identifier.tryParse(type)).isEmpty()) {
             String customName = "minecraft:realisticsurvival_" + type;
             types.put(customName, types.get("minecraft:" + type));
             EntityType.Builder<Entity> a = EntityType.Builder.of(customMob, MobCategory.MONSTER);
-            ResourceLocation resourceLoc = ResourceLocation.parse(customName);
+            Identifier resourceLoc = Identifier.parse(customName);
             Registry.register(BuiltInRegistries.ENTITY_TYPE, customName, a.build(ResourceKey.create(Registries.ENTITY_TYPE, resourceLoc)));
         }
     }
@@ -159,7 +159,7 @@ public enum CustomEntities_v1_21_R11 {
         return entityType;
     }
 
-    public ResourceLocation getMinecraftKey() {
+    public Identifier getMinecraftKey() {
         return this.minecraftKey;
     }
 
