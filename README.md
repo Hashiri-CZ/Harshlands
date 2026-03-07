@@ -19,7 +19,7 @@ You can find the original project by ValMobile here:
 
 ### Forked Project
 
-You can find the original project by ValMobile here:  
+You can find the forked project by Nik0-0 here:  
 [Realistic Survival - Updated (GitHub)](https://github.com/Nikos-Stuff/RealisticSurvival-Updated)
 
 ---
