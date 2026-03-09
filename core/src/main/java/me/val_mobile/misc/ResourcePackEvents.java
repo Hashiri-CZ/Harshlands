@@ -17,11 +17,11 @@
 package me.val_mobile.misc;
 
 import me.val_mobile.rsv.RSVPlugin;
-import me.val_mobile.utils.Utils;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
+import java.util.logging.Logger;
 
 public class ResourcePackEvents implements Listener {
 
@@ -34,43 +34,18 @@ public class ResourcePackEvents implements Listener {
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent event) {
         Player player = event.getPlayer();
+        Logger logger = plugin.getLogger();
 
-        String mcVersion = Utils.getMinecraftVersion(false);
-        String packUrl;
-
-        // Pick correct pack
-        if (compareVersions(mcVersion, "1.21.10") >= 0) {
-            packUrl = plugin.getConfig().getString("ResourcePack.Url_1_21_10");
-        } else if (compareVersions(mcVersion, "1.21.3") >= 0) {
-            packUrl = plugin.getConfig().getString("ResourcePack.Url_1_21_3");
-        } else {
-            packUrl = plugin.getConfig().getString("ResourcePack.Url");
+        // 1.21.11-only support: always use a single resource pack URL.
+        String packUrl = plugin.getConfig().getString("ResourcePack.Url");
+        if (packUrl == null || packUrl.isBlank()) {
+            logger.warning("ResourcePack.Enabled is true but ResourcePack.Url is empty. Skipping resource pack send.");
+            return;
         }
-
-        // Log to console
-        plugin.getLogger().info("Sending pack for version: " + mcVersion);
 
         // Apply pack to player
         player.setResourcePack(packUrl);
-    }
-
-    /**
-     * Safe version comparator: 1.21.10 > 1.21.9
-     */
-    private int compareVersions(String v1, String v2) {
-        String[] a = v1.split("\\.");
-        String[] b = v2.split("\\.");
-
-        int len = Math.max(a.length, b.length);
-        for (int i = 0; i < len; i++) {
-            int n1 = (i < a.length) ? Integer.parseInt(a[i]) : 0;
-            int n2 = (i < b.length) ? Integer.parseInt(b[i]) : 0;
-
-            if (n1 != n2) {
-                return Integer.compare(n1, n2);
-            }
-        }
-        return 0;
+        logger.info("Sent resource pack URL to player " + player.getName() + ".");
     }
 }
 
