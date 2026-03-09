@@ -1,5 +1,5 @@
 /*
-    Copyright (C) 2025  Val_Mobile
+    Copyright (C) 2025  Hashiri_
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -55,24 +55,32 @@ public class ItemManager {
                 items.putIfAbsent(key, item);
             }
             else {
-                if (userConfig.getBoolean("Items." + key + ".Enabled.EnableAllVersions")) {
+                if (isEnabledForCurrentVersion("Items." + key + ".Enabled")) {
                     RSVItem item = new RSVItem(module, itemConfig, key);
                     items.putIfAbsent(key, item);
                 }
-                else {
-                    if (userConfig.contains("Items." + key + ".Enabled.Versions." + Utils.getMinecraftVersion(true))) {
-                        if (userConfig.getBoolean("Items." + key + ".Enabled.Versions." + Utils.getMinecraftVersion(true))) {
-                            RSVItem item = new RSVItem(module, itemConfig, key);
-                            items.putIfAbsent(key, item);
-                        }
-                    }
-                    else {
-                        RSVItem item = new RSVItem(module, itemConfig, key);
-                        items.putIfAbsent(key, item);
-                    }
-                }
             }
         }
+    }
+
+    private boolean isEnabledForCurrentVersion(String enabledRoot) {
+        String singleVersionPath = enabledRoot + ".Enabled_1_21_11";
+        if (userConfig.contains(singleVersionPath)) {
+            return userConfig.getBoolean(singleVersionPath);
+        }
+
+        // Backward compatibility with older server configs.
+        String legacyAllPath = enabledRoot + ".EnableAllVersions";
+        if (userConfig.contains(legacyAllPath)) {
+            return userConfig.getBoolean(legacyAllPath);
+        }
+
+        String versionPath = enabledRoot + ".Versions." + Utils.getMinecraftVersion(true);
+        if (userConfig.contains(versionPath)) {
+            return userConfig.getBoolean(versionPath);
+        }
+
+        return true;
     }
 
     public RSVModule getModule() {
@@ -87,3 +95,4 @@ public class ItemManager {
         return items.get(name);
     }
 }
+

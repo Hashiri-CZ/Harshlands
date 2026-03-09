@@ -38,3 +38,4 @@ public interface Siren extends RSVMob {
         return getConfigurableLoot(tool);
     }
 }
+

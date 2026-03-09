@@ -1,10 +1,10 @@
-#######################################
+﻿#######################################
 #          Ice and Fire Recipes       #
 #######################################
 
 ConfigId: "1.2.10-RELEASE" # Used for config syncing purposes, do NOT edit
 
-# Edit carefully, following the guide: https://github.com/ValMobile/RealisticSurvival/wiki/Editing-Recipe-YML-Files
+# Edit carefully, following the RealisticSurvival-Reloaded wiki recipe guide.
 
 dragonscale_helmet_blue:
   Type: "Shaped"

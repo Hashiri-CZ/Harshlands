@@ -1,0 +1,8 @@
+﻿#######################################
+#          Fear Torch Data            #
+#######################################
+
+# Runtime persistence for active lit fear torches.
+# This file is managed automatically by the plugin.
+
+LitTorches: {}

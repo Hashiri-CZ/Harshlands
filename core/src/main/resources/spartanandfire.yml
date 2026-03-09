@@ -58,7 +58,7 @@ Items:
   # Rapiers
   dragonbone_rapier:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       AttackDamage: 4.5
       AttackSpeed: 2.4
@@ -69,7 +69,7 @@ Items:
     Sweep: false
   dragonbone_flamed_rapier:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       AttackDamage: 5.25
       AttackSpeed: 2.4
@@ -84,7 +84,7 @@ Items:
     DragonBonusDamage: 8.0
   dragonbone_iced_rapier:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       AttackDamage: 5.25
       AttackSpeed: 2.4
@@ -110,7 +110,7 @@ Items:
         Pitch: 1.0
   dragonbone_lightning_rapier:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       AttackDamage: 5.25
       AttackSpeed: 2.4
@@ -129,7 +129,7 @@ Items:
     DragonBonusDamage: 4.0
   dragonsteel_fire_rapier:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       AttackDamage: 13.0
       AttackSpeed: 2.4
@@ -143,7 +143,7 @@ Items:
       TickPeriod: 1
   dragonsteel_ice_rapier:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       AttackDamage: 13.0
       AttackSpeed: 2.4
@@ -167,7 +167,7 @@ Items:
         Pitch: 1.0
   dragonsteel_lightning_rapier:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       AttackDamage: 13.0
       AttackSpeed: 2.4
@@ -188,7 +188,7 @@ Items:
 
   dragonbone_katana:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       AttackDamage: 5.5
       AttackSpeed: 2.0
@@ -200,7 +200,7 @@ Items:
     Sweep: true
   dragonbone_flamed_katana:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       AttackDamage: 6.5
       AttackSpeed: 2.0
@@ -216,7 +216,7 @@ Items:
     DragonBonusDamage: 8.0
   dragonbone_iced_katana:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       AttackDamage: 6.5
       AttackSpeed: 2.0
@@ -241,7 +241,7 @@ Items:
         Pitch: 1.0
   dragonbone_lightning_katana:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       AttackDamage: 6.5
       AttackSpeed: 2.0
@@ -261,7 +261,7 @@ Items:
     DragonBonusDamage: 4.0
   dragonsteel_fire_katana:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       AttackDamage: 14.0
       AttackSpeed: 2.0
@@ -276,7 +276,7 @@ Items:
       TickPeriod: 1
   dragonsteel_ice_katana:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       AttackDamage: 14.0
       AttackSpeed: 2.0
@@ -301,7 +301,7 @@ Items:
         Pitch: 1.0
   dragonsteel_lightning_katana:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       AttackDamage: 14.0
       AttackSpeed: 2.0
@@ -323,7 +323,7 @@ Items:
 
   dragonbone_greatsword:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       AttackDamage: 14.0
       AttackSpeed: 1.4
@@ -336,7 +336,7 @@ Items:
     Sweep: true
   dragonbone_flamed_greatsword:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       AttackDamage: 17.0
       AttackSpeed: 1.4
@@ -353,7 +353,7 @@ Items:
     DragonBonusDamage: 8.0
   dragonbone_iced_greatsword:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       AttackDamage: 17.0
       AttackSpeed: 1.4
@@ -379,7 +379,7 @@ Items:
         Pitch: 1.0
   dragonbone_lightning_greatsword:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       AttackDamage: 17.0
       AttackSpeed: 1.4
@@ -400,7 +400,7 @@ Items:
     DragonBonusDamage: 4.0
   dragonsteel_fire_greatsword:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       AttackDamage: 48.0
       AttackSpeed: 1.4
@@ -416,7 +416,7 @@ Items:
       TickPeriod: 1
   dragonsteel_ice_greatsword:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       AttackDamage: 48.0
       AttackSpeed: 1.4
@@ -442,7 +442,7 @@ Items:
         Pitch: 1.0
   dragonsteel_lightning_greatsword:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       AttackDamage: 48.0
       AttackSpeed: 1.4
@@ -465,7 +465,7 @@ Items:
 
   dragonbone_longsword:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       AttackDamage: 10.5
       AttackSpeed: 1.4
@@ -477,7 +477,7 @@ Items:
     Sweep: true
   dragonbone_flamed_longsword:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       AttackDamage: 12.75
       AttackSpeed: 1.4
@@ -493,7 +493,7 @@ Items:
     DragonBonusDamage: 8.0
   dragonbone_iced_longsword:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       AttackDamage: 12.75
       AttackSpeed: 1.4
@@ -511,7 +511,7 @@ Items:
     Block: "ICE"
   dragonbone_lightning_longsword:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       AttackDamage: 12.75
       AttackSpeed: 1.4
@@ -531,7 +531,7 @@ Items:
     DragonBonusDamage: 4.0
   dragonsteel_fire_longsword:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       AttackDamage: 36.0
       AttackSpeed: 1.4
@@ -546,7 +546,7 @@ Items:
       TickPeriod: 1
   dragonsteel_ice_longsword:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       AttackDamage: 36.0
       AttackSpeed: 1.4
@@ -571,7 +571,7 @@ Items:
         Pitch: 1.0
   dragonsteel_lightning_longsword:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       AttackDamage: 36.0
       AttackSpeed: 1.4
@@ -593,7 +593,7 @@ Items:
 
   dragonbone_spear:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       AttackDamage: 6.5
       AttackSpeed: 1.4
@@ -601,7 +601,7 @@ Items:
     Sweep: false
   dragonbone_flamed_spear:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       AttackDamage: 7.25
       AttackSpeed: 1.4
@@ -612,7 +612,7 @@ Items:
     Reach: 7.0
   dragonbone_iced_spear:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       AttackDamage: 7.25
       AttackSpeed: 1.4
@@ -633,7 +633,7 @@ Items:
         Pitch: 1.0
   dragonbone_lightning_spear:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       AttackDamage: 7.25
       AttackSpeed: 1.4
@@ -649,7 +649,7 @@ Items:
     DragonBonusDamage: 4.0
   dragonsteel_fire_spear:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       AttackDamage: 15.0
       AttackSpeed: 1.4
@@ -660,7 +660,7 @@ Items:
       TickPeriod: 1
   dragonsteel_ice_spear:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       AttackDamage: 15.0
       AttackSpeed: 1.4
@@ -681,7 +681,7 @@ Items:
         Pitch: 1.0
   dragonsteel_lightning_spear:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       AttackDamage: 15.0
       AttackSpeed: 1.4
@@ -699,7 +699,7 @@ Items:
 
   dragonbone_saber:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       AttackDamage: 6.5
       AttackSpeed: 1.6
@@ -710,7 +710,7 @@ Items:
     Sweep: true
   dragonbone_flamed_saber:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       AttackDamage: 7.25
       AttackSpeed: 1.6
@@ -725,7 +725,7 @@ Items:
     DragonBonusDamage: 8.0
   dragonbone_iced_saber:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       AttackDamage: 7.25
       AttackSpeed: 1.6
@@ -749,7 +749,7 @@ Items:
         Pitch: 1.0
   dragonbone_lightning_saber:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       AttackDamage: 7.25
       AttackSpeed: 1.6
@@ -768,7 +768,7 @@ Items:
     DragonBonusDamage: 4.0
   dragonsteel_fire_saber:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       AttackDamage: 15.0
       AttackSpeed: 1.6
@@ -782,7 +782,7 @@ Items:
       TickPeriod: 1
   dragonsteel_ice_saber:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       AttackDamage: 15.0
       AttackSpeed: 1.6
@@ -806,7 +806,7 @@ Items:
         Pitch: 1.0
   dragonsteel_lightning_saber:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       AttackDamage: 15.0
       AttackSpeed: 1.6
@@ -827,7 +827,7 @@ Items:
 
   dragonbone_boomerang:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       AttackDamage: 1.0
       AttackSpeed: 2.0
@@ -864,7 +864,7 @@ Items:
     Sweep: false
   dragonbone_flamed_boomerang:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       AttackDamage: 1.0
       AttackSpeed: 2.0
@@ -905,7 +905,7 @@ Items:
     DragonBonusDamage: 8.0
   dragonbone_iced_boomerang:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       AttackDamage: 1.0
       AttackSpeed: 2.0
@@ -955,7 +955,7 @@ Items:
         Pitch: 1.0
   dragonbone_lightning_boomerang:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       AttackDamage: 1.0
       AttackSpeed: 2.0
@@ -1000,7 +1000,7 @@ Items:
     DragonBonusDamage: 4.0
   dragonsteel_fire_boomerang:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       AttackDamage: 1.0
       AttackSpeed: 2.0
@@ -1040,7 +1040,7 @@ Items:
       TickPeriod: 1
   dragonsteel_ice_boomerang:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       AttackDamage: 1.0
       AttackSpeed: 2.0
@@ -1090,7 +1090,7 @@ Items:
         Pitch: 1.0
   dragonsteel_lightning_boomerang:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       AttackDamage: 1.0
       AttackSpeed: 2.0
@@ -1137,7 +1137,7 @@ Items:
 
   dragonbone_dagger:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       AttackDamage: 4.5
       AttackSpeed: 2.5
@@ -1175,7 +1175,7 @@ Items:
     Sweep: false
   dragonbone_flamed_dagger:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       AttackDamage: 5.25
       AttackSpeed: 2.5
@@ -1217,7 +1217,7 @@ Items:
     DragonBonusDamage: 8.0
   dragonbone_iced_dagger:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       AttackDamage: 5.25
       AttackSpeed: 2.5
@@ -1273,7 +1273,7 @@ Items:
         Pitch: 1.0
   dragonbone_lightning_dagger:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       AttackDamage: 5.25
       AttackSpeed: 2.5
@@ -1319,7 +1319,7 @@ Items:
     DragonBonusDamage: 4.0
   dragonsteel_fire_dagger:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       AttackDamage: 13.0
       AttackSpeed: 2.5
@@ -1360,7 +1360,7 @@ Items:
       TickPeriod: 1
   dragonsteel_ice_dagger:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       AttackDamage: 13.0
       AttackSpeed: 2.5
@@ -1411,7 +1411,7 @@ Items:
         Pitch: 1.0
   dragonsteel_lightning_dagger:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       AttackDamage: 13.0
       AttackSpeed: 2.5
@@ -1458,7 +1458,7 @@ Items:
 
   dragonbone_glaive:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       AttackDamage: 8.0
       AttackSpeed: 1.0
@@ -1471,7 +1471,7 @@ Items:
     Sweep: true
   dragonbone_flamed_glaive:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       AttackDamage: 9.5
       AttackSpeed: 1.0
@@ -1488,7 +1488,7 @@ Items:
     DragonBonusDamage: 8.0
   dragonbone_iced_glaive:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       AttackDamage: 9.5
       AttackSpeed: 1.0
@@ -1514,7 +1514,7 @@ Items:
         Pitch: 1.0
   dragonbone_lightning_glaive:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       AttackDamage: 9.5
       AttackSpeed: 1.0
@@ -1535,7 +1535,7 @@ Items:
     DragonBonusDamage: 4.0
   dragonsteel_fire_glaive:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       AttackDamage: 25.0
       AttackSpeed: 1.0
@@ -1551,7 +1551,7 @@ Items:
       TickPeriod: 1
   dragonsteel_ice_glaive:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       AttackDamage: 25.0
       AttackSpeed: 1.0
@@ -1577,7 +1577,7 @@ Items:
         Pitch: 1.0
   dragonsteel_lightning_glaive:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       AttackDamage: 25.0
       AttackSpeed: 1.0
@@ -1600,7 +1600,7 @@ Items:
 
   dragonbone_halberd:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       AttackDamage: 16.5
       AttackSpeed: 1.2
@@ -1615,7 +1615,7 @@ Items:
     Sweep: false
   dragonbone_flamed_halberd:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       AttackDamage: 20.25
       AttackSpeed: 1.2
@@ -1634,7 +1634,7 @@ Items:
     DragonBonusDamage: 8.0
   dragonbone_iced_halberd:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       AttackDamage: 20.25
       AttackSpeed: 1.2
@@ -1662,7 +1662,7 @@ Items:
         Pitch: 1.0
   dragonbone_lightning_halberd:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       AttackDamage: 20.25
       AttackSpeed: 1.2
@@ -1685,7 +1685,7 @@ Items:
     DragonBonusDamage: 4.0
   dragonsteel_fire_halberd:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       AttackDamage: 59.0
       AttackSpeed: 1.2
@@ -1703,7 +1703,7 @@ Items:
       TickPeriod: 1
   dragonsteel_ice_halberd:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       AttackDamage: 59.0
       AttackSpeed: 1.2
@@ -1731,7 +1731,7 @@ Items:
         Pitch: 1.0
   dragonsteel_lightning_halberd:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       AttackDamage: 59.0
       AttackSpeed: 1.2
@@ -1756,7 +1756,7 @@ Items:
 
   dragonbone_hammer:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       AttackDamage: 10.0
       AttackSpeed: 0.8
@@ -1767,7 +1767,7 @@ Items:
     Sweep: false
   dragonbone_flamed_hammer:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       AttackDamage: 11.5
       AttackSpeed: 0.8
@@ -1782,7 +1782,7 @@ Items:
     DragonBonusDamage: 8.0
   dragonbone_iced_hammer:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       AttackDamage: 11.5
       AttackSpeed: 0.8
@@ -1806,7 +1806,7 @@ Items:
         Pitch: 1.0
   dragonbone_lightning_hammer:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       AttackDamage: 11.5
       AttackSpeed: 0.8
@@ -1825,7 +1825,7 @@ Items:
     DragonBonusDamage: 4.0
   dragonsteel_fire_hammer:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       AttackDamage: 27.0
       AttackSpeed: 0.8
@@ -1839,7 +1839,7 @@ Items:
       TickPeriod: 1
   dragonsteel_ice_hammer:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       AttackDamage: 27.0
       AttackSpeed: 0.8
@@ -1863,7 +1863,7 @@ Items:
         Pitch: 1.0
   dragonsteel_lightning_hammer:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       AttackDamage: 27.0
       AttackSpeed: 0.8
@@ -1884,7 +1884,7 @@ Items:
 
   dragonbone_javelin:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       AttackDamage: 3.5
       AttackSpeed: 1.2
@@ -1921,7 +1921,7 @@ Items:
     Sweep: false
   dragonbone_flamed_javelin:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       AttackDamage: 4.25
       AttackSpeed: 1.2
@@ -1962,7 +1962,7 @@ Items:
     DragonBonusDamage: 8.0
   dragonbone_iced_javelin:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       AttackDamage: 4.25
       AttackSpeed: 1.2
@@ -2012,7 +2012,7 @@ Items:
         Pitch: 1.0
   dragonbone_lightning_javelin:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       AttackDamage: 4.25
       AttackSpeed: 1.2
@@ -2057,7 +2057,7 @@ Items:
     DragonBonusDamage: 4.0
   dragonsteel_fire_javelin:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       AttackDamage: 12.0
       AttackSpeed: 1.2
@@ -2097,7 +2097,7 @@ Items:
       TickPeriod: 1
   dragonsteel_ice_javelin:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       AttackDamage: 12.0
       AttackSpeed: 1.2
@@ -2147,7 +2147,7 @@ Items:
         Pitch: 1.0
   dragonsteel_lightning_javelin:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       AttackDamage: 12.0
       AttackSpeed: 1.2
@@ -2194,7 +2194,7 @@ Items:
 
   dragonbone_lance:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       AttackDamage: 8.0
       AttackSpeed: 1.0
@@ -2203,7 +2203,7 @@ Items:
     Sweep: false
   dragonbone_flamed_lance:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       AttackDamage: 9.5
       AttackSpeed: 1.0
@@ -2216,7 +2216,7 @@ Items:
     DragonBonusDamage: 8.0
   dragonbone_iced_lance:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       AttackDamage: 9.5
       AttackSpeed: 1.0
@@ -2238,7 +2238,7 @@ Items:
         Pitch: 1.0
   dragonbone_lightning_lance:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       AttackDamage: 9.5
       AttackSpeed: 1.0
@@ -2255,7 +2255,7 @@ Items:
     DragonBonusDamage: 4.0
   dragonsteel_fire_lance:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       AttackDamage: 25.0
       AttackSpeed: 1.0
@@ -2267,7 +2267,7 @@ Items:
       TickPeriod: 1
   dragonsteel_ice_lance:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       AttackDamage: 25.0
       AttackSpeed: 1.0
@@ -2289,7 +2289,7 @@ Items:
         Pitch: 1.0
   dragonsteel_lightning_lance:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       AttackDamage: 25.0
       AttackSpeed: 1.0
@@ -2308,7 +2308,7 @@ Items:
 
   dragonbone_mace:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       AttackDamage: 8.0
       AttackSpeed: 1.2
@@ -2316,7 +2316,7 @@ Items:
     Sweep: false
   dragonbone_flamed_mace:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       AttackDamage: 9.5
       AttackSpeed: 1.2
@@ -2328,7 +2328,7 @@ Items:
     DragonBonusDamage: 8.0
   dragonbone_iced_mace:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       AttackDamage: 9.5
       AttackSpeed: 1.2
@@ -2349,7 +2349,7 @@ Items:
         Pitch: 1.0
   dragonbone_lightning_mace:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       AttackDamage: 9.5
       AttackSpeed: 1.2
@@ -2365,7 +2365,7 @@ Items:
     DragonBonusDamage: 4.0
   dragonsteel_fire_mace:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       AttackDamage: 25.0
       AttackSpeed: 1.2
@@ -2376,7 +2376,7 @@ Items:
       TickPeriod: 1
   dragonsteel_ice_mace:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       AttackDamage: 25.0
       AttackSpeed: 1.2
@@ -2397,7 +2397,7 @@ Items:
         Pitch: 1.0
   dragonsteel_lightning_mace:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       AttackDamage: 25.0
       AttackSpeed: 1.2
@@ -2415,7 +2415,7 @@ Items:
 
   dragonbone_pike:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       AttackDamage: 6.0
       AttackSpeed: 1.4
@@ -2427,7 +2427,7 @@ Items:
     Sweep: false
   dragonbone_flamed_pike:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       AttackDamage: 6.75
       AttackSpeed: 1.4
@@ -2443,7 +2443,7 @@ Items:
     DragonBonusDamage: 8.0
   dragonbone_iced_pike:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       AttackDamage: 6.75
       AttackSpeed: 1.4
@@ -2468,7 +2468,7 @@ Items:
         Pitch: 1.0
   dragonbone_lightning_pike:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       AttackDamage: 6.75
       AttackSpeed: 1.4
@@ -2488,7 +2488,7 @@ Items:
     DragonBonusDamage: 4.0
   dragonsteel_fire_pike:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       AttackDamage: 14.5
       AttackSpeed: 1.4
@@ -2503,7 +2503,7 @@ Items:
       TickPeriod: 1
   dragonsteel_ice_pike:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       AttackDamage: 14.5
       AttackSpeed: 1.4
@@ -2528,7 +2528,7 @@ Items:
         Pitch: 1.0
   dragonsteel_lightning_pike:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       AttackDamage: 14.5
       AttackSpeed: 1.4
@@ -2550,7 +2550,7 @@ Items:
 
   dragonbone_quarterstaff:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       AttackDamage: 5.5
       AttackSpeed: 1.4
@@ -2562,7 +2562,7 @@ Items:
     Sweep: true
   dragonbone_flamed_quarterstaff:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       AttackDamage: 7.0
       AttackSpeed: 1.4
@@ -2578,7 +2578,7 @@ Items:
     DragonBonusDamage: 8.0
   dragonbone_iced_quarterstaff:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       AttackDamage: 7.0
       AttackSpeed: 1.4
@@ -2603,7 +2603,7 @@ Items:
         Pitch: 1.0
   dragonbone_lightning_quarterstaff:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       AttackDamage: 7.0
       AttackSpeed: 1.4
@@ -2623,7 +2623,7 @@ Items:
     DragonBonusDamage: 4.0
   dragonsteel_fire_quarterstaff:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       AttackDamage: 22.5
       AttackSpeed: 1.4
@@ -2638,7 +2638,7 @@ Items:
       TickPeriod: 1
   dragonsteel_ice_quarterstaff:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       AttackDamage: 22.5
       AttackSpeed: 1.4
@@ -2663,7 +2663,7 @@ Items:
         Pitch: 1.0
   dragonsteel_lightning_quarterstaff:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       AttackDamage: 22.5
       AttackSpeed: 1.4
@@ -2684,7 +2684,7 @@ Items:
 
   dragonbone_tomahawk:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       AttackDamage: 6.0
       AttackSpeed: 0.9
@@ -2721,7 +2721,7 @@ Items:
     Sweep: false
   dragonbone_flamed_tomahawk:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       AttackDamage: 7.5
       AttackSpeed: 0.9
@@ -2762,7 +2762,7 @@ Items:
     DragonBonusDamage: 8.0
   dragonbone_iced_tomahawk:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       AttackDamage: 7.5
       AttackSpeed: 0.9
@@ -2812,7 +2812,7 @@ Items:
         Pitch: 1.0
   dragonbone_lightning_tomahawk:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       AttackDamage: 7.5
       AttackSpeed: 0.9
@@ -2857,7 +2857,7 @@ Items:
     DragonBonusDamage: 4.0
   dragonsteel_fire_tomahawk:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       AttackDamage: 23.0
       AttackSpeed: 0.9
@@ -2897,7 +2897,7 @@ Items:
       TickPeriod: 1
   dragonsteel_ice_tomahawk:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       AttackDamage: 23.0
       AttackSpeed: 0.9
@@ -2947,7 +2947,7 @@ Items:
         Pitch: 1.0
   dragonsteel_lightning_tomahawk:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       AttackDamage: 23.0
       AttackSpeed: 0.9
@@ -2994,7 +2994,7 @@ Items:
 
   dragonbone_throwing_knife:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       AttackDamage: 3.5
       AttackSpeed: 2.5
@@ -3031,7 +3031,7 @@ Items:
     Sweep: false
   dragonbone_flamed_throwing_knife:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       AttackDamage: 4.25
       AttackSpeed: 2.5
@@ -3072,7 +3072,7 @@ Items:
     DragonBonusDamage: 8.0
   dragonbone_iced_throwing_knife:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       AttackDamage: 4.25
       AttackSpeed: 2.5
@@ -3122,7 +3122,7 @@ Items:
         Pitch: 1.0
   dragonbone_lightning_throwing_knife:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       AttackDamage: 4.25
       AttackSpeed: 2.5
@@ -3167,7 +3167,7 @@ Items:
     DragonBonusDamage: 4.0
   dragonsteel_fire_throwing_knife:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       AttackDamage: 12.0
       AttackSpeed: 2.5
@@ -3207,7 +3207,7 @@ Items:
       TickPeriod: 1
   dragonsteel_ice_throwing_knife:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       AttackDamage: 12.0
       AttackSpeed: 2.5
@@ -3257,7 +3257,7 @@ Items:
         Pitch: 1.0
   dragonsteel_lightning_throwing_knife:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       AttackDamage: 12.0
       AttackSpeed: 2.5
@@ -3304,7 +3304,7 @@ Items:
 
   dragonbone_warhammer:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       AttackDamage: 8.0
       AttackSpeed: 1.1
@@ -3314,7 +3314,7 @@ Items:
     ArmorPiercing: 0.5
   dragonbone_flamed_warhammer:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       AttackDamage: 9.5
       AttackSpeed: 1.1
@@ -3328,7 +3328,7 @@ Items:
     DragonBonusDamage: 8.0
   dragonbone_iced_warhammer:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       AttackDamage: 9.5
       AttackSpeed: 1.1
@@ -3351,7 +3351,7 @@ Items:
         Pitch: 1.0
   dragonbone_lightning_warhammer:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       AttackDamage: 9.5
       AttackSpeed: 1.1
@@ -3369,7 +3369,7 @@ Items:
     DragonBonusDamage: 4.0
   dragonsteel_fire_warhammer:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       AttackDamage: 25.0
       AttackSpeed: 1.1
@@ -3382,7 +3382,7 @@ Items:
       TickPeriod: 1
   dragonsteel_ice_warhammer:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       AttackDamage: 25.0
       AttackSpeed: 1.1
@@ -3405,7 +3405,7 @@ Items:
         Pitch: 1.0
   dragonsteel_lightning_warhammer:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       AttackDamage: 25.0
       AttackSpeed: 1.1
@@ -3425,7 +3425,7 @@ Items:
 
   dragonbone_battleaxe:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       AttackDamage: 13.0
       AttackSpeed: 1.0
@@ -3436,7 +3436,7 @@ Items:
     Sweep: false
   dragonbone_flamed_battleaxe:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       AttackDamage: 16.0
       AttackSpeed: 1.0
@@ -3451,7 +3451,7 @@ Items:
     DragonBonusDamage: 8.0
   dragonbone_iced_battleaxe:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       AttackDamage: 16.0
       AttackSpeed: 1.0
@@ -3475,7 +3475,7 @@ Items:
         Pitch: 1.0
   dragonbone_lightning_battleaxe:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       AttackDamage: 16.0
       AttackSpeed: 1.0
@@ -3494,7 +3494,7 @@ Items:
     DragonBonusDamage: 4.0
   dragonsteel_fire_battleaxe:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       AttackDamage: 47.0
       AttackSpeed: 1.0
@@ -3508,7 +3508,7 @@ Items:
       TickPeriod: 1
   dragonsteel_ice_battleaxe:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       AttackDamage: 47.0
       AttackSpeed: 1.0
@@ -3532,7 +3532,7 @@ Items:
         Pitch: 1.0
   dragonsteel_lightning_battleaxe:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       AttackDamage: 47.0
       AttackSpeed: 1.0
@@ -3553,12 +3553,12 @@ Items:
 
   dragonbone_longbow:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     AttackDamageMultiplier: 1.3
     ArrowVelocityMultiplier: 1.3
   dragonbone_flamed_longbow:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     AttackDamageMultiplier: 1.5
     ArrowVelocityMultiplier: 1.5
     InfernoAbility:
@@ -3567,7 +3567,7 @@ Items:
     DragonBonusDamage: 8.0
   dragonbone_iced_longbow:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     AttackDamageMultiplier: 1.5
     ArrowVelocityMultiplier: 1.5
     FreezeAbility:
@@ -3585,7 +3585,7 @@ Items:
         Pitch: 1.0
   dragonbone_lightning_longbow:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     AttackDamageMultiplier: 1.5
     ArrowVelocityMultiplier: 1.5
     ElectrocuteAbility:
@@ -3598,7 +3598,7 @@ Items:
     DragonBonusDamage: 4.0
   dragonsteel_fire_longbow:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     AttackDamageMultiplier: 2.0
     ArrowVelocityMultiplier: 1.5
     InfernoAbility:
@@ -3606,7 +3606,7 @@ Items:
       TickPeriod: 1
   dragonsteel_ice_longbow:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     AttackDamageMultiplier: 2.0
     ArrowVelocityMultiplier: 1.5
     FreezeAbility:
@@ -3624,7 +3624,7 @@ Items:
         Pitch: 1.0
   dragonsteel_lightning_longbow:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     AttackDamageMultiplier: 2.0
     ArrowVelocityMultiplier: 1.5
     ElectrocuteAbility:
@@ -3639,12 +3639,12 @@ Items:
 
   dragonbone_crossbow:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     AttackDamageMultiplier: 1.3
     ArrowVelocityMultiplier: 1.3
   dragonbone_flamed_crossbow:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     AttackDamageMultiplier: 1.5
     ArrowVelocityMultiplier: 1.5
     InfernoAbility:
@@ -3653,7 +3653,7 @@ Items:
     DragonBonusDamage: 8.0
   dragonbone_iced_crossbow:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     AttackDamageMultiplier: 1.5
     ArrowVelocityMultiplier: 1.5
     FreezeAbility:
@@ -3671,7 +3671,7 @@ Items:
         Pitch: 1.0
   dragonbone_lightning_crossbow:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     AttackDamageMultiplier: 1.5
     ArrowVelocityMultiplier: 1.5
     ElectrocuteAbility:
@@ -3684,7 +3684,7 @@ Items:
     DragonBonusDamage: 4.0
   dragonsteel_fire_crossbow:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     AttackDamageMultiplier: 2.0
     ArrowVelocityMultiplier: 1.5
     InfernoAbility:
@@ -3692,7 +3692,7 @@ Items:
       TickPeriod: 1
   dragonsteel_ice_crossbow:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     AttackDamageMultiplier: 2.0
     ArrowVelocityMultiplier: 1.5
     FreezeAbility:
@@ -3710,7 +3710,7 @@ Items:
         Pitch: 1.0
   dragonsteel_lightning_crossbow:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     AttackDamageMultiplier: 2.0
     ArrowVelocityMultiplier: 1.5
     ElectrocuteAbility:
@@ -3724,7 +3724,7 @@ Items:
     Enabled:
   witherbone_pole:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
 
 # Customize recipes
@@ -3733,646 +3733,647 @@ Recipes:
   # Dragonbone Weapons
   dragonbone_rapier:
     Enabled:
-      EnableAllVersions: true # true = enabled, false = disabled
+      Enabled_1_21_11: true # true = enabled, false = disabled
     Unlock: true # true = recipes unlocked automatically, false = recipes not unlocked until crafted
   dragonbone_katana:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonbone_greatsword:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonbone_longsword:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonbone_spear:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonbone_saber:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonbone_boomerang:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonbone_dagger:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonbone_glaive:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonbone_halberd:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonbone_hammer:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonbone_javelin:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonbone_lance:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonbone_mace:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonbone_pike:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonbone_quarterstaff:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonbone_tomahawk:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonbone_throwing_knife:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonbone_warhammer:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonbone_battleaxe:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonbone_longbow:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonbone_crossbow:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
 
   # Flamed Dragonbone Weapons
 
   dragonbone_flamed_rapier:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonbone_flamed_katana:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonbone_flamed_greatsword:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonbone_flamed_longsword:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonbone_flamed_spear:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonbone_flamed_saber:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonbone_flamed_boomerang:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonbone_flamed_dagger:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonbone_flamed_glaive:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonbone_flamed_halberd:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonbone_flamed_hammer:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonbone_flamed_javelin:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonbone_flamed_lance:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonbone_flamed_mace:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonbone_flamed_pike:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonbone_flamed_quarterstaff:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonbone_flamed_tomahawk:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonbone_flamed_throwing_knife:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonbone_flamed_warhammer:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonbone_flamed_battleaxe:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonbone_flamed_longbow:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonbone_flamed_crossbow:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
 
   # Iced Dragonbone Weapons
 
   dragonbone_iced_rapier:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonbone_iced_katana:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonbone_iced_greatsword:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonbone_iced_longsword:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonbone_iced_spear:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonbone_iced_saber:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonbone_iced_boomerang:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonbone_iced_dagger:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonbone_iced_glaive:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonbone_iced_halberd:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonbone_iced_hammer:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonbone_iced_javelin:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonbone_iced_lance:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonbone_iced_mace:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonbone_iced_pike:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonbone_iced_quarterstaff:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonbone_iced_tomahawk:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonbone_iced_throwing_knife:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonbone_iced_warhammer:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonbone_iced_battleaxe:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonbone_iced_longbow:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonbone_iced_crossbow:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
 
   # Lightning Dragonbone Weapons
 
   dragonbone_lightning_rapier:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonbone_lightning_katana:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonbone_lightning_greatsword:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonbone_lightning_longsword:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonbone_lightning_spear:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonbone_lightning_saber:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonbone_lightning_boomerang:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonbone_lightning_dagger:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonbone_lightning_glaive:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonbone_lightning_halberd:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonbone_lightning_hammer:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonbone_lightning_javelin:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonbone_lightning_lance:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonbone_lightning_mace:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonbone_lightning_pike:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonbone_lightning_quarterstaff:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonbone_lightning_tomahawk:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonbone_lightning_throwing_knife:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonbone_lightning_warhammer:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonbone_lightning_battleaxe:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonbone_lightning_longbow:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonbone_lightning_crossbow:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
 
   # Fire Dragonsteel Weapons
 
   dragonsteel_fire_rapier:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonsteel_fire_katana:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonsteel_fire_greatsword:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonsteel_fire_longsword:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonsteel_fire_spear:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonsteel_fire_saber:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonsteel_fire_boomerang:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonsteel_fire_dagger:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonsteel_fire_glaive:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonsteel_fire_halberd:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonsteel_fire_hammer:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonsteel_fire_javelin:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonsteel_fire_lance:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonsteel_fire_mace:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonsteel_fire_pike:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonsteel_fire_quarterstaff:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonsteel_fire_tomahawk:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonsteel_fire_throwing_knife:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonsteel_fire_warhammer:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonsteel_fire_battleaxe:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonsteel_fire_longbow:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonsteel_fire_crossbow:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
 
   # Ice Dragonsteel Weapons
 
   dragonsteel_ice_rapier:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonsteel_ice_katana:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonsteel_ice_greatsword:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonsteel_ice_longsword:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonsteel_ice_spear:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonsteel_ice_saber:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonsteel_ice_boomerang:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonsteel_ice_dagger:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonsteel_ice_glaive:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonsteel_ice_halberd:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonsteel_ice_hammer:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonsteel_ice_javelin:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonsteel_ice_lance:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonsteel_ice_mace:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonsteel_ice_pike:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonsteel_ice_quarterstaff:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonsteel_ice_tomahawk:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonsteel_ice_throwing_knife:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonsteel_ice_warhammer:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonsteel_ice_battleaxe:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonsteel_ice_longbow:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonsteel_ice_crossbow:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
 
   # Lightning Dragonsteel Weapons
 
   dragonsteel_lightning_rapier:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonsteel_lightning_katana:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonsteel_lightning_greatsword:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonsteel_lightning_longsword:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonsteel_lightning_spear:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonsteel_lightning_saber:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonsteel_lightning_boomerang:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonsteel_lightning_dagger:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonsteel_lightning_glaive:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonsteel_lightning_halberd:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonsteel_lightning_hammer:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonsteel_lightning_javelin:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonsteel_lightning_lance:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonsteel_lightning_mace:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonsteel_lightning_pike:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonsteel_lightning_quarterstaff:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonsteel_lightning_tomahawk:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonsteel_lightning_throwing_knife:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonsteel_lightning_warhammer:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonsteel_lightning_battleaxe:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonsteel_lightning_longbow:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonsteel_lightning_crossbow:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
 
   # Miscellaneous Items
 
   witherbone_handle:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   witherbone_pole:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
+

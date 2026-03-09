@@ -812,80 +812,80 @@ Thirst:
 Items:
   ice_cube:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
   magma_shard:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
   jelled_slime:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
   thermometer:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     TickPeriod: 1 # How often will the compass update your temperature in ticks
   wool_hood:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       Armor: 1.0
       Toughness: 0.5
   wool_jacket:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       Armor: 3.0
       Toughness: 0.5
   wool_pants:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       Armor: 2.0
       Toughness: 0.5
   wool_boots:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       Armor: 1.0
       Toughness: 0.5
   jelled_slime_helmet:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       Armor: 2.0
       Toughness: 0.5
   jelled_slime_chestplate:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       Armor: 5.0
       Toughness: 0.5
   jelled_slime_leggings:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       Armor: 4.0
       Toughness: 0.5
   jelled_slime_boots:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       Armor: 1.0
       Toughness: 0.5
   juice_apple:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
   juice_beetroot:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
   juice_cactus:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
   juice_carrot:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
   juice_chorus_fruit:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Teleport:
       Enabled: true
       MaxRadius: 7.0
@@ -896,144 +896,144 @@ Items:
         Pitch: 1.0
   juice_melon_glistering:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
   juice_apple_golden:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
   juice_carrot_golden:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
   juice_melon:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
   juice_pumpkin:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
   purified_water_bottle:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
   charcoal_filter:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
   canteen_empty:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
   canteen_filled:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
 
 Recipes:
   jelled_slime:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   jelled_slime_helmet:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   jelled_slime_chestplate:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   jelled_slime_leggings:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   jelled_slime_boots:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   wool_hood:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   wool_jacket:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   wool_pants:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   wool_boots:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   charcoal_filter:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   purified_water_bottle:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   purified_water_bottle_2:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   purified_water_bottle_3:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   purified_water_bottle_4:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   thermometer:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   juice_apple:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   juice_beetroot:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   juice_cactus:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   juice_carrot:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   juice_chorus_fruit:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   juice_melon_glistering:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   juice_apple_golden:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   juice_carrot_golden:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   juice_melon:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   juice_pumpkin:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   magma_block:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   ice_block:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   canteen_empty:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
 
 # Do NOT edit unless you know what you're doing
@@ -1097,3 +1097,4 @@ CharacterOverrides:
   ThirstVignette3: "" # Default Unicode Value:
   ThirstVignette4: "" # Default Unicode Value:
   ThirstVignette5: "" # Default Unicode Value:
+

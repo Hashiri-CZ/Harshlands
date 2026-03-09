@@ -1,4 +1,4 @@
-#######################################
+﻿#######################################
 #          No Tree Punching           #
 #######################################
 
@@ -82,9 +82,9 @@ UpdateNetheriteItems: # Specify which factors will be transferred over when a di
   UpdateUnbreakability: true
   UpdateAttributeModifiers: true
   UpdateLocalizedName: true
-  UpdateCustomModelData: true # For 1.21.2 and below
-  UpdateItemModel: true # For 1.21.3 and above
-  UpdateEquippableComponent: true # For 1.21.3 and above
+  UpdateCustomModelData: true # For 1.21.11
+  UpdateItemModel: true # For 1.21.11
+  UpdateEquippableComponent: true # For 1.21.11
   UpdateEnchants:
     Enabled: true
     PreserveExistingEnchants: true
@@ -265,236 +265,236 @@ PlantFiberGathering:
 Items:
   flint_hatchet:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       AttackDamage: 5.0
       AttackSpeed: 1.0
   flint_knife:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       AttackDamage: 2.0
       AttackSpeed: 3.0
   golden_knife:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       AttackDamage: 2.0
       AttackSpeed: 3.0
   iron_knife:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       AttackDamage: 3.0
       AttackSpeed: 3.0
   diamond_knife:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       AttackDamage: 4.0
       AttackSpeed: 3.0
   netherite_knife:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       AttackDamage: 5.0
       AttackSpeed: 3.0
   flint_pickaxe:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       AttackDamage: 2.5
       AttackSpeed: 2.5
   flint_shovel:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       AttackDamage: 3.0
       AttackSpeed: 2.4
   flint_hoe:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       AttackDamage: 1.0
       AttackSpeed: 2.6
   plant_fiber:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
   plant_string:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
   flint_shard:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
   golden_saw:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       AttackDamage: 2.0
       AttackSpeed: 3.0
   iron_saw:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       AttackDamage: 3.0
       AttackSpeed: 3.0
   diamond_saw:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       AttackDamage: 4.0
       AttackSpeed: 3.0
   netherite_saw:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       AttackDamage: 5.0
       AttackSpeed: 3.0
   stone_rock:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
   andesite_rock:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
   granite_rock:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
   diorite_rock:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
   sandstone_rock:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
   red_sandstone_rock:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
   matchbox:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Cooldown: 40
   fire_starter:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
   copper_axe:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       AttackDamage: 9.0
       AttackSpeed: 0.9
   copper_pickaxe:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       AttackDamage: 2.75
       AttackSpeed: 1.2
   copper_shovel:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       AttackDamage: 3.0
       AttackSpeed: 1.0
   copper_sword:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       AttackDamage: 5.0
       AttackSpeed: 1.6
   copper_hoe:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       AttackDamage: 1.0
       AttackSpeed: 2.5
   copper_helmet:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       Armor: 1.0
       Toughness: 0.0
   copper_chestplate:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       Armor: 3.0
       Toughness: 0.0
   copper_leggings:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       Armor: 3.0
       Toughness: 0.0
   copper_boots:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       Armor: 1.0
       Toughness: 0.0
   golden_mattock:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       AttackDamage: 4.0
       AttackSpeed: 1.6
   copper_mattock:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       AttackDamage: 5.0
       AttackSpeed: 1.6
   iron_mattock:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       AttackDamage: 6.0
       AttackSpeed: 1.6
   diamond_mattock:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       AttackDamage: 7.0
       AttackSpeed: 1.6
   netherite_mattock:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       AttackDamage: 8.0
       AttackSpeed: 1.6
   macuahuitl:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       AttackDamage: 6.0
       AttackSpeed: 1.6
   clay_tool:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
   clay_brick:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
   clay_bucket:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
   clay_flower_pot:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
   ceramic_bucket:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
   ceramic_water_bucket:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
   ceramic_lava_bucket:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
   ceramic_milk_bucket:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
   ceramic_tropical_fish_bucket:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
   ceramic_tadpole_bucket:
     Enabled:
-      EnableAllVersions: false
+      Enabled_1_21_11: false
       Versions:
         v1_17_R2: false
         v1_18_R1: false
@@ -502,181 +502,183 @@ Items:
         v1_18_R3: false
   ceramic_salmon_bucket:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
   ceramic_pufferfish_bucket:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
   ceramic_powder_snow_bucket:
     Enabled:
-      EnableAllVersions: false
+      Enabled_1_21_11: false
   ceramic_axolotl_bucket:
     Enabled:
-      EnableAllVersions: false
+      Enabled_1_21_11: false
   ceramic_cod_bucket:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
 Recipes:
   flint_hatchet:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   flint_knife:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   flint_pickaxe:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   flint_shovel:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   flint_hoe:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   cobblestone:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   plant_string:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   andesite:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   diorite:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   granite:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   sandstone:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   red_sandstone:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   matchbox:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   fire_starter:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   golden_mattock:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   copper_mattock:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   iron_mattock:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   diamond_mattock:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   netherite_mattock:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   macuahuitl:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   copper_axe:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   copper_pickaxe:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   copper_shovel:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   copper_sword:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   copper_hoe:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   copper_helmet:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   copper_chestplate:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   copper_leggings:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   copper_boots:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   clay_tool:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   clay_brick:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   clay_bucket:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   clay_flower_pot:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   ceramic_flower_pot:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   ceramic_flower_pot_0:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   ceramic_bucket:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   ceramic_bucket_0:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   brick:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   brick_0:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   netherite_saw:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   netherite_knife:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
+
+

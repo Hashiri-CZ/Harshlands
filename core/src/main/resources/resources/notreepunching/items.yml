@@ -1,10 +1,10 @@
-#######################################
+﻿#######################################
 #          NoTreePunching Items       #
 #######################################
 
 ConfigId: "1.2.10-RELEASE" # Used for config syncing purposes, do NOT edit
 
-# Edit carefully, following the guide: https://github.com/ValMobile/RealisticSurvival/wiki/Editing-Item-YML-Files
+# Edit carefully, following the RealisticSurvival-Reloaded wiki item guide.
 
 flint_shard:
   Material: "PRISMARINE_SHARD"

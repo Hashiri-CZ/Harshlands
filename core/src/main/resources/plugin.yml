@@ -1,7 +1,7 @@
 main: me.val_mobile.rsv.RSVPlugin
 name: ${project.parent.name}
 version: ${project.parent.version}
-author: Val_Mobile
+author: Hashiri_
 description: ${project.parent.description}
 website: ${project.parent.url}
 api-version: 1.17
@@ -154,3 +154,4 @@ permissions:
       realisticsurvival.command.updateitem: true
       realisticsurvival.command.help: true
       realisticsurvival.command.version: true
+

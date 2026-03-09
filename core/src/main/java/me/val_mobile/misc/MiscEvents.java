@@ -1,5 +1,5 @@
 /*
-    Copyright (C) 2025  Val_Mobile
+    Copyright (C) 2025  Hashiri_
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -165,7 +165,7 @@ public class MiscEvents implements Listener {
         if (Utils.isNetheriteRecipe(inv)) {
             ItemStack base;
 
-            // in versions 1.20 and above, a smithing template slot was added to the smithing table,
+            // in version 1.21.11, a smithing template slot was added to the smithing table,
             // and the item to be upgraded is now placed in 1st slot instead of the 0th
             if (Utils.getMinecraftVersion(false).compareTo("1.20") >= 0) {
                 base = inv.getItem(1);
@@ -184,7 +184,7 @@ public class MiscEvents implements Listener {
                             , "diamond_battleaxe", "diamond_longbow", "diamond_crossbow", "diamond_knife", "diamond_saw", "diamond_mattock" -> {
                         FileConfiguration userConfig = RSVModule.getModule(RSVItem.getModuleNameFromItem(base)).getUserConfig().getConfig();
 
-                        if (userConfig.getBoolean("Recipes." + rsvName + ".Enabled.EnableAllVersions"))
+                        if (isEnabledForCurrentVersion(userConfig, "Recipes." + rsvName + ".Enabled"))
                             event.setResult(Utils.getNetheriteRSVWeapon(base));
                         else {
                             if (userConfig.contains("Recipes." + rsvName + ".Enabled.Versions." + Utils.getMinecraftVersion(true))) {
@@ -384,4 +384,26 @@ public class MiscEvents implements Listener {
             }
         }
     }
+
+    private boolean isEnabledForCurrentVersion(FileConfiguration userConfig, String enabledRoot) {
+        String singleVersionPath = enabledRoot + ".Enabled_1_21_11";
+        if (userConfig.contains(singleVersionPath)) {
+            return userConfig.getBoolean(singleVersionPath);
+        }
+
+        // Backward compatibility with older server configs.
+        String legacyAllPath = enabledRoot + ".EnableAllVersions";
+        if (userConfig.contains(legacyAllPath)) {
+            return userConfig.getBoolean(legacyAllPath);
+        }
+
+        String versionPath = enabledRoot + ".Versions." + Utils.getMinecraftVersion(true);
+        if (userConfig.contains(versionPath)) {
+            return userConfig.getBoolean(versionPath);
+        }
+
+        return true;
+    }
 }
+
+

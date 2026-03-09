@@ -1715,6 +1715,11 @@ SeaSerpent:
       Red: true
       Teal: true
   SpawnChance: 0.01 # Has this chance to spawn when a squid, guardian, or dolphin spawns
+  SpawnRules:
+    MaxPerPlayer: 2 # Maximum number of sea serpents allowed near one player within PlayerRange
+    SpawnIntervalSeconds: 180 # Minimum delay between sea serpent spawns attributed to the same player
+    MinY: 45 # Sea serpents will not spawn below this Y level
+    PlayerRange: 128.0 # Radius used to find the nearest player and count nearby sea serpents
   Info:
     Name: "Realistic Survival Sea Serpent" # All internal placeholders: %VARIANT%
     CustomNameVisible: false
@@ -1802,134 +1807,134 @@ Abilities:
 Items:
   dragonbone:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
   witherbone:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
   dragonscale_blue:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
   dragonscale_bronze:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
   dragonscale_gray:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
   dragonscale_emerald:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
   dragonscale_red:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
   dragonscale_sapphire:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
   dragonscale_silver:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
   dragonscale_white:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
   dragonscale_amethyst:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
   dragonscale_black:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
   dragonscale_copper:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
   dragonscale_electric:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
   sea_serpent_scale_blue:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
   sea_serpent_scale_bronze:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
   sea_serpent_scale_deepblue:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
   sea_serpent_scale_green:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
   sea_serpent_scale_purple:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
   sea_serpent_scale_red:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
   sea_serpent_scale_teal:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
   shiny_scale:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
   dragon_blood_fire:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
   dragon_blood_ice:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
   dragon_blood_lightning:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
   dragon_heart_fire:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
   dragon_heart_ice:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
   dragon_heart_lightning:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
   dragon_skull_fire:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
   dragon_skull_ice:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
   dragon_skull_lightning:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
   dragon_flesh_fire:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
   dragon_flesh_ice:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
   dragon_flesh_lightning:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
   dragonsteel_fire_ingot:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
   dragonsteel_ice_ingot:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
   dragonsteel_lightning_ingot:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
   dragonsteel_fire_block:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
   dragonsteel_ice_block:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
   dragonsteel_lightning_block:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
   # Pickaxes
   dragonbone_pickaxe:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       AttackDamage: 8.0
       AttackSpeed: 1.2
   dragonsteel_fire_pickaxe:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       AttackDamage: 26.0
       AttackSpeed: 1.2
@@ -1938,7 +1943,7 @@ Items:
       TickPeriod: 1
   dragonsteel_ice_pickaxe:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       AttackDamage: 26.0
       AttackSpeed: 1.2
@@ -1957,7 +1962,7 @@ Items:
         Pitch: 1.0
   dragonsteel_lightning_pickaxe:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       AttackDamage: 26.0
       AttackSpeed: 1.2
@@ -1973,13 +1978,13 @@ Items:
 
   dragonbone_axe:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       AttackDamage: 10.0
       AttackSpeed: 1.0
   dragonsteel_fire_axe:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       AttackDamage: 30.0
       AttackSpeed: 1.0
@@ -1988,7 +1993,7 @@ Items:
       TickPeriod: 1
   dragonsteel_ice_axe:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       AttackDamage: 30.0
       AttackSpeed: 1.0
@@ -2007,7 +2012,7 @@ Items:
         Pitch: 1.0
   dragonsteel_lightning_axe:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       AttackDamage: 30.0
       AttackSpeed: 1.0
@@ -2023,13 +2028,13 @@ Items:
 
   dragonbone_shovel:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       AttackDamage: 6.5
       AttackSpeed: 1.0
   dragonsteel_fire_shovel:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       AttackDamage: 26.5
       AttackSpeed: 1.0
@@ -2038,7 +2043,7 @@ Items:
       TickPeriod: 1
   dragonsteel_ice_shovel:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       AttackDamage: 26.5
       AttackSpeed: 1.0
@@ -2057,7 +2062,7 @@ Items:
         Pitch: 1.0
   dragonsteel_lightning_shovel:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       AttackDamage: 26.5
       AttackSpeed: 1.0
@@ -2073,13 +2078,13 @@ Items:
 
   dragonbone_hoe:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       AttackDamage: 1.0
       AttackSpeed: 1.0
   dragonsteel_fire_hoe:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       AttackDamage: 2.0
       AttackSpeed: 1.0
@@ -2088,7 +2093,7 @@ Items:
       TickPeriod: 1
   dragonsteel_ice_hoe:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       AttackDamage: 2.0
       AttackSpeed: 1.0
@@ -2107,7 +2112,7 @@ Items:
         Pitch: 1.0
   dragonsteel_lightning_hoe:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       AttackDamage: 2.0
       AttackSpeed: 1.0
@@ -2123,13 +2128,13 @@ Items:
 
   dragonbone_sword:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       AttackDamage: 8.0
       AttackSpeed: 1.6
   dragonbone_flamed_sword:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       AttackDamage: 9.5
       AttackSpeed: 1.6
@@ -2139,7 +2144,7 @@ Items:
     DragonBonusDamage: 8.0
   dragonbone_iced_sword:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       AttackDamage: 9.5
       AttackSpeed: 1.6
@@ -2159,7 +2164,7 @@ Items:
     DragonBonusDamage: 8.0
   dragonbone_lightning_sword:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       AttackDamage: 9.5
       AttackSpeed: 1.6
@@ -2173,7 +2178,7 @@ Items:
     DragonBonusDamage: 4.0
   dragonsteel_fire_sword:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       AttackDamage: 25.0
       AttackSpeed: 1.6
@@ -2182,7 +2187,7 @@ Items:
       TickPeriod: 1
   dragonsteel_ice_sword:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       AttackDamage: 25.0
       AttackSpeed: 1.6
@@ -2201,7 +2206,7 @@ Items:
         Pitch: 1.0
   dragonsteel_lightning_sword:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       AttackDamage: 25.0
       AttackSpeed: 1.6
@@ -2217,7 +2222,7 @@ Items:
 
   dragonbone_bow:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     AttackDamageMultiplier: 1.75
     ArrowVelocityMultiplier: 1.75
 
@@ -2225,91 +2230,91 @@ Items:
 
   dragonscale_helmet_blue:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       Armor: 5.0
       Toughness: 2.0
     DragonDamageReduction: 0.1
   dragonscale_helmet_bronze:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       Armor: 5.0
       Toughness: 2.0
     DragonDamageReduction: 0.1
   dragonscale_helmet_gray:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       Armor: 5.0
       Toughness: 2.0
     DragonDamageReduction: 0.1
   dragonscale_helmet_emerald:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       Armor: 5.0
       Toughness: 2.0
     DragonDamageReduction: 0.1
   dragonscale_helmet_red:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       Armor: 5.0
       Toughness: 2.0
     DragonDamageReduction: 0.1
   dragonscale_helmet_sapphire:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       Armor: 5.0
       Toughness: 2.0
     DragonDamageReduction: 0.1
   dragonscale_helmet_silver:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       Armor: 5.0
       Toughness: 2.0
     DragonDamageReduction: 0.1
   dragonscale_helmet_white:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       Armor: 5.0
       Toughness: 2.0
     DragonDamageReduction: 0.1
   dragonscale_helmet_amethyst:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       Armor: 5.0
       Toughness: 2.0
     DragonDamageReduction: 0.1
   dragonscale_helmet_black:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       Armor: 5.0
       Toughness: 2.0
     DragonDamageReduction: 0.1
   dragonscale_helmet_copper:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       Armor: 5.0
       Toughness: 2.0
     DragonDamageReduction: 0.1
   dragonscale_helmet_electric:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       Armor: 5.0
       Toughness: 2.0
     DragonDamageReduction: 0.1
   tide_guardian_helmet_blue:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       Armor: 4.0
       Toughness: 2.5
@@ -2321,7 +2326,7 @@ Items:
       Duration: 270
   tide_guardian_helmet_bronze:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       Armor: 4.0
       Toughness: 2.5
@@ -2333,7 +2338,7 @@ Items:
       Duration: 270
   tide_guardian_helmet_deepblue:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       Armor: 4.0
       Toughness: 2.5
@@ -2345,7 +2350,7 @@ Items:
       Duration: 270
   tide_guardian_helmet_green:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       Armor: 4.0
       Toughness: 2.5
@@ -2357,7 +2362,7 @@ Items:
       Duration: 270
   tide_guardian_helmet_purple:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       Armor: 4.0
       Toughness: 2.5
@@ -2369,7 +2374,7 @@ Items:
       Duration: 270
   tide_guardian_helmet_red:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       Armor: 4.0
       Toughness: 2.5
@@ -2381,7 +2386,7 @@ Items:
       Duration: 270
   tide_guardian_helmet_teal:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       Armor: 4.0
       Toughness: 2.5
@@ -2393,21 +2398,21 @@ Items:
       Duration: 270
   dragonsteel_fire_helmet:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       Armor: 7.0
       Toughness: 6.0
     DragonDamageReduction: 0.2
   dragonsteel_ice_helmet:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       Armor: 7.0
       Toughness: 6.0
     DragonDamageReduction: 0.2
   dragonsteel_lightning_helmet:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       Armor: 7.0
       Toughness: 6.0
@@ -2417,91 +2422,91 @@ Items:
 
   dragonscale_chestplate_blue:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       Armor: 9.0
       Toughness: 2.0
     DragonDamageReduction: 0.1
   dragonscale_chestplate_bronze:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       Armor: 9.0
       Toughness: 2.0
     DragonDamageReduction: 0.1
   dragonscale_chestplate_gray:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       Armor: 9.0
       Toughness: 2.0
     DragonDamageReduction: 0.1
   dragonscale_chestplate_emerald:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       Armor: 9.0
       Toughness: 2.0
     DragonDamageReduction: 0.1
   dragonscale_chestplate_red:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       Armor: 9.0
       Toughness: 2.0
     DragonDamageReduction: 0.1
   dragonscale_chestplate_sapphire:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       Armor: 9.0
       Toughness: 2.0
     DragonDamageReduction: 0.1
   dragonscale_chestplate_silver:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       Armor: 9.0
       Toughness: 2.0
     DragonDamageReduction: 0.1
   dragonscale_chestplate_white:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       Armor: 9.0
       Toughness: 2.0
     DragonDamageReduction: 0.1
   dragonscale_chestplate_amethyst:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       Armor: 9.0
       Toughness: 2.0
     DragonDamageReduction: 0.1
   dragonscale_chestplate_black:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       Armor: 9.0
       Toughness: 2.0
     DragonDamageReduction: 0.1
   dragonscale_chestplate_copper:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       Armor: 9.0
       Toughness: 2.0
     DragonDamageReduction: 0.1
   dragonscale_chestplate_electric:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       Armor: 9.0
       Toughness: 2.0
     DragonDamageReduction: 0.1
   tide_guardian_chestplate_blue:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       Armor: 7.0
       Toughness: 2.5
@@ -2513,7 +2518,7 @@ Items:
       Duration: 270
   tide_guardian_chestplate_bronze:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       Armor: 7.0
       Toughness: 2.5
@@ -2525,7 +2530,7 @@ Items:
       Duration: 270
   tide_guardian_chestplate_deepblue:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       Armor: 7.0
       Toughness: 2.5
@@ -2537,7 +2542,7 @@ Items:
       Duration: 270
   tide_guardian_chestplate_green:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       Armor: 7.0
       Toughness: 2.5
@@ -2549,7 +2554,7 @@ Items:
       Duration: 270
   tide_guardian_chestplate_purple:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       Armor: 7.0
       Toughness: 2.5
@@ -2561,7 +2566,7 @@ Items:
       Duration: 270
   tide_guardian_chestplate_red:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       Armor: 7.0
       Toughness: 2.5
@@ -2573,7 +2578,7 @@ Items:
       Duration: 270
   tide_guardian_chestplate_teal:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       Armor: 12.0
       Toughness: 2.5
@@ -2585,21 +2590,21 @@ Items:
       Duration: 270
   dragonsteel_fire_chestplate:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       Armor: 12.0
       Toughness: 6.0
     DragonDamageReduction: 0.2
   dragonsteel_ice_chestplate:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       Armor: 12.0
       Toughness: 6.0
     DragonDamageReduction: 0.2
   dragonsteel_lightning_chestplate:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       Armor: 12.0
       Toughness: 6.0
@@ -2609,91 +2614,91 @@ Items:
 
   dragonscale_leggings_blue:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       Armor: 7.0
       Toughness: 2.0
     DragonDamageReduction: 0.1
   dragonscale_leggings_bronze:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       Armor: 7.0
       Toughness: 2.0
     DragonDamageReduction: 0.1
   dragonscale_leggings_gray:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       Armor: 7.0
       Toughness: 2.0
     DragonDamageReduction: 0.1
   dragonscale_leggings_emerald:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       Armor: 7.0
       Toughness: 2.0
     DragonDamageReduction: 0.1
   dragonscale_leggings_red:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       Armor: 7.0
       Toughness: 2.0
     DragonDamageReduction: 0.1
   dragonscale_leggings_sapphire:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       Armor: 7.0
       Toughness: 2.0
     DragonDamageReduction: 0.1
   dragonscale_leggings_silver:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       Armor: 7.0
       Toughness: 2.0
     DragonDamageReduction: 0.1
   dragonscale_leggings_white:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       Armor: 7.0
       Toughness: 2.0
     DragonDamageReduction: 0.1
   dragonscale_leggings_amethyst:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       Armor: 7.0
       Toughness: 2.0
     DragonDamageReduction: 0.1
   dragonscale_leggings_black:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       Armor: 7.0
       Toughness: 2.0
     DragonDamageReduction: 0.1
   dragonscale_leggings_copper:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       Armor: 7.0
       Toughness: 2.0
     DragonDamageReduction: 0.1
   dragonscale_leggings_electric:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       Armor: 7.0
       Toughness: 2.0
     DragonDamageReduction: 0.1
   tide_guardian_leggings_blue:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       Armor: 8.0
       Toughness: 2.5
@@ -2705,7 +2710,7 @@ Items:
       Duration: 270
   tide_guardian_leggings_bronze:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       Armor: 8.0
       Toughness: 2.5
@@ -2717,7 +2722,7 @@ Items:
       Duration: 270
   tide_guardian_leggings_deepblue:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       Armor: 8.0
       Toughness: 2.5
@@ -2729,7 +2734,7 @@ Items:
       Duration: 270
   tide_guardian_leggings_green:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       Armor: 8.0
       Toughness: 2.5
@@ -2741,7 +2746,7 @@ Items:
       Duration: 270
   tide_guardian_leggings_purple:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       Armor: 8.0
       Toughness: 2.5
@@ -2753,7 +2758,7 @@ Items:
       Duration: 270
   tide_guardian_leggings_red:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       Armor: 8.0
       Toughness: 2.5
@@ -2765,7 +2770,7 @@ Items:
       Duration: 270
   tide_guardian_leggings_teal:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       Armor: 8.0
       Toughness: 2.5
@@ -2777,21 +2782,21 @@ Items:
       Duration: 270
   dragonsteel_fire_leggings:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       Armor: 9.0
       Toughness: 6.0
     DragonDamageReduction: 0.2
   dragonsteel_ice_leggings:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       Armor: 9.0
       Toughness: 6.0
     DragonDamageReduction: 0.2
   dragonsteel_lightning_leggings:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       Armor: 9.0
       Toughness: 6.0
@@ -2801,91 +2806,91 @@ Items:
 
   dragonscale_boots_blue:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       Armor: 5.0
       Toughness: 2.0
     DragonDamageReduction: 0.1
   dragonscale_boots_bronze:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       Armor: 5.0
       Toughness: 2.0
     DragonDamageReduction: 0.1
   dragonscale_boots_gray:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       Armor: 5.0
       Toughness: 2.0
     DragonDamageReduction: 0.1
   dragonscale_boots_emerald:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       Armor: 5.0
       Toughness: 2.0
     DragonDamageReduction: 0.1
   dragonscale_boots_red:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       Armor: 5.0
       Toughness: 2.0
     DragonDamageReduction: 0.1
   dragonscale_boots_sapphire:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       Armor: 5.0
       Toughness: 2.0
     DragonDamageReduction: 0.1
   dragonscale_boots_silver:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       Armor: 5.0
       Toughness: 2.0
     DragonDamageReduction: 0.1
   dragonscale_boots_white:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       Armor: 5.0
       Toughness: 2.0
     DragonDamageReduction: 0.1
   dragonscale_boots_amethyst:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       Armor: 5.0
       Toughness: 2.0
     DragonDamageReduction: 0.1
   dragonscale_boots_black:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       Armor: 5.0
       Toughness: 2.0
     DragonDamageReduction: 0.1
   dragonscale_boots_copper:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       Armor: 5.0
       Toughness: 2.0
     DragonDamageReduction: 0.1
   dragonscale_boots_electric:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       Armor: 5.0
       Toughness: 2.0
     DragonDamageReduction: 0.1
   tide_guardian_boots_blue:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       Armor: 4.0
       Toughness: 2.5
@@ -2897,7 +2902,7 @@ Items:
       Duration: 270
   tide_guardian_boots_bronze:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       Armor: 4.0
       Toughness: 2.5
@@ -2909,7 +2914,7 @@ Items:
       Duration: 270
   tide_guardian_boots_deepblue:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       Armor: 4.0
       Toughness: 2.5
@@ -2921,7 +2926,7 @@ Items:
       Duration: 270
   tide_guardian_boots_green:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       Armor: 4.0
       Toughness: 2.5
@@ -2933,7 +2938,7 @@ Items:
       Duration: 270
   tide_guardian_boots_purple:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       Armor: 4.0
       Toughness: 2.5
@@ -2945,7 +2950,7 @@ Items:
       Duration: 270
   tide_guardian_boots_red:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       Armor: 4.0
       Toughness: 2.5
@@ -2957,7 +2962,7 @@ Items:
       Duration: 270
   tide_guardian_boots_teal:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       Armor: 4.0
       Toughness: 2.5
@@ -2969,21 +2974,21 @@ Items:
       Duration: 270
   dragonsteel_fire_boots:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       Armor: 6.0
       Toughness: 6.0
     DragonDamageReduction: 0.2
   dragonsteel_ice_boots:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       Armor: 6.0
       Toughness: 6.0
     DragonDamageReduction: 0.2
   dragonsteel_lightning_boots:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Attributes:
       Armor: 6.0
       Toughness: 6.0
@@ -2992,485 +2997,486 @@ Items:
 Recipes:
   dragonscale_helmet_blue:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonscale_chestplate_blue:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonscale_leggings_blue:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonscale_boots_blue:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonscale_helmet_bronze:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonscale_chestplate_bronze:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonscale_leggings_bronze:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonscale_boots_bronze:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonscale_helmet_gray:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonscale_chestplate_gray:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonscale_leggings_gray:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonscale_boots_gray:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonscale_helmet_emerald:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonscale_chestplate_emerald:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonscale_leggings_emerald:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonscale_boots_emerald:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonscale_helmet_red:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonscale_chestplate_red:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonscale_leggings_red:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonscale_boots_red:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonscale_helmet_sapphire:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonscale_chestplate_sapphire:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonscale_leggings_sapphire:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonscale_boots_sapphire:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonscale_helmet_silver:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonscale_chestplate_silver:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonscale_leggings_silver:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonscale_boots_silver:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonscale_helmet_white:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonscale_chestplate_white:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonscale_leggings_white:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonscale_boots_white:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonscale_helmet_amethyst:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonscale_chestplate_amethyst:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonscale_leggings_amethyst:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonscale_boots_amethyst:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonscale_helmet_black:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonscale_chestplate_black:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonscale_leggings_black:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonscale_boots_black:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonscale_helmet_copper:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonscale_chestplate_copper:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonscale_leggings_copper:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonscale_boots_copper:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonscale_helmet_electric:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonscale_chestplate_electric:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonscale_leggings_electric:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonscale_boots_electric:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   tide_guardian_helmet_blue:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   tide_guardian_chestplate_blue:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   tide_guardian_leggings_blue:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   tide_guardian_boots_blue:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   tide_guardian_helmet_bronze:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   tide_guardian_chestplate_bronze:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   tide_guardian_leggings_bronze:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   tide_guardian_boots_bronze:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   tide_guardian_helmet_deepblue:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   tide_guardian_chestplate_deepblue:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   tide_guardian_leggings_deepblue:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   tide_guardian_boots_deepblue:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   tide_guardian_helmet_green:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   tide_guardian_chestplate_green:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   tide_guardian_leggings_green:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   tide_guardian_boots_green:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   tide_guardian_helmet_purple:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   tide_guardian_chestplate_purple:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   tide_guardian_leggings_purple:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   tide_guardian_boots_purple:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   tide_guardian_helmet_red:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   tide_guardian_chestplate_red:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   tide_guardian_leggings_red:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   tide_guardian_boots_red:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   tide_guardian_helmet_teal:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   tide_guardian_chestplate_teal:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   tide_guardian_leggings_teal:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   tide_guardian_boots_teal:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonbone_pickaxe:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonbone_axe:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonbone_shovel:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonbone_hoe:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonbone_sword:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonbone_bow:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonbone_flamed_sword:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonbone_iced_sword:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonbone_lightning_sword:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonsteel_fire_sword:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonsteel_fire_pickaxe:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonsteel_fire_axe:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonsteel_fire_shovel:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonsteel_fire_hoe:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonsteel_fire_helmet:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonsteel_fire_chestplate:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonsteel_fire_leggings:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonsteel_fire_boots:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonsteel_ice_sword:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonsteel_ice_pickaxe:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonsteel_ice_axe:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonsteel_ice_shovel:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonsteel_ice_hoe:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonsteel_ice_helmet:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonsteel_ice_chestplate:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonsteel_ice_leggings:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonsteel_ice_boots:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonsteel_lightning_sword:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonsteel_lightning_pickaxe:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonsteel_lightning_axe:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonsteel_lightning_shovel:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonsteel_lightning_hoe:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonsteel_lightning_helmet:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonsteel_lightning_chestplate:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonsteel_lightning_leggings:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonsteel_lightning_boots:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonsteel_fire_ingot:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonsteel_ice_ingot:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonsteel_lightning_ingot:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonsteel_fire_block:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonsteel_ice_block:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonsteel_lightning_block:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonsteel_fire_ingot_block:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonsteel_ice_ingot_block:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
   dragonsteel_lightning_ingot_block:
     Enabled:
-      EnableAllVersions: true
+      Enabled_1_21_11: true
     Unlock: true
+

@@ -1,7 +1,7 @@
-###########################################################################
+﻿###########################################################################
 #                                                                         #
-#   Realistic Survival Plugin   MC 1.17 - 1.21                            #
-#   Version 1.2.10-RELEASE       Made by: Val_Mobile                       #
+#   Realistic Survival Plugin   MC 1.21.11                               #
+#   Made by: Hashiri_ | Original Author: Val_Mobile                      #
 #                                                                         #
 ###########################################################################
 
@@ -30,9 +30,9 @@ DeveloperBuildVersion:
 # Resource pack is disabled by default to allow for integration of it into
 # your own custom server pack if needed
 # NOTE: You must restart the server after enabling or disabling any feature
-# NOTE: Minecraft versions 1.21.3 and above introduces the item component system, which
+# NOTE: Minecraft version 1.21.11 introduces the item component system, which
 # is effectively a replacement to the old custom model data system. This requires a different resource pack,
-# which will be automatically downloaded if this plugin is run in version 1.21.3 and above.
+# which will be automatically downloaded if this plugin is run in version 1.21.11.
 ResourcePack:
   Enabled: true
   # If you upgrade to newer versions, the URL will need to be manually updated to the newest one,
@@ -86,6 +86,12 @@ FirstAid:
     world: true
     world_nether: true
     world_the_end: true
+Fear:
+  Enabled: true
+  Worlds:
+    world: true
+    world_nether: true
+    world_the_end: true
 
 ####################################
 #          Miscellaneous           #
@@ -93,3 +99,4 @@ FirstAid:
 
 BStats: true # Do you want non-confidential server data to be recorded for my use?
 ConfigId: "1.2.10-RELEASE" # Used for config syncing purposes, do NOT edit
+

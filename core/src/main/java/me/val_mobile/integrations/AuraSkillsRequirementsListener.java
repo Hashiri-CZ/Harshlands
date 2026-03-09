@@ -1,5 +1,5 @@
 /*
-    Copyright (C) 2026  Val_Mobile
+    Copyright (C) 2026  Hashiri_
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -19,18 +19,29 @@ package me.val_mobile.integrations;
 import me.val_mobile.rsv.RSVPlugin;
 import me.val_mobile.utils.RSVItem;
 import me.val_mobile.utils.Utils;
-import org.bukkit.ChatColor;
+import org.bukkit.Bukkit;
+import org.bukkit.Material;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
+import org.bukkit.event.Event;
 import org.bukkit.event.block.BlockBreakEvent;
+import org.bukkit.event.block.Action;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
+import org.bukkit.event.inventory.ClickType;
 import org.bukkit.event.inventory.CraftItemEvent;
+import org.bukkit.event.inventory.InventoryAction;
+import org.bukkit.event.inventory.InventoryClickEvent;
+import org.bukkit.event.inventory.InventoryDragEvent;
 import org.bukkit.event.inventory.PrepareItemCraftEvent;
+import org.bukkit.event.player.PlayerInteractEvent;
+import org.bukkit.event.player.PlayerSwapHandItemsEvent;
+import org.bukkit.inventory.InventoryView;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.PlayerInventory;
 import org.bukkit.inventory.Recipe;
 
 import javax.annotation.Nonnull;
@@ -55,7 +66,7 @@ public class AuraSkillsRequirementsListener implements Listener {
         RequirementFailure failure = firstMissingRequirement(player, identifier, "using");
         if (failure != null) {
             event.setCancelled(true);
-            player.sendMessage(buildFailureMessage("use", identifier, failure));
+            player.sendMessage(buildFailureMessage(player, "use", identifier, failure));
         }
     }
 
@@ -69,7 +80,7 @@ public class AuraSkillsRequirementsListener implements Listener {
         RequirementFailure failure = firstMissingRequirement(player, identifier, "using");
         if (failure != null) {
             event.setCancelled(true);
-            player.sendMessage(buildFailureMessage("use", identifier, failure));
+            player.sendMessage(buildFailureMessage(player, "use", identifier, failure));
         }
     }
 
@@ -102,8 +113,163 @@ public class AuraSkillsRequirementsListener implements Listener {
         if (failure != null) {
             event.setCancelled(true);
             player.updateInventory();
-            player.sendMessage(buildFailureMessage("craft", identifier, failure));
+            player.sendMessage(buildFailureMessage(player, "craft", identifier, failure));
         }
+    }
+
+    @EventHandler(priority = EventPriority.HIGHEST, ignoreCancelled = true)
+    public void onArmorEquipClick(InventoryClickEvent event) {
+        if (!(event.getWhoClicked() instanceof Player player)) {
+            return;
+        }
+
+        // Swap key (F) while hovering an item.
+        if (event.getClick() == ClickType.SWAP_OFFHAND) {
+            ItemStack movingToOffhand = event.getCurrentItem();
+            RequirementFailure failure = firstMissingRequirement(player, toIdentifier(movingToOffhand), "using");
+            if (failure != null) {
+                event.setCancelled(true);
+                player.sendMessage(buildFailureMessage(player, "equip", toIdentifier(movingToOffhand), failure));
+            }
+            return;
+        }
+
+        // Direct click into offhand slot.
+        if (isOffhandClickedSlot(event)) {
+            RequirementFailure failure = firstMissingRequirement(player, toIdentifier(event.getCursor()), "using");
+            if (failure != null) {
+                event.setCancelled(true);
+                player.sendMessage(buildFailureMessage(player, "equip", toIdentifier(event.getCursor()), failure));
+            }
+            return;
+        }
+
+        // Direct equip into armor slot.
+        if (event.getSlotType() == org.bukkit.event.inventory.InventoryType.SlotType.ARMOR) {
+            RequirementFailure failure = firstMissingRequirement(player, toIdentifier(event.getCursor()), "using");
+            if (failure != null) {
+                event.setCancelled(true);
+                player.sendMessage(buildFailureMessage(player, "equip", toIdentifier(event.getCursor()), failure));
+            }
+            return;
+        }
+
+        // Shift-click auto-equip.
+        if (event.isShiftClick()) {
+            ItemStack current = event.getCurrentItem();
+            if (!isArmorItem(current)) {
+                return;
+            }
+
+            RequirementFailure failure = firstMissingRequirement(player, toIdentifier(current), "using");
+            if (failure != null) {
+                event.setCancelled(true);
+                player.sendMessage(buildFailureMessage(player, "equip", toIdentifier(current), failure));
+            }
+            return;
+        }
+
+        // Number-key / hotbar swap into armor slot.
+        if (event.getAction() == InventoryAction.HOTBAR_SWAP || event.getAction() == InventoryAction.HOTBAR_MOVE_AND_READD) {
+            if (event.getSlotType() != org.bukkit.event.inventory.InventoryType.SlotType.ARMOR) {
+                return;
+            }
+
+            int hotbarButton = event.getHotbarButton();
+            if (hotbarButton < 0) {
+                return;
+            }
+
+            ItemStack hotbarItem = player.getInventory().getItem(hotbarButton);
+            RequirementFailure failure = firstMissingRequirement(player, toIdentifier(hotbarItem), "using");
+            if (failure != null) {
+                event.setCancelled(true);
+                player.sendMessage(buildFailureMessage(player, "equip", toIdentifier(hotbarItem), failure));
+            }
+        }
+    }
+
+    @EventHandler(priority = EventPriority.HIGHEST, ignoreCancelled = true)
+    public void onArmorEquipDrag(InventoryDragEvent event) {
+        if (!(event.getWhoClicked() instanceof Player player)) {
+            return;
+        }
+
+        for (int rawSlot : event.getRawSlots()) {
+            if (isOffhandRawSlot(event.getView(), rawSlot)) {
+                ItemStack newItem = event.getNewItems().get(rawSlot);
+                RequirementFailure failure = firstMissingRequirement(player, toIdentifier(newItem), "using");
+                if (failure != null) {
+                    event.setCancelled(true);
+                    player.sendMessage(buildFailureMessage(player, "equip", toIdentifier(newItem), failure));
+                    return;
+                }
+                continue;
+            }
+
+            if (event.getView().getSlotType(rawSlot) != org.bukkit.event.inventory.InventoryType.SlotType.ARMOR) {
+                continue;
+            }
+
+            ItemStack newItem = event.getNewItems().get(rawSlot);
+            RequirementFailure failure = firstMissingRequirement(player, toIdentifier(newItem), "using");
+            if (failure != null) {
+                event.setCancelled(true);
+                player.sendMessage(buildFailureMessage(player, "equip", toIdentifier(newItem), failure));
+                return;
+            }
+        }
+    }
+
+    @EventHandler(priority = EventPriority.HIGHEST, ignoreCancelled = true)
+    public void onArmorEquipRightClick(PlayerInteractEvent event) {
+        if (event.getAction() != Action.RIGHT_CLICK_AIR && event.getAction() != Action.RIGHT_CLICK_BLOCK) {
+            return;
+        }
+
+        Player player = event.getPlayer();
+        ItemStack item = event.getItem();
+        if (!isArmorItem(item)) {
+            return;
+        }
+
+        RequirementFailure failure = firstMissingRequirement(player, toIdentifier(item), "using");
+        if (failure != null) {
+            event.setCancelled(true);
+            event.setUseItemInHand(Event.Result.DENY);
+            event.setUseInteractedBlock(Event.Result.DENY);
+            player.updateInventory();
+            player.sendMessage(buildFailureMessage(player, "equip", toIdentifier(item), failure));
+            Bukkit.getScheduler().runTask(plugin, () -> enforceEquipmentRequirements(player));
+        }
+    }
+
+    @EventHandler(priority = EventPriority.HIGHEST, ignoreCancelled = true)
+    public void onSwapHands(PlayerSwapHandItemsEvent event) {
+        Player player = event.getPlayer();
+        ItemStack movingToOffhand = event.getMainHandItem();
+        RequirementFailure failure = firstMissingRequirement(player, toIdentifier(movingToOffhand), "using");
+        if (failure != null) {
+            event.setCancelled(true);
+            player.sendMessage(buildFailureMessage(player, "equip", toIdentifier(movingToOffhand), failure));
+        }
+    }
+
+    public void enforceEquipmentRequirements(@Nonnull Player player) {
+        ItemStack helmet = player.getInventory().getHelmet();
+        removeIfNotAllowed(player, helmet, () -> player.getInventory().setHelmet(null));
+
+        ItemStack chestplate = player.getInventory().getChestplate();
+        removeIfNotAllowed(player, chestplate, () -> player.getInventory().setChestplate(null));
+
+        ItemStack leggings = player.getInventory().getLeggings();
+        removeIfNotAllowed(player, leggings, () -> player.getInventory().setLeggings(null));
+
+        ItemStack boots = player.getInventory().getBoots();
+        removeIfNotAllowed(player, boots, () -> player.getInventory().setBoots(null));
+
+        ItemStack offhand = player.getInventory().getItemInOffHand();
+        removeIfNotAllowed(player, offhand, () -> player.getInventory().setItemInOffHand(null));
     }
 
     @Nullable
@@ -175,10 +341,65 @@ public class AuraSkillsRequirementsListener implements Listener {
     }
 
     @Nonnull
-    private String buildFailureMessage(@Nonnull String action, @Nonnull String identifier, @Nonnull RequirementFailure failure) {
-        return ChatColor.RED + "You need " + failure.skill + " level " + failure.requiredLevel
-                + " to " + action + " " + identifier + ". Current level: " + failure.currentLevel + ".";
+    private String buildFailureMessage(@Nonnull Player player, @Nonnull String action, @Nullable String identifier, @Nonnull RequirementFailure failure) {
+        FileConfiguration integrationConfig = plugin.getIntegrationsConfig();
+        String path = "AuraSkills.Requirements.Message";
+        String raw = integrationConfig.getString(path, "&cYou need %SKILL% level %REQUIRED_LEVEL% to %ACTION% %ITEM%. Current level: %CURRENT_LEVEL%.");
+        return Utils.translateMsg(raw, player, Map.of(
+                "ACTION", action,
+                "ITEM", identifier == null || identifier.isBlank() ? "item" : identifier,
+                "SKILL", failure.skill,
+                "REQUIRED_LEVEL", failure.requiredLevel,
+                "CURRENT_LEVEL", failure.currentLevel
+        ));
+    }
+
+    private boolean isArmorItem(@Nullable ItemStack item) {
+        if (!Utils.isItemReal(item)) {
+            return false;
+        }
+
+        Material type = item.getType();
+        String name = type.name();
+        return name.endsWith("_HELMET")
+                || name.endsWith("_CHESTPLATE")
+                || name.endsWith("_LEGGINGS")
+                || name.endsWith("_BOOTS")
+                || type == Material.ELYTRA
+                || name.equals("WOLF_ARMOR");
+    }
+
+    private boolean isOffhandClickedSlot(@Nonnull InventoryClickEvent event) {
+        return event.getClickedInventory() instanceof PlayerInventory && event.getSlot() == 40;
+    }
+
+    private boolean isOffhandRawSlot(@Nonnull InventoryView view, int rawSlot) {
+        return rawSlot >= view.getTopInventory().getSize() && view.convertSlot(rawSlot) == 40;
+    }
+
+    private void removeIfNotAllowed(@Nonnull Player player, @Nullable ItemStack item, @Nonnull Runnable removeAction) {
+        if (!Utils.isItemReal(item)) {
+            return;
+        }
+
+        String identifier = toIdentifier(item);
+        RequirementFailure failure = firstMissingRequirement(player, identifier, "using");
+        if (failure == null) {
+            return;
+        }
+
+        ItemStack removed = item.clone();
+        removeAction.run();
+
+        Map<Integer, ItemStack> leftovers = player.getInventory().addItem(removed);
+        for (ItemStack leftover : leftovers.values()) {
+            player.getWorld().dropItemNaturally(player.getLocation(), leftover);
+        }
+
+        player.updateInventory();
+        player.sendMessage(buildFailureMessage(player, "equip", identifier, failure));
     }
 
     private record RequirementFailure(String skill, int requiredLevel, int currentLevel) { }
 }
+

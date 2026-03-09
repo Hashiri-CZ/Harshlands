@@ -1,5 +1,5 @@
 /*
-    Copyright (C) 2025  Val_Mobile
+    Copyright (C) 2025  Hashiri_
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -123,7 +123,7 @@ public class RSVConfig extends FileBuilder {
             }
 
         }
-        // No else block needed – no logs if config is already up-to-date
+        // No else block needed â€“ no logs if config is already up-to-date
     }
 
     /** Semantic version comparison helper */
@@ -169,3 +169,4 @@ public class RSVConfig extends FileBuilder {
         return configList;
     }
 }
+

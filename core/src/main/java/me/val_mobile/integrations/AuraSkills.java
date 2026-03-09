@@ -1,5 +1,5 @@
 /*
-    Copyright (C) 2026  Val_Mobile
+    Copyright (C) 2026  Hashiri_
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -55,7 +55,13 @@ public class AuraSkills extends CompatiblePlugin {
 
         if (isIntegrated) {
             initializeReflection(plugin);
-            Bukkit.getPluginManager().registerEvents(new AuraSkillsRequirementsListener(plugin), plugin);
+            AuraSkillsRequirementsListener requirementsListener = new AuraSkillsRequirementsListener(plugin);
+            Bukkit.getPluginManager().registerEvents(requirementsListener, plugin);
+            Bukkit.getScheduler().runTaskTimer(plugin, () -> {
+                for (Player player : Bukkit.getOnlinePlayers()) {
+                    requirementsListener.enforceEquipmentRequirements(player);
+                }
+            }, 20L, 20L);
         }
     }
 
@@ -157,3 +163,4 @@ public class AuraSkills extends CompatiblePlugin {
         }
     }
 }
+

@@ -1,5 +1,5 @@
 /*
-    Copyright (C) 2025  Val_Mobile
+    Copyright (C) 2025  Hashiri_
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -786,7 +786,7 @@ public class TanEvents extends ModuleEvents implements Listener {
             int customModelData = RSVItem.getItem("canteen_empty").getItemMeta().getCustomModelData();
             NamespacedKey itemModel = Utils.getItemModel(RSVItem.getItem("canteen_empty").getItemMeta());
 
-            // 1.21.2 and below
+            // 1.21.11
             if (!meta.hasCustomModelData()) {
                 meta.setCustomModelData(customModelData);
                 canteen.setItemMeta(meta);
@@ -798,7 +798,7 @@ public class TanEvents extends ModuleEvents implements Listener {
                 }
             }
 
-            // 1.21.3 and above
+            // 1.21.11
             if (!Utils.hasItemModel(meta)) {
                 Utils.setItemModel(meta, itemModel);
                 canteen.setItemMeta(meta);
@@ -825,7 +825,7 @@ public class TanEvents extends ModuleEvents implements Listener {
 
             meta.addItemFlags(ItemFlag.HIDE_POTION_EFFECTS);
 
-            // 1.21.2 and below
+            // 1.21.11
             if (!meta.hasCustomModelData()) {
                 meta.setCustomModelData(customModelData);
                 canteen.setItemMeta(meta);
@@ -837,7 +837,7 @@ public class TanEvents extends ModuleEvents implements Listener {
                 }
             }
 
-            // 1.21.3 and above
+            // 1.21.11
             if (!Utils.hasItemModel(meta)) {
                 Utils.setItemModel(meta, itemModel);
                 canteen.setItemMeta(meta);
@@ -990,3 +990,5 @@ public class TanEvents extends ModuleEvents implements Listener {
         }
     }
 }
+
+

@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(mvn package:*)",
+      "Bash(/c/Users/JanOsicka/Downloads/apache-maven-3.9.6/bin/mvn package:*)",
+      "Bash(ls:*)",
+      "Bash(jar tf:*)",
+      "Bash(mvn clean:*)",
+      "Bash(./mvnw clean:*)",
+      "Bash(where mvn)",
+      "Read(//c/Users/JanOsicka/**)",
+      "Bash(/c/Users/JanOsicka/Downloads/apache-maven-3.9.6/bin/mvn clean:*)"
+    ]
+  }
+}

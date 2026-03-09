@@ -1,4 +1,4 @@
-#######################################
+﻿#######################################
 #          Commands                   #
 #######################################
 
@@ -159,9 +159,9 @@ UpdateItem:
       Unbreakability: true
       AttributeModifiers: true
       LocalizedName: true
-      CustomModelData: true # For 1.21.2 and below
-      ItemModel: true # For 1.21.3 and above
-      EquippableComponent: true # For 1.21.3 and above
+      CustomModelData: true # For 1.21.11
+      ItemModel: true # For 1.21.11
+      EquippableComponent: true # For 1.21.11
       Enchants:
         Enabled: true
         PreserveExistingEnchants: true
@@ -179,3 +179,4 @@ Version: "&6[Realistic Survival] &fYou're running on version %PLUGIN_VERSION%" #
 
 # Tab completer
 Count: "[<count>]"
+

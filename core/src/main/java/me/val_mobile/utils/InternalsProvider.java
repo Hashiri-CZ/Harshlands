@@ -1,5 +1,5 @@
 /*
-    Copyright (C) 2025  Val_Mobile
+    Copyright (C) 2025  Hashiri_
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -64,15 +64,17 @@ public abstract class InternalsProvider {
 
     public abstract void attack(LivingEntity attacker, Entity defender);
 
-    public abstract boolean hasItemModel(ItemMeta meta); // for 1.21.3 and above
+    public abstract boolean hasItemModel(ItemMeta meta); // for 1.21.11
 
-    public abstract NamespacedKey getItemModel(ItemMeta meta); // for 1.21.3 and above
+    public abstract NamespacedKey getItemModel(ItemMeta meta); // for 1.21.11
 
-    public abstract void setItemModel(ItemMeta meta, NamespacedKey key); // for 1.21.3 and above
+    public abstract void setItemModel(ItemMeta meta, NamespacedKey key); // for 1.21.11
 
-    public abstract boolean hasEquippableComponentModel(ItemMeta meta); // for 1.21.3 and above
+    public abstract boolean hasEquippableComponentModel(ItemMeta meta); // for 1.21.11
 
-    public abstract NamespacedKey getEquippableComponentModel(ItemMeta meta); // for 1.21.3 and above
+    public abstract NamespacedKey getEquippableComponentModel(ItemMeta meta); // for 1.21.11
 
-    public abstract void setEquippableComponentModel(ItemMeta meta, NamespacedKey key, EquipmentSlot slot); // for 1.21.3 and above
+    public abstract void setEquippableComponentModel(ItemMeta meta, NamespacedKey key, EquipmentSlot slot); // for 1.21.11
 }
+
+

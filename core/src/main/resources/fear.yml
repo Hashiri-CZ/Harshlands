@@ -1,0 +1,27 @@
+#######################################
+#                Fear                 #
+#######################################
+
+ConfigId: "1.2.13-RELEASE" # Used for config syncing purposes, do NOT edit
+
+# Customize messages
+Initialize:
+  Enabled: true
+  Message: "&6[Realistic Survival] &fInitializing &e%NAME% &fmodule" # All placeholders: %NAME%
+Shutdown:
+  Enabled: true
+  Message: "&6[Realistic Survival] &fShutting down &e%NAME% &fmodule" # All placeholders: %NAME%
+
+TorchSystem:
+  Enabled: true
+  RemoveVanillaTorchRecipe: true
+  BurnDurationMinutes: 60 # IRL minutes before a lit torch burns out and becomes an Unlit Torch again
+  # WARNING: Advanced performance tuning for managed Unlit Torch enforcement.
+  # DO NOT TOUCH if you do not know what you are doing.
+  # These values trade CPU usage vs. how quickly all tracked unlit torches are revisited.
+  # Lower TargetFullScanTicks = more CPU, faster full sweep.
+  # Higher TargetFullScanTicks = less CPU, slower full sweep.
+  # Higher MinScanBatchSize = more CPU floor each tick.
+  UnlitTorchEnforcement:
+    TargetFullScanTicks: 20
+    MinScanBatchSize: 32

@@ -1,5 +1,5 @@
 /*
-    Copyright (C) 2025  Val_Mobile
+    Copyright (C) 2025  Hashiri_
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -37,23 +37,28 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.entity.CreatureSpawnEvent;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.EntityDeathEvent;
+import org.bukkit.event.entity.EntityPotionEffectEvent;
 import org.bukkit.event.entity.ProjectileLaunchEvent;
 import org.bukkit.event.inventory.PrepareItemCraftEvent;
 import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.Recipe;
 import org.bukkit.persistence.PersistentDataType;
+import org.bukkit.potion.PotionEffectType;
 import org.bukkit.scheduler.BukkitRunnable;
 
 import javax.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.UUID;
 
 /**
  * IceFireEvents is a class containing listener methods
  * that activate fire, ice, and lighting dragon weapon abilities
- * @author Val_Mobile
+ * @author Hashiri_
  * @version 1.2.10-RELEASE
  * @since 1.0
  */
@@ -62,6 +67,7 @@ public class IceFireEvents extends ModuleEvents implements Listener {
     private final IceFireModule module;
     private final FileConfiguration config;
     private final RSVPlugin plugin;
+    private final Map<UUID, Long> lastSeaSerpentSpawnByPlayer = new HashMap<>();
 
     // constructing the IceFireEvents class
     public IceFireEvents(IceFireModule module, RSVPlugin plugin) {
@@ -247,7 +253,9 @@ public class IceFireEvents extends ModuleEvents implements Listener {
             return;
 
         if (entity instanceof Squid || entity instanceof Guardian || entity instanceof Dolphin) {
-            if (config.getBoolean("SeaSerpent.Enabled.Enabled") && Utils.roll(config.getDouble("SeaSerpent.SpawnChance"))) {
+            if (config.getBoolean("SeaSerpent.Enabled.Enabled")
+                    && Utils.roll(config.getDouble("SeaSerpent.SpawnChance"))
+                    && canSpawnSeaSerpent(entity.getLocation())) {
                 Utils.spawnSeaSerpent(entity.getLocation()).addEntityToWorld(entity.getWorld());
             }
 
@@ -271,6 +279,72 @@ public class IceFireEvents extends ModuleEvents implements Listener {
                 DragonUtils.convertToLightningDragon(dragon);
             }
         }
+    }
+
+    private boolean canSpawnSeaSerpent(Location spawnLoc) {
+        int minY = config.getInt("SeaSerpent.SpawnRules.MinY", 45);
+        if (spawnLoc.getBlockY() < minY) {
+            return false;
+        }
+
+        double playerRange = Math.max(1.0, config.getDouble("SeaSerpent.SpawnRules.PlayerRange", 128.0));
+        Player nearestPlayer = getNearestPlayer(spawnLoc, playerRange);
+        if (nearestPlayer == null || !shouldEventBeRan(nearestPlayer)) {
+            return false;
+        }
+
+        int maxPerPlayer = Math.max(1, config.getInt("SeaSerpent.SpawnRules.MaxPerPlayer", 2));
+        if (countSeaSerpentsNearPlayer(nearestPlayer, playerRange) >= maxPerPlayer) {
+            return false;
+        }
+
+        long intervalSeconds = Math.max(0L, config.getLong("SeaSerpent.SpawnRules.SpawnIntervalSeconds", 180L));
+        if (intervalSeconds <= 0L) {
+            return true;
+        }
+
+        long now = System.currentTimeMillis();
+        UUID playerId = nearestPlayer.getUniqueId();
+        long last = lastSeaSerpentSpawnByPlayer.getOrDefault(playerId, 0L);
+        long intervalMillis = intervalSeconds * 1000L;
+
+        if (now - last < intervalMillis) {
+            return false;
+        }
+
+        lastSeaSerpentSpawnByPlayer.put(playerId, now);
+        return true;
+    }
+
+    @Nullable
+    private Player getNearestPlayer(Location location, double maxRange) {
+        double maxRangeSquared = maxRange * maxRange;
+        Player nearest = null;
+        double nearestDistanceSquared = maxRangeSquared;
+
+        for (Player player : location.getWorld().getPlayers()) {
+            if (!player.isOnline() || player.isDead()) {
+                continue;
+            }
+
+            double distanceSquared = player.getLocation().distanceSquared(location);
+            if (distanceSquared <= nearestDistanceSquared) {
+                nearestDistanceSquared = distanceSquared;
+                nearest = player;
+            }
+        }
+
+        return nearest;
+    }
+
+    private int countSeaSerpentsNearPlayer(Player player, double range) {
+        int count = 0;
+        for (Entity nearby : player.getNearbyEntities(range, range, range)) {
+            if (SeaSerpentUtils.isSeaSerpent(nearby)) {
+                count++;
+            }
+        }
+        return count;
     }
 
     @EventHandler(priority = EventPriority.HIGHEST)
@@ -356,6 +430,40 @@ public class IceFireEvents extends ModuleEvents implements Listener {
         }
     }
 
+    @EventHandler(priority = EventPriority.HIGHEST, ignoreCancelled = true)
+    public void onSeaSerpentMiningFatigue(EntityPotionEffectEvent event) {
+        if (!(event.getEntity() instanceof Player player) || !shouldEventBeRan(player)) {
+            return;
+        }
+
+        if (event.getNewEffect() == null || event.getNewEffect().getType() != PotionEffectType.SLOW_DIGGING) {
+            return;
+        }
+
+        // Cancel the fatigue only if nearby elder guardians are RSV sea serpents.
+        // If a vanilla elder guardian is nearby, keep vanilla behavior.
+        double checkRange = Math.max(1.0, config.getDouble("SeaSerpent.SpawnRules.PlayerRange", 128.0));
+        boolean hasSeaSerpentNearby = false;
+        boolean hasVanillaElderGuardianNearby = false;
+
+        for (Entity nearby : player.getNearbyEntities(checkRange, checkRange, checkRange)) {
+            if (!(nearby instanceof ElderGuardian elderGuardian)) {
+                continue;
+            }
+
+            if (SeaSerpentUtils.isSeaSerpent(elderGuardian)) {
+                hasSeaSerpentNearby = true;
+            } else {
+                hasVanillaElderGuardianNearby = true;
+                break;
+            }
+        }
+
+        if (hasSeaSerpentNearby && !hasVanillaElderGuardianNearby) {
+            event.setCancelled(true);
+        }
+    }
+
     /**
      * Implements the flamed, iced, and lightning dragonbone weapon recipes.
      * The recipes do not work automatically due to UUID differences in the dragonbone weapon ingredient.
@@ -436,3 +544,4 @@ public class IceFireEvents extends ModuleEvents implements Listener {
         }
     }
 }
+

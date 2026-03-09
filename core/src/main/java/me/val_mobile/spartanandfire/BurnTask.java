@@ -1,5 +1,5 @@
 /*
-    Copyright (C) 2025  Val_Mobile
+    Copyright (C) 2025  Hashiri_
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -69,3 +69,4 @@ public class BurnTask extends BukkitRunnable {
         return tasks.containsKey(id) && tasks.get(id) != null;
     }
 }
+

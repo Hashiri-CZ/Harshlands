@@ -1,5 +1,5 @@
 /*
-    Copyright (C) 2025  Val_Mobile
+    Copyright (C) 2025  Hashiri_
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -50,7 +50,7 @@ import static me.val_mobile.rsv.RSVPlugin.NAME;
 /**
  * Commands is a class that allows users to
  * access the plugin's commands in-game
- * @author Val_Mobile
+ * @author Hashiri_
  * @version 1.2.10-RELEASE
  * @since 1.0
  */

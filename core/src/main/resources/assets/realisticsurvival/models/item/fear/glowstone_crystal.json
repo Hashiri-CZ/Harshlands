@@ -1,0 +1,6 @@
+﻿{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "realisticsurvival:item/fear/glowstone_crystal"
+  }
+}

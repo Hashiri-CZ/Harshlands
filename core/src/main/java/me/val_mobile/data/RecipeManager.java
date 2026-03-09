@@ -1,5 +1,5 @@
 /*
-    Copyright (C) 2025  Val_Mobile
+    Copyright (C) 2025  Hashiri_
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -58,25 +58,33 @@ public class RecipeManager {
                     addRecipe(recipe);
                 }
                 else {
-                    if (userConfig.getBoolean("Recipes." + name + ".Enabled.EnableAllVersions")) {
+                    if (isEnabledForCurrentVersion("Recipes." + name + ".Enabled")) {
                         recipe = getRecipe(type, name);
                         addRecipe(recipe);
-                    }
-                    else {
-                        if (userConfig.contains("Recipes." + name + ".Enabled.Versions." + Utils.getMinecraftVersion(true))) {
-                            if (userConfig.getBoolean("Recipes." + name + ".Enabled.Versions." + Utils.getMinecraftVersion(true))) {
-                                recipe = getRecipe(type, name);
-                                addRecipe(recipe);
-                            }
-                        }
-                        else {
-                            recipe = getRecipe(type, name);
-                            addRecipe(recipe);
-                        }
                     }
                 }
             }
         }
+    }
+
+    private boolean isEnabledForCurrentVersion(String enabledRoot) {
+        String singleVersionPath = enabledRoot + ".Enabled_1_21_11";
+        if (userConfig.contains(singleVersionPath)) {
+            return userConfig.getBoolean(singleVersionPath);
+        }
+
+        // Backward compatibility with older server configs.
+        String legacyAllPath = enabledRoot + ".EnableAllVersions";
+        if (userConfig.contains(legacyAllPath)) {
+            return userConfig.getBoolean(legacyAllPath);
+        }
+
+        String versionPath = enabledRoot + ".Versions." + Utils.getMinecraftVersion(true);
+        if (userConfig.contains(versionPath)) {
+            return userConfig.getBoolean(versionPath);
+        }
+
+        return true;
     }
 
     public Recipe getRecipe(String type, String recipeName) {
@@ -174,3 +182,4 @@ public class RecipeManager {
         return brewingRecipes;
     }
 }
+
