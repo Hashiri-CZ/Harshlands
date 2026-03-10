@@ -1,6 +1,6 @@
 ﻿{
   "parent": "minecraft:block/torch",
   "textures": {
-    "torch": "realisticsurvival:block/fear/unlit_torch"
+    "torch": "harshlands:block/fear/unlit_torch"
   }
 }

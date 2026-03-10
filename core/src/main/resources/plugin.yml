@@ -10,7 +10,7 @@ load: STARTUP
 
 commands:
   Harshlands:
-    description: The home command of the Realistic Survival plugin
+    description: The home command of the Harshlands plugin
     usage: /harshlands
     aliases: [hl]
     permission: harshlands.command.*

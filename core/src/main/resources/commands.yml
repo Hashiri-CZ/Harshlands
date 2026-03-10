@@ -36,7 +36,7 @@ Give:
       Pitch: 1.0
 
 Help:
-  - "&6-----Realistic Survival Command Help-----"
+  - "&6-----Harshlands Command Help-----"
   - "&6/harshlands &freload"
   - "&6/harshlands &fgive player item &b*&6&famount"
   - "&6/harshlands &fspawnitem item amount &b~x &b~y &b~z &b*&fworld"
@@ -53,7 +53,7 @@ Help:
 Reload:
   CorrectExecution:
     Enabled: true
-    Message: "&6[Realistic Survival] &fPlugin reloaded! Note that some config changes require a server restart to take effect."
+    Message: "&6[Harshlands] &fPlugin reloaded! Note that some config changes require a server restart to take effect."
 
 SpawnItem:
   CheckStackSize: true
@@ -120,37 +120,37 @@ ResetItem:
   NoValidItemsFound:
     Enabled: true
     MainHand:
-      SingleTargetMessage: "&cNo valid Realistic Survival item was found"
-      MultipleTargetMessage: "&cNo valid Realistic Survival item was found"
+      SingleTargetMessage: "&cNo valid Harshlands item was found"
+      MultipleTargetMessage: "&cNo valid Harshlands item was found"
     Inventory:
-      SingleTargetMessage: "&cNo valid Realistic Survival items were found"
-      MultipleTargetMessage: "&cNo valid Realistic Survival items were found"
+      SingleTargetMessage: "&cNo valid Harshlands items were found"
+      MultipleTargetMessage: "&cNo valid Harshlands items were found"
   CorrectExecution:
     Enabled: true
     MainHand:
-      SingleTargetMessage: "&fSuccessfully reset the Realistic Survival item"
-      MultipleTargetMessage: "&fSuccessfully reset the Realistic Survival item"
+      SingleTargetMessage: "&fSuccessfully reset the Harshlands item"
+      MultipleTargetMessage: "&fSuccessfully reset the Harshlands item"
     Inventory:
-      SingleTargetMessage: "&fSuccessfully reset all Realistic Survival items in the inventory"
-      MultipleTargetMessage: "&fSuccessfully reset all Realistic Survival items in the specified players' inventories"
+      SingleTargetMessage: "&fSuccessfully reset all Harshlands items in the inventory"
+      MultipleTargetMessage: "&fSuccessfully reset all Harshlands items in the specified players' inventories"
 
 UpdateItem:
   NoValidItemsFound:
     Enabled: true
     MainHand:
-      SingleTargetMessage: "&cNo valid Realistic Survival item was found"
-      MultipleTargetMessage: "&cNo valid Realistic Survival item was found"
+      SingleTargetMessage: "&cNo valid Harshlands item was found"
+      MultipleTargetMessage: "&cNo valid Harshlands item was found"
     Inventory:
-      SingleTargetMessage: "&cNo valid Realistic Survival items were found"
-      MultipleTargetMessage: "&cNo valid Realistic Survival items were found"
+      SingleTargetMessage: "&cNo valid Harshlands items were found"
+      MultipleTargetMessage: "&cNo valid Harshlands items were found"
   CorrectExecution:
     Enabled: true
     MainHand:
-      SingleTargetMessage: "&fSuccessfully updated the Realistic Survival item"
-      MultipleTargetMessage: "&fSuccessfully updated the Realistic Survival item"
+      SingleTargetMessage: "&fSuccessfully updated the Harshlands item"
+      MultipleTargetMessage: "&fSuccessfully updated the Harshlands item"
     Inventory:
-      SingleTargetMessage: "&fSuccessfully updated all Realistic Survival items in the inventory"
-      MultipleTargetMessage: "&fSuccessfully updated all Realistic Survival items in the specified players' inventories"
+      SingleTargetMessage: "&fSuccessfully updated all Harshlands items in the inventory"
+      MultipleTargetMessage: "&fSuccessfully updated all Harshlands items in the specified players' inventories"
     Options:
       Material: true
       MaterialData: false
@@ -175,7 +175,7 @@ UpdateItem:
         CustomDurability: false
         CustomMaxDurability: true
 
-Version: "&6[Realistic Survival] &fYou're running on version %PLUGIN_VERSION%" # All internal placeholders: %PLUGIN_VERSION%
+Version: "&6[Harshlands] &fYou're running on version %PLUGIN_VERSION%" # All internal placeholders: %PLUGIN_VERSION%
 
 # Tab completer
 Count: "[<count>]"

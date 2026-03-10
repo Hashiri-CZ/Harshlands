@@ -1,6 +1,6 @@
 ﻿{
   "model": {
     "type": "minecraft:model",
-    "model": "realisticsurvival:item/fear/unlit_torch"
+    "model": "harshlands:item/fear/unlit_torch"
   }
 }

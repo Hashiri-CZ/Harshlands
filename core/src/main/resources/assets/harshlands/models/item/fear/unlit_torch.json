@@ -1,5 +1,5 @@
 {
-  "parent": "realisticsurvival:block/fear/unlit_torch",
+  "parent": "harshlands:block/fear/unlit_torch",
   "display": {
     "head": {
       "rotation": [0, 0, 0],

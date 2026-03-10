@@ -10,7 +10,7 @@
     <packaging>pom</packaging>
 
     <name>Harshlands</name>
-    <description>A Spigot plugin that aims to increase the difficulty of normal vanilla Minecraft</description>
+    <description>The RLCraft Experience for Spigot/Paper | Thirst, Temperature, RPG and More</description>
     <url>https://www.spigotmc.org/resources/realistic-survival-1-17-hardcore-modded-experience.93795/</url>
 
     <modules>

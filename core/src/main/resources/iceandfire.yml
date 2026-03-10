@@ -7,10 +7,10 @@ ConfigId: "1.2.10-RELEASE" # Used for config syncing purposes, do NOT edit
 # Customize messages
 Initialize:
   Enabled: true
-  Message: "&6[Realistic Survival] &fInitializing &e%NAME% &fmodule" # All placeholders: %NAME%
+  Message: "&6[Harshlands] &fInitializing &e%NAME% &fmodule" # All placeholders: %NAME%
 Shutdown:
   Enabled: true
-  Message: "&6[Realistic Survival] &fShutting down &e%NAME% &fmodule"
+  Message: "&6[Harshlands] &fShutting down &e%NAME% &fmodule"
 
 # Used to specify custom item drops for any mob
 MobDrops:
@@ -43,7 +43,7 @@ Dragon:
   Enabled: true
   SpawnChance: 0.8 # Chance of an ice and fire (I&F) dragon replacing a vanilla ender dragon spawn; set to 1.0 if you only want I&F dragons and -1.0 to disable I&F dragon spawning
   Info:
-    Name: "Realistic Survival %VARIANT% Dragon" # All internal placeholders: %VARIANT%, %BREED%, %GENDER%, %AGE%, %STAGE%
+    Name: "Harshlands %VARIANT% Dragon" # All internal placeholders: %VARIANT%, %BREED%, %GENDER%, %AGE%, %STAGE%
     CustomNameVisible: false
     Health:
       Stage1:
@@ -1721,7 +1721,7 @@ SeaSerpent:
     MinY: 45 # Sea serpents will not spawn below this Y level
     PlayerRange: 128.0 # Radius used to find the nearest player and count nearby sea serpents
   Info:
-    Name: "Realistic Survival Sea Serpent" # All internal placeholders: %VARIANT%
+    Name: "Harshlands Sea Serpent" # All internal placeholders: %VARIANT%
     CustomNameVisible: false
     Health:
       Min: 20.0
@@ -1744,7 +1744,7 @@ Siren: # Siren loot table can be found under "MobDrops" at the top of this confi
   Enabled: true
   SpawnChance: 0.05 # Has this chance to spawn when a squid, guardian, or dolphin spawns
   Info:
-    Name: "Realistic Survival Siren"
+    Name: "Harshlands Siren"
     CustomNameVisible: false
     Health:
       Min: 50.0
