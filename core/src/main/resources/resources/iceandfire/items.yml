@@ -4,7 +4,7 @@
 
 ConfigId: "1.2.10-RELEASE" # Used for config syncing purposes, do NOT edit
 
-# Edit carefully, following the RealisticSurvival-Reloaded wiki item guide.
+# Edit carefully, following the Harshlands-Reloaded wiki item guide.
 
 dragonbone:
   Material: "PRISMARINE_SHARD"
@@ -243,8 +243,8 @@ dragonscale_helmet_blue:
   Attributes:
     UseModuleConfig: true
   NBTTags:
-    rsvdurability: 396
-    rsvmaxdurability: 396
+    hldurability: 396
+    hlmaxdurability: 396
   RepairIngredients: "dragonscale_blue"
 dragonscale_chestplate_blue:
   Material: "DIAMOND_CHESTPLATE"
@@ -260,8 +260,8 @@ dragonscale_chestplate_blue:
   Attributes:
     UseModuleConfig: true
   NBTTags:
-    rsvdurability: 576
-    rsvmaxdurability: 576
+    hldurability: 576
+    hlmaxdurability: 576
   RepairIngredients: "dragonscale_blue"
 dragonscale_leggings_blue:
   Material: "DIAMOND_LEGGINGS"
@@ -277,8 +277,8 @@ dragonscale_leggings_blue:
   Attributes:
     UseModuleConfig: true
   NBTTags:
-    rsvdurability: 540
-    rsvmaxdurability: 540
+    hldurability: 540
+    hlmaxdurability: 540
   RepairIngredients: "dragonscale_blue"
 dragonscale_boots_blue:
   Material: "DIAMOND_BOOTS"
@@ -294,8 +294,8 @@ dragonscale_boots_blue:
   Attributes:
     UseModuleConfig: true
   NBTTags:
-    rsvdurability: 468
-    rsvmaxdurability: 468
+    hldurability: 468
+    hlmaxdurability: 468
   RepairIngredients: "dragonscale_blue"
 dragonscale_helmet_bronze:
   Material: "DIAMOND_HELMET"
@@ -311,8 +311,8 @@ dragonscale_helmet_bronze:
   Attributes:
     UseModuleConfig: true
   NBTTags:
-    rsvdurability: 396
-    rsvmaxdurability: 396
+    hldurability: 396
+    hlmaxdurability: 396
   RepairIngredients: "dragonscale_bronze"
 dragonscale_chestplate_bronze:
   Material: "DIAMOND_CHESTPLATE"
@@ -328,8 +328,8 @@ dragonscale_chestplate_bronze:
   Attributes:
     UseModuleConfig: true
   NBTTags:
-    rsvdurability: 576
-    rsvmaxdurability: 576
+    hldurability: 576
+    hlmaxdurability: 576
   RepairIngredients: "dragonscale_bronze"
 dragonscale_leggings_bronze:
   Material: "DIAMOND_LEGGINGS"
@@ -345,8 +345,8 @@ dragonscale_leggings_bronze:
   Attributes:
     UseModuleConfig: true
   NBTTags:
-    rsvdurability: 540
-    rsvmaxdurability: 540
+    hldurability: 540
+    hlmaxdurability: 540
   RepairIngredients: "dragonscale_bronze"
 dragonscale_boots_bronze:
   Material: "DIAMOND_BOOTS"
@@ -362,8 +362,8 @@ dragonscale_boots_bronze:
   Attributes:
     UseModuleConfig: true
   NBTTags:
-    rsvdurability: 468
-    rsvmaxdurability: 468
+    hldurability: 468
+    hlmaxdurability: 468
   RepairIngredients: "dragonscale_bronze"
 dragonscale_helmet_gray:
   Material: "DIAMOND_HELMET"
@@ -379,8 +379,8 @@ dragonscale_helmet_gray:
   Attributes:
     UseModuleConfig: true
   NBTTags:
-    rsvdurability: 396
-    rsvmaxdurability: 396
+    hldurability: 396
+    hlmaxdurability: 396
   RepairIngredients: "dragonscale_gray"
 dragonscale_chestplate_gray:
   Material: "DIAMOND_CHESTPLATE"
@@ -396,8 +396,8 @@ dragonscale_chestplate_gray:
   Attributes:
     UseModuleConfig: true
   NBTTags:
-    rsvdurability: 576
-    rsvmaxdurability: 576
+    hldurability: 576
+    hlmaxdurability: 576
   RepairIngredients: "dragonscale_gray"
 dragonscale_leggings_gray:
   Material: "DIAMOND_LEGGINGS"
@@ -413,8 +413,8 @@ dragonscale_leggings_gray:
   Attributes:
     UseModuleConfig: true
   NBTTags:
-    rsvdurability: 540
-    rsvmaxdurability: 540
+    hldurability: 540
+    hlmaxdurability: 540
   RepairIngredients: "dragonscale_gray"
 dragonscale_boots_gray:
   Material: "DIAMOND_BOOTS"
@@ -430,8 +430,8 @@ dragonscale_boots_gray:
   Attributes:
     UseModuleConfig: true
   NBTTags:
-    rsvdurability: 468
-    rsvmaxdurability: 468
+    hldurability: 468
+    hlmaxdurability: 468
   RepairIngredients: "dragonscale_gray"
 dragonscale_helmet_emerald:
   Material: "DIAMOND_HELMET"
@@ -447,8 +447,8 @@ dragonscale_helmet_emerald:
   Attributes:
     UseModuleConfig: true
   NBTTags:
-    rsvdurability: 396
-    rsvmaxdurability: 396
+    hldurability: 396
+    hlmaxdurability: 396
   RepairIngredients: "dragonscale_emerald"
 dragonscale_chestplate_emerald:
   Material: "DIAMOND_CHESTPLATE"
@@ -464,8 +464,8 @@ dragonscale_chestplate_emerald:
   Attributes:
     UseModuleConfig: true
   NBTTags:
-    rsvdurability: 576
-    rsvmaxdurability: 576
+    hldurability: 576
+    hlmaxdurability: 576
   RepairIngredients: "dragonscale_emerald"
 dragonscale_leggings_emerald:
   Material: "DIAMOND_LEGGINGS"
@@ -481,8 +481,8 @@ dragonscale_leggings_emerald:
   Attributes:
     UseModuleConfig: true
   NBTTags:
-    rsvdurability: 540
-    rsvmaxdurability: 540
+    hldurability: 540
+    hlmaxdurability: 540
   RepairIngredients: "dragonscale_emerald"
 dragonscale_boots_emerald:
   Material: "DIAMOND_BOOTS"
@@ -498,8 +498,8 @@ dragonscale_boots_emerald:
   Attributes:
     UseModuleConfig: true
   NBTTags:
-    rsvdurability: 468
-    rsvmaxdurability: 468
+    hldurability: 468
+    hlmaxdurability: 468
   RepairIngredients: "dragonscale_emerald"
 dragonscale_helmet_red:
   Material: "DIAMOND_HELMET"
@@ -515,8 +515,8 @@ dragonscale_helmet_red:
   Attributes:
     UseModuleConfig: true
   NBTTags:
-    rsvdurability: 396
-    rsvmaxdurability: 396
+    hldurability: 396
+    hlmaxdurability: 396
   RepairIngredients: "dragonscale_red"
 dragonscale_chestplate_red:
   Material: "DIAMOND_CHESTPLATE"
@@ -532,8 +532,8 @@ dragonscale_chestplate_red:
   Attributes:
     UseModuleConfig: true
   NBTTags:
-    rsvdurability: 576
-    rsvmaxdurability: 576
+    hldurability: 576
+    hlmaxdurability: 576
   RepairIngredients: "dragonscale_red"
 dragonscale_leggings_red:
   Material: "DIAMOND_LEGGINGS"
@@ -549,8 +549,8 @@ dragonscale_leggings_red:
   Attributes:
     UseModuleConfig: true
   NBTTags:
-    rsvdurability: 540
-    rsvmaxdurability: 540
+    hldurability: 540
+    hlmaxdurability: 540
   RepairIngredients: "dragonscale_red"
 dragonscale_boots_red:
   Material: "DIAMOND_BOOTS"
@@ -566,8 +566,8 @@ dragonscale_boots_red:
   Attributes:
     UseModuleConfig: true
   NBTTags:
-    rsvdurability: 468
-    rsvmaxdurability: 468
+    hldurability: 468
+    hlmaxdurability: 468
   RepairIngredients: "dragonscale_red"
 dragonscale_helmet_sapphire:
   Material: "DIAMOND_HELMET"
@@ -583,8 +583,8 @@ dragonscale_helmet_sapphire:
   Attributes:
     UseModuleConfig: true
   NBTTags:
-    rsvdurability: 396
-    rsvmaxdurability: 396
+    hldurability: 396
+    hlmaxdurability: 396
   RepairIngredients: "dragonscale_sapphire"
 dragonscale_chestplate_sapphire:
   Material: "DIAMOND_CHESTPLATE"
@@ -600,8 +600,8 @@ dragonscale_chestplate_sapphire:
   Attributes:
     UseModuleConfig: true
   NBTTags:
-    rsvdurability: 576
-    rsvmaxdurability: 576
+    hldurability: 576
+    hlmaxdurability: 576
   RepairIngredients: "dragonscale_sapphire"
 dragonscale_leggings_sapphire:
   Material: "DIAMOND_LEGGINGS"
@@ -617,8 +617,8 @@ dragonscale_leggings_sapphire:
   Attributes:
     UseModuleConfig: true
   NBTTags:
-    rsvdurability: 540
-    rsvmaxdurability: 540
+    hldurability: 540
+    hlmaxdurability: 540
   RepairIngredients: "dragonscale_sapphire"
 dragonscale_boots_sapphire:
   Material: "DIAMOND_BOOTS"
@@ -634,8 +634,8 @@ dragonscale_boots_sapphire:
   Attributes:
     UseModuleConfig: true
   NBTTags:
-    rsvdurability: 468
-    rsvmaxdurability: 468
+    hldurability: 468
+    hlmaxdurability: 468
   RepairIngredients: "dragonscale_sapphire"
 dragonscale_helmet_silver:
   Material: "DIAMOND_HELMET"
@@ -651,8 +651,8 @@ dragonscale_helmet_silver:
   Attributes:
     UseModuleConfig: true
   NBTTags:
-    rsvdurability: 396
-    rsvmaxdurability: 396
+    hldurability: 396
+    hlmaxdurability: 396
   RepairIngredients: "dragonscale_silver"
 dragonscale_chestplate_silver:
   Material: "DIAMOND_CHESTPLATE"
@@ -668,8 +668,8 @@ dragonscale_chestplate_silver:
   Attributes:
     UseModuleConfig: true
   NBTTags:
-    rsvdurability: 576
-    rsvmaxdurability: 576
+    hldurability: 576
+    hlmaxdurability: 576
   RepairIngredients: "dragonscale_silver"
 dragonscale_leggings_silver:
   Material: "DIAMOND_LEGGINGS"
@@ -685,8 +685,8 @@ dragonscale_leggings_silver:
   Attributes:
     UseModuleConfig: true
   NBTTags:
-    rsvdurability: 540
-    rsvmaxdurability: 540
+    hldurability: 540
+    hlmaxdurability: 540
   RepairIngredients: "dragonscale_silver"
 dragonscale_boots_silver:
   Material: "DIAMOND_BOOTS"
@@ -702,8 +702,8 @@ dragonscale_boots_silver:
   Attributes:
     UseModuleConfig: true
   NBTTags:
-    rsvdurability: 468
-    rsvmaxdurability: 468
+    hldurability: 468
+    hlmaxdurability: 468
   RepairIngredients: "dragonscale_silver"
 dragonscale_helmet_white:
   Material: "DIAMOND_HELMET"
@@ -719,8 +719,8 @@ dragonscale_helmet_white:
   Attributes:
     UseModuleConfig: true
   NBTTags:
-    rsvdurability: 396
-    rsvmaxdurability: 396
+    hldurability: 396
+    hlmaxdurability: 396
   RepairIngredients: "dragonscale_white"
 dragonscale_chestplate_white:
   Material: "DIAMOND_CHESTPLATE"
@@ -736,8 +736,8 @@ dragonscale_chestplate_white:
   Attributes:
     UseModuleConfig: true
   NBTTags:
-    rsvdurability: 576
-    rsvmaxdurability: 576
+    hldurability: 576
+    hlmaxdurability: 576
   RepairIngredients: "dragonscale_white"
 dragonscale_leggings_white:
   Material: "DIAMOND_LEGGINGS"
@@ -753,8 +753,8 @@ dragonscale_leggings_white:
   Attributes:
     UseModuleConfig: true
   NBTTags:
-    rsvdurability: 540
-    rsvmaxdurability: 540
+    hldurability: 540
+    hlmaxdurability: 540
   RepairIngredients: "dragonscale_white"
 dragonscale_boots_white:
   Material: "DIAMOND_BOOTS"
@@ -770,8 +770,8 @@ dragonscale_boots_white:
   Attributes:
     UseModuleConfig: true
   NBTTags:
-    rsvdurability: 468
-    rsvmaxdurability: 468
+    hldurability: 468
+    hlmaxdurability: 468
   RepairIngredients: "dragonscale_white"
 dragonscale_helmet_amethyst:
   Material: "DIAMOND_HELMET"
@@ -787,8 +787,8 @@ dragonscale_helmet_amethyst:
   Attributes:
     UseModuleConfig: true
   NBTTags:
-    rsvdurability: 396
-    rsvmaxdurability: 396
+    hldurability: 396
+    hlmaxdurability: 396
   RepairIngredients: "dragonscale_amethyst"
 dragonscale_chestplate_amethyst:
   Material: "DIAMOND_CHESTPLATE"
@@ -804,8 +804,8 @@ dragonscale_chestplate_amethyst:
   Attributes:
     UseModuleConfig: true
   NBTTags:
-    rsvdurability: 576
-    rsvmaxdurability: 576
+    hldurability: 576
+    hlmaxdurability: 576
   RepairIngredients: "dragonscale_amethyst"
 dragonscale_leggings_amethyst:
   Material: "DIAMOND_LEGGINGS"
@@ -821,8 +821,8 @@ dragonscale_leggings_amethyst:
   Attributes:
     UseModuleConfig: true
   NBTTags:
-    rsvdurability: 540
-    rsvmaxdurability: 540
+    hldurability: 540
+    hlmaxdurability: 540
   RepairIngredients: "dragonscale_amethyst"
 dragonscale_boots_amethyst:
   Material: "DIAMOND_BOOTS"
@@ -838,8 +838,8 @@ dragonscale_boots_amethyst:
   Attributes:
     UseModuleConfig: true
   NBTTags:
-    rsvdurability: 468
-    rsvmaxdurability: 468
+    hldurability: 468
+    hlmaxdurability: 468
   RepairIngredients: "dragonscale_amethyst"
 dragonscale_helmet_black:
   Material: "DIAMOND_HELMET"
@@ -855,8 +855,8 @@ dragonscale_helmet_black:
   Attributes:
     UseModuleConfig: true
   NBTTags:
-    rsvdurability: 396
-    rsvmaxdurability: 396
+    hldurability: 396
+    hlmaxdurability: 396
   RepairIngredients: "dragonscale_black"
 dragonscale_chestplate_black:
   Material: "DIAMOND_CHESTPLATE"
@@ -872,8 +872,8 @@ dragonscale_chestplate_black:
   Attributes:
     UseModuleConfig: true
   NBTTags:
-    rsvdurability: 576
-    rsvmaxdurability: 576
+    hldurability: 576
+    hlmaxdurability: 576
   RepairIngredients: "dragonscale_black"
 dragonscale_leggings_black:
   Material: "DIAMOND_LEGGINGS"
@@ -889,8 +889,8 @@ dragonscale_leggings_black:
   Attributes:
     UseModuleConfig: true
   NBTTags:
-    rsvdurability: 540
-    rsvmaxdurability: 540
+    hldurability: 540
+    hlmaxdurability: 540
   RepairIngredients: "dragonscale_black"
 dragonscale_boots_black:
   Material: "DIAMOND_BOOTS"
@@ -906,8 +906,8 @@ dragonscale_boots_black:
   Attributes:
     UseModuleConfig: true
   NBTTags:
-    rsvdurability: 468
-    rsvmaxdurability: 468
+    hldurability: 468
+    hlmaxdurability: 468
   RepairIngredients: "dragonscale_black"
 dragonscale_helmet_copper:
   Material: "DIAMOND_HELMET"
@@ -923,8 +923,8 @@ dragonscale_helmet_copper:
   Attributes:
     UseModuleConfig: true
   NBTTags:
-    rsvdurability: 396
-    rsvmaxdurability: 396
+    hldurability: 396
+    hlmaxdurability: 396
   RepairIngredients: "dragonscale_copper"
 dragonscale_chestplate_copper:
   Material: "DIAMOND_CHESTPLATE"
@@ -940,8 +940,8 @@ dragonscale_chestplate_copper:
   Attributes:
     UseModuleConfig: true
   NBTTags:
-    rsvdurability: 576
-    rsvmaxdurability: 576
+    hldurability: 576
+    hlmaxdurability: 576
   RepairIngredients: "dragonscale_copper"
 dragonscale_leggings_copper:
   Material: "DIAMOND_LEGGINGS"
@@ -957,8 +957,8 @@ dragonscale_leggings_copper:
   Attributes:
     UseModuleConfig: true
   NBTTags:
-    rsvdurability: 540
-    rsvmaxdurability: 540
+    hldurability: 540
+    hlmaxdurability: 540
   RepairIngredients: "dragonscale_copper"
 dragonscale_boots_copper:
   Material: "DIAMOND_BOOTS"
@@ -974,8 +974,8 @@ dragonscale_boots_copper:
   Attributes:
     UseModuleConfig: true
   NBTTags:
-    rsvdurability: 468
-    rsvmaxdurability: 468
+    hldurability: 468
+    hlmaxdurability: 468
   RepairIngredients: "dragonscale_copper"
 dragonscale_helmet_electric:
   Material: "DIAMOND_HELMET"
@@ -991,8 +991,8 @@ dragonscale_helmet_electric:
   Attributes:
     UseModuleConfig: true
   NBTTags:
-    rsvdurability: 396
-    rsvmaxdurability: 396
+    hldurability: 396
+    hlmaxdurability: 396
   RepairIngredients: "dragonscale_electric"
 dragonscale_chestplate_electric:
   Material: "DIAMOND_CHESTPLATE"
@@ -1008,8 +1008,8 @@ dragonscale_chestplate_electric:
   Attributes:
     UseModuleConfig: true
   NBTTags:
-    rsvdurability: 576
-    rsvmaxdurability: 576
+    hldurability: 576
+    hlmaxdurability: 576
   RepairIngredients: "dragonscale_electric"
 dragonscale_leggings_electric:
   Material: "DIAMOND_LEGGINGS"
@@ -1025,8 +1025,8 @@ dragonscale_leggings_electric:
   Attributes:
     UseModuleConfig: true
   NBTTags:
-    rsvdurability: 540
-    rsvmaxdurability: 540
+    hldurability: 540
+    hlmaxdurability: 540
   RepairIngredients: "dragonscale_electric"
 dragonscale_boots_electric:
   Material: "DIAMOND_BOOTS"
@@ -1042,8 +1042,8 @@ dragonscale_boots_electric:
   Attributes:
     UseModuleConfig: true
   NBTTags:
-    rsvdurability: 468
-    rsvmaxdurability: 468
+    hldurability: 468
+    hlmaxdurability: 468
   RepairIngredients: "dragonscale_electric"
 tide_guardian_helmet_blue:
   Material: "DIAMOND_HELMET"
@@ -1059,8 +1059,8 @@ tide_guardian_helmet_blue:
   Attributes:
     UseModuleConfig: true
   NBTTags:
-    rsvdurability: 330
-    rsvmaxdurability: 330
+    hldurability: 330
+    hlmaxdurability: 330
   RepairIngredients: "sea_serpent_scale_blue"
 tide_guardian_chestplate_blue:
   Material: "DIAMOND_CHESTPLATE"
@@ -1076,8 +1076,8 @@ tide_guardian_chestplate_blue:
   Attributes:
     UseModuleConfig: true
   NBTTags:
-    rsvdurability: 480
-    rsvmaxdurability: 480
+    hldurability: 480
+    hlmaxdurability: 480
   RepairIngredients: "sea_serpent_scale_blue"
 tide_guardian_leggings_blue:
   Material: "DIAMOND_LEGGINGS"
@@ -1093,8 +1093,8 @@ tide_guardian_leggings_blue:
   Attributes:
     UseModuleConfig: true
   NBTTags:
-    rsvdurability: 450
-    rsvmaxdurability: 450
+    hldurability: 450
+    hlmaxdurability: 450
   RepairIngredients: "sea_serpent_scale_blue"
 tide_guardian_boots_blue:
   Material: "DIAMOND_BOOTS"
@@ -1110,8 +1110,8 @@ tide_guardian_boots_blue:
   Attributes:
     UseModuleConfig: true
   NBTTags:
-    rsvdurability: 390
-    rsvmaxdurability: 390
+    hldurability: 390
+    hlmaxdurability: 390
   RepairIngredients: "sea_serpent_scale_blue"
 tide_guardian_helmet_bronze:
   Material: "DIAMOND_HELMET"
@@ -1127,8 +1127,8 @@ tide_guardian_helmet_bronze:
   Attributes:
     UseModuleConfig: true
   NBTTags:
-    rsvdurability: 330
-    rsvmaxdurability: 330
+    hldurability: 330
+    hlmaxdurability: 330
   RepairIngredients: "sea_serpent_scale_bronze"
 tide_guardian_chestplate_bronze:
   Material: "DIAMOND_CHESTPLATE"
@@ -1144,8 +1144,8 @@ tide_guardian_chestplate_bronze:
   Attributes:
     UseModuleConfig: true
   NBTTags:
-    rsvdurability: 480
-    rsvmaxdurability: 480
+    hldurability: 480
+    hlmaxdurability: 480
   RepairIngredients: "sea_serpent_scale_bronze"
 tide_guardian_leggings_bronze:
   Material: "DIAMOND_LEGGINGS"
@@ -1161,8 +1161,8 @@ tide_guardian_leggings_bronze:
   Attributes:
     UseModuleConfig: true
   NBTTags:
-    rsvdurability: 450
-    rsvmaxdurability: 450
+    hldurability: 450
+    hlmaxdurability: 450
   RepairIngredients: "sea_serpent_scale_bronze"
 tide_guardian_boots_bronze:
   Material: "DIAMOND_BOOTS"
@@ -1178,8 +1178,8 @@ tide_guardian_boots_bronze:
   Attributes:
     UseModuleConfig: true
   NBTTags:
-    rsvdurability: 390
-    rsvmaxdurability: 390
+    hldurability: 390
+    hlmaxdurability: 390
   RepairIngredients: "sea_serpent_scale_bronze"
 tide_guardian_helmet_deepblue:
   Material: "DIAMOND_HELMET"
@@ -1195,8 +1195,8 @@ tide_guardian_helmet_deepblue:
   Attributes:
     UseModuleConfig: true
   NBTTags:
-    rsvdurability: 330
-    rsvmaxdurability: 330
+    hldurability: 330
+    hlmaxdurability: 330
   RepairIngredients: "sea_serpent_scale_deepblue"
 tide_guardian_chestplate_deepblue:
   Material: "DIAMOND_CHESTPLATE"
@@ -1212,8 +1212,8 @@ tide_guardian_chestplate_deepblue:
   Attributes:
     UseModuleConfig: true
   NBTTags:
-    rsvdurability: 480
-    rsvmaxdurability: 480
+    hldurability: 480
+    hlmaxdurability: 480
   RepairIngredients: "sea_serpent_scale_deepblue"
 tide_guardian_leggings_deepblue:
   Material: "DIAMOND_LEGGINGS"
@@ -1229,8 +1229,8 @@ tide_guardian_leggings_deepblue:
   Attributes:
     UseModuleConfig: true
   NBTTags:
-    rsvdurability: 450
-    rsvmaxdurability: 450
+    hldurability: 450
+    hlmaxdurability: 450
   RepairIngredients: "sea_serpent_scale_deepblue"
 tide_guardian_boots_deepblue:
   Material: "DIAMOND_BOOTS"
@@ -1246,8 +1246,8 @@ tide_guardian_boots_deepblue:
   Attributes:
     UseModuleConfig: true
   NBTTags:
-    rsvdurability: 390
-    rsvmaxdurability: 390
+    hldurability: 390
+    hlmaxdurability: 390
   RepairIngredients: "sea_serpent_scale_deepblue"
 tide_guardian_helmet_green:
   Material: "DIAMOND_HELMET"
@@ -1263,8 +1263,8 @@ tide_guardian_helmet_green:
   Attributes:
     UseModuleConfig: true
   NBTTags:
-    rsvdurability: 330
-    rsvmaxdurability: 330
+    hldurability: 330
+    hlmaxdurability: 330
   RepairIngredients: "sea_serpent_scale_green"
 tide_guardian_chestplate_green:
   Material: "DIAMOND_CHESTPLATE"
@@ -1280,8 +1280,8 @@ tide_guardian_chestplate_green:
   Attributes:
     UseModuleConfig: true
   NBTTags:
-    rsvdurability: 480
-    rsvmaxdurability: 480
+    hldurability: 480
+    hlmaxdurability: 480
   RepairIngredients: "sea_serpent_scale_green"
 tide_guardian_leggings_green:
   Material: "DIAMOND_LEGGINGS"
@@ -1297,8 +1297,8 @@ tide_guardian_leggings_green:
   Attributes:
     UseModuleConfig: true
   NBTTags:
-    rsvdurability: 450
-    rsvmaxdurability: 450
+    hldurability: 450
+    hlmaxdurability: 450
   RepairIngredients: "sea_serpent_scale_green"
 tide_guardian_boots_green:
   Material: "DIAMOND_BOOTS"
@@ -1314,8 +1314,8 @@ tide_guardian_boots_green:
   Attributes:
     UseModuleConfig: true
   NBTTags:
-    rsvdurability: 390
-    rsvmaxdurability: 390
+    hldurability: 390
+    hlmaxdurability: 390
   RepairIngredients: "sea_serpent_scale_green"
 tide_guardian_helmet_purple:
   Material: "DIAMOND_HELMET"
@@ -1331,8 +1331,8 @@ tide_guardian_helmet_purple:
   Attributes:
     UseModuleConfig: true
   NBTTags:
-    rsvdurability: 330
-    rsvmaxdurability: 330
+    hldurability: 330
+    hlmaxdurability: 330
   RepairIngredients: "sea_serpent_scale_purple"
 tide_guardian_chestplate_purple:
   Material: "DIAMOND_CHESTPLATE"
@@ -1348,8 +1348,8 @@ tide_guardian_chestplate_purple:
   Attributes:
     UseModuleConfig: true
   NBTTags:
-    rsvdurability: 480
-    rsvmaxdurability: 480
+    hldurability: 480
+    hlmaxdurability: 480
   RepairIngredients: "sea_serpent_scale_purple"
 tide_guardian_leggings_purple:
   Material: "DIAMOND_LEGGINGS"
@@ -1365,8 +1365,8 @@ tide_guardian_leggings_purple:
   Attributes:
     UseModuleConfig: true
   NBTTags:
-    rsvdurability: 450
-    rsvmaxdurability: 450
+    hldurability: 450
+    hlmaxdurability: 450
   RepairIngredients: "sea_serpent_scale_purple"
 tide_guardian_boots_purple:
   Material: "DIAMOND_BOOTS"
@@ -1382,8 +1382,8 @@ tide_guardian_boots_purple:
   Attributes:
     UseModuleConfig: true
   NBTTags:
-    rsvdurability: 390
-    rsvmaxdurability: 390
+    hldurability: 390
+    hlmaxdurability: 390
   RepairIngredients: "sea_serpent_scale_purple"
 tide_guardian_helmet_red:
   Material: "DIAMOND_HELMET"
@@ -1399,8 +1399,8 @@ tide_guardian_helmet_red:
   Attributes:
     UseModuleConfig: true
   NBTTags:
-    rsvdurability: 330
-    rsvmaxdurability: 330
+    hldurability: 330
+    hlmaxdurability: 330
   RepairIngredients: "sea_serpent_scale_red"
 tide_guardian_chestplate_red:
   Material: "DIAMOND_CHESTPLATE"
@@ -1416,8 +1416,8 @@ tide_guardian_chestplate_red:
   Attributes:
     UseModuleConfig: true
   NBTTags:
-    rsvdurability: 480
-    rsvmaxdurability: 480
+    hldurability: 480
+    hlmaxdurability: 480
   RepairIngredients: "sea_serpent_scale_red"
 tide_guardian_leggings_red:
   Material: "DIAMOND_LEGGINGS"
@@ -1433,8 +1433,8 @@ tide_guardian_leggings_red:
   Attributes:
     UseModuleConfig: true
   NBTTags:
-    rsvdurability: 450
-    rsvmaxdurability: 450
+    hldurability: 450
+    hlmaxdurability: 450
   RepairIngredients: "sea_serpent_scale_red"
 tide_guardian_boots_red:
   Material: "DIAMOND_BOOTS"
@@ -1450,8 +1450,8 @@ tide_guardian_boots_red:
   Attributes:
     UseModuleConfig: true
   NBTTags:
-    rsvdurability: 390
-    rsvmaxdurability: 390
+    hldurability: 390
+    hlmaxdurability: 390
   RepairIngredients: "sea_serpent_scale_red"
 tide_guardian_helmet_teal:
   Material: "DIAMOND_HELMET"
@@ -1467,8 +1467,8 @@ tide_guardian_helmet_teal:
   Attributes:
     UseModuleConfig: true
   NBTTags:
-    rsvdurability: 330
-    rsvmaxdurability: 330
+    hldurability: 330
+    hlmaxdurability: 330
   RepairIngredients: "sea_serpent_scale_teal"
 tide_guardian_chestplate_teal:
   Material: "DIAMOND_CHESTPLATE"
@@ -1484,8 +1484,8 @@ tide_guardian_chestplate_teal:
   Attributes:
     UseModuleConfig: true
   NBTTags:
-    rsvdurability: 480
-    rsvmaxdurability: 480
+    hldurability: 480
+    hlmaxdurability: 480
   RepairIngredients: "sea_serpent_scale_teal"
 tide_guardian_leggings_teal:
   Material: "DIAMOND_LEGGINGS"
@@ -1501,8 +1501,8 @@ tide_guardian_leggings_teal:
   Attributes:
     UseModuleConfig: true
   NBTTags:
-    rsvdurability: 450
-    rsvmaxdurability: 450
+    hldurability: 450
+    hlmaxdurability: 450
   RepairIngredients: "sea_serpent_scale_teal"
 tide_guardian_boots_teal:
   Material: "DIAMOND_BOOTS"
@@ -1518,8 +1518,8 @@ tide_guardian_boots_teal:
   Attributes:
     UseModuleConfig: true
   NBTTags:
-    rsvdurability: 390
-    rsvmaxdurability: 390
+    hldurability: 390
+    hlmaxdurability: 390
   RepairIngredients: "sea_serpent_scale_teal"
 dragonbone_pickaxe:
   Material: "DIAMOND_PICKAXE"
@@ -1531,8 +1531,8 @@ dragonbone_pickaxe:
   Attributes:
     UseModuleConfig: true
   NBTTags:
-    rsvdurability: 1660
-    rsvmaxdurability: 1660
+    hldurability: 1660
+    hlmaxdurability: 1660
   RepairIngredients: "dragonbone"
 dragonbone_axe:
   Material: "DIAMOND_AXE"
@@ -1544,8 +1544,8 @@ dragonbone_axe:
   Attributes:
     UseModuleConfig: true
   NBTTags:
-    rsvdurability: 1660
-    rsvmaxdurability: 1660
+    hldurability: 1660
+    hlmaxdurability: 1660
   RepairIngredients: "dragonbone"
 dragonbone_shovel:
   Material: "DIAMOND_SHOVEL"
@@ -1557,8 +1557,8 @@ dragonbone_shovel:
   Attributes:
     UseModuleConfig: true
   NBTTags:
-    rsvdurability: 1660
-    rsvmaxdurability: 1660
+    hldurability: 1660
+    hlmaxdurability: 1660
   RepairIngredients: "dragonbone"
 dragonbone_hoe:
   Material: "DIAMOND_HOE"
@@ -1570,8 +1570,8 @@ dragonbone_hoe:
   Attributes:
     UseModuleConfig: true
   NBTTags:
-    rsvdurability: 1660
-    rsvmaxdurability: 1660
+    hldurability: 1660
+    hlmaxdurability: 1660
   RepairIngredients: "dragonbone"
 dragonbone_sword:
   Material: "DIAMOND_SWORD"
@@ -1583,8 +1583,8 @@ dragonbone_sword:
   Attributes:
     UseModuleConfig: true
   NBTTags:
-    rsvdurability: 1660
-    rsvmaxdurability: 1660
+    hldurability: 1660
+    hlmaxdurability: 1660
   RepairIngredients: "dragonbone"
 dragonbone_bow:
   Material: "BOW"
@@ -1592,8 +1592,8 @@ dragonbone_bow:
   CustomModelData: 83650
   ItemModel: "DEFAULT"
   NBTTags:
-    rsvdurability: 584
-    rsvmaxdurability: 584
+    hldurability: 584
+    hlmaxdurability: 584
   RepairIngredients: "dragonbone"
 dragonbone_flamed_sword:
   Material: "DIAMOND_SWORD"
@@ -1609,8 +1609,8 @@ dragonbone_flamed_sword:
   Attributes:
     UseModuleConfig: true
   NBTTags:
-    rsvdurability: 2000
-    rsvmaxdurability: 2000
+    hldurability: 2000
+    hlmaxdurability: 2000
   RepairIngredients: "dragonbone"
 dragonbone_iced_sword:
   Material: "DIAMOND_SWORD"
@@ -1626,8 +1626,8 @@ dragonbone_iced_sword:
   Attributes:
     UseModuleConfig: true
   NBTTags:
-    rsvdurability: 2000
-    rsvmaxdurability: 2000
+    hldurability: 2000
+    hlmaxdurability: 2000
   RepairIngredients: "dragonbone"
 dragonbone_lightning_sword:
   Material: "DIAMOND_SWORD"
@@ -1643,8 +1643,8 @@ dragonbone_lightning_sword:
   Attributes:
     UseModuleConfig: true
   NBTTags:
-    rsvdurability: 2000
-    rsvmaxdurability: 2000
+    hldurability: 2000
+    hlmaxdurability: 2000
   RepairIngredients: "dragonbone"
 dragonsteel_fire_sword:
   Material: "NETHERITE_SWORD"
@@ -1658,8 +1658,8 @@ dragonsteel_fire_sword:
   Attributes:
     UseModuleConfig: true
   NBTTags:
-    rsvdurability: 8000
-    rsvmaxdurability: 8000
+    hldurability: 8000
+    hlmaxdurability: 8000
   RepairIngredients: "dragonsteel_fire_ingot"
 dragonsteel_fire_pickaxe:
   Material: "NETHERITE_PICKAXE"
@@ -1673,8 +1673,8 @@ dragonsteel_fire_pickaxe:
   Attributes:
     UseModuleConfig: true
   NBTTags:
-    rsvdurability: 8000
-    rsvmaxdurability: 8000
+    hldurability: 8000
+    hlmaxdurability: 8000
   RepairIngredients: "dragonsteel_fire_ingot"
 dragonsteel_fire_axe:
   Material: "NETHERITE_AXE"
@@ -1688,8 +1688,8 @@ dragonsteel_fire_axe:
   Attributes:
     UseModuleConfig: true
   NBTTags:
-    rsvdurability: 8000
-    rsvmaxdurability: 8000
+    hldurability: 8000
+    hlmaxdurability: 8000
   RepairIngredients: "dragonsteel_fire_ingot"
 dragonsteel_fire_shovel:
   Material: "NETHERITE_SHOVEL"
@@ -1703,8 +1703,8 @@ dragonsteel_fire_shovel:
   Attributes:
     UseModuleConfig: true
   NBTTags:
-    rsvdurability: 8000
-    rsvmaxdurability: 8000
+    hldurability: 8000
+    hlmaxdurability: 8000
   RepairIngredients: "dragonsteel_fire_ingot"
 dragonsteel_fire_hoe:
   Material: "NETHERITE_HOE"
@@ -1718,8 +1718,8 @@ dragonsteel_fire_hoe:
   Attributes:
     UseModuleConfig: true
   NBTTags:
-    rsvdurability: 8000
-    rsvmaxdurability: 8000
+    hldurability: 8000
+    hlmaxdurability: 8000
   RepairIngredients: "dragonsteel_fire_ingot"
 dragonsteel_ice_sword:
   Material: "NETHERITE_SWORD"
@@ -1733,8 +1733,8 @@ dragonsteel_ice_sword:
   Attributes:
     UseModuleConfig: true
   NBTTags:
-    rsvdurability: 8000
-    rsvmaxdurability: 8000
+    hldurability: 8000
+    hlmaxdurability: 8000
   RepairIngredients: "dragonsteel_ice_ingot"
 dragonsteel_ice_pickaxe:
   Material: "NETHERITE_PICKAXE"
@@ -1748,8 +1748,8 @@ dragonsteel_ice_pickaxe:
   Attributes:
     UseModuleConfig: true
   NBTTags:
-    rsvdurability: 8000
-    rsvmaxdurability: 8000
+    hldurability: 8000
+    hlmaxdurability: 8000
   RepairIngredients: "dragonsteel_ice_ingot"
 dragonsteel_ice_axe:
   Material: "NETHERITE_AXE"
@@ -1763,8 +1763,8 @@ dragonsteel_ice_axe:
   Attributes:
     UseModuleConfig: true
   NBTTags:
-    rsvdurability: 8000
-    rsvmaxdurability: 8000
+    hldurability: 8000
+    hlmaxdurability: 8000
   RepairIngredients: "dragonsteel_ice_ingot"
 dragonsteel_ice_shovel:
   Material: "NETHERITE_SHOVEL"
@@ -1778,8 +1778,8 @@ dragonsteel_ice_shovel:
   Attributes:
     UseModuleConfig: true
   NBTTags:
-    rsvdurability: 8000
-    rsvmaxdurability: 8000
+    hldurability: 8000
+    hlmaxdurability: 8000
   RepairIngredients: "dragonsteel_ice_ingot"
 dragonsteel_ice_hoe:
   Material: "NETHERITE_HOE"
@@ -1793,8 +1793,8 @@ dragonsteel_ice_hoe:
   Attributes:
     UseModuleConfig: true
   NBTTags:
-    rsvdurability: 8000
-    rsvmaxdurability: 8000
+    hldurability: 8000
+    hlmaxdurability: 8000
   RepairIngredients: "dragonsteel_ice_ingot"
 dragonsteel_lightning_sword:
   Material: "NETHERITE_SWORD"
@@ -1808,8 +1808,8 @@ dragonsteel_lightning_sword:
   Attributes:
     UseModuleConfig: true
   NBTTags:
-    rsvdurability: 8000
-    rsvmaxdurability: 8000
+    hldurability: 8000
+    hlmaxdurability: 8000
   RepairIngredients: "dragonsteel_lightning_ingot"
 dragonsteel_lightning_pickaxe:
   Material: "NETHERITE_PICKAXE"
@@ -1823,8 +1823,8 @@ dragonsteel_lightning_pickaxe:
   Attributes:
     UseModuleConfig: true
   NBTTags:
-    rsvdurability: 8000
-    rsvmaxdurability: 8000
+    hldurability: 8000
+    hlmaxdurability: 8000
   RepairIngredients: "dragonsteel_lightning_ingot"
 dragonsteel_lightning_axe:
   Material: "NETHERITE_AXE"
@@ -1838,8 +1838,8 @@ dragonsteel_lightning_axe:
   Attributes:
     UseModuleConfig: true
   NBTTags:
-    rsvdurability: 8000
-    rsvmaxdurability: 8000
+    hldurability: 8000
+    hlmaxdurability: 8000
   RepairIngredients: "dragonsteel_lightning_ingot"
 dragonsteel_lightning_shovel:
   Material: "NETHERITE_SHOVEL"
@@ -1853,8 +1853,8 @@ dragonsteel_lightning_shovel:
   Attributes:
     UseModuleConfig: true
   NBTTags:
-    rsvdurability: 8000
-    rsvmaxdurability: 8000
+    hldurability: 8000
+    hlmaxdurability: 8000
   RepairIngredients: "dragonsteel_lightning_ingot"
 dragonsteel_lightning_hoe:
   Material: "NETHERITE_HOE"
@@ -1868,8 +1868,8 @@ dragonsteel_lightning_hoe:
   Attributes:
     UseModuleConfig: true
   NBTTags:
-    rsvdurability: 8000
-    rsvmaxdurability: 8000
+    hldurability: 8000
+    hlmaxdurability: 8000
   RepairIngredients: "dragonsteel_lightning_ingot"
 dragonsteel_fire_helmet:
   Material: "NETHERITE_HELMET"
@@ -1884,8 +1884,8 @@ dragonsteel_fire_helmet:
   Attributes:
     UseModuleConfig: true
   NBTTags:
-    rsvdurability: 1760
-    rsvmaxdurability: 1760
+    hldurability: 1760
+    hlmaxdurability: 1760
   RepairIngredients: "dragonsteel_fire_ingot"
 dragonsteel_fire_chestplate:
   Material: "NETHERITE_CHESTPLATE"
@@ -1900,8 +1900,8 @@ dragonsteel_fire_chestplate:
   Attributes:
     UseModuleConfig: true
   NBTTags:
-    rsvdurability: 2560
-    rsvmaxdurability: 2560
+    hldurability: 2560
+    hlmaxdurability: 2560
   RepairIngredients: "dragonsteel_fire_ingot"
 dragonsteel_fire_leggings:
   Material: "NETHERITE_LEGGINGS"
@@ -1916,8 +1916,8 @@ dragonsteel_fire_leggings:
   Attributes:
     UseModuleConfig: true
   NBTTags:
-    rsvdurability: 2400
-    rsvmaxdurability: 2400
+    hldurability: 2400
+    hlmaxdurability: 2400
   RepairIngredients: "dragonsteel_fire_ingot"
 dragonsteel_fire_boots:
   Material: "NETHERITE_BOOTS"
@@ -1932,8 +1932,8 @@ dragonsteel_fire_boots:
   Attributes:
     UseModuleConfig: true
   NBTTags:
-    rsvdurability: 2080
-    rsvmaxdurability: 2080
+    hldurability: 2080
+    hlmaxdurability: 2080
   RepairIngredients: "dragonsteel_fire_ingot"
 dragonsteel_ice_helmet:
   Material: "NETHERITE_HELMET"
@@ -1948,8 +1948,8 @@ dragonsteel_ice_helmet:
   Attributes:
     UseModuleConfig: true
   NBTTags:
-    rsvdurability: 1760
-    rsvmaxdurability: 1760
+    hldurability: 1760
+    hlmaxdurability: 1760
   RepairIngredients: "dragonsteel_ice_ingot"
 dragonsteel_ice_chestplate:
   Material: "NETHERITE_CHESTPLATE"
@@ -1964,8 +1964,8 @@ dragonsteel_ice_chestplate:
   Attributes:
     UseModuleConfig: true
   NBTTags:
-    rsvdurability: 2560
-    rsvmaxdurability: 2560
+    hldurability: 2560
+    hlmaxdurability: 2560
   RepairIngredients: "dragonsteel_ice_ingot"
 dragonsteel_ice_leggings:
   Material: "NETHERITE_LEGGINGS"
@@ -1980,8 +1980,8 @@ dragonsteel_ice_leggings:
   Attributes:
     UseModuleConfig: true
   NBTTags:
-    rsvdurability: 2400
-    rsvmaxdurability: 2400
+    hldurability: 2400
+    hlmaxdurability: 2400
   RepairIngredients: "dragonsteel_ice_ingot"
 dragonsteel_ice_boots:
   Material: "NETHERITE_BOOTS"
@@ -1996,8 +1996,8 @@ dragonsteel_ice_boots:
   Attributes:
     UseModuleConfig: true
   NBTTags:
-    rsvdurability: 2080
-    rsvmaxdurability: 2080
+    hldurability: 2080
+    hlmaxdurability: 2080
   RepairIngredients: "dragonsteel_ice_ingot"
 dragonsteel_lightning_helmet:
   Material: "NETHERITE_HELMET"
@@ -2012,8 +2012,8 @@ dragonsteel_lightning_helmet:
   Attributes:
     UseModuleConfig: true
   NBTTags:
-    rsvdurability: 1760
-    rsvmaxdurability: 1760
+    hldurability: 1760
+    hlmaxdurability: 1760
   RepairIngredients: "dragonsteel_lightning_ingot"
 dragonsteel_lightning_chestplate:
   Material: "NETHERITE_CHESTPLATE"
@@ -2028,8 +2028,8 @@ dragonsteel_lightning_chestplate:
   Attributes:
     UseModuleConfig: true
   NBTTags:
-    rsvdurability: 2560
-    rsvmaxdurability: 2560
+    hldurability: 2560
+    hlmaxdurability: 2560
   RepairIngredients: "dragonsteel_lightning_ingot"
 dragonsteel_lightning_leggings:
   Material: "NETHERITE_LEGGINGS"
@@ -2044,8 +2044,8 @@ dragonsteel_lightning_leggings:
   Attributes:
     UseModuleConfig: true
   NBTTags:
-    rsvdurability: 2400
-    rsvmaxdurability: 2400
+    hldurability: 2400
+    hlmaxdurability: 2400
   RepairIngredients: "dragonsteel_lightning_ingot"
 dragonsteel_lightning_boots:
   Material: "NETHERITE_BOOTS"
@@ -2060,8 +2060,8 @@ dragonsteel_lightning_boots:
   Attributes:
     UseModuleConfig: true
   NBTTags:
-    rsvdurability: 2080
-    rsvmaxdurability: 2080
+    hldurability: 2080
+    hlmaxdurability: 2080
   RepairIngredients: "dragonsteel_lightning_ingot"
 dragonsteel_fire_block:
   Material: "PRISMARINE_SHARD"

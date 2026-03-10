@@ -4,7 +4,7 @@
 
 ConfigId: "1.2.10-RELEASE" # Used for config syncing purposes, do NOT edit
 
-# Edit carefully, following the RealisticSurvival-Reloaded wiki item guide.
+# Edit carefully, following the Harshlands-Reloaded wiki item guide.
 
 dragons_eye:
   Material: "PRISMARINE_SHARD"
@@ -419,8 +419,8 @@ broken_heart:
     - ""
     - "&6Bauble (Any)"
   NBTTags:
-    rsvdurability: 3
-    rsvmaxdurability: 3
+    hldurability: 3
+    hlmaxdurability: 3
     rsvbaubleslot: "Any"
 cross_necklace:
   Material: "PRISMARINE_SHARD"
@@ -485,8 +485,8 @@ golden_crown:
   ItemModel: "DEFAULT"
   EquippableComponentModel: "DEFAULT"
   NBTTags:
-    rsvdurability: 275
-    rsvmaxdurability: 275
+    hldurability: 275
+    hlmaxdurability: 275
 flare_gun:
   Material: "PRISMARINE_SHARD"
   DisplayName: "&fFlare Gun"
@@ -497,8 +497,8 @@ flare_gun:
     - "&aShine a light on the situation!"
     - "&7Durability: 384/384"
   NBTTags:
-    rsvdurability: 384
-    rsvmaxdurability: 384
+    hldurability: 384
+    hlmaxdurability: 384
 flare:
   Material: "PRISMARINE_SHARD"
   DisplayName: "&fFlare"

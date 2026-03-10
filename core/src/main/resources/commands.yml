@@ -37,18 +37,18 @@ Give:
 
 Help:
   - "&6-----Realistic Survival Command Help-----"
-  - "&6/realisticsurvival &freload"
-  - "&6/realisticsurvival &fgive player item &b*&6&famount"
-  - "&6/realisticsurvival &fspawnitem item amount &b~x &b~y &b~z &b*&fworld"
-  - "&6/realisticsurvival &fsummon mob &b~x &b~y &b~z &b*&fworld"
-  - "&6/realisticsurvival &ftemperature player &b~amount"
-  - "&6/realisticsurvival &fthirst player &b~amount"
-  - "&6/realisticsurvival &fresetitem &b*player &b*all"
-  - "&6/realisticsurvival &fupdateitem &b*player &b*all"
-  - "&6/realisticsurvival &fversion"
+  - "&6/harshlands &freload"
+  - "&6/harshlands &fgive player item &b*&6&famount"
+  - "&6/harshlands &fspawnitem item amount &b~x &b~y &b~z &b*&fworld"
+  - "&6/harshlands &fsummon mob &b~x &b~y &b~z &b*&fworld"
+  - "&6/harshlands &ftemperature player &b~amount"
+  - "&6/harshlands &fthirst player &b~amount"
+  - "&6/harshlands &fresetitem &b*player &b*all"
+  - "&6/harshlands &fupdateitem &b*player &b*all"
+  - "&6/harshlands &fversion"
   - "&b~ &fdenotes a relative position"
   - "&b* &fmeans that argument is optional"
-  - "&6/rsv &fcan be used as a shorthand"
+  - "&6/hl &fcan be used as a shorthand"
 
 Reload:
   CorrectExecution:

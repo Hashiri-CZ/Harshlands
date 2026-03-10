@@ -1,0 +1,76 @@
+/*
+    Copyright (C) 2025  Hashiri_
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ */
+package cz.hashiri.harshlands.tan;
+
+import org.bukkit.Bukkit;
+import org.bukkit.entity.Player;
+import org.bukkit.event.Cancellable;
+import org.bukkit.event.Event;
+import org.bukkit.event.HandlerList;
+
+import javax.annotation.Nonnull;
+import java.util.UUID;
+
+public class ThirstChangeEvent extends Event implements Cancellable {
+
+    private static final HandlerList handlers = new HandlerList();
+    private final UUID id;
+    private final double oldThirst;
+    private double newThirst;
+    private boolean cancelled;
+
+    public ThirstChangeEvent(Player player, double oldThirst, double newThirst) {
+        this.id = player.getUniqueId();
+        this.oldThirst = oldThirst;
+        this.newThirst = newThirst;
+    }
+
+    public Player getPlayer() {
+        return Bukkit.getPlayer(id);
+    }
+
+    public double getNewThirst() {
+        return newThirst;
+    }
+
+    public double getOldThirst() {
+        return oldThirst;
+    }
+
+    public void setNewThirst(double newThirst) {
+        this.newThirst = newThirst;
+    }
+
+    public boolean isCancelled() {
+        return cancelled;
+    }
+
+    public void setCancelled(boolean cancel) {
+        cancelled = cancel;
+    }
+
+    @Nonnull
+    @Override
+    public HandlerList getHandlers() {
+        return handlers;
+    }
+
+    public static HandlerList getHandlerList() {
+        return handlers;
+    }
+}
+

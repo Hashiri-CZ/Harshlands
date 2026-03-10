@@ -4,7 +4,7 @@
 
 ConfigId: "1.2.10-RELEASE" # Used for config syncing purposes, do NOT edit
 
-# Edit carefully, following the RealisticSurvival-Reloaded wiki item guide.
+# Edit carefully, following the Harshlands-Reloaded wiki item guide.
 
 flint_shard:
   Material: "PRISMARINE_SHARD"
@@ -21,8 +21,8 @@ flint_hatchet:
   Attributes:
     UseModuleConfig: true
   NBTTags:
-    rsvdurability: 45
-    rsvmaxdurability: 45
+    hldurability: 45
+    hlmaxdurability: 45
   RepairIngredients: "flint_shard"
 flint_knife:
   Material: "WOODEN_SWORD"
@@ -34,8 +34,8 @@ flint_knife:
   Attributes:
     UseModuleConfig: true
   NBTTags:
-    rsvdurability: 45
-    rsvmaxdurability: 45
+    hldurability: 45
+    hlmaxdurability: 45
   RepairIngredients: "flint_shard"
 copper_knife:
   Material: "STONE_SWORD"
@@ -47,8 +47,8 @@ copper_knife:
   Attributes:
     UseModuleConfig: true
   NBTTags:
-    rsvdurability: 175
-    rsvmaxdurability: 175
+    hldurability: 175
+    hlmaxdurability: 175
   RepairIngredients: "COPPER_INGOT"
 golden_knife:
   Material: "GOLDEN_SWORD"
@@ -96,8 +96,8 @@ flint_pickaxe:
   Attributes:
     UseModuleConfig: true
   NBTTags:
-    rsvdurability: 45
-    rsvmaxdurability: 45
+    hldurability: 45
+    hlmaxdurability: 45
   RepairIngredients: "flint_shard"
 flint_shovel:
   Material: "WOODEN_SHOVEL"
@@ -109,8 +109,8 @@ flint_shovel:
   Attributes:
     UseModuleConfig: true
   NBTTags:
-    rsvdurability: 45
-    rsvmaxdurability: 45
+    hldurability: 45
+    hlmaxdurability: 45
   RepairIngredients: "flint_shard"
 flint_hoe:
   Material: "WOODEN_HOE"
@@ -122,8 +122,8 @@ flint_hoe:
   Attributes:
     UseModuleConfig: true
   NBTTags:
-    rsvdurability: 45
-    rsvmaxdurability: 45
+    hldurability: 45
+    hlmaxdurability: 45
   RepairIngredients: "flint_shard"
 golden_saw:
   Material: "GOLDEN_AXE"
@@ -135,8 +135,8 @@ golden_saw:
   Attributes:
     UseModuleConfig: true
   NBTTags:
-    rsvdurability: 48
-    rsvmaxdurability: 48
+    hldurability: 48
+    hlmaxdurability: 48
 copper_saw:
   Material: "STONE_AXE"
   DisplayName: "&fCopper Saw"
@@ -147,8 +147,8 @@ copper_saw:
   Attributes:
     UseModuleConfig: true
   NBTTags:
-    rsvdurability: 262
-    rsvmaxdurability: 262
+    hldurability: 262
+    hlmaxdurability: 262
 iron_saw:
   Material: "IRON_AXE"
   DisplayName: "&fIron Saw"
@@ -159,8 +159,8 @@ iron_saw:
   Attributes:
     UseModuleConfig: true
   NBTTags:
-    rsvdurability: 375
-    rsvmaxdurability: 375
+    hldurability: 375
+    hlmaxdurability: 375
 diamond_saw:
   Material: "DIAMOND_AXE"
   DisplayName: "&fDiamond Saw"
@@ -171,8 +171,8 @@ diamond_saw:
   Attributes:
     UseModuleConfig: true
   NBTTags:
-    rsvdurability: 2341
-    rsvmaxdurability: 2341
+    hldurability: 2341
+    hlmaxdurability: 2341
 netherite_saw:
   Material: "NETHERITE_AXE"
   DisplayName: "&fNetherite Saw"
@@ -183,8 +183,8 @@ netherite_saw:
   Attributes:
     UseModuleConfig: true
   NBTTags:
-    rsvdurability: 3046
-    rsvmaxdurability: 3046
+    hldurability: 3046
+    hlmaxdurability: 3046
 plant_fiber:
   Material: "PRISMARINE_SHARD"
   DisplayName: "&fPlant Fiber"
@@ -231,8 +231,8 @@ matchbox:
   CustomModelData: 83650
   ItemModel: "DEFAULT"
   NBTTags:
-    rsvdurability: 32
-    rsvmaxdurability: 32
+    hldurability: 32
+    hlmaxdurability: 32
 fire_starter:
   Material: "WOODEN_AXE"
   DisplayName: "&fFire Starter"
@@ -241,8 +241,8 @@ fire_starter:
   ItemFlags:
     - "HIDE_ATTRIBUTES"
   NBTTags:
-    rsvdurability: 7
-    rsvmaxdurability: 7
+    hldurability: 7
+    hlmaxdurability: 7
   RepairIngredients: "Tag.PLANKS"
 copper_axe:
   Material: "STONE_AXE"
@@ -254,8 +254,8 @@ copper_axe:
   Attributes:
     UseModuleConfig: true
   NBTTags:
-    rsvdurability: 175
-    rsvmaxdurability: 175
+    hldurability: 175
+    hlmaxdurability: 175
   RepairIngredients: "COPPER_INGOT"
 copper_pickaxe:
   Material: "STONE_PICKAXE"
@@ -267,8 +267,8 @@ copper_pickaxe:
   Attributes:
     UseModuleConfig: true
   NBTTags:
-    rsvdurability: 175
-    rsvmaxdurability: 175
+    hldurability: 175
+    hlmaxdurability: 175
   RepairIngredients: "COPPER_INGOT"
 copper_shovel:
   Material: "STONE_SHOVEL"
@@ -280,8 +280,8 @@ copper_shovel:
   Attributes:
     UseModuleConfig: true
   NBTTags:
-    rsvdurability: 175
-    rsvmaxdurability: 175
+    hldurability: 175
+    hlmaxdurability: 175
   RepairIngredients: "COPPER_INGOT"
 copper_sword:
   Material: "STONE_SWORD"
@@ -293,8 +293,8 @@ copper_sword:
   Attributes:
     UseModuleConfig: true
   NBTTags:
-    rsvdurability: 175
-    rsvmaxdurability: 175
+    hldurability: 175
+    hlmaxdurability: 175
   RepairIngredients: "COPPER_INGOT"
 copper_hoe:
   Material: "STONE_HOE"
@@ -306,8 +306,8 @@ copper_hoe:
   Attributes:
     UseModuleConfig: true
   NBTTags:
-    rsvdurability: 175
-    rsvmaxdurability: 175
+    hldurability: 175
+    hlmaxdurability: 175
   RepairIngredients: "COPPER_INGOT"
 copper_helmet:
   Material: "IRON_HELMET"
@@ -320,8 +320,8 @@ copper_helmet:
   Attributes:
     UseModuleConfig: true
   NBTTags:
-    rsvdurability: 110
-    rsvmaxdurability: 110
+    hldurability: 110
+    hlmaxdurability: 110
   RepairIngredients: "COPPER_INGOT"
 copper_chestplate:
   Material: "IRON_CHESTPLATE"
@@ -334,8 +334,8 @@ copper_chestplate:
   Attributes:
     UseModuleConfig: true
   NBTTags:
-    rsvdurability: 160
-    rsvmaxdurability: 160
+    hldurability: 160
+    hlmaxdurability: 160
   RepairIngredients: "COPPER_INGOT"
 copper_leggings:
   Material: "IRON_LEGGINGS"
@@ -348,8 +348,8 @@ copper_leggings:
   Attributes:
     UseModuleConfig: true
   NBTTags:
-    rsvdurability: 150
-    rsvmaxdurability: 150
+    hldurability: 150
+    hlmaxdurability: 150
   RepairIngredients: "COPPER_INGOT"
 copper_boots:
   Material: "IRON_BOOTS"
@@ -362,8 +362,8 @@ copper_boots:
   Attributes:
     UseModuleConfig: true
   NBTTags:
-    rsvdurability: 130
-    rsvmaxdurability: 130
+    hldurability: 130
+    hlmaxdurability: 130
   RepairIngredients: "COPPER_INGOT"
 golden_mattock:
   Material: "GOLDEN_AXE"
@@ -375,8 +375,8 @@ golden_mattock:
   Attributes:
     UseModuleConfig: true
   NBTTags:
-    rsvdurability: 64
-    rsvmaxdurability: 64
+    hldurability: 64
+    hlmaxdurability: 64
 copper_mattock:
   Material: "STONE_AXE"
   DisplayName: "&fCopper Mattock"
@@ -387,8 +387,8 @@ copper_mattock:
   Attributes:
     UseModuleConfig: true
   NBTTags:
-    rsvdurability: 350
-    rsvmaxdurability: 350
+    hldurability: 350
+    hlmaxdurability: 350
   RepairIngredients: "COPPER_INGOT"
 iron_mattock:
   Material: "IRON_AXE"
@@ -400,8 +400,8 @@ iron_mattock:
   Attributes:
     UseModuleConfig: true
   NBTTags:
-    rsvdurability: 500
-    rsvmaxdurability: 500
+    hldurability: 500
+    hlmaxdurability: 500
 diamond_mattock:
   Material: "DIAMOND_AXE"
   DisplayName: "&fDiamond Mattock"
@@ -412,8 +412,8 @@ diamond_mattock:
   Attributes:
     UseModuleConfig: true
   NBTTags:
-    rsvdurability: 3122
-    rsvmaxdurability: 3122
+    hldurability: 3122
+    hlmaxdurability: 3122
 netherite_mattock:
   Material: "NETHERITE_AXE"
   DisplayName: "&fNetherite Mattock"
@@ -424,8 +424,8 @@ netherite_mattock:
   Attributes:
     UseModuleConfig: true
   NBTTags:
-    rsvdurability: 4062
-    rsvmaxdurability: 4062
+    hldurability: 4062
+    hlmaxdurability: 4062
 macuahuitl:
   Material: "STONE_SWORD"
   DisplayName: "&fMacuahuitl"
@@ -436,8 +436,8 @@ macuahuitl:
   Attributes:
     UseModuleConfig: true
   NBTTags:
-    rsvdurability: 576
-    rsvmaxdurability: 576
+    hldurability: 576
+    hlmaxdurability: 576
   RepairIngredients: "FLINT"
 clay_tool:
   Material: "WOODEN_AXE"
@@ -447,8 +447,8 @@ clay_tool:
   ItemFlags:
     - "HIDE_ATTRIBUTES"
   NBTTags:
-    rsvdurability: 128
-    rsvmaxdurability: 128
+    hldurability: 128
+    hlmaxdurability: 128
   RepairIngredients: "Tag.PLANKS"
 clay_brick:
   Material: "PRISMARINE_SHARD"

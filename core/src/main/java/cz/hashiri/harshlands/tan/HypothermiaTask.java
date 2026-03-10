@@ -1,0 +1,135 @@
+/*
+    Copyright (C) 2025  Hashiri_
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ */
+package cz.hashiri.harshlands.tan;
+
+import cz.hashiri.harshlands.data.HLPlayer;
+import cz.hashiri.harshlands.integrations.CompatiblePlugin;
+import cz.hashiri.harshlands.integrations.RealisticSeasons;
+import cz.hashiri.harshlands.rsv.HLPlugin;
+import cz.hashiri.harshlands.utils.HLTask;
+import org.bukkit.configuration.ConfigurationSection;
+import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.entity.Player;
+import org.bukkit.potion.PotionEffect;
+import org.bukkit.potion.PotionEffectType;
+import org.bukkit.scheduler.BukkitRunnable;
+
+import javax.annotation.Nullable;
+import java.util.*;
+
+public class HypothermiaTask extends BukkitRunnable implements HLTask {
+
+    private static final Map<UUID, HypothermiaTask> tasks = new HashMap<>();
+    private final TanModule module;
+    private final FileConfiguration config;
+    private final HLPlugin plugin;
+    private final HLPlayer player;
+    private final UUID id;
+    private final Collection<String> allowedWorlds;
+    private final RealisticSeasons rs;
+    private final boolean damageEnabled;
+    private final double damageCutoff;
+    private final double damage;
+    private final boolean potionEffectsEnabled;
+    private final double maxTemperature;
+    private final Collection<PotionEffect> potionEffects = new ArrayList<>();
+
+
+    public HypothermiaTask(TanModule module, HLPlugin plugin, HLPlayer player) {
+        this.plugin = plugin;
+        this.module = module;
+        this.config = module.getUserConfig().getConfig();
+        this.player = player;
+        this.id = player.getPlayer().getUniqueId();
+        this.allowedWorlds = module.getAllowedWorlds();
+        this.damageEnabled = config.getBoolean("Temperature.Hypothermia.Damage.Enabled");
+        this.damageCutoff = config.getDouble("Temperature.Hypothermia.Damage.Cutoff");
+        this.damage = config.getDouble("Temperature.Hypothermia.Damage.Amount");
+        this.potionEffectsEnabled = config.getBoolean("Temperature.Hypothermia.PotionEffects.Enabled");
+        this.maxTemperature = config.getDouble("Temperature.Hypothermia.Temperature");
+        this.rs = (RealisticSeasons) CompatiblePlugin.getPlugin(RealisticSeasons.NAME);
+        ConfigurationSection section = config.getConfigurationSection("Temperature.Hypothermia.PotionEffects.Effects");
+        Set<String> keys = section.getKeys(false);
+
+        int dur;
+        int amp;
+
+        for (String key : keys) {
+            dur = section.getInt(key + ".Duration");
+            amp = section.getInt(key + ".Amplifier");
+            potionEffects.add(new PotionEffect(PotionEffectType.getByName(key), dur, amp));
+        }
+        tasks.put(id, this);
+    }
+
+    @Override
+    public void run() {
+        Player player = this.player.getPlayer();
+
+        if (conditionsMet(player)) {
+            if (!player.hasPermission("harshlands.toughasnails.resistance.cold.damage")) {
+                if (damageEnabled && !rs.disableHypothermiaDamage()) {
+                    if (player.getHealth() >= damageCutoff) {
+                        if (player.getHealth() - damage <= 0) {
+                            module.getHypothermiaDeath().add(id);
+                        }
+
+                        player.damage(damage);
+                    }
+                }
+            }
+
+            if (!player.hasPermission("harshlands.toughasnails.resistance.cold.potioneffects")) {
+                if (potionEffectsEnabled && !rs.disableHypothermiaPotions()) {
+                    player.addPotionEffects(potionEffects);
+                }
+            }
+        }
+        else {
+            stop();
+        }
+    }
+
+    @Override
+    public boolean conditionsMet(@Nullable Player player) {
+        return globalConditionsMet(player) && !player.isDead() && allowedWorlds.contains(player.getWorld().getName()) && module.getTempManager().getTemperature(player) < maxTemperature;
+    }
+
+    @Override
+    public void start() {
+        int tickPeriod = config.getInt("Temperature.Hypothermia.TickPeriod"); // get the tick period
+        this.runTaskTimer(plugin, 0L, tickPeriod);
+    }
+
+    @Override
+    public void stop() {
+        tasks.remove(id);
+        cancel();
+    }
+
+    public static boolean hasTask(UUID id) {
+        if (tasks.containsKey(id)) {
+            return tasks.get(id) != null;
+        }
+        return false;
+    }
+
+    public static Map<UUID, HypothermiaTask> getTasks() {
+        return tasks;
+    }
+}
+

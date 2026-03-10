@@ -1,18 +1,18 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>realisticsurvival-dist</artifactId>
+    <artifactId>harshlands-dist</artifactId>
     <packaging>jar</packaging>
 
     <parent>
-        <groupId>me.Val_Mobile</groupId>
-        <artifactId>realisticsurvival-parent</artifactId>
+        <groupId>cz.hashiri.harshlands</groupId>
+        <artifactId>harshlands-parent</artifactId>
         <version>1.2.14-RELEASE</version>
     </parent>
 
     <build>
         <directory>../target</directory>
-        <finalName>realisticsurvival-${project.version}</finalName>
+        <finalName>harshlands-${project.version}</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -44,8 +44,8 @@
                             </filters>
                             <artifactSet>
                                 <includes>
-                                    <include>me.Val_Mobile:realisticsurvival-core</include>
-                                    <include>me.Val_Mobile:realisticsurvival-spigot_impl_1_21_R11</include>
+                                    <include>cz.hashiri.harshlands:harshlands-core</include>
+                                    <include>cz.hashiri.harshlands:harshlands-spigot_impl_1_21_R11</include>
                                     <include>com.zaxxer:HikariCP</include>
                                     <include>com.h2database:h2</include>
                                 </includes>
@@ -53,11 +53,11 @@
                             <relocations>
                                 <relocation>
                                     <pattern>com.zaxxer.hikari</pattern>
-                                    <shadedPattern>me.val_mobile.libs.hikari</shadedPattern>
+                                    <shadedPattern>cz.hashiri.harshlands.libs.hikari</shadedPattern>
                                 </relocation>
                                 <relocation>
                                     <pattern>org.h2</pattern>
-                                    <shadedPattern>me.val_mobile.libs.h2</shadedPattern>
+                                    <shadedPattern>cz.hashiri.harshlands.libs.h2</shadedPattern>
                                 </relocation>
                             </relocations>
                         </configuration>
@@ -69,13 +69,13 @@
 
     <dependencies>
         <dependency>
-            <groupId>me.Val_Mobile</groupId>
-            <artifactId>realisticsurvival-core</artifactId>
+            <groupId>cz.hashiri.harshlands</groupId>
+            <artifactId>harshlands-core</artifactId>
             <version>${project.parent.version}</version>
         </dependency>
         <dependency>
-            <groupId>me.Val_Mobile</groupId>
-            <artifactId>realisticsurvival-spigot_impl_1_21_R11</artifactId>
+            <groupId>cz.hashiri.harshlands</groupId>
+            <artifactId>harshlands-spigot_impl_1_21_R11</artifactId>
             <version>${project.parent.version}</version>
         </dependency>
     </dependencies>

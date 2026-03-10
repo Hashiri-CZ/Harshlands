@@ -1,0 +1,547 @@
+/*
+    Copyright (C) 2025  Hashiri_
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ */
+package cz.hashiri.harshlands.iceandfire;
+
+import cz.hashiri.harshlands.data.ModuleEvents;
+import cz.hashiri.harshlands.misc.PlayerItemAcquireEvent;
+import cz.hashiri.harshlands.rsv.HLPlugin;
+import cz.hashiri.harshlands.spartanandfire.BurnTask;
+import cz.hashiri.harshlands.spartanandfire.ElectrocuteTask;
+import cz.hashiri.harshlands.spartanandfire.FreezeTask;
+import cz.hashiri.harshlands.utils.HLItem;
+import cz.hashiri.harshlands.utils.HLMob;
+import cz.hashiri.harshlands.utils.Utils;
+import org.bukkit.Bukkit;
+import org.bukkit.Location;
+import org.bukkit.NamespacedKey;
+import org.bukkit.World;
+import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.entity.*;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.EventPriority;
+import org.bukkit.event.Listener;
+import org.bukkit.event.entity.CreatureSpawnEvent;
+import org.bukkit.event.entity.EntityDamageByEntityEvent;
+import org.bukkit.event.entity.EntityDeathEvent;
+import org.bukkit.event.entity.EntityPotionEffectEvent;
+import org.bukkit.event.entity.ProjectileLaunchEvent;
+import org.bukkit.event.inventory.PrepareItemCraftEvent;
+import org.bukkit.inventory.EquipmentSlot;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.Recipe;
+import org.bukkit.persistence.PersistentDataType;
+import org.bukkit.potion.PotionEffectType;
+import org.bukkit.scheduler.BukkitRunnable;
+
+import javax.annotation.Nullable;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.UUID;
+
+/**
+ * IceFireEvents is a class containing listener methods
+ * that activate fire, ice, and lighting dragon weapon abilities
+ * @author Hashiri_
+ * @version 1.2.10-RELEASE
+ * @since 1.0
+ */
+public class IceFireEvents extends ModuleEvents implements Listener {
+
+    private final IceFireModule module;
+    private final FileConfiguration config;
+    private final HLPlugin plugin;
+    private final Map<UUID, Long> lastSeaSerpentSpawnByPlayer = new HashMap<>();
+
+    // constructing the IceFireEvents class
+    public IceFireEvents(IceFireModule module, HLPlugin plugin) {
+        super(module, plugin);
+        this.config = module.getUserConfig().getConfig();
+        this.plugin = plugin;
+        this.module = module;
+    }
+
+    private double applyDragonItemEffect(@Nullable Entity defender, @Nullable ItemStack item, double origDamage) {
+        if (!(HLItem.isHLItem(item) && HLItem.getModuleNameFromItem(item).equals(module.getName())))
+            return origDamage;
+
+        return applyDragonItemEffect(defender, HLItem.getNameFromItem(item), origDamage);
+    }
+
+    private double applyDragonItemEffect(@Nullable Entity defender, @Nullable String name, double origDamage) {
+        if (module.getUserConfig() == null || defender == null || name == null || name.isEmpty() || name.startsWith("_") || name.endsWith("_"))
+            return origDamage;
+
+        String type = name.substring(0, name.lastIndexOf("_"));
+        String weaponType = name.substring(name.lastIndexOf("_") + 1);
+
+        if (weaponType.equals("longbow") || weaponType.equals("crossbow")) {
+            origDamage *= config.getDouble("Items." + name + ".AttackDamageMultiplier");
+        }
+
+        switch (type) {
+            case "dragonbone_flamed" -> {
+                if (Utils.hasNbtTag(defender, "rsvmob") && !Utils.getNbtTag(defender, "rsvmob", PersistentDataType.STRING).equals("fire_dragon")) {
+                    origDamage += config.getDouble("Items." + name + ".DragonBonusDamage");
+                }
+
+                if (!BurnTask.hasTask(defender.getUniqueId())) {
+                    int fireTicks = config.getInt("Items." + name + ".InfernoAbility.FireTicks");
+                    int tickPeriod = config.getInt("Items." + name + ".InfernoAbility.TickPeriod");
+
+                    new BurnTask(plugin, defender, fireTicks, tickPeriod).start();
+                }
+            }
+            case "dragonbone_iced" -> {
+                if (Utils.hasNbtTag(defender, "rsvmob") && !Utils.getNbtTag(defender, "rsvmob", PersistentDataType.STRING).equals("ice_dragon")) {
+                    origDamage += config.getDouble("Items." + name + ".DragonBonusDamage");
+                }
+
+                if (!FreezeTask.hasTask(defender.getUniqueId())) {
+                    new FreezeTask(plugin, module, name, defender).start();
+                }
+
+            }
+            case "dragonbone_lightning" -> {
+                if (Utils.hasNbtTag(defender, "rsvmob") && !Utils.getNbtTag(defender, "rsvmob", PersistentDataType.STRING).equals("lightning_dragon")) {
+                    origDamage += config.getDouble("Items." + name + ".DragonBonusDamage");
+                }
+
+                if (config.getBoolean("Items." + name + ".ElectrocuteAbility.SummonLightning.Enabled")) {
+                    Location loc = defender.getLocation();
+                    if (config.getBoolean("Items." + name + ".ElectrocuteAbility.SummonLightning.Cosmetic")) {
+                        loc.getWorld().strikeLightningEffect(loc);
+                    } else {
+                        loc.getWorld().strikeLightning(loc);
+                    }
+                }
+
+                if (defender instanceof Damageable damageable && !ElectrocuteTask.hasTask(defender.getUniqueId())) {
+                    new ElectrocuteTask(plugin, module, name, damageable).start();
+                }
+            }
+            case "dragonsteel_fire" -> {
+                if (!BurnTask.hasTask(defender.getUniqueId())) {
+                    int fireTicks = config.getInt("Items." + name + ".InfernoAbility.FireTicks");
+                    int tickPeriod = config.getInt("Items." + name + ".InfernoAbility.TickPeriod");
+
+                    new BurnTask(plugin, defender, fireTicks, tickPeriod).start();
+                }
+            }
+            case "dragonsteel_ice" -> {
+                if (!FreezeTask.hasTask(defender.getUniqueId())) {
+                    new FreezeTask(plugin, module, name, defender).start();
+                }
+            }
+            case "dragonsteel_lightning" -> {
+                if (config.getBoolean("Items." + name + ".ElectrocuteAbility.SummonLightning.Enabled")) {
+                    Location loc = defender.getLocation();
+                    if (config.getBoolean("Items." + name + ".ElectrocuteAbility.SummonLightning.Cosmetic")) {
+                        loc.getWorld().strikeLightningEffect(loc);
+                    } else {
+                        loc.getWorld().strikeLightning(loc);
+                    }
+                }
+
+                if (defender instanceof Damageable damageable && !ElectrocuteTask.hasTask(defender.getUniqueId())) {
+                    new ElectrocuteTask(plugin, module, name, damageable).start();
+                }
+            }
+            default -> {}
+        }
+
+        return origDamage;
+    }
+
+    /**
+     * Activates dragon weapon abilities if an entity successfully attacks with a dragon weapon
+     * @see Utils
+     */
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
+    public void onEntityDamageByEntityMonitor(EntityDamageByEntityEvent event) {
+        Entity defender = event.getEntity(); // get the entity
+        Entity attacker = event.getDamager(); // get the attacker
+
+        if (!(shouldEventBeRan(defender) && shouldEventBeRan(attacker)))
+            return;
+
+        if (Utils.hasNbtTag(attacker, "rsvbow")) {
+            String name = Utils.getNbtTag(attacker, "rsvbow", PersistentDataType.STRING);
+
+            IceFireModule.applyDragonItemEffect(defender, name, module);
+        }
+        else if (attacker instanceof LivingEntity living && living.getEquipment() != null) {
+            ItemStack itemMainHand = living.getEquipment().getItemInMainHand(); // get the item in the player's main hand
+
+            IceFireModule.applyDragonItemEffect(defender, itemMainHand, module);
+        }
+    }
+
+    /**
+     * Increases raw damage if an entity attacks a dragon with a dragon weapon
+     * @param event The event called when an entity attacks another entity
+     * @see Utils
+     */
+    @EventHandler(priority = EventPriority.HIGHEST, ignoreCancelled = true)
+    public void onEntityDamageByEntity(EntityDamageByEntityEvent event) {
+        Entity defender = event.getEntity(); // get the entity
+        Entity attacker = event.getDamager(); // get the attacker
+
+        if (!(shouldEventBeRan(defender) && shouldEventBeRan(attacker)))
+            return;
+
+        double damage = event.getDamage();
+
+        if (Utils.hasNbtTag(attacker, "rsvbow")) {
+            String name = Utils.getNbtTag(attacker, "rsvbow", PersistentDataType.STRING);
+
+            damage = IceFireModule.applyDragonItemBonusDamage(defender, name, damage, module);
+        }
+        else if (attacker instanceof LivingEntity living && living.getEquipment() != null) {
+            ItemStack itemMainHand = living.getEquipment().getItemInMainHand(); // get the item in the player's main hand
+
+            damage = IceFireModule.applyDragonItemBonusDamage(defender, itemMainHand, damage, module);
+        }
+
+        event.setDamage(damage);
+    }
+
+    @EventHandler
+    public void onArmorAcquire(PlayerItemAcquireEvent event) {
+        ItemStack item = event.getItem();
+
+        if (!(HLItem.isHLItem(item) && HLItem.getNameFromItem(item).contains("tide_guardian_")))
+            return;
+
+        EquipmentSlot loc = event.getLocation();
+
+        switch (loc) {
+            case HEAD, CHEST, LEGS, FEET -> {}
+            default -> {
+                return;
+            }
+        }
+
+        Player player = event.getPlayer();
+
+        if (!TideGuardianTask.hasTask(player.getUniqueId())) {
+            new TideGuardianTask(module, player, plugin).start();
+        }
+    }
+
+    @EventHandler(priority = EventPriority.HIGHEST)
+    public void onCreatureSpawn(CreatureSpawnEvent event) {
+        Entity entity = event.getEntity();
+
+        if (!shouldEventBeRan(entity))
+            return;
+
+        if (entity instanceof Squid || entity instanceof Guardian || entity instanceof Dolphin) {
+            if (config.getBoolean("SeaSerpent.Enabled.Enabled")
+                    && Utils.roll(config.getDouble("SeaSerpent.SpawnChance"))
+                    && canSpawnSeaSerpent(entity.getLocation())) {
+                Utils.spawnSeaSerpent(entity.getLocation()).addEntityToWorld(entity.getWorld());
+            }
+
+            if (config.getBoolean("Siren.Enabled") && Utils.roll(config.getDouble("Siren.SpawnChance"))) {
+                Utils.spawnSiren(entity.getLocation()).addEntityToWorld(entity.getWorld());
+            }
+        }
+
+        if (entity instanceof EnderDragon dragon && !(DragonUtils.isDragon(dragon)) && config.getBoolean("Dragon.Enabled") && Utils.roll(config.getDouble("Dragon.SpawnChance"))) {
+            double val = Math.random();
+            double fireChance = config.getDouble("Dragon.FireDragon.Enabled.Chance");
+            double iceChance = config.getDouble("Dragon.IceDragon.Enabled.Chance");
+
+            if (val <= fireChance) {
+                DragonUtils.convertToFireDragon(dragon);
+            }
+            else if (val <= fireChance + iceChance) {
+                DragonUtils.convertToIceDragon(dragon);
+            }
+            else {
+                DragonUtils.convertToLightningDragon(dragon);
+            }
+        }
+    }
+
+    private boolean canSpawnSeaSerpent(Location spawnLoc) {
+        int minY = config.getInt("SeaSerpent.SpawnRules.MinY", 45);
+        if (spawnLoc.getBlockY() < minY) {
+            return false;
+        }
+
+        double playerRange = Math.max(1.0, config.getDouble("SeaSerpent.SpawnRules.PlayerRange", 128.0));
+        Player nearestPlayer = getNearestPlayer(spawnLoc, playerRange);
+        if (nearestPlayer == null || !shouldEventBeRan(nearestPlayer)) {
+            return false;
+        }
+
+        int maxPerPlayer = Math.max(1, config.getInt("SeaSerpent.SpawnRules.MaxPerPlayer", 2));
+        if (countSeaSerpentsNearPlayer(nearestPlayer, playerRange) >= maxPerPlayer) {
+            return false;
+        }
+
+        long intervalSeconds = Math.max(0L, config.getLong("SeaSerpent.SpawnRules.SpawnIntervalSeconds", 180L));
+        if (intervalSeconds <= 0L) {
+            return true;
+        }
+
+        long now = System.currentTimeMillis();
+        UUID playerId = nearestPlayer.getUniqueId();
+        long last = lastSeaSerpentSpawnByPlayer.getOrDefault(playerId, 0L);
+        long intervalMillis = intervalSeconds * 1000L;
+
+        if (now - last < intervalMillis) {
+            return false;
+        }
+
+        lastSeaSerpentSpawnByPlayer.put(playerId, now);
+        return true;
+    }
+
+    @Nullable
+    private Player getNearestPlayer(Location location, double maxRange) {
+        double maxRangeSquared = maxRange * maxRange;
+        Player nearest = null;
+        double nearestDistanceSquared = maxRangeSquared;
+
+        for (Player player : location.getWorld().getPlayers()) {
+            if (!player.isOnline() || player.isDead()) {
+                continue;
+            }
+
+            double distanceSquared = player.getLocation().distanceSquared(location);
+            if (distanceSquared <= nearestDistanceSquared) {
+                nearestDistanceSquared = distanceSquared;
+                nearest = player;
+            }
+        }
+
+        return nearest;
+    }
+
+    private int countSeaSerpentsNearPlayer(Player player, double range) {
+        int count = 0;
+        for (Entity nearby : player.getNearbyEntities(range, range, range)) {
+            if (SeaSerpentUtils.isSeaSerpent(nearby)) {
+                count++;
+            }
+        }
+        return count;
+    }
+
+    @EventHandler(priority = EventPriority.HIGHEST)
+    public void onLaunch(ProjectileLaunchEvent event) {
+        Projectile proj = event.getEntity();
+
+        if (!(shouldEventBeRan(proj) && proj instanceof DragonFireball && proj.getShooter() instanceof EnderDragon dragon && DragonUtils.isDragon(dragon)))
+            return;
+
+        DragonBreed breed = DragonUtils.getBreed(dragon);
+
+        new BukkitRunnable() {
+            @Override
+            public void run() {
+                Location target = dragon.getEyeLocation().add(proj.getVelocity().normalize().multiply(100));
+
+                switch (breed) {
+                    case FIRE -> {
+                        if (Utils.roll(config.getDouble("Dragon.FireDragon.BreathAttack.Chance"))) {
+                            DragonUtils.triggerBreathFireAttack(dragon, target);
+                        }
+                        else {
+                            DragonUtils.triggerExplosionFireAttack(dragon, target);
+                        }
+                    }
+                    case ICE -> {
+                        if (Utils.roll(config.getDouble("Dragon.IceDragon.BreathAttack.Chance"))) {
+                            DragonUtils.triggerBreathIceAttack(dragon, target);
+                        }
+                        else {
+                            DragonUtils.triggerExplosionIceAttack(dragon, target);
+                        }
+                    }
+                    case LIGHTNING -> {
+                        if (Utils.roll(config.getDouble("Dragon.LightningDragon.BreathAttack.Chance"))) {
+                            DragonUtils.triggerBreathLightningAttack(dragon, target);
+                        }
+                        else {
+                            DragonUtils.triggerExplosionLightningAttack(dragon, target);
+                        }
+                    }
+                    default -> {}
+                }
+                proj.remove();
+            }
+        }.runTaskLater(plugin, 2L);
+    }
+
+    @EventHandler
+    public void onDeath(EntityDeathEvent event) {
+        LivingEntity entity = event.getEntity();
+
+        if (!(shouldEventBeRan(entity) && HLMob.isMob(entity)))
+            return;
+
+        Location loc = entity.getLocation();
+        World world = loc.getWorld();
+        Collection<ItemStack> loots = new ArrayList<>();
+
+        switch (HLMob.getMob(entity)) {
+            case "fire_dragon", "ice_dragon", "lightning_dragon" -> {
+                if (!(entity instanceof Dragon)) {
+                    loots = DragonUtils.generateLoot((EnderDragon) entity);
+                }
+            }
+            case "sea_serpent" -> {
+                if (!(entity instanceof SeaSerpent)) {
+                    loots = SeaSerpentUtils.generateLoot((ElderGuardian) entity);
+                }
+            }
+            case "siren" -> {
+                if (!(entity instanceof Siren)) {
+                    loots = SirenUtils.generateLoot((Guardian) entity);
+                }
+            }
+            default -> {}
+        }
+
+        for (ItemStack loot : loots) {
+            if (Utils.isItemReal(loot)) {
+                world.dropItemNaturally(loc, loot);
+            }
+        }
+    }
+
+    @EventHandler(priority = EventPriority.HIGHEST, ignoreCancelled = true)
+    public void onSeaSerpentMiningFatigue(EntityPotionEffectEvent event) {
+        if (!(event.getEntity() instanceof Player player) || !shouldEventBeRan(player)) {
+            return;
+        }
+
+        if (event.getNewEffect() == null || event.getNewEffect().getType() != PotionEffectType.SLOW_DIGGING) {
+            return;
+        }
+
+        // Cancel the fatigue only if nearby elder guardians are RSV sea serpents.
+        // If a vanilla elder guardian is nearby, keep vanilla behavior.
+        double checkRange = Math.max(1.0, config.getDouble("SeaSerpent.SpawnRules.PlayerRange", 128.0));
+        boolean hasSeaSerpentNearby = false;
+        boolean hasVanillaElderGuardianNearby = false;
+
+        for (Entity nearby : player.getNearbyEntities(checkRange, checkRange, checkRange)) {
+            if (!(nearby instanceof ElderGuardian elderGuardian)) {
+                continue;
+            }
+
+            if (SeaSerpentUtils.isSeaSerpent(elderGuardian)) {
+                hasSeaSerpentNearby = true;
+            } else {
+                hasVanillaElderGuardianNearby = true;
+                break;
+            }
+        }
+
+        if (hasSeaSerpentNearby && !hasVanillaElderGuardianNearby) {
+            event.setCancelled(true);
+        }
+    }
+
+    /**
+     * Implements the flamed, iced, and lightning dragonbone weapon recipes.
+     * The recipes do not work automatically due to UUID differences in the dragonbone weapon ingredient.
+     * @param event The event called when a player places items in a crafting table
+     */
+    @EventHandler
+    public void onPrepareCraft(PrepareItemCraftEvent event) {
+        Recipe recipe = event.getRecipe();
+
+        if (!shouldEventBeRan(event.getView().getPlayer()))
+            return;
+
+        if (recipe == null) {
+            // determine if the matrix contains only 2 non-null items
+            ItemStack[] matrix = event.getInventory().getMatrix();
+
+            // preprocess matrix to obtain only rsv items
+            List<ItemStack> rsvItems = new ArrayList<>();
+
+            for (ItemStack item : matrix) {
+                if (HLItem.isHLItem(item)) {
+                    rsvItems.add(item);
+                }
+            }
+
+            if (rsvItems.size() == 2) {
+                // check if one of the items is a dragon blood
+                ItemStack dragonBlood;
+                ItemStack dragonboneWeapon;
+
+                switch (HLItem.getNameFromItem(rsvItems.get(0))) {
+                    case "dragon_blood_fire", "dragon_blood_ice", "dragon_blood_lightning" -> {
+                        dragonBlood = rsvItems.get(0);
+                        dragonboneWeapon = rsvItems.get(1);
+                    }
+                    // check if item2 is the dragon blood instead
+                    default -> {
+                        dragonBlood = rsvItems.get(1);
+                        dragonboneWeapon = rsvItems.get(0);
+                    }
+                }
+
+                String dragonBloodName = HLItem.getNameFromItem(dragonBlood);
+                String dragonboneWeaponName = HLItem.getNameFromItem(dragonboneWeapon);
+
+                // verify there is a dragon blood and dragonbone weapon
+                switch (dragonBloodName) {
+                    case "dragon_blood_fire", "dragon_blood_ice", "dragon_blood_lightning" -> {}
+                    default -> {
+                        return;
+                    }
+                }
+
+                if (!dragonboneWeaponName.equals("dragonbone_sword")) {
+                    return;
+                }
+
+                // after verifying, construct the upgraded weapon name
+                String specialAbility = switch (dragonBloodName) {
+                    case "dragon_blood_fire" -> "flamed";
+                    case "dragon_blood_ice" -> "iced";
+                    case "dragon_blood_lightning" -> "lightning";
+                    default -> null;
+                };
+
+                String weaponType = dragonboneWeaponName.substring(dragonboneWeaponName.indexOf("_") + 1);
+
+                String upgradedWeaponName = "dragonbone_" + specialAbility + "_" + weaponType;
+
+                // verify that a recipe for the upgraded item exists
+                NamespacedKey recipeKey = NamespacedKey.fromString(upgradedWeaponName, plugin);
+
+                if (Bukkit.getRecipe(recipeKey) != null) {
+                    ItemStack upgradedWeapon = HLItem.getItem(upgradedWeaponName);
+                    event.getInventory().setResult(upgradedWeapon);
+                }
+            }
+        }
+    }
+}
+

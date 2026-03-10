@@ -96,7 +96,7 @@ Database:
   MySQL:
     Host: "localhost"
     Port: 3306
-    Database: "realisticsurvival"
+    Database: "harshlands"
     Username: "root"
     Password: ""
     Pool:

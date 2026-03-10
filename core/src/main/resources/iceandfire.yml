@@ -434,27 +434,27 @@ Dragon:
       Sound:
         Stage1:
           Enabled: true
-          Sound: "realisticsurvival:firedragon_breath"
+          Sound: "harshlands:firedragon_breath"
           Volume: 3.0
           Pitch: 1.0
         Stage2:
           Enabled: true
-          Sound: "realisticsurvival:firedragon_breath"
+          Sound: "harshlands:firedragon_breath"
           Volume: 4.0
           Pitch: 1.0
         Stage3:
           Enabled: true
-          Sound: "realisticsurvival:firedragon_breath"
+          Sound: "harshlands:firedragon_breath"
           Volume: 6.0
           Pitch: 1.0
         Stage4:
           Enabled: true
-          Sound: "realisticsurvival:firedragon_breath"
+          Sound: "harshlands:firedragon_breath"
           Volume: 8.0
           Pitch: 1.0
         Stage5:
           Enabled: true
-          Sound: "realisticsurvival:firedragon_breath"
+          Sound: "harshlands:firedragon_breath"
           Volume: 10.0
           Pitch: 1.0
     ExplosionAttack:
@@ -483,27 +483,27 @@ Dragon:
       Sound:
         Stage1:
           Enabled: true
-          Sound: "realisticsurvival:firedragon_breath"
+          Sound: "harshlands:firedragon_breath"
           Volume: 3.0
           Pitch: 1.0
         Stage2:
           Enabled: true
-          Sound: "realisticsurvival:firedragon_breath"
+          Sound: "harshlands:firedragon_breath"
           Volume: 4.0
           Pitch: 1.0
         Stage3:
           Enabled: true
-          Sound: "realisticsurvival:firedragon_breath"
+          Sound: "harshlands:firedragon_breath"
           Volume: 6.0
           Pitch: 1.0
         Stage4:
           Enabled: true
-          Sound: "realisticsurvival:firedragon_breath"
+          Sound: "harshlands:firedragon_breath"
           Volume: 8.0
           Pitch: 1.0
         Stage5:
           Enabled: true
-          Sound: "realisticsurvival:firedragon_breath"
+          Sound: "harshlands:firedragon_breath"
           Volume: 10.0
           Pitch: 1.0
       SpecialBlocks:
@@ -775,27 +775,27 @@ Dragon:
       Sound:
         Stage1:
           Enabled: true
-          Sound: "realisticsurvival:icedragon_breath"
+          Sound: "harshlands:icedragon_breath"
           Volume: 3.0
           Pitch: 1.0
         Stage2:
           Enabled: true
-          Sound: "realisticsurvival:icedragon_breath"
+          Sound: "harshlands:icedragon_breath"
           Volume: 4.0
           Pitch: 1.0
         Stage3:
           Enabled: true
-          Sound: "realisticsurvival:icedragon_breath"
+          Sound: "harshlands:icedragon_breath"
           Volume: 6.0
           Pitch: 1.0
         Stage4:
           Enabled: true
-          Sound: "realisticsurvival:icedragon_breath"
+          Sound: "harshlands:icedragon_breath"
           Volume: 8.0
           Pitch: 1.0
         Stage5:
           Enabled: true
-          Sound: "realisticsurvival:icedragon_breath"
+          Sound: "harshlands:icedragon_breath"
           Volume: 10.0
           Pitch: 1.0
       SpecialBlocks:
@@ -948,27 +948,27 @@ Dragon:
       Sound:
         Stage1:
           Enabled: true
-          Sound: "realisticsurvival:icedragon_breath"
+          Sound: "harshlands:icedragon_breath"
           Volume: 3.0
           Pitch: 1.0
         Stage2:
           Enabled: true
-          Sound: "realisticsurvival:icedragon_breath"
+          Sound: "harshlands:icedragon_breath"
           Volume: 4.0
           Pitch: 1.0
         Stage3:
           Enabled: true
-          Sound: "realisticsurvival:icedragon_breath"
+          Sound: "harshlands:icedragon_breath"
           Volume: 6.0
           Pitch: 1.0
         Stage4:
           Enabled: true
-          Sound: "realisticsurvival:icedragon_breath"
+          Sound: "harshlands:icedragon_breath"
           Volume: 8.0
           Pitch: 1.0
         Stage5:
           Enabled: true
-          Sound: "realisticsurvival:icedragon_breath"
+          Sound: "harshlands:icedragon_breath"
           Volume: 10.0
           Pitch: 1.0
       SpecialBlocks:
@@ -1158,27 +1158,27 @@ Dragon:
       Sound:
         Stage1:
           Enabled: true
-          Sound: "realisticsurvival:lightningdragon_breath"
+          Sound: "harshlands:lightningdragon_breath"
           Volume: 3.0
           Pitch: 1.0
         Stage2:
           Enabled: true
-          Sound: "realisticsurvival:lightningdragon_breath"
+          Sound: "harshlands:lightningdragon_breath"
           Volume: 4.0
           Pitch: 1.0
         Stage3:
           Enabled: true
-          Sound: "realisticsurvival:lightningdragon_breath"
+          Sound: "harshlands:lightningdragon_breath"
           Volume: 6.0
           Pitch: 1.0
         Stage4:
           Enabled: true
-          Sound: "realisticsurvival:lightningdragon_breath"
+          Sound: "harshlands:lightningdragon_breath"
           Volume: 8.0
           Pitch: 1.0
         Stage5:
           Enabled: true
-          Sound: "realisticsurvival:lightningdragon_breath"
+          Sound: "harshlands:lightningdragon_breath"
           Volume: 10.0
           Pitch: 1.0
       SpecialBlocks:
@@ -1432,27 +1432,27 @@ Dragon:
       Sound:
         Stage1:
           Enabled: true
-          Sound: "realisticsurvival:lightningdragon_breath_crackle"
+          Sound: "harshlands:lightningdragon_breath_crackle"
           Volume: 3.0
           Pitch: 1.0
         Stage2:
           Enabled: true
-          Sound: "realisticsurvival:lightningdragon_breath_crackle"
+          Sound: "harshlands:lightningdragon_breath_crackle"
           Volume: 4.0
           Pitch: 1.0
         Stage3:
           Enabled: true
-          Sound: "realisticsurvival:lightningdragon_breath_crackle"
+          Sound: "harshlands:lightningdragon_breath_crackle"
           Volume: 6.0
           Pitch: 1.0
         Stage4:
           Enabled: true
-          Sound: "realisticsurvival:lightningdragon_breath_crackle"
+          Sound: "harshlands:lightningdragon_breath_crackle"
           Volume: 8.0
           Pitch: 1.0
         Stage5:
           Enabled: true
-          Sound: "realisticsurvival:lightningdragon_breath_crackle"
+          Sound: "harshlands:lightningdragon_breath_crackle"
           Volume: 10.0
           Pitch: 1.0
       SpecialBlocks:
@@ -1768,7 +1768,7 @@ Siren: # Siren loot table can be found under "MobDrops" at the top of this confi
     Velocity: 1.0
   PlayMusic:
     Enabled: true
-    Sound: "realisticsurvival:"
+    Sound: "harshlands:"
     Volume: 1.0
     Pitch: 1.0
   ChangeScreen:

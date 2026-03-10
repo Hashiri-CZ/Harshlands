@@ -4,7 +4,7 @@
 
 ConfigId: "1.2.10-RELEASE" # Used for config syncing purposes, do NOT edit
 
-# Edit carefully, following the RealisticSurvival-Reloaded wiki item guide.
+# Edit carefully, following the Harshlands-Reloaded wiki item guide.
 
 handle:
   Material: "PRISMARINE_SHARD"
@@ -244,8 +244,8 @@ netherite_longbow:
   Lore:
     - "LOREPRESET.LONGBOW"
   NBTTags:
-    rsvdurability: 2600
-    rsvmaxdurability: 2600
+    hldurability: 2600
+    hlmaxdurability: 2600
   RepairIngredients: "NETHERITE_INGOT"
 netherite_crossbow:
   Material: "CROSSBOW"
@@ -255,8 +255,8 @@ netherite_crossbow:
   Lore:
     - "LOREPRESET.CROSSBOW"
   NBTTags:
-    rsvdurability: 2600
-    rsvmaxdurability: 2600
+    hldurability: 2600
+    hlmaxdurability: 2600
   RepairIngredients: "NETHERITE_INGOT"
 diamond_rapier:
   Material: "DIAMOND_SWORD"
@@ -486,8 +486,8 @@ diamond_longbow:
   Lore:
     - "LOREPRESET.LONGBOW"
   NBTTags:
-    rsvdurability: 2341
-    rsvmaxdurability: 2341
+    hldurability: 2341
+    hlmaxdurability: 2341
   RepairIngredients: "DIAMOND"
 diamond_crossbow:
   Material: "CROSSBOW"
@@ -497,8 +497,8 @@ diamond_crossbow:
   Lore:
     - "LOREPRESET.CROSSBOW"
   NBTTags:
-    rsvdurability: 2341
-    rsvmaxdurability: 2341
+    hldurability: 2341
+    hlmaxdurability: 2341
   RepairIngredients: "DIAMOND"
 iron_rapier:
   Material: "IRON_SWORD"
@@ -728,8 +728,8 @@ iron_longbow:
   Lore:
     - "LOREPRESET.LONGBOW"
   NBTTags:
-    rsvdurability: 375
-    rsvmaxdurability: 375
+    hldurability: 375
+    hlmaxdurability: 375
   RepairIngredients: "IRON_INGOT"
 iron_crossbow:
   Material: "CROSSBOW"
@@ -739,8 +739,8 @@ iron_crossbow:
   Lore:
     - "LOREPRESET.CROSSBOW"
   NBTTags:
-    rsvdurability: 375
-    rsvmaxdurability: 375
+    hldurability: 375
+    hlmaxdurability: 375
   RepairIngredients: "IRON_INGOT"
 gold_rapier:
   Material: "GOLDEN_SWORD"
@@ -970,8 +970,8 @@ gold_longbow:
   Lore:
     - "LOREPRESET.LONGBOW"
   NBTTags:
-    rsvdurability: 32
-    rsvmaxdurability: 32
+    hldurability: 32
+    hlmaxdurability: 32
   RepairIngredients: "GOLD_INGOT"
 gold_crossbow:
   Material: "CROSSBOW"
@@ -981,8 +981,8 @@ gold_crossbow:
   Lore:
     - "LOREPRESET.CROSSBOW"
   NBTTags:
-    rsvdurability: 32
-    rsvmaxdurability: 32
+    hldurability: 32
+    hlmaxdurability: 32
   RepairIngredients: "GOLD_INGOT"
 stone_rapier:
   Material: "STONE_SWORD"
@@ -1432,8 +1432,8 @@ wooden_longbow:
   Lore:
     - "LOREPRESET.LONGBOW"
   NBTTags:
-    rsvdurability: 88
-    rsvmaxdurability: 88
+    hldurability: 88
+    hlmaxdurability: 88
   RepairIngredients: "Tag.PLANKS"
 wooden_crossbow:
   Material: "CROSSBOW"
@@ -1443,8 +1443,8 @@ wooden_crossbow:
   Lore:
     - "LOREPRESET.CROSSBOW"
   NBTTags:
-    rsvdurability: 88
-    rsvmaxdurability: 88
+    hldurability: 88
+    hlmaxdurability: 88
   RepairIngredients: "Tag.PLANKS"
 wooden_club:
   Material: "WOODEN_SWORD"
@@ -1465,8 +1465,8 @@ leather_longbow:
   Lore:
     - "LOREPRESET.LONGBOW"
   NBTTags:
-    rsvdurability: 192
-    rsvmaxdurability: 192
+    hldurability: 192
+    hlmaxdurability: 192
   RepairIngredients: "LEATHER"
 leather_crossbow:
   Material: "CROSSBOW"
@@ -1476,8 +1476,8 @@ leather_crossbow:
   Lore:
     - "LOREPRESET.CROSSBOW"
   NBTTags:
-    rsvdurability: 192
-    rsvmaxdurability: 192
+    hldurability: 192
+    hlmaxdurability: 192
   RepairIngredients: "LEATHER"
 copper_rapier:
   Material: "STONE_SWORD"
@@ -1491,8 +1491,8 @@ copper_rapier:
   Attributes:
     UseModuleConfig: true
   NBTTags:
-    rsvdurability: 175
-    rsvmaxdurability: 175
+    hldurability: 175
+    hlmaxdurability: 175
   RepairIngredients: "COPPER_INGOT"
 copper_katana:
   Material: "STONE_SWORD"
@@ -1506,8 +1506,8 @@ copper_katana:
   Attributes:
     UseModuleConfig: true
   NBTTags:
-    rsvdurability: 175
-    rsvmaxdurability: 175
+    hldurability: 175
+    hlmaxdurability: 175
   RepairIngredients: "COPPER_INGOT"
 copper_greatsword:
   Material: "STONE_SWORD"
@@ -1521,8 +1521,8 @@ copper_greatsword:
   Attributes:
     UseModuleConfig: true
   NBTTags:
-    rsvdurability: 175
-    rsvmaxdurability: 175
+    hldurability: 175
+    hlmaxdurability: 175
   RepairIngredients: "COPPER_INGOT"
 copper_longsword:
   Material: "STONE_SWORD"
@@ -1536,8 +1536,8 @@ copper_longsword:
   Attributes:
     UseModuleConfig: true
   NBTTags:
-    rsvdurability: 175
-    rsvmaxdurability: 175
+    hldurability: 175
+    hlmaxdurability: 175
   RepairIngredients: "COPPER_INGOT"
 copper_spear:
   Material: "STONE_SWORD"
@@ -1551,8 +1551,8 @@ copper_spear:
   Attributes:
     UseModuleConfig: true
   NBTTags:
-    rsvdurability: 175
-    rsvmaxdurability: 175
+    hldurability: 175
+    hlmaxdurability: 175
   RepairIngredients: "COPPER_INGOT"
 copper_saber:
   Material: "STONE_SWORD"
@@ -1566,8 +1566,8 @@ copper_saber:
   Attributes:
     UseModuleConfig: true
   NBTTags:
-    rsvdurability: 175
-    rsvmaxdurability: 175
+    hldurability: 175
+    hlmaxdurability: 175
   RepairIngredients: "COPPER_INGOT"
 copper_boomerang:
   Material: "STONE_SWORD"
@@ -1581,8 +1581,8 @@ copper_boomerang:
   Attributes:
     UseModuleConfig: true
   NBTTags:
-    rsvdurability: 175
-    rsvmaxdurability: 175
+    hldurability: 175
+    hlmaxdurability: 175
   RepairIngredients: "COPPER_INGOT"
 copper_dagger:
   Material: "STONE_SWORD"
@@ -1596,8 +1596,8 @@ copper_dagger:
   Attributes:
     UseModuleConfig: true
   NBTTags:
-    rsvdurability: 175
-    rsvmaxdurability: 175
+    hldurability: 175
+    hlmaxdurability: 175
   RepairIngredients: "COPPER_INGOT"
 copper_glaive:
   Material: "STONE_SWORD"
@@ -1611,8 +1611,8 @@ copper_glaive:
   Attributes:
     UseModuleConfig: true
   NBTTags:
-    rsvdurability: 175
-    rsvmaxdurability: 175
+    hldurability: 175
+    hlmaxdurability: 175
   RepairIngredients: "COPPER_INGOT"
 copper_halberd:
   Material: "STONE_SWORD"
@@ -1626,8 +1626,8 @@ copper_halberd:
   Attributes:
     UseModuleConfig: true
   NBTTags:
-    rsvdurability: 175
-    rsvmaxdurability: 175
+    hldurability: 175
+    hlmaxdurability: 175
   RepairIngredients: "COPPER_INGOT"
 copper_hammer:
   Material: "STONE_SWORD"
@@ -1641,8 +1641,8 @@ copper_hammer:
   Attributes:
     UseModuleConfig: true
   NBTTags:
-    rsvdurability: 175
-    rsvmaxdurability: 175
+    hldurability: 175
+    hlmaxdurability: 175
   RepairIngredients: "COPPER_INGOT"
 copper_javelin:
   Material: "STONE_SWORD"
@@ -1656,8 +1656,8 @@ copper_javelin:
   Attributes:
     UseModuleConfig: true
   NBTTags:
-    rsvdurability: 175
-    rsvmaxdurability: 175
+    hldurability: 175
+    hlmaxdurability: 175
   RepairIngredients: "COPPER_INGOT"
 copper_lance:
   Material: "STONE_SWORD"
@@ -1671,8 +1671,8 @@ copper_lance:
   Attributes:
     UseModuleConfig: true
   NBTTags:
-    rsvdurability: 175
-    rsvmaxdurability: 175
+    hldurability: 175
+    hlmaxdurability: 175
   RepairIngredients: "COPPER_INGOT"
 copper_mace:
   Material: "STONE_SWORD"
@@ -1686,8 +1686,8 @@ copper_mace:
   Attributes:
     UseModuleConfig: true
   NBTTags:
-    rsvdurability: 175
-    rsvmaxdurability: 175
+    hldurability: 175
+    hlmaxdurability: 175
   RepairIngredients: "COPPER_INGOT"
 copper_pike:
   Material: "STONE_SWORD"
@@ -1701,8 +1701,8 @@ copper_pike:
   Attributes:
     UseModuleConfig: true
   NBTTags:
-    rsvdurability: 175
-    rsvmaxdurability: 175
+    hldurability: 175
+    hlmaxdurability: 175
   RepairIngredients: "COPPER_INGOT"
 copper_quarterstaff:
   Material: "STONE_SWORD"
@@ -1716,8 +1716,8 @@ copper_quarterstaff:
   Attributes:
     UseModuleConfig: true
   NBTTags:
-    rsvdurability: 175
-    rsvmaxdurability: 175
+    hldurability: 175
+    hlmaxdurability: 175
   RepairIngredients: "COPPER_INGOT"
 copper_tomahawk:
   Material: "STONE_SWORD"
@@ -1731,8 +1731,8 @@ copper_tomahawk:
   Attributes:
     UseModuleConfig: true
   NBTTags:
-    rsvdurability: 175
-    rsvmaxdurability: 175
+    hldurability: 175
+    hlmaxdurability: 175
   RepairIngredients: "COPPER_INGOT"
 copper_throwing_knife:
   Material: "STONE_SWORD"
@@ -1746,8 +1746,8 @@ copper_throwing_knife:
   Attributes:
     UseModuleConfig: true
   NBTTags:
-    rsvdurability: 175
-    rsvmaxdurability: 175
+    hldurability: 175
+    hlmaxdurability: 175
   RepairIngredients: "COPPER_INGOT"
 copper_warhammer:
   Material: "STONE_SWORD"
@@ -1761,8 +1761,8 @@ copper_warhammer:
   Attributes:
     UseModuleConfig: true
   NBTTags:
-    rsvdurability: 175
-    rsvmaxdurability: 175
+    hldurability: 175
+    hlmaxdurability: 175
   RepairIngredients: "COPPER_INGOT"
 copper_battleaxe:
   Material: "STONE_AXE"
@@ -1776,8 +1776,8 @@ copper_battleaxe:
   Attributes:
     UseModuleConfig: true
   NBTTags:
-    rsvdurability: 175
-    rsvmaxdurability: 175
+    hldurability: 175
+    hlmaxdurability: 175
   RepairIngredients: "COPPER_INGOT"
 copper_longbow:
   Material: "BOW"
@@ -1787,8 +1787,8 @@ copper_longbow:
   Lore:
     - "LOREPRESET.LONGBOW"
   NBTTags:
-    rsvdurability: 245
-    rsvmaxdurability: 245
+    hldurability: 245
+    hlmaxdurability: 245
   RepairIngredients: "COPPER_INGOT"
 copper_crossbow:
   Material: "CROSSBOW"
@@ -1798,8 +1798,8 @@ copper_crossbow:
   Lore:
     - "LOREPRESET.CROSSBOW"
   NBTTags:
-    rsvdurability: 245
-    rsvmaxdurability: 245
+    hldurability: 245
+    hlmaxdurability: 245
   RepairIngredients: "COPPER_INGOT"
 studded_club:
   Material: "IRON_SWORD"
@@ -1813,8 +1813,8 @@ studded_club:
   Attributes:
     UseModuleConfig: true
   NBTTags:
-    rsvdurability: 250
-    rsvmaxdurability: 250
+    hldurability: 250
+    hlmaxdurability: 250
 cestus:
   Material: "WOODEN_SWORD"
   DisplayName: "&fCestus"
@@ -1827,8 +1827,8 @@ cestus:
   Attributes:
     UseModuleConfig: true
   NBTTags:
-    rsvdurability: 128
-    rsvmaxdurability: 128
+    hldurability: 128
+    hlmaxdurability: 128
 studded_cestus:
   Material: "IRON_SWORD"
   DisplayName: "&fStudded Cestus"

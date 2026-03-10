@@ -602,17 +602,17 @@ Items:
       ReturnAfterTravelingMaxDistance: true
       ThrownSound:
         Enabled: true
-        Sound: "realisticsurvival:boomerang_throw"
+        Sound: "harshlands:boomerang_throw"
         Volume: 1.0
         Pitch: 1.0
       HitMobSound:
         Enabled: true
-        Sound: "realisticsurvival:boomerang_hit_mob"
+        Sound: "harshlands:boomerang_hit_mob"
         Volume: 1.0
         Pitch: 1.0
       HitGroundSound:
         Enabled: true
-        Sound: "realisticsurvival:boomerang_hit_ground"
+        Sound: "harshlands:boomerang_hit_ground"
         Volume: 1.0
         Pitch: 1.0
       ReturnSound:
@@ -639,17 +639,17 @@ Items:
       ReturnAfterTravelingMaxDistance: true
       ThrownSound:
         Enabled: true
-        Sound: "realisticsurvival:boomerang_throw"
+        Sound: "harshlands:boomerang_throw"
         Volume: 1.0
         Pitch: 1.0
       HitMobSound:
         Enabled: true
-        Sound: "realisticsurvival:boomerang_hit_mob"
+        Sound: "harshlands:boomerang_hit_mob"
         Volume: 1.0
         Pitch: 1.0
       HitGroundSound:
         Enabled: true
-        Sound: "realisticsurvival:boomerang_hit_ground"
+        Sound: "harshlands:boomerang_hit_ground"
         Volume: 1.0
         Pitch: 1.0
       ReturnSound:
@@ -676,17 +676,17 @@ Items:
       ReturnAfterTravelingMaxDistance: true
       ThrownSound:
         Enabled: true
-        Sound: "realisticsurvival:boomerang_throw"
+        Sound: "harshlands:boomerang_throw"
         Volume: 1.0
         Pitch: 1.0
       HitMobSound:
         Enabled: true
-        Sound: "realisticsurvival:boomerang_hit_mob"
+        Sound: "harshlands:boomerang_hit_mob"
         Volume: 1.0
         Pitch: 1.0
       HitGroundSound:
         Enabled: true
-        Sound: "realisticsurvival:boomerang_hit_ground"
+        Sound: "harshlands:boomerang_hit_ground"
         Volume: 1.0
         Pitch: 1.0
       ReturnSound:
@@ -713,17 +713,17 @@ Items:
       ReturnAfterTravelingMaxDistance: true
       ThrownSound:
         Enabled: true
-        Sound: "realisticsurvival:boomerang_throw"
+        Sound: "harshlands:boomerang_throw"
         Volume: 1.0
         Pitch: 1.0
       HitMobSound:
         Enabled: true
-        Sound: "realisticsurvival:boomerang_hit_mob"
+        Sound: "harshlands:boomerang_hit_mob"
         Volume: 1.0
         Pitch: 1.0
       HitGroundSound:
         Enabled: true
-        Sound: "realisticsurvival:boomerang_hit_ground"
+        Sound: "harshlands:boomerang_hit_ground"
         Volume: 1.0
         Pitch: 1.0
       ReturnSound:
@@ -750,17 +750,17 @@ Items:
       ReturnAfterTravelingMaxDistance: true
       ThrownSound:
         Enabled: true
-        Sound: "realisticsurvival:boomerang_throw"
+        Sound: "harshlands:boomerang_throw"
         Volume: 1.0
         Pitch: 1.0
       HitMobSound:
         Enabled: true
-        Sound: "realisticsurvival:boomerang_hit_mob"
+        Sound: "harshlands:boomerang_hit_mob"
         Volume: 1.0
         Pitch: 1.0
       HitGroundSound:
         Enabled: true
-        Sound: "realisticsurvival:boomerang_hit_ground"
+        Sound: "harshlands:boomerang_hit_ground"
         Volume: 1.0
         Pitch: 1.0
       ReturnSound:
@@ -787,17 +787,17 @@ Items:
       ReturnAfterTravelingMaxDistance: true
       ThrownSound:
         Enabled: true
-        Sound: "realisticsurvival:boomerang_throw"
+        Sound: "harshlands:boomerang_throw"
         Volume: 1.0
         Pitch: 1.0
       HitMobSound:
         Enabled: true
-        Sound: "realisticsurvival:boomerang_hit_mob"
+        Sound: "harshlands:boomerang_hit_mob"
         Volume: 1.0
         Pitch: 1.0
       HitGroundSound:
         Enabled: true
-        Sound: "realisticsurvival:boomerang_hit_ground"
+        Sound: "harshlands:boomerang_hit_ground"
         Volume: 1.0
         Pitch: 1.0
       ReturnSound:
@@ -824,17 +824,17 @@ Items:
       ReturnAfterTravelingMaxDistance: true
       ThrownSound:
         Enabled: true
-        Sound: "realisticsurvival:boomerang_throw"
+        Sound: "harshlands:boomerang_throw"
         Volume: 1.0
         Pitch: 1.0
       HitMobSound:
         Enabled: true
-        Sound: "realisticsurvival:boomerang_hit_mob"
+        Sound: "harshlands:boomerang_hit_mob"
         Volume: 1.0
         Pitch: 1.0
       HitGroundSound:
         Enabled: true
-        Sound: "realisticsurvival:boomerang_hit_ground"
+        Sound: "harshlands:boomerang_hit_ground"
         Volume: 1.0
         Pitch: 1.0
       ReturnSound:
@@ -864,17 +864,17 @@ Items:
       ReturnAfterTravelingMaxDistance: false
       ThrownSound:
         Enabled: true
-        Sound: "realisticsurvival:dagger_throw"
+        Sound: "harshlands:dagger_throw"
         Volume: 1.0
         Pitch: 1.0
       HitMobSound:
         Enabled: true
-        Sound: "realisticsurvival:dagger_hit_mob"
+        Sound: "harshlands:dagger_hit_mob"
         Volume: 1.0
         Pitch: 1.0
       HitGroundSound:
         Enabled: true
-        Sound: "realisticsurvival:dagger_hit_ground"
+        Sound: "harshlands:dagger_hit_ground"
         Volume: 1.0
         Pitch: 1.0
       ReturnSound:
@@ -902,17 +902,17 @@ Items:
       ReturnAfterTravelingMaxDistance: false
       ThrownSound:
         Enabled: true
-        Sound: "realisticsurvival:dagger_throw"
+        Sound: "harshlands:dagger_throw"
         Volume: 1.0
         Pitch: 1.0
       HitMobSound:
         Enabled: true
-        Sound: "realisticsurvival:dagger_hit_mob"
+        Sound: "harshlands:dagger_hit_mob"
         Volume: 1.0
         Pitch: 1.0
       HitGroundSound:
         Enabled: true
-        Sound: "realisticsurvival:dagger_hit_ground"
+        Sound: "harshlands:dagger_hit_ground"
         Volume: 1.0
         Pitch: 1.0
       ReturnSound:
@@ -940,17 +940,17 @@ Items:
       ReturnAfterTravelingMaxDistance: false
       ThrownSound:
         Enabled: true
-        Sound: "realisticsurvival:dagger_throw"
+        Sound: "harshlands:dagger_throw"
         Volume: 1.0
         Pitch: 1.0
       HitMobSound:
         Enabled: true
-        Sound: "realisticsurvival:dagger_hit_mob"
+        Sound: "harshlands:dagger_hit_mob"
         Volume: 1.0
         Pitch: 1.0
       HitGroundSound:
         Enabled: true
-        Sound: "realisticsurvival:dagger_hit_ground"
+        Sound: "harshlands:dagger_hit_ground"
         Volume: 1.0
         Pitch: 1.0
       ReturnSound:
@@ -978,17 +978,17 @@ Items:
       ReturnAfterTravelingMaxDistance: false
       ThrownSound:
         Enabled: true
-        Sound: "realisticsurvival:dagger_throw"
+        Sound: "harshlands:dagger_throw"
         Volume: 1.0
         Pitch: 1.0
       HitMobSound:
         Enabled: true
-        Sound: "realisticsurvival:dagger_hit_mob"
+        Sound: "harshlands:dagger_hit_mob"
         Volume: 1.0
         Pitch: 1.0
       HitGroundSound:
         Enabled: true
-        Sound: "realisticsurvival:dagger_hit_ground"
+        Sound: "harshlands:dagger_hit_ground"
         Volume: 1.0
         Pitch: 1.0
       ReturnSound:
@@ -1016,17 +1016,17 @@ Items:
       ReturnAfterTravelingMaxDistance: false
       ThrownSound:
         Enabled: true
-        Sound: "realisticsurvival:dagger_throw"
+        Sound: "harshlands:dagger_throw"
         Volume: 1.0
         Pitch: 1.0
       HitMobSound:
         Enabled: true
-        Sound: "realisticsurvival:dagger_hit_mob"
+        Sound: "harshlands:dagger_hit_mob"
         Volume: 1.0
         Pitch: 1.0
       HitGroundSound:
         Enabled: true
-        Sound: "realisticsurvival:dagger_hit_ground"
+        Sound: "harshlands:dagger_hit_ground"
         Volume: 1.0
         Pitch: 1.0
       ReturnSound:
@@ -1054,17 +1054,17 @@ Items:
       ReturnAfterTravelingMaxDistance: false
       ThrownSound:
         Enabled: true
-        Sound: "realisticsurvival:dagger_throw"
+        Sound: "harshlands:dagger_throw"
         Volume: 1.0
         Pitch: 1.0
       HitMobSound:
         Enabled: true
-        Sound: "realisticsurvival:dagger_hit_mob"
+        Sound: "harshlands:dagger_hit_mob"
         Volume: 1.0
         Pitch: 1.0
       HitGroundSound:
         Enabled: true
-        Sound: "realisticsurvival:dagger_hit_ground"
+        Sound: "harshlands:dagger_hit_ground"
         Volume: 1.0
         Pitch: 1.0
       ReturnSound:
@@ -1092,17 +1092,17 @@ Items:
       ReturnAfterTravelingMaxDistance: false
       ThrownSound:
         Enabled: true
-        Sound: "realisticsurvival:dagger_throw"
+        Sound: "harshlands:dagger_throw"
         Volume: 1.0
         Pitch: 1.0
       HitMobSound:
         Enabled: true
-        Sound: "realisticsurvival:dagger_hit_mob"
+        Sound: "harshlands:dagger_hit_mob"
         Volume: 1.0
         Pitch: 1.0
       HitGroundSound:
         Enabled: true
-        Sound: "realisticsurvival:dagger_hit_ground"
+        Sound: "harshlands:dagger_hit_ground"
         Volume: 1.0
         Pitch: 1.0
       ReturnSound:
@@ -1415,17 +1415,17 @@ Items:
       ReturnAfterTravelingMaxDistance: false
       ThrownSound:
         Enabled: true
-        Sound: "realisticsurvival:javelin_throw"
+        Sound: "harshlands:javelin_throw"
         Volume: 1.0
         Pitch: 1.0
       HitMobSound:
         Enabled: true
-        Sound: "realisticsurvival:javelin_hit_mob"
+        Sound: "harshlands:javelin_hit_mob"
         Volume: 1.0
         Pitch: 1.0
       HitGroundSound:
         Enabled: true
-        Sound: "realisticsurvival:javelin_hit_ground"
+        Sound: "harshlands:javelin_hit_ground"
         Volume: 1.0
         Pitch: 1.0
       ReturnSound:
@@ -1452,17 +1452,17 @@ Items:
       ReturnAfterTravelingMaxDistance: false
       ThrownSound:
         Enabled: true
-        Sound: "realisticsurvival:javelin_throw"
+        Sound: "harshlands:javelin_throw"
         Volume: 1.0
         Pitch: 1.0
       HitMobSound:
         Enabled: true
-        Sound: "realisticsurvival:javelin_hit_mob"
+        Sound: "harshlands:javelin_hit_mob"
         Volume: 1.0
         Pitch: 1.0
       HitGroundSound:
         Enabled: true
-        Sound: "realisticsurvival:javelin_hit_ground"
+        Sound: "harshlands:javelin_hit_ground"
         Volume: 1.0
         Pitch: 1.0
       ReturnSound:
@@ -1489,17 +1489,17 @@ Items:
       ReturnAfterTravelingMaxDistance: false
       ThrownSound:
         Enabled: true
-        Sound: "realisticsurvival:javelin_throw"
+        Sound: "harshlands:javelin_throw"
         Volume: 1.0
         Pitch: 1.0
       HitMobSound:
         Enabled: true
-        Sound: "realisticsurvival:javelin_hit_mob"
+        Sound: "harshlands:javelin_hit_mob"
         Volume: 1.0
         Pitch: 1.0
       HitGroundSound:
         Enabled: true
-        Sound: "realisticsurvival:javelin_hit_ground"
+        Sound: "harshlands:javelin_hit_ground"
         Volume: 1.0
         Pitch: 1.0
       ReturnSound:
@@ -1526,17 +1526,17 @@ Items:
       ReturnAfterTravelingMaxDistance: false
       ThrownSound:
         Enabled: true
-        Sound: "realisticsurvival:javelin_throw"
+        Sound: "harshlands:javelin_throw"
         Volume: 1.0
         Pitch: 1.0
       HitMobSound:
         Enabled: true
-        Sound: "realisticsurvival:javelin_hit_mob"
+        Sound: "harshlands:javelin_hit_mob"
         Volume: 1.0
         Pitch: 1.0
       HitGroundSound:
         Enabled: true
-        Sound: "realisticsurvival:javelin_hit_ground"
+        Sound: "harshlands:javelin_hit_ground"
         Volume: 1.0
         Pitch: 1.0
       ReturnSound:
@@ -1563,17 +1563,17 @@ Items:
       ReturnAfterTravelingMaxDistance: false
       ThrownSound:
         Enabled: true
-        Sound: "realisticsurvival:javelin_throw"
+        Sound: "harshlands:javelin_throw"
         Volume: 1.0
         Pitch: 1.0
       HitMobSound:
         Enabled: true
-        Sound: "realisticsurvival:javelin_hit_mob"
+        Sound: "harshlands:javelin_hit_mob"
         Volume: 1.0
         Pitch: 1.0
       HitGroundSound:
         Enabled: true
-        Sound: "realisticsurvival:javelin_hit_ground"
+        Sound: "harshlands:javelin_hit_ground"
         Volume: 1.0
         Pitch: 1.0
       ReturnSound:
@@ -1600,17 +1600,17 @@ Items:
       ReturnAfterTravelingMaxDistance: false
       ThrownSound:
         Enabled: true
-        Sound: "realisticsurvival:javelin_throw"
+        Sound: "harshlands:javelin_throw"
         Volume: 1.0
         Pitch: 1.0
       HitMobSound:
         Enabled: true
-        Sound: "realisticsurvival:javelin_hit_mob"
+        Sound: "harshlands:javelin_hit_mob"
         Volume: 1.0
         Pitch: 1.0
       HitGroundSound:
         Enabled: true
-        Sound: "realisticsurvival:javelin_hit_ground"
+        Sound: "harshlands:javelin_hit_ground"
         Volume: 1.0
         Pitch: 1.0
       ReturnSound:
@@ -1637,17 +1637,17 @@ Items:
       ReturnAfterTravelingMaxDistance: false
       ThrownSound:
         Enabled: true
-        Sound: "realisticsurvival:javelin_throw"
+        Sound: "harshlands:javelin_throw"
         Volume: 1.0
         Pitch: 1.0
       HitMobSound:
         Enabled: true
-        Sound: "realisticsurvival:javelin_hit_mob"
+        Sound: "harshlands:javelin_hit_mob"
         Volume: 1.0
         Pitch: 1.0
       HitGroundSound:
         Enabled: true
-        Sound: "realisticsurvival:javelin_hit_ground"
+        Sound: "harshlands:javelin_hit_ground"
         Volume: 1.0
         Pitch: 1.0
       ReturnSound:
@@ -1976,17 +1976,17 @@ Items:
       ReturnAfterTravelingMaxDistance: false
       ThrownSound:
         Enabled: true
-        Sound: "realisticsurvival:tomahawk_throw"
+        Sound: "harshlands:tomahawk_throw"
         Volume: 1.0
         Pitch: 1.0
       HitMobSound:
         Enabled: true
-        Sound: "realisticsurvival:tomahawk_hit_mob"
+        Sound: "harshlands:tomahawk_hit_mob"
         Volume: 1.0
         Pitch: 1.0
       HitGroundSound:
         Enabled: true
-        Sound: "realisticsurvival:tomahawk_hit_ground"
+        Sound: "harshlands:tomahawk_hit_ground"
         Volume: 1.0
         Pitch: 1.0
       ReturnSound:
@@ -2013,17 +2013,17 @@ Items:
       ReturnAfterTravelingMaxDistance: false
       ThrownSound:
         Enabled: true
-        Sound: "realisticsurvival:tomahawk_throw"
+        Sound: "harshlands:tomahawk_throw"
         Volume: 1.0
         Pitch: 1.0
       HitMobSound:
         Enabled: true
-        Sound: "realisticsurvival:tomahawk_hit_mob"
+        Sound: "harshlands:tomahawk_hit_mob"
         Volume: 1.0
         Pitch: 1.0
       HitGroundSound:
         Enabled: true
-        Sound: "realisticsurvival:tomahawk_hit_ground"
+        Sound: "harshlands:tomahawk_hit_ground"
         Volume: 1.0
         Pitch: 1.0
       ReturnSound:
@@ -2050,17 +2050,17 @@ Items:
       ReturnAfterTravelingMaxDistance: false
       ThrownSound:
         Enabled: true
-        Sound: "realisticsurvival:tomahawk_throw"
+        Sound: "harshlands:tomahawk_throw"
         Volume: 1.0
         Pitch: 1.0
       HitMobSound:
         Enabled: true
-        Sound: "realisticsurvival:tomahawk_hit_mob"
+        Sound: "harshlands:tomahawk_hit_mob"
         Volume: 1.0
         Pitch: 1.0
       HitGroundSound:
         Enabled: true
-        Sound: "realisticsurvival:tomahawk_hit_ground"
+        Sound: "harshlands:tomahawk_hit_ground"
         Volume: 1.0
         Pitch: 1.0
       ReturnSound:
@@ -2087,17 +2087,17 @@ Items:
       ReturnAfterTravelingMaxDistance: false
       ThrownSound:
         Enabled: true
-        Sound: "realisticsurvival:tomahawk_throw"
+        Sound: "harshlands:tomahawk_throw"
         Volume: 1.0
         Pitch: 1.0
       HitMobSound:
         Enabled: true
-        Sound: "realisticsurvival:tomahawk_hit_mob"
+        Sound: "harshlands:tomahawk_hit_mob"
         Volume: 1.0
         Pitch: 1.0
       HitGroundSound:
         Enabled: true
-        Sound: "realisticsurvival:tomahawk_hit_ground"
+        Sound: "harshlands:tomahawk_hit_ground"
         Volume: 1.0
         Pitch: 1.0
       ReturnSound:
@@ -2124,17 +2124,17 @@ Items:
       ReturnAfterTravelingMaxDistance: false
       ThrownSound:
         Enabled: true
-        Sound: "realisticsurvival:tomahawk_throw"
+        Sound: "harshlands:tomahawk_throw"
         Volume: 1.0
         Pitch: 1.0
       HitMobSound:
         Enabled: true
-        Sound: "realisticsurvival:tomahawk_hit_mob"
+        Sound: "harshlands:tomahawk_hit_mob"
         Volume: 1.0
         Pitch: 1.0
       HitGroundSound:
         Enabled: true
-        Sound: "realisticsurvival:tomahawk_hit_ground"
+        Sound: "harshlands:tomahawk_hit_ground"
         Volume: 1.0
         Pitch: 1.0
       ReturnSound:
@@ -2161,17 +2161,17 @@ Items:
       ReturnAfterTravelingMaxDistance: false
       ThrownSound:
         Enabled: true
-        Sound: "realisticsurvival:tomahawk_throw"
+        Sound: "harshlands:tomahawk_throw"
         Volume: 1.0
         Pitch: 1.0
       HitMobSound:
         Enabled: true
-        Sound: "realisticsurvival:tomahawk_hit_mob"
+        Sound: "harshlands:tomahawk_hit_mob"
         Volume: 1.0
         Pitch: 1.0
       HitGroundSound:
         Enabled: true
-        Sound: "realisticsurvival:tomahawk_hit_ground"
+        Sound: "harshlands:tomahawk_hit_ground"
         Volume: 1.0
         Pitch: 1.0
       ReturnSound:
@@ -2198,17 +2198,17 @@ Items:
       ReturnAfterTravelingMaxDistance: false
       ThrownSound:
         Enabled: true
-        Sound: "realisticsurvival:tomahawk_throw"
+        Sound: "harshlands:tomahawk_throw"
         Volume: 1.0
         Pitch: 1.0
       HitMobSound:
         Enabled: true
-        Sound: "realisticsurvival:tomahawk_hit_mob"
+        Sound: "harshlands:tomahawk_hit_mob"
         Volume: 1.0
         Pitch: 1.0
       HitGroundSound:
         Enabled: true
-        Sound: "realisticsurvival:tomahawk_hit_ground"
+        Sound: "harshlands:tomahawk_hit_ground"
         Volume: 1.0
         Pitch: 1.0
       ReturnSound:
@@ -2238,17 +2238,17 @@ Items:
       ReturnAfterTravelingMaxDistance: false
       ThrownSound:
         Enabled: true
-        Sound: "realisticsurvival:throwing_knife_throw"
+        Sound: "harshlands:throwing_knife_throw"
         Volume: 1.0
         Pitch: 1.0
       HitMobSound:
         Enabled: true
-        Sound: "realisticsurvival:throwing_knife_hit_mob"
+        Sound: "harshlands:throwing_knife_hit_mob"
         Volume: 1.0
         Pitch: 1.0
       HitGroundSound:
         Enabled: true
-        Sound: "realisticsurvival:throwing_knife_hit_ground"
+        Sound: "harshlands:throwing_knife_hit_ground"
         Volume: 1.0
         Pitch: 1.0
       ReturnSound:
@@ -2275,17 +2275,17 @@ Items:
       ReturnAfterTravelingMaxDistance: false
       ThrownSound:
         Enabled: true
-        Sound: "realisticsurvival:throwing_knife_throw"
+        Sound: "harshlands:throwing_knife_throw"
         Volume: 1.0
         Pitch: 1.0
       HitMobSound:
         Enabled: true
-        Sound: "realisticsurvival:throwing_knife_hit_mob"
+        Sound: "harshlands:throwing_knife_hit_mob"
         Volume: 1.0
         Pitch: 1.0
       HitGroundSound:
         Enabled: true
-        Sound: "realisticsurvival:throwing_knife_hit_ground"
+        Sound: "harshlands:throwing_knife_hit_ground"
         Volume: 1.0
         Pitch: 1.0
       ReturnSound:
@@ -2312,17 +2312,17 @@ Items:
       ReturnAfterTravelingMaxDistance: false
       ThrownSound:
         Enabled: true
-        Sound: "realisticsurvival:throwing_knife_throw"
+        Sound: "harshlands:throwing_knife_throw"
         Volume: 1.0
         Pitch: 1.0
       HitMobSound:
         Enabled: true
-        Sound: "realisticsurvival:throwing_knife_hit_mob"
+        Sound: "harshlands:throwing_knife_hit_mob"
         Volume: 1.0
         Pitch: 1.0
       HitGroundSound:
         Enabled: true
-        Sound: "realisticsurvival:throwing_knife_hit_ground"
+        Sound: "harshlands:throwing_knife_hit_ground"
         Volume: 1.0
         Pitch: 1.0
       ReturnSound:
@@ -2349,17 +2349,17 @@ Items:
       ReturnAfterTravelingMaxDistance: false
       ThrownSound:
         Enabled: true
-        Sound: "realisticsurvival:throwing_knife_throw"
+        Sound: "harshlands:throwing_knife_throw"
         Volume: 1.0
         Pitch: 1.0
       HitMobSound:
         Enabled: true
-        Sound: "realisticsurvival:throwing_knife_hit_mob"
+        Sound: "harshlands:throwing_knife_hit_mob"
         Volume: 1.0
         Pitch: 1.0
       HitGroundSound:
         Enabled: true
-        Sound: "realisticsurvival:throwing_knife_hit_ground"
+        Sound: "harshlands:throwing_knife_hit_ground"
         Volume: 1.0
         Pitch: 1.0
       ReturnSound:
@@ -2386,17 +2386,17 @@ Items:
       ReturnAfterTravelingMaxDistance: false
       ThrownSound:
         Enabled: true
-        Sound: "realisticsurvival:throwing_knife_throw"
+        Sound: "harshlands:throwing_knife_throw"
         Volume: 1.0
         Pitch: 1.0
       HitMobSound:
         Enabled: true
-        Sound: "realisticsurvival:throwing_knife_hit_mob"
+        Sound: "harshlands:throwing_knife_hit_mob"
         Volume: 1.0
         Pitch: 1.0
       HitGroundSound:
         Enabled: true
-        Sound: "realisticsurvival:throwing_knife_hit_ground"
+        Sound: "harshlands:throwing_knife_hit_ground"
         Volume: 1.0
         Pitch: 1.0
       ReturnSound:
@@ -2423,17 +2423,17 @@ Items:
       ReturnAfterTravelingMaxDistance: false
       ThrownSound:
         Enabled: true
-        Sound: "realisticsurvival:throwing_knife_throw"
+        Sound: "harshlands:throwing_knife_throw"
         Volume: 1.0
         Pitch: 1.0
       HitMobSound:
         Enabled: true
-        Sound: "realisticsurvival:throwing_knife_hit_mob"
+        Sound: "harshlands:throwing_knife_hit_mob"
         Volume: 1.0
         Pitch: 1.0
       HitGroundSound:
         Enabled: true
-        Sound: "realisticsurvival:throwing_knife_hit_ground"
+        Sound: "harshlands:throwing_knife_hit_ground"
         Volume: 1.0
         Pitch: 1.0
       ReturnSound:
@@ -2460,17 +2460,17 @@ Items:
       ReturnAfterTravelingMaxDistance: false
       ThrownSound:
         Enabled: true
-        Sound: "realisticsurvival:throwing_knife_throw"
+        Sound: "harshlands:throwing_knife_throw"
         Volume: 1.0
         Pitch: 1.0
       HitMobSound:
         Enabled: true
-        Sound: "realisticsurvival:throwing_knife_hit_mob"
+        Sound: "harshlands:throwing_knife_hit_mob"
         Volume: 1.0
         Pitch: 1.0
       HitGroundSound:
         Enabled: true
-        Sound: "realisticsurvival:throwing_knife_hit_ground"
+        Sound: "harshlands:throwing_knife_hit_ground"
         Volume: 1.0
         Pitch: 1.0
       ReturnSound:

@@ -1,4 +1,4 @@
-main: me.val_mobile.rsv.RSVPlugin
+main: cz.hashiri.harshlands.rsv.HLPlugin
 name: ${project.parent.name}
 version: ${project.parent.version}
 author: Hashiri_
@@ -9,149 +9,149 @@ softdepend: [PlaceholderAPI, RealisticSeasons, WorldGuard, AuraSkills]
 load: STARTUP
 
 commands:
-  RealisticSurvival:
+  Harshlands:
     description: The home command of the Realistic Survival plugin
-    usage: /realisticsurvival
-    aliases: [rsv]
-    permission: realisticsurvival.command.*
+    usage: /harshlands
+    aliases: [hl]
+    permission: harshlands.command.*
 
 permissions:
-  realisticsurvival.iceandfire.resistance.sirenvisual:
+  harshlands.iceandfire.resistance.sirenvisual:
     description: Prevents the player's screen from changing due to sirens
     default: false
-  realisticsurvival.iceandfire.resistance.*:
+  harshlands.iceandfire.resistance.*:
     description: Wildcard permission
     default: false
     children:
-      realisticsurvival.iceandfire.resistance.sirenvisual: true
-  realisticsurvival.toughasnails.resistance.cold.*:
+      harshlands.iceandfire.resistance.sirenvisual: true
+  harshlands.toughasnails.resistance.cold.*:
     description: Prevents the player from getting cold
     default: false
     children:
-      realisticsurvival.toughasnails.resistance.cold.damage: true
-      realisticsurvival.toughasnails.resistance.cold.potioneffects: true
-      realisticsurvival.toughasnails.resistance.cold.visual: true
-      realisticsurvival.toughasnails.resistance.cold.breath: true
-  realisticsurvival.toughasnails.resistance.cold.damage:
+      harshlands.toughasnails.resistance.cold.damage: true
+      harshlands.toughasnails.resistance.cold.potioneffects: true
+      harshlands.toughasnails.resistance.cold.visual: true
+      harshlands.toughasnails.resistance.cold.breath: true
+  harshlands.toughasnails.resistance.cold.damage:
     description: Prevents the player from taking damage due to hypothermia
     default: false
-  realisticsurvival.toughasnails.resistance.cold.potioneffects:
+  harshlands.toughasnails.resistance.cold.potioneffects:
     description: Prevents the player from receiving status effects due to hypothermia
     default: false
-  realisticsurvival.toughasnails.resistance.cold.visual:
+  harshlands.toughasnails.resistance.cold.visual:
     description: Prevents the player's screen from freezing due to hypothermia
     default: false
-  realisticsurvival.toughasnails.resistance.cold.breath:
+  harshlands.toughasnails.resistance.cold.breath:
     description: Prevents the player from breathing out cold air
     default: false
-  realisticsurvival.toughasnails.resistance.hot.*:
+  harshlands.toughasnails.resistance.hot.*:
     description: Prevents the player from getting hot
     default: false
     children:
-      realisticsurvival.toughasnails.resistance.hot.sweat: true
-      realisticsurvival.toughasnails.resistance.hot.damage: true
-      realisticsurvival.toughasnails.resistance.hot.combustion: true
-      realisticsurvival.toughasnails.resistance.hot.potioneffects: true
-      realisticsurvival.toughasnails.resistance.hot.visual: true
-  realisticsurvival.toughasnails.resistance.hot.sweat:
+      harshlands.toughasnails.resistance.hot.sweat: true
+      harshlands.toughasnails.resistance.hot.damage: true
+      harshlands.toughasnails.resistance.hot.combustion: true
+      harshlands.toughasnails.resistance.hot.potioneffects: true
+      harshlands.toughasnails.resistance.hot.visual: true
+  harshlands.toughasnails.resistance.hot.sweat:
     description: Prevents the player from sweating
     default: false
-  realisticsurvival.toughasnails.resistance.hot.damage:
+  harshlands.toughasnails.resistance.hot.damage:
     description: Prevents the player from taking damage due to hyperthermia
     default: false
-  realisticsurvival.toughasnails.resistance.hot.combustion:
+  harshlands.toughasnails.resistance.hot.combustion:
     description: Prevents the player from being ignited due to hyperthermia
     default: false
-  realisticsurvival.toughasnails.resistance.hot.potioneffects:
+  harshlands.toughasnails.resistance.hot.potioneffects:
     description: Prevents the player from receiving status effects due to hyperthermia
     default: false
-  realisticsurvival.toughasnails.resistance.hot.visual:
+  harshlands.toughasnails.resistance.hot.visual:
     description: Prevents the player's screen from burning due to hypothermia
     default: false
-  realisticsurvival.toughasnails.resistance.thirst.*:
+  harshlands.toughasnails.resistance.thirst.*:
     description: Prevents the player from getting hot
     default: false
     children:
-      realisticsurvival.toughasnails.resistance.thirst.damage: true
-      realisticsurvival.toughasnails.resistance.thirst.potioneffects: true
-      realisticsurvival.toughasnails.resistance.thirst.visual: true
-  realisticsurvival.toughasnails.resistance.thirst:
+      harshlands.toughasnails.resistance.thirst.damage: true
+      harshlands.toughasnails.resistance.thirst.potioneffects: true
+      harshlands.toughasnails.resistance.thirst.visual: true
+  harshlands.toughasnails.resistance.thirst:
     description: Prevents the player from getting thirsty
     default: false
-  realisticsurvival.toughasnails.resistance.thirst.damage:
+  harshlands.toughasnails.resistance.thirst.damage:
     description: Prevents the player from taking damage due to dehydration
     default: false
-  realisticsurvival.toughasnails.resistance.thirst.potioneffects:
+  harshlands.toughasnails.resistance.thirst.potioneffects:
     description: Prevents the player from receiving status effects due to dehydration
     default: false
-  realisticsurvival.toughasnails.resistance.thirst.visual:
+  harshlands.toughasnails.resistance.thirst.visual:
     description: Prevents the player's screen from changing due to dehydration
     default: false
-  realisticsurvival.toughasnails.resistance.parasite.*:
+  harshlands.toughasnails.resistance.parasite.*:
     description: Prevents the player from getting hot
     default: false
     children:
-      realisticsurvival.toughasnails.resistance.parasite.damage: true
-      realisticsurvival.toughasnails.resistance.parasite.potioneffects: true
-  realisticsurvival.toughasnails.resistance.parasite:
+      harshlands.toughasnails.resistance.parasite.damage: true
+      harshlands.toughasnails.resistance.parasite.potioneffects: true
+  harshlands.toughasnails.resistance.parasite:
     description: Prevents the player from getting parasites
     default: false
-  realisticsurvival.toughasnails.resistance.parasite.damage:
+  harshlands.toughasnails.resistance.parasite.damage:
     description: Prevents the player from taking damage from parasites
     default: false
-  realisticsurvival.toughasnails.resistance.parasite.potioneffects:
+  harshlands.toughasnails.resistance.parasite.potioneffects:
     description: Prevents the player from receiving status effects due to parasites
     default: false
-  realisticsurvival.toughasnails.resistance.*:
+  harshlands.toughasnails.resistance.*:
     description: Wildcard permission
     default: false
     children:
-      realisticsurvival.toughasnails.resistance.cold.*: true
-      realisticsurvival.toughasnails.resistance.hot.*: true
-      realisticsurvival.toughasnails.resistance.thirst.*: true
-      realisticsurvival.toughasnails.resistance.parasite.*: true
-  realisticsurvival.command.give:
+      harshlands.toughasnails.resistance.cold.*: true
+      harshlands.toughasnails.resistance.hot.*: true
+      harshlands.toughasnails.resistance.thirst.*: true
+      harshlands.toughasnails.resistance.parasite.*: true
+  harshlands.command.give:
     description: Allows users to give themselves items from the plugin
     default: op
-  realisticsurvival.command.spawnitem:
+  harshlands.command.spawnitem:
     description: Allows users to spawn items from the plugin
     default: op
-  realisticsurvival.command.summon:
+  harshlands.command.summon:
     description: Allows users to spawn mobs from the plugin
     default: op
-  realisticsurvival.command.reload:
+  harshlands.command.reload:
     description: Allows users to reload the plugin
     default: op
-  realisticsurvival.command.thirst:
+  harshlands.command.thirst:
     description: Allows users to change the thirst of other players
     default: op
-  realisticsurvival.command.temperature:
+  harshlands.command.temperature:
     description: Allows users to change the temperature of other players
     default: op
-  realisticsurvival.command.resetitem:
+  harshlands.command.resetitem:
     description: Allows users to reset their item to use in recipes
     default: op
-  realisticsurvival.command.updateitem:
+  harshlands.command.updateitem:
     description: Allows users to update their item
     default: op
-  realisticsurvival.command.help:
+  harshlands.command.help:
     description: Allows users to access the help command
     default: op
-  realisticsurvival.command.version:
+  harshlands.command.version:
     description: Allows users to access the plugin version
     default: op
-  realisticsurvival.command.*:
+  harshlands.command.*:
     description: Wildcard permission
     default: op
     children:
-      realisticsurvival.command.give: true
-      realisticsurvival.command.spawnitem: true
-      realisticsurvival.command.summon: true
-      realisticsurvival.command.reload: true
-      realisticsurvival.command.thirst: true
-      realisticsurvival.command.temperature: true
-      realisticsurvival.command.resetitem: true
-      realisticsurvival.command.updateitem: true
-      realisticsurvival.command.help: true
-      realisticsurvival.command.version: true
+      harshlands.command.give: true
+      harshlands.command.spawnitem: true
+      harshlands.command.summon: true
+      harshlands.command.reload: true
+      harshlands.command.thirst: true
+      harshlands.command.temperature: true
+      harshlands.command.resetitem: true
+      harshlands.command.updateitem: true
+      harshlands.command.help: true
+      harshlands.command.version: true
 

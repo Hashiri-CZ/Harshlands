@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>realisticsurvival-core</artifactId>
+    <artifactId>harshlands-core</artifactId>
     <packaging>jar</packaging>
 
     <build>
@@ -29,8 +29,8 @@
     </build>
 
     <parent>
-        <groupId>me.Val_Mobile</groupId>
-        <artifactId>realisticsurvival-parent</artifactId>
+        <groupId>cz.hashiri.harshlands</groupId>
+        <artifactId>harshlands-parent</artifactId>
         <version>1.2.14-RELEASE</version>
     </parent>
 

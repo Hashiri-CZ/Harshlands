@@ -211,7 +211,7 @@ FlintKnapping:
       Chance: 0.3
       Sound:
         Enabled: true
-        Sound: "realisticsurvival:knapping"
+        Sound: "harshlands:knapping"
         Volume: 1.0
         Pitch: 1.0
     BLACKSTONE:
@@ -219,7 +219,7 @@ FlintKnapping:
       Chance: 0.3
       Sound:
         Enabled: true
-        Sound: "realisticsurvival:knapping"
+        Sound: "harshlands:knapping"
         Volume: 1.0
         Pitch: 1.0
     DEEPSLATE:
@@ -227,7 +227,7 @@ FlintKnapping:
       Chance: 0.3
       Sound:
         Enabled: true
-        Sound: "realisticsurvival:knapping"
+        Sound: "harshlands:knapping"
         Volume: 1.0
         Pitch: 1.0
 
