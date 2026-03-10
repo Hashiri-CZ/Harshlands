@@ -31,28 +31,30 @@ import org.bukkit.scheduler.BukkitTask;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.List;
-import java.util.Map;
 import java.util.Set;
 import java.util.UUID;
 
 public class FearUnlitTorchService {
 
-    private final RSVConfig userConfig;
     private final RSVPlugin plugin;
     private final Set<LocationKey> managedUnlitTorches = new HashSet<>();
     private final List<LocationKey> scanKeys = new ArrayList<>();
+    private final int targetFullScanTicks;
+    private final int minScanBatchSize;
     private int scanCursor = 0;
     private boolean scanDirty = true;
     private BukkitTask enforceTask;
 
     public FearUnlitTorchService(@Nonnull RSVPlugin plugin, @Nonnull RSVConfig userConfig) {
         this.plugin = plugin;
-        this.userConfig = userConfig;
+        this.targetFullScanTicks = Math.max(1, userConfig.getConfig().getInt(
+                "TorchSystem.UnlitTorchEnforcement.TargetFullScanTicks", 20));
+        this.minScanBatchSize = Math.max(1, userConfig.getConfig().getInt(
+                "TorchSystem.UnlitTorchEnforcement.MinScanBatchSize", 32));
     }
 
     public void start() {
@@ -205,10 +207,9 @@ public class FearUnlitTorchService {
             return;
         }
 
-        int targetFullScanTicks = Math.max(1, getIntConfig("TorchSystem.UnlitTorchEnforcement.TargetFullScanTicks", 20));
-        int minScanBatchSize = Math.max(1, getIntConfig("TorchSystem.UnlitTorchEnforcement.MinScanBatchSize", 32));
         int batchSize = Math.max(minScanBatchSize, (scanKeys.size() + targetFullScanTicks - 1) / targetFullScanTicks);
-        Map<UUID, World> worldCache = new HashMap<>();
+        UUID lastWorldId = null;
+        World lastWorld = null;
 
         for (int i = 0; i < batchSize && !scanKeys.isEmpty(); i++) {
             if (scanCursor >= scanKeys.size()) {
@@ -221,7 +222,12 @@ public class FearUnlitTorchService {
                 continue;
             }
 
-            World world = worldCache.computeIfAbsent(key.worldId(), Bukkit::getWorld);
+            UUID wid = key.worldId();
+            if (!wid.equals(lastWorldId)) {
+                lastWorldId = wid;
+                lastWorld = Bukkit.getWorld(wid);
+            }
+            World world = lastWorld;
             if (world == null) {
                 removeManagedUnlit(key);
                 continue;
@@ -279,10 +285,6 @@ public class FearUnlitTorchService {
         if (managedUnlitTorches.remove(key)) {
             scanDirty = true;
         }
-    }
-
-    private int getIntConfig(@Nonnull String path, int fallback) {
-        return userConfig.getConfig().getInt(path, fallback);
     }
 
     private record LocationKey(UUID worldId, int x, int y, int z) {
