@@ -92,7 +92,7 @@ Fear:
 ####################################
 
 Database:
-  Type: "SQLITE"       # SQLITE or MYSQL
+  Type: "H2"           # H2 (embedded, default) or MYSQL
   MySQL:
     Host: "localhost"
     Port: 3306

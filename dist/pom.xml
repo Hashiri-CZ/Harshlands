@@ -34,13 +34,20 @@
                                         <exclude>schematics/**</exclude>
                                     </excludes>
                                 </filter>
+                                <filter>
+                                    <artifact>com.h2database:h2</artifact>
+                                    <excludes>
+                                        <exclude>org/h2/server/web/**</exclude>
+                                        <exclude>org/h2/server/pg/**</exclude>
+                                    </excludes>
+                                </filter>
                             </filters>
                             <artifactSet>
                                 <includes>
                                     <include>me.Val_Mobile:realisticsurvival-core</include>
                                     <include>me.Val_Mobile:realisticsurvival-spigot_impl_1_21_R11</include>
                                     <include>com.zaxxer:HikariCP</include>
-                                    <include>org.xerial:sqlite-jdbc</include>
+                                    <include>com.h2database:h2</include>
                                 </includes>
                             </artifactSet>
                             <relocations>
@@ -49,8 +56,8 @@
                                     <shadedPattern>me.val_mobile.libs.hikari</shadedPattern>
                                 </relocation>
                                 <relocation>
-                                    <pattern>org.sqlite</pattern>
-                                    <shadedPattern>me.val_mobile.libs.sqlite</shadedPattern>
+                                    <pattern>org.h2</pattern>
+                                    <shadedPattern>me.val_mobile.libs.h2</shadedPattern>
                                 </relocation>
                             </relocations>
                         </configuration>
