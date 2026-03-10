@@ -42,7 +42,7 @@ public class RSVDatabase {
 
     public void connect() {
         FileConfiguration config = plugin.getConfig();
-        String type = config.getString("Database.Type", "SQLITE").toUpperCase();
+        String type = config.getString("Database.Type", "H2").toUpperCase();
         this.isMysql = type.equals("MYSQL");
 
         HikariConfig hikariConfig = new HikariConfig();
@@ -55,6 +55,12 @@ public class RSVDatabase {
             String username = config.getString("Database.MySQL.Username", "root");
             String password = config.getString("Database.MySQL.Password", "");
 
+            try {
+                Class.forName("com.mysql.cj.jdbc.Driver");
+            } catch (ClassNotFoundException e) {
+                throw new RuntimeException(
+                    "[RSVDatabase] MySQL driver not found. Add mysql-connector-j to your server's /lib folder.", e);
+            }
             hikariConfig.setJdbcUrl("jdbc:mysql://" + host + ":" + port + "/" + database
                 + "?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC");
             hikariConfig.setUsername(username);
@@ -66,24 +72,18 @@ public class RSVDatabase {
             hikariConfig.setIdleTimeout(config.getLong("Database.MySQL.Pool.IdleTimeout", 600000));
             hikariConfig.setMaxLifetime(config.getLong("Database.MySQL.Pool.MaxLifetime", 1800000));
         } else {
-            File dbFile = new File(plugin.getDataFolder(), "data.db");
-            hikariConfig.setJdbcUrl("jdbc:sqlite:" + dbFile.getAbsolutePath());
-            hikariConfig.setDriverClassName("org.sqlite.JDBC");
-            // SQLite doesn't support concurrent writes well
-            hikariConfig.setMaximumPoolSize(1);
+            File dbFile = new File(plugin.getDataFolder(), "data");
+            hikariConfig.setJdbcUrl("jdbc:h2:file:" + dbFile.getAbsolutePath() + ";TRACE_LEVEL_FILE=0");
+            hikariConfig.setDriverClassName("org.h2.Driver");
+            hikariConfig.setMaximumPoolSize(2);
             hikariConfig.setMinimumIdle(1);
         }
 
         try {
             dataSource = new HikariDataSource(hikariConfig);
-            // Test connection and apply SQLite PRAGMAs
+            // Test connection
             try (Connection conn = dataSource.getConnection()) {
-                if (!isMysql) {
-                    try (Statement stmt = conn.createStatement()) {
-                        stmt.execute("PRAGMA journal_mode=WAL");
-                        stmt.execute("PRAGMA synchronous=NORMAL");
-                    }
-                }
+                conn.isValid(1);
             }
             logger.info("[RSVDatabase] Connected to " + type + " database.");
         } catch (Exception e) {
@@ -157,7 +157,7 @@ public class RSVDatabase {
 
         String sql = isMysql
             ? "INSERT IGNORE INTO rsv_tan_data (uuid, temperature, thirst, thirst_exhaustion, thirst_saturation, thirst_tick_timer) VALUES (?, ?, ?, ?, ?, ?)"
-            : "INSERT OR IGNORE INTO rsv_tan_data (uuid, temperature, thirst, thirst_exhaustion, thirst_saturation, thirst_tick_timer) VALUES (?, ?, ?, ?, ?, ?)";
+            : "MERGE INTO rsv_tan_data (uuid, temperature, thirst, thirst_exhaustion, thirst_saturation, thirst_tick_timer) KEY(uuid) VALUES (?, ?, ?, ?, ?, ?)";
 
         int migrated = 0;
         try (Connection conn = dataSource.getConnection();
@@ -207,7 +207,7 @@ public class RSVDatabase {
 
         String sql = isMysql
             ? "INSERT IGNORE INTO rsv_baubles_data (uuid, items_json) VALUES (?, ?)"
-            : "INSERT OR IGNORE INTO rsv_baubles_data (uuid, items_json) VALUES (?, ?)";
+            : "MERGE INTO rsv_baubles_data (uuid, items_json) KEY(uuid) VALUES (?, ?)";
 
         int migrated = 0;
         try (Connection conn = dataSource.getConnection();
@@ -246,7 +246,7 @@ public class RSVDatabase {
         long now = System.currentTimeMillis();
         String sql = isMysql
             ? "INSERT IGNORE INTO rsv_torch_lit (location_key, expires_at) VALUES (?, ?)"
-            : "INSERT OR IGNORE INTO rsv_torch_lit (location_key, expires_at) VALUES (?, ?)";
+            : "MERGE INTO rsv_torch_lit (location_key, expires_at) KEY(location_key) VALUES (?, ?)";
 
         int migrated = 0;
         try (Connection conn = dataSource.getConnection();
@@ -314,8 +314,8 @@ public class RSVDatabase {
                     + " ON DUPLICATE KEY UPDATE temperature=VALUES(temperature), thirst=VALUES(thirst),"
                     + " thirst_exhaustion=VALUES(thirst_exhaustion), thirst_saturation=VALUES(thirst_saturation),"
                     + " thirst_tick_timer=VALUES(thirst_tick_timer)"
-                : "INSERT OR REPLACE INTO rsv_tan_data"
-                    + " (uuid, temperature, thirst, thirst_exhaustion, thirst_saturation, thirst_tick_timer)"
+                : "MERGE INTO rsv_tan_data (uuid, temperature, thirst, thirst_exhaustion, thirst_saturation, thirst_tick_timer)"
+                    + " KEY(uuid)"
                     + " VALUES (?, ?, ?, ?, ?, ?)";
             try (Connection conn = dataSource.getConnection();
                  PreparedStatement ps = conn.prepareStatement(sql)) {
@@ -357,7 +357,7 @@ public class RSVDatabase {
             String sql = isMysql
                 ? "INSERT INTO rsv_baubles_data (uuid, items_json) VALUES (?, ?)"
                     + " ON DUPLICATE KEY UPDATE items_json=VALUES(items_json)"
-                : "INSERT OR REPLACE INTO rsv_baubles_data (uuid, items_json) VALUES (?, ?)";
+                : "MERGE INTO rsv_baubles_data (uuid, items_json) KEY(uuid) VALUES (?, ?)";
             try (Connection conn = dataSource.getConnection();
                  PreparedStatement ps = conn.prepareStatement(sql)) {
                 ps.setString(1, uuid.toString());
@@ -404,7 +404,7 @@ public class RSVDatabase {
                 if (!snapshot.isEmpty()) {
                     String sql = isMysql
                         ? "INSERT IGNORE INTO rsv_torch_lit (location_key, expires_at) VALUES (?, ?)"
-                        : "INSERT OR IGNORE INTO rsv_torch_lit (location_key, expires_at) VALUES (?, ?)";
+                        : "INSERT INTO rsv_torch_lit (location_key, expires_at) VALUES (?, ?)";
                     try (PreparedStatement ps = conn.prepareStatement(sql)) {
                         for (Map.Entry<String, Long> entry : snapshot.entrySet()) {
                             ps.setString(1, entry.getKey());
