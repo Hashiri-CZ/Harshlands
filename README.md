@@ -1,6 +1,6 @@
 <p align="center">
   <!-- Replace with your actual logo/banner image -->
-  <img src="https://raw.githubusercontent.com/Hashiri-CZ/RealisticSurvival-Reloaded/main/.github/assets/banner.png" alt="Harshlands Banner" width="800"/>
+  <img src="https://raw.githubusercontent.com/Hashiri-CZ/Harshlands/refs/heads/master/.github/assets/banner.png" alt="Harshlands Banner" width="800"/>
 </p>
 
 <h1 align="center">⚔️ Harshlands</h1>
