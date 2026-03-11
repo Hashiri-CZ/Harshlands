@@ -55,6 +55,7 @@ hs_err_pid*
 .DS_Store
 .AppleDouble
 .LSOverride
+.claude
 
 # Icon must end with two \r
 Icon
@@ -116,6 +117,12 @@ buildNumber.properties
 .mvn/timing.properties
 .mvn/wrapper/maven-wrapper.jar
 .flattened-pom.xml
+.tmp-rs-stub-classes
+.tmp-rs-stub-src
+Downloads
+.vscode
+.idea
+.m2
 
 # Common working directory
 run/
