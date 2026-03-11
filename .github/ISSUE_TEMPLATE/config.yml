@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Bug Report Guidelines
+    url: https://github.com/Hashiri-CZ/Harshlands/issues
+    about: Guidelines on how to make good Bug reports
+  - name: Discord Server (for Questions and Suggestions)
+    url: https://discord.gg/E863pjrSXr
+    about: Please ask and answer questions here.
