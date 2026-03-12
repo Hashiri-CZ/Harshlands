@@ -181,6 +181,10 @@ Fear:
   FearLevel: "&6[Harshlands] &f%PLAYER%'s fear level: &e%FEAR_LEVEL%&f / &e100.00" # All internal placeholders: %PLAYER%, %FEAR_LEVEL%
   ModuleDisabled: "&c[Harshlands] Fear module is not enabled."
   PlayerNotFound: "&cPlayer not found."
+  SetFear:
+    Success: "&6[Harshlands] &fSet %PLAYER%'s fear to &e%FEAR_LEVEL%&f." # All internal placeholders: %PLAYER%, %FEAR_LEVEL%
+    InvalidAmount: "&c[Harshlands] Amount must be a number between 0 and 100."
+    Usage: "&c[Harshlands] Usage: /hl setfear <player> <amount>"
 
 # Tab completer
 Count: "[<count>]"

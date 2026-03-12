@@ -17,6 +17,7 @@
 package cz.hashiri.harshlands.baubles;
 
 import cz.hashiri.harshlands.data.HLModule;
+import cz.hashiri.harshlands.rsv.HLPlugin;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
@@ -51,7 +52,12 @@ public class PotionBauble extends TickableBauble {
                 amp = section.getInt(key + ".Amplifier");
                 ampInc = section.getInt(key + ".AmplifierIncrement");
 
-                effects.add(new PotionBaubleEffect(Registry.EFFECT.get(NamespacedKey.minecraft(key.toLowerCase())), dur, amp, ampInc));
+                PotionEffectType type = Registry.EFFECT.get(NamespacedKey.minecraft(key.toLowerCase()));
+                if (type == null) {
+                    HLPlugin.getPlugin().getLogger().warning("[Baubles] Unknown effect type '" + key + "' in bauble '" + name + "' — skipping.");
+                } else {
+                    effects.add(new PotionBaubleEffect(type, dur, amp, ampInc));
+                }
             }
         }
     }

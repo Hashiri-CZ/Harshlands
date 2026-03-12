@@ -68,11 +68,11 @@ public class Tab implements TabCompleter {
     @Override
     public List<String> onTabComplete(@Nonnull CommandSender sender, @Nonnull Command cmd, @Nonnull String label, @Nonnull String[] args) {
         // check if the user typed /harshlands, case-insensitive
-        if (label.equalsIgnoreCase(NAME) || label.equalsIgnoreCase("rsv")) {
+        if (cmd.getName().equalsIgnoreCase(NAME)) {
             List<String> result = new ArrayList<>(); // create an empty string list which will store the tab completer texts
 
             if (firstArgs.isEmpty()) {
-                firstArgs.addAll(Set.of("reload", "give", "spawnitem", "summon", "thirst", "temperature", "resetitem", "updateitem", "help", "version"));
+                firstArgs.addAll(Set.of("reload", "give", "spawnitem", "summon", "thirst", "temperature", "resetitem", "updateitem", "fear", "setfear", "help", "version"));
             }
 
             if (mobs.isEmpty()) {
@@ -108,7 +108,7 @@ public class Tab implements TabCompleter {
             // if 2 arguments were typed
             else if (args.length == 2) {
                 switch (args[0].toLowerCase()) {
-                    case "give", "thirst", "temperature", "resetitem", "updateitem" -> {
+                    case "fear", "setfear", "give", "thirst", "temperature", "resetitem", "updateitem" -> {
                         if (sender instanceof Player player) {
                             result.add(player.getName());
                         }
@@ -133,6 +133,7 @@ public class Tab implements TabCompleter {
             else if (args.length == 3) {
                 switch (args[0].toLowerCase()) {
                     case "give" -> HLItem.getItemMap().keySet().stream().filter(item -> item.toLowerCase().startsWith(args[2].toLowerCase())).forEach(result::add);
+                    case "setfear" -> List.of("0", "25", "50", "75", "100").stream().filter(v -> v.startsWith(args[2])).forEach(result::add);
                     case "temperature" -> temperature.stream().filter(temp -> temp.toLowerCase().startsWith(args[2].toLowerCase())).forEach(result::add);
                     case "thirst" -> thirst.stream().filter(th -> th.toLowerCase().startsWith(args[2].toLowerCase())).forEach(result::add);
                     case "spawnitem" -> result.add(Utils.translateMsg(config.getString("Count"), sender, null));

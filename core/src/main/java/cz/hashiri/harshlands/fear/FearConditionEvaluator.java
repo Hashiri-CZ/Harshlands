@@ -24,6 +24,8 @@ import cz.hashiri.harshlands.tan.TempManager;
 import cz.hashiri.harshlands.utils.Utils;
 import org.bukkit.Location;
 import org.bukkit.World;
+import org.bukkit.attribute.Attribute;
+import org.bukkit.attribute.AttributeInstance;
 import org.bukkit.block.Block;
 import org.bukkit.block.data.Lightable;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -113,7 +115,9 @@ public class FearConditionEvaluator {
     private double evalLowHealth(Player player, DataModule dm) {
         double fraction = config.getDouble("FearMeter.Conditions.LowHealth.HealthFraction", 0.35);
         int requiredTicks = config.getInt("FearMeter.Conditions.LowHealth.RequiredTicks", 3);
-        boolean isLow = player.getHealth() / player.getMaxHealth() <= fraction;
+        AttributeInstance maxHealthAttribute = player.getAttribute(Attribute.MAX_HEALTH);
+        double maxHealth = maxHealthAttribute == null ? 20.0 : maxHealthAttribute.getValue();
+        boolean isLow = maxHealth > 0.0 && (player.getHealth() / maxHealth) <= fraction;
         if (isLow) {
             int ticks = dm.incrementLowHealthTicks();
             if (ticks >= requiredTicks) {

@@ -93,6 +93,7 @@ public class FearModule extends HLModule {
                 for (HLPlayer hlPlayer : new ArrayList<>(HLPlayer.getPlayers().values())) {
                     Player p = hlPlayer.getPlayer();
                     if (p == null || !p.isOnline()) continue;
+                    if (p.isDead()) continue;
                     if (!isEnabled(p.getWorld())) continue;
                     cz.hashiri.harshlands.data.fear.DataModule dm = hlPlayer.getFearDataModule();
                     if (dm == null) continue;

@@ -51,8 +51,8 @@ public class TagUtils {
                                 parameterizedType.getActualTypeArguments()[0].equals(Material.class)) {
                             // Add the field name and its value to the map
                             Object value = field.get(null); // null because it's a static field
-                            if (value instanceof Tag) {
-                                tagMaterialMap.put(field.getName(), (Tag<Material>) value);
+                            if (value instanceof Tag<?> tag) {
+                                tagMaterialMap.put(field.getName(), castMaterialTag(tag));
                             }
                         }
                     }
@@ -73,6 +73,11 @@ public class TagUtils {
         }
 
         return instance;
+    }
+
+    @SuppressWarnings("unchecked")
+    private static Tag<Material> castMaterialTag(@Nonnull Tag<?> tag) {
+        return (Tag<Material>) tag;
     }
 }
 

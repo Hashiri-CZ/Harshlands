@@ -890,6 +890,71 @@ public class Commands implements CommandExecutor {
                     ));
                     return true;
                 }
+                case "setfear" -> {
+                    if (!sender.hasPermission("harshlands.command.fear.set")) {
+                        sendNoPermissionMessage(sender);
+                        return true;
+                    }
+
+                    HLModule fearModSf = HLModule.getModule(FearModule.NAME);
+                    if (fearModSf == null || !fearModSf.isGloballyEnabled()) {
+                        sender.sendMessage(Utils.translateMsg(
+                            config.getString("Fear.ModuleDisabled", "&c[Harshlands] Fear module is not enabled."), sender, null));
+                        return true;
+                    }
+
+                    if (args.length < 3) {
+                        sender.sendMessage(Utils.translateMsg(
+                            config.getString("Fear.SetFear.Usage", "&c[Harshlands] Usage: /hl setfear <player> <amount>"), sender, null));
+                        return true;
+                    }
+
+                    Player sfTarget = Bukkit.getPlayer(args[1]);
+                    if (sfTarget == null) {
+                        sender.sendMessage(Utils.translateMsg(
+                            config.getString("Fear.PlayerNotFound", "&cPlayer not found."), sender, null));
+                        return true;
+                    }
+
+                    double sfAmount;
+                    try {
+                        sfAmount = Double.parseDouble(args[2]);
+                    } catch (NumberFormatException e) {
+                        sender.sendMessage(Utils.translateMsg(
+                            config.getString("Fear.SetFear.InvalidAmount", "&c[Harshlands] Amount must be a number between 0 and 100."), sender, null));
+                        return true;
+                    }
+
+                    if (sfAmount < 0 || sfAmount > 100) {
+                        sender.sendMessage(Utils.translateMsg(
+                            config.getString("Fear.SetFear.InvalidAmount", "&c[Harshlands] Amount must be a number between 0 and 100."), sender, null));
+                        return true;
+                    }
+
+                    HLPlayer sfHlTarget = HLPlayer.getPlayers().get(sfTarget.getUniqueId());
+                    if (sfHlTarget == null) {
+                        sender.sendMessage(Utils.translateMsg(
+                            config.getString("Fear.PlayerNotFound", "&cPlayer not found."), sender, null));
+                        return true;
+                    }
+
+                    cz.hashiri.harshlands.data.fear.DataModule sfDm = sfHlTarget.getFearDataModule();
+                    if (sfDm == null) {
+                        sender.sendMessage(Utils.translateMsg(
+                            config.getString("Fear.ModuleDisabled", "&c[Harshlands] Fear module is not enabled."), sender, null));
+                        return true;
+                    }
+
+                    sfDm.setFearLevel(sfAmount);
+                    plugin.getScheduler().runAsync(() -> sfDm.saveData());
+
+                    sender.sendMessage(Utils.translateMsg(
+                        config.getString("Fear.SetFear.Success", "&6[Harshlands] &fSet %PLAYER%'s fear to &e%FEAR_LEVEL%&f."),
+                        null,
+                        Map.of("PLAYER", sfTarget.getName(), "FEAR_LEVEL", String.format("%.2f", sfAmount))
+                    ));
+                    return true;
+                }
                 case "help" -> {
                     if (!sender.hasPermission("harshlands.command.help")) {
                         // send the player a message explaining that he/she does not have permission to execute the command

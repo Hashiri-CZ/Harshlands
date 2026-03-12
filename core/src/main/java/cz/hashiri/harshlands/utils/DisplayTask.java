@@ -67,6 +67,7 @@ public class DisplayTask extends BukkitRunnable implements HLTask {
         tasks.put(id, this);
     }
 
+    @SuppressWarnings("deprecation")
     @Override
     public void run() {
         Player player = this.player.getPlayer();

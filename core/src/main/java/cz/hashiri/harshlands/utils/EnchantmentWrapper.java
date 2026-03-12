@@ -21,6 +21,7 @@ import org.bukkit.enchantments.Enchantment;
 import org.bukkit.enchantments.EnchantmentTarget;
 import org.bukkit.inventory.ItemStack;
 
+@SuppressWarnings("deprecation")
 public class EnchantmentWrapper extends Enchantment {
 
     private final NamespacedKey key;

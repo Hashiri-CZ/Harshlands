@@ -19,6 +19,7 @@ package cz.hashiri.harshlands.fear;
 import cz.hashiri.harshlands.data.HLPlayer;
 import cz.hashiri.harshlands.data.fear.DataModule;
 import cz.hashiri.harshlands.rsv.HLPlugin;
+import cz.hashiri.harshlands.utils.Utils;
 import org.bukkit.Location;
 import org.bukkit.Sound;
 import org.bukkit.SoundCategory;
@@ -48,6 +49,7 @@ public class FearEffectsTask implements Runnable {
         for (HLPlayer hlPlayer : new ArrayList<>(HLPlayer.getPlayers().values())) {
             Player player = hlPlayer.getPlayer();
             if (player == null || !player.isOnline()) continue;
+            if (player.isDead()) continue;
             if (!fearModule.isEnabled(player.getWorld())) continue;
             DataModule dm = hlPlayer.getFearDataModule();
             if (dm == null) continue;
@@ -81,10 +83,8 @@ public class FearEffectsTask implements Runnable {
         if (pool.isEmpty()) return;
         ThreadLocalRandom rng = ThreadLocalRandom.current();
         String soundName = pool.get(rng.nextInt(pool.size()));
-        Sound sound;
-        try {
-            sound = Sound.valueOf(soundName);
-        } catch (IllegalArgumentException e) {
+        Sound sound = Utils.resolveSound(soundName);
+        if (sound == null) {
             plugin.getLogger().warning("[Fear] Unknown sound in FakeMobSounds: " + soundName);
             return;
         }
@@ -104,10 +104,8 @@ public class FearEffectsTask implements Runnable {
         if (fear < config.getDouble("FearMeter.Effects.Heartbeat.MinFear", 85.0)) return;
         float volume = (float) config.getDouble("FearMeter.Effects.Heartbeat.Volume", 0.6);
         float pitch  = (float) config.getDouble("FearMeter.Effects.Heartbeat.Pitch", 1.0);
-        Sound heartbeat;
-        try {
-            heartbeat = Sound.valueOf("ENTITY_WARDEN_HEARTBEAT");
-        } catch (IllegalArgumentException e) {
+        Sound heartbeat = Utils.resolveSound("ENTITY_WARDEN_HEARTBEAT");
+        if (heartbeat == null) {
             return; // sound not available on this server version
         }
         player.playSound(player.getLocation(), heartbeat, SoundCategory.AMBIENT, volume, pitch);

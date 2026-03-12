@@ -38,7 +38,6 @@ import org.bukkit.craftbukkit.v1_21_R7.entity.CraftEntity;
 import org.bukkit.craftbukkit.v1_21_R7.entity.CraftLivingEntity;
 import org.bukkit.craftbukkit.v1_21_R7.entity.CraftPlayer;
 import org.bukkit.entity.Entity;
-import org.bukkit.entity.EntityCategory;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.EquipmentSlot;
@@ -137,10 +136,7 @@ public class v1_21_R11 extends InternalsProvider {
 
     @Override
     public boolean isUndead(Entity entity) {
-        if (entity instanceof LivingEntity living) {
-            return living.getCategory() == EntityCategory.UNDEAD;
-        }
-        return false;
+        return entity instanceof LivingEntity living && Tag.ENTITY_TYPES_UNDEAD.isTagged(living.getType());
     }
     @Override
     public boolean isNetheriteRecipe(SmithingInventory inv) {
@@ -240,6 +236,7 @@ public class v1_21_R11 extends InternalsProvider {
         }
     }
 
+    @SuppressWarnings("deprecation")
     public static boolean teleport(EnderMan enderman, double d0, double d1, double d2) {
         BlockPos.MutableBlockPos blockposition_mutableblockposition = new BlockPos.MutableBlockPos(d0, d1, d2);
 

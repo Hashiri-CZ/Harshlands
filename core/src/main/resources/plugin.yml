@@ -146,6 +146,9 @@ permissions:
   harshlands.command.fear.others:
     description: Allows checking other players' fear levels
     default: op
+  harshlands.command.fear.set:
+    description: Allows setting another player's fear level
+    default: op
   harshlands.command.*:
     description: Wildcard permission
     default: op
@@ -162,4 +165,5 @@ permissions:
       harshlands.command.version: true
       harshlands.command.fear: true
       harshlands.command.fear.others: true
+      harshlands.command.fear.set: true
 

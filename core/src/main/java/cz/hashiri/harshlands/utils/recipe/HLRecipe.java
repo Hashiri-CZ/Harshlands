@@ -109,24 +109,60 @@ public interface HLRecipe {
 
     @Nullable
     static RecipeChoice parseRecChoice(@Nonnull Object obj) {
-        if (obj instanceof List list && !list.isEmpty()) {
-            if (list.get(0) instanceof Material) {
-                return new RecipeChoice.MaterialChoice((List<Material>) list);
+        if (obj instanceof List<?> list && !list.isEmpty()) {
+            List<Material> materialList = toMaterialList(list);
+            if (!materialList.isEmpty()) {
+                return new RecipeChoice.MaterialChoice(materialList);
             }
-            else if (list.get(0) instanceof ItemStack) {
-                return new RecipeChoice.ExactChoice((List<ItemStack>) list);
+
+            List<ItemStack> itemStackList = toItemStackList(list);
+            if (!itemStackList.isEmpty()) {
+                return new RecipeChoice.ExactChoice(itemStackList);
             }
         }
         else if (obj instanceof Material) {
             return new RecipeChoice.MaterialChoice((Material) obj);
         }
-        else if (obj instanceof Tag) {
-            return new RecipeChoice.MaterialChoice((Tag<Material>) obj);
+        else if (obj instanceof Tag<?> tag) {
+            Tag<Material> materialTag = asMaterialTag(tag);
+            if (materialTag != null) {
+                return new RecipeChoice.MaterialChoice(materialTag);
+            }
         }
         else if (obj instanceof ItemStack) {
             return new RecipeChoice.ExactChoice((ItemStack) obj);
         }
         return null;
+    }
+
+    @Nonnull
+    private static List<Material> toMaterialList(@Nonnull List<?> list) {
+        List<Material> materials = new ArrayList<>();
+        for (Object entry : list) {
+            if (!(entry instanceof Material material)) {
+                return List.of();
+            }
+            materials.add(material);
+        }
+        return materials;
+    }
+
+    @Nonnull
+    private static List<ItemStack> toItemStackList(@Nonnull List<?> list) {
+        List<ItemStack> itemStacks = new ArrayList<>();
+        for (Object entry : list) {
+            if (!(entry instanceof ItemStack itemStack)) {
+                return List.of();
+            }
+            itemStacks.add(itemStack);
+        }
+        return itemStacks;
+    }
+
+    @Nullable
+    @SuppressWarnings("unchecked")
+    private static Tag<Material> asMaterialTag(@Nonnull Tag<?> tag) {
+        return (Tag<Material>) tag;
     }
 }
 

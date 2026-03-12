@@ -2,7 +2,7 @@
 #          Baubles                    #
 #######################################
 
-ConfigId: "1.2.10-RELEASE" # Used for config syncing purposes, do NOT edit
+ConfigId: "1.2.14-RELEASE" # Used for config syncing purposes, do NOT edit
 
 # Customize messages
 Initialize:
@@ -290,7 +290,7 @@ Items:
       Enabled_1_21_11: true
     TickPeriod: 20
     Effects:
-      DAMAGE_RESISTANCE:
+      resistance:
         AmplifierIncrement: 1
         Amplifier: 0
         Duration: 270
@@ -308,7 +308,7 @@ Items:
       Enabled_1_21_11: true
     TickPeriod: 20
     Effects:
-      FAST_DIGGING:
+      haste:
         AmplifierIncrement: 1
         Amplifier: 0
         Duration: 270
@@ -317,7 +317,7 @@ Items:
       Enabled_1_21_11: true
     TickPeriod: 20
     Effects:
-      INCREASE_DAMAGE:
+      strength:
         AmplifierIncrement: 1
         Amplifier: 0
         Duration: 270
@@ -335,7 +335,7 @@ Items:
       Enabled_1_21_11: true
     TickPeriod: 20
     Effects:
-      JUMP:
+      jump_boost:
         AmplifierIncrement: 1
         Amplifier: 0
         Duration: 270
@@ -492,11 +492,11 @@ Items:
       Enabled_1_21_11: true
     ExtraDamage: 2.0
     Effects:
-      INCREASE_DAMAGE:
+      strength:
         AmplifierIncrement: 1
         Amplifier: 0
         Duration: 270
-      DAMAGE_RESISTANCE:
+      resistance:
         AmplifierIncrement: 1
         Amplifier: 0
         Duration: 270
@@ -504,11 +504,11 @@ Items:
     Enabled:
       Enabled_1_21_11: true
     Effects:
-      INCREASE_DAMAGE:
+      strength:
         AmplifierIncrement: 1
         Amplifier: 0
         Duration: 270
-      DAMAGE_RESISTANCE:
+      resistance:
         AmplifierIncrement: 1
         Amplifier: 0
         Duration: 270
@@ -516,11 +516,11 @@ Items:
     Enabled:
       Enabled_1_21_11: true
     Effects:
-      INCREASE_DAMAGE:
+      strength:
         AmplifierIncrement: 1
         Amplifier: 0
         Duration: 270
-      DAMAGE_RESISTANCE:
+      resistance:
         AmplifierIncrement: 1
         Amplifier: 0
         Duration: 270
@@ -646,7 +646,7 @@ Items:
       Enabled_1_21_11: true
     TickPeriod: 20
     Effects:
-      DAMAGE_RESISTANCE:
+      resistance:
         AmplifierIncrement: 0
         Amplifier: 0
         Duration: 270
@@ -656,7 +656,7 @@ Items:
       Enabled_1_21_11: true
     TickPeriod: 20
     Effects:
-      FAST_DIGGING:
+      haste:
         AmplifierIncrement: 0
         Amplifier: 0
         Duration: 270

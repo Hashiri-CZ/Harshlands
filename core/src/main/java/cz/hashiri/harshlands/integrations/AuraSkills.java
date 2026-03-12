@@ -117,7 +117,7 @@ public class AuraSkills extends CompatiblePlugin {
         }
 
         try {
-            return Enum.valueOf((Class) skillsEnumClass, normalized.toUpperCase(Locale.ROOT));
+            return getEnumConstant(skillsEnumClass, normalized.toUpperCase(Locale.ROOT));
         } catch (IllegalArgumentException ignored) {
         }
 
@@ -133,7 +133,6 @@ public class AuraSkills extends CompatiblePlugin {
         return null;
     }
 
-    @SuppressWarnings({"rawtypes", "unchecked"})
     private void initializeReflection(@Nonnull HLPlugin plugin) {
         try {
             Class<?> apiClass = Class.forName("dev.aurelium.auraskills.api.AuraSkillsApi");
@@ -144,7 +143,7 @@ public class AuraSkills extends CompatiblePlugin {
             Class<?> userClass = Class.forName("dev.aurelium.auraskills.api.user.SkillsUser");
             getSkillLevelMethod = userClass.getMethod("getSkillLevel", skillClass);
 
-            skillsEnumClass = (Class<? extends Enum<?>>) Class.forName("dev.aurelium.auraskills.api.skill.Skills");
+            skillsEnumClass = loadEnumClass("dev.aurelium.auraskills.api.skill.Skills");
 
             Class<?> registryClass = Class.forName("dev.aurelium.auraskills.api.registry.GlobalRegistry");
             Class<?> namespacedIdClass = Class.forName("dev.aurelium.auraskills.api.registry.NamespacedId");
@@ -161,6 +160,22 @@ public class AuraSkills extends CompatiblePlugin {
             namespacedIdOfMethod = null;
             skillsEnumClass = null;
         }
+    }
+
+    @Nonnull
+    @SuppressWarnings({"unchecked", "rawtypes"})
+    private static Enum<?> getEnumConstant(@Nonnull Class<? extends Enum<?>> enumClass, @Nonnull String constantName) {
+        return Enum.valueOf((Class) enumClass, constantName);
+    }
+
+    @Nonnull
+    @SuppressWarnings("unchecked")
+    private static Class<? extends Enum<?>> loadEnumClass(@Nonnull String className) throws ClassNotFoundException {
+        Class<?> rawClass = Class.forName(className);
+        if (!rawClass.isEnum()) {
+            throw new ClassNotFoundException("Class is not enum: " + className);
+        }
+        return (Class<? extends Enum<?>>) rawClass;
     }
 }
 

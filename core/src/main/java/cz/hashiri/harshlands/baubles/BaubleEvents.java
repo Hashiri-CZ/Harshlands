@@ -912,7 +912,8 @@ public class BaubleEvents extends ModuleEvents implements Listener {
                     if (!MagicMirrorTask.hasTask(player.getUniqueId())) {
                         player.openInventory(module.getInv().getInventory());
 
-                        Location loc = player.getBedSpawnLocation() == null ? player.getWorld().getSpawnLocation() : player.getBedSpawnLocation();
+                        Location respawnLocation = player.getRespawnLocation();
+                        Location loc = respawnLocation == null ? player.getWorld().getSpawnLocation() : respawnLocation;
                         player.teleport(loc);
 
                         if (config.getBoolean("Items.magic_mirror.Sound.Enabled")) {
@@ -984,7 +985,8 @@ public class BaubleEvents extends ModuleEvents implements Listener {
         ItemStack item = event.getItem();
         if (HLItem.isHLItem(item)) {
             if (HLItem.getNameFromItem(item).equals("recall_potion")) {
-                Location loc = player.getBedSpawnLocation() == null ? player.getWorld().getSpawnLocation() : player.getBedSpawnLocation();
+                Location respawnLocation = player.getRespawnLocation();
+                Location loc = respawnLocation == null ? player.getWorld().getSpawnLocation() : respawnLocation;
                 player.teleport(loc);
 
                 if (config.getBoolean("Items.recall_potion.Sound.Enabled")) {

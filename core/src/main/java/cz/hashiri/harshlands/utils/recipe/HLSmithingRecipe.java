@@ -25,6 +25,7 @@ import javax.annotation.Nonnull;
 
 public class HLSmithingRecipe extends SmithingRecipe implements HLRecipe {
 
+    @SuppressWarnings("deprecation")
     public HLSmithingRecipe(@Nonnull FileConfiguration config, @Nonnull String name, @Nonnull HLPlugin plugin) {
         super(new NamespacedKey(plugin, name), HLRecipe.getResult(config, name),
                 HLRecipe.getRecipeChoice((config.getString(name + ".Base"))), new RecipeIngredient((config.getString(name + ".Addition"))).getRecipeChoice());

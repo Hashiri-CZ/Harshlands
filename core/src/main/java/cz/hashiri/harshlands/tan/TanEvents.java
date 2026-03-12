@@ -473,7 +473,7 @@ public class TanEvents extends ModuleEvents implements Listener {
             thirstManager.addSaturation(player, saturationPoints);
             DataModule dataModule = HLPlayer.getPlayers().get(player.getUniqueId()).getBaubleDataModule();
 
-            if (name.equals(item.getType().toString()) && item.getType() == Material.POTION && ((PotionMeta) item.getItemMeta()).getBasePotionData().getType() == PotionType.WATER) {
+            if (name.equals(item.getType().toString()) && item.getType() == Material.POTION && ((PotionMeta) item.getItemMeta()).getBasePotionType() == PotionType.WATER) {
                 HLModule baubleModule = HLModule.getModule(BaubleModule.NAME);
                 if (!(baubleModule.isGloballyEnabled() && baubleModule.getUserConfig().getConfig().getBoolean("Items.stone_sea.ParasiteImmunity") && dataModule != null && dataModule.hasBauble("stone_sea"))) {
                     // unpurified water
@@ -781,17 +781,17 @@ public class TanEvents extends ModuleEvents implements Listener {
             if (meta.getDisplayName().equals(HLItem.getItem("canteen_filled").getItemMeta().getDisplayName())) {
                 meta.setDisplayName(HLItem.getItem("canteen_empty").getItemMeta().getDisplayName());
             }
-            int customModelData = HLItem.getItem("canteen_empty").getItemMeta().getCustomModelData();
+            int customModelData = Utils.getCustomModelData(HLItem.getItem("canteen_empty").getItemMeta());
             NamespacedKey itemModel = Utils.getItemModel(HLItem.getItem("canteen_empty").getItemMeta());
 
             // 1.21.11
-            if (!meta.hasCustomModelData()) {
-                meta.setCustomModelData(customModelData);
+            if (!Utils.hasCustomModelData(meta)) {
+                Utils.setCustomModelData(meta, customModelData);
                 canteen.setItemMeta(meta);
             }
             else {
-                if (meta.getCustomModelData() != customModelData) {
-                    meta.setCustomModelData(customModelData);
+                if (Utils.getCustomModelData(meta) != customModelData) {
+                    Utils.setCustomModelData(meta, customModelData);
                     canteen.setItemMeta(meta);
                 }
             }
@@ -818,19 +818,19 @@ public class TanEvents extends ModuleEvents implements Listener {
                 meta.setDisplayName(HLItem.getItem("canteen_filled").getItemMeta().getDisplayName());
             }
 
-            int customModelData = HLItem.getItem("canteen_filled").getItemMeta().getCustomModelData();
+            int customModelData = Utils.getCustomModelData(HLItem.getItem("canteen_filled").getItemMeta());
             NamespacedKey itemModel = Utils.getItemModel(HLItem.getItem("canteen_filled").getItemMeta());
 
             meta.addItemFlags(ItemFlag.HIDE_POTION_CONTENTS);
 
             // 1.21.11
-            if (!meta.hasCustomModelData()) {
-                meta.setCustomModelData(customModelData);
+            if (!Utils.hasCustomModelData(meta)) {
+                Utils.setCustomModelData(meta, customModelData);
                 canteen.setItemMeta(meta);
             }
             else {
-                if (meta.getCustomModelData() != customModelData) {
-                    meta.setCustomModelData(customModelData);
+                if (Utils.getCustomModelData(meta) != customModelData) {
+                    Utils.setCustomModelData(meta, customModelData);
                     canteen.setItemMeta(meta);
                 }
             }

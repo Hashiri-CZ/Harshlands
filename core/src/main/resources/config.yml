@@ -33,7 +33,7 @@ DeveloperBuildVersion:
 # NOTE: This plugin supports Minecraft version 1.21.11 only and uses a single resource pack URL.
 ResourcePack:
   Enabled: true
-  Url: "https://www.dropbox.com/scl/fi/ecwxcwr8oh8s39rpdjtuf/Realistic-Survival-RP-1.21.11.zip?rlkey=05ob7t202o8zq8a37jgk0kgjj&st=6yem10h8&dl=1"
+  Url: "https://www.dropbox.com/scl/fi/vb243ndrmlsbtxv1egoqw/Harshlands-RP-1.21.11.zip?rlkey=1x04okdd8omkq7xumqt9v7it1&st=n7dcbgfr&dl=1"
 
 AutomaticallyEnableWorlds: true # Will automatically enable modules for newly added worlds; if set to false, automatically disables modules for newly added worlds
 AutoUpdateConfig: true # If set to true, will automatically update config; note that this may cause issues with porting across large updates

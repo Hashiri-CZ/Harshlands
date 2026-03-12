@@ -72,10 +72,7 @@ public enum CustomEntities_v1_21_R11 {
     }
 
         public static void registerEntities() {
-            Map<String, Type<?>> types = (Map<String, Type<?>>) DataFixers.getDataFixer() // Testing the lat datafixer
-    .getSchema(DataFixUtils.makeKey(SharedConstants.getCurrentVersion().dataVersion().version()))
-    .findChoiceType(References.ENTITY)
-    .types();
+         Map<String, Type<?>> types = getEntityTypes();
 
             unfreezeRegistry();
             registerEntity("fire_dragon", FireDragon_v1_21_R11::new, types);
@@ -87,6 +84,7 @@ public enum CustomEntities_v1_21_R11 {
             BuiltInRegistries.ENTITY_TYPE.freeze();
         }
 
+    @SuppressWarnings({"rawtypes", "unchecked"})
     private static void registerEntity(String type, EntityType.EntityFactory customMob, Map<String, Type<?>> types) {
         if (BuiltInRegistries.ENTITY_TYPE.getOptional(Identifier.tryParse(type)).isEmpty()) {
             String customName = "minecraft:harshlands_" + type;
@@ -95,6 +93,14 @@ public enum CustomEntities_v1_21_R11 {
             Identifier resourceLoc = Identifier.parse(customName);
             Registry.register(BuiltInRegistries.ENTITY_TYPE, customName, a.build(ResourceKey.create(Registries.ENTITY_TYPE, resourceLoc)));
         }
+    }
+
+    @SuppressWarnings("unchecked")
+    private static Map<String, Type<?>> getEntityTypes() {
+        return (Map<String, Type<?>>) DataFixers.getDataFixer()
+                .getSchema(DataFixUtils.makeKey(SharedConstants.getCurrentVersion().dataVersion().version()))
+                .findChoiceType(References.ENTITY)
+                .types();
     }
 
     private static void unfreezeRegistry() {

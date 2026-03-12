@@ -30,6 +30,7 @@
                                     <artifact>*:*</artifact>
                                     <excludes>
                                         <exclude>META-INF/**</exclude>
+                                        <exclude>module-info.class</exclude>
                                         <exclude>languages/**</exclude>
                                         <exclude>schematics/**</exclude>
                                     </excludes>

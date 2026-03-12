@@ -21,12 +21,12 @@ import cz.hashiri.harshlands.rsv.HLPlugin;
 import org.bukkit.Color;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
+import org.bukkit.Registry;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.attribute.AttributeModifier;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.enchantments.Enchantment;
-import org.bukkit.enchantments.EnchantmentWrapper;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.inventory.EquipmentSlotGroup;
@@ -177,7 +177,7 @@ public class HLItem extends ItemStack {
             Set<String> enchantKeys = enchantments.getKeys(false);
             for (String s : enchantKeys) {
                 String mcName = Utils.getMinecraftEnchName(s);
-                Enchantment ench = EnchantmentWrapper.getByKey(NamespacedKey.minecraft(mcName));
+                Enchantment ench = Registry.ENCHANTMENT.get(NamespacedKey.minecraft(mcName));
                 int value = itemConfig.getInt(enchantmentsPath + "." + s);
 
                 if (!(ench == null || value <= 0)) {
@@ -219,7 +219,7 @@ public class HLItem extends ItemStack {
             meta.setLore(newLore);
         }
         if (customModelData > 0) {
-            meta.setCustomModelData(customModelData);
+            Utils.setCustomModelData(meta, customModelData);
         }
 
         if (itemModelKey != null) {

@@ -35,6 +35,8 @@ import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.inventory.EntityEquipment;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.persistence.PersistentDataType;
+import org.bukkit.attribute.Attribute;
+import org.bukkit.attribute.AttributeInstance;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
@@ -114,12 +116,22 @@ public class NightmareManager {
                 Component.text("Nightmare", NamedTextColor.DARK_RED, TextDecoration.BOLD)));
         enderman.setCustomNameVisible(true);
 
-        // Jack o'Lantern head — doesn't drop on death
+        // Carved pumpkin head — doesn't drop on death
         EntityEquipment equipment = enderman.getEquipment();
         if (equipment != null) {
-            equipment.setHelmet(new ItemStack(Material.JACK_O_LANTERN));
+            equipment.setHelmet(new ItemStack(Material.CARVED_PUMPKIN));
             equipment.setHelmetDropChance(0.0f);
         }
+
+        // 200 HP (100 hearts)
+        AttributeInstance maxHealth = enderman.getAttribute(Attribute.MAX_HEALTH);
+        if (maxHealth != null) {
+            maxHealth.setBaseValue(200.0);
+            enderman.setHealth(200.0);
+        }
+
+        // Permanent Resistance I
+        enderman.addPotionEffect(new PotionEffect(PotionEffectType.RESISTANCE, Integer.MAX_VALUE, 0, false, false));
 
         // Never despawn naturally
         enderman.setRemoveWhenFarAway(false);
@@ -176,7 +188,7 @@ public class NightmareManager {
             if (entry == null) continue;
 
             Player player = Bukkit.getPlayer(playerUUID);
-            if (player == null || !player.isOnline()) {
+            if (player == null || !player.isOnline() || player.isDead()) {
                 despawnNightmare(playerUUID);
                 continue;
             }
@@ -258,6 +270,9 @@ public class NightmareManager {
         }
 
         // Duration of 100 ticks (5 s), refreshed every 20 ticks so it never expires mid-chase
+        enderman.removePotionEffect(PotionEffectType.RESISTANCE);
+        enderman.addPotionEffect(new PotionEffect(PotionEffectType.RESISTANCE, 100, 0, false, false));
+
         enderman.removePotionEffect(PotionEffectType.SPEED);
         enderman.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, 100, speedAmp, false, true));
 

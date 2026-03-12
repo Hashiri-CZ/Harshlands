@@ -30,7 +30,6 @@ import cz.hashiri.harshlands.utils.recipe.HLRecipe;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
 import net.kyori.adventure.text.serializer.legacy.LegacyComponentSerializer;
-import org.apache.commons.lang.StringUtils;
 import org.bukkit.*;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.attribute.AttributeInstance;
@@ -50,6 +49,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.*;
 import org.bukkit.inventory.meta.Damageable;
 import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.inventory.meta.components.CustomModelDataComponent;
 import org.bukkit.persistence.PersistentDataContainer;
 import org.bukkit.persistence.PersistentDataType;
 import org.bukkit.potion.PotionEffect;
@@ -418,7 +418,7 @@ public class Utils {
 
                         double baseDmg = 0;
                         for (AttributeModifier modifier : modifiers) {
-                            if (modifier.getSlot() == EquipmentSlot.HAND) {
+                            if (modifier.getSlotGroup().test(EquipmentSlot.HAND)) {
                                 baseDmg += modifier.getAmount() - ATTACK_DAMAGE_CONSTANT;
                             }
                         }
@@ -491,7 +491,19 @@ public class Utils {
             case "MovementSpeed" -> Attribute.MOVEMENT_SPEED;
             case "HorseJumpStrength" -> Attribute.JUMP_STRENGTH;
             case "ZombieSpawnReinforcements" -> Attribute.SPAWN_REINFORCEMENTS;
-            default -> Attribute.valueOf(name);
+            default -> {
+                Attribute attribute = Registry.ATTRIBUTE.match(name);
+                if (attribute == null) {
+                    attribute = Registry.ATTRIBUTE.match(name.toLowerCase(Locale.ROOT));
+                }
+                if (attribute == null && !name.contains(":")) {
+                    attribute = Registry.ATTRIBUTE.match("minecraft:" + name.toLowerCase(Locale.ROOT));
+                }
+                if (attribute == null) {
+                    throw new IllegalArgumentException("Unknown attribute: " + name);
+                }
+                yield attribute;
+            }
         };
     }
 
@@ -1258,6 +1270,30 @@ public class Utils {
         }
     }
 
+    public static boolean hasCustomModelData(@Nonnull ItemMeta meta) {
+        if (!meta.hasCustomModelDataComponent()) {
+            return false;
+        }
+
+        CustomModelDataComponent component = meta.getCustomModelDataComponent();
+        return !component.getFloats().isEmpty();
+    }
+
+    public static int getCustomModelData(@Nonnull ItemMeta meta) {
+        if (!hasCustomModelData(meta)) {
+            return 0;
+        }
+
+        float modelData = meta.getCustomModelDataComponent().getFloats().getFirst();
+        return Math.round(modelData);
+    }
+
+    public static void setCustomModelData(@Nonnull ItemMeta meta, int modelData) {
+        CustomModelDataComponent component = meta.getCustomModelDataComponent();
+        component.setFloats(List.of((float) modelData));
+        meta.setCustomModelDataComponent(component);
+    }
+
     public static boolean hasEquippableComponentModel(@Nonnull ItemMeta meta) {
         return internals != null && internals.hasEquippableComponentModel(meta);
     }
@@ -1310,22 +1346,40 @@ public class Utils {
     }
 
     public static void playSound(@Nonnull Location loc, @Nonnull String soundName, float volume, float pitch) {
-        if (soundName.contains("_")) {
-            if (StringUtils.isAllUpperCase(soundName.substring(0, soundName.indexOf("_")))) {
-                loc.getWorld().playSound(loc, Sound.valueOf(soundName), volume, pitch);
-            }
-            else {
-                loc.getWorld().playSound(loc, soundName, volume, pitch);
-            }
+        Sound resolvedSound = resolveSound(soundName);
+        if (resolvedSound != null) {
+            loc.getWorld().playSound(loc, resolvedSound, volume, pitch);
+        } else {
+            loc.getWorld().playSound(loc, soundName, volume, pitch);
         }
-        else {
-            if (soundName.equals(soundName.toUpperCase())) {
-                loc.getWorld().playSound(loc, Sound.valueOf(soundName), volume, pitch);
-            }
-            else {
-                loc.getWorld().playSound(loc, soundName, volume, pitch);
-            }
+    }
+
+    @Nullable
+    public static Sound resolveSound(@Nullable String soundName) {
+        if (soundName == null || soundName.isEmpty()) {
+            return null;
         }
+
+        Sound sound = Registry.SOUNDS.match(soundName);
+        if (sound != null) {
+            return sound;
+        }
+
+        String normalized = soundName.toLowerCase(Locale.ROOT);
+        if (!normalized.contains(":") && !normalized.contains(".")) {
+            normalized = normalized.replace('_', '.');
+        }
+
+        sound = Registry.SOUNDS.match(normalized);
+        if (sound != null) {
+            return sound;
+        }
+
+        if (!normalized.contains(":")) {
+            return Registry.SOUNDS.match("minecraft:" + normalized);
+        }
+
+        return null;
     }
 
     @Nonnull
@@ -1575,8 +1629,8 @@ public class Utils {
             }
 
             if (config.getBoolean("UpdateItem.CustomModelData")) {
-                if (rsvMeta.hasCustomModelData()) {
-                    meta.setCustomModelData(Integer.valueOf(rsvMeta.getCustomModelData()));
+                if (hasCustomModelData(rsvMeta)) {
+                    setCustomModelData(meta, getCustomModelData(rsvMeta));
                 }
             }
 
@@ -1690,8 +1744,8 @@ public class Utils {
                 }
 
                 if (config.getBoolean("UpdateNetheriteItems.UpdateCustomModelData")) {
-                    if (rsvMeta.hasCustomModelData()) {
-                        meta.setCustomModelData(Integer.valueOf(rsvMeta.getCustomModelData()));
+                    if (hasCustomModelData(rsvMeta)) {
+                        setCustomModelData(meta, getCustomModelData(rsvMeta));
                     }
                 }
 
@@ -1780,4 +1834,3 @@ public class Utils {
         return plugin.getToolHandler().getBestToolType(mat);
     }
 }
-
