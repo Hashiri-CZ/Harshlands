@@ -25,6 +25,8 @@ import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.potion.PotionEffect;
+import org.bukkit.Registry;
+import org.bukkit.NamespacedKey;
 import org.bukkit.potion.PotionEffectType;
 import org.bukkit.scheduler.BukkitRunnable;
 
@@ -82,7 +84,7 @@ public class HyperthermiaTask extends BukkitRunnable implements HLTask {
         for (String key : keys) {
             dur = section.getInt(key + ".Duration");
             amp = section.getInt(key + ".Amplifier");
-            potionEffects.add(new PotionEffect(PotionEffectType.getByName(key), dur, amp));
+            potionEffects.add(new PotionEffect(Registry.EFFECT.get(NamespacedKey.minecraft(key.toLowerCase())), dur, amp));
         }
         tasks.put(id, this);
     }

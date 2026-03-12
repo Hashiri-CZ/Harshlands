@@ -19,6 +19,7 @@ package cz.hashiri.harshlands.utils.recipe;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.event.inventory.PrepareAnvilEvent;
 import org.bukkit.inventory.AnvilInventory;
+import org.bukkit.inventory.view.AnvilView;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.Recipe;
 import org.bukkit.inventory.meta.ItemMeta;
@@ -87,11 +88,11 @@ public class HLAnvilRecipe implements Recipe, HLRecipe {
     }
 
     public void useRecipe(@Nonnull PrepareAnvilEvent e) {
-        AnvilInventory inv = e.getInventory();
+        AnvilView view = e.getView();
 
         e.setResult(result);
-        inv.setRepairCost(repairCost);
-        inv.setMaximumRepairCost(maxRepairCost);
+        view.setRepairCost(repairCost);
+        view.setMaximumRepairCost(maxRepairCost);
     }
 }
 

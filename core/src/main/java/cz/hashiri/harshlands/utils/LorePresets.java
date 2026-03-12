@@ -557,12 +557,10 @@ public class LorePresets {
         DecimalFormat df = new DecimalFormat("0.#", DecimalFormatSymbols.getInstance(Locale.ENGLISH));
 
         if (!Utils.doublesEquals(value, 0D)) {
-            switch (atr) {
-                case GENERIC_ATTACK_DAMAGE -> lore.add(Utils.translateMsg("&2 " + df.format(value) + " Attack Damage", null, null));
-                case GENERIC_ATTACK_SPEED -> lore.add(Utils.translateMsg("&2 " + df.format(value) + " Attack Speed", null, null));
-                case GENERIC_ARMOR -> lore.add(Utils.translateMsg("&9+" + df.format(value) + " Armor", null, null));
-                case GENERIC_ARMOR_TOUGHNESS -> lore.add(Utils.translateMsg("&9+" + df.format(value) + " Armor Toughness", null, null));
-            }
+            if (atr == Attribute.ATTACK_DAMAGE) lore.add(Utils.translateMsg("&2 " + df.format(value) + " Attack Damage", null, null));
+            else if (atr == Attribute.ATTACK_SPEED) lore.add(Utils.translateMsg("&2 " + df.format(value) + " Attack Speed", null, null));
+            else if (atr == Attribute.ARMOR) lore.add(Utils.translateMsg("&9+" + df.format(value) + " Armor", null, null));
+            else if (atr == Attribute.ARMOR_TOUGHNESS) lore.add(Utils.translateMsg("&9+" + df.format(value) + " Armor Toughness", null, null));
         }
     }
 

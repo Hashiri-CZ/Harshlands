@@ -307,29 +307,27 @@ public class TanEvents extends ModuleEvents implements Listener {
                             }
                             else {
                                 Biome biome = block.getBiome();
-                                switch (biome) {
-                                    case RIVER, FROZEN_RIVER -> {
-                                        // river water
-                                        if (config.getBoolean("Thirst.Parasites.RiverWater.Enabled")) {
-                                            if (Utils.roll(config.getDouble("Thirst.Parasites.RiverWater.Chance"))) {
-                                                parasites = true;
-                                            }
+                                if (biome == Biome.RIVER || biome == Biome.FROZEN_RIVER) {
+                                    // river water
+                                    if (config.getBoolean("Thirst.Parasites.RiverWater.Enabled")) {
+                                        if (Utils.roll(config.getDouble("Thirst.Parasites.RiverWater.Chance"))) {
+                                            parasites = true;
                                         }
                                     }
-                                    case OCEAN, COLD_OCEAN, DEEP_LUKEWARM_OCEAN, LUKEWARM_OCEAN, DEEP_OCEAN, DEEP_COLD_OCEAN, DEEP_FROZEN_OCEAN, FROZEN_OCEAN, DEEP_WARM_OCEAN, WARM_OCEAN -> {
-                                        // ocean water
-                                        if (config.getBoolean("Thirst.Parasites.SeaWater.Enabled")) {
-                                            if (Utils.roll(config.getDouble("Thirst.Parasites.SeaWater.Chance"))) {
-                                                parasites = true;
-                                            }
+                                } else if (biome == Biome.OCEAN || biome == Biome.COLD_OCEAN || biome == Biome.DEEP_LUKEWARM_OCEAN
+                                        || biome == Biome.LUKEWARM_OCEAN || biome == Biome.DEEP_OCEAN || biome == Biome.DEEP_COLD_OCEAN
+                                        || biome == Biome.DEEP_FROZEN_OCEAN || biome == Biome.FROZEN_OCEAN || biome == Biome.WARM_OCEAN) {
+                                    // ocean water
+                                    if (config.getBoolean("Thirst.Parasites.SeaWater.Enabled")) {
+                                        if (Utils.roll(config.getDouble("Thirst.Parasites.SeaWater.Chance"))) {
+                                            parasites = true;
                                         }
                                     }
-                                    default -> {
-                                        // regular water
-                                        if (config.getBoolean("Thirst.Parasites.RegularWater.Enabled")) {
-                                            if (Utils.roll(config.getDouble("Thirst.Parasites.RegularWater.Chance"))) {
-                                                parasites = true;
-                                            }
+                                } else {
+                                    // regular water
+                                    if (config.getBoolean("Thirst.Parasites.RegularWater.Enabled")) {
+                                        if (Utils.roll(config.getDouble("Thirst.Parasites.RegularWater.Chance"))) {
+                                            parasites = true;
                                         }
                                     }
                                 }
@@ -823,7 +821,7 @@ public class TanEvents extends ModuleEvents implements Listener {
             int customModelData = HLItem.getItem("canteen_filled").getItemMeta().getCustomModelData();
             NamespacedKey itemModel = Utils.getItemModel(HLItem.getItem("canteen_filled").getItemMeta());
 
-            meta.addItemFlags(ItemFlag.HIDE_POTION_EFFECTS);
+            meta.addItemFlags(ItemFlag.HIDE_POTION_CONTENTS);
 
             // 1.21.11
             if (!meta.hasCustomModelData()) {

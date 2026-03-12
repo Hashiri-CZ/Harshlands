@@ -491,10 +491,10 @@ public class BaubleEvents extends ModuleEvents implements Listener {
             Set<String> keys = section.getKeys(false);
 
             for (String key : keys) {
-                if (living.hasPotionEffect(PotionEffectType.getByName(key))) {
+                if (living.hasPotionEffect(Registry.EFFECT.get(NamespacedKey.minecraft(key.toLowerCase())))) {
                     isAffected = true;
                 }
-                living.addPotionEffect(new PotionEffect(PotionEffectType.getByName(key), section.getInt(key + ".Duration"),  section.getInt(key + ".Amplifier")));
+                living.addPotionEffect(new PotionEffect(Registry.EFFECT.get(NamespacedKey.minecraft(key.toLowerCase())), section.getInt(key + ".Duration"),  section.getInt(key + ".Amplifier")));
             }
 
             if (isAffected)
@@ -704,8 +704,8 @@ public class BaubleEvents extends ModuleEvents implements Listener {
         double jumpVelocity = 0.42; // default jump velocity
 
         // if the player has the jump boost effect
-        if (player.hasPotionEffect(PotionEffectType.JUMP)) {
-            PotionEffect jumpBoost = player.getPotionEffect(PotionEffectType.JUMP);  // get the jump boost effect
+        if (player.hasPotionEffect(PotionEffectType.JUMP_BOOST)) {
+            PotionEffect jumpBoost = player.getPotionEffect(PotionEffectType.JUMP_BOOST);  // get the jump boost effect
 
             // add the jump boost to the velocity to factor in the increased velocity
             jumpVelocity += ((double) jumpBoost.getAmplifier() + 1) * 0.1;
@@ -824,9 +824,9 @@ public class BaubleEvents extends ModuleEvents implements Listener {
             return;
 
         // check the potion effect
-        switch (newEffect.getType().getName()) {
+        switch (newEffect.getType().getKey().getKey()) {
             // if the potion effect is hunger
-            case "HUNGER" -> {
+            case "hunger" -> {
                 // if the player has a forbidden fruit or any of its derivatives
                 if (baubleInv.hasBauble("forbidden_fruit") ||
                         baubleInv.hasBauble("ankh_charm") || ankhShield) {
@@ -835,7 +835,7 @@ public class BaubleEvents extends ModuleEvents implements Listener {
                 }
             }
             // if the potion effect is slowness
-            case "SLOW" -> {
+            case "slowness" -> {
                 // if the player has a ring of overclocking or any of its derivatives
                 if (baubleInv.hasBauble("ring_overclocking") || baubleInv.hasBauble("ring_free_action") ||
                         baubleInv.hasBauble("ankh_charm") || ankhShield) {
@@ -844,7 +844,7 @@ public class BaubleEvents extends ModuleEvents implements Listener {
                 }
             }
             // if the potion effect is poison
-            case "POISON" -> {
+            case "poison" -> {
                 // if the player has a bezoar or any of its derivatives
                 if (baubleInv.hasBauble("bezoar") || baubleInv.hasBauble("mixed_color_dragonscale") ||
                         baubleInv.hasBauble("ankh_charm") || ankhShield) {
@@ -853,7 +853,7 @@ public class BaubleEvents extends ModuleEvents implements Listener {
                 }
             }
             // if the potion effect is wither
-            case "WITHER" -> {
+            case "wither" -> {
                 // if the player has a black dragon scale or any of its derivatives
                 if (baubleInv.hasBauble("black_dragonscale_bauble") || baubleInv.hasBauble("mixed_color_dragonscale") ||
                         baubleInv.hasBauble("ankh_charm") || baubleInv.hasBauble("wither_ring") || ankhShield) {
@@ -862,7 +862,7 @@ public class BaubleEvents extends ModuleEvents implements Listener {
                 }
             }
             // if the potion effect is mining fatigue
-            case "SLOW_DIGGING" -> {
+            case "mining_fatigue" -> {
                 // if the player has vitamins or any of its derivatives
                 if (baubleInv.hasBauble("vitamins") || baubleInv.hasBauble("ankh_charm") || ankhShield) {
                     // cancel the event to stop the effect from being added
@@ -870,7 +870,7 @@ public class BaubleEvents extends ModuleEvents implements Listener {
                 }
             }
             // if the potion effect is blindness
-            case "BLINDNESS", "DARKNESS" -> {
+            case "blindness", "darkness" -> {
                 // if the player has sunglasses or any of its derivatives
                 if (sunglasses || baubleInv.hasBauble("ankh_charm") || ankhShield) {
                     // cancel the event to stop the effect from being added
@@ -878,7 +878,7 @@ public class BaubleEvents extends ModuleEvents implements Listener {
                 }
             }
             // if the potion effect is levitation
-            case "LEVITATION" -> {
+            case "levitation" -> {
                 // if the player has a shulker heart or any of its derivatives
                 if (baubleInv.hasBauble("shulker_heart") || baubleInv.hasBauble("ring_free_action") ||
                         baubleInv.hasBauble("ankh_charm") || ankhShield) {
@@ -962,7 +962,7 @@ public class BaubleEvents extends ModuleEvents implements Listener {
 
     @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
     public void onRegenerate(EntityRegainHealthEvent event) {
-        if (!(event.getEntity() instanceof Player player && shouldEventBeRan(player) && HLPlayer.isValidPlayer(player) && player.getHealth() + event.getAmount() >= player.getAttribute(Attribute.GENERIC_MAX_HEALTH).getValue()))
+        if (!(event.getEntity() instanceof Player player && shouldEventBeRan(player) && HLPlayer.isValidPlayer(player) && player.getHealth() + event.getAmount() >= player.getAttribute(Attribute.MAX_HEALTH).getValue()))
             return;
 
         UUID id = player.getUniqueId();

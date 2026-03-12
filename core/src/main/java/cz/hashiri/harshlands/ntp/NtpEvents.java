@@ -354,7 +354,7 @@ public class NtpEvents extends ModuleEvents implements Listener {
         if (!shouldEventBeRan(player))
             return;
 
-        ItemStack item = event.getItemInHand();
+        ItemStack item = event.getPlayer().getInventory().getItemInMainHand();
 
         if (!(HLItem.isHLItem(item) && HLItem.getModuleNameFromItem(item).equals(NtpModule.NAME) && HLItem.getNameFromItem(item).contains("mattock")))
             return;

@@ -107,11 +107,11 @@ public class TideGuardianTask extends BukkitRunnable {
             if (breathingEnabled) {
                 if (strEnabled) {
                     if (player.isInWater()) {
-                        player.addPotionEffect(new PotionEffect(PotionEffectType.INCREASE_DAMAGE, strDur, strAmp));
+                        player.addPotionEffect(new PotionEffect(PotionEffectType.STRENGTH, strDur, strAmp));
                     }
                 }
                 else {
-                    player.addPotionEffect(new PotionEffect(PotionEffectType.INCREASE_DAMAGE, strDur, strAmp));
+                    player.addPotionEffect(new PotionEffect(PotionEffectType.STRENGTH, strDur, strAmp));
                 }
             }
         }

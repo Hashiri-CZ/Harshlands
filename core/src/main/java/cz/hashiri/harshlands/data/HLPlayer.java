@@ -39,9 +39,12 @@ public class HLPlayer {
 
     public HLPlayer(Player player) {
         this.uuid = player.getUniqueId();
-        baubleDataModule = HLModule.getModule(BaubleModule.NAME).isGloballyEnabled() ? new cz.hashiri.harshlands.data.baubles.DataModule(player) : null;
-        tanDataModule = HLModule.getModule(TanModule.NAME).isGloballyEnabled() ? new DataModule(player) : null;
-        fearDataModule = HLModule.getModule(FearModule.NAME).isGloballyEnabled() ? new cz.hashiri.harshlands.data.fear.DataModule(player) : null;
+        HLModule bm = HLModule.getModule(BaubleModule.NAME);
+        baubleDataModule = (bm != null && bm.isGloballyEnabled()) ? new cz.hashiri.harshlands.data.baubles.DataModule(player) : null;
+        HLModule tm = HLModule.getModule(TanModule.NAME);
+        tanDataModule = (tm != null && tm.isGloballyEnabled()) ? new DataModule(player) : null;
+        HLModule fm = HLModule.getModule(FearModule.NAME);
+        fearDataModule = (fm != null && fm.isGloballyEnabled()) ? new cz.hashiri.harshlands.data.fear.DataModule(player) : null;
 
         players.put(uuid, this);
     }

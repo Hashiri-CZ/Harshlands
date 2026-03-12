@@ -57,7 +57,7 @@ public class FreezeTask extends BukkitRunnable {
 
         int amplifier = config.getInt("Dragon.IceDragon.FreezeAbility.Slowness.Amplifier.Stage" + stage);
         int duration = config.getInt("Dragon.IceDragon.FreezeAbility.Duration.Amplifier.Stage" + stage);
-        this.slowness = new PotionEffect(PotionEffectType.SLOW, duration, amplifier);
+        this.slowness = new PotionEffect(PotionEffectType.SLOWNESS, duration, amplifier);
         this.frozenMaterial = Material.valueOf(config.getString("Dragon.IceDragon.FreezeAbility.EncaseIce.Block"));
         this.volume = (float) config.getDouble("Dragon.IceDragon.FreezeAbility.Sound.Volume");
         this.pitch = (float) config.getDouble("Dragon.IceDragon.FreezeAbility.Sound.Pitch");
@@ -75,7 +75,7 @@ public class FreezeTask extends BukkitRunnable {
         this.playSound = config.getBoolean("Items." + itemName + ".FreezeAbility.Sound.Enabled");
         int amplifier = config.getInt("Items." + itemName + ".FreezeAbility.Slowness.Amplifier");
         int duration = config.getInt("Items." + itemName + ".FreezeAbility.Slowness.Duration");
-        this.slowness = new PotionEffect(PotionEffectType.SLOW, duration, amplifier);
+        this.slowness = new PotionEffect(PotionEffectType.SLOWNESS, duration, amplifier);
         this.frozenMaterial = Material.valueOf(config.getString("Items." + itemName + ".FreezeAbility.EncaseIce.Block"));
         this.volume = (float) config.getDouble("Items." + itemName + ".FreezeAbility.Sound.Volume");
         this.pitch = (float) config.getDouble("Items." + itemName + ".FreezeAbility.Sound.Pitch");

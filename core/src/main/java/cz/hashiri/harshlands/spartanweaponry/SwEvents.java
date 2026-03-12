@@ -264,7 +264,7 @@ public class SwEvents extends ModuleEvents implements Listener {
                                 int duration = config.getInt("Items." + name + ".Nausea.Duration");
                                 int amplifier = config.getInt("Items." + name + ".Nausea.Amplifier");
 
-                                PotionEffect nausea = new PotionEffect(PotionEffectType.CONFUSION, duration, amplifier);
+                                PotionEffect nausea = new PotionEffect(PotionEffectType.NAUSEA, duration, amplifier);
                                 if (living.getEquipment() != null) {
                                     if (!Utils.isItemReal(living.getEquipment().getHelmet())) {
                                         living.addPotionEffect(nausea);
@@ -289,7 +289,7 @@ public class SwEvents extends ModuleEvents implements Listener {
                                 int duration = config.getInt("Items." + name + ".Nausea.Duration");
                                 int amplifier = config.getInt("Items." + name + ".Nausea.Amplifier");
 
-                                PotionEffect nausea = new PotionEffect(PotionEffectType.CONFUSION, duration, amplifier);
+                                PotionEffect nausea = new PotionEffect(PotionEffectType.NAUSEA, duration, amplifier);
                                 if (living.getEquipment() != null) {
                                     if (!Utils.isItemReal(living.getEquipment().getHelmet())) {
                                         living.addPotionEffect(nausea);

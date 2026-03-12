@@ -74,7 +74,7 @@ public class ColdBreathTask extends BukkitRunnable implements HLTask {
         this.extra = config.getDouble("Temperature.ColdBreath.Extra");
         this.particle = Particle.valueOf(config.getString("Temperature.ColdBreath.Particle"));
 
-        if (particle == Particle.REDSTONE) {
+        if (particle == Particle.DUST) {
             String color = config.getString("Temperature.ColdBreath.DustOptionColor");
             float size = (float) config.getDouble("Temperature.ColdBreath.DustOptionSize");
 

@@ -436,7 +436,7 @@ public class IceFireEvents extends ModuleEvents implements Listener {
             return;
         }
 
-        if (event.getNewEffect() == null || event.getNewEffect().getType() != PotionEffectType.SLOW_DIGGING) {
+        if (event.getNewEffect() == null || event.getNewEffect().getType() != PotionEffectType.MINING_FATIGUE) {
             return;
         }
 

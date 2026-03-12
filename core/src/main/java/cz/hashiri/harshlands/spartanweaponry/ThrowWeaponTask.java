@@ -288,8 +288,7 @@ public class ThrowWeaponTask extends BukkitRunnable {
                             }
                             else {
                                 if (config.getBoolean("MaxDistanceReached.Enabled")) {
-                                    String message = Utils.translateMsg(config.getString("MaxDistanceReached.Message"), entity, Map.of("MAX_DISTANCE", Math.round(Math.sqrt(maxDistanceSquared))));
-                                    entity.sendMessage(message);
+                                    entity.sendMessage(Utils.translateMsg(config.getString("MaxDistanceReached.Message"), entity, Map.of("MAX_DISTANCE", Math.round(Math.sqrt(maxDistanceSquared)))));
                                 }
                                 dropWeaponTask(armorStand, entity, item.clone());
                             }
@@ -341,9 +340,7 @@ public class ThrowWeaponTask extends BukkitRunnable {
         as.remove();
 
         if (config.getBoolean("WeaponDropped.Enabled")) {
-            String message = Utils.translateMsg(config.getString("WeaponDropped.Message"), this.entity, Map.of("X_COORD", (int) Math.round(loc.getX()), "Y_COORD", (int) Math.round(loc.getY()), "Z_COORD", (int) Math.round(loc.getZ())));
-
-            entity.sendMessage(message);
+            entity.sendMessage(Utils.translateMsg(config.getString("WeaponDropped.Message"), this.entity, Map.of("X_COORD", (int) Math.round(loc.getX()), "Y_COORD", (int) Math.round(loc.getY()), "Z_COORD", (int) Math.round(loc.getZ()))));
         }
 
         tasks.remove(entity.getUniqueId());
