@@ -84,7 +84,7 @@ public class CeramicBucketMeltTask extends BukkitRunnable {
         this.extra = config.getDouble("Pottery.CeramicLavaBucketMelting.EmitParticles.Extra");
         this.particle = Particle.valueOf(config.getString("Pottery.CeramicLavaBucketMelting.EmitParticles.Particle"));
 
-        if (particle == Particle.REDSTONE) {
+        if (particle == Particle.DUST) {
             String color = config.getString("Pottery.CeramicLavaBucketMelting.EmitParticles.DustOptionColor");
             float size = (float) config.getDouble("Pottery.CeramicLavaBucketMelting.EmitParticles.DustOptionSize");
 

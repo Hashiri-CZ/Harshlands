@@ -23,13 +23,19 @@ import org.bukkit.inventory.ItemStack;
 
 public class EnchantmentWrapper extends Enchantment {
 
+    private final NamespacedKey key;
     private final String name;
     private final int maxLvl;
 
     public EnchantmentWrapper(String namespace, String name, int lvl) {
-        super(NamespacedKey.minecraft(namespace));
+        this.key = NamespacedKey.minecraft(namespace);
         this.name = name;
         this.maxLvl = lvl;
+    }
+
+    @Override
+    public NamespacedKey getKey() {
+        return key;
     }
 
     @Override
@@ -71,5 +77,24 @@ public class EnchantmentWrapper extends Enchantment {
     public boolean canEnchantItem(ItemStack itemStack) {
         return false;
     }
-}
 
+    @Override
+    public String getTranslationKey() {
+        return "enchantment." + key.getNamespace() + "." + key.getKey();
+    }
+
+    @Override
+    public org.bukkit.NamespacedKey getKeyOrThrow() {
+        return key;
+    }
+
+    @Override
+    public org.bukkit.NamespacedKey getKeyOrNull() {
+        return key;
+    }
+
+    @Override
+    public boolean isRegistered() {
+        return false;
+    }
+}

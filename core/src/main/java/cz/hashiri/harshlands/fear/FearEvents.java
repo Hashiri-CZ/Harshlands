@@ -58,7 +58,7 @@ public class FearEvents extends ModuleEvents {
             return;
         }
 
-        ItemStack item = event.getItemInHand();
+        ItemStack item = event.getPlayer().getInventory().getItemInMainHand();
         if (isLitTorchItem(item)) {
             torchManager.registerPlacedLitTorch(event.getBlockPlaced());
         } else if (isUnlitTorchItem(item)) {

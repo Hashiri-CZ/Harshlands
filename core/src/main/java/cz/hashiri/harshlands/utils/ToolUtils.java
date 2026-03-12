@@ -344,7 +344,7 @@ public class ToolUtils {
         addToMap(Material.BROWN_MUSHROOM_BLOCK, Tool.AXE);
         addToMap(Material.CAMPFIRE, Tool.AXE);
         addToMap(Material.CAULDRON, Tool.PICKAXE);
-        addToMap(Material.CHAIN, Tool.PICKAXE);
+        addToMap(Material.IRON_CHAIN, Tool.PICKAXE);
         addToMap(Material.CHEST, Tool.AXE);
         addToMap(Material.CHISELED_RED_SANDSTONE, Tool.PICKAXE);
         addToMap(Material.CHISELED_SANDSTONE, Tool.PICKAXE);

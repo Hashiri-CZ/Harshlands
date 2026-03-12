@@ -22,13 +22,16 @@ import cz.hashiri.harshlands.data.HLPlayer;
 import cz.hashiri.harshlands.fear.FearModule;
 import cz.hashiri.harshlands.iceandfire.IceFireModule;
 import cz.hashiri.harshlands.rsv.HLPlugin;
-import cz.hashiri.harshlands.tan.*;
+import cz.hashiri.harshlands.tan.TanModule;
+import cz.hashiri.harshlands.tan.TempManager;
+import cz.hashiri.harshlands.tan.TemperatureCalculateTask;
+import cz.hashiri.harshlands.tan.ThirstCalculateTask;
+import cz.hashiri.harshlands.tan.ThirstManager;
 import cz.hashiri.harshlands.utils.HLItem;
 import cz.hashiri.harshlands.utils.HLMob;
 import cz.hashiri.harshlands.utils.Utils;
 import org.apache.commons.lang.StringUtils;
 import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.command.BlockCommandSender;
@@ -177,12 +180,14 @@ public class Commands implements CommandExecutor {
                     }
 
                     if (config.getBoolean("Give.CorrectExecution.Enabled")) {
+                        org.bukkit.inventory.meta.ItemMeta giveMeta = customItem.getItemMeta();
+                        String displayName = giveMeta != null ? giveMeta.getDisplayName() : "";
                         if (filteredTargets.size() == 1) {
-                            Map<String, Object> placeholders = Map.of("VALUE", amount, "DISPLAY_NAME", ChatColor.stripColor(customItem.getItemMeta().getDisplayName()), "PLAYER_NAME", filteredTargets.get(0).getDisplayName());
+                            Map<String, Object> placeholders = Map.of("VALUE", amount, "DISPLAY_NAME", displayName, "PLAYER_NAME", filteredTargets.get(0).getDisplayName());
                             sender.sendMessage(Utils.translateMsg(config.getString("Give.CorrectExecution.SingleTargetMessage"), sender, placeholders));
                         }
                         else {
-                            Map<String, Object> placeholders = Map.of("VALUE", amount, "DISPLAY_NAME", ChatColor.stripColor(customItem.getItemMeta().getDisplayName()));
+                            Map<String, Object> placeholders = Map.of("VALUE", amount, "DISPLAY_NAME", displayName);
                             sender.sendMessage(Utils.translateMsg(config.getString("Give.CorrectExecution.MultipleTargetMessage"), sender, placeholders));
                         }
                     }
@@ -839,8 +844,8 @@ public class Commands implements CommandExecutor {
 
                     HLModule fearMod = HLModule.getModule(FearModule.NAME);
                     if (fearMod == null || !fearMod.isGloballyEnabled()) {
-                        sender.sendMessage(ChatColor.translateAlternateColorCodes('&',
-                            config.getString("Fear.ModuleDisabled", "&c[Harshlands] Fear module is not enabled.")));
+                        sender.sendMessage(Utils.translateMsg(
+                            config.getString("Fear.ModuleDisabled", "&c[Harshlands] Fear module is not enabled."), sender, null));
                         return true;
                     }
 
@@ -852,8 +857,8 @@ public class Commands implements CommandExecutor {
                         }
                         target = Bukkit.getPlayer(args[1]);
                         if (target == null) {
-                            sender.sendMessage(ChatColor.translateAlternateColorCodes('&',
-                                config.getString("Fear.PlayerNotFound", "&cPlayer not found.")));
+                            sender.sendMessage(Utils.translateMsg(
+                                config.getString("Fear.PlayerNotFound", "&cPlayer not found."), sender, null));
                             return true;
                         }
                     } else {
@@ -866,24 +871,23 @@ public class Commands implements CommandExecutor {
 
                     HLPlayer hlTarget = HLPlayer.getPlayers().get(target.getUniqueId());
                     if (hlTarget == null) {
-                        sender.sendMessage(ChatColor.translateAlternateColorCodes('&',
-                            config.getString("Fear.PlayerNotFound", "&cPlayer not found.")));
+                        sender.sendMessage(Utils.translateMsg(
+                            config.getString("Fear.PlayerNotFound", "&cPlayer not found."), sender, null));
                         return true;
                     }
 
                     cz.hashiri.harshlands.data.fear.DataModule dm = hlTarget.getFearDataModule();
                     if (dm == null) {
-                        sender.sendMessage(ChatColor.translateAlternateColorCodes('&',
-                            config.getString("Fear.ModuleDisabled", "&c[Harshlands] Fear module is not enabled.")));
+                        sender.sendMessage(Utils.translateMsg(
+                            config.getString("Fear.ModuleDisabled", "&c[Harshlands] Fear module is not enabled."), sender, null));
                         return true;
                     }
 
-                    String msg = Utils.translateMsg(
+                    sender.sendMessage(Utils.translateMsg(
                         config.getString("Fear.FearLevel", "&6[Harshlands] &f%PLAYER%'s fear: &e%FEAR_LEVEL%"),
                         null,
                         Map.of("PLAYER", target.getName(), "FEAR_LEVEL", String.format("%.2f", dm.getFearLevel()))
-                    );
-                    sender.sendMessage(msg);
+                    ));
                     return true;
                 }
                 case "help" -> {

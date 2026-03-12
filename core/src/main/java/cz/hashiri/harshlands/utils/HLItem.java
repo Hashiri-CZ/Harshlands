@@ -29,12 +29,12 @@ import org.bukkit.enchantments.Enchantment;
 import org.bukkit.enchantments.EnchantmentWrapper;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.EquipmentSlot;
+import org.bukkit.inventory.EquipmentSlotGroup;
 import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.PotionMeta;
 import org.bukkit.persistence.PersistentDataType;
-import org.bukkit.potion.PotionData;
 import org.bukkit.potion.PotionType;
 
 import javax.annotation.Nonnegative;
@@ -147,7 +147,7 @@ public class HLItem extends ItemStack {
                 String effect = itemConfig.getString(effectsPath);
                 PotionType potionType = PotionType.valueOf(effect);
 
-                ((PotionMeta) meta).setBasePotionData(new PotionData(potionType));
+                ((PotionMeta) meta).setBasePotionType(potionType);
             }
         }
 
@@ -205,7 +205,9 @@ public class HLItem extends ItemStack {
                     EquipmentSlot slot = Utils.getCorrectEquipmentSlot(atr, material);
 
                     if (atrName != null) {
-                        AttributeModifier atrMod = new AttributeModifier(UUID.randomUUID(), atrName, correctValue, AttributeModifier.Operation.ADD_NUMBER, slot);
+                        EquipmentSlotGroup slotGroup = toSlotGroup(slot);
+                        NamespacedKey atrModKey = new NamespacedKey(HLPlugin.getPlugin(), atrName);
+                        AttributeModifier atrMod = new AttributeModifier(atrModKey, correctValue, AttributeModifier.Operation.ADD_NUMBER, slotGroup);
                         LorePresets.addGearStats(newLore, atr, displayValue);
                         meta.addAttributeModifier(atr, atrMod);
                     }
@@ -334,6 +336,19 @@ public class HLItem extends ItemStack {
 
     public static Map<String, HLItem> getItemMap() {
         return itemMap;
+    }
+
+    private static EquipmentSlotGroup toSlotGroup(@Nullable EquipmentSlot slot) {
+        if (slot == null) return EquipmentSlotGroup.ANY;
+        return switch (slot) {
+            case HAND -> EquipmentSlotGroup.MAINHAND;
+            case OFF_HAND -> EquipmentSlotGroup.OFFHAND;
+            case HEAD -> EquipmentSlotGroup.HEAD;
+            case CHEST -> EquipmentSlotGroup.CHEST;
+            case LEGS -> EquipmentSlotGroup.LEGS;
+            case FEET -> EquipmentSlotGroup.FEET;
+            default -> EquipmentSlotGroup.ANY;
+        };
     }
 
     @Nullable

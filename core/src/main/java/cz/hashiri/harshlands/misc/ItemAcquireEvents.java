@@ -756,7 +756,7 @@ public class ItemAcquireEvents implements Listener {
     @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
     public void onPowderSnowPlace(BlockPlaceEvent event) {
         Player player = event.getPlayer();
-        ItemStack prev = event.getItemInHand();
+        ItemStack prev = event.getPlayer().getInventory().getItemInMainHand();
 
         if (!(event.getBlockPlaced().getType() == Material.POWDER_SNOW && prev.getType() == Material.POWDER_SNOW_BUCKET && player.getGameMode() != GameMode.CREATIVE))
             return;

@@ -116,7 +116,9 @@ public class HLConfig extends FileBuilder {
                 }
             } else {
                 // AutoUpdate disabled: just create backup and replace config
-                file.renameTo(new File(plugin.getDataFolder(), newPath));
+                if (!file.renameTo(new File(plugin.getDataFolder(), newPath))) {
+                    plugin.getLogger().warning("[HLConfig] Failed to rename config backup: " + file.getAbsolutePath());
+                }
                 createFile(path);
                 createConfig();
                 plugin.getLogger().info("[HLConfig] AutoUpdate disabled, replaced config with new default: " + currentVersion + " -> " + latestVersion);

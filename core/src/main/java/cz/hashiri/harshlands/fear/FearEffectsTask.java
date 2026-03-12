@@ -63,7 +63,7 @@ public class FearEffectsTask implements Runnable {
         if (fear < config.getDouble("FearMeter.Effects.Shaking.MinFear", 60.0)) return;
         if (ThreadLocalRandom.current().nextDouble() >= config.getDouble("FearMeter.Effects.Shaking.Chance", 0.08)) return;
         int duration = config.getInt("FearMeter.Effects.Shaking.Duration", 60);
-        player.addPotionEffect(new PotionEffect(PotionEffectType.CONFUSION, duration, 0, true, false));
+        player.addPotionEffect(new PotionEffect(PotionEffectType.NAUSEA, duration, 0, true, false));
     }
 
     private void applyFakeMobSounds(Player player, double fear) {

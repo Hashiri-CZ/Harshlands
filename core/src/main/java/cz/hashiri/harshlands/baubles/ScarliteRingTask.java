@@ -55,7 +55,7 @@ public class ScarliteRingTask extends BukkitRunnable implements HLTask {
         Player player = rsvPlayer.getPlayer();
 
         if (conditionsMet(player)) {
-            double maxHealth = player.getAttribute(Attribute.GENERIC_MAX_HEALTH).getValue();
+            double maxHealth = player.getAttribute(Attribute.MAX_HEALTH).getValue();
             double currentHealth = player.getHealth();
 
             player.setHealth(Math.min(maxHealth, currentHealth + defaultHealAmount));

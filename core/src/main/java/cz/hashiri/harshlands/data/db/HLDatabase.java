@@ -257,7 +257,9 @@ public class HLDatabase {
             return;
         }
 
-        yamlFile.renameTo(new File(yamlFile.getParent(), "playerdata.yml.migrated"));
+        if (!yamlFile.renameTo(new File(yamlFile.getParent(), "playerdata.yml.migrated"))) {
+            logger.warning("[DB] Failed to rename migration file: " + yamlFile.getAbsolutePath());
+        }
         logger.info("[HLDatabase] Migrated " + migrated + " TAN player records from YAML to DB.");
     }
 
@@ -306,7 +308,9 @@ public class HLDatabase {
             return;
         }
 
-        yamlFile.renameTo(new File(yamlFile.getParent(), "playerdata.yml.migrated"));
+        if (!yamlFile.renameTo(new File(yamlFile.getParent(), "playerdata.yml.migrated"))) {
+            logger.warning("[DB] Failed to rename migration file: " + yamlFile.getAbsolutePath());
+        }
         logger.info("[HLDatabase] Migrated " + migrated + " Baubles player records from YAML to DB.");
     }
 

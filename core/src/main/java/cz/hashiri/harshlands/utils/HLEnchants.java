@@ -19,11 +19,8 @@ package cz.hashiri.harshlands.utils;
 import cz.hashiri.harshlands.rsv.HLPlugin;
 import org.bukkit.enchantments.Enchantment;
 
-import java.lang.reflect.Field;
-import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Map;
-import java.util.stream.Collectors;
 
 public class HLEnchants {
 
@@ -46,31 +43,11 @@ public class HLEnchants {
         }
     }
 
-
     public void register(Enchantment ench) {
-        boolean registered = Arrays.stream(Enchantment.values()).collect(Collectors.toList()).contains(ench);
-
-        if (!registered) {
-            registerEnchantment(ench);
-        }
-    }
-
-    public void registerEnchantment(Enchantment ench) {
-        boolean registered = true;
-        try {
-            Field f = Enchantment.class.getDeclaredField("acceptingNew");
-            f.setAccessible(true);
-            f.set(null, true);
-            Enchantment.registerEnchantment(ench);
-        } catch (Exception e) {
-            registered = false;
-            e.printStackTrace();
-        }
-        if (registered) {
-            String raw = plugin.getConfig().getString("RegisteredEnchant");
-
-            plugin.getLogger().info(Utils.translateMsg(raw, null, Map.of("ENCHANT", ench.getKey().getKey())));
-        }
+        // Custom enchantment registration via reflection is no longer supported in 1.21+.
+        // Enchantments defined via EnchantmentWrapper are used directly via the static fields.
+        String raw = plugin.getConfig().getString("RegisteredEnchant");
+        plugin.getLogger().info(Utils.translateMsg(raw, null, Map.of("ENCHANT", ench.getKey().getKey())));
     }
 
     public void populateEnchants() {
@@ -83,4 +60,3 @@ public class HLEnchants {
         return enchants;
     }
 }
-

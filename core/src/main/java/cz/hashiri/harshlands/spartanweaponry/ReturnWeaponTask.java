@@ -82,14 +82,11 @@ public class ReturnWeaponTask extends BukkitRunnable {
                         Location dropLoc = dropItem(asLocation);
 
                         if (config.getBoolean("MaxReturnDistanceReached.Enabled")) {
-                            String message = Utils.translateMsg(config.getString("MaxReturnDistanceReached.Message"), entity, Map.of("MAX_DISTANCE", Math.round(maxReturnDistance)));
-                            entity.sendMessage(message);
+                            entity.sendMessage(Utils.translateMsg(config.getString("MaxReturnDistanceReached.Message"), entity, Map.of("MAX_DISTANCE", Math.round(maxReturnDistance))));
                         }
 
                         if (config.getBoolean("WeaponDropped.Enabled")) {
-                            String message = Utils.translateMsg(config.getString("WeaponDropped.Message"), entity, Map.of("X_COORD", (int) Math.round(dropLoc.getX()), "Y_COORD", (int) Math.round(dropLoc.getY()), "Z_COORD", (int) Math.round(dropLoc.getZ())));
-
-                            entity.sendMessage(message);
+                            entity.sendMessage(Utils.translateMsg(config.getString("WeaponDropped.Message"), entity, Map.of("X_COORD", (int) Math.round(dropLoc.getX()), "Y_COORD", (int) Math.round(dropLoc.getY()), "Z_COORD", (int) Math.round(dropLoc.getZ()))));
                         }
 
                         stop();
@@ -120,9 +117,7 @@ public class ReturnWeaponTask extends BukkitRunnable {
 
                         if (isInvFull) {
                             if (config.getBoolean("FullInventoryWeaponDropped.Enabled")) {
-                                String message = Utils.translateMsg(config.getString("FullInventoryWeaponDropped.Message"), entity, Map.of("X_COORD", (int) Math.round(pLocation.getX()), "Y_COORD", (int) Math.round(pLocation.getY()), "Z_COORD", (int) Math.round(pLocation.getZ())));
-
-                                entity.sendMessage(message);
+                                entity.sendMessage(Utils.translateMsg(config.getString("FullInventoryWeaponDropped.Message"), entity, Map.of("X_COORD", (int) Math.round(pLocation.getX()), "Y_COORD", (int) Math.round(pLocation.getY()), "Z_COORD", (int) Math.round(pLocation.getZ()))));
                             }
                             dropItem(pLocation);
                         }

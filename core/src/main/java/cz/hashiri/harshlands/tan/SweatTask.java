@@ -72,7 +72,7 @@ public class SweatTask extends BukkitRunnable implements HLTask {
         this.extra = config.getDouble("Temperature.Sweating.Extra");
         this.particle = Particle.valueOf(config.getString("Temperature.Sweating.Particle"));
 
-        if (particle == Particle.REDSTONE) {
+        if (particle == Particle.DUST) {
             String color = config.getString("Temperature.Sweating.DustOptionColor");
             float size = (float) config.getDouble("Temperature.Sweating.DustOptionSize");
 

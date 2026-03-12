@@ -63,7 +63,7 @@ public class PolarizedStoneTask extends BukkitRunnable implements HLTask {
             Location pLoc = player.getLocation();
             Vector pVector = pLoc.toVector();
             for (Entity entity : player.getNearbyEntities(maxRadius, maxRadius, maxRadius)) {
-                if (entity.getType() == EntityType.EXPERIENCE_ORB || entity.getType() == EntityType.DROPPED_ITEM) {
+                if (entity.getType() == EntityType.EXPERIENCE_ORB || entity.getType() == EntityType.ITEM) {
                     if (entity.getLocation().distanceSquared(pLoc) > 0.25) {
                         entity.setVelocity(pVector.subtract(entity.getLocation().toVector()).normalize().multiply(pullForce));
                     }

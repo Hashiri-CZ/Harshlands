@@ -71,7 +71,7 @@ public class TwoHandedTask extends BukkitRunnable {
 
                         switch (type) {
                             case "longsword", "katana", "greatsword", "warhammer", "halberd", "pike", "battleaxe", "glaive" ->
-                                    living.addPotionEffect(new PotionEffect(PotionEffectType.SLOW_DIGGING, config.getInt("Items." + name + ".MiningFatigue.Duration"), config.getInt("Items." + name + ".MiningFatigue.Amplifier")));
+                                    living.addPotionEffect(new PotionEffect(PotionEffectType.MINING_FATIGUE, config.getInt("Items." + name + ".MiningFatigue.Duration"), config.getInt("Items." + name + ".MiningFatigue.Amplifier")));
                             default -> {
                                 tasks.remove(id);
                                 cancel();

@@ -92,7 +92,7 @@ public class FireStarterTask extends BukkitRunnable {
         this.extra = config.getDouble("FireStarter.EmitParticles.Extra");
         this.particle = Particle.valueOf(config.getString("FireStarter.EmitParticles.Particle"));
 
-        if (particle == Particle.REDSTONE) {
+        if (particle == Particle.DUST) {
             String color = config.getString("FireStarter.EmitParticles.DustOptionColor");
             float size = (float) config.getDouble("FireStarter.EmitParticles.DustOptionSize");
 

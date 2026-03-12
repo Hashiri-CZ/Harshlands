@@ -18,10 +18,14 @@ package cz.hashiri.harshlands.fear;
 
 import cz.hashiri.harshlands.rsv.HLPlugin;
 import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
+import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.format.NamedTextColor;
+import net.kyori.adventure.text.format.TextDecoration;
+import net.kyori.adventure.text.serializer.legacy.LegacyComponentSerializer;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
+import org.bukkit.Registry;
 import org.bukkit.World;
 import org.bukkit.entity.Enderman;
 import org.bukkit.entity.Entity;
@@ -49,7 +53,7 @@ public class NightmareManager {
     private final HLPlugin plugin;
     private final FileConfiguration config;
     private final NamespacedKey nightmareKey;
-    private final PotionEffectType darknessPotionEffect = PotionEffectType.getByName("DARKNESS");
+    private final PotionEffectType darknessPotionEffect = Registry.EFFECT.get(NamespacedKey.minecraft("darkness"));
 
     // player UUID → active nightmare data
     private final Map<UUID, NightmareEntry> activeNightmares = new HashMap<>();
@@ -106,7 +110,8 @@ public class NightmareManager {
         enderman.getPersistentDataContainer().set(nightmareKey, PersistentDataType.STRING, player.getUniqueId().toString());
 
         // Name and appearance
-        enderman.setCustomName(ChatColor.DARK_RED + "" + ChatColor.BOLD + "Nightmare");
+        enderman.setCustomName(LegacyComponentSerializer.legacySection().serialize(
+                Component.text("Nightmare", NamedTextColor.DARK_RED, TextDecoration.BOLD)));
         enderman.setCustomNameVisible(true);
 
         // Jack o'Lantern head — doesn't drop on death
@@ -256,9 +261,9 @@ public class NightmareManager {
         enderman.removePotionEffect(PotionEffectType.SPEED);
         enderman.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, 100, speedAmp, false, true));
 
-        enderman.removePotionEffect(PotionEffectType.INCREASE_DAMAGE);
+        enderman.removePotionEffect(PotionEffectType.STRENGTH);
         if (strengthAmp >= 0) {
-            enderman.addPotionEffect(new PotionEffect(PotionEffectType.INCREASE_DAMAGE, 100, strengthAmp, false, true));
+            enderman.addPotionEffect(new PotionEffect(PotionEffectType.STRENGTH, 100, strengthAmp, false, true));
         }
     }
 

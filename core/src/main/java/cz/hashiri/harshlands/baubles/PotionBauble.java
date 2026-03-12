@@ -20,6 +20,8 @@ import cz.hashiri.harshlands.data.HLModule;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
+import org.bukkit.NamespacedKey;
+import org.bukkit.Registry;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
@@ -49,7 +51,7 @@ public class PotionBauble extends TickableBauble {
                 amp = section.getInt(key + ".Amplifier");
                 ampInc = section.getInt(key + ".AmplifierIncrement");
 
-                effects.add(new PotionBaubleEffect(PotionEffectType.getByName(key), dur, amp, ampInc));
+                effects.add(new PotionBaubleEffect(Registry.EFFECT.get(NamespacedKey.minecraft(key.toLowerCase())), dur, amp, ampInc));
             }
         }
     }

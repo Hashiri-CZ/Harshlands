@@ -279,7 +279,7 @@ public class MiscEvents implements Listener {
                                 int maxDur = Utils.getMaxCustomDurability(first);
                                 int total = Math.min(Utils.getCustomDurability(first) + Utils.getCustomDurability(second), maxDur);
 
-                                if (first.getItemMeta().hasEnchant(Enchantment.DAMAGE_ALL) || second.getItemMeta().hasEnchant(Enchantment.DAMAGE_ALL)) {
+                                if (first.getItemMeta().hasEnchant(Enchantment.SHARPNESS) || second.getItemMeta().hasEnchant(Enchantment.SHARPNESS)) {
                                     Utils.updateDamageLore(result, result.getItemMeta().getEnchants().entrySet());
                                 }
 
@@ -295,7 +295,7 @@ public class MiscEvents implements Listener {
                     }
                     else if (Utils.isItemReal(second)) {
                         if (second.getItemMeta() instanceof EnchantmentStorageMeta enchMeta) {
-                            if (enchMeta.hasStoredEnchant(Enchantment.DAMAGE_ALL)) {
+                            if (enchMeta.hasStoredEnchant(Enchantment.SHARPNESS)) {
                                 Utils.updateDamageLore(result, result.getItemMeta().getEnchants().entrySet());
                                 event.setResult(result);
                             }

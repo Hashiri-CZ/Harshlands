@@ -27,6 +27,9 @@ import cz.hashiri.harshlands.rsv.HLPlugin;
 import cz.hashiri.harshlands.spartanweaponry.KbTask;
 import cz.hashiri.harshlands.utils.ToolHandler.Tool;
 import cz.hashiri.harshlands.utils.recipe.HLRecipe;
+import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.format.NamedTextColor;
+import net.kyori.adventure.text.serializer.legacy.LegacyComponentSerializer;
 import org.apache.commons.lang.StringUtils;
 import org.bukkit.*;
 import org.bukkit.attribute.Attribute;
@@ -149,7 +152,8 @@ public class Utils {
             translatedText = format(translatedText, placeholders);
         }
 
-        return ChatColor.translateAlternateColorCodes('&', translatedText);
+        return LegacyComponentSerializer.legacySection().serialize(
+                LegacyComponentSerializer.legacyAmpersand().deserialize(translatedText));
     }
 
     @Nonnull
@@ -169,7 +173,8 @@ public class Utils {
                 temp = format(temp, placeholders);
             }
 
-            temp = ChatColor.translateAlternateColorCodes('&', temp);
+            temp = LegacyComponentSerializer.legacySection().serialize(
+                    LegacyComponentSerializer.legacyAmpersand().deserialize(temp));
 
             translated.set(i, temp);
         }
@@ -328,30 +333,14 @@ public class Utils {
 
     @Nonnull
     public static String toLowercaseAttributeName(@Nonnull Attribute atr) {
-        return switch (atr) {
-            case GENERIC_ATTACK_DAMAGE -> "generic.attack_damage";
-            case GENERIC_ATTACK_SPEED -> "generic.attack_speed";
-            case GENERIC_ATTACK_KNOCKBACK -> "generic.attack_knockback";
-            case GENERIC_ARMOR -> "generic.armor";
-            case GENERIC_ARMOR_TOUGHNESS -> "generic.armor_toughness";
-            case GENERIC_FLYING_SPEED -> "generic.flying_speed";
-            case GENERIC_FOLLOW_RANGE -> "generic.follow_range";
-            case GENERIC_KNOCKBACK_RESISTANCE -> "generic.knockback_resistance";
-            case GENERIC_LUCK -> "generic.luck";
-            case GENERIC_MAX_HEALTH -> "generic.max_health";
-            case GENERIC_MOVEMENT_SPEED -> "generic.movement_speed";
-            case HORSE_JUMP_STRENGTH -> "horse.jump_strength";
-            case ZOMBIE_SPAWN_REINFORCEMENTS -> "zombie.spawn_reinforcements";
-        };
+        return atr.getKey().getKey();
     }
 
     public static double getCorrectAttributeValue(@Nonnull Attribute attribute, double requestedValue) {
-        return switch (attribute) {
-            case GENERIC_ATTACK_DAMAGE -> requestedValue + ATTACK_DAMAGE_CONSTANT;
-            case GENERIC_ATTACK_SPEED -> requestedValue + ATTACK_SPEED_CONSTANT;
-            case GENERIC_ARMOR, GENERIC_ARMOR_TOUGHNESS -> requestedValue;
-            default -> 0;
-        };
+        if (attribute == Attribute.ATTACK_DAMAGE) return requestedValue + ATTACK_DAMAGE_CONSTANT;
+        if (attribute == Attribute.ATTACK_SPEED) return requestedValue + ATTACK_SPEED_CONSTANT;
+        if (attribute == Attribute.ARMOR || attribute == Attribute.ARMOR_TOUGHNESS) return requestedValue;
+        return 0;
     }
 
     public static boolean isHelmet(@Nonnull Material material) {
@@ -412,7 +401,7 @@ public class Utils {
             if (meta != null) {
                 if (meta.hasAttributeModifiers() && meta.hasLore()) {
                     List<String> lore = meta.getLore();
-                    Collection<AttributeModifier> modifiers = meta.getAttributeModifiers(Attribute.GENERIC_ATTACK_DAMAGE);
+                    Collection<AttributeModifier> modifiers = meta.getAttributeModifiers(Attribute.ATTACK_DAMAGE);
 
                     if (!(modifiers == null || modifiers.isEmpty() || lore == null)) {
                         int lvl = 0;
@@ -420,7 +409,7 @@ public class Utils {
                         if (entrySet != null) {
                             if (!entrySet.isEmpty()) {
                                 for (Map.Entry<Enchantment, Integer> entry : entrySet) {
-                                    if (entry.getKey().equals(Enchantment.DAMAGE_ALL)) {
+                                    if (entry.getKey().equals(Enchantment.SHARPNESS)) {
                                         lvl = Math.max(lvl, entry.getValue());
                                     }
                                 }
@@ -449,7 +438,7 @@ public class Utils {
 
                         if (index != -1) {
                             List<String> before = new ArrayList<>(lore.subList(0, index));
-                            LorePresets.addGearStats(before, Attribute.GENERIC_ATTACK_DAMAGE, newDmg);
+                            LorePresets.addGearStats(before, Attribute.ATTACK_DAMAGE, newDmg);
 
                             if (index + 1 < len) {
                                 before.addAll(lore.subList(index + 1, lore.size()));
@@ -466,25 +455,22 @@ public class Utils {
 
     @Nullable
     public static EquipmentSlot getCorrectEquipmentSlot(@Nonnull Attribute attribute, @Nonnull Material material) {
-        switch (attribute) {
-            case GENERIC_ATTACK_DAMAGE, GENERIC_ATTACK_SPEED -> {
-                return EquipmentSlot.HAND;
+        if (attribute == Attribute.ATTACK_DAMAGE || attribute == Attribute.ATTACK_SPEED) {
+            return EquipmentSlot.HAND;
+        }
+        if (attribute == Attribute.ARMOR || attribute == Attribute.ARMOR_TOUGHNESS) {
+            if (isHelmet(material)) {
+                return EquipmentSlot.HEAD;
             }
-            case GENERIC_ARMOR, GENERIC_ARMOR_TOUGHNESS -> {
-                if (isHelmet(material)) {
-                    return EquipmentSlot.HEAD;
-                }
-                else if (isChestplate(material)) {
-                    return EquipmentSlot.CHEST;
-                }
-                else if (isLeggings(material)) {
-                    return EquipmentSlot.LEGS;
-                }
-                else if (isBoots(material)) {
-                    return EquipmentSlot.FEET;
-                }
+            else if (isChestplate(material)) {
+                return EquipmentSlot.CHEST;
             }
-            default -> {}
+            else if (isLeggings(material)) {
+                return EquipmentSlot.LEGS;
+            }
+            else if (isBoots(material)) {
+                return EquipmentSlot.FEET;
+            }
         }
         return null;
     }
@@ -492,19 +478,19 @@ public class Utils {
     @Nonnull
     public static Attribute translateInformalAttributeName(@Nonnull String name) {
         return switch (name) {
-            case "AttackDamage" -> Attribute.GENERIC_ATTACK_DAMAGE;
-            case "AttackKnockback" -> Attribute.GENERIC_ATTACK_KNOCKBACK;
-            case "AttackSpeed" -> Attribute.GENERIC_ATTACK_SPEED;
-            case "Armor" -> Attribute.GENERIC_ARMOR;
-            case "Toughness" -> Attribute.GENERIC_ARMOR_TOUGHNESS;
-            case "FlyingSpeed" -> Attribute.GENERIC_FLYING_SPEED;
-            case "FollowRange" -> Attribute.GENERIC_FOLLOW_RANGE;
-            case "KnockbackResistance" -> Attribute.GENERIC_KNOCKBACK_RESISTANCE;
-            case "Luck" -> Attribute.GENERIC_LUCK;
-            case "MaxHealth" -> Attribute.GENERIC_MAX_HEALTH;
-            case "MovementSpeed" -> Attribute.GENERIC_MOVEMENT_SPEED;
-            case "HorseJumpStrength" -> Attribute.HORSE_JUMP_STRENGTH;
-            case "ZombieSpawnReinforcements" -> Attribute.ZOMBIE_SPAWN_REINFORCEMENTS;
+            case "AttackDamage" -> Attribute.ATTACK_DAMAGE;
+            case "AttackKnockback" -> Attribute.ATTACK_KNOCKBACK;
+            case "AttackSpeed" -> Attribute.ATTACK_SPEED;
+            case "Armor" -> Attribute.ARMOR;
+            case "Toughness" -> Attribute.ARMOR_TOUGHNESS;
+            case "FlyingSpeed" -> Attribute.FLYING_SPEED;
+            case "FollowRange" -> Attribute.FOLLOW_RANGE;
+            case "KnockbackResistance" -> Attribute.KNOCKBACK_RESISTANCE;
+            case "Luck" -> Attribute.LUCK;
+            case "MaxHealth" -> Attribute.MAX_HEALTH;
+            case "MovementSpeed" -> Attribute.MOVEMENT_SPEED;
+            case "HorseJumpStrength" -> Attribute.JUMP_STRENGTH;
+            case "ZombieSpawnReinforcements" -> Attribute.SPAWN_REINFORCEMENTS;
             default -> Attribute.valueOf(name);
         };
     }
@@ -642,8 +628,8 @@ public class Utils {
         int epf = 0;
 
         if (entity instanceof LivingEntity living) {
-            AttributeInstance armor = living.getAttribute(Attribute.GENERIC_ARMOR);
-            AttributeInstance armorToughness = living.getAttribute(Attribute.GENERIC_ARMOR_TOUGHNESS);
+            AttributeInstance armor = living.getAttribute(Attribute.ARMOR);
+            AttributeInstance armorToughness = living.getAttribute(Attribute.ARMOR_TOUGHNESS);
             EntityEquipment equipment = living.getEquipment();
 
             if (armor != null) {
@@ -654,7 +640,7 @@ public class Utils {
                 toughness = armorToughness.getValue();
             }
 
-            PotionEffect effect = living.getPotionEffect(PotionEffectType.DAMAGE_RESISTANCE);
+            PotionEffect effect = living.getPotionEffect(PotionEffectType.RESISTANCE);
             resistance = effect == null ? 0 : effect.getAmplifier();
 
             if (equipment != null) {
@@ -676,10 +662,10 @@ public class Utils {
         ItemStack legs = inv.getLeggings();
         ItemStack boot = inv.getBoots();
 
-        return (helm != null ? helm.getEnchantmentLevel(Enchantment.PROTECTION_ENVIRONMENTAL) : 0) +
-                (chest != null ? chest.getEnchantmentLevel(Enchantment.PROTECTION_ENVIRONMENTAL) : 0) +
-                (legs != null ? legs.getEnchantmentLevel(Enchantment.PROTECTION_ENVIRONMENTAL) : 0) +
-                (boot != null ? boot.getEnchantmentLevel(Enchantment.PROTECTION_ENVIRONMENTAL) : 0);
+        return (helm != null ? helm.getEnchantmentLevel(Enchantment.PROTECTION) : 0) +
+                (chest != null ? chest.getEnchantmentLevel(Enchantment.PROTECTION) : 0) +
+                (legs != null ? legs.getEnchantmentLevel(Enchantment.PROTECTION) : 0) +
+                (boot != null ? boot.getEnchantmentLevel(Enchantment.PROTECTION) : 0);
     }
 
     public static void setFreezingView(@Nonnull Player player, int ticks) {
@@ -830,7 +816,7 @@ public class Utils {
         int lvl = 0;
 
         if (isItemReal(tool)) {
-            lvl = tool.getEnchantmentLevel(Enchantment.LOOT_BONUS_BLOCKS);
+            lvl = tool.getEnchantmentLevel(Enchantment.FORTUNE);
         }
 
         switch (section.getString("Type").toUpperCase()) {
@@ -915,7 +901,7 @@ public class Utils {
         int lvl = 0;
 
         if (isItemReal(tool) && checkLooting) {
-            lvl = tool.getEnchantmentLevel(Enchantment.LOOT_BONUS_MOBS);
+            lvl = tool.getEnchantmentLevel(Enchantment.LOOTING);
         }
 
         switch (section.getString("Type").toUpperCase()) {
@@ -992,7 +978,7 @@ public class Utils {
             case STONE_AXE, STONE_PICKAXE, STONE_SWORD, STONE_SHOVEL, STONE_HOE -> Set.of(Material.COBBLESTONE, Material.BLACKSTONE);
             case WOODEN_AXE, WOODEN_PICKAXE, WOODEN_SWORD, WOODEN_SHOVEL, WOODEN_HOE, SHIELD -> Tag.PLANKS.getValues();
             case LEATHER_BOOTS, LEATHER_CHESTPLATE, LEATHER_LEGGINGS, LEATHER_HELMET -> Set.of(Material.LEATHER);
-            case TURTLE_HELMET -> Set.of(Material.SCUTE);
+            case TURTLE_HELMET -> Set.of(Material.TURTLE_SCUTE);
             default -> null;
         };
     }
@@ -1093,7 +1079,7 @@ public class Utils {
             return;
         }
 
-        int lvl = meta.hasEnchant(Enchantment.DURABILITY) ? meta.getEnchantLevel(Enchantment.DURABILITY) : 0;
+        int lvl = meta.hasEnchant(Enchantment.UNBREAKING) ? meta.getEnchantLevel(Enchantment.UNBREAKING) : 0;
 
         boolean hasCustomDurability = hasCustomDurability(item);
 
@@ -1357,12 +1343,14 @@ public class Utils {
 
                 for (int i = 0; i < lore.size(); i++) {
                     if (lore.get(i).contains("Durability:")) {
-                        lore.set(i, ChatColor.GRAY + "Durability: " + newDurability + "/" + maxDurability);
+                        lore.set(i, LegacyComponentSerializer.legacySection().serialize(
+                                Component.text("Durability: " + newDurability + "/" + maxDurability, NamedTextColor.GRAY)));
                         changedDurability = true;
                     }
                     if (isJuice) {
                         if (lore.get(i).contains("Drink: ")) {
-                            lore.set(i, ChatColor.GRAY + "Drink: " + getNbtTag(item, "rsvdrink", PersistentDataType.STRING));
+                            lore.set(i, LegacyComponentSerializer.legacySection().serialize(
+                                    Component.text("Drink: " + getNbtTag(item, "rsvdrink", PersistentDataType.STRING), NamedTextColor.GRAY)));
                             changedJuice = true;
                         }
                     }
@@ -1586,11 +1574,6 @@ public class Utils {
                     meta.setAttributeModifiers(rsvMeta.getAttributeModifiers());
             }
 
-            if (config.getBoolean("UpdateItem.AttributeModifiers")) {
-                if (rsvMeta.hasLocalizedName())
-                    meta.setLocalizedName(rsvMeta.getLocalizedName());
-            }
-
             if (config.getBoolean("UpdateItem.CustomModelData")) {
                 if (rsvMeta.hasCustomModelData()) {
                     meta.setCustomModelData(Integer.valueOf(rsvMeta.getCustomModelData()));
@@ -1704,11 +1687,6 @@ public class Utils {
                 if (config.getBoolean("UpdateNetheriteItems.UpdateAttributeModifiers")) {
                     if (rsvMeta.hasAttributeModifiers())
                         meta.setAttributeModifiers(rsvMeta.getAttributeModifiers());
-                }
-
-                if (config.getBoolean("UpdateNetheriteItems.UpdateAttributeModifiers")) {
-                    if (rsvMeta.hasLocalizedName())
-                        meta.setLocalizedName(rsvMeta.getLocalizedName());
                 }
 
                 if (config.getBoolean("UpdateNetheriteItems.UpdateCustomModelData")) {
