@@ -71,9 +71,14 @@ public class HypothermiaTask extends BukkitRunnable implements HLTask {
         int amp;
 
         for (String key : keys) {
+            PotionEffectType type = Registry.EFFECT.get(NamespacedKey.minecraft(key.toLowerCase()));
+            if (type == null) {
+                plugin.getLogger().warning("[TAN] Unknown potion effect in Hypothermia config: " + key);
+                continue;
+            }
             dur = section.getInt(key + ".Duration");
             amp = section.getInt(key + ".Amplifier");
-            potionEffects.add(new PotionEffect(Registry.EFFECT.get(NamespacedKey.minecraft(key.toLowerCase())), dur, amp));
+            potionEffects.add(new PotionEffect(type, dur, amp));
         }
         tasks.put(id, this);
     }

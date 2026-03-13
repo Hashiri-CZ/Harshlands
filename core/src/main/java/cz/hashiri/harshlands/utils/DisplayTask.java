@@ -55,6 +55,14 @@ public class DisplayTask extends BukkitRunnable implements HLTask {
     private final IceFireModule ifModule;
     private final RealisticSeasons rs;
 
+    // Cached config values
+    private final boolean sirenChangeScreenEnabled;
+    private final boolean hypothermiaScreenEnabled;
+    private final boolean hypothermiaUseVanillaFreeze;
+    private final int     hypothermiaFreezeTickCount;
+    private final boolean hyperthermiaScreenEnabled;
+    private final boolean thirstDehydrationScreenEnabled;
+
     public DisplayTask(HLPlugin plugin, HLPlayer player) {
         this.plugin = plugin;
 
@@ -68,6 +76,13 @@ public class DisplayTask extends BukkitRunnable implements HLTask {
         this.id = player.getPlayer().getUniqueId();
         this.rs = (RealisticSeasons) CompatiblePlugin.getPlugin(RealisticSeasons.NAME);
         tasks.put(id, this);
+
+        sirenChangeScreenEnabled       = ifConfig  != null && ifConfig.getBoolean("Siren.ChangeScreen.Enabled");
+        hypothermiaScreenEnabled       = tanConfig != null && tanConfig.getBoolean("Temperature.Hypothermia.ScreenTinting.Enabled");
+        hypothermiaUseVanillaFreeze    = tanConfig != null && tanConfig.getBoolean("Temperature.Hypothermia.ScreenTinting.UseVanillaFreezeEffect");
+        hypothermiaFreezeTickCount     = tanConfig != null ? tanConfig.getInt("VisualTickPeriod") + 5 : 5;
+        hyperthermiaScreenEnabled      = tanConfig != null && tanConfig.getBoolean("Temperature.Hyperthermia.ScreenTinting");
+        thirstDehydrationScreenEnabled = tanConfig != null && tanConfig.getBoolean("Thirst.Dehydration.ScreenTinting");
     }
 
     @Override
@@ -81,8 +96,8 @@ public class DisplayTask extends BukkitRunnable implements HLTask {
             if (ifConfig != null && ifModule.getAllowedWorlds().contains(player.getWorld().getName())) {
                 if (!player.hasPermission("harshlands.iceandfire.resistance.sirenvisual")) {
                     if (underSirenEffect) {
-                        if (ifConfig.getBoolean("Siren.ChangeScreen.Enabled")) {
-                            titleText += characterValues.getSirenView(player);
+                        if (sirenChangeScreenEnabled) {
+                            titleText += characterValues.getSirenView();
                         }
                     }
                 }
@@ -93,47 +108,49 @@ public class DisplayTask extends BukkitRunnable implements HLTask {
                 ThirstManager thirstManager = tanModule.getThirstManager();
                 double temperature = tempManager.getTemperature(player);
                 double thirst = thirstManager.getThirst(player);
+                int tempInt   = (int) Math.round(temperature);
+                int thirstInt = (int) Math.round(thirst);
 
                 boolean isUnderwater = player.getRemainingAir() < 300 || player.getEyeLocation().getBlock().getType() == Material.WATER;
 
                 if (tempManager.isTempEnabled(player) && thirstManager.isThirstEnabled(player)) {
-                    actionbarText += characterValues.getTemperatureThirstActionbar(player, (int) Math.round(temperature), (int) Math.round(thirst), isUnderwater, parasitesActive);
+                    actionbarText += characterValues.getTemperatureThirstActionbar(player, tempInt, thirstInt, isUnderwater, parasitesActive);
                 }
                 else {
                     // only temperature is enabled
                     if (tempManager.isTempEnabled(player)) {
-                        actionbarText += characterValues.getTemperatureOnlyActionbar(player, (int) Math.round(temperature));
+                        actionbarText += characterValues.getTemperatureOnlyActionbar(player, tempInt);
                     }
                     // only thirst is enabled
                     else {
-                        actionbarText += characterValues.getThirstOnlyActionbar(player, (int) Math.round(thirst), isUnderwater, parasitesActive);
+                        actionbarText += characterValues.getThirstOnlyActionbar(player, thirstInt, isUnderwater, parasitesActive);
                     }
                 }
 
                 if (temperature < 6) {
-                    if (tanConfig.getBoolean("Temperature.Hypothermia.ScreenTinting.Enabled") && !rs.disableHypothermiaTinting()) {
+                    if (hypothermiaScreenEnabled && !rs.disableHypothermiaTinting()) {
                         if (!player.hasPermission("harshlands.toughasnails.resistance.cold.visual")) {
-                            if (tanConfig.getBoolean("Temperature.Hypothermia.ScreenTinting.UseVanillaFreezeEffect")) {
-                                Utils.setFreezingView(player, tanConfig.getInt("VisualTickPeriod") + 5);
+                            if (hypothermiaUseVanillaFreeze) {
+                                Utils.setFreezingView(player, hypothermiaFreezeTickCount);
                             }
                             else {
-                                titleText += characterValues.getIceVignette(player, (int) Math.round(temperature));
+                                titleText += characterValues.getIceVignette(tempInt);
                             }
                         }
                     }
                 }
                 if (temperature > 19) {
-                    if (tanConfig.getBoolean("Temperature.Hyperthermia.ScreenTinting") && !rs.disableHyperthermiaTinting()) {
+                    if (hyperthermiaScreenEnabled && !rs.disableHyperthermiaTinting()) {
                         if (!player.hasPermission("harshlands.toughasnails.resistance.hot.visual")) {
-                            titleText += characterValues.getFireVignette(player, (int) Math.round(temperature));
+                            titleText += characterValues.getFireVignette(tempInt);
                         }
                     }
                 }
 
                 if (thirst < 5) {
-                    if (tanConfig.getBoolean("Thirst.Dehydration.ScreenTinting")) {
+                    if (thirstDehydrationScreenEnabled) {
                         if (!player.hasPermission("harshlands.toughasnails.resistance.thirst.visual")) {
-                            titleText += characterValues.getThirstVignette(player, (int) Math.round(thirst));
+                            titleText += characterValues.getThirstVignette(thirstInt);
                         }
                     }
                 }
@@ -141,12 +158,12 @@ public class DisplayTask extends BukkitRunnable implements HLTask {
 
             Audience audience = (Audience) player;
             if (!actionbarText.isEmpty()) {
-                audience.sendActionBar(LegacyComponentSerializer.legacySection().deserialize(Utils.translateMsg(actionbarText, player, null)));
+                audience.sendActionBar(LegacyComponentSerializer.legacySection().deserialize(actionbarText));
             }
 
             if (!titleText.isEmpty()) {
                 audience.showTitle(Title.title(
-                    LegacyComponentSerializer.legacySection().deserialize(Utils.translateMsg(titleText, player, null)),
+                    LegacyComponentSerializer.legacySection().deserialize(titleText),
                     Component.empty(),
                     Title.Times.times(Duration.ZERO, Duration.ofMillis(70 * 50L), Duration.ZERO)));
             }
@@ -163,7 +180,7 @@ public class DisplayTask extends BukkitRunnable implements HLTask {
 
     @Override
     public void start() {
-        int tickPeriod = tanConfig.getInt("VisualTickPeriod"); // get the tick period
+        int tickPeriod = tanConfig.getInt("VisualTickPeriod");
         this.runTaskTimer(plugin, 0L, tickPeriod);
     }
 
@@ -189,4 +206,3 @@ public class DisplayTask extends BukkitRunnable implements HLTask {
         return tasks;
     }
 }
-

@@ -131,10 +131,10 @@ public class HLExpansion extends PlaceholderExpansion {
                                 return String.valueOf(Utils.round(temp, decimalplaces));
                             }
                             case "bar" -> {
-                                return charValues.getTemperature(player, (int) Math.round(internalTemp));
+                                return charValues.getTemperature((int) Math.round(internalTemp));
                             }
                             case "vignette" -> {
-                                return charValues.getFireVignette(player, (int) Math.round(internalTemp));
+                                return charValues.getFireVignette((int) Math.round(internalTemp));
                             }
                             default -> {}
                         }
@@ -166,10 +166,10 @@ public class HLExpansion extends PlaceholderExpansion {
                                 return String.valueOf(Utils.round(thirst, decimalplaces));
                             }
                             case "bar" -> {
-                                return charValues.getThirst(player, (int) Math.round(thirst), player.getRemainingAir() < 300 || player.isInWater(), thirstManager.hasParasites(player));
+                                return charValues.getThirst((int) Math.round(thirst), player.getRemainingAir() < 300 || player.isInWater(), thirstManager.hasParasites(player));
                             }
                             case "vignette" -> {
-                                return charValues.getThirstVignette(player, (int) Math.round(thirst));
+                                return charValues.getThirstVignette((int) Math.round(thirst));
                             }
                             default -> {}
                         }

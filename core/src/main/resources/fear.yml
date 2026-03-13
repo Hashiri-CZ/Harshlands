@@ -151,8 +151,7 @@ FearMeter:
       Sounds:              # sound name: relative weight (higher = more common)
         ENTITY_CREEPER_PRIMED: 35
         ENTITY_CREEPER_HURT: 15
-        ENTITY_SPIDER_AMBIENT: 10
-        ENTITY_CAVE_SPIDER_AMBIENT: 8
+        ENTITY_SPIDER_AMBIENT: 18
         ENTITY_SKELETON_AMBIENT: 8
         ENTITY_ZOMBIE_AMBIENT: 8
         ENTITY_ENDERMAN_STARE: 5
