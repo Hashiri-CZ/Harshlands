@@ -80,6 +80,7 @@ public class HLPlugin extends JavaPlugin {
         this.commandsConfig = new HLConfig(this, "commands.yml");
         this.auraSkillsRequirementsConfig = new HLConfig(this, "auraskills_requirements.yml");
         migrateAuraSkillsRequirementsConfig();
+        ensureResourcePackDefaults();
         ensureIntegrationDefaults();
 
         util = new Utils(this);
@@ -310,6 +311,26 @@ public class HLPlugin extends JavaPlugin {
                 cfg.save(getConfigFile());
             } catch (IOException exception) {
                 getLogger().warning("Failed to write Fear defaults to config.yml: " + exception.getMessage());
+            }
+        }
+    }
+
+    private void ensureResourcePackDefaults() {
+        FileConfiguration cfg = getConfig();
+        boolean changed = false;
+
+        String namespacePath = "ResourcePack.ModelNamespace";
+        if (!cfg.contains(namespacePath) || cfg.getString(namespacePath, "").isBlank()) {
+            // Preserve compatibility with the long-lived Realistic Survival resource pack namespace.
+            cfg.set(namespacePath, "realisticsurvival");
+            changed = true;
+        }
+
+        if (changed) {
+            try {
+                cfg.save(getConfigFile());
+            } catch (IOException exception) {
+                getLogger().warning("Failed to write ResourcePack defaults to config.yml: " + exception.getMessage());
             }
         }
     }

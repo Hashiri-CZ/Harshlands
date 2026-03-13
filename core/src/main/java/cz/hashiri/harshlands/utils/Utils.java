@@ -1271,24 +1271,33 @@ public class Utils {
     }
 
     public static boolean hasCustomModelData(@Nonnull ItemMeta meta) {
+        if (meta.hasCustomModelData()) {
+            return true;
+        }
         if (!meta.hasCustomModelDataComponent()) {
             return false;
         }
-
-        CustomModelDataComponent component = meta.getCustomModelDataComponent();
-        return !component.getFloats().isEmpty();
+        List<Float> floats = meta.getCustomModelDataComponent().getFloats();
+        return floats != null && !floats.isEmpty();
     }
 
     public static int getCustomModelData(@Nonnull ItemMeta meta) {
-        if (!hasCustomModelData(meta)) {
+        if (meta.hasCustomModelData()) {
+            return meta.getCustomModelData();
+        }
+        if (!meta.hasCustomModelDataComponent()) {
             return 0;
         }
-
-        float modelData = meta.getCustomModelDataComponent().getFloats().getFirst();
-        return Math.round(modelData);
+        List<Float> floats = meta.getCustomModelDataComponent().getFloats();
+        if (floats == null || floats.isEmpty()) {
+            return 0;
+        }
+        return Math.round(floats.getFirst());
     }
 
     public static void setCustomModelData(@Nonnull ItemMeta meta, int modelData) {
+        // Keep both representations in sync for cross-version resource pack behavior.
+        meta.setCustomModelData(modelData);
         CustomModelDataComponent component = meta.getCustomModelDataComponent();
         component.setFloats(List.of((float) modelData));
         meta.setCustomModelDataComponent(component);

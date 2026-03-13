@@ -33,7 +33,10 @@ DeveloperBuildVersion:
 # NOTE: This plugin supports Minecraft version 1.21.11 only and uses a single resource pack URL.
 ResourcePack:
   Enabled: true
-  Url: "https://www.dropbox.com/scl/fi/vb243ndrmlsbtxv1egoqw/Harshlands-RP-1.21.11.zip?rlkey=1x04okdd8omkq7xumqt9v7it1&st=n7dcbgfr&dl=1"
+  Url: "https://www.dropbox.com/scl/fi/m50s8ubtli9dadeolf9ht/Harshlands-RP-1.21.11.zip?rlkey=qmhr6t0zv15g03ykth9lxhv3p&st=iz5kux17&dl=1"
+  # Namespace used for minecraft:item_model keys on plugin items.
+  # Use "realisticsurvival" for Realistic Survival RP and "harshlands" for Harshlands RP.
+  ModelNamespace: "realisticsurvival"
 
 AutomaticallyEnableWorlds: true # Will automatically enable modules for newly added worlds; if set to false, automatically disables modules for newly added worlds
 AutoUpdateConfig: true # If set to true, will automatically update config; note that this may cause issues with porting across large updates
@@ -111,4 +114,3 @@ Performance:
 
 BStats: true # Do you want non-confidential server data to be recorded for my use?
 ConfigId: "1.2.10-RELEASE" # Used for config syncing purposes, do NOT edit
-

@@ -25,14 +25,17 @@ import cz.hashiri.harshlands.rsv.HLPlugin;
 import cz.hashiri.harshlands.tan.TanModule;
 import cz.hashiri.harshlands.tan.TempManager;
 import cz.hashiri.harshlands.tan.ThirstManager;
-import net.md_5.bungee.api.ChatMessageType;
-import net.md_5.bungee.api.chat.TextComponent;
+import net.kyori.adventure.audience.Audience;
+import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.serializer.legacy.LegacyComponentSerializer;
+import net.kyori.adventure.title.Title;
 import org.bukkit.Material;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
 
 import javax.annotation.Nullable;
+import java.time.Duration;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
@@ -67,7 +70,6 @@ public class DisplayTask extends BukkitRunnable implements HLTask {
         tasks.put(id, this);
     }
 
-    @SuppressWarnings("deprecation")
     @Override
     public void run() {
         Player player = this.player.getPlayer();
@@ -137,12 +139,16 @@ public class DisplayTask extends BukkitRunnable implements HLTask {
                 }
             }
 
+            Audience audience = (Audience) player;
             if (!actionbarText.isEmpty()) {
-                player.spigot().sendMessage(ChatMessageType.ACTION_BAR, new TextComponent(Utils.translateMsg(actionbarText, player, null)));
+                audience.sendActionBar(LegacyComponentSerializer.legacySection().deserialize(Utils.translateMsg(actionbarText, player, null)));
             }
 
             if (!titleText.isEmpty()) {
-                player.sendTitle(Utils.translateMsg(titleText, player, null), "", 0, 70, 0);
+                audience.showTitle(Title.title(
+                    LegacyComponentSerializer.legacySection().deserialize(Utils.translateMsg(titleText, player, null)),
+                    Component.empty(),
+                    Title.Times.times(Duration.ZERO, Duration.ofMillis(70 * 50L), Duration.ZERO)));
             }
         }
         else {

@@ -46,6 +46,9 @@ public class HLItem extends ItemStack {
 
     private static final Map<String, HLItem> itemMap = new HashMap<>();
     private static final String MODEL_CONFIG_DEFAULT_OPTION = "DEFAULT";
+    private static final String MODEL_NAMESPACE_CONFIG_PATH = "ResourcePack.ModelNamespace";
+    private static final String MODEL_NAMESPACE_HARSHLANDS = "harshlands";
+    private static final String MODEL_NAMESPACE_REALISTIC_SURVIVAL = "realisticsurvival";
 
     // Constructor for HLItem with only Material - used for default vanilla items
     public HLItem(Material material) {
@@ -88,17 +91,17 @@ public class HLItem extends ItemStack {
         String displayName = itemConfig.getString(displayNamePath);
         int customModelData = itemConfig.getInt(customModelDataPath);
 
-        HLPlugin pluginNamespace = HLPlugin.getPlugin();
+        String modelNamespace = resolveItemModelNamespace();
         String itemModelStr = itemConfig.getString(itemModelPath);
         NamespacedKey itemModelKey = null;
 
         if (itemModelStr != null) {
             // automatically generate item model key if default option is used
             if (itemModelStr.equals(MODEL_CONFIG_DEFAULT_OPTION)) {
-                itemModelKey = NamespacedKey.fromString(module.getName().toLowerCase() + "/" + name, pluginNamespace);
+                itemModelKey = new NamespacedKey(modelNamespace, module.getName().toLowerCase() + "/" + name);
             }
             else {
-                itemModelKey = NamespacedKey.fromString(itemModelStr, pluginNamespace);
+                itemModelKey = parseModelKey(itemModelStr, modelNamespace);
             }
         }
 
@@ -119,10 +122,10 @@ public class HLItem extends ItemStack {
                     }
                 }
 
-                ecmKey = NamespacedKey.fromString(module.getName().toLowerCase() + "/" + armorMaterial, pluginNamespace);
+                ecmKey = new NamespacedKey(modelNamespace, module.getName().toLowerCase() + "/" + armorMaterial);
             }
             else {
-                ecmKey = NamespacedKey.fromString(ecmStr, pluginNamespace);
+                ecmKey = parseModelKey(ecmStr, modelNamespace);
             }
         }
 
@@ -349,6 +352,69 @@ public class HLItem extends ItemStack {
             case FEET -> EquipmentSlotGroup.FEET;
             default -> EquipmentSlotGroup.ANY;
         };
+    }
+
+    @Nonnull
+    private static String resolveItemModelNamespace() {
+        HLPlugin plugin = HLPlugin.getPlugin();
+
+        if (plugin == null || plugin.getConfig() == null) {
+            return MODEL_NAMESPACE_HARSHLANDS;
+        }
+
+        String configured = plugin.getConfig().getString(MODEL_NAMESPACE_CONFIG_PATH);
+        String normalizedConfigured = normalizeNamespace(configured);
+        if (normalizedConfigured != null) {
+            return normalizedConfigured;
+        }
+
+        // Keep old "Realistic Survival RP" packs working without manual migration.
+        String resourcePackUrl = plugin.getConfig().getString("ResourcePack.Url", "").toLowerCase(Locale.ROOT);
+        if (resourcePackUrl.contains("realisticsurvival")
+                || resourcePackUrl.contains("realistic-survival")
+                || resourcePackUrl.contains("realistic%20survival")) {
+            return MODEL_NAMESPACE_REALISTIC_SURVIVAL;
+        }
+
+        if (resourcePackUrl.contains("harshlands")) {
+            return MODEL_NAMESPACE_HARSHLANDS;
+        }
+
+        String pluginNamespace = normalizeNamespace(plugin.getName());
+        return pluginNamespace == null ? MODEL_NAMESPACE_HARSHLANDS : pluginNamespace;
+    }
+
+    @Nullable
+    private static NamespacedKey parseModelKey(@Nullable String rawKey, @Nonnull String fallbackNamespace) {
+        if (rawKey == null || rawKey.isBlank()) {
+            return null;
+        }
+
+        String trimmed = rawKey.trim();
+        NamespacedKey parsed = NamespacedKey.fromString(trimmed);
+        if (parsed != null) {
+            return parsed;
+        }
+
+        if (trimmed.contains(":")) {
+            return null;
+        }
+
+        try {
+            return new NamespacedKey(fallbackNamespace, trimmed.toLowerCase(Locale.ROOT));
+        } catch (IllegalArgumentException ignored) {
+            return null;
+        }
+    }
+
+    @Nullable
+    private static String normalizeNamespace(@Nullable String rawNamespace) {
+        if (rawNamespace == null || rawNamespace.isBlank()) {
+            return null;
+        }
+
+        String normalized = rawNamespace.trim().toLowerCase(Locale.ROOT);
+        return normalized.matches("[a-z0-9._-]+") ? normalized : null;
     }
 
     @Nullable

@@ -802,7 +802,7 @@ public class TanEvents extends ModuleEvents implements Listener {
                 canteen.setItemMeta(meta);
             }
             else {
-                if (Utils.getItemModel(meta) != itemModel) {
+                if (!Objects.equals(Utils.getItemModel(meta), itemModel)) {
                     Utils.setItemModel(meta, itemModel);
                     canteen.setItemMeta(meta);
                 }
@@ -841,7 +841,7 @@ public class TanEvents extends ModuleEvents implements Listener {
                 canteen.setItemMeta(meta);
             }
             else {
-                if (Utils.getItemModel(meta) != itemModel) {
+                if (!Objects.equals(Utils.getItemModel(meta), itemModel)) {
                     Utils.setItemModel(meta, itemModel);
                     canteen.setItemMeta(meta);
                 }
