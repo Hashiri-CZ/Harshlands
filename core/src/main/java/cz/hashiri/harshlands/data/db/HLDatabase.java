@@ -4,11 +4,13 @@ import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 import cz.hashiri.harshlands.data.HLScheduler;
 import cz.hashiri.harshlands.rsv.HLPlugin;
+import cz.hashiri.harshlands.utils.Utils;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 
 import java.io.File;
+import java.lang.reflect.Method;
 import java.sql.*;
 import java.util.HashMap;
 import java.util.Map;
@@ -16,9 +18,20 @@ import java.util.Optional;
 import java.util.Set;
 import java.util.UUID;
 import java.util.concurrent.CompletableFuture;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class HLDatabase {
+    private static final String[] HIKARI_LOGGER_NAMES = {
+        "cz.hashiri.harshlands.libs.hikari",
+        "cz.hashiri.harshlands.libs.hikari.pool",
+        "cz.hashiri.harshlands.libs.hikari.HikariDataSource",
+        "cz.hashiri.harshlands.libs.hikari.pool.HikariPool",
+        "com.zaxxer.hikari",
+        "com.zaxxer.hikari.pool",
+        "com.zaxxer.hikari.HikariDataSource",
+        "com.zaxxer.hikari.pool.HikariPool"
+    };
 
     public record FearDataRow(double fearLevel) {}
 
@@ -42,10 +55,46 @@ public class HLDatabase {
         this.logger = plugin.getLogger();
     }
 
+    private void startupInfo(String message) {
+        Utils.logStartup("Database: " + message);
+    }
+
+    private void startupWarn(String message) {
+        Utils.logStartup("Database warning: " + message);
+    }
+
+    private void configureHikariLogging() {
+        for (String loggerName : HIKARI_LOGGER_NAMES) {
+            System.setProperty("org.slf4j.simpleLogger.log." + loggerName, "warn");
+        }
+
+        // JUL-based backends
+        for (String loggerName : HIKARI_LOGGER_NAMES) {
+            Logger julLogger = Logger.getLogger(loggerName);
+            julLogger.setLevel(Level.WARNING);
+            julLogger.setFilter(record -> record == null || record.getLevel().intValue() >= Level.WARNING.intValue());
+        }
+
+        // Log4j2-based backends (Paper/Purpur setups)
+        try {
+            Class<?> configurator = Class.forName("org.apache.logging.log4j.core.config.Configurator");
+            Class<?> levelClass = Class.forName("org.apache.logging.log4j.Level");
+            Method setLevel = configurator.getMethod("setLevel", String.class, levelClass);
+            Object warn = levelClass.getField("WARN").get(null);
+
+            for (String loggerName : HIKARI_LOGGER_NAMES) {
+                setLevel.invoke(null, loggerName, warn);
+            }
+        } catch (Throwable ignored) {
+            // Optional runtime backend; ignore when unavailable.
+        }
+    }
+
     public void connect() {
         FileConfiguration config = plugin.getConfig();
         String type = config.getString("Database.Type", "H2").toUpperCase();
         this.isMysql = type.equals("MYSQL");
+        configureHikariLogging();
 
         HikariConfig hikariConfig = new HikariConfig();
         hikariConfig.setPoolName("HL-Pool");
@@ -61,7 +110,7 @@ public class HLDatabase {
                 Class.forName("com.mysql.cj.jdbc.Driver");
             } catch (ClassNotFoundException e) {
                 throw new RuntimeException(
-                    "[HLDatabase] MySQL driver not found. Add mysql-connector-j to your server's /lib folder.", e);
+                    "MySQL driver not found. Add mysql-connector-j to your server's /lib folder.", e);
             }
             hikariConfig.setJdbcUrl("jdbc:mysql://" + host + ":" + port + "/" + database
                 + "?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC");
@@ -73,23 +122,31 @@ public class HLDatabase {
             hikariConfig.setConnectionTimeout(config.getLong("Database.MySQL.Pool.ConnectionTimeout", 30000));
             hikariConfig.setIdleTimeout(config.getLong("Database.MySQL.Pool.IdleTimeout", 600000));
             hikariConfig.setMaxLifetime(config.getLong("Database.MySQL.Pool.MaxLifetime", 1800000));
+
+            startupInfo("Mode: MySQL (" + host + ":" + port + "/" + database + ")");
+            startupInfo("Pool: min " + hikariConfig.getMinimumIdle() + ", max " + hikariConfig.getMaximumPoolSize()
+                + ", connection timeout " + hikariConfig.getConnectionTimeout() + " ms");
         } else {
             File dbFile = new File(plugin.getDataFolder(), "data");
             hikariConfig.setJdbcUrl("jdbc:h2:file:" + dbFile.getAbsolutePath() + ";TRACE_LEVEL_FILE=0");
             hikariConfig.setDriverClassName("org.h2.Driver");
             hikariConfig.setMaximumPoolSize(2);
             hikariConfig.setMinimumIdle(1);
+
+            startupInfo("Mode: Embedded H2 (" + dbFile.getAbsolutePath() + ")");
+            startupInfo("Pool: min " + hikariConfig.getMinimumIdle() + ", max " + hikariConfig.getMaximumPoolSize());
         }
 
         try {
+            startupInfo("Starting connection pool...");
             dataSource = new HikariDataSource(hikariConfig);
             // Test connection
             try (Connection conn = dataSource.getConnection()) {
                 conn.isValid(1);
             }
-            logger.info("[HLDatabase] Connected to " + type + " database.");
+            startupInfo("Connection established.");
         } catch (Exception e) {
-            throw new RuntimeException("[HLDatabase] Failed to connect to database: " + e.getMessage(), e);
+            throw new RuntimeException("Failed to connect to database: " + e.getMessage(), e);
         }
     }
 
@@ -117,7 +174,7 @@ public class HLDatabase {
                             if (rs.next() && rs.getInt(1) > 0) {
                                 conn.createStatement().execute(
                                     "RENAME TABLE " + oldTable + " TO " + newTable);
-                                logger.info("[HLDatabase] Renamed table " + oldTable + " -> " + newTable);
+                                startupInfo("Renamed table " + oldTable + " -> " + newTable);
                             }
                         }
                     }
@@ -152,7 +209,7 @@ public class HLDatabase {
                                 if (!newExists) {
                                     conn.createStatement().execute(
                                         "ALTER TABLE " + oldUpper + " RENAME TO " + newTable);
-                                    logger.info("[HLDatabase] Renamed table " + oldUpper + " -> " + newTable);
+                                    startupInfo("Renamed table " + oldUpper + " -> " + newTable);
                                 }
                             }
                         }
@@ -160,7 +217,7 @@ public class HLDatabase {
                 }
             }
         } catch (SQLException e) {
-            logger.warning("[HLDatabase] Table name migration failed: " + e.getMessage());
+            startupWarn("Table name migration failed: " + e.getMessage());
         }
     }
 
@@ -195,9 +252,9 @@ public class HLDatabase {
             stmt.execute(baublesTable);
             stmt.execute(torchTable);
             stmt.execute(fearTable);
-            logger.info("[HLDatabase] Tables created/verified.");
+            startupInfo("Schema is ready.");
         } catch (SQLException e) {
-            throw new RuntimeException("[HLDatabase] Failed to create tables: " + e.getMessage(), e);
+            throw new RuntimeException("Failed to create tables: " + e.getMessage(), e);
         }
 
         migrateYamlData();
@@ -224,7 +281,7 @@ public class HLDatabase {
                 return; // Already has data
             }
         } catch (SQLException e) {
-            logger.warning("[HLDatabase] Could not check hl_tan_data for migration: " + e.getMessage());
+            startupWarn("Could not check hl_tan_data for migration: " + e.getMessage());
             return;
         }
 
@@ -253,15 +310,15 @@ public class HLDatabase {
             }
             ps.executeBatch();
         } catch (SQLException e) {
-            logger.warning("[HLDatabase] TAN data migration failed: " + e.getMessage());
+            startupWarn("TAN data migration failed: " + e.getMessage());
             return;
         }
 
         if (migrated > 0) {
             if (!yamlFile.renameTo(new File(yamlFile.getParent(), "playerdata.yml.migrated"))) {
-                logger.warning("[DB] Failed to rename migration file: " + yamlFile.getAbsolutePath());
+                startupWarn("Failed to rename migration file: " + yamlFile.getAbsolutePath());
             }
-            logger.info("[HLDatabase] Migrated " + migrated + " TAN player records from YAML to DB.");
+            startupInfo("Migrated " + migrated + " TAN player records from YAML to DB.");
         }
     }
 
@@ -278,7 +335,7 @@ public class HLDatabase {
                 return;
             }
         } catch (SQLException e) {
-            logger.warning("[HLDatabase] Could not check hl_baubles_data for migration: " + e.getMessage());
+            startupWarn("Could not check hl_baubles_data for migration: " + e.getMessage());
             return;
         }
 
@@ -306,15 +363,15 @@ public class HLDatabase {
             }
             ps.executeBatch();
         } catch (SQLException e) {
-            logger.warning("[HLDatabase] Baubles data migration failed: " + e.getMessage());
+            startupWarn("Baubles data migration failed: " + e.getMessage());
             return;
         }
 
         if (migrated > 0) {
             if (!yamlFile.renameTo(new File(yamlFile.getParent(), "playerdata.yml.migrated"))) {
-                logger.warning("[DB] Failed to rename migration file: " + yamlFile.getAbsolutePath());
+                startupWarn("Failed to rename migration file: " + yamlFile.getAbsolutePath());
             }
-            logger.info("[HLDatabase] Migrated " + migrated + " Baubles player records from YAML to DB.");
+            startupInfo("Migrated " + migrated + " Baubles player records from YAML to DB.");
         }
     }
 
@@ -349,7 +406,7 @@ public class HLDatabase {
             }
             ps.executeBatch();
         } catch (SQLException e) {
-            logger.warning("[HLDatabase] Torch data migration failed: " + e.getMessage());
+            startupWarn("Torch data migration failed: " + e.getMessage());
             return;
         }
 
@@ -358,11 +415,11 @@ public class HLDatabase {
         try {
             yaml.save(yamlFile);
         } catch (Exception e) {
-            logger.warning("[HLDatabase] Failed to clear migrated torch data from YAML: " + e.getMessage());
+            startupWarn("Failed to clear migrated torch data from YAML: " + e.getMessage());
         }
 
         if (migrated > 0) {
-            logger.info("[HLDatabase] Migrated " + migrated + " lit torch records from YAML to DB.");
+            startupInfo("Migrated " + migrated + " lit torch records from YAML to DB.");
         }
     }
 
@@ -549,7 +606,7 @@ public class HLDatabase {
     public void close() {
         if (dataSource != null && !dataSource.isClosed()) {
             dataSource.close();
-            logger.info("[HLDatabase] Connection pool closed.");
+            startupInfo("Connection pool stopped.");
         }
     }
 }

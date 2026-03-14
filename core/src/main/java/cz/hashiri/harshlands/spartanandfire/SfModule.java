@@ -52,9 +52,7 @@ public class SfModule extends HLModule {
 
         FileConfiguration config = getUserConfig().getConfig();
         if (config.getBoolean("Initialize.Enabled")) {
-            String message = Utils.translateMsg(config.getString("Initialize.Message"), null, Map.of("NAME", NAME));
-
-            plugin.getLogger().info(message);
+            Utils.logModuleLifecycle("Initializing", NAME);
         }
 
         events = new SfEvents(this, plugin);
@@ -68,9 +66,7 @@ public class SfModule extends HLModule {
     public void shutdown() {
         FileConfiguration config = getUserConfig().getConfig();
         if (config.getBoolean("Shutdown.Enabled")) {
-            String message = Utils.translateMsg(config.getString("Shutdown.Message"), null, Map.of("NAME", NAME));
-
-            plugin.getLogger().info(message);
+            Utils.logModuleLifecycle("Shutting down", NAME);
         }
     }
 

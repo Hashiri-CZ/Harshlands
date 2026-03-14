@@ -65,7 +65,6 @@ import java.lang.reflect.InvocationTargetException;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.*;
-import java.util.logging.Level;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -74,6 +73,8 @@ public class Utils {
     public static final double ATTACK_DAMAGE_CONSTANT = -1.0;
     public static final double ATTACK_SPEED_CONSTANT = -4.0;
     private static final Pattern VERSION_PATTERN = Pattern.compile("([1-9])\\.([1-9][0-9]|[1-9])(\\.([0-9]+))?");
+    private static final Pattern CRAFT_SOUND_LOCATION_PATTERN = Pattern.compile("location=([a-z0-9_:.]+)");
+    private static final Pattern CRAFT_SOUND_RESOURCE_KEY_PATTERN = Pattern.compile("sound_event\\s*/\\s*([a-z0-9_:.]+)");
 
     private final HLPlugin plugin;
 
@@ -100,9 +101,9 @@ public class Utils {
 
         for (String className : candidates) {
             try {
-                Bukkit.getLogger().info("[Harshlands] Trying to load NMS class: " + className);
+                logStartup("Trying to load NMS class: " + className);
                 internals = (InternalsProvider) Class.forName(className).getDeclaredConstructor().newInstance();
-                Bukkit.getLogger().info("[Harshlands] Loaded NMS class: " + className);
+                logStartup("Loaded NMS class: " + className);
                 break;
             } catch (ClassNotFoundException | InstantiationException | IllegalAccessException |
                     ClassCastException | NoSuchMethodException | InvocationTargetException ignored) {
@@ -110,8 +111,7 @@ public class Utils {
         }
 
         if (internals == null) {
-            Bukkit.getLogger().log(Level.SEVERE,
-                    "Oopsie! NMS Util could not find a valid implementation. Tried: " + candidates);
+            logStartup("NMS util could not find a valid implementation. Tried: " + candidates);
         }
     }
 
@@ -1127,7 +1127,7 @@ public class Utils {
                 item.setType(Material.AIR);
 
                 if (playBreakSound && user != null) {
-                    Utils.playSound(user.getLocation(), Sound.ENTITY_ITEM_BREAK.toString(), 1.0f, 1.0f);
+                    Utils.playSound(user.getLocation(), Sound.ENTITY_ITEM_BREAK, 1.0f, 1.0f);
                 }
             }
             else {
@@ -1150,7 +1150,7 @@ public class Utils {
                     item.setType(Material.AIR);
 
                     if (playBreakSound && user != null) {
-                        Utils.playSound(user.getLocation(), Sound.ENTITY_ITEM_BREAK.toString(), 1.0f, 1.0f);
+                        Utils.playSound(user.getLocation(), Sound.ENTITY_ITEM_BREAK, 1.0f, 1.0f);
                     }
                 }
 
@@ -1354,12 +1354,37 @@ public class Utils {
         return new EulerAngle(armorStandX + Math.toRadians(x), armorStandY + Math.toRadians(y), armorStandZ + Math.toRadians(z));
     }
 
+    public static void playSound(@Nonnull Location loc, @Nonnull Sound sound, float volume, float pitch) {
+        if (loc.getWorld() == null) {
+            return;
+        }
+        loc.getWorld().playSound(loc, sound, volume, pitch);
+    }
+
+    public static void logStartup(@Nonnull String message) {
+        StartupLog.log(message);
+    }
+
+    public static void logModuleLifecycle(@Nonnull String action, @Nonnull String moduleName) {
+        logStartup(action + " " + moduleName + " module");
+    }
+
     public static void playSound(@Nonnull Location loc, @Nonnull String soundName, float volume, float pitch) {
-        Sound resolvedSound = resolveSound(soundName);
+        if (loc.getWorld() == null) {
+            return;
+        }
+
+        String normalizedInput = normalizeSoundInput(soundName);
+        Sound resolvedSound = resolveSound(normalizedInput);
         if (resolvedSound != null) {
             loc.getWorld().playSound(loc, resolvedSound, volume, pitch);
-        } else {
-            loc.getWorld().playSound(loc, soundName, volume, pitch);
+            return;
+        }
+
+        try {
+            loc.getWorld().playSound(loc, normalizedInput, volume, pitch);
+        } catch (IllegalArgumentException ignored) {
+            // Invalid sound key should never break gameplay events.
         }
     }
 
@@ -1389,6 +1414,25 @@ public class Utils {
         }
 
         return null;
+    }
+
+    @Nonnull
+    private static String normalizeSoundInput(@Nonnull String soundName) {
+        String normalized = soundName.trim();
+
+        if (normalized.startsWith("CraftSound{")) {
+            Matcher locationMatcher = CRAFT_SOUND_LOCATION_PATTERN.matcher(normalized);
+            if (locationMatcher.find()) {
+                return locationMatcher.group(1);
+            }
+
+            Matcher resourceKeyMatcher = CRAFT_SOUND_RESOURCE_KEY_PATTERN.matcher(normalized);
+            if (resourceKeyMatcher.find()) {
+                return resourceKeyMatcher.group(1);
+            }
+        }
+
+        return normalized;
     }
 
     @Nonnull

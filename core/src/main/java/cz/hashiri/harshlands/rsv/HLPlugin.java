@@ -33,6 +33,7 @@ import cz.hashiri.harshlands.spartanweaponry.SwModule;
 import cz.hashiri.harshlands.tan.TanModule;
 import cz.hashiri.harshlands.utils.ToolHandler;
 import cz.hashiri.harshlands.utils.ToolUtils;
+import cz.hashiri.harshlands.utils.StartupLog;
 import cz.hashiri.harshlands.utils.Utils;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -71,6 +72,8 @@ public class HLPlugin extends JavaPlugin {
     @Override
     public void onEnable() {
         plugin = this;
+        StartupLog.resetTimer();
+        StartupLog.printBanner();
         this.config = new PluginConfig(this);
 
         lorePresetConfig = new HLConfig(this, "lorepresets.yml");
@@ -94,7 +97,7 @@ public class HLPlugin extends JavaPlugin {
             this.database.migrateTableNames();
             this.database.createTables();
         } catch (RuntimeException e) {
-            getLogger().severe(e.getMessage());
+            Utils.logStartup(e.getMessage());
             getServer().getPluginManager().disablePlugin(this);
             return;
         }

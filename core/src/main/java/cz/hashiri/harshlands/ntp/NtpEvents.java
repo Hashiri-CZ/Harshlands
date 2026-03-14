@@ -185,7 +185,7 @@ public class NtpEvents extends ModuleEvents implements Listener {
                         boolean isNotAxe = !matName.contains("AXE");
 
                         if (Tag.LOGS.isTagged(blockMaterial) && !blockMaterial.toString().contains("STRIPPED") && isNotAxe) {
-                            Utils.playSound(player.getLocation(), Sound.ITEM_AXE_STRIP.toString(), 1.0f, 1.0f);
+                            Utils.playSound(player.getLocation(), Sound.ITEM_AXE_STRIP, 1.0f, 1.0f);
                             b.setType(Material.valueOf("STRIPPED_" + blockMaterial));
                             Utils.changeDurability(item, -1, true, true, player);
                         }
@@ -194,38 +194,38 @@ public class NtpEvents extends ModuleEvents implements Listener {
                                 switch (blockMaterial) {
                                     case GRASS_BLOCK, DIRT -> {
                                         if (player.isSneaking()) {
-                                            Utils.playSound(player.getLocation(), Sound.ITEM_SHOVEL_FLATTEN.toString(), 1.0f, 1.0f);
+                                            Utils.playSound(player.getLocation(), Sound.ITEM_SHOVEL_FLATTEN, 1.0f, 1.0f);
                                             b.setType(Material.DIRT_PATH);
                                         }
                                         else {
-                                            Utils.playSound(player.getLocation(), Sound.ITEM_HOE_TILL.toString(), 1.0f, 1.0f);
+                                            Utils.playSound(player.getLocation(), Sound.ITEM_HOE_TILL, 1.0f, 1.0f);
                                             b.setType(Material.FARMLAND);
                                         }
                                         Utils.changeDurability(item, -1, true, true, player);
                                     }
                                     case COARSE_DIRT, PODZOL, MYCELIUM -> {
                                         if (player.isSneaking()) {
-                                            Utils.playSound(player.getLocation(), Sound.ITEM_SHOVEL_FLATTEN.toString(), 1.0f, 1.0f);
+                                            Utils.playSound(player.getLocation(), Sound.ITEM_SHOVEL_FLATTEN, 1.0f, 1.0f);
                                             b.setType(Material.DIRT_PATH);
                                         }
                                         else {
-                                            Utils.playSound(player.getLocation(), Sound.ITEM_HOE_TILL.toString(), 1.0f, 1.0f);
+                                            Utils.playSound(player.getLocation(), Sound.ITEM_HOE_TILL, 1.0f, 1.0f);
                                             b.setType(Material.DIRT);
                                         }
                                         Utils.changeDurability(item, -1, true, true, player);
                                     }
                                     case DIRT_PATH -> {
-                                        Utils.playSound(player.getLocation(), Sound.ITEM_HOE_TILL.toString(), 1.0f, 1.0f);
+                                        Utils.playSound(player.getLocation(), Sound.ITEM_HOE_TILL, 1.0f, 1.0f);
                                         b.setType(Material.FARMLAND);
                                         Utils.changeDurability(item, -1, true, true, player);
                                     }
                                     case ROOTED_DIRT -> {
                                         if (player.isSneaking()) {
-                                            Utils.playSound(player.getLocation(), Sound.ITEM_SHOVEL_FLATTEN.toString(), 1.0f, 1.0f);
+                                            Utils.playSound(player.getLocation(), Sound.ITEM_SHOVEL_FLATTEN, 1.0f, 1.0f);
                                             b.setType(Material.DIRT_PATH);
                                         }
                                         else {
-                                            Utils.playSound(player.getLocation(), Sound.ITEM_HOE_TILL.toString(), 1.0f, 1.0f);
+                                            Utils.playSound(player.getLocation(), Sound.ITEM_HOE_TILL, 1.0f, 1.0f);
                                             player.getWorld().dropItemNaturally(b.getLocation(), new ItemStack(Material.HANGING_ROOTS));
                                             b.setType(Material.DIRT);
                                         }
@@ -239,21 +239,21 @@ public class NtpEvents extends ModuleEvents implements Listener {
                                 switch (blockMaterial) {
                                     case GRASS_BLOCK, DIRT -> {
                                         if (player.isSneaking()) {
-                                            Utils.playSound(player.getLocation(), Sound.ITEM_HOE_TILL.toString(), 1.0f, 1.0f);
+                                            Utils.playSound(player.getLocation(), Sound.ITEM_HOE_TILL, 1.0f, 1.0f);
                                             b.setType(Material.FARMLAND);
                                         }
                                         Utils.changeDurability(item, -1, true, true, player);
                                     }
                                     case COARSE_DIRT, PODZOL, MYCELIUM -> {
                                         if (player.isSneaking()) {
-                                            Utils.playSound(player.getLocation(), Sound.ITEM_SHOVEL_FLATTEN.toString(), 1.0f, 1.0f);
+                                            Utils.playSound(player.getLocation(), Sound.ITEM_SHOVEL_FLATTEN, 1.0f, 1.0f);
                                             b.setType(Material.DIRT);
                                         }
                                         Utils.changeDurability(item, -1, true, true, player);
                                     }
                                     case ROOTED_DIRT -> {
                                         if (player.isSneaking()) {
-                                            Utils.playSound(player.getLocation(), Sound.ITEM_HOE_TILL.toString(), 1.0f, 1.0f);
+                                            Utils.playSound(player.getLocation(), Sound.ITEM_HOE_TILL, 1.0f, 1.0f);
                                             player.getWorld().dropItemNaturally(b.getLocation(), new ItemStack(Material.HANGING_ROOTS));
                                             b.setType(Material.DIRT);
                                         }
@@ -267,7 +267,7 @@ public class NtpEvents extends ModuleEvents implements Listener {
                                 switch (blockMaterial) {
                                     case GRASS_BLOCK, DIRT, COARSE_DIRT, PODZOL, MYCELIUM, ROOTED_DIRT -> {
                                         if (player.isSneaking()) {
-                                            Utils.playSound(player.getLocation(), Sound.ITEM_SHOVEL_FLATTEN.toString(), 1.0f, 1.0f);
+                                            Utils.playSound(player.getLocation(), Sound.ITEM_SHOVEL_FLATTEN, 1.0f, 1.0f);
                                             b.setType(Material.DIRT_PATH);
                                         }
                                         Utils.changeDurability(item, -1, true, true, player);
