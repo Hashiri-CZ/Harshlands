@@ -73,7 +73,12 @@ public class DehydrationTask extends BukkitRunnable implements HLTask  {
         for (String key : keys) {
             dur = section.getInt(key + ".Duration");
             amp = section.getInt(key + ".Amplifier");
-            potionEffects.add(new PotionEffect(Registry.EFFECT.get(NamespacedKey.minecraft(key.toLowerCase())), dur, amp));
+            PotionEffectType type = Registry.EFFECT.get(NamespacedKey.minecraft(key.toLowerCase()));
+            if (type == null) {
+                plugin.getLogger().warning("Unknown potion effect type in dehydration config: " + key);
+                continue;
+            }
+            potionEffects.add(new PotionEffect(type, dur, amp));
         }
         tasks.put(id, this);
     }

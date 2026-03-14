@@ -212,6 +212,7 @@ public class FearModule extends HLModule {
             if (!unlitRaw.isEmpty()) {
                 Set<String> unlit = new LinkedHashSet<>(unlitRaw);
                 unlitTorchService.restoreManagedUnlitTorches(unlit);
+                Bukkit.getScheduler().runTask(plugin, unlitTorchService::enforceAllLoadedManaged);
             }
 
             data.set("UnlitTorches", null);
@@ -259,13 +260,18 @@ public class FearModule extends HLModule {
         boolean changed = false;
         String root = "TorchSystem.UnlitTorchEnforcement";
 
+        if (!config.contains(root + ".EnforcePeriodTicks")) {
+            config.set(root + ".EnforcePeriodTicks", 20);
+            changed = true;
+        }
+
         if (!config.contains(root + ".TargetFullScanTicks")) {
-            config.set(root + ".TargetFullScanTicks", 20);
+            config.set(root + ".TargetFullScanTicks", 200);
             changed = true;
         }
 
         if (!config.contains(root + ".MinScanBatchSize")) {
-            config.set(root + ".MinScanBatchSize", 32);
+            config.set(root + ".MinScanBatchSize", 5);
             changed = true;
         }
 

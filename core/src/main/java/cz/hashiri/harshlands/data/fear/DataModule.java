@@ -34,6 +34,7 @@ public class DataModule implements HLDataModule {
     private double fearLevel;
     private volatile boolean dirty = false;
     private int lowHealthTicks = 0;
+    private int fearDirection = 0; // 0 = unknown/stable, 1 = increasing, -1 = decreasing
 
     public DataModule(Player player) {
         FearModule module = (FearModule) HLModule.getModule(FearModule.NAME);
@@ -48,8 +49,16 @@ public class DataModule implements HLDataModule {
         return fearLevel;
     }
 
+    public int getFearDirection() {
+        return fearDirection;
+    }
+
     public void setFearLevel(double value) {
-        this.fearLevel = Math.max(0.0, Math.min(100.0, value));
+        double clamped = Math.max(0.0, Math.min(100.0, value));
+        if (clamped > this.fearLevel) this.fearDirection = 1;
+        else if (clamped < this.fearLevel) this.fearDirection = -1;
+        // if equal: keep fearDirection unchanged (sticky)
+        this.fearLevel = clamped;
         this.dirty = true;
     }
 

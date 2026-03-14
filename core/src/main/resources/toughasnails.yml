@@ -2,7 +2,7 @@
 #          Tough As Nails             #
 #######################################
 
-ConfigId: "1.2.10-RELEASE" # Used for config syncing purposes, do NOT edit
+ConfigId: "1.2.15-RELEASE" # Used for config syncing purposes, do NOT edit
 
 # Customize messages
 Initialize:
@@ -120,10 +120,10 @@ Temperature:
     PotionEffects:
       Enabled: false
       Effects:
-        SLOW:
+        SLOWNESS:
           Amplifier: 2
           Duration: 160
-        SLOW_DIGGING:
+        MINING_FATIGUE:
           Amplifier: 2
           Duration: 160
     Duration: 240 # Number of ticks in which the player can take damage from hypothermia
@@ -144,10 +144,10 @@ Temperature:
       Enabled: false
       FireResistanceImmunity: true
       Effects:
-        SLOW:
+        SLOWNESS:
           Amplifier: 2
           Duration: 160
-        SLOW_DIGGING:
+        MINING_FATIGUE:
           Amplifier: 2
           Duration: 160
     Duration: 240 # Number of ticks in which the player can take damage from hyperthermia
@@ -634,7 +634,7 @@ Thirst:
         WEAKNESS:
           Amplifier: 2
           Duration: 160
-        CONFUSION:
+        NAUSEA:
           Amplifier: 0
           Duration: 160
     Duration: 240 # Number of ticks in which the player can take damage from dehydration
@@ -1040,9 +1040,9 @@ Recipes:
 CharacterOverrides:
   # All placeholders: %TEMP%, %THIRST%
 
-  TemperatureActionbar: "              %TEMP%              " # Template for sending overriden text to the actionbar when only temperature is enabled
-  ThirstActionbar: "                 %THIRST% " # Template for sending overriden text to the actionbar when only thirst is enabled
-  TemperatureThirstActionbar: "              %TEMP%%THIRST% " #  Template for sending overriden text to the actionbar when temperature and thirst are enabled
+  TemperatureActionbar: "                   %TEMP%              " # Template for sending overriden text to the actionbar when only temperature is enabled
+  ThirstActionbar: "                      %THIRST% " # Template for sending overriden text to the actionbar when only thirst is enabled
+  TemperatureThirstActionbar: "                   %TEMP%%THIRST% " #  Template for sending overriden text to the actionbar when temperature and thirst are enabled
   AboveWaterFullThirstDrop: "" # Default Unicode Value: \uE784
   AboveWaterHalfThirstDrop: "" # Default Unicode Value: \uE790
   AboveWaterEmptyThirstDrop: "" # Default Unicode Value: \uE791

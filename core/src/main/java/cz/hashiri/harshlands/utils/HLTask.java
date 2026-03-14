@@ -33,9 +33,9 @@ public interface HLTask {
     default boolean globalConditionsMet(@Nullable LivingEntity entity) {
         if (entity != null) {
             if (entity instanceof Player player) {
-                GameMode mode = player.getGameMode(); // get the gamemode
-
-                return (mode == GameMode.SURVIVAL || mode == GameMode.ADVENTURE) && player.isOnline();
+                if (!player.isOnline()) return false;
+                GameMode mode = player.getGameMode();
+                return mode == GameMode.SURVIVAL || mode == GameMode.ADVENTURE;
             }
             return true;
         }

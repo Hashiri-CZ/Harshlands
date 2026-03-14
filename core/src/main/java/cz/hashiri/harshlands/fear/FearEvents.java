@@ -18,6 +18,7 @@ package cz.hashiri.harshlands.fear;
 
 import cz.hashiri.harshlands.data.ModuleEvents;
 import cz.hashiri.harshlands.rsv.HLPlugin;
+import org.bukkit.Bukkit;
 import cz.hashiri.harshlands.utils.HLItem;
 import cz.hashiri.harshlands.utils.Utils;
 import org.bukkit.GameMode;
@@ -34,19 +35,23 @@ import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.event.block.BlockPhysicsEvent;
 import org.bukkit.event.block.BlockRedstoneEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
+import org.bukkit.event.world.ChunkLoadEvent;
 import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
 import javax.annotation.Nonnull;
+import java.util.UUID;
 
 public class FearEvents extends ModuleEvents {
 
+    private final HLPlugin plugin;
     private final FearTorchManager torchManager;
     private final FearUnlitTorchService unlitTorchService;
 
     public FearEvents(@Nonnull FearModule module, @Nonnull HLPlugin plugin, @Nonnull FearTorchManager torchManager, @Nonnull FearUnlitTorchService unlitTorchService) {
         super(module, plugin);
+        this.plugin = plugin;
         this.torchManager = torchManager;
         this.unlitTorchService = unlitTorchService;
     }
@@ -87,6 +92,7 @@ public class FearEvents extends ModuleEvents {
             event.setCancelled(true);
             event.setUseInteractedBlock(Event.Result.DENY);
             event.setUseItemInHand(Event.Result.DENY);
+            Bukkit.getScheduler().runTask(plugin, unlitTorchService::enforceAllLoadedManaged);
         }
     }
 
@@ -139,6 +145,16 @@ public class FearEvents extends ModuleEvents {
             event.setDropItems(false);
             block.getWorld().dropItemNaturally(block.getLocation(), HLItem.getItem("unlit_torch"));
         }
+    }
+
+    @EventHandler(priority = EventPriority.MONITOR)
+    public void onChunkLoad(ChunkLoadEvent event) {
+        UUID worldId = event.getWorld().getUID();
+        int chunkX = event.getChunk().getX();
+        int chunkZ = event.getChunk().getZ();
+        if (!unlitTorchService.hasTorchesInChunk(worldId, chunkX, chunkZ)) return;
+        Bukkit.getScheduler().runTask(plugin,
+                () -> unlitTorchService.enforceChunk(worldId, chunkX, chunkZ));
     }
 
     private boolean isIgniter(ItemStack item) {

@@ -2,7 +2,7 @@
 #          First Aid                  #
 #######################################
 
-ConfigId: "1.2.10-RELEASE" # Used for config syncing purposes, do NOT edit
+ConfigId: "1.2.15-RELEASE" # Used for config syncing purposes, do NOT edit
 
 # Customize messages
 Initialize:
@@ -51,13 +51,13 @@ BodyParts:
         Symptom1: # Multiple symptoms can be added
           RequiredHealth: 0.0 # Any health less than or equal to this will trigger effect
           Effects:
-            SLOW: # Effect types follow Spigot naming: https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/potion/PotionEffectType.html
+            SLOWNESS: # Effect types follow Spigot naming: https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/potion/PotionEffectType.html
               Amplifier: 0 # Amplifiers - Strength of potion effect (0 = Slowness I, 1 = Slowness II, etc.)
               Duration: 270 # Duration - Length of the potion effect in ticks (20 ticks = 1 second)
         Symptom2:
           RequiredHealth: 1.0
           Effects:
-            SLOW:
+            SLOWNESS:
               Amplifier: 0
               Duration: 120
     RightLeg:
@@ -66,26 +66,26 @@ BodyParts:
         Symptom1:
           RequiredHealth: 0.0
           Effects:
-            SLOW:
+            SLOWNESS:
               Amplifier: 0
               Duration: 270
         Symptom2:
           RequiredHealth: 1.0
           Effects:
-            SLOW:
+            SLOWNESS:
               Amplifier: 0
               Duration: 120
     Symptoms:
       Symptom1:
         RequiredHealth: 0.0 # Acts like above, but adds health of left and right leg before comparing
         Effects:
-          SLOW:
+          SLOWNESS:
             Amplifier: 1
             Duration: 270
       Symptom2:
         RequiredHealth: 1.0
         Effects:
-          SLOW:
+          SLOWNESS:
             Amplifier: 1
             Duration: 120
   Arms:
@@ -97,13 +97,13 @@ BodyParts:
         Symptom1:
           RequiredHealth: 0.0
           Effects:
-            SLOW_DIGGING:
+            MINING_FATIGUE:
               Amplifier: 0
               Duration: 270
         Symptom2:
           RequiredHealth: 1.0
           Effects:
-            SLOW_DIGGING:
+            MINING_FATIGUE:
               Amplifier: 0
               Duration: 120
     RightArm:
@@ -113,26 +113,26 @@ BodyParts:
         Symptom1:
           RequiredHealth: 0.0
           Effects:
-            SLOW_DIGGING:
+            MINING_FATIGUE:
               Amplifier: 0
               Duration: 270
         Symptom2:
           RequiredHealth: 1.0
           Effects:
-            SLOW_DIGGING:
+            MINING_FATIGUE:
               Amplifier: 0
               Duration: 120
     Symptoms:
       Symptom1:
         RequiredHealth: 0.0
         Effects:
-          SLOW_DIGGING:
+          MINING_FATIGUE:
             Amplifier: 1
             Duration: 270
       Symptom2:
         RequiredHealth: 2.0
         Effects:
-          SLOW_DIGGING:
+          MINING_FATIGUE:
             Amplifier: 0
             Duration: 120
   Feet:
@@ -144,13 +144,13 @@ BodyParts:
         Symptom1:
           RequiredHealth: 0.0
           Effects:
-            SLOW:
+            SLOWNESS:
               Amplifier: 0
               Duration: 270
         Symptom2:
           RequiredHealth: 1.0
           Effects:
-            SLOW:
+            SLOWNESS:
               Amplifier: 0
               Duration: 120
     RightFoot:
@@ -160,26 +160,26 @@ BodyParts:
         Symptom1:
           RequiredHealth: 0.0
           Effects:
-            SLOW:
+            SLOWNESS:
               Amplifier: 0
               Duration: 270
         Symptom2:
           RequiredHealth: 1.0
           Effects:
-            SLOW:
+            SLOWNESS:
               Amplifier: 0
               Duration: 120
     Symptoms:
       Symptom1:
         RequiredHealth: 0.0
         Effects:
-          SLOW:
+          SLOWNESS:
             Amplifier: 1
             Duration: 270
       Symptom2:
         RequiredHealth: 2.0
         Effects:
-          SLOW:
+          SLOWNESS:
             Amplifier: 0
             Duration: 120
   Head:
@@ -192,13 +192,13 @@ BodyParts:
           BLINDNESS:
             Amplifier: 1
             Duration: 270
-          CONFUSION:
+          NAUSEA:
             Amplifier: 0
             Duration: 270
       Symptom2:
         RequiredHealth: 2.0
         Effects:
-          CONFUSION:
+          NAUSEA:
             Amplifier: 0
             Duration: 270
   Torso:
@@ -211,7 +211,7 @@ BodyParts:
           WEAKNESS:
             Amplifier: 1
             Duration: 270
-          CONFUSION:
+          NAUSEA:
             Amplifier: 1
             Duration: 270
       Symptom2:

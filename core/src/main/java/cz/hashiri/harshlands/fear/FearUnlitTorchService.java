@@ -31,10 +31,12 @@ import org.bukkit.scheduler.BukkitTask;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 import java.util.UUID;
 
@@ -42,9 +44,11 @@ public class FearUnlitTorchService {
 
     private final HLPlugin plugin;
     private final Set<LocationKey> managedUnlitTorches = new HashSet<>();
+    private final Map<ChunkKey, Set<LocationKey>> torchByChunk = new HashMap<>();
     private final List<LocationKey> scanKeys = new ArrayList<>();
     private final int targetFullScanTicks;
     private final int minScanBatchSize;
+    private final int enforcePeriodTicks;
     private int scanCursor = 0;
     private boolean scanDirty = true;
     private BukkitTask enforceTask;
@@ -52,9 +56,11 @@ public class FearUnlitTorchService {
     public FearUnlitTorchService(@Nonnull HLPlugin plugin, @Nonnull HLConfig userConfig) {
         this.plugin = plugin;
         this.targetFullScanTicks = Math.max(1, userConfig.getConfig().getInt(
-                "TorchSystem.UnlitTorchEnforcement.TargetFullScanTicks", 20));
+                "TorchSystem.UnlitTorchEnforcement.TargetFullScanTicks", 200));
         this.minScanBatchSize = Math.max(1, userConfig.getConfig().getInt(
-                "TorchSystem.UnlitTorchEnforcement.MinScanBatchSize", 32));
+                "TorchSystem.UnlitTorchEnforcement.MinScanBatchSize", 5));
+        this.enforcePeriodTicks = Math.max(1, userConfig.getConfig().getInt(
+                "TorchSystem.UnlitTorchEnforcement.EnforcePeriodTicks", 20));
     }
 
     public void start() {
@@ -62,7 +68,7 @@ public class FearUnlitTorchService {
             return;
         }
 
-        enforceTask = Bukkit.getScheduler().runTaskTimer(plugin, this::enforceUnlitTorches, 1L, 1L);
+        enforceTask = Bukkit.getScheduler().runTaskTimer(plugin, this::enforceUnlitTorches, 20L, enforcePeriodTicks);
     }
 
     public void stop() {
@@ -72,6 +78,7 @@ public class FearUnlitTorchService {
         }
 
         managedUnlitTorches.clear();
+        torchByChunk.clear();
         scanKeys.clear();
         scanCursor = 0;
         scanDirty = true;
@@ -277,15 +284,56 @@ public class FearUnlitTorchService {
 
     private void addManagedUnlit(@Nonnull LocationKey key) {
         if (managedUnlitTorches.add(key)) {
+            torchByChunk.computeIfAbsent(
+                    new ChunkKey(key.worldId(), key.x() >> 4, key.z() >> 4),
+                    k -> new HashSet<>()).add(key);
             scanDirty = true;
         }
     }
 
     private void removeManagedUnlit(@Nonnull LocationKey key) {
         if (managedUnlitTorches.remove(key)) {
+            ChunkKey ck = new ChunkKey(key.worldId(), key.x() >> 4, key.z() >> 4);
+            Set<LocationKey> set = torchByChunk.get(ck);
+            if (set != null) {
+                set.remove(key);
+                if (set.isEmpty()) torchByChunk.remove(ck);
+            }
             scanDirty = true;
         }
     }
+
+    public boolean hasTorchesInChunk(UUID worldId, int chunkX, int chunkZ) {
+        Set<LocationKey> set = torchByChunk.get(new ChunkKey(worldId, chunkX, chunkZ));
+        return set != null && !set.isEmpty();
+    }
+
+    public void enforceAllLoadedManaged() {
+        for (Map.Entry<ChunkKey, Set<LocationKey>> entry : new HashMap<>(torchByChunk).entrySet()) {
+            ChunkKey ck = entry.getKey();
+            World world = Bukkit.getWorld(ck.worldId());
+            if (world == null) continue;
+            if (!world.isChunkLoaded(ck.chunkX(), ck.chunkZ())) continue;
+            enforceChunk(ck.worldId(), ck.chunkX(), ck.chunkZ());
+        }
+    }
+
+    public void enforceChunk(UUID worldId, int chunkX, int chunkZ) {
+        Set<LocationKey> torches = torchByChunk.get(new ChunkKey(worldId, chunkX, chunkZ));
+        if (torches == null || torches.isEmpty()) return;
+        World world = Bukkit.getWorld(worldId);
+        if (world == null) return;
+        for (LocationKey key : new ArrayList<>(torches)) {
+            Block block = world.getBlockAt(key.x(), key.y(), key.z());
+            if (!isRedstoneTorch(block.getType())) {
+                removeManagedUnlit(key);
+            } else {
+                enforceBlockUnlit(block);
+            }
+        }
+    }
+
+    private record ChunkKey(UUID worldId, int chunkX, int chunkZ) {}
 
     private record LocationKey(UUID worldId, int x, int y, int z) {
         static LocationKey of(@Nonnull Location location) {

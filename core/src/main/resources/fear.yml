@@ -2,7 +2,7 @@
 #                Fear                 #
 #######################################
 
-ConfigId: "1.2.13-RELEASE" # Used for config syncing purposes, do NOT edit
+ConfigId: "1.2.15-RELEASE" # Used for config syncing purposes, do NOT edit
 
 # Customize messages
 Initialize:
@@ -18,13 +18,15 @@ TorchSystem:
   BurnDurationMinutes: 60 # IRL minutes before a lit torch burns out and becomes an Unlit Torch again
   # WARNING: Advanced performance tuning for managed Unlit Torch enforcement.
   # DO NOT TOUCH if you do not know what you are doing.
-  # These values trade CPU usage vs. how quickly all tracked unlit torches are revisited.
-  # Lower TargetFullScanTicks = more CPU, faster full sweep.
-  # Higher TargetFullScanTicks = less CPU, slower full sweep.
-  # Higher MinScanBatchSize = more CPU floor each tick.
+  # Unlit torch enforcement is primarily event-driven (ChunkLoadEvent, BlockPhysicsEvent, BlockRedstoneEvent).
+  # The periodic task below is a fallback only — it covers edge cases not caught by events.
+  # Lower EnforcePeriodTicks = more frequent fallback sweeps (more CPU).
+  # Lower TargetFullScanTicks = faster full sweep per fallback pass (more CPU).
+  # Higher MinScanBatchSize = more torches checked per fallback invocation (more CPU floor).
   UnlitTorchEnforcement:
-    TargetFullScanTicks: 20
-    MinScanBatchSize: 32
+    EnforcePeriodTicks: 20    # Ticks between periodic fallback scans (20 = 1 second)
+    TargetFullScanTicks: 200  # Ticks to complete a full sweep of all managed torches
+    MinScanBatchSize: 5       # Minimum torches checked per periodic scan invocation
 
 FearMeter:
   Enabled: true
@@ -183,3 +185,26 @@ Nightmare:
       AfterSeconds: 120
       SpeedAmplifier: 2        # Speed III
       StrengthAmplifier: 1     # Strength II
+
+CharacterOverrides:
+  # All placeholders: %BRAIN%, %FEAR_BAR%, %ARROW%
+  FearActionbar: "%FEAR_BAR%%ARROW% "
+
+  FearBrain: ""        # Default Unicode Value: \uXXXX  (brain glyph from sanitydim512.png)
+
+  # Fear bar steps: FearBar0 = 0% fear, FearBar10 = 100% fear
+  FearBar0:  "\uE840"        # 0%
+  FearBar1:  "\uE841"        # 10%
+  FearBar2:  "\uE841"        # 20%
+  FearBar3:  "\uE842"        # 30%
+  FearBar4:  "\uE843"        # 40%
+  FearBar5:  "\uE844"        # 50%
+  FearBar6:  "\uE845"        # 60%
+  FearBar7:  "\uE846"        # 70%
+  FearBar8:  "\uE847"        # 80%
+  FearBar9:  "\uE848"        # 90%
+  FearBar10: "\uE849"        # 100%
+
+  FearArrowUp:     "\uE84B"  # fear increasing
+  FearArrowDown:   "\uE84A"  # fear decreasing
+  FearArrowStable: ""  # fear unchanged / first tick

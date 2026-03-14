@@ -257,10 +257,12 @@ public class HLDatabase {
             return;
         }
 
-        if (!yamlFile.renameTo(new File(yamlFile.getParent(), "playerdata.yml.migrated"))) {
-            logger.warning("[DB] Failed to rename migration file: " + yamlFile.getAbsolutePath());
+        if (migrated > 0) {
+            if (!yamlFile.renameTo(new File(yamlFile.getParent(), "playerdata.yml.migrated"))) {
+                logger.warning("[DB] Failed to rename migration file: " + yamlFile.getAbsolutePath());
+            }
+            logger.info("[HLDatabase] Migrated " + migrated + " TAN player records from YAML to DB.");
         }
-        logger.info("[HLDatabase] Migrated " + migrated + " TAN player records from YAML to DB.");
     }
 
     private void migrateBaublesData() {
@@ -308,10 +310,12 @@ public class HLDatabase {
             return;
         }
 
-        if (!yamlFile.renameTo(new File(yamlFile.getParent(), "playerdata.yml.migrated"))) {
-            logger.warning("[DB] Failed to rename migration file: " + yamlFile.getAbsolutePath());
+        if (migrated > 0) {
+            if (!yamlFile.renameTo(new File(yamlFile.getParent(), "playerdata.yml.migrated"))) {
+                logger.warning("[DB] Failed to rename migration file: " + yamlFile.getAbsolutePath());
+            }
+            logger.info("[HLDatabase] Migrated " + migrated + " Baubles player records from YAML to DB.");
         }
-        logger.info("[HLDatabase] Migrated " + migrated + " Baubles player records from YAML to DB.");
     }
 
     private void migrateTorchData() {

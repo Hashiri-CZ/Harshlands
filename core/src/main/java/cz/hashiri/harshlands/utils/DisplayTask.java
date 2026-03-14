@@ -18,6 +18,7 @@ package cz.hashiri.harshlands.utils;
 
 import cz.hashiri.harshlands.data.HLModule;
 import cz.hashiri.harshlands.data.HLPlayer;
+import cz.hashiri.harshlands.fear.FearModule;
 import cz.hashiri.harshlands.iceandfire.IceFireModule;
 import cz.hashiri.harshlands.integrations.CompatiblePlugin;
 import cz.hashiri.harshlands.integrations.RealisticSeasons;
@@ -53,6 +54,8 @@ public class DisplayTask extends BukkitRunnable implements HLTask {
     private boolean parasitesActive = false;
     private final TanModule tanModule;
     private final IceFireModule ifModule;
+    private final FearModule fearModule;
+    private final FileConfiguration fearConfig;
     private final RealisticSeasons rs;
 
     // Cached config values
@@ -62,6 +65,13 @@ public class DisplayTask extends BukkitRunnable implements HLTask {
     private final int     hypothermiaFreezeTickCount;
     private final boolean hyperthermiaScreenEnabled;
     private final boolean thirstDehydrationScreenEnabled;
+
+    // Cached permission booleans — refreshed every 200 ticks (10 seconds)
+    private boolean permSirenResistance;
+    private boolean permColdResistance;
+    private boolean permHotResistance;
+    private boolean permThirstResistance;
+    private int permCacheCountdown = 0;
 
     public DisplayTask(HLPlugin plugin, HLPlayer player) {
         this.plugin = plugin;
@@ -76,6 +86,10 @@ public class DisplayTask extends BukkitRunnable implements HLTask {
         this.id = player.getPlayer().getUniqueId();
         this.rs = (RealisticSeasons) CompatiblePlugin.getPlugin(RealisticSeasons.NAME);
         tasks.put(id, this);
+        this.fearModule = (FearModule) HLModule.getModule(FearModule.NAME);
+        this.fearConfig = (fearModule != null && fearModule.isGloballyEnabled())
+                ? fearModule.getUserConfig().getConfig()
+                : null;
 
         sirenChangeScreenEnabled       = ifConfig  != null && ifConfig.getBoolean("Siren.ChangeScreen.Enabled");
         hypothermiaScreenEnabled       = tanConfig != null && tanConfig.getBoolean("Temperature.Hypothermia.ScreenTinting.Enabled");
@@ -90,11 +104,21 @@ public class DisplayTask extends BukkitRunnable implements HLTask {
         Player player = this.player.getPlayer();
 
         if (globalConditionsMet(player)) {
+            if (permCacheCountdown <= 0) {
+                permSirenResistance  = player.hasPermission("harshlands.iceandfire.resistance.sirenvisual");
+                permColdResistance   = player.hasPermission("harshlands.toughasnails.resistance.cold.visual");
+                permHotResistance    = player.hasPermission("harshlands.toughasnails.resistance.hot.visual");
+                permThirstResistance = player.hasPermission("harshlands.toughasnails.resistance.thirst.visual");
+                permCacheCountdown = 200;
+            } else {
+                permCacheCountdown--;
+            }
+
             String actionbarText = "";
             String titleText = "";
 
             if (ifConfig != null && ifModule.getAllowedWorlds().contains(player.getWorld().getName())) {
-                if (!player.hasPermission("harshlands.iceandfire.resistance.sirenvisual")) {
+                if (!permSirenResistance) {
                     if (underSirenEffect) {
                         if (sirenChangeScreenEnabled) {
                             titleText += characterValues.getSirenView();
@@ -129,7 +153,7 @@ public class DisplayTask extends BukkitRunnable implements HLTask {
 
                 if (temperature < 6) {
                     if (hypothermiaScreenEnabled && !rs.disableHypothermiaTinting()) {
-                        if (!player.hasPermission("harshlands.toughasnails.resistance.cold.visual")) {
+                        if (!permColdResistance) {
                             if (hypothermiaUseVanillaFreeze) {
                                 Utils.setFreezingView(player, hypothermiaFreezeTickCount);
                             }
@@ -141,7 +165,7 @@ public class DisplayTask extends BukkitRunnable implements HLTask {
                 }
                 if (temperature > 19) {
                     if (hyperthermiaScreenEnabled && !rs.disableHyperthermiaTinting()) {
-                        if (!player.hasPermission("harshlands.toughasnails.resistance.hot.visual")) {
+                        if (!permHotResistance) {
                             titleText += characterValues.getFireVignette(tempInt);
                         }
                     }
@@ -149,10 +173,21 @@ public class DisplayTask extends BukkitRunnable implements HLTask {
 
                 if (thirst < 5) {
                     if (thirstDehydrationScreenEnabled) {
-                        if (!player.hasPermission("harshlands.toughasnails.resistance.thirst.visual")) {
+                        if (!permThirstResistance) {
                             titleText += characterValues.getThirstVignette(thirstInt);
                         }
                     }
+                }
+            }
+
+            if (fearConfig != null) {
+                cz.hashiri.harshlands.data.fear.DataModule fearDm = this.player.getFearDataModule();
+                if (fearDm != null && fearModule.isEnabled(player.getWorld())) {
+                    double currentFear = fearDm.getFearLevel();
+                    int dir = fearDm.getFearDirection();
+                    boolean fearIncreasing = dir > 0;
+                    boolean fearDecreasing = dir < 0;
+                    actionbarText += characterValues.getFearActionbar(currentFear, fearIncreasing, fearDecreasing);
                 }
             }
 

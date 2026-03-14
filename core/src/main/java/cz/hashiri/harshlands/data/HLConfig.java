@@ -100,7 +100,12 @@ public class HLConfig extends FileBuilder {
                     Set<String> configKeys = config.getKeys(true);
 
                     for (String key : embeddedKeys) {
-                        if (!configKeys.contains(key)) {
+                        boolean missing = !configKeys.contains(key);
+                        boolean emptyPlaceholder = configKeys.contains(key)
+                                && "".equals(config.getString(key))
+                                && embedded.get(key) instanceof String
+                                && !((String) embedded.get(key)).isEmpty();
+                        if (missing || emptyPlaceholder) {
                             config.set(key, embedded.get(key));
                         }
                     }
