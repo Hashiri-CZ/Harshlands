@@ -42,6 +42,8 @@ public class FearTorchManager {
         void spawnFromLitTorch(@Nonnull Block litTorchBlock);
     }
 
+    private static final int MAX_CHUNK_RETRIES = 10;
+
     private final HLPlugin plugin;
     private final long burnDurationMillis;
     private final long rainCheckIntervalTicks = 100L;
@@ -49,6 +51,7 @@ public class FearTorchManager {
     private final Set<LocationKey> managedTorches = new HashSet<>();
     private final Map<LocationKey, Long> litTorches = new HashMap<>();
     private final PriorityQueue<ExpiryEntry> expiringTorches = new PriorityQueue<>(Comparator.comparingLong(ExpiryEntry::expiresAt));
+    private final Map<LocationKey, Integer> chunkRetryCount = new HashMap<>();
     private BukkitTask task;
     private long ticksSinceRainCheck = 0L;
 
@@ -75,6 +78,7 @@ public class FearTorchManager {
         managedTorches.clear();
         litTorches.clear();
         expiringTorches.clear();
+        chunkRetryCount.clear();
     }
 
     public void registerPlacedLitTorch(@Nonnull Block block) {
@@ -91,6 +95,7 @@ public class FearTorchManager {
         LocationKey key = LocationKey.of(block.getLocation());
         managedTorches.remove(key);
         litTorches.remove(key);
+        chunkRetryCount.remove(key);
     }
 
     public boolean isManagedTorch(@Nonnull Block block) {
@@ -106,6 +111,14 @@ public class FearTorchManager {
             extinguishRainExposedTorches();
         }
 
+        // P5: drain stale queue entries if the queue has grown significantly beyond active torches
+        if (expiringTorches.size() > litTorches.size() + 100) {
+            expiringTorches.removeIf(e -> {
+                Long cur = litTorches.get(e.key());
+                return cur == null || cur.longValue() != e.expiresAt();
+            });
+        }
+
         while (!expiringTorches.isEmpty() && expiringTorches.peek().expiresAt() <= now) {
             ExpiryEntry entry = expiringTorches.poll();
             Long current = litTorches.get(entry.key());
@@ -118,6 +131,7 @@ public class FearTorchManager {
             if (block == null) {
                 litTorches.remove(entry.key());
                 managedTorches.remove(entry.key());
+                chunkRetryCount.remove(entry.key());
                 continue;
             }
 
@@ -125,13 +139,24 @@ public class FearTorchManager {
             int chunkX = block.getX() >> 4;
             int chunkZ = block.getZ() >> 4;
 
-            // Avoid forced chunk loads; retry later.
+            // M2: avoid forced chunk loads; retry with a limit to prevent endless retries.
             if (!world.isChunkLoaded(chunkX, chunkZ)) {
-                long retryAt = now + 10_000L;
-                litTorches.put(entry.key(), retryAt);
-                expiringTorches.add(new ExpiryEntry(entry.key(), retryAt));
+                int retries = chunkRetryCount.merge(entry.key(), 1, Integer::sum);
+                if (retries > MAX_CHUNK_RETRIES) {
+                    plugin.getLogger().warning("[Fear] Lit torch at unloaded chunk after "
+                            + MAX_CHUNK_RETRIES + " retries — removing from tracking.");
+                    chunkRetryCount.remove(entry.key());
+                    litTorches.remove(entry.key());
+                    managedTorches.remove(entry.key());
+                } else {
+                    long retryAt = now + 10_000L;
+                    litTorches.put(entry.key(), retryAt);
+                    expiringTorches.add(new ExpiryEntry(entry.key(), retryAt));
+                }
                 continue;
             }
+
+            chunkRetryCount.remove(entry.key());
 
             Material type = block.getType();
             if (isLitTorch(type)) {
@@ -159,6 +184,7 @@ public class FearTorchManager {
             if (block == null) {
                 iterator.remove();
                 managedTorches.remove(key);
+                chunkRetryCount.remove(key);
                 continue;
             }
 
@@ -173,6 +199,7 @@ public class FearTorchManager {
             Material type = block.getType();
             if (!isLitTorch(type)) {
                 managedTorches.remove(key);
+                chunkRetryCount.remove(key);
                 iterator.remove();
                 continue;
             }
@@ -180,6 +207,7 @@ public class FearTorchManager {
             if (isRainingOnTorch(block)) {
                 setUnlit(block);
                 managedTorches.remove(key);
+                chunkRetryCount.remove(key);
                 iterator.remove();
             }
         }
@@ -247,9 +275,6 @@ public class FearTorchManager {
             Material type = block.getType();
             if (isLitTorch(type)) {
                 managedTorches.add(key);
-            }
-
-            if (isLitTorch(type)) {
                 long expiry = now + remaining;
                 litTorches.put(key, expiry);
                 expiringTorches.add(new ExpiryEntry(key, expiry));

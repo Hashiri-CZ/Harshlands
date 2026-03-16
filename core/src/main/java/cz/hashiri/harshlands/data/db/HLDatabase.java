@@ -579,21 +579,30 @@ public class HLDatabase {
         return scheduler.runAsync(() -> {
             long now = System.currentTimeMillis();
             try (Connection conn = dataSource.getConnection()) {
-                try (Statement stmt = conn.createStatement()) {
-                    stmt.execute("DELETE FROM hl_torch_lit");
-                }
-                if (!snapshot.isEmpty()) {
-                    String sql = isMysql
-                        ? "INSERT IGNORE INTO hl_torch_lit (location_key, expires_at) VALUES (?, ?)"
-                        : "INSERT INTO hl_torch_lit (location_key, expires_at) VALUES (?, ?)";
-                    try (PreparedStatement ps = conn.prepareStatement(sql)) {
-                        for (Map.Entry<String, Long> entry : snapshot.entrySet()) {
-                            ps.setString(1, entry.getKey());
-                            ps.setLong(2, now + entry.getValue());
-                            ps.addBatch();
-                        }
-                        ps.executeBatch();
+                conn.setAutoCommit(false);
+                try {
+                    try (Statement stmt = conn.createStatement()) {
+                        stmt.execute("DELETE FROM hl_torch_lit");
                     }
+                    if (!snapshot.isEmpty()) {
+                        String sql = isMysql
+                            ? "INSERT IGNORE INTO hl_torch_lit (location_key, expires_at) VALUES (?, ?)"
+                            : "INSERT INTO hl_torch_lit (location_key, expires_at) VALUES (?, ?)";
+                        try (PreparedStatement ps = conn.prepareStatement(sql)) {
+                            for (Map.Entry<String, Long> entry : snapshot.entrySet()) {
+                                ps.setString(1, entry.getKey());
+                                ps.setLong(2, now + entry.getValue());
+                                ps.addBatch();
+                            }
+                            ps.executeBatch();
+                        }
+                    }
+                    conn.commit();
+                } catch (SQLException e) {
+                    try { conn.rollback(); } catch (SQLException ignored) {}
+                    throw e;
+                } finally {
+                    conn.setAutoCommit(true);
                 }
             } catch (SQLException e) {
                 logger.warning("[HLDatabase] Failed to save lit torch data: " + e.getMessage());
