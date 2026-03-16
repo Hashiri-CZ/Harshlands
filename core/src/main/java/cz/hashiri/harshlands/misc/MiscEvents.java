@@ -55,6 +55,15 @@ public class MiscEvents implements Listener {
         this.plugin = plugin;
     }
 
+    @EventHandler(priority = EventPriority.MONITOR)
+    public void onQuit(PlayerQuitEvent event) {
+        Player player = event.getPlayer();
+        HLPlayer hlPlayer = HLPlayer.getPlayers().remove(player.getUniqueId());
+        if (hlPlayer != null) {
+            hlPlayer.saveData();
+        }
+    }
+
     @EventHandler(priority = EventPriority.LOWEST)
     public void onJoin(PlayerJoinEvent event) {
         Player player = event.getPlayer();
@@ -370,6 +379,7 @@ public class MiscEvents implements Listener {
                     if (args.length > 1) {
                         if (!(args[1] == null || args[1].isEmpty())) {
                             Player player = Bukkit.getPlayer(args[1]);
+                            if (player != null) {
                             new BukkitRunnable() {
                                 @Override
                                 public void run() {
@@ -378,6 +388,7 @@ public class MiscEvents implements Listener {
                                     }
                                 }
                             }.runTaskLater(plugin, 1L);
+                            }
                         }
                     }
                 }

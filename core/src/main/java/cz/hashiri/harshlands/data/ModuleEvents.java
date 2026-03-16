@@ -236,46 +236,12 @@ public abstract class ModuleEvents implements Listener {
 
     @EventHandler
     public void onWorldUnload(WorldUnloadEvent event) {
-        String name = event.getWorld().getName();
-
-        if (!module.getAllowedWorlds().contains(name)) {
-            FileConfiguration pluginConfig = plugin.getConfig();
-            String path = module.getName() + ".Worlds." + name;
-
-            if (!pluginConfig.contains(path)) {
-                pluginConfig.createSection(path);
-                pluginConfig.set(path, true);
-                module.getAllowedWorlds().add(name);
-
-                try {
-                    pluginConfig.save(plugin.getConfigFile());
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
+        // World registration only happens on init/load; nothing to do on unload.
     }
 
     @EventHandler
     public void onWorldSave(WorldSaveEvent event) {
-        String name = event.getWorld().getName();
-
-        if (!module.getAllowedWorlds().contains(name)) {
-            FileConfiguration pluginConfig = plugin.getConfig();
-            String path = module.getName() + ".Worlds." + name;
-
-            if (!pluginConfig.contains(path)) {
-                pluginConfig.createSection(path);
-                pluginConfig.set(path, true);
-                module.getAllowedWorlds().add(name);
-
-                try {
-                    pluginConfig.save(plugin.getConfigFile());
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
+        // World registration only happens on init/load; nothing to do on save.
     }
 
     public boolean shouldEventBeRan(@Nullable Entity e) {

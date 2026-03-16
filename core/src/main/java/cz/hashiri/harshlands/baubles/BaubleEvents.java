@@ -155,7 +155,9 @@ public class BaubleEvents extends ModuleEvents implements Listener {
         UUID id = event.getPlayer().getUniqueId();
         HLPlayer rsvPlayer = HLPlayer.getPlayers().get(id);
 
-        Collection<ItemStack> baubles = rsvPlayer.getBaubleDataModule().getBaubleBag().getAllBaubles();
+        DataModule dm = rsvPlayer.getBaubleDataModule();
+        if (dm == null) return;
+        Collection<ItemStack> baubles = dm.getBaubleBag().getAllBaubles();
 
         for (ItemStack item : baubles) {
             Bukkit.getServer().getPluginManager().callEvent(new BaubleChangeEvent(player, item, BaubleChange.ADDITION));
@@ -178,7 +180,9 @@ public class BaubleEvents extends ModuleEvents implements Listener {
                 UUID id = event.getPlayer().getUniqueId();
                 HLPlayer rsvPlayer = HLPlayer.getPlayers().get(id);
 
-                Collection<ItemStack> baubles = rsvPlayer.getBaubleDataModule().getBaubleBag().getAllBaubles();
+                DataModule dm = rsvPlayer.getBaubleDataModule();
+                if (dm == null) return;
+                Collection<ItemStack> baubles = dm.getBaubleBag().getAllBaubles();
 
                 for (ItemStack item : baubles) {
                     Bukkit.getServer().getPluginManager().callEvent(new BaubleChangeEvent(player, item, BaubleChange.ADDITION));

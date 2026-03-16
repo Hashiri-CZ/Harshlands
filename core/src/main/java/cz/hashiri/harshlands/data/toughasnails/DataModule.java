@@ -127,7 +127,6 @@ public class DataModule implements HLDataModule {
                 // No existing row — defaults already set in constructor; persist them
                 saveData();
             }
-            this.dirty = false;
         });
     }
 
