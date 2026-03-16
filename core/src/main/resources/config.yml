@@ -15,11 +15,11 @@ CorrectVersion:
   - "&fYou are running the latest version"
 OutdatedVersion:
   - "&cYou are running on an outdated version"
-  - "&cUpdate to receive the latest features! https://www.spigotmc.org/resources/realistic-survival-1-17-hardcore-modded-experience.93795/history"
+  - "&cUpdate to receive the latest features! https://github.com/Hashiri-CZ/Harshlands"
 DeveloperBuildVersion:
   - "&eYou are running on a developer build"
   - "&eNote that there might be bugs or glitches! Please report any bugs, issues, or glitches"
-  - "&ein the plugin support Discord server: https://discord.gg/mMt3f4usqK"
+  - "&ein the plugin support Discord server: https://discord.gg/E863pjrSXr"
 
 #######################################
 #          Gameplay Features          #
@@ -33,7 +33,7 @@ DeveloperBuildVersion:
 # NOTE: This plugin supports Minecraft version 1.21.11 only and uses a single resource pack URL.
 ResourcePack:
   Enabled: true
-  Url: "https://www.dropbox.com/scl/fi/uuvf4wcuk3zw6yimi7bkc/Harshlands-RP-1.21.11.zip?rlkey=7rthle5w6mn0thd0noye9jcmn&st=0q4jz06g&dl=1"
+  Url: "https://www.dropbox.com/scl/fi/o75nrucjpm61tee6tlg07/Harshlands_RP_1.21.11.zip?rlkey=jn1tgfopdr2zudwbu5lw119ty&st=8w9f74uf&dl=1"
   # Namespace used for minecraft:item_model keys on plugin items.
   # Use "realisticsurvival" for Realistic Survival RP and "harshlands" for Harshlands RP.
   # Change only if you have your own custom RP from Realistic Survival. If not, leave default.

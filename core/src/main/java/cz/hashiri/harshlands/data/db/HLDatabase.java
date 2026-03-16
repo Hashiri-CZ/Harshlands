@@ -13,6 +13,7 @@ import java.io.File;
 import java.lang.reflect.Method;
 import java.sql.*;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
@@ -246,12 +247,17 @@ public class HLDatabase {
             + "fear_level DOUBLE NOT NULL"
             + ")";
 
+        String unlitTorchTable = "CREATE TABLE IF NOT EXISTS hl_torch_unlit ("
+            + "location_key VARCHAR(120) PRIMARY KEY"
+            + ")";
+
         try (Connection conn = dataSource.getConnection();
              Statement stmt = conn.createStatement()) {
             stmt.execute(tanTable);
             stmt.execute(baublesTable);
             stmt.execute(torchTable);
             stmt.execute(fearTable);
+            stmt.execute(unlitTorchTable);
             startupInfo("Schema is ready.");
         } catch (SQLException e) {
             throw new RuntimeException("Failed to create tables: " + e.getMessage(), e);
@@ -410,7 +416,7 @@ public class HLDatabase {
             return;
         }
 
-        // Clear only the LitTorches section; keep UnlitTorches for FearModule
+        // Clear only the LitTorches section; keep UnlitTorches for potential unlit migration below
         yaml.set("LitTorches", null);
         try {
             yaml.save(yamlFile);
@@ -420,6 +426,42 @@ public class HLDatabase {
 
         if (migrated > 0) {
             startupInfo("Migrated " + migrated + " lit torch records from YAML to DB.");
+        }
+
+        // Migrate UnlitTorches from YAML -> hl_torch_unlit (only if table is empty)
+        java.util.List<String> unlitRaw = yaml.getStringList("UnlitTorches");
+        if (!unlitRaw.isEmpty()) {
+            try (Connection conn2 = dataSource.getConnection();
+                 Statement chk = conn2.createStatement();
+                 ResultSet rs2 = chk.executeQuery("SELECT COUNT(*) FROM hl_torch_unlit")) {
+                if (rs2.next() && rs2.getInt(1) == 0) {
+                    String unlitSql = isMysql
+                        ? "INSERT IGNORE INTO hl_torch_unlit (location_key) VALUES (?)"
+                        : "MERGE INTO hl_torch_unlit (location_key) KEY(location_key) VALUES (?)";
+                    int unlitMigrated = 0;
+                    try (PreparedStatement ps2 = conn2.prepareStatement(unlitSql)) {
+                        for (String key : unlitRaw) {
+                            if (key != null && !key.isEmpty()) {
+                                ps2.setString(1, key);
+                                ps2.addBatch();
+                                unlitMigrated++;
+                            }
+                        }
+                        ps2.executeBatch();
+                    }
+                    if (unlitMigrated > 0) {
+                        startupInfo("Migrated " + unlitMigrated + " unlit torch records from YAML to DB.");
+                    }
+                    yaml.set("UnlitTorches", null);
+                    try {
+                        yaml.save(yamlFile);
+                    } catch (Exception e) {
+                        startupWarn("Failed to clear migrated unlit torch data from YAML: " + e.getMessage());
+                    }
+                }
+            } catch (SQLException e) {
+                startupWarn("Unlit torch data migration failed: " + e.getMessage());
+            }
         }
     }
 
@@ -606,6 +648,86 @@ public class HLDatabase {
                 }
             } catch (SQLException e) {
                 logger.warning("[HLDatabase] Failed to save lit torch data: " + e.getMessage());
+            }
+        });
+    }
+
+    // ── Unlit Torch Data ──────────────────────────────────────────────────────
+
+    public CompletableFuture<Set<String>> loadUnlitTorches() {
+        return scheduler.supplyAsync(() -> {
+            Set<String> result = new HashSet<>();
+            String sql = "SELECT location_key FROM hl_torch_unlit";
+            try (Connection conn = dataSource.getConnection();
+                 Statement stmt = conn.createStatement();
+                 ResultSet rs = stmt.executeQuery(sql)) {
+                while (rs.next()) {
+                    result.add(rs.getString("location_key"));
+                }
+            } catch (SQLException e) {
+                logger.warning("[HLDatabase] Failed to load unlit torch data: " + e.getMessage());
+            }
+            return result;
+        });
+    }
+
+    public CompletableFuture<Void> insertUnlitTorch(String key) {
+        return scheduler.runAsync(() -> {
+            String sql = isMysql
+                ? "INSERT IGNORE INTO hl_torch_unlit (location_key) VALUES (?)"
+                : "MERGE INTO hl_torch_unlit (location_key) KEY(location_key) VALUES (?)";
+            try (Connection conn = dataSource.getConnection();
+                 PreparedStatement ps = conn.prepareStatement(sql)) {
+                ps.setString(1, key);
+                ps.executeUpdate();
+            } catch (SQLException e) {
+                logger.warning("[HLDatabase] Failed to insert unlit torch: " + e.getMessage());
+            }
+        });
+    }
+
+    public CompletableFuture<Void> deleteUnlitTorch(String key) {
+        return scheduler.runAsync(() -> {
+            String sql = "DELETE FROM hl_torch_unlit WHERE location_key = ?";
+            try (Connection conn = dataSource.getConnection();
+                 PreparedStatement ps = conn.prepareStatement(sql)) {
+                ps.setString(1, key);
+                ps.executeUpdate();
+            } catch (SQLException e) {
+                logger.warning("[HLDatabase] Failed to delete unlit torch: " + e.getMessage());
+            }
+        });
+    }
+
+    public CompletableFuture<Void> replaceAllUnlitTorches(Set<String> keys) {
+        return scheduler.runAsync(() -> {
+            try (Connection conn = dataSource.getConnection()) {
+                conn.setAutoCommit(false);
+                try {
+                    try (Statement stmt = conn.createStatement()) {
+                        stmt.execute("DELETE FROM hl_torch_unlit");
+                    }
+                    if (!keys.isEmpty()) {
+                        String sql = isMysql
+                            ? "INSERT IGNORE INTO hl_torch_unlit (location_key) VALUES (?)"
+                            : "INSERT INTO hl_torch_unlit (location_key) VALUES (?)";
+                        try (PreparedStatement ps = conn.prepareStatement(sql)) {
+                            for (String key : keys) {
+                                ps.setString(1, key);
+                                ps.addBatch();
+                            }
+                            ps.executeBatch();
+                        }
+                    }
+                    conn.commit();
+                } catch (SQLException e) {
+                    try { conn.rollback(); } catch (SQLException ignored) {}
+                    throw e;
+                } finally {
+                    conn.setAutoCommit(true);
+                }
+            } catch (SQLException e) {
+                logger.warning("[HLDatabase] Failed to replace unlit torch data: " + e.getMessage());
             }
         });
     }

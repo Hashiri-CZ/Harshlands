@@ -208,3 +208,17 @@ CharacterOverrides:
   FearArrowUp:     "\uE84B"  # fear increasing
   FearArrowDown:   "\uE84A"  # fear decreasing
   FearArrowStable: ""  # fear unchanged / first tick
+
+Recipes:
+  glowstone_crystal:
+    Enabled:
+      Enabled_1_21_11: true
+    Unlock: true
+  torch:
+    Enabled:
+      Enabled_1_21_11: true
+    Unlock: true
+  unlit_torch:
+    Enabled:
+      Enabled_1_21_11: true
+    Unlock: true

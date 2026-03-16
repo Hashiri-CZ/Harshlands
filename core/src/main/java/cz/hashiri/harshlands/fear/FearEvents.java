@@ -39,6 +39,7 @@ import org.bukkit.event.entity.EntityExplodeEvent;
 import java.util.List;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.world.ChunkLoadEvent;
+import org.bukkit.event.world.WorldSaveEvent;
 import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
@@ -149,6 +150,13 @@ public class FearEvents extends ModuleEvents {
         if (event.getPlayer().getGameMode() != GameMode.CREATIVE) {
             event.setDropItems(false);
             block.getWorld().dropItemNaturally(block.getLocation(), HLItem.getItem("unlit_torch"));
+        }
+    }
+
+    @EventHandler(priority = EventPriority.MONITOR)
+    public void onWorldSave(WorldSaveEvent event) {
+        if (unlitTorchService != null) {
+            unlitTorchService.flushToDatabase();
         }
     }
 

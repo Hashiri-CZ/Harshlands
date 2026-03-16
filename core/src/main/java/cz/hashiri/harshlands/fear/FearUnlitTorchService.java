@@ -17,6 +17,7 @@
 package cz.hashiri.harshlands.fear;
 
 import cz.hashiri.harshlands.data.HLConfig;
+import cz.hashiri.harshlands.data.db.HLDatabase;
 import cz.hashiri.harshlands.rsv.HLPlugin;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
@@ -43,6 +44,7 @@ import java.util.UUID;
 public class FearUnlitTorchService {
 
     private final HLPlugin plugin;
+    @Nullable private final HLDatabase db;
     private final Set<LocationKey> managedUnlitTorches = new HashSet<>();
     private final Map<ChunkKey, Set<LocationKey>> torchByChunk = new HashMap<>();
     private final List<LocationKey> scanKeys = new ArrayList<>();
@@ -53,8 +55,9 @@ public class FearUnlitTorchService {
     private boolean scanDirty = true;
     private BukkitTask enforceTask;
 
-    public FearUnlitTorchService(@Nonnull HLPlugin plugin, @Nonnull HLConfig userConfig) {
+    public FearUnlitTorchService(@Nonnull HLPlugin plugin, @Nonnull HLConfig userConfig, @Nullable HLDatabase db) {
         this.plugin = plugin;
+        this.db = db;
         this.targetFullScanTicks = Math.max(1, userConfig.getConfig().getInt(
                 "TorchSystem.UnlitTorchEnforcement.TargetFullScanTicks", 200));
         this.minScanBatchSize = Math.max(1, userConfig.getConfig().getInt(
@@ -288,6 +291,7 @@ public class FearUnlitTorchService {
                     new ChunkKey(key.worldId(), key.x() >> 4, key.z() >> 4),
                     k -> new HashSet<>()).add(key);
             scanDirty = true;
+            if (db != null) db.insertUnlitTorch(serializeKey(key)); // fire-and-forget write-through
         }
     }
 
@@ -300,7 +304,14 @@ public class FearUnlitTorchService {
                 if (set.isEmpty()) torchByChunk.remove(ck);
             }
             scanDirty = true;
+            if (db != null) db.deleteUnlitTorch(serializeKey(key)); // fire-and-forget write-through
         }
+    }
+
+    public void flushToDatabase() {
+        if (db == null) return;
+        Set<String> snapshot = snapshotManagedUnlitTorches();
+        db.replaceAllUnlitTorches(snapshot); // fire-and-forget full replace
     }
 
     public boolean hasTorchesInChunk(UUID worldId, int chunkX, int chunkZ) {

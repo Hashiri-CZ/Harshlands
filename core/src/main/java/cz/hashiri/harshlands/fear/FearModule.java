@@ -29,13 +29,8 @@ import org.bukkit.NamespacedKey;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 
-import java.io.File;
 import java.io.IOException;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
 import java.util.ArrayList;
-import java.util.LinkedHashSet;
-import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.CompletableFuture;
@@ -49,7 +44,6 @@ public class FearModule extends HLModule {
     private FearEvents events;
     private FearTorchManager torchManager;
     private FearUnlitTorchService unlitTorchService;
-    private HLConfig torchDataConfig;
     private NightmareManager nightmareManager;
 
     public FearModule(HLPlugin plugin) {
@@ -63,7 +57,6 @@ public class FearModule extends HLModule {
         migrateFearUserConfig();
         setItemConfig(new HLConfig(plugin, "resources/fear/items.yml"));
         setRecipeConfig(new HLConfig(plugin, "resources/fear/recipes.yml"));
-        torchDataConfig = new HLConfig(plugin, "resources/fear/torchdata.yml", false, false);
         migrateFearItemConfig();
         setModuleItems(new ModuleItems(this));
         setModuleRecipes(new ModuleRecipes(this, plugin));
@@ -122,7 +115,7 @@ public class FearModule extends HLModule {
 
         if (config.getBoolean("TorchSystem.Enabled")) {
             long burnMinutes = config.getLong("TorchSystem.BurnDurationMinutes", 60L);
-            unlitTorchService = new FearUnlitTorchService(plugin, getUserConfig());
+            unlitTorchService = new FearUnlitTorchService(plugin, getUserConfig(), plugin.getDatabase());
             unlitTorchService.start();
             torchManager = new FearTorchManager(plugin, burnMinutes, unlitTorchService::setUnlitFromLitTorch);
             torchManager.start();
@@ -181,15 +174,12 @@ public class FearModule extends HLModule {
         saveUnlitTorchData();
     }
 
-    // Periodic save: snapshots on main thread, writes YAML and DB off-thread (P4 + C2).
+    // Periodic save: flush unlit torches to DB and lit torches to DB off-thread.
     private void saveTorchDataPeriodic() {
-        if (torchDataConfig == null || unlitTorchService == null) return;
+        if (unlitTorchService == null) return;
 
-        // Snapshot unlit torches on main thread (snapshotManagedUnlitTorches has cleanup side-effects)
-        FileConfiguration data = torchDataConfig.getConfig();
-        data.set("UnlitTorches", new ArrayList<>(unlitTorchService.snapshotManagedUnlitTorches()));
-        String yamlString = data.saveToString();
-        File file = torchDataConfig.getFile();
+        // Flush unlit torches to DB (fire-and-forget full replace)
+        unlitTorchService.flushToDatabase();
 
         // Snapshot lit torches on main thread for DB save (C2)
         Map<String, Long> litSnapshot = torchManager != null
@@ -198,30 +188,23 @@ public class FearModule extends HLModule {
 
         HLDatabase db = plugin.getDatabase();
 
-        // P4: write YAML off main thread
-        plugin.getScheduler().runAsync(() -> {
-            try {
-                Files.write(file.toPath(), yamlString.getBytes(StandardCharsets.UTF_8));
-            } catch (IOException e) {
-                plugin.getLogger().warning("Failed to auto-save unlit torch data: " + e.getMessage());
-            }
-        });
-
         // C2: periodically save lit torches to DB (fire-and-forget)
         if (db != null && litSnapshot != null && !litSnapshot.isEmpty()) {
             db.saveLitTorches(litSnapshot);
         }
     }
 
-    // Synchronous save used at shutdown.
+    // Blocking save used at shutdown.
     private void saveUnlitTorchData() {
-        if (torchDataConfig == null || unlitTorchService == null) return;
-        FileConfiguration data = torchDataConfig.getConfig();
-        data.set("UnlitTorches", new ArrayList<>(unlitTorchService.snapshotManagedUnlitTorches()));
-        try {
-            data.save(torchDataConfig.getFile());
-        } catch (IOException e) {
-            plugin.getLogger().warning("Failed to auto-save unlit torch data: " + e.getMessage());
+        if (unlitTorchService == null) return;
+        Set<String> snapshot = unlitTorchService.snapshotManagedUnlitTorches();
+        HLDatabase db = plugin.getDatabase();
+        if (db != null) {
+            try {
+                db.replaceAllUnlitTorches(snapshot).get(5, TimeUnit.SECONDS);
+            } catch (Exception e) {
+                plugin.getLogger().warning("[Fear] Failed to save unlit torch data on shutdown: " + e.getMessage());
+            }
         }
     }
 
@@ -252,21 +235,18 @@ public class FearModule extends HLModule {
             }
         }
 
-        // Restore unlit torches from YAML
-        if (torchDataConfig != null && unlitTorchService != null) {
-            FileConfiguration data = torchDataConfig.getConfig();
-            List<String> unlitRaw = data.getStringList("UnlitTorches");
-            if (!unlitRaw.isEmpty()) {
-                Set<String> unlit = new LinkedHashSet<>(unlitRaw);
-                unlitTorchService.restoreManagedUnlitTorches(unlit);
-                Bukkit.getScheduler().runTask(plugin, unlitTorchService::enforceAllLoadedManaged);
-            }
-
-            data.set("UnlitTorches", new ArrayList<>(unlitTorchService.snapshotManagedUnlitTorches()));
+        // Restore unlit torches from DB
+        if (db != null && unlitTorchService != null) {
             try {
-                data.save(torchDataConfig.getFile());
-            } catch (IOException exception) {
-                plugin.getLogger().warning("Failed to checkpoint restored unlit torch data: " + exception.getMessage());
+                Set<String> unlit = db.loadUnlitTorches().get(5, TimeUnit.SECONDS);
+                if (!unlit.isEmpty()) {
+                    unlitTorchService.restoreManagedUnlitTorches(unlit);
+                    Bukkit.getScheduler().runTask(plugin, unlitTorchService::enforceAllLoadedManaged);
+                }
+            } catch (TimeoutException e) {
+                plugin.getLogger().warning("[Fear] Timed out loading unlit torch data from DB.");
+            } catch (Exception e) {
+                plugin.getLogger().warning("[Fear] Failed to load unlit torch data from DB: " + e.getMessage());
             }
         }
     }
