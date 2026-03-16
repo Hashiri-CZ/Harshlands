@@ -31,9 +31,12 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.block.BlockBreakEvent;
+import org.bukkit.event.block.BlockExplodeEvent;
 import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.event.block.BlockPhysicsEvent;
 import org.bukkit.event.block.BlockRedstoneEvent;
+import org.bukkit.event.entity.EntityExplodeEvent;
+import java.util.List;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.world.ChunkLoadEvent;
 import org.bukkit.inventory.EquipmentSlot;
@@ -92,7 +95,6 @@ public class FearEvents extends ModuleEvents {
             event.setCancelled(true);
             event.setUseInteractedBlock(Event.Result.DENY);
             event.setUseItemInHand(Event.Result.DENY);
-            Bukkit.getScheduler().runTask(plugin, unlitTorchService::enforceAllLoadedManaged);
         }
     }
 
@@ -117,6 +119,9 @@ public class FearEvents extends ModuleEvents {
 
     @EventHandler(priority = EventPriority.HIGHEST, ignoreCancelled = true)
     public void onUnlitTorchPhysics(BlockPhysicsEvent event) {
+        // P3: early exit for non-redstone-torch materials to avoid LocationKey allocation on every physics event
+        Material m = event.getBlock().getType();
+        if (m != Material.REDSTONE_TORCH && m != Material.REDSTONE_WALL_TORCH) return;
         if (unlitTorchService.suppressManagedUnlitUpdate(event.getBlock())) {
             event.setCancelled(true);
         }
@@ -155,6 +160,32 @@ public class FearEvents extends ModuleEvents {
         if (!unlitTorchService.hasTorchesInChunk(worldId, chunkX, chunkZ)) return;
         Bukkit.getScheduler().runTask(plugin,
                 () -> unlitTorchService.enforceChunk(worldId, chunkX, chunkZ));
+    }
+
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
+    public void onEntityExplode(EntityExplodeEvent event) {
+        List<Block> blocks = event.blockList();
+        for (int i = 0; i < blocks.size(); i++) {
+            Block block = blocks.get(i);
+            if (torchManager.isManagedTorch(block)) {
+                torchManager.unregisterTorch(block);
+            } else if (unlitTorchService.isManagedUnlitTorch(block)) {
+                unlitTorchService.unregisterUnlitTorch(block);
+            }
+        }
+    }
+
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
+    public void onBlockExplode(BlockExplodeEvent event) {
+        List<Block> blocks = event.blockList();
+        for (int i = 0; i < blocks.size(); i++) {
+            Block block = blocks.get(i);
+            if (torchManager.isManagedTorch(block)) {
+                torchManager.unregisterTorch(block);
+            } else if (unlitTorchService.isManagedUnlitTorch(block)) {
+                unlitTorchService.unregisterUnlitTorch(block);
+            }
+        }
     }
 
     private boolean isIgniter(ItemStack item) {
