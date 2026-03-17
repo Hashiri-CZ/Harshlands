@@ -27,6 +27,7 @@ import org.bukkit.inventory.*;
 
 import java.util.HashSet;
 import java.util.Set;
+import java.util.logging.Level;
 
 public class RecipeManager {
 
@@ -94,7 +95,9 @@ public class RecipeManager {
                 try {
                     recipe = new HLShapedRecipe(recipeConfig, recipeName, plugin);
                     recipeKeys.add(((ShapedRecipe) recipe).getKey());
-                } catch (Exception ignored) {}
+                } catch (Exception e) {
+                    plugin.getLogger().log(Level.WARNING, "[RecipeManager] Failed to load '" + recipeName + "' (" + type + "): " + e.getMessage(), e);
+                }
             }
             case "Shapeless" -> {
                 // shapeless recipes do not work properly on spigot
@@ -102,56 +105,74 @@ public class RecipeManager {
                     try {
                         recipe = new HLShapelessRecipe(recipeConfig, recipeName, plugin);
                         recipeKeys.add(((ShapelessRecipe) recipe).getKey());
-                    } catch (Exception ignored) {}
+                    } catch (Exception e) {
+                        plugin.getLogger().log(Level.WARNING, "[RecipeManager] Failed to load '" + recipeName + "' (" + type + "): " + e.getMessage(), e);
+                    }
                 }
                 else {
                     try {
                         recipe = new HLShapedRecipe(recipeConfig, recipeName, plugin);
                         recipeKeys.add(((ShapedRecipe) recipe).getKey());
-                    } catch (Exception ignored) {}
+                    } catch (Exception e) {
+                        plugin.getLogger().log(Level.WARNING, "[RecipeManager] Failed to load '" + recipeName + "' (" + type + "): " + e.getMessage(), e);
+                    }
                 }
             }
             case "Smithing" -> {
                 try {
                     recipe = new HLSmithingRecipe(recipeConfig, recipeName, plugin);
                     recipeKeys.add(((SmithingRecipe) recipe).getKey());
-                } catch (Exception ignored) {}
+                } catch (Exception e) {
+                    plugin.getLogger().log(Level.WARNING, "[RecipeManager] Failed to load '" + recipeName + "' (" + type + "): " + e.getMessage(), e);
+                }
             }
             case "Furnace" -> {
                 try {
                     recipe = new HLFurnaceRecipe(recipeConfig, recipeName, plugin);
                     recipeKeys.add(((FurnaceRecipe) recipe).getKey());
-                } catch (Exception ignored) {}
+                } catch (Exception e) {
+                    plugin.getLogger().log(Level.WARNING, "[RecipeManager] Failed to load '" + recipeName + "' (" + type + "): " + e.getMessage(), e);
+                }
             }
             case "Campfire" -> {
                 try {
                     recipe = new HLCampfireRecipe(recipeConfig, recipeName, plugin);
                     recipeKeys.add(((CampfireRecipe) recipe).getKey());
-                } catch (Exception ignored) {}
+                } catch (Exception e) {
+                    plugin.getLogger().log(Level.WARNING, "[RecipeManager] Failed to load '" + recipeName + "' (" + type + "): " + e.getMessage(), e);
+                }
             }
             case "Smoker" -> {
                 try {
                     recipe = new HLSmokingRecipe(recipeConfig, recipeName, plugin);
                     recipeKeys.add(((SmokingRecipe) recipe).getKey());
-                } catch (Exception ignored) {}
+                } catch (Exception e) {
+                    plugin.getLogger().log(Level.WARNING, "[RecipeManager] Failed to load '" + recipeName + "' (" + type + "): " + e.getMessage(), e);
+                }
             }
             case "Stonecutting" -> {
                 try {
                     recipe = new HLStonecuttingRecipe(recipeConfig, recipeName, plugin);
                     recipeKeys.add(((StonecuttingRecipe) recipe).getKey());
-                } catch (Exception ignored) {}
+                } catch (Exception e) {
+                    plugin.getLogger().log(Level.WARNING, "[RecipeManager] Failed to load '" + recipeName + "' (" + type + "): " + e.getMessage(), e);
+                }
             }
             case "Anvil" -> {
                 try {
                     recipe = new HLAnvilRecipe(recipeConfig, recipeName);
                     anvilRecipes.add((HLAnvilRecipe) recipe);
-                } catch (Exception ignored) {}
+                } catch (Exception e) {
+                    plugin.getLogger().log(Level.WARNING, "[RecipeManager] Failed to load '" + recipeName + "' (" + type + "): " + e.getMessage(), e);
+                }
             }
             case "Brewing" -> {
                 try {
                     recipe = new HLBrewingRecipe(recipeConfig, recipeName, plugin);
                     brewingRecipes.add((HLBrewingRecipe) recipe);
-                } catch (Exception ignored) {}
+                } catch (Exception e) {
+                    plugin.getLogger().log(Level.WARNING, "[RecipeManager] Failed to load '" + recipeName + "' (" + type + "): " + e.getMessage(), e);
+                }
             }
             default -> {
                 return null;

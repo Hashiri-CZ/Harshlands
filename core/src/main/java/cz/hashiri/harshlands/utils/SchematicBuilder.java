@@ -65,7 +65,6 @@ public class SchematicBuilder {
 //        try {
 //            FaweAPI.load(file).paste(world, vector);
 //        } catch (IOException e) {
-//            e.printStackTrace();
 //        }
 //    }
 //

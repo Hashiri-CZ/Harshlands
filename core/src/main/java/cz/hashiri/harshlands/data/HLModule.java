@@ -27,6 +27,7 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.io.IOException;
 import java.util.*;
+import java.util.logging.Level;
 
 public abstract class HLModule {
 
@@ -70,7 +71,7 @@ public abstract class HLModule {
 
         if (isGloballyEnabled) {
             ConfigurationSection section = config.getConfigurationSection(name + ".Worlds");
-            Set<String> keys = section.getKeys(false);
+            Set<String> keys = section != null ? section.getKeys(false) : new HashSet<>();
 
             List<String> worlds = Utils.getAllWorldNames();
             boolean autoEnable = config.getBoolean("AutomaticallyEnableWorlds");
@@ -105,7 +106,7 @@ public abstract class HLModule {
         try {
             config.save(plugin.getConfigFile());
         } catch (IOException e) {
-            e.printStackTrace();
+            plugin.getLogger().log(Level.SEVERE, "[" + name + "] Failed to save config.yml", e);
         }
         modules.put(name, this);
     }
@@ -199,7 +200,7 @@ public abstract class HLModule {
         Collection<String> messages = new ArrayList<>();
 
         for (Map.Entry<HLModule, String> entry : dependencies.entrySet()) {
-            if (entry.getKey() == null || !entry.getKey().isGloballyEnabled && entry.getValue() != null) {
+            if ((entry.getKey() == null || !entry.getKey().isGloballyEnabled) && entry.getValue() != null) {
                 messages.add(Utils.translateMsg("[" + name + "] " + entry.getValue(), null, null));
             }
         }
@@ -211,7 +212,7 @@ public abstract class HLModule {
         Collection<String> messages = new ArrayList<>();
 
         for (Map.Entry<HLModule, String> entry : softDependencies.entrySet()) {
-            if (entry.getKey() == null || !entry.getKey().isGloballyEnabled && entry.getValue() != null) {
+            if ((entry.getKey() == null || !entry.getKey().isGloballyEnabled) && entry.getValue() != null) {
                 messages.add(Utils.translateMsg("[" + name + "] " + entry.getValue(), null, null));
             }
         }

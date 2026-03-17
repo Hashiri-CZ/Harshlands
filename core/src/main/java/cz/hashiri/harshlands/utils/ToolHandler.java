@@ -27,7 +27,6 @@ public class ToolHandler {
 
     protected final Map<Material,Tool> toolMap = new HashMap<>();
 
-    // TODO: Cache valid tool materials here
     protected final List<Material> pickaxes = new ArrayList<>();
     protected final List<Material> axes = new ArrayList<>();
     protected final List<Material> hoes = new ArrayList<>();

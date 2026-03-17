@@ -16,6 +16,7 @@ import org.bukkit.inventory.ItemStack;
 import java.io.*;
 import java.lang.reflect.Type;
 import java.util.*;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.regex.Pattern;
 
@@ -107,12 +108,10 @@ public class DataModule implements HLDataModule {
                         LOGGER.info("[Baubles] Successfully converted Base64 -> JSON for " + id);
                     }
                 } catch (Exception e) {
-                    LOGGER.severe("[Baubles] Failed to convert Base64 data for " + id);
-                    e.printStackTrace();
+                    LOGGER.log(Level.SEVERE, "[Baubles] Failed to convert Base64 data for " + id, e);
                 }
             } catch (Exception e) {
-                LOGGER.severe("[Baubles] Unexpected error loading data for " + id);
-                e.printStackTrace();
+                LOGGER.log(Level.SEVERE, "[Baubles] Unexpected error loading data for " + id, e);
             }
 
             baubleBag.fillDefaultItems();

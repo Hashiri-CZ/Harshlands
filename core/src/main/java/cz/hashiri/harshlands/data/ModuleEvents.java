@@ -50,6 +50,7 @@ import javax.annotation.Nullable;
 import java.io.IOException;
 import java.util.Collection;
 import java.util.Set;
+import java.util.logging.Level;
 
 public abstract class ModuleEvents implements Listener {
 
@@ -206,7 +207,7 @@ public abstract class ModuleEvents implements Listener {
                 try {
                     pluginConfig.save(plugin.getConfigFile());
                 } catch (IOException e) {
-                    e.printStackTrace();
+                    plugin.getLogger().log(Level.SEVERE, "[" + module.getName() + "] Failed to save config on world init: " + name, e);
                 }
             }
         }
@@ -228,7 +229,7 @@ public abstract class ModuleEvents implements Listener {
                 try {
                     pluginConfig.save(plugin.getConfigFile());
                 } catch (IOException e) {
-                    e.printStackTrace();
+                    plugin.getLogger().log(Level.SEVERE, "[" + module.getName() + "] Failed to save config on world load: " + name, e);
                 }
             }
         }

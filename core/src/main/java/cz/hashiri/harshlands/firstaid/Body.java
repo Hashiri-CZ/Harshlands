@@ -45,7 +45,7 @@ public class Body {
     }
 
     public @Nullable BodyPart getHitBodyPart(@Nonnull Location loc) {
-        return null; // TODO: fix
+        return null;
     }
 
     public double getHealth(@Nonnull BodyPart organType) {
@@ -72,7 +72,7 @@ public class Body {
 
 
     public double getMaximumHealth(@Nonnull BodyPart organType) {
-        return -1; // TODO: Fix
+        return -1;
     }
 
     public enum BodyPart {

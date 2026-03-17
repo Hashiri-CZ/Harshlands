@@ -68,8 +68,6 @@ public class HLPlugin extends JavaPlugin {
     private HLScheduler scheduler;
     private HLDatabase database;
 
-//    private static HLConfig langConfig;
-
     @Override
     public void onEnable() {
         plugin = this;
@@ -151,14 +149,6 @@ public class HLPlugin extends JavaPlugin {
         if (dynamicSurroundingsModule.isGloballyEnabled())
             dynamicSurroundingsModule.initialize();
 
-//        FaModule faModule = new FaModule(this);
-//        if (faModule.isGloballyEnabled())
-//            faModule.initialize();
-
-//        TODO: Add custom enchantment system
-//        HLEnchants rsvEnchants = new HLEnchants(this);
-//        rsvEnchants.registerAllEnchants();
-
         new BukkitRunnable() {
             @Override
             public void run() {
@@ -208,7 +198,6 @@ public class HLPlugin extends JavaPlugin {
 
     @Override
     public void onLoad() {
-//        Utils.registerEntities();
     }
 
     @Override

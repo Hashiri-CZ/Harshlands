@@ -25,6 +25,7 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.logging.Level;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.HashSet;
@@ -62,8 +63,7 @@ public class HLConfig extends FileBuilder {
             // load the file into the config
             config.load(file);
         } catch (IOException | InvalidConfigurationException e) {
-            // print any exceptions that are thrown
-            e.printStackTrace();
+            plugin.getLogger().log(Level.SEVERE, "[HLConfig] Failed to load config: " + path, e);
         }
 
         if (updateOldVersions && !updated) {
@@ -92,9 +92,11 @@ public class HLConfig extends FileBuilder {
                     // Create backup
                     Files.copy(Path.of(file.getAbsolutePath()), Path.of(file.getAbsolutePath().replace(".yml", "_Backup_" + num + ".yml")));
 
-                    InputStream stream = plugin.getResource(path);
-                    InputStreamReader reader = new InputStreamReader(stream);
-                    FileConfiguration embedded = YamlConfiguration.loadConfiguration(reader);
+                    FileConfiguration embedded;
+                    try (InputStream stream = plugin.getResource(path);
+                         InputStreamReader reader = new InputStreamReader(stream)) {
+                        embedded = YamlConfiguration.loadConfiguration(reader);
+                    }
 
                     Set<String> embeddedKeys = embedded.getKeys(true);
                     Set<String> configKeys = config.getKeys(true);
@@ -116,8 +118,7 @@ public class HLConfig extends FileBuilder {
                     plugin.getLogger().info("[HLConfig] Updating config: " + currentVersion + " -> " + latestVersion);
 
                 } catch (IOException e) {
-                    plugin.getLogger().severe("[HLConfig] Failed to update config: " + e.getMessage());
-                    e.printStackTrace();
+                    plugin.getLogger().log(Level.SEVERE, "[HLConfig] Failed to update config: " + path, e);
                 }
             } else {
                 // AutoUpdate disabled: just create backup and replace config
@@ -130,7 +131,7 @@ public class HLConfig extends FileBuilder {
             }
 
         }
-        // No else block needed â€“ no logs if config is already up-to-date
+        // No else block needed -- no logs if config is already up-to-date
     }
 
     /** Semantic version comparison helper */
