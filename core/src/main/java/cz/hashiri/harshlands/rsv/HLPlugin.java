@@ -17,6 +17,7 @@
 package cz.hashiri.harshlands.rsv;
 
 import cz.hashiri.harshlands.baubles.BaubleModule;
+import cz.hashiri.harshlands.comfort.ComfortModule;
 import cz.hashiri.harshlands.commands.Commands;
 import cz.hashiri.harshlands.commands.Tab;
 import cz.hashiri.harshlands.data.*;
@@ -148,6 +149,11 @@ public class HLPlugin extends JavaPlugin {
         DynamicSurroundingsModule dynamicSurroundingsModule = new DynamicSurroundingsModule(this);
         if (dynamicSurroundingsModule.isGloballyEnabled())
             dynamicSurroundingsModule.initialize();
+
+        ensureComfortDefaults();
+        ComfortModule comfortModule = new ComfortModule(this);
+        if (comfortModule.isGloballyEnabled())
+            comfortModule.initialize();
 
         new BukkitRunnable() {
             @Override
@@ -347,6 +353,39 @@ public class HLPlugin extends JavaPlugin {
                 cfg.save(getConfigFile());
             } catch (IOException exception) {
                 getLogger().warning("Failed to write DynamicSurroundings defaults to config.yml: " + exception.getMessage());
+            }
+        }
+    }
+
+    private void ensureComfortDefaults() {
+        FileConfiguration cfg = getConfig();
+        boolean changed = false;
+
+        if (!cfg.contains("Comfort.Enabled")) {
+            cfg.set("Comfort.Enabled", true);
+            changed = true;
+        }
+
+        String worldsPath = "Comfort.Worlds";
+        if (!cfg.contains(worldsPath)) {
+            cfg.createSection(worldsPath);
+            changed = true;
+        }
+
+        boolean autoEnableWorlds = cfg.getBoolean("AutomaticallyEnableWorlds");
+        for (String world : Utils.getAllWorldNames()) {
+            String path = worldsPath + "." + world;
+            if (!cfg.contains(path)) {
+                cfg.set(path, autoEnableWorlds);
+                changed = true;
+            }
+        }
+
+        if (changed) {
+            try {
+                cfg.save(getConfigFile());
+            } catch (IOException exception) {
+                getLogger().warning("Failed to write Comfort defaults to config.yml: " + exception.getMessage());
             }
         }
     }

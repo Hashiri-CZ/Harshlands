@@ -72,7 +72,7 @@ public class Tab implements TabCompleter {
             List<String> result = new ArrayList<>(); // create an empty string list which will store the tab completer texts
 
             if (firstArgs.isEmpty()) {
-                firstArgs.addAll(Set.of("reload", "give", "spawnitem", "summon", "thirst", "temperature", "resetitem", "updateitem", "fear", "setfear", "help", "version"));
+                firstArgs.addAll(Set.of("reload", "give", "spawnitem", "summon", "thirst", "temperature", "resetitem", "updateitem", "fear", "setfear", "comfort", "help", "version"));
             }
 
             if (mobs.isEmpty()) {

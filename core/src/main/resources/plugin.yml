@@ -140,6 +140,9 @@ permissions:
   harshlands.command.version:
     description: Allows users to access the plugin version
     default: op
+  harshlands.command.comfort:
+    description: Allows checking comfort score at current location
+    default: true
   harshlands.command.fear:
     description: Allows checking your own fear level
     default: op
@@ -163,6 +166,7 @@ permissions:
       harshlands.command.updateitem: true
       harshlands.command.help: true
       harshlands.command.version: true
+      harshlands.command.comfort: true
       harshlands.command.fear: true
       harshlands.command.fear.others: true
       harshlands.command.fear.set: true
