@@ -17,6 +17,8 @@
 package cz.hashiri.harshlands.integrations;
 
 import me.clip.placeholderapi.expansion.PlaceholderExpansion;
+import cz.hashiri.harshlands.comfort.ComfortModule;
+import cz.hashiri.harshlands.comfort.ComfortScoreCalculator;
 import cz.hashiri.harshlands.data.HLModule;
 import cz.hashiri.harshlands.rsv.HLPlugin;
 import cz.hashiri.harshlands.tan.TanModule;
@@ -183,6 +185,44 @@ public class HLExpansion extends PlaceholderExpansion {
                         charValues.getTemperatureThirstActionbar(player, (int) Math.round(tempManager.getTemperature(player)), (int) Math.round(thirstManager.getThirst(player)), player.getRemainingAir() < 300 || player.isInWater(), thirstManager.hasParasites(player));
                     }
                     default -> {}
+                }
+            }
+            case "comfort" -> {
+                HLModule comfortMod = HLModule.getModule(ComfortModule.NAME);
+                if (comfortMod == null || !comfortMod.isEnabled(player)) {
+                    return "";
+                }
+
+                ComfortModule comfortModule = (ComfortModule) comfortMod;
+                int cacheSeconds = 5;
+                if (comfortModule.getUserConfig() != null) {
+                    cacheSeconds = comfortModule.getUserConfig().getConfig().getInt("CacheSeconds", 5);
+                }
+
+                ComfortScoreCalculator.ComfortResult result = comfortModule.getCachedResult(player, cacheSeconds);
+                if (result == null) {
+                    return "";
+                }
+
+                if (args.length < 2) {
+                    printErrorMessage(params);
+                    return "";
+                }
+
+                switch (args[1]) {
+                    case "score" -> {
+                        return String.valueOf(result.getScore());
+                    }
+                    case "tier" -> {
+                        return result.getTier().getDisplayName();
+                    }
+                    case "tiernumeric" -> {
+                        return String.valueOf(result.getTier().ordinal());
+                    }
+                    default -> {
+                        printErrorMessage(params);
+                        return "";
+                    }
                 }
             }
             default -> {}

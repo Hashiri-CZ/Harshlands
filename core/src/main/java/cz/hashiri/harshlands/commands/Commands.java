@@ -19,6 +19,8 @@ package cz.hashiri.harshlands.commands;
 import cz.hashiri.harshlands.data.HLConfig;
 import cz.hashiri.harshlands.data.HLModule;
 import cz.hashiri.harshlands.data.HLPlayer;
+import cz.hashiri.harshlands.comfort.ComfortModule;
+import cz.hashiri.harshlands.comfort.ComfortScoreCalculator;
 import cz.hashiri.harshlands.fear.FearModule;
 import cz.hashiri.harshlands.iceandfire.IceFireModule;
 import cz.hashiri.harshlands.rsv.HLPlugin;
@@ -953,6 +955,47 @@ public class Commands implements CommandExecutor {
                         null,
                         Map.of("PLAYER", sfTarget.getName(), "FEAR_LEVEL", String.format("%.2f", sfAmount))
                     ));
+                    return true;
+                }
+                case "comfort" -> {
+                    if (!sender.hasPermission("harshlands.command.comfort")) {
+                        sendNoPermissionMessage(sender);
+                        return true;
+                    }
+
+                    if (!(sender instanceof Player player)) {
+                        sendIncompleteCommandMsg(sender);
+                        return true;
+                    }
+
+                    HLModule comfortMod = HLModule.getModule(ComfortModule.NAME);
+                    if (comfortMod == null || !comfortMod.isGloballyEnabled()) {
+                        sender.sendMessage(Utils.translateMsg(
+                            config.getString("Comfort.ModuleDisabled", "&c[Harshlands] Comfort module is not enabled."), sender, null));
+                        return true;
+                    }
+
+                    ComfortModule comfortModule = (ComfortModule) comfortMod;
+                    ComfortScoreCalculator calc = comfortModule.getCalculator();
+                    if (calc == null) {
+                        sender.sendMessage(Utils.translateMsg(
+                            config.getString("Comfort.ModuleDisabled", "&c[Harshlands] Comfort module is not enabled."), sender, null));
+                        return true;
+                    }
+
+                    ComfortScoreCalculator.ComfortResult result = calc.calculate(player.getLocation());
+                    FileConfiguration comfortConfig = comfortModule.getUserConfig().getConfig();
+
+                    String checkMsg = comfortConfig.getString("Messages.ComfortCheck", "\u00a77Comfort Score: \u00a7f{score} \u00a77({tier})");
+                    checkMsg = checkMsg.replace("{score}", String.valueOf(result.getScore()));
+                    checkMsg = checkMsg.replace("{tier}", result.getTier().getDisplayName());
+                    player.sendMessage(checkMsg);
+
+                    if (!result.getFoundCategories().isEmpty()) {
+                        String breakdownMsg = comfortConfig.getString("Messages.ComfortBreakdown", "\u00a77Nearby: \u00a7f{categories}");
+                        breakdownMsg = breakdownMsg.replace("{categories}", String.join(", ", result.getFoundCategories()));
+                        player.sendMessage(breakdownMsg);
+                    }
                     return true;
                 }
                 case "help" -> {
