@@ -1,3 +1,5 @@
+ConfigId: "1.2.16-RELEASE"
+
 FoodExpansion:
   Defaults:
     Protein: 50.0
@@ -220,3 +222,22 @@ FoodExpansion:
       Protein: 1.0
       Carbs: 5.0
       Fats: 0.0
+
+  Overeating:
+    Enabled: true
+    HungerThreshold: 20
+    DecayIntervalMinutes: 3
+    CooldownMs: 500
+    Tiers:
+      0: 1.0
+      1: 0.7
+      2: 0.4
+      3: 0.15
+      4: 0.0
+    Messages:
+      Warning: 2
+      WarningText: "&7You're getting tired of &f{food}&7..."
+      Severe: 3
+      SevereText: "&7You can barely stomach more &f{food}&7."
+      Blocked: 4
+      BlockedText: "&cYou can't eat any more &f{food}&c right now."

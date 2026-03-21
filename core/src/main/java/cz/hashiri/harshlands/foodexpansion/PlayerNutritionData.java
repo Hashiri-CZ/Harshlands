@@ -1,5 +1,9 @@
 package cz.hashiri.harshlands.foodexpansion;
 
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+
 public class PlayerNutritionData {
 
     private double protein;
@@ -24,6 +28,8 @@ public class PlayerNutritionData {
     private int lastHudFats = -1;
 
     private int starvationTickCounter = 0;
+
+    private final Map<String, Integer> satiationCounters = new HashMap<>();
 
     public PlayerNutritionData(double protein, double carbs, double fats,
                                double proteinExhaustion, double carbsExhaustion,
@@ -59,6 +65,8 @@ public class PlayerNutritionData {
         this.carbs *= factor;
         this.fats *= factor;
         dirty = true;
+        this.hungerDebtAccumulator = 0.0;
+        this.starvationTickCounter = 0;
     }
 
     public NutrientTier evaluateTier(double hydrationPercent,
@@ -74,12 +82,12 @@ public class PlayerNutritionData {
         if (protein < malnourishedThreshold || carbs < malnourishedThreshold || fats < malnourishedThreshold) {
             return NutrientTier.MALNOURISHED;
         }
-        if (protein > peakThreshold && carbs > peakThreshold && fats > peakThreshold
-                && hydrationPercent > peakHydration) {
+        if (protein >= peakThreshold && carbs >= peakThreshold && fats >= peakThreshold
+                && hydrationPercent >= peakHydration) {
             return NutrientTier.PEAK_NUTRITION;
         }
-        if (protein > wellNourishedThreshold && carbs > wellNourishedThreshold && fats > wellNourishedThreshold
-                && hydrationPercent > wellNourishedHydration) {
+        if (protein >= wellNourishedThreshold && carbs >= wellNourishedThreshold && fats >= wellNourishedThreshold
+                && hydrationPercent >= wellNourishedHydration) {
             return NutrientTier.WELL_NOURISHED;
         }
         return NutrientTier.NORMAL;
@@ -91,27 +99,24 @@ public class PlayerNutritionData {
 
     public double drainProteinExhaustion(double threshold) {
         if (proteinExhaustion >= threshold) {
-            double drain = Math.floor(proteinExhaustion / threshold);
-            proteinExhaustion -= drain * threshold;
-            return drain;
+            proteinExhaustion -= threshold;
+            return 1.0;
         }
         return 0.0;
     }
 
     public double drainCarbsExhaustion(double threshold) {
         if (carbsExhaustion >= threshold) {
-            double drain = Math.floor(carbsExhaustion / threshold);
-            carbsExhaustion -= drain * threshold;
-            return drain;
+            carbsExhaustion -= threshold;
+            return 1.0;
         }
         return 0.0;
     }
 
     public double drainFatsExhaustion(double threshold) {
         if (fatsExhaustion >= threshold) {
-            double drain = Math.floor(fatsExhaustion / threshold);
-            fatsExhaustion -= drain * threshold;
-            return drain;
+            fatsExhaustion -= threshold;
+            return 1.0;
         }
         return 0.0;
     }
@@ -174,6 +179,31 @@ public class PlayerNutritionData {
         this.proteinExhaustion = proteinExhaustion;
         this.carbsExhaustion = carbsExhaustion;
         this.fatsExhaustion = fatsExhaustion;
+    }
+
+    public int getSatiation(String foodKey) {
+        return satiationCounters.getOrDefault(foodKey, 0);
+    }
+
+    public void incrementSatiation(String foodKey) {
+        satiationCounters.merge(foodKey, 1, Integer::sum);
+    }
+
+    public void decaySatiationCounters() {
+        Iterator<Map.Entry<String, Integer>> it = satiationCounters.entrySet().iterator();
+        while (it.hasNext()) {
+            Map.Entry<String, Integer> entry = it.next();
+            int newVal = entry.getValue() - 1;
+            if (newVal <= 0) {
+                it.remove();
+            } else {
+                entry.setValue(newVal);
+            }
+        }
+    }
+
+    public void clearSatiationCounters() {
+        satiationCounters.clear();
     }
 
     public double getMinNutrient() {
