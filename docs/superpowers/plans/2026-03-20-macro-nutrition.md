@@ -547,6 +547,22 @@ public class PlayerNutritionData {
     public double getCarbsExhaustion() { return carbsExhaustion; }
     public double getFatsExhaustion() { return fatsExhaustion; }
 
+    /**
+     * Restores all fields from a DB row WITHOUT marking dirty.
+     * Used by DataModule.retrieveData() to load persisted state.
+     */
+    public void restoreFromRow(double protein, double carbs, double fats,
+                               double proteinExhaustion, double carbsExhaustion,
+                               double fatsExhaustion) {
+        this.protein = protein;
+        this.carbs = carbs;
+        this.fats = fats;
+        this.proteinExhaustion = proteinExhaustion;
+        this.carbsExhaustion = carbsExhaustion;
+        this.fatsExhaustion = fatsExhaustion;
+        // Do NOT set dirty — this is a DB load, not a player-driven change
+    }
+
     /** Returns the minimum nutrient value among protein, carbs, fats. */
     public double getMinNutrient() {
         return Math.min(protein, Math.min(carbs, fats));
@@ -738,12 +754,10 @@ public class DataModule implements HLDataModule {
         database.loadNutritionData(id).thenAccept(optional -> {
             if (optional.isPresent()) {
                 HLDatabase.NutritionDataRow row = optional.get();
-                data.setProtein(row.protein());
-                data.setCarbs(row.carbs());
-                data.setFats(row.fats());
-                // Set exhaustion directly without marking dirty
-                // (these are internal state, not player-facing changes)
-                data.clearDirty();
+                data.restoreFromRow(
+                    row.protein(), row.carbs(), row.fats(),
+                    row.proteinExhaustion(), row.carbsExhaustion(), row.fatsExhaustion()
+                );
             } else {
                 // No existing row — defaults already set in constructor; persist them
                 saveData();
@@ -772,7 +786,7 @@ public class DataModule implements HLDataModule {
 }
 ```
 
-**Important note on `retrieveData()`:** The exhaustion values loaded from DB need to be set without re-marking dirty. Since `setProtein()`/etc. mark dirty, we call `data.clearDirty()` after loading. This matches the TAN DataModule pattern where the constructor defaults are overwritten and dirty is implicitly cleared.
+**Important note on `retrieveData()`:** Uses `data.restoreFromRow()` to set all 6 fields (nutrients + exhaustion) without marking dirty. This avoids the issue where `setProtein()`/etc. would mark dirty on load.
 
 - [ ] **Step 2: Build to verify**
 
@@ -980,6 +994,7 @@ package cz.hashiri.harshlands.foodexpansion;
 
 import cz.hashiri.harshlands.data.HLModule;
 import cz.hashiri.harshlands.data.HLPlayer;
+import cz.hashiri.harshlands.rsv.HLPlugin;
 import cz.hashiri.harshlands.tan.TanModule;
 import cz.hashiri.harshlands.utils.BossbarHUD;
 import net.kyori.adventure.text.Component;
@@ -1025,11 +1040,11 @@ public class NutritionEffectTask extends BukkitRunnable {
     private final int hudCarbsX;
     private final int hudFatsX;
 
-    // NamespacedKeys for attribute modifiers
-    private static final NamespacedKey KEY_MAX_HEALTH = new NamespacedKey("harshlands", "nutrition_max_health");
-    private static final NamespacedKey KEY_SPEED = new NamespacedKey("harshlands", "nutrition_speed");
-    private static final NamespacedKey KEY_ATTACK = new NamespacedKey("harshlands", "nutrition_attack");
-    private static final NamespacedKey KEY_MINING = new NamespacedKey("harshlands", "nutrition_mining");
+    // NamespacedKeys for attribute modifiers (use plugin instance to avoid deprecation)
+    private static final NamespacedKey KEY_MAX_HEALTH = new NamespacedKey(HLPlugin.getPlugin(), "nutrition_max_health");
+    private static final NamespacedKey KEY_SPEED = new NamespacedKey(HLPlugin.getPlugin(), "nutrition_speed");
+    private static final NamespacedKey KEY_ATTACK = new NamespacedKey(HLPlugin.getPlugin(), "nutrition_attack");
+    private static final NamespacedKey KEY_MINING = new NamespacedKey(HLPlugin.getPlugin(), "nutrition_mining");
 
     public NutritionEffectTask(Player player, PlayerNutritionData data, BossbarHUD hud, FileConfiguration config) {
         this.player = player;
@@ -1221,9 +1236,9 @@ package cz.hashiri.harshlands.foodexpansion;
 
 import cz.hashiri.harshlands.comfort.ComfortModule;
 import cz.hashiri.harshlands.comfort.ComfortScoreCalculator;
+import cz.hashiri.harshlands.comfort.ComfortTier;
 import cz.hashiri.harshlands.data.HLModule;
 import cz.hashiri.harshlands.data.HLPlayer;
-import cz.hashiri.harshlands.events.ModuleEvents;
 import cz.hashiri.harshlands.rsv.HLPlugin;
 import cz.hashiri.harshlands.utils.BossbarHUD;
 import org.bukkit.Bukkit;
@@ -1231,6 +1246,7 @@ import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
+import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.FoodLevelChangeEvent;
@@ -1246,7 +1262,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
-public class FoodExpansionEvents extends ModuleEvents {
+public class FoodExpansionEvents implements Listener {
 
     private final FoodExpansionModule module;
     private final HLPlugin plugin;
@@ -1257,7 +1273,6 @@ public class FoodExpansionEvents extends ModuleEvents {
     private final Map<UUID, BukkitTask> effectBukkitTasks = new HashMap<>();
 
     public FoodExpansionEvents(FoodExpansionModule module, HLPlugin plugin) {
-        super(module);
         this.module = module;
         this.plugin = plugin;
     }
@@ -1284,26 +1299,20 @@ public class FoodExpansionEvents extends ModuleEvents {
             if (cm != null && cm.isGloballyEnabled()) {
                 ComfortScoreCalculator.ComfortResult result = cm.getCachedResult(player, 60);
                 if (result != null) {
-                    String minTier = config.getString("FoodExpansion.Comfort.MinTier", "HOME");
-                    if (isTierAtLeast(result.getTier(), minTier)) {
-                        multiplier = 1.0 + config.getDouble("FoodExpansion.Comfort.AbsorptionBonus", 0.10);
+                    String minTierStr = config.getString("FoodExpansion.Comfort.MinTier", "HOME");
+                    try {
+                        ComfortTier minTier = ComfortTier.valueOf(minTierStr.toUpperCase());
+                        if (result.getTier().ordinal() >= minTier.ordinal()) {
+                            multiplier = 1.0 + config.getDouble("FoodExpansion.Comfort.AbsorptionBonus", 0.10);
+                        }
+                    } catch (IllegalArgumentException ignored) {
+                        // Invalid tier name in config — skip bonus
                     }
                 }
             }
         }
 
         data.addNutrients(profile, multiplier);
-    }
-
-    private boolean isTierAtLeast(String actual, String minimum) {
-        // Comfort tiers: NONE < SHELTER < HOME < COZY < LUXURY
-        String[] tiers = {"NONE", "SHELTER", "HOME", "COZY", "LUXURY"};
-        int actualIdx = -1, minIdx = -1;
-        for (int i = 0; i < tiers.length; i++) {
-            if (tiers[i].equalsIgnoreCase(actual)) actualIdx = i;
-            if (tiers[i].equalsIgnoreCase(minimum)) minIdx = i;
-        }
-        return actualIdx >= minIdx;
     }
 
     // --- Vanilla Hunger Slowdown ---
@@ -1435,13 +1444,8 @@ public class FoodExpansionEvents extends ModuleEvents {
         boolean nowEnabled = module.isEnabled(player.getWorld());
 
         if (wasEnabled && !nowEnabled) {
-            // Entering disabled world — stop tasks, remove modifiers
+            // Entering disabled world — stopTasks() handles modifier removal and HUD cleanup
             stopTasks(uuid);
-            NutritionEffectTask effectTask = effectTasks.get(uuid);
-            if (effectTask != null) {
-                effectTask.removeAllModifiers();
-                effectTask.removeHudElements();
-            }
         } else if (!wasEnabled && nowEnabled) {
             // Entering enabled world — start tasks
             PlayerNutritionData data = getNutritionData(player);
@@ -1505,11 +1509,9 @@ public class FoodExpansionEvents extends ModuleEvents {
 }
 ```
 
-**IMPORTANT:** The `ComfortScoreCalculator.ComfortResult.getTier()` method — verify the exact method name by reading `ComfortScoreCalculator.java`. It may be `getTier()`, `tier()`, or return a `String` vs enum. Adjust accordingly.
+**NOTE:** `ComfortResult.getTier()` returns `ComfortTier` enum (not String). The code uses `ordinal()` comparison against `ComfortTier.valueOf()` parsed from config. Verify the exact enum values in `ComfortTier.java` match: NONE, SHELTER, HOME, COZY, LUXURY.
 
-**IMPORTANT:** The `ModuleEvents` base class — verify it exists and what constructor it expects. Read `core/src/main/java/cz/hashiri/harshlands/events/ModuleEvents.java` to confirm. If it doesn't exist, just implement `Listener` directly.
-
-**IMPORTANT:** The `module.isEnabled(World)` and `module.isEnabled(Player)` calls — these come from `HLModule` base class. `isEnabled(entity)` checks if the module is enabled in the entity's world.
+**NOTE:** The `module.isEnabled(World)` and `module.isEnabled(Player)` calls come from `HLModule` base class. `isEnabled(entity)` checks if the module is enabled in the entity's world.
 
 - [ ] **Step 2: Build to verify**
 
@@ -1541,7 +1543,7 @@ import cz.hashiri.harshlands.data.HLModule;
 import cz.hashiri.harshlands.data.HLPlayer;
 import cz.hashiri.harshlands.rsv.HLPlugin;
 import cz.hashiri.harshlands.utils.BossbarHUD;
-import cz.hashiri.harshlands.utils.HLConfig;
+import cz.hashiri.harshlands.data.HLConfig;
 import cz.hashiri.harshlands.utils.Utils;
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.ConfigurationSection;
@@ -1590,8 +1592,9 @@ public class FoodExpansionModule extends HLModule {
         events = new FoodExpansionEvents(this, plugin);
         Bukkit.getPluginManager().registerEvents(events, plugin);
 
-        // Auto-save every 5 minutes (6000 ticks), async, dirty only
-        Bukkit.getScheduler().runTaskTimerAsynchronously(plugin, () -> {
+        // Auto-save every 5 minutes (6000 ticks), SYNC timer so saveData() snapshots on main thread
+        // (the actual DB write inside saveData() is already async via HLScheduler)
+        Bukkit.getScheduler().runTaskTimer(plugin, () -> {
             for (HLPlayer hlPlayer : new java.util.ArrayList<>(HLPlayer.getPlayers().values())) {
                 cz.hashiri.harshlands.data.foodexpansion.DataModule dm = hlPlayer.getNutritionDataModule();
                 if (dm != null && dm.isDirty()) {
@@ -1678,11 +1681,9 @@ public class FoodExpansionModule extends HLModule {
 }
 ```
 
-**IMPORTANT:** The `BossbarHUD` constructor — verify what arguments it takes by reading `BossbarHUD.java`. It may take `(Player)` or `(Audience)`. Also, there may already be a per-player BossbarHUD managed by TAN's `DisplayTask`. If so, we should reuse it instead of creating a new one. Check how `DisplayTask` gets/creates the BossbarHUD and whether it's accessible via a static map or player metadata. If a shared HUD exists, change `getOrCreateHud()` to retrieve it. The implementor MUST verify this.
+**IMPORTANT:** The `BossbarHUD` constructor takes `Audience` (which `Player` implements on Paper). However, TAN's `DisplayTask` already manages a `BossbarHUD` per player. The implementor MUST check if there's a way to access the existing HUD (e.g., via a static map in `DisplayTask` or player metadata). If a shared HUD exists, change `getOrCreateHud()` to retrieve it instead of creating a duplicate boss bar. If no shared access exists, a second BossbarHUD is acceptable as a temporary solution.
 
-**IMPORTANT:** The `DebugProvider` interface — verify it exists at `cz.hashiri.harshlands.debug.DebugProvider` and what methods it requires. The code above assumes `getModuleName()` and `getSubsystems()`. Adjust if the interface differs.
-
-**IMPORTANT:** The `Utils.logModuleLifecycle()` method — verify it exists and its signature.
+**NOTE:** Verify `DebugProvider` interface at `cz.hashiri.harshlands.debug.DebugProvider` and `Utils.logModuleLifecycle()` exist with expected signatures. Adjust if they differ.
 
 - [ ] **Step 2: Build to verify**
 
