@@ -51,6 +51,11 @@ public class HLDatabase {
         String lastComfortTier
     ) {}
 
+    public record NutritionDataRow(
+        double protein, double carbs, double fats,
+        double proteinExhaustion, double carbsExhaustion, double fatsExhaustion
+    ) {}
+
     private HikariDataSource dataSource;
     private final HLPlugin plugin;
     private final HLScheduler scheduler;
@@ -274,6 +279,15 @@ public class HLDatabase {
             stmt.execute(fearTable);
             stmt.execute(unlitTorchTable);
             stmt.execute(cabinFeverTable);
+            stmt.executeUpdate("CREATE TABLE IF NOT EXISTS hl_nutrition_data ("
+                + "uuid VARCHAR(36) PRIMARY KEY,"
+                + "protein DOUBLE DEFAULT 50.0,"
+                + "carbs DOUBLE DEFAULT 50.0,"
+                + "fats DOUBLE DEFAULT 50.0,"
+                + "protein_exhaustion DOUBLE DEFAULT 0.0,"
+                + "carbs_exhaustion DOUBLE DEFAULT 0.0,"
+                + "fats_exhaustion DOUBLE DEFAULT 0.0"
+                + ")");
             startupInfo("Schema is ready.");
         } catch (SQLException e) {
             throw new RuntimeException("Failed to create tables: " + e.getMessage(), e);
@@ -794,6 +808,61 @@ public class HLDatabase {
                 }
             } catch (SQLException e) {
                 logger.warning("[HLDatabase] Failed to replace unlit torch data: " + e.getMessage());
+            }
+        });
+    }
+
+    // ── Nutrition Data ──────────────────────────────────────────────────────
+
+    public CompletableFuture<Optional<NutritionDataRow>> loadNutritionData(UUID uuid) {
+        return scheduler.supplyAsync(() -> {
+            String sql = "SELECT protein, carbs, fats, protein_exhaustion, carbs_exhaustion, fats_exhaustion"
+                + " FROM hl_nutrition_data WHERE uuid = ?";
+            try (Connection conn = dataSource.getConnection();
+                 PreparedStatement ps = conn.prepareStatement(sql)) {
+                ps.setString(1, uuid.toString());
+                try (ResultSet rs = ps.executeQuery()) {
+                    if (rs.next()) {
+                        return Optional.of(new NutritionDataRow(
+                            rs.getDouble("protein"),
+                            rs.getDouble("carbs"),
+                            rs.getDouble("fats"),
+                            rs.getDouble("protein_exhaustion"),
+                            rs.getDouble("carbs_exhaustion"),
+                            rs.getDouble("fats_exhaustion")
+                        ));
+                    }
+                }
+            } catch (SQLException e) {
+                logger.warning("[HLDatabase] Failed to load nutrition data for " + uuid + ": " + e.getMessage());
+            }
+            return Optional.empty();
+        });
+    }
+
+    public CompletableFuture<Void> saveNutritionData(UUID uuid, NutritionDataRow row) {
+        return scheduler.runAsync(() -> {
+            String sql = isMysql
+                ? "INSERT INTO hl_nutrition_data (uuid, protein, carbs, fats, protein_exhaustion, carbs_exhaustion, fats_exhaustion)"
+                    + " VALUES (?, ?, ?, ?, ?, ?, ?)"
+                    + " ON DUPLICATE KEY UPDATE protein=VALUES(protein), carbs=VALUES(carbs), fats=VALUES(fats),"
+                    + " protein_exhaustion=VALUES(protein_exhaustion), carbs_exhaustion=VALUES(carbs_exhaustion),"
+                    + " fats_exhaustion=VALUES(fats_exhaustion)"
+                : "MERGE INTO hl_nutrition_data (uuid, protein, carbs, fats, protein_exhaustion, carbs_exhaustion, fats_exhaustion)"
+                    + " KEY(uuid)"
+                    + " VALUES (?, ?, ?, ?, ?, ?, ?)";
+            try (Connection conn = dataSource.getConnection();
+                 PreparedStatement ps = conn.prepareStatement(sql)) {
+                ps.setString(1, uuid.toString());
+                ps.setDouble(2, row.protein());
+                ps.setDouble(3, row.carbs());
+                ps.setDouble(4, row.fats());
+                ps.setDouble(5, row.proteinExhaustion());
+                ps.setDouble(6, row.carbsExhaustion());
+                ps.setDouble(7, row.fatsExhaustion());
+                ps.executeUpdate();
+            } catch (SQLException e) {
+                logger.warning("[HLDatabase] Failed to save nutrition data for " + uuid + ": " + e.getMessage());
             }
         });
     }
