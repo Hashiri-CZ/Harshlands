@@ -1108,12 +1108,123 @@ public class Commands implements CommandExecutor {
                     }
                     return true;
                 }
+                case "nutrition" -> {
+                    if (!(sender instanceof Player) && args.length < 2) {
+                        sender.sendMessage("This command must be run as a player or with a target.");
+                        return true;
+                    }
+
+                    // /hl nutrition set <player> <protein> <carbs> <fats>
+                    if (args.length >= 6 && args[1].equalsIgnoreCase("set")) {
+                        if (!sender.hasPermission("harshlands.command.nutrition.set")) {
+                            sendNoPermissionMessage(sender);
+                            return true;
+                        }
+                        Player target = Bukkit.getPlayer(args[2]);
+                        if (target == null) {
+                            sender.sendMessage("\u00a7cPlayer not found.");
+                            return true;
+                        }
+                        try {
+                            double protein = Double.parseDouble(args[3]);
+                            double carbs = Double.parseDouble(args[4]);
+                            double fats = Double.parseDouble(args[5]);
+                            cz.hashiri.harshlands.foodexpansion.PlayerNutritionData data = getNutritionData(target);
+                            if (data == null) {
+                                sender.sendMessage("\u00a7cNutrition module not active for that player.");
+                                return true;
+                            }
+                            data.setProtein(Math.max(0, Math.min(100, protein)));
+                            data.setCarbs(Math.max(0, Math.min(100, carbs)));
+                            data.setFats(Math.max(0, Math.min(100, fats)));
+                            sender.sendMessage("\u00a7aSet nutrition for " + target.getName() + ".");
+                        } catch (NumberFormatException e) {
+                            sender.sendMessage("\u00a7cInvalid number.");
+                        }
+                        return true;
+                    }
+
+                    // /hl nutrition reset <player>
+                    if (args.length >= 3 && args[1].equalsIgnoreCase("reset")) {
+                        if (!sender.hasPermission("harshlands.command.nutrition.reset")) {
+                            sendNoPermissionMessage(sender);
+                            return true;
+                        }
+                        Player target = Bukkit.getPlayer(args[2]);
+                        if (target == null) {
+                            sender.sendMessage("\u00a7cPlayer not found.");
+                            return true;
+                        }
+                        cz.hashiri.harshlands.foodexpansion.PlayerNutritionData data = getNutritionData(target);
+                        if (data == null) {
+                            sender.sendMessage("\u00a7cNutrition module not active for that player.");
+                            return true;
+                        }
+                        cz.hashiri.harshlands.foodexpansion.FoodExpansionModule fem =
+                            (cz.hashiri.harshlands.foodexpansion.FoodExpansionModule) HLModule.getModule(cz.hashiri.harshlands.foodexpansion.FoodExpansionModule.NAME);
+                        org.bukkit.configuration.file.FileConfiguration feConfig = fem.getUserConfig().getConfig();
+                        data.setProtein(feConfig.getDouble("FoodExpansion.Defaults.Protein", 50.0));
+                        data.setCarbs(feConfig.getDouble("FoodExpansion.Defaults.Carbs", 50.0));
+                        data.setFats(feConfig.getDouble("FoodExpansion.Defaults.Fats", 50.0));
+                        sender.sendMessage("\u00a7aReset nutrition for " + target.getName() + ".");
+                        return true;
+                    }
+
+                    // /hl nutrition [player] — view
+                    Player target;
+                    if (args.length >= 2) {
+                        if (!sender.hasPermission("harshlands.command.nutrition.others")) {
+                            sendNoPermissionMessage(sender);
+                            return true;
+                        }
+                        target = Bukkit.getPlayer(args[1]);
+                        if (target == null) {
+                            sender.sendMessage("\u00a7cPlayer not found.");
+                            return true;
+                        }
+                    } else {
+                        if (!sender.hasPermission("harshlands.command.nutrition")) {
+                            sendNoPermissionMessage(sender);
+                            return true;
+                        }
+                        target = (Player) sender;
+                    }
+
+                    cz.hashiri.harshlands.foodexpansion.PlayerNutritionData data = getNutritionData(target);
+                    if (data == null) {
+                        sender.sendMessage("\u00a7cNutrition module not active for that player.");
+                        return true;
+                    }
+
+                    sender.sendMessage("\u00a76--- Nutrition Status ---");
+                    sender.sendMessage(buildNutrientBar("Protein", data.getProtein()));
+                    sender.sendMessage(buildNutrientBar("Carbs", data.getCarbs()));
+                    sender.sendMessage(buildNutrientBar("Fats", data.getFats()));
+                    sender.sendMessage("\u00a77Status: " + data.getCachedTier().name().replace("_", " "));
+                    return true;
+                }
                 default -> {
                     return true;
                 }
             }
         }
         return false;
+    }
+
+    private cz.hashiri.harshlands.foodexpansion.PlayerNutritionData getNutritionData(Player player) {
+        HLPlayer hlPlayer = HLPlayer.getPlayers().get(player.getUniqueId());
+        if (hlPlayer == null) return null;
+        cz.hashiri.harshlands.data.foodexpansion.DataModule dm = hlPlayer.getNutritionDataModule();
+        return dm != null ? dm.getData() : null;
+    }
+
+    private String buildNutrientBar(String label, double value) {
+        int filled = (int) (value / 10.0);
+        int empty = 10 - filled;
+        String color = value >= 60 ? "\u00a7a" : value >= 30 ? "\u00a7e" : "\u00a7c";
+
+        String bar = "\u2588".repeat(filled) + "\u2591".repeat(empty);
+        return color + String.format("%-8s %s %.1f/100", label + ":", bar, value);
     }
 
     private void sendInvalidTargetMsg(CommandSender sender) {

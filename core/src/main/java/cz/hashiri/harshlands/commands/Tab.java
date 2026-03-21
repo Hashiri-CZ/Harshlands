@@ -72,7 +72,7 @@ public class Tab implements TabCompleter {
             List<String> result = new ArrayList<>(); // create an empty string list which will store the tab completer texts
 
             if (firstArgs.isEmpty()) {
-                firstArgs.addAll(Set.of("reload", "give", "spawnitem", "summon", "thirst", "temperature", "resetitem", "updateitem", "fear", "setfear", "comfort", "help", "version", "debug"));
+                firstArgs.addAll(Set.of("reload", "give", "spawnitem", "summon", "thirst", "temperature", "resetitem", "updateitem", "fear", "setfear", "comfort", "help", "version", "debug", "nutrition"));
             }
 
             if (mobs.isEmpty()) {
@@ -139,6 +139,17 @@ public class Tab implements TabCompleter {
                             }
                         }
                     }
+                    case "nutrition" -> {
+                        java.util.List<String> suggestions = new java.util.ArrayList<>();
+                        suggestions.add("set");
+                        suggestions.add("reset");
+                        for (Player p : Bukkit.getOnlinePlayers()) {
+                            suggestions.add(p.getName());
+                        }
+                        return suggestions.stream()
+                            .filter(s -> s.toLowerCase().startsWith(args[1].toLowerCase()))
+                            .collect(java.util.stream.Collectors.toList());
+                    }
                 }
 
                 return result;
@@ -159,6 +170,14 @@ public class Tab implements TabCompleter {
                                     result.add(online.getName());
                                 }
                             }
+                        }
+                    }
+                    case "nutrition" -> {
+                        if (args[1].equalsIgnoreCase("set") || args[1].equalsIgnoreCase("reset")) {
+                            return Bukkit.getOnlinePlayers().stream()
+                                .map(Player::getName)
+                                .filter(s -> s.toLowerCase().startsWith(args[2].toLowerCase()))
+                                .collect(java.util.stream.Collectors.toList());
                         }
                     }
                 }
