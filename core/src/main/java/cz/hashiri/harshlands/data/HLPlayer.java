@@ -37,6 +37,7 @@ public class HLPlayer {
     private final cz.hashiri.harshlands.data.baubles.DataModule baubleDataModule;
     private final cz.hashiri.harshlands.data.fear.DataModule fearDataModule;
     private final cz.hashiri.harshlands.data.cabinfever.DataModule cabinFeverDataModule;
+    private final cz.hashiri.harshlands.data.foodexpansion.DataModule nutritionDataModule;
     private static final Map<UUID, HLPlayer> players = new HashMap<>();
 
     public HLPlayer(Player player) {
@@ -54,6 +55,11 @@ public class HLPlayer {
             cabinFeverEnabled = cm.getUserConfig().getConfig().getBoolean("CabinFever.Enabled", false);
         }
         cabinFeverDataModule = cabinFeverEnabled ? new cz.hashiri.harshlands.data.cabinfever.DataModule(player.getUniqueId()) : null;
+
+        HLModule fem = HLModule.getModule(cz.hashiri.harshlands.foodexpansion.FoodExpansionModule.NAME);
+        this.nutritionDataModule = (fem != null && fem.isGloballyEnabled())
+            ? new cz.hashiri.harshlands.data.foodexpansion.DataModule(player)
+            : null;
 
         players.put(uuid, this);
     }
@@ -81,6 +87,9 @@ public class HLPlayer {
         if (cabinFeverDataModule != null) {
             cabinFeverDataModule.retrieveData();
         }
+        if (nutritionDataModule != null) {
+            nutritionDataModule.retrieveData();
+        }
     }
 
     public void saveData() {
@@ -95,6 +104,9 @@ public class HLPlayer {
         }
         if (cabinFeverDataModule != null) {
             cabinFeverDataModule.saveData();
+        }
+        if (nutritionDataModule != null) {
+            nutritionDataModule.saveData();
         }
     }
 
@@ -116,6 +128,11 @@ public class HLPlayer {
     @Nullable
     public cz.hashiri.harshlands.data.cabinfever.DataModule getCabinFeverDataModule() {
         return cabinFeverDataModule;
+    }
+
+    @Nullable
+    public cz.hashiri.harshlands.data.foodexpansion.DataModule getNutritionDataModule() {
+        return nutritionDataModule;
     }
 
     public static boolean isValidPlayer(@Nullable Player player) {
