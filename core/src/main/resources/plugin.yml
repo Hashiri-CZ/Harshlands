@@ -158,6 +158,18 @@ permissions:
   harshlands.command.debug.others:
     description: Allows using /hl debug targeting other players
     default: op
+  harshlands.command.nutrition:
+    description: View your nutrition status
+    default: true
+  harshlands.command.nutrition.others:
+    description: View other players' nutrition status
+    default: op
+  harshlands.command.nutrition.set:
+    description: Set a player's nutrition values
+    default: op
+  harshlands.command.nutrition.reset:
+    description: Reset a player's nutrition to defaults
+    default: op
   harshlands.comfort.cabinfever.bypass:
     description: Exempts a player from cabin fever accumulation
     default: false
@@ -181,4 +193,8 @@ permissions:
       harshlands.command.fear.set: true
       harshlands.command.debug: true
       harshlands.command.debug.others: true
+      harshlands.command.nutrition: true
+      harshlands.command.nutrition.others: true
+      harshlands.command.nutrition.set: true
+      harshlands.command.nutrition.reset: true
 

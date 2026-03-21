@@ -25,6 +25,7 @@ import cz.hashiri.harshlands.data.*;
 import cz.hashiri.harshlands.data.db.HLDatabase;
 import cz.hashiri.harshlands.dynamicsurroundings.DynamicSurroundingsModule;
 import cz.hashiri.harshlands.fear.FearModule;
+import cz.hashiri.harshlands.foodexpansion.FoodExpansionModule;
 import cz.hashiri.harshlands.iceandfire.IceFireModule;
 import cz.hashiri.harshlands.integrations.PAPI;
 import cz.hashiri.harshlands.integrations.AuraSkills;
@@ -160,6 +161,10 @@ public class HLPlugin extends JavaPlugin {
         ComfortModule comfortModule = new ComfortModule(this);
         if (comfortModule.isGloballyEnabled())
             comfortModule.initialize();
+
+        FoodExpansionModule foodExpansionModule = new FoodExpansionModule(this);
+        if (foodExpansionModule.isGloballyEnabled())
+            foodExpansionModule.initialize();
 
         new BukkitRunnable() {
             @Override
