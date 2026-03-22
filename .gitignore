@@ -134,3 +134,6 @@ Downloads
 
 # Common working directory
 run/
+
+# Superpowers design docs (local only)
+docs/superpowers/
