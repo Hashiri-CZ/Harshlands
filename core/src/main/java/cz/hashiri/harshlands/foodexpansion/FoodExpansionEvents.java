@@ -17,7 +17,6 @@ import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
-import org.bukkit.event.entity.FoodLevelChangeEvent;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.player.PlayerChangedWorldEvent;
 import org.bukkit.event.player.PlayerItemConsumeEvent;
@@ -54,7 +53,6 @@ public class FoodExpansionEvents implements Listener {
     private final boolean comfortEnabled;
     private final String comfortMinTier;
     private final double comfortAbsorptionBonus;
-    private final double hungerDrainMultiplier;
     private final double deathPenaltyPercent;
     private final boolean overeatingEnabled;
     private final int hungerThreshold;
@@ -87,7 +85,6 @@ public class FoodExpansionEvents implements Listener {
         this.comfortEnabled = config.getBoolean("FoodExpansion.Comfort.Enabled", true);
         this.comfortMinTier = config.getString("FoodExpansion.Comfort.MinTier", "HOME");
         this.comfortAbsorptionBonus = config.getDouble("FoodExpansion.Comfort.AbsorptionBonus", 0.10);
-        this.hungerDrainMultiplier = config.getDouble("FoodExpansion.VanillaHunger.DrainMultiplier", 0.5);
         this.deathPenaltyPercent = config.getDouble("FoodExpansion.DeathPenalty.PercentLoss", 25.0);
 
         this.overeatingEnabled = config.getBoolean("FoodExpansion.Overeating.Enabled", true);
@@ -277,37 +274,6 @@ public class FoodExpansionEvents implements Listener {
                 }
             }
         }, 100L);
-    }
-
-    // --- Vanilla Hunger Slowdown ---
-
-    @EventHandler(priority = EventPriority.HIGH, ignoreCancelled = true)
-    public void onFoodLevelChange(FoodLevelChangeEvent event) {
-        if (!(event.getEntity() instanceof Player player)) return;
-        if (!module.isEnabled(player)) return;
-        // Skip drain-slowing for force-eat hunger nudges
-        if (forceEatingPlayers.contains(player.getUniqueId())) return;
-
-        int oldLevel = player.getFoodLevel();
-        int newLevel = event.getFoodLevel();
-
-        // Only slow down hunger drain, not eating
-        if (newLevel >= oldLevel) return;
-
-        PlayerNutritionData data = getNutritionData(player);
-        if (data == null) return;
-
-        int decrease = oldLevel - newLevel;
-        double scaledDebt = decrease * hungerDrainMultiplier;
-        data.addHungerDebt(scaledDebt);
-
-        if (data.getHungerDebtAccumulator() >= 1.0) {
-            int actualDecrease = (int) Math.floor(data.getHungerDebtAccumulator());
-            data.setHungerDebtAccumulator(data.getHungerDebtAccumulator() - actualDecrease);
-            event.setFoodLevel(oldLevel - actualDecrease);
-        } else {
-            event.setCancelled(true);
-        }
     }
 
     // --- Death / Respawn ---

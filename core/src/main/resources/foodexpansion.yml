@@ -9,9 +9,6 @@ FoodExpansion:
   DeathPenalty:
     PercentLoss: 25.0
 
-  VanillaHunger:
-    DrainMultiplier: 0.5
-
   Decay:
     Protein: 1.0
     Carbs: 1.5

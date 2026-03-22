@@ -19,8 +19,6 @@ public class PlayerNutritionData {
     private boolean miningFlag = false;
     private boolean fightingFlag = false;
 
-    private double hungerDebtAccumulator = 0.0;
-
     private NutrientTier cachedTier = NutrientTier.NORMAL;
 
     private int lastHudProtein = -1;
@@ -65,7 +63,6 @@ public class PlayerNutritionData {
         this.carbs *= factor;
         this.fats *= factor;
         dirty = true;
-        this.hungerDebtAccumulator = 0.0;
         this.starvationTickCounter = 0;
     }
 
@@ -135,10 +132,6 @@ public class PlayerNutritionData {
 
     public void setMiningFlag() { this.miningFlag = true; }
     public void setFightingFlag() { this.fightingFlag = true; }
-
-    public double getHungerDebtAccumulator() { return hungerDebtAccumulator; }
-    public void setHungerDebtAccumulator(double value) { this.hungerDebtAccumulator = value; }
-    public void addHungerDebt(double debt) { this.hungerDebtAccumulator += debt; }
 
     public int getStarvationTickCounter() { return starvationTickCounter; }
     public void setStarvationTickCounter(int value) { this.starvationTickCounter = value; }
