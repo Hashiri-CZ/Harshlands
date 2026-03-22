@@ -13,6 +13,9 @@ import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.event.HandlerList;
+import cz.hashiri.harshlands.foodexpansion.items.CustomFoodRegistry;
+import cz.hashiri.harshlands.foodexpansion.items.CustomFoodRecipes;
+import cz.hashiri.harshlands.foodexpansion.items.CustomFoodDrops;
 
 import java.util.HashMap;
 import java.util.List;
@@ -27,6 +30,9 @@ public class FoodExpansionModule extends HLModule {
     private final Map<String, NutrientProfile> foodMap = new HashMap<>();
     private NutrientProfile defaultFood;
     private FoodExpansionEvents events;
+    private CustomFoodRegistry customFoodRegistry;
+    private CustomFoodRecipes customFoodRecipes;
+    private CustomFoodDrops customFoodDrops;
 
     // Per-player BossbarHUD references (may be shared with DisplayTask from TAN)
     private final Map<UUID, BossbarHUD> playerHuds = new HashMap<>();
@@ -52,6 +58,26 @@ public class FoodExpansionModule extends HLModule {
 
         loadFoodMap();
 
+        // Custom foods
+        FileConfiguration feConfig = getUserConfig().getConfig();
+        ConfigurationSection customFoodsSec = feConfig.getConfigurationSection("FoodExpansion.CustomFoods");
+        customFoodRegistry = new CustomFoodRegistry(customFoodsSec, plugin.getLogger());
+
+        // Register custom food macros into the shared food map
+        for (cz.hashiri.harshlands.foodexpansion.items.CustomFoodDefinition def : customFoodRegistry.getAllDefinitions()) {
+            if (def.getMacros() != null) {
+                foodMap.put(def.getId().toLowerCase(), def.getMacros());
+            }
+        }
+
+        ConfigurationSection bonusRecipesSec = feConfig.getConfigurationSection("FoodExpansion.BonusRecipes");
+        customFoodRecipes = new CustomFoodRecipes(customFoodRegistry, this, plugin, customFoodsSec, bonusRecipesSec);
+        Bukkit.getPluginManager().registerEvents(customFoodRecipes, plugin);
+
+        ConfigurationSection mobDropsSec = feConfig.getConfigurationSection("FoodExpansion.MobDrops");
+        customFoodDrops = new CustomFoodDrops(customFoodRegistry, this, mobDropsSec, plugin.getLogger());
+        Bukkit.getPluginManager().registerEvents(customFoodDrops, plugin);
+
         Utils.logModuleLifecycle("Initializing", NAME);
 
         // NOTE: Decay and effect tasks cache config values at construction.
@@ -72,7 +98,6 @@ public class FoodExpansionModule extends HLModule {
         }, 6000L, 6000L);
 
         // Satiation decay timer — decrements all per-food satiation counters every N minutes
-        FileConfiguration feConfig = getUserConfig().getConfig();
         long decayIntervalTicks = feConfig.getLong("FoodExpansion.Overeating.DecayIntervalMinutes", 3) * 60 * 20;
         satiationDecayTask = Bukkit.getScheduler().runTaskTimer(plugin, () -> {
             for (HLPlayer hlPlayer : new java.util.ArrayList<>(HLPlayer.getPlayers().values())) {
@@ -91,6 +116,13 @@ public class FoodExpansionModule extends HLModule {
         if (events != null) {
             events.stopAllTasks(); // This removes modifiers and HUD elements for all players
             HandlerList.unregisterAll(events);
+        }
+        if (customFoodRecipes != null) {
+            HandlerList.unregisterAll(customFoodRecipes);
+            customFoodRecipes.shutdown();
+        }
+        if (customFoodDrops != null) {
+            HandlerList.unregisterAll(customFoodDrops);
         }
         playerHuds.clear();
     }
@@ -122,7 +154,11 @@ public class FoodExpansionModule extends HLModule {
      * Returns null if the item is not food.
      */
     public NutrientProfile getNutrientProfile(String itemKey) {
-        NutrientProfile profile = foodMap.get(itemKey.toUpperCase());
+        // Check exact key first (handles lowercase custom food IDs), then uppercase (vanilla)
+        NutrientProfile profile = foodMap.get(itemKey);
+        if (profile == null) {
+            profile = foodMap.get(itemKey.toUpperCase());
+        }
         if (profile != null) return profile;
 
         // Return default for unlisted foods
@@ -166,5 +202,9 @@ public class FoodExpansionModule extends HLModule {
 
     public FoodExpansionEvents getEvents() {
         return events;
+    }
+
+    public CustomFoodRegistry getCustomFoodRegistry() {
+        return customFoodRegistry;
     }
 }
