@@ -6,11 +6,11 @@
 
 ## Overview
 
-Add 35 custom food items + 1 ingredient (dough) to the Harshlands FoodExpansion module, inspired by the Food Expansion Reimagined mod. Foods are fully YAML-driven, use PDC tags + CustomModelData for identity, and integrate with the existing macronutrition system.
+Add 37 custom food items + 1 ingredient (dough) to the Harshlands FoodExpansion module, inspired by the Food Expansion Reimagined mod. Foods are fully YAML-driven, use PDC tags + CustomModelData for identity, and integrate with the existing macronutrition system.
 
 ## Decisions
 
-- **Included:** 35 foods + dough. **Excluded:** Forbidden Fruit, Starving Fruit (debug), Chocolate Cake (block).
+- **Included:** 37 foods + dough (38 custom items total). **Excluded:** Forbidden Fruit, Starving Fruit (debug), Chocolate Cake (block).
 - **Macronutrient profiles** pre-assigned based on real-world analogues.
 - **Custom item approach:** PDC tag (`hl_food`) + CustomModelData on categorized vanilla base materials. No external plugin dependencies.
 - **Fully YAML-driven:** All food properties, recipes, mob drops, and macros defined in `foodexpansion.yml`. Zero code changes needed to add/remove/tweak foods.
@@ -318,7 +318,7 @@ After loading vanilla foods from `Foods` section, also iterate `customFoodRegist
 
 ## CustomModelData Assignments
 
-Range 10001–10038 reserved for food expansion custom items (38 entries total: 35 foods + dough + bat_soup + golden_feast).
+Range 10001–10038 reserved for food expansion custom items (38 entries total: 37 foods + 1 ingredient).
 
 | CMD | Food ID |
 |-----|---------|
@@ -433,7 +433,7 @@ All drops: +1 max per looting level, no drops from baby mobs, cooked variant whe
 ## Resource Pack Requirements
 
 The user will handle resource pack population. Requirements:
-- 36 item textures needed: 35 foods + dough (Bread and Leather outputs are vanilla items, no custom texture needed)
+- 38 item textures needed: 37 foods + dough (Bread and Leather outputs are vanilla items, no custom texture needed)
 - CustomModelData predicates on each base material matching the CMD values above (10001–10038)
 - Model files for each custom food item
 
