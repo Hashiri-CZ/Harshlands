@@ -106,6 +106,9 @@ public class CustomFoodRegistry {
             Utils.setCustomModelData(meta, def.getCustomModelData());
         }
 
+        // Set ItemModel for 1.21+ resource pack lookup
+        Utils.setItemModel(meta, new NamespacedKey("harshlands", "foodexpansion/" + def.getId()));
+
         stack.setItemMeta(meta);
 
         Utils.addNbtTag(stack, PDC_KEY, def.getId(), PersistentDataType.STRING);
