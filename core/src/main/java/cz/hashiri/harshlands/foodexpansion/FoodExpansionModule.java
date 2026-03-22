@@ -13,6 +13,7 @@ import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.event.HandlerList;
+import cz.hashiri.harshlands.commands.Tab;
 import cz.hashiri.harshlands.foodexpansion.items.CustomFoodRegistry;
 import cz.hashiri.harshlands.foodexpansion.items.CustomFoodRecipes;
 import cz.hashiri.harshlands.foodexpansion.items.CustomFoodDrops;
@@ -69,6 +70,9 @@ public class FoodExpansionModule extends HLModule {
                 foodMap.put(def.getId().toLowerCase(), def.getMacros());
             }
         }
+
+        // Register custom food IDs for /hl give tab completion
+        Tab.addItemIds(customFoodRegistry.getAllIds());
 
         ConfigurationSection bonusRecipesSec = feConfig.getConfigurationSection("FoodExpansion.BonusRecipes");
         customFoodRecipes = new CustomFoodRecipes(customFoodRegistry, this, plugin, customFoodsSec, bonusRecipesSec);

@@ -46,6 +46,17 @@ public class Tab implements TabCompleter {
     private final Set<String> firstArgs = new HashSet<>();
     private final Set<String> mobs = new HashSet<>();
     private final Set<String> items = HLItem.getItemMap().keySet();
+
+    /** Extra item IDs registered by feature modules (e.g. custom foods). */
+    private static final Set<String> extraItemIds = new HashSet<>();
+
+    /**
+     * Registers additional item IDs for the {@code /hl give} tab completer.
+     * Called by feature modules (e.g. FoodExpansionModule) during initialization.
+     */
+    public static void addItemIds(java.util.Collection<String> ids) {
+        extraItemIds.addAll(ids);
+    }
     private final Set<String> temperature = new HashSet<>(26);
     private final Set<String> thirst = new HashSet<>(21);
     private final Set<String> worlds = new HashSet<>();
@@ -141,8 +152,8 @@ public class Tab implements TabCompleter {
                     }
                     case "nutrition" -> {
                         java.util.List<String> suggestions = new java.util.ArrayList<>();
-                        suggestions.add("set");
-                        suggestions.add("reset");
+                        if (sender.hasPermission("harshlands.command.nutrition.set")) suggestions.add("set");
+                        if (sender.hasPermission("harshlands.command.nutrition.reset")) suggestions.add("reset");
                         for (Player p : Bukkit.getOnlinePlayers()) {
                             suggestions.add(p.getName());
                         }
@@ -157,7 +168,11 @@ public class Tab implements TabCompleter {
             // if 3 arguments were typed
             else if (args.length == 3) {
                 switch (args[0].toLowerCase()) {
-                    case "give" -> HLItem.getItemMap().keySet().stream().filter(item -> item.toLowerCase().startsWith(args[2].toLowerCase())).forEach(result::add);
+                    case "give" -> {
+                        String prefix = args[2].toLowerCase();
+                        HLItem.getItemMap().keySet().stream().filter(item -> item.toLowerCase().startsWith(prefix)).forEach(result::add);
+                        extraItemIds.stream().filter(id -> id.toLowerCase().startsWith(prefix)).forEach(result::add);
+                    }
                     case "setfear" -> List.of("0", "25", "50", "75", "100").stream().filter(v -> v.startsWith(args[2])).forEach(result::add);
                     case "temperature" -> temperature.stream().filter(temp -> temp.toLowerCase().startsWith(args[2].toLowerCase())).forEach(result::add);
                     case "thirst" -> thirst.stream().filter(th -> th.toLowerCase().startsWith(args[2].toLowerCase())).forEach(result::add);
