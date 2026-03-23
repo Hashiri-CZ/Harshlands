@@ -238,6 +238,9 @@ public class FoodExpansionEvents implements Listener {
 
         UUID uuid = player.getUniqueId();
 
+        // Guard: only one nudge in-flight at a time per player
+        if (forceEatingPlayers.contains(uuid)) return;
+
         // Cooldown check
         long now = System.currentTimeMillis();
         Long lastNudge = forceEatCooldowns.get(uuid);
