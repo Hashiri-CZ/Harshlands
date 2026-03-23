@@ -418,7 +418,9 @@ public class TanEvents extends ModuleEvents implements Listener {
         ItemStack item = event.getItem();
 
         if (Utils.isItemReal(item) && (item.getType() == Material.WATER_BUCKET || item.getType().toString().contains("SHOVEL") || item.getType() == Material.FLINT_AND_STEEL)) {
-            new TemperatureEnvironmentTask(module, plugin, HLPlayer.getPlayers().get(player.getUniqueId())).runTaskLaterAsynchronously(plugin, 1L);
+            HLPlayer hlp = HLPlayer.getPlayers().get(player.getUniqueId());
+            Map<Long, ChunkSnapshot> snaps = TemperatureEnvironmentTask.captureSnapshots(player.getLocation(), config.getInt("Temperature.Environment.CubeLength"));
+            new TemperatureEnvironmentTask(module, plugin, hlp, snaps).runTaskLaterAsynchronously(plugin, 1L);
         }
     }
 
@@ -433,7 +435,11 @@ public class TanEvents extends ModuleEvents implements Listener {
 
         Collection<Entity> nearby = loc.getWorld().getNearbyEntities(loc, rad, rad, rad, entity -> entity instanceof Player);
 
-        nearby.forEach(entity -> new TemperatureEnvironmentTask(module, plugin, HLPlayer.getPlayers().get(entity.getUniqueId())).runTaskLaterAsynchronously(plugin, 1L));
+        int cl = config.getInt("Temperature.Environment.CubeLength");
+        nearby.forEach(entity -> {
+            Map<Long, ChunkSnapshot> snaps = TemperatureEnvironmentTask.captureSnapshots(entity.getLocation(), cl);
+            new TemperatureEnvironmentTask(module, plugin, HLPlayer.getPlayers().get(entity.getUniqueId()), snaps).runTaskLaterAsynchronously(plugin, 1L);
+        });
     }
 
     @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
@@ -446,7 +452,11 @@ public class TanEvents extends ModuleEvents implements Listener {
         double rad = config.getDouble("Temperature.Environment.CubeLength");
 
         Collection<Entity> nearby = loc.getWorld().getNearbyEntities(loc, rad, rad, rad, entity -> entity instanceof Player player && HLPlayer.isValidPlayer(player));
-        nearby.forEach(entity -> new TemperatureEnvironmentTask(module, plugin, HLPlayer.getPlayers().get(entity.getUniqueId())).runTaskLaterAsynchronously(plugin, 1L));
+        int cl = config.getInt("Temperature.Environment.CubeLength");
+        nearby.forEach(entity -> {
+            Map<Long, ChunkSnapshot> snaps = TemperatureEnvironmentTask.captureSnapshots(entity.getLocation(), cl);
+            new TemperatureEnvironmentTask(module, plugin, HLPlayer.getPlayers().get(entity.getUniqueId()), snaps).runTaskLaterAsynchronously(plugin, 1L);
+        });
     }
 
     @EventHandler(priority = EventPriority.HIGHEST)
@@ -979,7 +989,9 @@ public class TanEvents extends ModuleEvents implements Listener {
                                 tempTask.setChangeEnv(changeEnv);
                             }
                             else {
-                                new TemperatureEnvironmentTask(module, plugin, HLPlayer.getPlayers().get(player.getUniqueId())).runTaskLaterAsynchronously(plugin, 1L);
+                                HLPlayer hlp = HLPlayer.getPlayers().get(player.getUniqueId());
+                                Map<Long, ChunkSnapshot> snaps = TemperatureEnvironmentTask.captureSnapshots(player.getLocation(), config.getInt("Temperature.Environment.CubeLength"));
+                                new TemperatureEnvironmentTask(module, plugin, hlp, snaps).runTaskLaterAsynchronously(plugin, 1L);
                             }
                         }
                     }

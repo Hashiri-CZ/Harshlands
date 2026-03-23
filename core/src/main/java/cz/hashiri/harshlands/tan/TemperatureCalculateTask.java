@@ -24,6 +24,7 @@ import cz.hashiri.harshlands.utils.HLItem;
 import cz.hashiri.harshlands.utils.HLTask;
 import cz.hashiri.harshlands.utils.Utils;
 import org.bukkit.Bukkit;
+import org.bukkit.ChunkSnapshot;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.World;
@@ -205,12 +206,12 @@ public class TemperatureCalculateTask extends BukkitRunnable implements HLTask {
                 if (pLoc.getWorld().getName().equals(currentLoc.getWorld().getName())) {
                     if (pLoc.distanceSquared(currentLoc) > distSqr) {
                         currentLoc = pLoc;
-                        new TemperatureEnvironmentTask(module, plugin, this.player).start();
+                        new TemperatureEnvironmentTask(module, plugin, this.player, getRelevantChunkSnapshots(player)).start();
                     }
                 }
                 else {
                     currentLoc = pLoc;
-                    new TemperatureEnvironmentTask(module, plugin, this.player).start();
+                    new TemperatureEnvironmentTask(module, plugin, this.player, getRelevantChunkSnapshots(player)).start();
                 }
 
 
@@ -408,6 +409,10 @@ public class TemperatureCalculateTask extends BukkitRunnable implements HLTask {
         return player.hasPermission("harshlands.toughasnails.resistance.cold.*");
     }
 
+    private Map<Long, ChunkSnapshot> getRelevantChunkSnapshots(Player player) {
+        return TemperatureEnvironmentTask.captureSnapshots(player.getLocation(), cubeLength);
+    }
+
     @Override
     public boolean conditionsMet(@Nullable Player player) {
         return globalConditionsMet(player) && allowedWorlds.contains(player.getWorld().getName());
@@ -415,7 +420,7 @@ public class TemperatureCalculateTask extends BukkitRunnable implements HLTask {
 
     @Override
     public void start() {
-        new TemperatureEnvironmentTask(module, plugin, player).start();
+        new TemperatureEnvironmentTask(module, plugin, player, getRelevantChunkSnapshots(player.getPlayer())).start();
         int tickPeriod = config.getInt("Temperature.CalculateTickPeriod"); // get the tick period
         this.runTaskTimer(plugin, 0L, tickPeriod);
     }

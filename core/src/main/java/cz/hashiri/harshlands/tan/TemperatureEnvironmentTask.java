@@ -19,7 +19,10 @@ package cz.hashiri.harshlands.tan;
 import cz.hashiri.harshlands.data.HLPlayer;
 import cz.hashiri.harshlands.rsv.HLPlugin;
 import cz.hashiri.harshlands.utils.HLTask;
+import org.bukkit.ChunkSnapshot;
 import org.bukkit.Location;
+import org.bukkit.Material;
+import org.bukkit.World;
 import org.bukkit.block.Block;
 import org.bukkit.block.data.BlockData;
 import org.bukkit.block.data.Levelled;
@@ -32,8 +35,13 @@ import org.bukkit.scheduler.BukkitRunnable;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.util.Collection;
+import java.util.EnumMap;
+import java.util.HashMap;
+import java.util.Map;
 
 public class TemperatureEnvironmentTask extends BukkitRunnable implements HLTask {
+
+    record BlockTempEntry(double value, boolean isRegulatory) {}
 
     private final TemperatureCalculateTask calcTask;
     private final FileConfiguration config;
@@ -41,16 +49,70 @@ public class TemperatureEnvironmentTask extends BukkitRunnable implements HLTask
     private final HLPlayer player;
     private final Collection<String> allowedWorlds;
     private final ConfigurationSection section;
+    private final Map<Material, BlockTempEntry> blockTempMap;
+    private final Map<Long, ChunkSnapshot> snapshots;
+    private final int cubeLength;
+    private final int minY;
+    private final int maxY;
     private double regulate = 0D;
     private double change = 0D;
 
-    public TemperatureEnvironmentTask(TanModule module, HLPlugin plugin, HLPlayer player) {
+    public TemperatureEnvironmentTask(TanModule module, HLPlugin plugin, HLPlayer player,
+                                       Map<Long, ChunkSnapshot> snapshots) {
         this.plugin = plugin;
         this.config = module.getUserConfig().getConfig();
         this.player = player;
         this.allowedWorlds = module.getAllowedWorlds();
         this.calcTask = TemperatureCalculateTask.getTasks().get(player.getPlayer().getUniqueId());
         this.section = config.getConfigurationSection("Temperature.Environment.Blocks");
+        this.snapshots = snapshots;
+        this.cubeLength = config.getInt("Temperature.Environment.CubeLength");
+        this.blockTempMap = buildBlockTempMap(section);
+        World world = player.getPlayer().getWorld();
+        this.minY = world.getMinHeight();
+        this.maxY = world.getMaxHeight() - 1;
+    }
+
+    static Map<Material, BlockTempEntry> buildBlockTempMap(ConfigurationSection section) {
+        if (section == null) return Map.of();
+        Map<Material, BlockTempEntry> map = new EnumMap<>(Material.class);
+        for (String key : section.getKeys(false)) {
+            Material mat = Material.matchMaterial(key);
+            if (mat == null) continue;
+            double value = section.getDouble(key + ".Value", 0.0);
+            boolean isReg = section.getBoolean(key + ".IsRegulatory", false);
+            map.put(mat, new BlockTempEntry(value, isReg));
+        }
+        return map;
+    }
+
+    private Material getBlockTypeFromSnapshots(int x, int y, int z) {
+        if (y < minY || y > maxY) return Material.AIR;
+        int cx = x >> 4;
+        int cz = z >> 4;
+        long key = ((long) cx << 32) | (cz & 0xFFFFFFFFL);
+        ChunkSnapshot snap = snapshots.get(key);
+        if (snap == null) return Material.AIR;
+        return snap.getBlockType(x & 0xF, y, z & 0xF);
+    }
+
+    public static Map<Long, ChunkSnapshot> captureSnapshots(Location center, int cubeLength) {
+        Map<Long, ChunkSnapshot> snapshots = new HashMap<>();
+        World world = center.getWorld();
+        if (world == null) return snapshots;
+        int minCX = (center.getBlockX() - cubeLength) >> 4;
+        int maxCX = (center.getBlockX() + cubeLength) >> 4;
+        int minCZ = (center.getBlockZ() - cubeLength) >> 4;
+        int maxCZ = (center.getBlockZ() + cubeLength) >> 4;
+        for (int cx = minCX; cx <= maxCX; cx++) {
+            for (int cz = minCZ; cz <= maxCZ; cz++) {
+                if (world.isChunkLoaded(cx, cz)) {
+                    long k = ((long) cx << 32) | (cz & 0xFFFFFFFFL);
+                    snapshots.put(k, world.getChunkAt(cx, cz).getChunkSnapshot());
+                }
+            }
+        }
+        return snapshots;
     }
 
     @Override
@@ -61,23 +123,19 @@ public class TemperatureEnvironmentTask extends BukkitRunnable implements HLTask
             regulate = 0D;
             change = 0D;
             Location pLoc = player.getLocation();
-            double px = pLoc.getX();
-            double py = pLoc.getY();
-            double pz = pLoc.getZ();
-
-            int cubeLength = config.getInt("Temperature.Environment.CubeLength");
+            int px = pLoc.getBlockX();
+            int py = pLoc.getBlockY();
+            int pz = pLoc.getBlockZ();
 
             for (int x = -(cubeLength - 1); x < cubeLength; x++) {
                 for (int y = -(cubeLength - 1); y < cubeLength; y++) {
                     for (int z = -(cubeLength - 1); z < cubeLength; z++) {
-                        Location loc = new Location(player.getWorld(), px + x, py + y, pz + z);
-                        Block block = loc.getBlock();
-
-                        if (!block.isEmpty()) {
-                            if (willAffectTemperature(block)) {
-                                add(block);
-                            }
-                        }
+                        Material mat = getBlockTypeFromSnapshots(px + x, py + y, pz + z);
+                        if (mat.isAir()) continue;
+                        BlockTempEntry entry = blockTempMap.get(mat);
+                        if (entry == null) continue;
+                        if (entry.isRegulatory()) regulate += entry.value();
+                        else change += entry.value();
                     }
                 }
             }
@@ -212,4 +270,3 @@ public class TemperatureEnvironmentTask extends BukkitRunnable implements HLTask
         cancel();
     }
 }
-
