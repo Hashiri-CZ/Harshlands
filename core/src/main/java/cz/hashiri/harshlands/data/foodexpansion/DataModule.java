@@ -51,6 +51,7 @@ public class DataModule implements HLDataModule {
                 }
             });
         }).exceptionally(ex -> {
+            Bukkit.getScheduler().runTask(plugin, () -> dataReady = true);
             plugin.getLogger().warning("Failed to load nutrition data for " + id + ": " + ex.getMessage());
             return null;
         });
@@ -62,9 +63,9 @@ public class DataModule implements HLDataModule {
             data.getProtein(), data.getCarbs(), data.getFats(),
             data.getProteinExhaustion(), data.getCarbsExhaustion(), data.getFatsExhaustion()
         );
-        database.saveNutritionData(id, snapshot).thenRun(() -> {
-            Bukkit.getScheduler().runTask(HLPlugin.getPlugin(), () -> data.clearDirty());
-        }).exceptionally(ex -> {
+        data.clearDirty(); // Clear immediately after snapshot — same tick, same thread
+        database.saveNutritionData(id, snapshot).exceptionally(ex -> {
+            data.markDirty(); // Failed write — re-mark so next auto-save retries
             HLPlugin.getPlugin().getLogger().warning("Failed to save nutrition data for " + id + ": " + ex.getMessage());
             return null;
         });
