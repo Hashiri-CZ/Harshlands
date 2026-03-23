@@ -8,6 +8,7 @@ import cz.hashiri.harshlands.utils.DisplayTask;
 import cz.hashiri.harshlands.data.HLConfig;
 import cz.hashiri.harshlands.utils.Utils;
 import org.bukkit.Bukkit;
+import org.bukkit.NamespacedKey;
 import org.bukkit.scheduler.BukkitTask;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -40,6 +41,12 @@ public class FoodExpansionModule extends HLModule {
     private BukkitTask autoSaveTask;
     private BukkitTask satiationDecayTask;
 
+    // Shared NamespacedKeys for attribute modifiers (created once, used by all NutritionEffectTasks)
+    private NamespacedKey keyMaxHealth;
+    private NamespacedKey keySpeed;
+    private NamespacedKey keyAttack;
+    private NamespacedKey keyMining;
+
     public FoodExpansionModule(HLPlugin plugin) {
         super(NAME, plugin, Map.of(), Map.of()); // No hard deps, soft deps handled at runtime
         this.plugin = plugin;
@@ -49,6 +56,12 @@ public class FoodExpansionModule extends HLModule {
     public void initialize() {
         setUserConfig(new HLConfig(plugin, "foodexpansion.yml"));
         Utils.logModuleLifecycle("Initializing", NAME);
+
+        // Create shared attribute modifier keys
+        keyMaxHealth = new NamespacedKey(plugin, "nutrition_max_health");
+        keySpeed = new NamespacedKey(plugin, "nutrition_speed");
+        keyAttack = new NamespacedKey(plugin, "nutrition_attack");
+        keyMining = new NamespacedKey(plugin, "nutrition_mining");
 
         // Register debug provider
         HLPlugin.getPlugin().getDebugManager().registerProvider(new cz.hashiri.harshlands.debug.DebugProvider() {
@@ -208,4 +221,9 @@ public class FoodExpansionModule extends HLModule {
     public java.util.List<org.bukkit.NamespacedKey> getCustomFoodRecipeKeys() {
         return customFoodRecipes != null ? customFoodRecipes.getRegisteredKeys() : java.util.List.of();
     }
+
+    public NamespacedKey getKeyMaxHealth() { return keyMaxHealth; }
+    public NamespacedKey getKeySpeed() { return keySpeed; }
+    public NamespacedKey getKeyAttack() { return keyAttack; }
+    public NamespacedKey getKeyMining() { return keyMining; }
 }

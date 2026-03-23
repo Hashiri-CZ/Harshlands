@@ -86,11 +86,11 @@ public class NutritionEffectTask extends BukkitRunnable {
         this.hudCarbsX = config.getInt("FoodExpansion.HUD.Carbs.X", -80);
         this.hudFatsX = config.getInt("FoodExpansion.HUD.Fats.X", -40);
 
-        // Initialize NamespacedKeys (safe here — plugin is fully enabled by task creation time)
-        this.keyMaxHealth = new NamespacedKey(HLPlugin.getPlugin(), "nutrition_max_health");
-        this.keySpeed = new NamespacedKey(HLPlugin.getPlugin(), "nutrition_speed");
-        this.keyAttack = new NamespacedKey(HLPlugin.getPlugin(), "nutrition_attack");
-        this.keyMining = new NamespacedKey(HLPlugin.getPlugin(), "nutrition_mining");
+        // Reuse shared NamespacedKeys from module
+        this.keyMaxHealth = module.getKeyMaxHealth();
+        this.keySpeed = module.getKeySpeed();
+        this.keyAttack = module.getKeyAttack();
+        this.keyMining = module.getKeyMining();
     }
 
     @Override
