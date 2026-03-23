@@ -30,6 +30,7 @@ import org.bukkit.util.Vector;
 import javax.annotation.Nullable;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.Map;
 import java.util.UUID;
 
@@ -38,7 +39,7 @@ import static cz.hashiri.harshlands.tan.TemperatureCalculateTask.MINIMUM_TEMPERA
 
 public class ThermometerTask extends BukkitRunnable implements HLTask {
 
-    private static final Map<UUID, ThermometerTask> tasks = new HashMap<>();
+    private static final Map<UUID, ThermometerTask> tasks = new ConcurrentHashMap<>();
     private final FileConfiguration config;
     private final HLPlugin plugin;
     private final HLPlayer player;
@@ -109,7 +110,7 @@ public class ThermometerTask extends BukkitRunnable implements HLTask {
     }
 
     public static boolean hasTask(UUID id) {
-        return tasks.containsKey(id) && tasks.get(id) != null;
+        return tasks.get(id) != null;
     }
 
 

@@ -30,12 +30,13 @@ import org.bukkit.potion.PotionEffectType;
 import org.bukkit.scheduler.BukkitRunnable;
 
 import java.util.HashMap;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.Map;
 import java.util.UUID;
 
 public class TwoHandedTask extends BukkitRunnable {
 
-    private static final Map<UUID, TwoHandedTask> tasks = new HashMap<>();
+    private static final Map<UUID, TwoHandedTask> tasks = new ConcurrentHashMap<>();
     private final FileConfiguration config;
 
     private final HLPlugin plugin;
@@ -101,7 +102,7 @@ public class TwoHandedTask extends BukkitRunnable {
     }
 
     public static boolean hasTask(UUID id) {
-        return tasks.containsKey(id) && tasks.get(id) != null;
+        return tasks.get(id) != null;
     }
 
     public static Map<UUID, TwoHandedTask> getTasks() {

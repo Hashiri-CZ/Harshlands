@@ -27,6 +27,7 @@ import org.bukkit.entity.Player;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.util.HashMap;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.Map;
 import java.util.UUID;
 
@@ -38,7 +39,7 @@ public class HLPlayer {
     private final cz.hashiri.harshlands.data.fear.DataModule fearDataModule;
     private final cz.hashiri.harshlands.data.cabinfever.DataModule cabinFeverDataModule;
     private final cz.hashiri.harshlands.data.foodexpansion.DataModule nutritionDataModule;
-    private static final Map<UUID, HLPlayer> players = new HashMap<>();
+    private static final Map<UUID, HLPlayer> players = new ConcurrentHashMap<>();
 
     public HLPlayer(Player player) {
         this.uuid = player.getUniqueId();

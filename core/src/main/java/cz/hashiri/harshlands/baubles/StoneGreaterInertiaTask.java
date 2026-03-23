@@ -26,12 +26,13 @@ import org.bukkit.scheduler.BukkitRunnable;
 import javax.annotation.Nullable;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.Map;
 import java.util.UUID;
 
 public class StoneGreaterInertiaTask extends BukkitRunnable implements HLTask {
 
-    private static final Map<UUID, StoneGreaterInertiaTask> tasks = new HashMap<>();
+    private static final Map<UUID, StoneGreaterInertiaTask> tasks = new ConcurrentHashMap<>();
     private static final float MAX_WALK_SPEED = 1.0f;
     private static final float DEFAULT_WALK_SPEED = 0.2f;
     private final HLPlayer rsvPlayer;
@@ -84,7 +85,7 @@ public class StoneGreaterInertiaTask extends BukkitRunnable implements HLTask {
     }
 
     public static boolean hasTask(UUID id) {
-        return tasks.containsKey(id) && tasks.get(id) != null;
+        return tasks.get(id) != null;
     }
 
     public static Map<UUID, StoneGreaterInertiaTask> getTasks() {

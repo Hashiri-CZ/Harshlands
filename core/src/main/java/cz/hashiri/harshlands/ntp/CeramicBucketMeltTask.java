@@ -28,13 +28,14 @@ import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
 
 import java.util.HashMap;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.Map;
 import java.util.Set;
 import java.util.UUID;
 
 public class CeramicBucketMeltTask extends BukkitRunnable {
 
-    private static final Map<UUID, CeramicBucketMeltTask> tasks = new HashMap<>();
+    private static final Map<UUID, CeramicBucketMeltTask> tasks = new ConcurrentHashMap<>();
     private final Player player;
     private final UUID id;
     private final HLPlugin plugin;
@@ -160,7 +161,7 @@ public class CeramicBucketMeltTask extends BukkitRunnable {
     }
 
     public static boolean hasTask(UUID id) {
-        return tasks.containsKey(id) && tasks.get(id) != null;
+        return tasks.get(id) != null;
     }
 
 }

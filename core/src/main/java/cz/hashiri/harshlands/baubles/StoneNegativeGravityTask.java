@@ -28,12 +28,13 @@ import org.bukkit.scheduler.BukkitRunnable;
 import javax.annotation.Nullable;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.Map;
 import java.util.UUID;
 
 public class StoneNegativeGravityTask extends BukkitRunnable implements HLTask {
 
-    private static final Map<UUID, StoneNegativeGravityTask> tasks = new HashMap<>();
+    private static final Map<UUID, StoneNegativeGravityTask> tasks = new ConcurrentHashMap<>();
     private final HLPlayer rsvPlayer;
     private final HLPlugin plugin;
     private final UUID id;
@@ -98,7 +99,7 @@ public class StoneNegativeGravityTask extends BukkitRunnable implements HLTask {
     }
 
     public static boolean hasTask(UUID id) {
-        return tasks.containsKey(id) && tasks.get(id) != null;
+        return tasks.get(id) != null;
     }
 
     public static Map<UUID, StoneNegativeGravityTask> getTasks() {

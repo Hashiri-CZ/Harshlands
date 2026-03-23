@@ -23,12 +23,13 @@ import org.bukkit.scheduler.BukkitRunnable;
 
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.Map;
 import java.util.UUID;
 
 public class UnfreezeTask extends BukkitRunnable {
 
-    private static final Map<UUID, UnfreezeTask> tasks = new HashMap<>();
+    private static final Map<UUID, UnfreezeTask> tasks = new ConcurrentHashMap<>();
     private final int pause;
     private final Collection<FrozenBlock> blocks;
     private final HLPlugin plugin;
@@ -63,7 +64,7 @@ public class UnfreezeTask extends BukkitRunnable {
     }
 
     public static boolean hasTask(UUID id) {
-        return tasks.containsKey(id) && tasks.get(id) != null;
+        return tasks.get(id) != null;
     }
 }
 

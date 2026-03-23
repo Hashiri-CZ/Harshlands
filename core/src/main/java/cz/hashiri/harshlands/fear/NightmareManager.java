@@ -42,6 +42,7 @@ import org.bukkit.potion.PotionEffectType;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.Map;
 import java.util.UUID;
 import java.util.concurrent.ThreadLocalRandom;
@@ -58,7 +59,7 @@ public class NightmareManager {
     private final PotionEffectType darknessPotionEffect = Registry.EFFECT.get(NamespacedKey.minecraft("darkness"));
 
     // player UUID → active nightmare data
-    private final Map<UUID, NightmareEntry> activeNightmares = new HashMap<>();
+    private final Map<UUID, NightmareEntry> activeNightmares = new ConcurrentHashMap<>();
 
     private static class NightmareEntry {
         final UUID endermanUUID;

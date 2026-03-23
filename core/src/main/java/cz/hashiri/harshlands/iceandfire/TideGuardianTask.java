@@ -27,12 +27,13 @@ import org.bukkit.scheduler.BukkitRunnable;
 
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.Map;
 import java.util.UUID;
 
 public class TideGuardianTask extends BukkitRunnable {
 
-    private static final Map<UUID, TideGuardianTask> tasks = new HashMap<>();
+    private static final Map<UUID, TideGuardianTask> tasks = new ConcurrentHashMap<>();
     private final FileConfiguration config;
     private final Player player;
     private final HLPlugin plugin;
@@ -130,7 +131,7 @@ public class TideGuardianTask extends BukkitRunnable {
     }
 
     public static boolean hasTask(UUID id) {
-        return tasks.containsKey(id) && tasks.get(id) != null;
+        return tasks.get(id) != null;
     }
 
     public Map<UUID, TideGuardianTask> getTasks() {

@@ -25,12 +25,13 @@ import org.bukkit.scheduler.BukkitRunnable;
 
 import javax.annotation.Nullable;
 import java.util.HashMap;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.Map;
 import java.util.UUID;
 
 public class WormholeMirrorTask extends BukkitRunnable implements HLTask {
 
-    private static final Map<UUID, WormholeMirrorTask> tasks = new HashMap<>();
+    private static final Map<UUID, WormholeMirrorTask> tasks = new ConcurrentHashMap<>();
     private final HLPlugin plugin;
     private final UUID id;
     private int ticks;
@@ -73,7 +74,7 @@ public class WormholeMirrorTask extends BukkitRunnable implements HLTask {
     }
 
     public static boolean hasTask(UUID id) {
-        return tasks.containsKey(id) && tasks.get(id) != null;
+        return tasks.get(id) != null;
     }
 
     public static Map<UUID, WormholeMirrorTask> getTasks() {

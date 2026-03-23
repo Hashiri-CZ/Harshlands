@@ -30,12 +30,13 @@ import org.bukkit.util.Vector;
 import javax.annotation.Nullable;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.Map;
 import java.util.UUID;
 
 public class SweatTask extends BukkitRunnable implements HLTask {
 
-    private static final Map<UUID, SweatTask> tasks = new HashMap<>();
+    private static final Map<UUID, SweatTask> tasks = new ConcurrentHashMap<>();
     private final TempManager manager;
     private final FileConfiguration config;
     private final HLPlugin plugin;
@@ -129,7 +130,7 @@ public class SweatTask extends BukkitRunnable implements HLTask {
     }
 
     public static boolean hasTask(UUID id) {
-        return tasks.containsKey(id) && tasks.get(id) != null;
+        return tasks.get(id) != null;
     }
 
     public static Map<UUID, SweatTask> getTasks() {

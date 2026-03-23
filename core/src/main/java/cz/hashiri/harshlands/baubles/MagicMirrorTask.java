@@ -26,12 +26,13 @@ import org.bukkit.scheduler.BukkitRunnable;
 
 import javax.annotation.Nullable;
 import java.util.HashMap;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.Map;
 import java.util.UUID;
 
 public class MagicMirrorTask extends BukkitRunnable implements HLTask {
 
-    private static final Map<UUID, MagicMirrorTask> tasks = new HashMap<>();
+    private static final Map<UUID, MagicMirrorTask> tasks = new ConcurrentHashMap<>();
     private final HLPlugin plugin;
     private final UUID id;
     private int ticks = 0;
@@ -74,7 +75,7 @@ public class MagicMirrorTask extends BukkitRunnable implements HLTask {
     }
 
     public static boolean hasTask(UUID id) {
-        return tasks.containsKey(id) && tasks.get(id) != null;
+        return tasks.get(id) != null;
     }
 
     public static Map<UUID, MagicMirrorTask> getTasks() {

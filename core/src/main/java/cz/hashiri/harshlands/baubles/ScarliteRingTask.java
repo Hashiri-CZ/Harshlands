@@ -27,12 +27,13 @@ import org.bukkit.scheduler.BukkitRunnable;
 import javax.annotation.Nullable;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.Map;
 import java.util.UUID;
 
 public class ScarliteRingTask extends BukkitRunnable implements HLTask {
 
-    private static final Map<UUID, ScarliteRingTask> tasks = new HashMap<>();
+    private static final Map<UUID, ScarliteRingTask> tasks = new ConcurrentHashMap<>();
     private final HLPlayer rsvPlayer;
     private final UUID id;
     private final Collection<String> allowedWorlds;
@@ -83,7 +84,7 @@ public class ScarliteRingTask extends BukkitRunnable implements HLTask {
     }
 
     public static boolean hasTask(UUID id) {
-        return tasks.containsKey(id) && tasks.get(id) != null;
+        return tasks.get(id) != null;
     }
 
     public static Map<UUID, ScarliteRingTask> getTasks() {

@@ -31,13 +31,14 @@ import org.bukkit.scheduler.BukkitRunnable;
 
 import javax.annotation.Nullable;
 import java.util.*;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class ParasiteTask extends BukkitRunnable implements HLTask {
 
     private final TanModule module;
     private final FileConfiguration config;
     private final HLPlugin plugin;
-    private static final Map<UUID, ParasiteTask> tasks = new HashMap<>();
+    private static final Map<UUID, ParasiteTask> tasks = new ConcurrentHashMap<>();
     private final HLPlayer player;
     private final Collection<String> allowedWorlds;
     private final boolean damageEnabled;
@@ -148,7 +149,7 @@ public class ParasiteTask extends BukkitRunnable implements HLTask {
     }
 
     public static boolean hasTask(UUID id) {
-        return tasks.containsKey(id) && tasks.get(id) != null;
+        return tasks.get(id) != null;
     }
 }
 

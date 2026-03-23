@@ -41,6 +41,7 @@ import cz.hashiri.harshlands.foodexpansion.items.FoodFlag;
 import cz.hashiri.harshlands.foodexpansion.items.FoodEffect;
 
 import java.util.HashMap;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.Map;
 import java.util.UUID;
 
@@ -68,9 +69,9 @@ public class FoodExpansionEvents implements Listener {
     private final int nauseaDurationTicks;
 
     // Per-player tasks for cleanup on quit
-    private final Map<UUID, BukkitTask> decayTasks = new HashMap<>();
-    private final Map<UUID, NutritionEffectTask> effectTasks = new HashMap<>();
-    private final Map<UUID, BukkitTask> effectBukkitTasks = new HashMap<>();
+    private final Map<UUID, BukkitTask> decayTasks = new ConcurrentHashMap<>();
+    private final Map<UUID, NutritionEffectTask> effectTasks = new ConcurrentHashMap<>();
+    private final Map<UUID, BukkitTask> effectBukkitTasks = new ConcurrentHashMap<>();
 
     // Overeating state
     private final Set<UUID> forceEatingPlayers = new HashSet<>();

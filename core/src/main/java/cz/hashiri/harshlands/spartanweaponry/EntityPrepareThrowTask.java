@@ -29,6 +29,7 @@ import org.bukkit.util.Vector;
 
 import javax.annotation.Nullable;
 import java.util.HashMap;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
@@ -48,7 +49,7 @@ public class EntityPrepareThrowTask extends BukkitRunnable {
     private final double maxDistance;
     private final List<String> blacklistedMobs;
     private final List<String> blacklistedItems;
-    private static final Map<UUID, EntityPrepareThrowTask> tasks = new HashMap<>();
+    private static final Map<UUID, EntityPrepareThrowTask> tasks = new ConcurrentHashMap<>();
 
     public EntityPrepareThrowTask(HLModule module, HLPlugin plugin, LivingEntity entity, ItemStack item) {
         this.module = module;
@@ -148,10 +149,7 @@ public class EntityPrepareThrowTask extends BukkitRunnable {
     }
 
     public static boolean hasTask(UUID id) {
-        if (tasks.containsKey(id)) {
-            return tasks.get(id) != null;
-        }
-        return false;
+        return tasks.get(id) != null;
     }
 }
 

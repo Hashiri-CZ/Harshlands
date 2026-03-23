@@ -21,12 +21,13 @@ import org.bukkit.entity.Entity;
 import org.bukkit.scheduler.BukkitRunnable;
 
 import java.util.HashMap;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.Map;
 import java.util.UUID;
 
 public class BurnTask extends BukkitRunnable {
 
-    private static final Map<UUID, BurnTask> tasks = new HashMap<>();
+    private static final Map<UUID, BurnTask> tasks = new ConcurrentHashMap<>();
     private final Entity entity;
     private final HLPlugin plugin;
     private int fireTicks;
@@ -66,7 +67,7 @@ public class BurnTask extends BukkitRunnable {
     }
 
     public static boolean hasTask(UUID id) {
-        return tasks.containsKey(id) && tasks.get(id) != null;
+        return tasks.get(id) != null;
     }
 }
 

@@ -30,12 +30,13 @@ import org.bukkit.util.Vector;
 import javax.annotation.Nullable;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.Map;
 import java.util.UUID;
 
 public class PolarizedStoneTask extends BukkitRunnable implements HLTask {
 
-    private static final Map<UUID, PolarizedStoneTask> tasks = new HashMap<>();
+    private static final Map<UUID, PolarizedStoneTask> tasks = new ConcurrentHashMap<>();
     private final HLPlayer rsvPlayer;
     private final HLPlugin plugin;
     private final UUID id;
@@ -93,7 +94,7 @@ public class PolarizedStoneTask extends BukkitRunnable implements HLTask {
     }
 
     public static boolean hasTask(UUID id) {
-        return tasks.containsKey(id) && tasks.get(id) != null;
+        return tasks.get(id) != null;
     }
 
     public static Map<UUID, PolarizedStoneTask> getTasks() {

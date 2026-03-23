@@ -30,10 +30,11 @@ import org.bukkit.potion.PotionEffectType;
 import org.bukkit.scheduler.BukkitRunnable;
 
 import java.util.*;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class FreezeTask extends BukkitRunnable {
 
-    private static final Map<UUID, FreezeTask> tasks = new HashMap<>();
+    private static final Map<UUID, FreezeTask> tasks = new ConcurrentHashMap<>();
     private final Entity entity;
     private final HLPlugin plugin;
     private final Collection<FrozenBlock> blocks = new ArrayList<>();
@@ -131,7 +132,7 @@ public class FreezeTask extends BukkitRunnable {
     }
 
     public static boolean hasTask(UUID id) {
-        return tasks.containsKey(id) && tasks.get(id) != null;
+        return tasks.get(id) != null;
     }
 }
 

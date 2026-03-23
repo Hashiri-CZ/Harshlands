@@ -30,10 +30,11 @@ import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
 
 import java.util.*;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class FireStarterTask extends BukkitRunnable {
 
-    private static final Map<UUID, FireStarterTask> tasks = new HashMap<>();
+    private static final Map<UUID, FireStarterTask> tasks = new ConcurrentHashMap<>();
     private final Collection<Item> ingredients;
     private final Player player;
     private final Set<String> allowedWorlds;
@@ -167,7 +168,7 @@ public class FireStarterTask extends BukkitRunnable {
     }
 
     public static boolean hasTask(UUID id) {
-        return tasks.containsKey(id) && tasks.get(id) != null;
+        return tasks.get(id) != null;
     }
 
     public boolean validateItems() {

@@ -31,6 +31,7 @@ import org.bukkit.util.RayTraceResult;
 
 import javax.annotation.Nullable;
 import java.util.HashMap;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
@@ -45,7 +46,7 @@ public class EntityLongAttackTask extends BukkitRunnable {
     private final List<String> blacklistedMobs;
     private final List<String> blacklistedItems;
     private final Entity target;
-    private static final Map<UUID, EntityLongAttackTask> tasks = new HashMap<>();
+    private static final Map<UUID, EntityLongAttackTask> tasks = new ConcurrentHashMap<>();
 
     public EntityLongAttackTask(HLModule module, HLPlugin plugin, LivingEntity attacker, ItemStack item, Entity target) {
         FileConfiguration config = module.getUserConfig().getConfig();
@@ -145,10 +146,7 @@ public class EntityLongAttackTask extends BukkitRunnable {
     }
 
     public static boolean hasTask(UUID id) {
-        if (tasks.containsKey(id)) {
-            return tasks.get(id) != null;
-        }
-        return false;
+        return tasks.get(id) != null;
     }
 }
 

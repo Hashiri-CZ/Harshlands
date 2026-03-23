@@ -31,12 +31,13 @@ import org.bukkit.scheduler.BukkitRunnable;
 import javax.annotation.Nullable;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.Map;
 import java.util.UUID;
 
 public class ThirstCalculateTask extends BukkitRunnable implements HLTask {
 
-    private static final Map<UUID, ThirstCalculateTask> tasks = new HashMap<>();
+    private static final Map<UUID, ThirstCalculateTask> tasks = new ConcurrentHashMap<>();
     private final TanModule module;
     private final TempManager tempManager;
     private final ThirstManager thirstManager;
@@ -262,7 +263,7 @@ public class ThirstCalculateTask extends BukkitRunnable implements HLTask {
     }
 
     public static boolean hasTask(UUID id) {
-        return tasks.containsKey(id) && tasks.get(id) != null;
+        return tasks.get(id) != null;
     }
 }
 

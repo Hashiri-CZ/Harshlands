@@ -32,10 +32,11 @@ import org.bukkit.scheduler.BukkitRunnable;
 
 import javax.annotation.Nullable;
 import java.util.*;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class HyperthermiaTask extends BukkitRunnable implements HLTask {
 
-    private static final Map<UUID, HyperthermiaTask> tasks = new HashMap<>();
+    private static final Map<UUID, HyperthermiaTask> tasks = new ConcurrentHashMap<>();
     private final TanModule module;
     private final FileConfiguration config;
     private final UUID id;
@@ -148,7 +149,7 @@ public class HyperthermiaTask extends BukkitRunnable implements HLTask {
     }
 
     public static boolean hasTask(UUID id) {
-        return tasks.containsKey(id) && tasks.get(id) != null;
+        return tasks.get(id) != null;
     }
 
     public static Map<UUID, HyperthermiaTask> getTasks() {

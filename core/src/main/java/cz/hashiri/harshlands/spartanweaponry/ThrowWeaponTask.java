@@ -35,6 +35,7 @@ import org.bukkit.util.Vector;
 
 import javax.annotation.Nullable;
 import java.util.*;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class ThrowWeaponTask extends BukkitRunnable {
 
@@ -54,7 +55,7 @@ public class ThrowWeaponTask extends BukkitRunnable {
     private final Location started;
 
     private final Vector vector;
-    private static final Map<UUID, ThrowWeaponTask> tasks = new HashMap<>();
+    private static final Map<UUID, ThrowWeaponTask> tasks = new ConcurrentHashMap<>();
 
     public ThrowWeaponTask(HLModule module, HLPlugin plugin, LivingEntity entity, ItemStack item, double maxDistance, boolean rotateWeapon, boolean piercing, boolean returnWeaponCollideBlocks, boolean returnWeaponCollideEntities, boolean returnWeaponTooFar, Vector velocity) {
         this.config = module.getUserConfig().getConfig();
@@ -375,7 +376,7 @@ public class ThrowWeaponTask extends BukkitRunnable {
     }
 
     public static boolean hasTask(UUID id) {
-        return tasks.containsKey(id) && tasks.get(id) != null;
+        return tasks.get(id) != null;
     }
 
     public boolean isAttackable(Damageable damageable) {

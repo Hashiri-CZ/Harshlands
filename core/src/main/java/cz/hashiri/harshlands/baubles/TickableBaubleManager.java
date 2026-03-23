@@ -18,6 +18,7 @@ package cz.hashiri.harshlands.baubles;
 
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.Map;
 import java.util.UUID;
 
@@ -43,7 +44,7 @@ public enum TickableBaubleManager {
     WRATH_PENDANT(new PotionBauble("wrath_pendant")),
     PRIDE_PENDANT(new PotionBauble("pride_pendant"));
 
-    private static final Map<UUID, Collection<TickableBauble>> baubles = new HashMap<>();
+    private static final Map<UUID, Collection<TickableBauble>> baubles = new ConcurrentHashMap<>();
     private final TickableBauble bauble;
 
     TickableBaubleManager(TickableBauble bauble) {
@@ -63,7 +64,7 @@ public enum TickableBaubleManager {
     }
 
     public static boolean hasTask(UUID id) {
-        return baubles.containsKey(id) && baubles.get(id) != null;
+        return baubles.get(id) != null;
     }
 }
 

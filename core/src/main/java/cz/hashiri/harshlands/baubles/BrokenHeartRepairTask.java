@@ -28,12 +28,13 @@ import org.bukkit.scheduler.BukkitRunnable;
 import javax.annotation.Nullable;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.Map;
 import java.util.UUID;
 
 public class BrokenHeartRepairTask extends BukkitRunnable implements HLTask {
 
-    private static final Map<UUID, BrokenHeartRepairTask> tasks = new HashMap<>();
+    private static final Map<UUID, BrokenHeartRepairTask> tasks = new ConcurrentHashMap<>();
     private final HLPlayer rsvPlayer;
     private final UUID id;
     private final HLPlugin plugin;
@@ -96,7 +97,7 @@ public class BrokenHeartRepairTask extends BukkitRunnable implements HLTask {
     }
 
     public static boolean hasTask(UUID id) {
-        return tasks.containsKey(id) && tasks.get(id) != null;
+        return tasks.get(id) != null;
     }
 }
 

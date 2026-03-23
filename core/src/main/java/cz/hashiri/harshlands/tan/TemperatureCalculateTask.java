@@ -37,12 +37,13 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.Map;
 import java.util.UUID;
 
 public class TemperatureCalculateTask extends BukkitRunnable implements HLTask {
 
-    private static final Map<UUID, TemperatureCalculateTask> tasks = new HashMap<>();
+    private static final Map<UUID, TemperatureCalculateTask> tasks = new ConcurrentHashMap<>();
     private final RealisticSeasons rs;
     private final TanModule module;
     private final TempManager manager;
@@ -368,7 +369,7 @@ public class TemperatureCalculateTask extends BukkitRunnable implements HLTask {
     }
 
     public static boolean hasTask(UUID id) {
-        return tasks.containsKey(id) && tasks.get(id) != null;
+        return tasks.get(id) != null;
     }
 
     public static Map<UUID, TemperatureCalculateTask> getTasks() {

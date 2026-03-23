@@ -28,10 +28,11 @@ import org.bukkit.scheduler.BukkitRunnable;
 
 import javax.annotation.Nullable;
 import java.util.*;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class PotionBaubleTask extends BukkitRunnable implements HLTask {
 
-    private static final Map<UUID, Collection<PotionBaubleTask>> tasks = new HashMap<>();
+    private static final Map<UUID, Collection<PotionBaubleTask>> tasks = new ConcurrentHashMap<>();
     private final BaubleModule module;
     private final DataModule dataModule;
     private final HLPlayer rsvPlayer;
