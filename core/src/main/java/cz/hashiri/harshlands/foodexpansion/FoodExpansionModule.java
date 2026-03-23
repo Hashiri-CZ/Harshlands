@@ -146,22 +146,13 @@ public class FoodExpansionModule extends HLModule {
                 double protein = foods.getDouble(key + ".Protein", 0.0);
                 double carbs = foods.getDouble(key + ".Carbs", 0.0);
                 double fats = foods.getDouble(key + ".Fats", 0.0);
-                foodMap.put(key.toUpperCase(), new NutrientProfile(protein, carbs, fats));
+                foodMap.put(key.toLowerCase(), new NutrientProfile(protein, carbs, fats));
             }
         }
     }
 
-    /**
-     * Returns the NutrientProfile for a food item key (Material name).
-     * Returns the default food profile if the item is a food but not explicitly configured.
-     * Returns null if the item is not food.
-     */
     public NutrientProfile getNutrientProfile(String itemKey) {
-        // Check exact key first (handles lowercase custom food IDs), then uppercase (vanilla)
-        NutrientProfile profile = foodMap.get(itemKey);
-        if (profile == null) {
-            profile = foodMap.get(itemKey.toUpperCase());
-        }
+        NutrientProfile profile = foodMap.get(itemKey.toLowerCase());
         if (profile != null) return profile;
 
         // Return default for unlisted foods
