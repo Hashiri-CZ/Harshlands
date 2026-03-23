@@ -247,41 +247,45 @@ public class CustomFoodRecipes implements Listener {
             ConfigurationSection recipeSec = section.getConfigurationSection(key);
             if (recipeSec == null) continue;
 
-            String type = recipeSec.getString("Type", "").toUpperCase();
-            if (!"FURNACE".equals(type)) {
-                logger.warning("BonusRecipe '" + key + "': only FURNACE type supported, got '" + type + "'");
-                continue;
-            }
-
-            String inputName = recipeSec.getString("Input", "");
-            String outputName = recipeSec.getString("Output", "");
-            float xp = (float) recipeSec.getDouble("Experience", 0.35);
-            int cookTime = recipeSec.getInt("CookingTime", 200);
-
-            RecipeChoice inputChoice = resolveIngredient(inputName);
-            Material outputMat;
             try {
-                outputMat = Material.valueOf(outputName.toUpperCase());
-            } catch (IllegalArgumentException e) {
-                logger.warning("BonusRecipe '" + key + "': unknown output material '" + outputName + "'");
-                continue;
+                String type = recipeSec.getString("Type", "").toUpperCase();
+                if (!"FURNACE".equals(type)) {
+                    logger.warning("BonusRecipe '" + key + "': only FURNACE type supported, got '" + type + "'");
+                    continue;
+                }
+
+                String inputName = recipeSec.getString("Input", "");
+                String outputName = recipeSec.getString("Output", "");
+                float xp = (float) recipeSec.getDouble("Experience", 0.35);
+                int cookTime = recipeSec.getInt("CookingTime", 200);
+
+                RecipeChoice inputChoice = resolveIngredient(inputName);
+                Material outputMat;
+                try {
+                    outputMat = Material.valueOf(outputName.toUpperCase());
+                } catch (IllegalArgumentException e) {
+                    logger.warning("BonusRecipe '" + key + "': unknown output material '" + outputName + "'");
+                    continue;
+                }
+                ItemStack result = new ItemStack(outputMat);
+
+                // Furnace
+                NamespacedKey furnaceKey = new NamespacedKey(plugin, "food_bonus_" + key);
+                Bukkit.addRecipe(new FurnaceRecipe(furnaceKey, result, inputChoice, xp, cookTime));
+                registeredKeys.add(furnaceKey);
+
+                // Campfire (3x cook time)
+                NamespacedKey campfireKey = new NamespacedKey(plugin, "food_bonus_" + key + "_campfire");
+                Bukkit.addRecipe(new CampfireRecipe(campfireKey, result, inputChoice, xp, cookTime * 3));
+                registeredKeys.add(campfireKey);
+
+                // Smoker (0.5x cook time)
+                NamespacedKey smokerKey = new NamespacedKey(plugin, "food_bonus_" + key + "_smoker");
+                Bukkit.addRecipe(new SmokingRecipe(smokerKey, result, inputChoice, xp, cookTime / 2));
+                registeredKeys.add(smokerKey);
+            } catch (Exception e) {
+                logger.warning("BonusRecipe '" + key + "': failed to register: " + e.getMessage());
             }
-            ItemStack result = new ItemStack(outputMat);
-
-            // Furnace
-            NamespacedKey furnaceKey = new NamespacedKey(plugin, "food_bonus_" + key);
-            Bukkit.addRecipe(new FurnaceRecipe(furnaceKey, result, inputChoice, xp, cookTime));
-            registeredKeys.add(furnaceKey);
-
-            // Campfire (3x cook time)
-            NamespacedKey campfireKey = new NamespacedKey(plugin, "food_bonus_" + key + "_campfire");
-            Bukkit.addRecipe(new CampfireRecipe(campfireKey, result, inputChoice, xp, cookTime * 3));
-            registeredKeys.add(campfireKey);
-
-            // Smoker (0.5x cook time)
-            NamespacedKey smokerKey = new NamespacedKey(plugin, "food_bonus_" + key + "_smoker");
-            Bukkit.addRecipe(new SmokingRecipe(smokerKey, result, inputChoice, xp, cookTime / 2));
-            registeredKeys.add(smokerKey);
         }
     }
 
