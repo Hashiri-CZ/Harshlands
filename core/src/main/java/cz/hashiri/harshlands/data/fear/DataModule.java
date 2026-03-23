@@ -34,7 +34,7 @@ public class DataModule implements HLDataModule {
     private double fearLevel;
     private volatile boolean dirty = false;
     private int lowHealthTicks = 0;
-    private int fearDirection = 0; // 0 = unknown/stable, 1 = increasing, -1 = decreasing
+    private int fearDirection = -1; // 0 = unknown/stable, 1 = increasing, -1 = decreasing
 
     public DataModule(Player player) {
         FearModule module = (FearModule) HLModule.getModule(FearModule.NAME);

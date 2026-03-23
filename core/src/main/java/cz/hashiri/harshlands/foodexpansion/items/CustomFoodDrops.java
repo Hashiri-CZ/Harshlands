@@ -1,6 +1,7 @@
 package cz.hashiri.harshlands.foodexpansion.items;
 
 import cz.hashiri.harshlands.foodexpansion.FoodExpansionModule;
+import cz.hashiri.harshlands.utils.Utils;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.LivingEntity;
@@ -57,7 +58,7 @@ public class CustomFoodDrops implements Listener {
 
             dropMap.put(entityType, new DropDefinition(rawId, cookedId, min, max));
         }
-        logger.info("Loaded " + dropMap.size() + " mob drop definitions");
+        Utils.logStartup("Loaded " + dropMap.size() + " mob drop definitions");
     }
 
     @EventHandler(priority = EventPriority.NORMAL, ignoreCancelled = true)

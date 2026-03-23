@@ -194,7 +194,7 @@ Nightmare:
 
 CharacterOverrides:
   # All placeholders: %BRAIN%, %FEAR_BAR%, %ARROW%
-  FearActionbar: "%FEAR_BAR%%ARROW% "
+  FearActionbar: "%FEAR_BAR%%ARROW%  "
 
   FearBrain: ""        # Default Unicode Value: \uXXXX  (brain glyph from sanitydim512.png)
 

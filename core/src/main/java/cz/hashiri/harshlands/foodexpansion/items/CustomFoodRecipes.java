@@ -2,6 +2,7 @@ package cz.hashiri.harshlands.foodexpansion.items;
 
 import cz.hashiri.harshlands.rsv.HLPlugin;
 import cz.hashiri.harshlands.foodexpansion.FoodExpansionModule;
+import cz.hashiri.harshlands.utils.Utils;
 import org.bukkit.*;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.entity.Player;
@@ -62,7 +63,7 @@ public class CustomFoodRecipes implements Listener {
                 logger.warning("Custom food '" + id + "': failed to register recipe: " + e.getMessage());
             }
         }
-        logger.info("Registered " + count + " custom food recipes");
+        Utils.logStartup("Registered " + count + " custom food recipes");
     }
 
     private void registerShapeless(String foodId, ConfigurationSection recipeSec) {

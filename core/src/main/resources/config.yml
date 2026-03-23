@@ -33,7 +33,7 @@ DeveloperBuildVersion:
 # NOTE: This plugin supports Minecraft version 1.21.11 only and supports multiple resource pack URLs (main + optional DynamicSurroundings pack).
 ResourcePack:
   Enabled: true
-  Url: "https://www.dropbox.com/scl/fi/6tiban5555oc2l57e9t8m/Harshlands_RP_1.3.0.zip?rlkey=0uspkdf16gsk1ufk7r8i5126t&st=kicz92si&dl=1"
+  Url: "https://www.dropbox.com/scl/fi/jgg5r86dzwal9a9ybrgao/Harshlands_RP_1.3.0.zip?rlkey=mshv66j51bbmraggtyej3riw2&st=bqp69wtl&dl=1"
   # Namespace used for minecraft:item_model keys on plugin items.
   # Use "realisticsurvival" for Realistic Survival RP and "harshlands" for Harshlands RP.
   # Change only if you have your own custom RP from Realistic Survival. If not, leave default.

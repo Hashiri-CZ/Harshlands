@@ -89,7 +89,7 @@ public class CustomFoodRegistry {
             );
             definitions.put(id.toLowerCase(), def);
         }
-        logger.info("Loaded " + definitions.size() + " custom food definitions");
+        Utils.logStartup("Loaded " + definitions.size() + " custom food definitions");
     }
 
     public ItemStack createItemStack(String foodId, int count) {
