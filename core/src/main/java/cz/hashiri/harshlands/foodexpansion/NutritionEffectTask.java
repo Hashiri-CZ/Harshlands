@@ -101,10 +101,8 @@ public class NutritionEffectTask extends BukkitRunnable {
         }
         if (player.getGameMode() == GameMode.CREATIVE || player.getGameMode() == GameMode.SPECTATOR) return;
 
-        // Lazy HUD initialization — by this point TAN's DisplayTask should be registered
-        if (hud == null) {
-            hud = module.getOrCreateHud(player);
-        }
+        // Re-check HUD each run — TAN may have started after our first call
+        hud = module.getOrCreateHud(player);
 
         // 1. Get hydration from TAN
         double hydrationPercent = getHydrationPercent();

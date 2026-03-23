@@ -176,17 +176,27 @@ public class FoodExpansionModule extends HLModule {
     }
 
     /**
-     * Retrieves the BossbarHUD for a player. Prefers reusing TAN's DisplayTask HUD
-     * to avoid showing duplicate boss bars. Only creates a new HUD if TAN is not active.
+     * Retrieves the BossbarHUD for a player. Always checks TAN's DisplayTask first
+     * to avoid duplicate boss bars if TAN starts after FoodExpansion.
+     * Only creates a standalone HUD if TAN is genuinely absent.
      */
     public BossbarHUD getOrCreateHud(Player player) {
-        return playerHuds.computeIfAbsent(player.getUniqueId(), uuid -> {
-            // Try to reuse TAN's existing BossbarHUD
-            DisplayTask dt = DisplayTask.getTasks().get(uuid);
-            if (dt != null) {
-                return dt.getBossbarHud();
+        UUID uuid = player.getUniqueId();
+
+        // Always prefer TAN's HUD if available (it may have been created after our first call)
+        DisplayTask dt = DisplayTask.getTasks().get(uuid);
+        if (dt != null) {
+            BossbarHUD tanHud = dt.getBossbarHud();
+            // If we previously created a standalone HUD, clean it up
+            BossbarHUD oldHud = playerHuds.remove(uuid);
+            if (oldHud != null && oldHud != tanHud) {
+                oldHud.hide();
             }
-            // No existing HUD — create a new one (TAN disabled)
+            return tanHud;
+        }
+
+        // No TAN — create/reuse our own standalone HUD
+        return playerHuds.computeIfAbsent(uuid, u -> {
             BossbarHUD hud = new BossbarHUD((net.kyori.adventure.audience.Audience) player);
             hud.show();
             return hud;
