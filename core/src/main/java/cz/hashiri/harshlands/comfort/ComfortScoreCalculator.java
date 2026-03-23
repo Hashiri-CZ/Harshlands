@@ -40,18 +40,36 @@ public class ComfortScoreCalculator {
     private final Map<EntityType, String> entityToCategory = new HashMap<>();
     private final int searchRadius;
     private final int totalCategories;
-    private final FileConfiguration config;
+
+    private record TierRange(int minScore, int maxScore, ComfortTier tier) {}
+    private final List<TierRange> tierRanges;
 
     private static final Set<Material> AIR_TYPES = Set.of(Material.AIR, Material.CAVE_AIR, Material.VOID_AIR);
 
     public ComfortScoreCalculator(@Nonnull FileConfiguration config, @Nonnull Logger logger) {
-        this.config = config;
         this.searchRadius = config.getInt("SearchRadius", 8);
-        loadCategories(logger);
+        loadCategories(config, logger);
         this.totalCategories = categoryPoints.size();
+
+        List<TierRange> ranges = new ArrayList<>();
+        ConfigurationSection tiersSection = config.getConfigurationSection("Tiers");
+        if (tiersSection != null) {
+            for (String tierKey : tiersSection.getKeys(false)) {
+                ConfigurationSection tierSec = tiersSection.getConfigurationSection(tierKey);
+                if (tierSec == null) continue;
+                try {
+                    ranges.add(new TierRange(
+                        tierSec.getInt("MinScore", 0),
+                        tierSec.getInt("MaxScore", Integer.MAX_VALUE),
+                        ComfortTier.valueOf(tierKey)
+                    ));
+                } catch (IllegalArgumentException ignored) {}
+            }
+        }
+        this.tierRanges = List.copyOf(ranges);
     }
 
-    private void loadCategories(@Nonnull Logger logger) {
+    private void loadCategories(@Nonnull FileConfiguration config, @Nonnull Logger logger) {
         ConfigurationSection categoriesSection = config.getConfigurationSection("Categories");
         if (categoriesSection == null) {
             return;
@@ -186,31 +204,10 @@ public class ComfortScoreCalculator {
 
     @Nonnull
     private ComfortTier resolveTier(int score) {
-        if (score <= 0) {
-            return ComfortTier.NONE;
+        if (score <= 0) return ComfortTier.NONE;
+        for (TierRange range : tierRanges) {
+            if (score >= range.minScore && score <= range.maxScore) return range.tier;
         }
-
-        ConfigurationSection tiersSection = config.getConfigurationSection("Tiers");
-        if (tiersSection == null) {
-            return ComfortTier.NONE;
-        }
-
-        for (String tierKey : tiersSection.getKeys(false)) {
-            ConfigurationSection tierSec = tiersSection.getConfigurationSection(tierKey);
-            if (tierSec == null) {
-                continue;
-            }
-            int min = tierSec.getInt("MinScore", 0);
-            int max = tierSec.getInt("MaxScore", Integer.MAX_VALUE);
-            if (score >= min && score <= max) {
-                try {
-                    return ComfortTier.valueOf(tierKey);
-                } catch (IllegalArgumentException ignored) {
-                    // Unknown tier key in config
-                }
-            }
-        }
-
         return ComfortTier.NONE;
     }
 
