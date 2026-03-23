@@ -164,20 +164,26 @@ public class FoodExpansionEvents implements Listener {
             }
         }
 
-        // Overeating: apply satiation multiplier for force-eats
+        // Overeating tracking
         UUID uuid = player.getUniqueId();
-        if (overeatingEnabled && forceEatingPlayers.remove(uuid)) {
-            forceEatingPreNudgeLevel.remove(uuid);
-            String foodKey = itemKey; // Use PDC-resolved key for custom foods
+        if (overeatingEnabled) {
+            String foodKey = itemKey;
             int satiation = data.getSatiation(foodKey);
-            double overeatMultiplier = getOvereatMultiplier(satiation);
-            multiplier *= overeatMultiplier;
-            data.incrementSatiation(foodKey);
-            sendOvereatMessage(player, foodKey, satiation + 1);
-            // Apply nausea at high satiation
-            if (satiation + 1 >= nauseaThreshold) {
-                player.addPotionEffect(new PotionEffect(PotionEffectType.NAUSEA, nauseaDurationTicks, 0, false, true, true));
+
+            // Apply satiation multiplier and messages only for force-eats
+            if (forceEatingPlayers.remove(uuid)) {
+                forceEatingPreNudgeLevel.remove(uuid);
+                double overeatMultiplier = getOvereatMultiplier(satiation);
+                multiplier *= overeatMultiplier;
+                sendOvereatMessage(player, foodKey, satiation + 1);
+                // Apply nausea at high satiation
+                if (satiation + 1 >= nauseaThreshold) {
+                    player.addPotionEffect(new PotionEffect(PotionEffectType.NAUSEA, nauseaDurationTicks, 0, false, true, true));
+                }
             }
+
+            // Always increment satiation counter, whether force-eat or normal eat
+            data.incrementSatiation(foodKey);
         }
 
         data.addNutrients(profile, multiplier);
