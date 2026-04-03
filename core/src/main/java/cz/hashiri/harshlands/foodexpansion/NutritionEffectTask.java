@@ -5,7 +5,7 @@ import cz.hashiri.harshlands.data.HLPlayer;
 import cz.hashiri.harshlands.rsv.HLPlugin;
 import cz.hashiri.harshlands.tan.TanModule;
 import cz.hashiri.harshlands.utils.AboveActionBarHUD;
-import cz.hashiri.harshlands.utils.BossbarHUD;
+
 import org.bukkit.GameMode;
 import org.bukkit.NamespacedKey;
 import org.bukkit.attribute.Attribute;
@@ -24,7 +24,6 @@ public class NutritionEffectTask extends BukkitRunnable {
     private final Player player;
     private final PlayerNutritionData data;
     private final FoodExpansionModule module;
-    private BossbarHUD hud;
     private AboveActionBarHUD aboveActionBarHud;
 
     // Linger state: server tick when macro recovered above threshold, -1 = not lingering
@@ -103,9 +102,6 @@ public class NutritionEffectTask extends BukkitRunnable {
             return;
         }
         if (player.getGameMode() == GameMode.CREATIVE || player.getGameMode() == GameMode.SPECTATOR) return;
-
-        // Re-check HUD each run — TAN may have started after our first call
-        hud = module.getOrCreateHud(player);
 
         // 1. Get hydration from TAN
         double hydrationPercent = getHydrationPercent();
@@ -240,5 +236,8 @@ public class NutritionEffectTask extends BukkitRunnable {
         aboveActionBarHud.setVisible(AboveActionBarHUD.Slot.PROTEIN, false);
         aboveActionBarHud.setVisible(AboveActionBarHUD.Slot.CARBS, false);
         aboveActionBarHud.setVisible(AboveActionBarHUD.Slot.FAT, false);
+        proteinRecoveryTick = -1;
+        carbsRecoveryTick = -1;
+        fatsRecoveryTick = -1;
     }
 }
