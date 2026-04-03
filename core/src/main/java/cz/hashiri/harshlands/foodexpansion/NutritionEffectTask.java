@@ -4,9 +4,8 @@ import cz.hashiri.harshlands.data.HLModule;
 import cz.hashiri.harshlands.data.HLPlayer;
 import cz.hashiri.harshlands.rsv.HLPlugin;
 import cz.hashiri.harshlands.tan.TanModule;
+import cz.hashiri.harshlands.utils.AboveActionBarHUD;
 import cz.hashiri.harshlands.utils.BossbarHUD;
-import net.kyori.adventure.text.Component;
-import net.kyori.adventure.text.format.NamedTextColor;
 import org.bukkit.GameMode;
 import org.bukkit.NamespacedKey;
 import org.bukkit.attribute.Attribute;
@@ -26,6 +25,12 @@ public class NutritionEffectTask extends BukkitRunnable {
     private final PlayerNutritionData data;
     private final FoodExpansionModule module;
     private BossbarHUD hud;
+    private AboveActionBarHUD aboveActionBarHud;
+
+    // Linger state: server tick when macro recovered above threshold, -1 = not lingering
+    private long proteinRecoveryTick = -1;
+    private long carbsRecoveryTick = -1;
+    private long fatsRecoveryTick = -1;
 
     // Config values
     private final double wellNourishedThreshold;
@@ -47,9 +52,8 @@ public class NutritionEffectTask extends BukkitRunnable {
     private final double starvationDamage;
     private final int starvationInterval;
 
-    private final int hudProteinX;
-    private final int hudCarbsX;
-    private final int hudFatsX;
+    private final double lowThreshold;
+    private final long lingerTicks;
 
     // NamespacedKeys for attribute modifiers — instance fields, initialized in constructor
     // (cannot be static final with HLPlugin.getPlugin() as it may be null at class-load time)
@@ -82,9 +86,8 @@ public class NutritionEffectTask extends BukkitRunnable {
         this.starvationDamage = config.getDouble("FoodExpansion.Effects.Starving.DamagePerTick", 1.0);
         this.starvationInterval = config.getInt("FoodExpansion.Effects.Starving.DamageInterval", 80);
 
-        this.hudProteinX = config.getInt("FoodExpansion.HUD.Protein.X", -120);
-        this.hudCarbsX = config.getInt("FoodExpansion.HUD.Carbs.X", -80);
-        this.hudFatsX = config.getInt("FoodExpansion.HUD.Fats.X", -40);
+        this.lowThreshold = config.getDouble("FoodExpansion.HUD.LowThreshold", 40);
+        this.lingerTicks = config.getLong("FoodExpansion.HUD.LingerSeconds", 5) * 20L;
 
         // Reuse shared NamespacedKeys from module
         this.keyMaxHealth = module.getKeyMaxHealth();
@@ -134,8 +137,11 @@ public class NutritionEffectTask extends BukkitRunnable {
             data.setStarvationTickCounter(0);
         }
 
-        // 5. Update HUD
-        updateHud();
+        // 5. Update low-macro warning icons
+        if (aboveActionBarHud == null) {
+            aboveActionBarHud = module.getOrCreateAboveActionBarHud(player);
+        }
+        updateIcons();
     }
 
     private double getHydrationPercent() {
@@ -197,34 +203,42 @@ public class NutritionEffectTask extends BukkitRunnable {
         inst.addModifier(new AttributeModifier(key, amount, operation, EquipmentSlotGroup.ANY));
     }
 
-    // --- HUD ---
+    // --- HUD Icons ---
 
-    private void updateHud() {
-        int p = (int) Math.round(data.getProtein());
-        int c = (int) Math.round(data.getCarbs());
-        int f = (int) Math.round(data.getFats());
+    private void updateIcons() {
+        long currentTick = player.getWorld().getGameTime();
 
-        // Only update if changed
-        if (p == data.getLastHudProtein() && c == data.getLastHudCarbs() && f == data.getLastHudFats()) {
-            return;
-        }
-        data.setLastHudValues(p, c, f);
-
-        hud.setElement("nutrition_protein", hudProteinX, Component.text("P: " + p, colorForValue(p)));
-        hud.setElement("nutrition_carbs", hudCarbsX, Component.text("C: " + c, colorForValue(c)));
-        hud.setElement("nutrition_fats", hudFatsX, Component.text("F: " + f, colorForValue(f)));
+        proteinRecoveryTick = updateIconSlot(
+                AboveActionBarHUD.Slot.PROTEIN, data.getProtein(),
+                proteinRecoveryTick, currentTick);
+        carbsRecoveryTick = updateIconSlot(
+                AboveActionBarHUD.Slot.CARBS, data.getCarbs(),
+                carbsRecoveryTick, currentTick);
+        fatsRecoveryTick = updateIconSlot(
+                AboveActionBarHUD.Slot.FAT, data.getFats(),
+                fatsRecoveryTick, currentTick);
     }
 
-    private NamedTextColor colorForValue(int value) {
-        if (value >= 60) return NamedTextColor.GREEN;
-        if (value >= 30) return NamedTextColor.YELLOW;
-        return NamedTextColor.RED;
+    private long updateIconSlot(AboveActionBarHUD.Slot slot, double value,
+                                long recoveryTick, long currentTick) {
+        if (value < lowThreshold) {
+            aboveActionBarHud.setVisible(slot, true);
+            return -1;
+        }
+        if (recoveryTick == -1) {
+            return currentTick;
+        }
+        if (currentTick - recoveryTick >= lingerTicks) {
+            aboveActionBarHud.setVisible(slot, false);
+            return -1;
+        }
+        return recoveryTick;
     }
 
     public void removeHudElements() {
-        if (hud == null) return;
-        hud.removeElement("nutrition_protein");
-        hud.removeElement("nutrition_carbs");
-        hud.removeElement("nutrition_fats");
+        if (aboveActionBarHud == null) return;
+        aboveActionBarHud.setVisible(AboveActionBarHUD.Slot.PROTEIN, false);
+        aboveActionBarHud.setVisible(AboveActionBarHUD.Slot.CARBS, false);
+        aboveActionBarHud.setVisible(AboveActionBarHUD.Slot.FAT, false);
     }
 }

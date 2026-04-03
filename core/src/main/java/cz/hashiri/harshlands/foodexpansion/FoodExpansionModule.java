@@ -3,6 +3,7 @@ package cz.hashiri.harshlands.foodexpansion;
 import cz.hashiri.harshlands.data.HLModule;
 import cz.hashiri.harshlands.data.HLPlayer;
 import cz.hashiri.harshlands.rsv.HLPlugin;
+import cz.hashiri.harshlands.utils.AboveActionBarHUD;
 import cz.hashiri.harshlands.utils.BossbarHUD;
 import cz.hashiri.harshlands.utils.DisplayTask;
 import cz.hashiri.harshlands.data.HLConfig;
@@ -38,6 +39,7 @@ public class FoodExpansionModule extends HLModule {
 
     // Per-player BossbarHUD references (may be shared with DisplayTask from TAN)
     private final Map<UUID, BossbarHUD> playerHuds = new HashMap<>();
+    private final Map<UUID, AboveActionBarHUD> standaloneAboveActionBarHuds = new HashMap<>();
     private BukkitTask autoSaveTask;
     private BukkitTask satiationDecayTask;
 
@@ -140,6 +142,7 @@ public class FoodExpansionModule extends HLModule {
         if (customFoodDrops != null) {
             HandlerList.unregisterAll(customFoodDrops);
         }
+        standaloneAboveActionBarHuds.clear();
         playerHuds.clear();
     }
 
@@ -204,10 +207,26 @@ public class FoodExpansionModule extends HLModule {
     }
 
     /**
+     * Retrieves the AboveActionBarHUD for a player. Checks TAN's DisplayTask first,
+     * falls back to creating a standalone instance wrapping the player's BossbarHUD.
+     */
+    public AboveActionBarHUD getOrCreateAboveActionBarHud(Player player) {
+        UUID uuid = player.getUniqueId();
+        DisplayTask dt = DisplayTask.getTasks().get(uuid);
+        if (dt != null) {
+            return dt.getAboveActionBarHud();
+        }
+        // No TAN — create one wrapping our standalone BossbarHUD
+        BossbarHUD hud = getOrCreateHud(player);
+        return standaloneAboveActionBarHuds.computeIfAbsent(uuid, u -> new AboveActionBarHUD(hud));
+    }
+
+    /**
      * Tracks whether we created a HUD (vs borrowed from DisplayTask).
      * Only hide HUDs that FoodExpansion created — borrowed ones belong to TAN.
      */
     public void removeHud(UUID uuid) {
+        standaloneAboveActionBarHuds.remove(uuid);
         BossbarHUD hud = playerHuds.remove(uuid);
         if (hud == null) return;
         // Only hide if this HUD is NOT owned by DisplayTask

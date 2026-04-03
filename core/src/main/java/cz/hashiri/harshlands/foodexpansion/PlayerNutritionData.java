@@ -21,10 +21,6 @@ public class PlayerNutritionData {
 
     private NutrientTier cachedTier = NutrientTier.NORMAL;
 
-    private int lastHudProtein = -1;
-    private int lastHudCarbs = -1;
-    private int lastHudFats = -1;
-
     private int starvationTickCounter = 0;
 
     private final Map<String, Integer> satiationCounters = new HashMap<>();
@@ -141,13 +137,6 @@ public class PlayerNutritionData {
 
     public NutrientTier getCachedTier() { return cachedTier; }
     public void setCachedTier(NutrientTier tier) { this.cachedTier = tier; }
-
-    public int getLastHudProtein() { return lastHudProtein; }
-    public int getLastHudCarbs() { return lastHudCarbs; }
-    public int getLastHudFats() { return lastHudFats; }
-    public void setLastHudValues(int p, int c, int f) {
-        lastHudProtein = p; lastHudCarbs = c; lastHudFats = f;
-    }
 
     public boolean isDirty() { return dirty; }
     public void clearDirty() { dirty = false; }

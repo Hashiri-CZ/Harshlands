@@ -34,7 +34,7 @@ public final class AboveActionBarHUD {
     // Rightmost visible icon's left edge (pixels from bossbar left). Calibrate vs. screen.
     private static final int RIGHT_ANCHOR_X = 200;
     // Pixel width of one slot (glyph advance + any spacing). Calibrate vs. RP glyph advance.
-    private static final int ICON_WIDTH = 9;
+    private static final int ICON_WIDTH = 49;
 
     // -------------------------------------------------------------------------
     // Slot definitions — enum order = left-to-right display order

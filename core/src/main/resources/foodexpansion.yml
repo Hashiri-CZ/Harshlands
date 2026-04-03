@@ -55,12 +55,8 @@ FoodExpansion:
     Fats: 1.0
 
   HUD:
-    Protein:
-      X: -120
-    Carbs:
-      X: -80
-    Fats:
-      X: -40
+    LowThreshold: 40
+    LingerSeconds: 5
 
   Foods:
     COOKED_BEEF:
