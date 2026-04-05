@@ -21,20 +21,17 @@ import java.util.EnumMap;
 import java.util.Map;
 
 /**
- * Manages a right-aligned strip of status icons rendered just above the action bar
+ * Manages a center-aligned strip of status icons rendered just above the action bar
  * via BossbarHUD. Visible icons are packed left-to-right with no gaps; hidden icons
- * take no space.
+ * take no space. The group is always centered around {@code centerX}.
  *
  * <p>Y positioning is handled entirely by the RP font ascent + rendertype_text.vsh
- * (bottom-anchored, ADD_HEIGHT_BOTTOM=8192, ICON_FROM_BOTTOM=65). Java does not
- * compute Y — only X via BossbarHUD's negative-space shifting.</p>
+ * (bottom-anchored). Java only computes X via BossbarHUD's negative-space shifting.</p>
  */
 public final class AboveActionBarHUD {
 
-    // Rightmost visible icon's left edge (pixels from bossbar left). Calibrate vs. screen.
-    private static final int RIGHT_ANCHOR_X = 200;
-    // Pixel width of one slot (glyph advance + any spacing). Calibrate vs. RP glyph advance.
-    private static final int ICON_WIDTH = 48;
+    private final int centerX;
+    private final int iconWidth;
 
     // -------------------------------------------------------------------------
     // Slot definitions — enum order = left-to-right display order
@@ -53,8 +50,10 @@ public final class AboveActionBarHUD {
     private final BossbarHUD hud;
     private final Map<Slot, Boolean> visibility = new EnumMap<>(Slot.class);
 
-    public AboveActionBarHUD(BossbarHUD hud) {
+    public AboveActionBarHUD(BossbarHUD hud, int centerX, int iconWidth) {
         this.hud = hud;
+        this.centerX = centerX;
+        this.iconWidth = iconWidth;
         for (Slot s : Slot.values()) visibility.put(s, false);
     }
 
@@ -68,15 +67,25 @@ public final class AboveActionBarHUD {
     // -------------------------------------------------------------------------
     private void relayout() {
         Slot[] all = Slot.values();
-        // Walk right-to-left: rightmost visible slot lands at RIGHT_ANCHOR_X
-        int slotsFromRight = 0;
-        for (int i = all.length - 1; i >= 0; i--) {
-            Slot s = all[i];
+
+        // Count visible icons
+        int visibleCount = 0;
+        for (Slot s : all) {
+            if (visibility.get(s)) visibleCount++;
+        }
+
+        // Center the group: first icon starts at centerX - totalWidth/2
+        int totalWidth = visibleCount * iconWidth;
+        int startX = centerX - totalWidth / 2;
+
+        // Place visible icons left-to-right
+        int slotIndex = 0;
+        for (Slot s : all) {
             String id = "aboveactionbar_" + s.name().toLowerCase();
             if (visibility.get(s)) {
-                int x = RIGHT_ANCHOR_X - slotsFromRight * ICON_WIDTH;
+                int x = startX + slotIndex * iconWidth;
                 hud.setElement(id, x, Component.text(s.codepoint));
-                slotsFromRight++;
+                slotIndex++;
             } else {
                 hud.removeElement(id);
             }

@@ -96,7 +96,16 @@ public class DisplayTask extends BukkitRunnable implements HLTask {
 
         this.bossbarHud = new BossbarHUD((net.kyori.adventure.audience.Audience) player.getPlayer());
         bossbarHud.show();
-        this.aboveActionBarHud = new AboveActionBarHUD(bossbarHud);
+        cz.hashiri.harshlands.foodexpansion.FoodExpansionModule fem =
+            (cz.hashiri.harshlands.foodexpansion.FoodExpansionModule) HLModule.getModule(cz.hashiri.harshlands.foodexpansion.FoodExpansionModule.NAME);
+        int centerX = 65;
+        int iconW = 32;
+        if (fem != null && fem.getUserConfig() != null) {
+            org.bukkit.configuration.file.FileConfiguration feConfig = fem.getUserConfig().getConfig();
+            centerX = feConfig.getInt("FoodExpansion.HUD.IconCenterX", 65);
+            iconW = feConfig.getInt("FoodExpansion.HUD.IconWidth", 32);
+        }
+        this.aboveActionBarHud = new AboveActionBarHUD(bossbarHud, centerX, iconW);
 
         sirenChangeScreenEnabled       = ifConfig  != null && ifConfig.getBoolean("Siren.ChangeScreen.Enabled");
         hypothermiaScreenEnabled       = tanConfig != null && tanConfig.getBoolean("Temperature.Hypothermia.ScreenTinting.Enabled");

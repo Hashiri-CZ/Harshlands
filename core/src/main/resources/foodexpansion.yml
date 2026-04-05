@@ -57,6 +57,8 @@ FoodExpansion:
   HUD:
     LowThreshold: 40
     LingerSeconds: 5
+    IconCenterX: 65
+    IconWidth: 32
 
   Foods:
     COOKED_BEEF:
