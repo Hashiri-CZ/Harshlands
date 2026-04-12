@@ -51,6 +51,10 @@ public class BossbarHUD {
     private static final Key NEGATIVE_SPACE_FONT = Key.key("harshlands", "negative_space");
     private static final Key DEFAULT_FONT = Key.key("minecraft", "default");
 
+    // Fixed total title advance. Pads trailing shift so Minecraft's bossbar auto-centering
+    // anchors at a stable screen position regardless of how many elements are visible.
+    private static final int CANVAS_WIDTH = 400;
+
     private final Audience audience;
     private final BossBar mainBar;
     // Insertion-order preserved; sorted by X when building the title
@@ -59,10 +63,12 @@ public class BossbarHUD {
     private static final class HudElement {
         final int x;
         final Component content;
+        final int advance;
 
-        HudElement(int x, Component content) {
+        HudElement(int x, Component content, int advance) {
             this.x = x;
             this.content = content;
+            this.advance = advance;
         }
     }
 
@@ -106,7 +112,23 @@ public class BossbarHUD {
      * @param content   component containing the codepoint(s) to display
      */
     public void setElement(String elementId, int xPixels, Component content) {
-        elements.put(elementId, new HudElement(xPixels, content));
+        setElement(elementId, xPixels, content, 0);
+    }
+
+    /**
+     * Place or update a HUD element with an explicit glyph advance.
+     *
+     * <p>Use this overload when {@code content} contains glyphs with non-zero font advance
+     * (e.g. bitmap icons). The advance is used to track the cursor correctly for subsequent
+     * elements — without it, per-element shifts drift by one glyph width per element.</p>
+     *
+     * @param elementId unique string key for this element
+     * @param xPixels   horizontal pixel position from the bossbar anchor
+     * @param content   component containing the codepoint(s) to display
+     * @param advance   natural font advance width (in pixels) of {@code content}'s glyphs
+     */
+    public void setElement(String elementId, int xPixels, Component content, int advance) {
+        elements.put(elementId, new HudElement(xPixels, content, advance));
         mainBar.name(rebuildTitle());
     }
 
@@ -140,7 +162,10 @@ public class BossbarHUD {
                 .collect(Collectors.toList());
 
         Component result = Component.empty();
-        int cursor = 0;
+        // Canvas spans [-CANVAS_WIDTH/2, +CANVAS_WIDTH/2]. x=0 in element coords maps to
+        // the bossbar's auto-centered anchor (i.e. screen center). Total title advance
+        // is padded to CANVAS_WIDTH so Minecraft's auto-centering is invariant to content.
+        int cursor = -CANVAS_WIDTH / 2;
 
         for (HudElement el : sorted) {
             int shift = el.x - cursor;
@@ -150,7 +175,12 @@ public class BossbarHUD {
             // Reset font to minecraft:default so content does not inherit negative_space font
             Component safeContent = el.content.style(el.content.style().font(DEFAULT_FONT));
             result = result.append(safeContent);
-            cursor = el.x;
+            cursor = el.x + el.advance;
+        }
+
+        int trailingShift = (CANVAS_WIDTH / 2) - cursor;
+        if (trailingShift != 0) {
+            result = result.append(NegativeSpaceHelper.shift(trailingShift));
         }
 
         return result;

@@ -30,8 +30,14 @@ import java.util.Map;
  */
 public final class AboveActionBarHUD {
 
+    private static final String GROUP_ID = "aboveactionbar_group";
+
     private final int centerX;
     private final int iconWidth;
+    private final int iconSpacing;
+    private final int offset1;
+    private final int offset2;
+    private final int offset3;
 
     // -------------------------------------------------------------------------
     // Slot definitions — enum order = left-to-right display order
@@ -50,11 +56,20 @@ public final class AboveActionBarHUD {
     private final BossbarHUD hud;
     private final Map<Slot, Boolean> visibility = new EnumMap<>(Slot.class);
 
-    public AboveActionBarHUD(BossbarHUD hud, int centerX, int iconWidth) {
+    public AboveActionBarHUD(BossbarHUD hud, int centerX, int iconWidth, int iconSpacing,
+                             int offset1, int offset2, int offset3) {
         this.hud = hud;
         this.centerX = centerX;
         this.iconWidth = iconWidth;
+        this.iconSpacing = iconSpacing;
+        this.offset1 = offset1;
+        this.offset2 = offset2;
+        this.offset3 = offset3;
         for (Slot s : Slot.values()) visibility.put(s, false);
+    }
+
+    public AboveActionBarHUD(BossbarHUD hud, int centerX, int iconWidth) {
+        this(hud, centerX, iconWidth, 0, 0, 0, 0);
     }
 
     /** Show or hide a slot. Recalculates all X positions immediately. */
@@ -68,27 +83,46 @@ public final class AboveActionBarHUD {
     private void relayout() {
         Slot[] all = Slot.values();
 
-        // Count visible icons
-        int visibleCount = 0;
+        // Clean up any stale per-slot elements from the old implementation.
         for (Slot s : all) {
-            if (visibility.get(s)) visibleCount++;
+            hud.removeElement("aboveactionbar_" + s.name().toLowerCase());
         }
 
-        // Center the group: first icon starts at centerX - totalWidth/2
-        int totalWidth = visibleCount * iconWidth;
-        int startX = centerX - totalWidth / 2;
-
-        // Place visible icons left-to-right
-        int slotIndex = 0;
+        // Collect visible slots in enum order.
+        java.util.List<Slot> visible = new java.util.ArrayList<>();
         for (Slot s : all) {
-            String id = "aboveactionbar_" + s.name().toLowerCase();
-            if (visibility.get(s)) {
-                int x = startX + slotIndex * iconWidth;
-                hud.setElement(id, x, Component.text(s.codepoint));
-                slotIndex++;
-            } else {
-                hud.removeElement(id);
+            if (visibility.get(s)) visible.add(s);
+        }
+
+        int visibleCount = visible.size();
+        if (visibleCount == 0) {
+            hud.removeElement(GROUP_ID);
+            return;
+        }
+
+        // Build one content component: icon_1 + shift(spacing) + icon_2 + ... + icon_N.
+        // Icons inherit the DEFAULT_FONT forced by BossbarHUD; shift components retain
+        // their own NEGATIVE_SPACE_FONT explicitly, so nesting is safe.
+        Component content = Component.empty();
+        for (int i = 0; i < visibleCount; i++) {
+            content = content.append(Component.text(visible.get(i).codepoint));
+            if (i < visibleCount - 1 && iconSpacing != 0) {
+                content = content.append(BossbarHUD.NegativeSpaceHelper.shift(iconSpacing));
             }
+        }
+
+        int effectiveCenterX = centerX + offsetForCount(visibleCount);
+        int totalWidth = visibleCount * iconWidth + Math.max(0, visibleCount - 1) * iconSpacing;
+        int startX = effectiveCenterX - totalWidth / 2;
+        hud.setElement(GROUP_ID, startX, content, totalWidth);
+    }
+
+    private int offsetForCount(int n) {
+        switch (n) {
+            case 1: return offset1;
+            case 2: return offset2;
+            case 3: return offset3;
+            default: return 0;
         }
     }
 }

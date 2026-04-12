@@ -57,8 +57,16 @@ FoodExpansion:
   HUD:
     LowThreshold: 40
     LingerSeconds: 5
-    IconCenterX: 65
+    # Horizontal offset (in pixels) from the bossbar's centered anchor for the icon group's visual center.
+    IconCenterX: 0
+    # Per-icon glyph advance in pixels; must match the resource pack font bitmap width.
     IconWidth: 32
+    # Horizontal gap (pixels) inserted between adjacent icons. Set to 0 for flush-packed icons.
+    IconSpacing: 16
+    # Optional per-count fine-tune offsets (pixels). Leave at 0 unless icons still need nudging after calibration.
+    IconCenterXOffset1: 0
+    IconCenterXOffset2: 0
+    IconCenterXOffset3: 0
 
   Foods:
     COOKED_BEEF:
