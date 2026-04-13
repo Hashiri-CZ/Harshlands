@@ -47,6 +47,7 @@
                                 <includes>
                                     <include>cz.hashiri.harshlands:harshlands-core</include>
                                     <include>cz.hashiri.harshlands:harshlands-spigot_impl_1_21_R11</include>
+                                    <include>cz.hashiri.harshlands:harshlands-spigot_impl_26_1_R1</include>
                                     <include>com.zaxxer:HikariCP</include>
                                     <include>com.h2database:h2</include>
                                 </includes>
@@ -77,6 +78,11 @@
         <dependency>
             <groupId>cz.hashiri.harshlands</groupId>
             <artifactId>harshlands-spigot_impl_1_21_R11</artifactId>
+            <version>${project.parent.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>cz.hashiri.harshlands</groupId>
+            <artifactId>harshlands-spigot_impl_26_1_R1</artifactId>
             <version>${project.parent.version}</version>
         </dependency>
     </dependencies>
