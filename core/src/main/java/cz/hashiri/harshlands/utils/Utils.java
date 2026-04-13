@@ -78,6 +78,7 @@ public class Utils {
     private final HLPlugin plugin;
 
     private static InternalsProvider internals;
+    private static String loadedImplClassName;
 
     static {
         String packageName = Utils.class.getPackage().getName();
@@ -113,6 +114,7 @@ public class Utils {
             try {
                 logStartup("Trying to load NMS class: " + className);
                 internals = (InternalsProvider) Class.forName(className).getDeclaredConstructor().newInstance();
+                loadedImplClassName = className;
                 logStartup("Loaded NMS class: " + className);
                 break;
             } catch (LinkageError | ReflectiveOperationException | ClassCastException e) {
@@ -227,6 +229,35 @@ public class Utils {
             return result;
         }
         return "";
+    }
+
+    /**
+     * Returns the yaml config key suffix used to gate feature enablement for the
+     * currently-loaded NMS impl. Shipped yamls contain <code>Enabled_1_21_11</code>
+     * as a shared default; an operator on a 26.1.x server can add
+     * <code>Enabled_26_1</code> under any feature's <code>Enabled:</code> block to
+     * override the default for that version only.
+     *
+     * <p>For impls following the <code>v{major}_{minor}_R{revision}</code> naming
+     * scheme, the returned key is <code>Enabled_{major}_{minor}</code> — the
+     * revision is intentionally stripped so that point-release impls (e.g. a
+     * future <code>v26_1_R2</code>) reuse the same <code>Enabled_26_1</code> key
+     * as earlier revisions, preserving operator overrides.
+     *
+     * <p>Falls back to <code>Enabled_1_21_11</code> if no impl was loaded or if
+     * the impl's simple name doesn't fit the expected pattern.
+     */
+    @Nonnull
+    public static String getEnabledFlagKey() {
+        if (loadedImplClassName == null) return "Enabled_1_21_11";
+        String simple = loadedImplClassName.substring(loadedImplClassName.lastIndexOf('.') + 1);
+        return switch (simple) {
+            case "v1_21_R11" -> "Enabled_1_21_11";
+            default -> {
+                int rIdx = simple.lastIndexOf("_R");
+                yield rIdx > 1 ? "Enabled_" + simple.substring(1, rIdx) : "Enabled_1_21_11";
+            }
+        };
     }
 
 

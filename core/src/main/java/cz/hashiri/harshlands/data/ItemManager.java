@@ -64,22 +64,16 @@ public class ItemManager {
     }
 
     private boolean isEnabledForCurrentVersion(String enabledRoot) {
-        String singleVersionPath = enabledRoot + ".Enabled_1_21_11";
-        if (userConfig.contains(singleVersionPath)) {
-            return userConfig.getBoolean(singleVersionPath);
+        String[] keys = {
+            enabledRoot + "." + Utils.getEnabledFlagKey(),
+            enabledRoot + ".Enabled_1_21_11",
+            enabledRoot + ".EnableAllVersions"
+        };
+        for (String key : keys) {
+            if (userConfig.contains(key)) {
+                return userConfig.getBoolean(key);
+            }
         }
-
-        // Backward compatibility with older server configs.
-        String legacyAllPath = enabledRoot + ".EnableAllVersions";
-        if (userConfig.contains(legacyAllPath)) {
-            return userConfig.getBoolean(legacyAllPath);
-        }
-
-        String versionPath = enabledRoot + ".Versions." + Utils.getMinecraftVersion(true);
-        if (userConfig.contains(versionPath)) {
-            return userConfig.getBoolean(versionPath);
-        }
-
         return true;
     }
 
