@@ -63,4 +63,18 @@ class LocaleManagerTest {
         // Two distinct missing keys → two warning messages (deduped per key).
         assertEquals(2, warnings.stream().filter(w -> w.contains("Missing translation")).count());
     }
+
+    @Test
+    void color_codes_are_translated_on_get(@TempDir Path translationsRoot) throws IOException {
+        Path enUS = translationsRoot.resolve("en-US");
+        Files.createDirectories(enUS);
+        Files.writeString(enUS.resolve("x.yml"), """
+                greeting: "&aHello &cWorld"
+                """);
+
+        LocaleManager mgr = new LocaleManager(translationsRoot, "en-US");
+        mgr.load();
+
+        assertEquals("\u00a7aHello \u00a7cWorld", mgr.get("greeting"));
+    }
 }

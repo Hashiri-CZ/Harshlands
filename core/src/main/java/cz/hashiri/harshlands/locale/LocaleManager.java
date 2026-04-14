@@ -67,6 +67,6 @@ public class LocaleManager {
             }
             return "[" + key + "]";
         }
-        return value.toString();
+        return org.bukkit.ChatColor.translateAlternateColorCodes('&', value.toString());
     }
 }
