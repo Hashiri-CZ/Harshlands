@@ -215,6 +215,7 @@ public class Commands implements CommandExecutor {
                         return true;
                     }
 
+                    cz.hashiri.harshlands.locale.Messages.reload();
                     HLConfig.getConfigList().forEach(config -> config.reloadConfig());
 
                     if (config.getBoolean("Reload.CorrectExecution.Enabled"))

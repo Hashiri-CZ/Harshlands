@@ -72,6 +72,7 @@ public class HLPlugin extends JavaPlugin {
     private HLScheduler scheduler;
     private HLDatabase database;
     private DebugManager debugManager;
+    private cz.hashiri.harshlands.locale.LocaleManager localeManager;
 
     @Override
     public void onEnable() {
@@ -79,6 +80,16 @@ public class HLPlugin extends JavaPlugin {
         StartupLog.resetTimer();
         StartupLog.printBanner();
         this.config = new PluginConfig(this);
+
+        // Ensure shipped Translations/ directory is materialized into the data folder.
+        ensureTranslationDefaults();
+        String locale = getConfig().getString("Locale", "en-US");
+        this.localeManager = new cz.hashiri.harshlands.locale.LocaleManager(
+                getDataFolder().toPath().resolve("Translations"),
+                locale,
+                getLogger());
+        this.localeManager.load();
+        cz.hashiri.harshlands.locale.Messages.bind(this.localeManager);
 
         lorePresetConfig = new HLConfig(this, "lorepresets.yml");
         this.miscItemsConfig = new HLConfig(this, "resources/misc_items.yml");
@@ -303,6 +314,20 @@ public class HLPlugin extends JavaPlugin {
 
     public DebugManager getDebugManager() {
         return debugManager;
+    }
+
+    private void ensureTranslationDefaults() {
+        java.util.List<String> modules = java.util.List.of(
+                "commands", "toughasnails", "baubles", "fear", "iceandfire",
+                "spartanweaponry", "spartanandfire", "foodexpansion", "comfort",
+                "notreepunching", "firstaid", "dynamicsurroundings", "integrations");
+        for (String m : modules) {
+            String resourcePath = "Translations/en-US/" + m + ".yml";
+            java.io.File target = new java.io.File(getDataFolder(), resourcePath);
+            if (!target.exists()) {
+                saveResource(resourcePath, false);
+            }
+        }
     }
 
     private void ensureFearDefaults() {
