@@ -140,7 +140,8 @@ public class HLDatabase {
             startupInfo("Pool: min " + hikariConfig.getMinimumIdle() + ", max " + hikariConfig.getMaximumPoolSize()
                 + ", connection timeout " + hikariConfig.getConnectionTimeout() + " ms");
         } else {
-            File dbFile = new File(plugin.getDataFolder(), "data");
+            File dbFile = new File(plugin.getDataFolder(), "Data/data");
+            dbFile.getParentFile().mkdirs();
             hikariConfig.setJdbcUrl("jdbc:h2:file:" + dbFile.getAbsolutePath() + ";TRACE_LEVEL_FILE=0");
             hikariConfig.setDriverClassName("org.h2.Driver");
             hikariConfig.setMaximumPoolSize(2);
@@ -305,7 +306,7 @@ public class HLDatabase {
     }
 
     private void migrateTanData() {
-        File yamlFile = new File(plugin.getDataFolder(), "resources/toughasnails/playerdata.yml");
+        File yamlFile = new File(plugin.getDataFolder(), "Items/toughasnails/playerdata.yml");
         if (!yamlFile.exists()) {
             return;
         }
@@ -359,7 +360,7 @@ public class HLDatabase {
     }
 
     private void migrateBaublesData() {
-        File yamlFile = new File(plugin.getDataFolder(), "resources/baubles/playerdata.yml");
+        File yamlFile = new File(plugin.getDataFolder(), "Items/baubles/playerdata.yml");
         if (!yamlFile.exists()) {
             return;
         }
@@ -412,7 +413,7 @@ public class HLDatabase {
     }
 
     private void migrateTorchData() {
-        File yamlFile = new File(plugin.getDataFolder(), "resources/fear/torchdata.yml");
+        File yamlFile = new File(plugin.getDataFolder(), "Data/fear/torchdata.yml");
         if (!yamlFile.exists()) {
             return;
         }
