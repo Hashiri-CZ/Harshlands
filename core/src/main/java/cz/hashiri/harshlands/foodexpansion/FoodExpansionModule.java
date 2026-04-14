@@ -144,6 +144,7 @@ public class FoodExpansionModule extends HLModule {
         }
         standaloneAboveActionBarHuds.clear();
         playerHuds.clear();
+        Utils.logModuleShutdown("foodexpansion", NAME);
     }
 
     private void loadFoodMap() {
