@@ -65,7 +65,7 @@ public class IceFireModule extends HLModule {
 
         FileConfiguration config = getUserConfig().getConfig();
         if (config.getBoolean("Initialize.Enabled")) {
-            Utils.logModuleLifecycle("Initializing", NAME);
+            Utils.logModuleInit("iceandfire", NAME);
         }
 
         events = new IceFireEvents(this, plugin);
@@ -79,7 +79,7 @@ public class IceFireModule extends HLModule {
     public void shutdown() {
         FileConfiguration config = getUserConfig().getConfig();
         if (config.getBoolean("Shutdown.Enabled")) {
-            Utils.logModuleLifecycle("Shutting down", NAME);
+            Utils.logModuleShutdown("iceandfire", NAME);
         }
     }
 

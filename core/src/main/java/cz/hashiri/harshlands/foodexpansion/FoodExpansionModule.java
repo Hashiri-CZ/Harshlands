@@ -57,7 +57,7 @@ public class FoodExpansionModule extends HLModule {
     @Override
     public void initialize() {
         setUserConfig(new HLConfig(plugin, "Settings/foodexpansion.yml"));
-        Utils.logModuleLifecycle("Initializing", NAME);
+        Utils.logModuleInit("foodexpansion", NAME);
 
         // Create shared attribute modifier keys
         keyMaxHealth = new NamespacedKey(plugin, "nutrition_max_health");

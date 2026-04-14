@@ -18,6 +18,7 @@ package cz.hashiri.harshlands.utils;
 
 import me.clip.placeholderapi.PlaceholderAPI;
 import cz.hashiri.harshlands.baubles.EndermanAlly;
+import cz.hashiri.harshlands.locale.Messages;
 import cz.hashiri.harshlands.data.HLModule;
 import cz.hashiri.harshlands.iceandfire.*;
 import cz.hashiri.harshlands.integrations.AuraSkills;
@@ -1406,8 +1407,12 @@ public class Utils {
         StartupLog.log(message);
     }
 
-    public static void logModuleLifecycle(@Nonnull String action, @Nonnull String moduleName) {
-        logStartup(action + " " + moduleName + " module");
+    public static void logModuleInit(@Nonnull String moduleKey, @Nonnull String moduleName) {
+        logStartup(Messages.of(moduleKey + ".initialize.message").with("name", moduleName).build());
+    }
+
+    public static void logModuleShutdown(@Nonnull String moduleKey, @Nonnull String moduleName) {
+        logStartup(Messages.of(moduleKey + ".shutdown.message").with("name", moduleName).build());
     }
 
     public static void playSound(@Nonnull Location loc, @Nonnull String soundName, float volume, float pitch) {

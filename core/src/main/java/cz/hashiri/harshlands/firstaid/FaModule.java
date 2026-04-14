@@ -56,7 +56,7 @@ public class FaModule extends HLModule {
 
         FileConfiguration config = getUserConfig().getConfig();
         if (config.getBoolean("Initialize.Enabled")) {
-            Utils.logModuleLifecycle("Initializing", NAME);
+            Utils.logModuleInit("firstaid", NAME);
         }
 
         events = new FaEvents(this, plugin);
@@ -70,7 +70,7 @@ public class FaModule extends HLModule {
     public void shutdown() {
         FileConfiguration config = getUserConfig().getConfig();
         if (config.getBoolean("Shutdown.Enabled")) {
-            Utils.logModuleLifecycle("Shutting down", NAME);
+            Utils.logModuleShutdown("firstaid", NAME);
         }
     }
 

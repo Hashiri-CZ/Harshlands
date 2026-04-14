@@ -57,7 +57,7 @@ public class SfModule extends HLModule {
 
         FileConfiguration config = getUserConfig().getConfig();
         if (config.getBoolean("Initialize.Enabled")) {
-            Utils.logModuleLifecycle("Initializing", NAME);
+            Utils.logModuleInit("spartanandfire", NAME);
         }
 
         events = new SfEvents(this, plugin);
@@ -71,7 +71,7 @@ public class SfModule extends HLModule {
     public void shutdown() {
         FileConfiguration config = getUserConfig().getConfig();
         if (config.getBoolean("Shutdown.Enabled")) {
-            Utils.logModuleLifecycle("Shutting down", NAME);
+            Utils.logModuleShutdown("spartanandfire", NAME);
         }
     }
 

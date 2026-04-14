@@ -62,7 +62,7 @@ public class BaubleModule extends HLModule {
 
         FileConfiguration config = getUserConfig().getConfig();
         if (config.getBoolean("Initialize.Enabled")) {
-            Utils.logModuleLifecycle("Initializing", NAME);
+            Utils.logModuleInit("baubles", NAME);
         }
 
         events = new BaubleEvents(this, plugin);
@@ -78,7 +78,7 @@ public class BaubleModule extends HLModule {
     public void shutdown() {
         FileConfiguration config = getUserConfig().getConfig();
         if (config.getBoolean("Shutdown.Enabled")) {
-            Utils.logModuleLifecycle("Shutting down", NAME);
+            Utils.logModuleShutdown("baubles", NAME);
         }
     }
 

@@ -56,7 +56,7 @@ public class NtpModule extends HLModule {
 
         FileConfiguration config = getUserConfig().getConfig();
         if (config.getBoolean("Initialize.Enabled")) {
-            Utils.logModuleLifecycle("Initializing", NAME);
+            Utils.logModuleInit("notreepunching", NAME);
         }
 
         events = new NtpEvents(this, plugin);
@@ -102,7 +102,7 @@ public class NtpModule extends HLModule {
     public void shutdown() {
         FileConfiguration config = getUserConfig().getConfig();
         if (config.getBoolean("Shutdown.Enabled")) {
-            Utils.logModuleLifecycle("Shutting down", NAME);
+            Utils.logModuleShutdown("notreepunching", NAME);
         }
     }
 

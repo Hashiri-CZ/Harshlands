@@ -75,7 +75,7 @@ public class TanModule extends HLModule {
 
         FileConfiguration config = getUserConfig().getConfig();
         if (config.getBoolean("Initialize.Enabled")) {
-            Utils.logModuleLifecycle("Initializing", NAME);
+            Utils.logModuleInit("toughasnails", NAME);
         }
 
         this.tempGloballyEnabled = config.getBoolean("Temperature.Enabled") && isGloballyEnabled();
@@ -103,7 +103,7 @@ public class TanModule extends HLModule {
     public void shutdown() {
         FileConfiguration config = getUserConfig().getConfig();
         if (config.getBoolean("Shutdown.Enabled")) {
-            Utils.logModuleLifecycle("Shutting down", NAME);
+            Utils.logModuleShutdown("toughasnails", NAME);
         }
     }
 
