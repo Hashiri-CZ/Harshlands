@@ -9,22 +9,16 @@ ConfigId: "1.2.16-RELEASE" # Used for config syncing purposes, do NOT edit
 # Customize messages
 Initialize:
   Enabled: true
-  Message: "&6[Harshlands] &fInitializing &e%NAME% &fmodule" # All placeholders: %NAME%
 Shutdown:
   Enabled: true
-  Message: "&6[Harshlands] &fShutting down &e%NAME% &fmodule" # All placeholders: %NAME%
 MaxDistanceReached:
   Enabled: true
-  Message: "&fYour weapon has reached the max distance of &b%MAX_DISTANCE% &fblocks!" # All placeholders: %MAX_DISTANCE%
 MaxReturnDistanceReached:
   Enabled: true
-  Message: "&fYour weapon has not been returned since you're too far!" # All placeholders: %MAX_DISTANCE%
 FullInventoryWeaponDropped:
   Enabled: true
-  Message: "&fInventory full! Your weapon has been dropped instead at &bx&f: &b%X_COORD%&f, &by&f: &b%Y_COORD%&f, &bz&f: &b%Z_COORD%&f." # All placeholders: %X_COORD%, %Y_COORD%, %Z_COORD%
 WeaponDropped:
   Enabled: true
-  Message: "&fWeapon dropped at &bx&f: &b%X_COORD%&f, &by&f: &b%Y_COORD%&f, &bz&f: &b%Z_COORD%&f." # All placeholders: %X_COORD%, %Y_COORD%, %Z_COORD%
 
 PreventSweepAttackingPets: true
 

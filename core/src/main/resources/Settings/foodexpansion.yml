@@ -239,11 +239,8 @@ FoodExpansion:
       4: 0.0
     Messages:
       Warning: 2
-      WarningText: "&7You're getting tired of &f%food%&7..."
       Severe: 3
-      SevereText: "&7You can barely stomach more &f%food%&7."
       Blocked: 4
-      BlockedText: "&cYou can't eat any more &f%food%&c right now."
     Nausea:
       # Satiation count at which nausea starts
       Threshold: 3
@@ -252,7 +249,6 @@ FoodExpansion:
 
   CustomFoods:
     bacon:
-      DisplayName: "&fBacon"
       BaseMaterial: DRIED_KELP
       CustomModelData: 10001
       Nutrition:
@@ -271,7 +267,6 @@ FoodExpansion:
           - PORKCHOP
         Count: 2
     cooked_bacon:
-      DisplayName: "&fCrispy Bacon"
       BaseMaterial: DRIED_KELP
       CustomModelData: 10002
       Nutrition:
@@ -290,7 +285,6 @@ FoodExpansion:
         Experience: 0.35
         CookingTime: 200
     horse_meat:
-      DisplayName: "&fHorse Meat"
       BaseMaterial: BEEF
       CustomModelData: 10014
       Nutrition:
@@ -303,7 +297,6 @@ FoodExpansion:
       Flags:
         - MEAT
     cooked_horse_meat:
-      DisplayName: "&fCooked Horse Meat"
       BaseMaterial: COOKED_BEEF
       CustomModelData: 10015
       Nutrition:
@@ -321,7 +314,6 @@ FoodExpansion:
         Experience: 0.35
         CookingTime: 200
     wolf_meat:
-      DisplayName: "&fWolf Meat"
       BaseMaterial: BEEF
       CustomModelData: 10023
       Nutrition:
@@ -334,7 +326,6 @@ FoodExpansion:
       Flags:
         - MEAT
     cooked_wolf_meat:
-      DisplayName: "&fCooked Wolf Meat"
       BaseMaterial: COOKED_BEEF
       CustomModelData: 10024
       Nutrition:
@@ -352,7 +343,6 @@ FoodExpansion:
         Experience: 0.35
         CookingTime: 200
     ocelot_meat:
-      DisplayName: "&fOcelot Meat"
       BaseMaterial: BEEF
       CustomModelData: 10025
       Nutrition:
@@ -365,7 +355,6 @@ FoodExpansion:
       Flags:
         - MEAT
     cooked_ocelot_meat:
-      DisplayName: "&fCooked Ocelot Meat"
       BaseMaterial: COOKED_BEEF
       CustomModelData: 10026
       Nutrition:
@@ -383,7 +372,6 @@ FoodExpansion:
         Experience: 0.35
         CookingTime: 200
     parrot_meat:
-      DisplayName: "&fRaw Parrot"
       BaseMaterial: CHICKEN
       CustomModelData: 10029
       Nutrition:
@@ -396,7 +384,6 @@ FoodExpansion:
       Flags:
         - MEAT
     cooked_parrot_meat:
-      DisplayName: "&fCooked Parrot"
       BaseMaterial: COOKED_CHICKEN
       CustomModelData: 10030
       Nutrition:
@@ -414,7 +401,6 @@ FoodExpansion:
         Experience: 0.35
         CookingTime: 200
     llama_meat:
-      DisplayName: "&fRaw Llama"
       BaseMaterial: BEEF
       CustomModelData: 10031
       Nutrition:
@@ -427,7 +413,6 @@ FoodExpansion:
       Flags:
         - MEAT
     cooked_llama_meat:
-      DisplayName: "&fLlama Steak"
       BaseMaterial: COOKED_BEEF
       CustomModelData: 10032
       Nutrition:
@@ -445,7 +430,6 @@ FoodExpansion:
         Experience: 0.35
         CookingTime: 200
     polar_bear_meat:
-      DisplayName: "&fRaw Polar Bear"
       BaseMaterial: BEEF
       CustomModelData: 10033
       Nutrition:
@@ -458,7 +442,6 @@ FoodExpansion:
       Flags:
         - MEAT
     cooked_polar_bear_meat:
-      DisplayName: "&fPolar Bear Steak"
       BaseMaterial: COOKED_BEEF
       CustomModelData: 10034
       Nutrition:
@@ -476,7 +459,6 @@ FoodExpansion:
         Experience: 0.35
         CookingTime: 200
     bat_wing:
-      DisplayName: "&fBat Wing"
       BaseMaterial: CHICKEN
       CustomModelData: 10018
       Nutrition:
@@ -494,7 +476,6 @@ FoodExpansion:
           Amplifier: 0
           Chance: 0.5
     cooked_bat_wing:
-      DisplayName: "&fCooked Bat Wing"
       BaseMaterial: COOKED_CHICKEN
       CustomModelData: 10019
       Nutrition:
@@ -517,7 +498,6 @@ FoodExpansion:
         Experience: 0.35
         CookingTime: 200
     squid:
-      DisplayName: "&fRaw Squid"
       BaseMaterial: COD
       CustomModelData: 10007
       Nutrition:
@@ -528,7 +508,6 @@ FoodExpansion:
         Carbs: 0.0
         Fats: 1.0
     cooked_squid:
-      DisplayName: "&fCooked Squid"
       BaseMaterial: COOKED_COD
       CustomModelData: 10008
       Nutrition:
@@ -544,7 +523,6 @@ FoodExpansion:
         Experience: 0.35
         CookingTime: 200
     carrot_seed_soup:
-      DisplayName: "&fCarrot Soup"
       BaseMaterial: MUSHROOM_STEW
       CustomModelData: 10006
       Nutrition:
@@ -563,7 +541,6 @@ FoodExpansion:
           - CARROT
           - CARROT
     spider_soup:
-      DisplayName: "&fSpider Eye Stew"
       BaseMaterial: MUSHROOM_STEW
       CustomModelData: 10011
       Nutrition:
@@ -588,7 +565,6 @@ FoodExpansion:
           - SPIDER_EYE
           - FERMENTED_SPIDER_EYE
     nether_wart_soup:
-      DisplayName: "&fNether Wart Stew"
       BaseMaterial: MUSHROOM_STEW
       CustomModelData: 10012
       Nutrition:
@@ -609,7 +585,6 @@ FoodExpansion:
           - NETHER_WART
           - SUGAR
     blaze_cream:
-      DisplayName: "&fBlaze Cream Soup"
       BaseMaterial: MUSHROOM_STEW
       CustomModelData: 10020
       Nutrition:
@@ -635,7 +610,6 @@ FoodExpansion:
           - BLAZE_POWDER
           - MILK_BUCKET
     melon_salad:
-      DisplayName: "&fMelon Salad"
       BaseMaterial: MUSHROOM_STEW
       CustomModelData: 10021
       Nutrition:
@@ -655,7 +629,6 @@ FoodExpansion:
           - MELON_SLICE
           - MELON_SLICE
     beetroot_noodles:
-      DisplayName: "&fBeetroot Noodles"
       BaseMaterial: MUSHROOM_STEW
       CustomModelData: 10028
       Nutrition:
@@ -676,7 +649,6 @@ FoodExpansion:
           - WHEAT
           - WATER_BUCKET
     veggie_stew:
-      DisplayName: "&fVeggie Stew"
       BaseMaterial: MUSHROOM_STEW
       CustomModelData: 10035
       Nutrition:
@@ -699,7 +671,6 @@ FoodExpansion:
           - BROWN_MUSHROOM
           - RED_MUSHROOM
     bat_soup:
-      DisplayName: "&fBat Soup"
       BaseMaterial: MUSHROOM_STEW
       CustomModelData: 10037
       Nutrition:
@@ -725,7 +696,6 @@ FoodExpansion:
           - CARROT
           - MILK_BUCKET
     golden_feast:
-      DisplayName: "&6Golden Feast"
       BaseMaterial: MUSHROOM_STEW
       CustomModelData: 10038
       Nutrition:
@@ -751,7 +721,6 @@ FoodExpansion:
           - GOLDEN_CARROT
           - GOLDEN_APPLE
     chocolate_bar:
-      DisplayName: "&fChocolate Bar"
       BaseMaterial: COOKIE
       CustomModelData: 10010
       Nutrition:
@@ -770,7 +739,6 @@ FoodExpansion:
           - SUGAR
           - MILK_BUCKET
     lollipop:
-      DisplayName: "&fLollipop"
       BaseMaterial: COOKIE
       CustomModelData: 10027
       Nutrition:
@@ -790,7 +758,6 @@ FoodExpansion:
           S: SUGAR
           W: STICK
     jelly:
-      DisplayName: "&fGreen Jelly"
       BaseMaterial: COOKIE
       CustomModelData: 10005
       Nutrition:
@@ -816,7 +783,6 @@ FoodExpansion:
           - SLIME_BALL
           - SUGAR
     fried_egg:
-      DisplayName: "&fFried Egg"
       BaseMaterial: BAKED_POTATO
       CustomModelData: 10003
       Nutrition:
@@ -832,7 +798,6 @@ FoodExpansion:
         Experience: 0.35
         CookingTime: 200
     bacon_and_egg:
-      DisplayName: "&fBacon and Egg"
       BaseMaterial: BAKED_POTATO
       CustomModelData: 10004
       Nutrition:
@@ -848,7 +813,6 @@ FoodExpansion:
           - cooked_bacon
           - fried_egg
     compressed_flesh:
-      DisplayName: "&fDried Flesh"
       BaseMaterial: ROTTEN_FLESH
       CustomModelData: 10009
       Nutrition:
@@ -869,7 +833,6 @@ FoodExpansion:
           - ROTTEN_FLESH
           - SUGAR
     cactus_fruit:
-      DisplayName: "&fCactus Fruit"
       BaseMaterial: SWEET_BERRIES
       CustomModelData: 10013
       Nutrition:
@@ -884,7 +847,6 @@ FoodExpansion:
         Ingredients:
           - CACTUS
     cooked_mushroom:
-      DisplayName: "&fCooked Mushroom"
       BaseMaterial: BAKED_POTATO
       CustomModelData: 10016
       Nutrition:
@@ -900,7 +862,6 @@ FoodExpansion:
         Experience: 0.35
         CookingTime: 200
     carrot_pie:
-      DisplayName: "&fCarrot Cake"
       BaseMaterial: PUMPKIN_PIE
       CustomModelData: 10017
       Nutrition:
@@ -917,7 +878,6 @@ FoodExpansion:
           - WHEAT
           - EGG
     roasted_seed:
-      DisplayName: "&fRoasted Seed"
       BaseMaterial: DRIED_KELP
       CustomModelData: 10022
       Nutrition:
@@ -935,7 +895,6 @@ FoodExpansion:
         Experience: 0.35
         CookingTime: 200
     dough:
-      DisplayName: "&fDough"
       BaseMaterial: PAPER
       CustomModelData: 10036
       Recipe:

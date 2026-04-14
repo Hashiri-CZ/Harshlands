@@ -7,10 +7,8 @@ ConfigId: "1.2.16-RELEASE" # Used for config syncing purposes, do NOT edit
 # Customize messages
 Initialize:
   Enabled: true
-  Message: "&6[Harshlands] &fInitializing &e%NAME% &fmodule" # All placeholders: %NAME%
 Shutdown:
   Enabled: true
-  Message: "&6[Harshlands] &fShutting down &e%NAME% &fmodule" # All placeholders: %NAME%
 
 BodyParts:
   AbsorptionHealthBoost: # Decides how extra health from absorption or health boost will be distributed

@@ -8,149 +8,76 @@ ConfigId: "1.2.16-RELEASE" # Used for config syncing purposes, do NOT edit
 EnableCommandBlockUsage: true
 EnableCommandBlockMinecartUsage: true
 
-# Error Messages
-NoPermission: "&cYou do not have permission to do this!"
-InvalidTarget: "&cNo valid target was found"
-MisspelledItemName: "&cUnknown item '%MISSPELLED_NAME%'" # All internal placeholders: %MISSPELLED_NAME%
-MisspelledWorld: "&cUnknown world '%MISSPELLED_WORLD%'" # All internal placeholders: %MISSPELLED_WORLD%
-InvalidArgument: "&cIncorrect argument for command"
-IncompleteCommand: "&cUnknown or incomplete command"
-
 # Commands
 Give:
   TooFewItems:
     Enabled: true
-    Message: "&cThe number of items cannot be less than 1"
   TooManyItems:
     Enabled: true
     MaxValue: 100
-    Message: "&cThe number of items cannot be greater than %MAXIMUM_VALUE%" # All internal placeholders: %MAXIMUM_VALUE%
   CorrectExecution:
     Enabled: true
-    SingleTargetMessage: "&fGave %VALUE% [%DISPLAY_NAME%] to %PLAYER_NAME%" # All internal placeholders: %VALUE%, %DISPLAY_NAME%, %PLAYER_NAME%
-    MultipleTargetMessage: "&fGave %VALUE% [%DISPLAY_NAME%]" # All internal placeholders: %VALUE%, %DISPLAY_NAME%
     Sound:
       Enabled: true
       Sound: "ENTITY_ITEM_PICKUP"
       Volume: 1.0
       Pitch: 1.0
 
-Help:
-  - "&6-----Harshlands Command Help-----"
-  - "&6/harshlands &freload"
-  - "&6/harshlands &fgive player item &b*&6&famount"
-  - "&6/harshlands &fspawnitem item amount &b~x &b~y &b~z &b*&fworld"
-  - "&6/harshlands &fsummon mob &b~x &b~y &b~z &b*&fworld"
-  - "&6/harshlands &ftemperature player &b~amount"
-  - "&6/harshlands &fthirst player &b~amount"
-  - "&6/harshlands &fresetitem &b*player &b*all"
-  - "&6/harshlands &fupdateitem &b*player &b*all"
-  - "&6/harshlands &fversion"
-  - "&b~ &fdenotes a relative position"
-  - "&b* &fmeans that argument is optional"
-  - "&6/hl &fcan be used as a shorthand"
-
 Reload:
   CorrectExecution:
     Enabled: true
-    Message: "&6[Harshlands] &fPlugin reloaded! Note that some config changes require a server restart to take effect."
 
 SpawnItem:
   CheckStackSize: true
   TooFewItems:
     Enabled: true
-    Message: "&cThe number of items cannot be less than 1"
   TooManyItems:
     Enabled: true
     MaxValue: 64
-    Message: "&cThe number of items cannot be greater than %MAXIMUM_VALUE%" # All internal placeholders: %MAXIMUM_VALUE%
   ExceedsStackSize:
     Enabled: true
-    Message: "&cThe number of items cannot be greater than %STACK_SIZE%" # All internal placeholders: %STACK_SIZE%
   CorrectExecution:
     Enabled: true
-    Message: "&fSummoned new %ITEM_NAME%" # All internal placeholders: %ITEM_NAME%, %X_COORD%, %Y_COORD%, %Z_COORD%, %WORLD_NAME%
 
 Summon:
   RequiredModulesDisabled:
     Enabled: true
-    Message: "&cThe following modules must be enabled to spawn the specified mob: %REQUIRED_MODULES%" # All internal placeholders: %REQUIRED_MODULES%
   MisspelledMob:
     Enabled: true
-    Message: "&cUnknown entity '%MISSPELLED_NAME%'" # All internal placeholders: %REQUIRED_MODULES%
   CorrectExecution:
     Enabled: true
-    Message: "&fSummoned new %MOB_NAME%" # All internal placeholders: %MOB_NAME%, %X_COORD%, %Y_COORD%, %Z_COORD%, %WORLD_NAME%
 
 Temperature:
   BelowMinValue:
     Enabled: true
-    Message: "&cTemperature cannot be less than %MINIMUM_VALUE%" # All internal placeholders: %MINIMUM_VALUE%
   AboveMaxValue:
     Enabled: true
-    Message: "&cTemperature cannot be greater than %MAXIMUM_VALUE%" # All internal placeholders: %MAXIMUM_VALUE%
   TanModuleDisabled:
     Enabled: true
-    Message: "&eTough as Nails &cmust be enabled to set a player's temperature"
   CorrectExecution:
     Enabled: true
-    SingleTargetMessage: "&fSuccessfully set the temperature of %PLAYER_NAME%" # All internal placeholders: %PLAYER_NAME%, %OLD_TEMPERATURE%, %NEW_TEMPERATURE%
-    MultipleTargetMessage: "&fSuccessfully set the temperature of the specified targets" # All internal placeholders: %NEW_TEMPERATURE%
-    SingleTargetRelativeMessage: "&fSuccessfully set the temperature of %PLAYER_NAME%" # All internal placeholders: %PLAYER_NAME%, %OLD_TEMPERATURE%, %NEW_TEMPERATURE%, %CHANGE%
-    MultipleTargetRelativeMessage: "&fSuccessfully changed the temperature of the specified targets" # All internal placeholders: %CHANGE%
 
 Thirst:
   BelowMinValue:
     Enabled: true
-    Message: "&cThirst cannot be less than %MINIMUM_VALUE%" # All internal placeholders: %MINIMUM_VALUE%
   AboveMaxValue:
     Enabled: true
-    Message: "&cThirst cannot be greater than %MAXIMUM_VALUE%" # All internal placeholders: %MAXIMUM_VALUE%
   TanModuleDisabled:
     Enabled: true
-    Message: "&eTough as Nails &cmust be enabled to set a player's thirst"
   CorrectExecution:
     Enabled: true
-    SingleTargetMessage: "&fSuccessfully set the thirst of %PLAYER_NAME%" # All internal placeholders: %PLAYER_NAME%, %OLD_THIRST%, %NEW_THIRST%
-    MultipleTargetMessage: "&fSuccessfully set the thirst of the specified targets" # All internal placeholders: %NEW_THIRST%
-    SingleTargetRelativeMessage: "&fSuccessfully set the thirst of %PLAYER_NAME%" # All internal placeholders: %PLAYER_NAME%, %OLD_THIRST%, %NEW_THIRST%, %CHANGE%
-    MultipleTargetRelativeMessage: "&fSuccessfully changed the thirst of the specified targets" # All internal placeholders: %CHANGE%
 
 ResetItem:
   NoValidItemsFound:
     Enabled: true
-    MainHand:
-      SingleTargetMessage: "&cNo valid Harshlands item was found"
-      MultipleTargetMessage: "&cNo valid Harshlands item was found"
-    Inventory:
-      SingleTargetMessage: "&cNo valid Harshlands items were found"
-      MultipleTargetMessage: "&cNo valid Harshlands items were found"
   CorrectExecution:
     Enabled: true
-    MainHand:
-      SingleTargetMessage: "&fSuccessfully reset the Harshlands item"
-      MultipleTargetMessage: "&fSuccessfully reset the Harshlands item"
-    Inventory:
-      SingleTargetMessage: "&fSuccessfully reset all Harshlands items in the inventory"
-      MultipleTargetMessage: "&fSuccessfully reset all Harshlands items in the specified players' inventories"
 
 UpdateItem:
   NoValidItemsFound:
     Enabled: true
-    MainHand:
-      SingleTargetMessage: "&cNo valid Harshlands item was found"
-      MultipleTargetMessage: "&cNo valid Harshlands item was found"
-    Inventory:
-      SingleTargetMessage: "&cNo valid Harshlands items were found"
-      MultipleTargetMessage: "&cNo valid Harshlands items were found"
   CorrectExecution:
     Enabled: true
-    MainHand:
-      SingleTargetMessage: "&fSuccessfully updated the Harshlands item"
-      MultipleTargetMessage: "&fSuccessfully updated the Harshlands item"
-    Inventory:
-      SingleTargetMessage: "&fSuccessfully updated all Harshlands items in the inventory"
-      MultipleTargetMessage: "&fSuccessfully updated all Harshlands items in the specified players' inventories"
     Options:
       Material: true
       MaterialData: false
@@ -174,17 +101,6 @@ UpdateItem:
         Module: true
         CustomDurability: false
         CustomMaxDurability: true
-
-Version: "&6[Harshlands] &fYou're running on version %PLUGIN_VERSION%" # All internal placeholders: %PLUGIN_VERSION%
-
-Fear:
-  FearLevel: "&6[Harshlands] &f%PLAYER%'s fear level: &e%FEAR_LEVEL%&f / &e100.00" # All internal placeholders: %PLAYER%, %FEAR_LEVEL%
-  ModuleDisabled: "&c[Harshlands] Fear module is not enabled."
-  PlayerNotFound: "&cPlayer not found."
-  SetFear:
-    Success: "&6[Harshlands] &fSet %PLAYER%'s fear to &e%FEAR_LEVEL%&f." # All internal placeholders: %PLAYER%, %FEAR_LEVEL%
-    InvalidAmount: "&c[Harshlands] Amount must be a number between 0 and 100."
-    Usage: "&c[Harshlands] Usage: /hl setfear <player> <amount>"
 
 # Tab completer
 Count: "[<count>]"

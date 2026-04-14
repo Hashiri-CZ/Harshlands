@@ -223,13 +223,6 @@ Tiers:
       resistance: 0
       saturation: 0
 
-# ── Messages ─────────────────────────────────────────────────
-Messages:
-  NoComfort: "§7No comfort nearby."
-  BuffApplied: "§aComfort: §f{score} §7({tier}) §a- Resting buff for {minutes}min"
-  ComfortCheck: "§7Comfort Score: §f{score} §7({tier})"
-  ComfortBreakdown: "§7Nearby: §f{categories}"
-
 # ── Cabin Fever ─────────────────────────────────────────────
 # Players who stay indoors too long suffer escalating debuffs.
 # Inspired by The Long Dark's cabin fever mechanic.
@@ -258,11 +251,5 @@ CabinFever:
       mining_fatigue: 0
     ThirstExhaustionMultiplier: 1.3
   ResetOnDeath: false
-  Messages:
-    Restless: "&eYou feel restless from being indoors too long..."
-    Risk: "&6Cabin fever is setting in. Go outside!"
-    Full: "&cYou have cabin fever! Get outdoors to recover."
-    SleepDenied: "&cYou're too restless to sleep. Go outside first."
-    Cured: "&aThe fresh air clears your mind. Cabin fever cured!"
   # Deprecated: Use /hl debug Comfort.CabinFever instead. This flag is ignored.
   Debug: false

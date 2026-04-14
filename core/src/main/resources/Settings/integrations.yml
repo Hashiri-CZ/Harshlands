@@ -38,9 +38,6 @@ PlaceholderAPI:
   Enabled: true
   Error:
     Enabled: true
-    Message: "&cThe placeholder, %PLACEHOLDER%, does not exist or is being used incorrectly" # All internal placeholders: %PLACEHOLDER%
 AuraSkills:
   Enabled: true
-  Requirements:
-    Message: "&cYou need %SKILL% level %REQUIRED_LEVEL% to %ACTION% %ITEM%. Current level: %CURRENT_LEVEL%." # All internal placeholders: %ACTION%, %ITEM%, %SKILL%, %REQUIRED_LEVEL%, %CURRENT_LEVEL%
 

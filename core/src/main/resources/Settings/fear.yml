@@ -7,10 +7,8 @@ ConfigId: "1.2.16-RELEASE" # Used for config syncing purposes, do NOT edit
 # Customize messages
 Initialize:
   Enabled: true
-  Message: "&6[Harshlands] &fInitializing &e%NAME% &fmodule" # All placeholders: %NAME%
 Shutdown:
   Enabled: true
-  Message: "&6[Harshlands] &fShutting down &e%NAME% &fmodule" # All placeholders: %NAME%
 
 TorchSystem:
   Enabled: true
@@ -193,27 +191,6 @@ Nightmare:
       StrengthAmplifier: 1     # Strength II
 
 CharacterOverrides:
-  # All placeholders: %BRAIN%, %FEAR_BAR%, %ARROW%
-  FearActionbar: "%FEAR_BAR%%ARROW%  "
-
-  FearBrain: ""        # Default Unicode Value: \uXXXX  (brain glyph from sanitydim512.png)
-
-  # Fear bar steps: FearBar0 = 0% fear, FearBar10 = 100% fear
-  FearBar0:  "\uE840"        # 0%
-  FearBar1:  "\uE841"        # 10%
-  FearBar2:  "\uE841"        # 20%
-  FearBar3:  "\uE842"        # 30%
-  FearBar4:  "\uE843"        # 40%
-  FearBar5:  "\uE844"        # 50%
-  FearBar6:  "\uE845"        # 60%
-  FearBar7:  "\uE846"        # 70%
-  FearBar8:  "\uE847"        # 80%
-  FearBar9:  "\uE848"        # 90%
-  FearBar10: "\uE849"        # 100%
-
-  FearArrowUp:     "\uE84B"  # fear increasing
-  FearArrowDown:   "\uE84A"  # fear decreasing
-  FearArrowStable: ""  # fear unchanged / first tick
 
 SoundEcology:
   Enabled: true
