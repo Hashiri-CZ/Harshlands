@@ -115,7 +115,6 @@ public class HLPlugin extends JavaPlugin {
         this.auraSkillsRequirementsConfig = new HLConfig(this, "Presets/auraskills_requirements.yml");
         migrateAuraSkillsRequirementsConfig();
         ensureResourcePackDefaults();
-        ensureIntegrationDefaults();
 
         util = new Utils(this);
 
@@ -466,30 +465,6 @@ public class HLPlugin extends JavaPlugin {
                 cfg.save(getConfigFile());
             } catch (IOException exception) {
                 getLogger().warning("Failed to write ResourcePack defaults to config.yml: " + exception.getMessage());
-            }
-        }
-    }
-
-    private void ensureIntegrationDefaults() {
-        if (integrationsConfig == null) {
-            return;
-        }
-
-        FileConfiguration cfg = integrationsConfig.getConfig();
-        boolean changed = false;
-
-        String requirementsMessagePath = "AuraSkills.Requirements.Message";
-        if (!cfg.contains(requirementsMessagePath)) {
-            cfg.set(requirementsMessagePath, "&cYou need %SKILL% level %REQUIRED_LEVEL% to %ACTION% %ITEM%. Current level: %CURRENT_LEVEL%.");
-            changed = true;
-        }
-
-        if (changed) {
-            try {
-                cfg.save(integrationsConfig.getFile());
-                integrationsConfig.reloadConfig();
-            } catch (IOException exception) {
-                getLogger().warning("Failed to write AuraSkills integration defaults: " + exception.getMessage());
             }
         }
     }
