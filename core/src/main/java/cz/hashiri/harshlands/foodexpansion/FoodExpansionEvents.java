@@ -6,6 +6,7 @@ import cz.hashiri.harshlands.comfort.ComfortTier;
 import cz.hashiri.harshlands.data.HLModule;
 import cz.hashiri.harshlands.data.HLPlayer;
 import cz.hashiri.harshlands.data.foodexpansion.DataModule;
+import cz.hashiri.harshlands.locale.Messages;
 import cz.hashiri.harshlands.rsv.HLPlugin;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
@@ -110,11 +111,11 @@ public class FoodExpansionEvents implements Listener {
         }
 
         this.msgWarningThreshold = config.getInt("FoodExpansion.Overeating.Messages.Warning", 2);
-        this.msgWarningText = config.getString("FoodExpansion.Overeating.Messages.WarningText", "&7You're getting tired of &f%food%&7...");
+        this.msgWarningText = Messages.get("foodexpansion.food_expansion.overeating.messages.warning_text");
         this.msgSevereThreshold = config.getInt("FoodExpansion.Overeating.Messages.Severe", 3);
-        this.msgSevereText = config.getString("FoodExpansion.Overeating.Messages.SevereText", "&7You can barely stomach more &f%food%&7.");
+        this.msgSevereText = Messages.get("foodexpansion.food_expansion.overeating.messages.severe_text");
         this.msgBlockedThreshold = config.getInt("FoodExpansion.Overeating.Messages.Blocked", 4);
-        this.msgBlockedText = config.getString("FoodExpansion.Overeating.Messages.BlockedText", "&cYou can't eat any more &f%food%&c right now.");
+        this.msgBlockedText = Messages.get("foodexpansion.food_expansion.overeating.messages.blocked_text");
         this.nauseaThreshold = config.getInt("FoodExpansion.Overeating.Nausea.Threshold", 3);
         this.nauseaDurationTicks = config.getInt("FoodExpansion.Overeating.Nausea.DurationTicks", 160);
     }
@@ -489,8 +490,7 @@ public class FoodExpansionEvents implements Listener {
         if (cfRegistry != null) {
             CustomFoodDefinition def = cfRegistry.getDefinition(foodKey);
             if (def != null) {
-                foodName = org.bukkit.ChatColor.stripColor(
-                    cz.hashiri.harshlands.utils.Utils.translateMsg(def.getDisplayName(), null, null));
+                foodName = org.bukkit.ChatColor.stripColor(def.getDisplayName());
             } else {
                 foodName = formatFoodName(foodKey);
             }
@@ -507,8 +507,7 @@ public class FoodExpansionEvents implements Listener {
             msg = msgWarningText;
         }
         if (msg != null) {
-            player.sendMessage(cz.hashiri.harshlands.utils.Utils.translateMsg(
-                msg, player, java.util.Map.of("food", foodName)));
+            player.sendMessage(msg.replace("%food%", foodName));
         }
     }
 

@@ -1,6 +1,7 @@
 package cz.hashiri.harshlands.foodexpansion.items;
 
 import cz.hashiri.harshlands.foodexpansion.NutrientProfile;
+import cz.hashiri.harshlands.locale.Messages;
 import cz.hashiri.harshlands.utils.Utils;
 import org.bukkit.Material;
 import org.bukkit.configuration.ConfigurationSection;
@@ -43,7 +44,10 @@ public class CustomFoodRegistry {
                 continue;
             }
 
-            String displayName = foodSec.getString("DisplayName", id);
+            String displayName = Messages.get("foodexpansion.food_expansion.custom_foods." + id + ".display_name");
+            if (displayName.startsWith("[")) {
+                displayName = id;  // fallback for unrecognized/admin-added foods
+            }
             int cmd = foodSec.getInt("CustomModelData", 0);
 
             boolean isFood = foodSec.contains("Nutrition");
@@ -100,7 +104,7 @@ public class CustomFoodRegistry {
         ItemMeta meta = stack.getItemMeta();
         if (meta == null) return stack;
 
-        meta.setDisplayName(Utils.translateMsg(def.getDisplayName(), null, null));
+        meta.setDisplayName(def.getDisplayName());
 
         if (def.getCustomModelData() > 0) {
             Utils.setCustomModelData(meta, def.getCustomModelData());
