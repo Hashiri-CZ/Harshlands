@@ -6,6 +6,7 @@ import org.junit.jupiter.api.io.TempDir;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -76,5 +77,34 @@ class LocaleManagerTest {
         mgr.load();
 
         assertEquals("\u00a7aHello \u00a7cWorld", mgr.get("greeting"));
+    }
+
+    @Test
+    void get_list_returns_color_translated_list(@TempDir Path translationsRoot) throws IOException {
+        Path enUS = translationsRoot.resolve("en-US");
+        Files.createDirectories(enUS);
+        Files.writeString(enUS.resolve("x.yml"), """
+                lore:
+                  - "&aLine one"
+                  - "&cLine two"
+                """);
+
+        LocaleManager mgr = new LocaleManager(translationsRoot, "en-US");
+        mgr.load();
+
+        List<String> lore = mgr.getList("lore");
+        assertEquals(2, lore.size());
+        assertEquals("\u00a7aLine one", lore.get(0));
+        assertEquals("\u00a7cLine two", lore.get(1));
+    }
+
+    @Test
+    void get_list_on_missing_key_returns_empty_and_logs(@TempDir Path translationsRoot) throws IOException {
+        Files.createDirectories(translationsRoot.resolve("en-US"));
+        LocaleManager mgr = new LocaleManager(translationsRoot, "en-US");
+        mgr.load();
+
+        List<String> result = mgr.getList("missing.list");
+        assertEquals(List.of(), result);
     }
 }

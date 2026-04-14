@@ -5,7 +5,9 @@ import org.bukkit.configuration.file.YamlConfiguration;
 
 import java.io.File;
 import java.nio.file.Path;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.logging.Logger;
 
@@ -68,5 +70,22 @@ public class LocaleManager {
             return "[" + key + "]";
         }
         return org.bukkit.ChatColor.translateAlternateColorCodes('&', value.toString());
+    }
+
+    public List<String> getList(String key) {
+        Object value = flatMap.get(key);
+        if (!(value instanceof List<?> raw)) {
+            if (value == null) {
+                if (reportedMissingKeys.add(key)) {
+                    logger.warning("Missing translation for key: " + key);
+                }
+            }
+            return List.of();
+        }
+        List<String> translated = new ArrayList<>(raw.size());
+        for (Object item : raw) {
+            translated.add(org.bukkit.ChatColor.translateAlternateColorCodes('&', String.valueOf(item)));
+        }
+        return translated;
     }
 }
