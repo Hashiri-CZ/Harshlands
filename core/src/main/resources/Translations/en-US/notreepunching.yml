@@ -1,5 +1,5 @@
 notreepunching:
   initialize:
-    message: "&6[Harshlands] &fInitializing &e%name% &fmodule"
+    message: "&fInitializing &e%name% &fmodule"
   shutdown:
-    message: "&6[Harshlands] &fShutting down &e%name% &fmodule"
+    message: "&fShutting down &e%name% &fmodule"

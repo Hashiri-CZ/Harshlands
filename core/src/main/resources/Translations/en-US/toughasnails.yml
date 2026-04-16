@@ -1,8 +1,8 @@
 toughasnails:
   initialize:
-    message: "&6[Harshlands] &fInitializing &e%name% &fmodule"
+    message: "&fInitializing &e%name% &fmodule"
   shutdown:
-    message: "&6[Harshlands] &fShutting down &e%name% &fmodule"
+    message: "&fShutting down &e%name% &fmodule"
   dehydration_death:
     messages:
       - "&f%player_name% died of dehydration."

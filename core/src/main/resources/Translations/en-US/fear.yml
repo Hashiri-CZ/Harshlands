@@ -1,8 +1,8 @@
 fear:
   initialize:
-    message: "&6[Harshlands] &fInitializing &e%name% &fmodule"
+    message: "&fInitializing &e%name% &fmodule"
   shutdown:
-    message: "&6[Harshlands] &fShutting down &e%name% &fmodule"
+    message: "&fShutting down &e%name% &fmodule"
   character_overrides:
     fear_actionbar: "%fear_bar%%arrow%  "
     fear_brain: ""

@@ -1,8 +1,8 @@
 spartanweaponry:
   initialize:
-    message: "&6[Harshlands] &fInitializing &e%name% &fmodule"
+    message: "&fInitializing &e%name% &fmodule"
   shutdown:
-    message: "&6[Harshlands] &fShutting down &e%name% &fmodule"
+    message: "&fShutting down &e%name% &fmodule"
   max_distance_reached:
     message: "&fYour weapon has reached the max distance of &b%max_distance% &fblocks!"
   max_return_distance_reached:
