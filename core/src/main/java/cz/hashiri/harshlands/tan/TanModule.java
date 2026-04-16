@@ -62,6 +62,8 @@ public class TanModule extends HLModule {
         setUserConfig(new HLConfig(plugin, "Settings/toughasnails.yml"));
         setItemConfig(new HLConfig(plugin, "Items/toughasnails/items.yml"));
         setRecipeConfig(new HLConfig(plugin, "Items/toughasnails/recipes.yml"));
+        setBlockDropsConfig(new HLConfig(plugin, "Items/toughasnails/block_drops.yml"));
+        setMobDropsConfig(new HLConfig(plugin, "Items/toughasnails/mob_drops.yml"));
 
         HLPlugin.getPlugin().getDebugManager().registerProvider(new cz.hashiri.harshlands.debug.DebugProvider() {
             @Override public String getModuleName() { return NAME; }

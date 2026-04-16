@@ -52,6 +52,8 @@ public class BaubleModule extends HLModule {
         setUserConfig(new HLConfig(plugin, "Settings/baubles.yml"));
         setItemConfig(new HLConfig(plugin, "Items/baubles/items.yml"));
         setRecipeConfig(new HLConfig(plugin, "Items/baubles/recipes.yml"));
+        setBlockDropsConfig(new HLConfig(plugin, "Items/baubles/block_drops.yml"));
+        setMobDropsConfig(new HLConfig(plugin, "Items/baubles/mob_drops.yml"));
         setModuleItems(new ModuleItems(this));
         setModuleRecipes(new ModuleRecipes(this, plugin));
 

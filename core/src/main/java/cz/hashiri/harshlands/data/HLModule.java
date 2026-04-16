@@ -55,6 +55,12 @@ public abstract class HLModule {
     @Nullable
     private HLConfig recipesConfig;
 
+    @Nullable
+    private HLConfig blockDropsConfig;
+
+    @Nullable
+    private HLConfig mobDropsConfig;
+
     @Nonnull
     private final Map<HLModule, String> dependencies;
 
@@ -162,6 +168,24 @@ public abstract class HLModule {
 
     public void setRecipeConfig(@Nullable HLConfig config) {
         recipesConfig = config;
+    }
+
+    @Nullable
+    public HLConfig getBlockDropsConfig() {
+        return blockDropsConfig;
+    }
+
+    public void setBlockDropsConfig(@Nullable HLConfig config) {
+        blockDropsConfig = config;
+    }
+
+    @Nullable
+    public HLConfig getMobDropsConfig() {
+        return mobDropsConfig;
+    }
+
+    public void setMobDropsConfig(@Nullable HLConfig config) {
+        mobDropsConfig = config;
     }
 
     public void setModuleItems(@Nullable ModuleItems moduleItems) {

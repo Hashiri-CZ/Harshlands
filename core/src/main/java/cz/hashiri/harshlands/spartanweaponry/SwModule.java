@@ -43,6 +43,8 @@ public class SwModule extends HLModule {
         setUserConfig(new HLConfig(plugin, "Settings/spartanweaponry.yml"));
         setItemConfig(new HLConfig(plugin, "Items/spartanweaponry/items.yml"));
         setRecipeConfig(new HLConfig(plugin, "Items/spartanweaponry/recipes.yml"));
+        setBlockDropsConfig(new HLConfig(plugin, "Items/spartanweaponry/block_drops.yml"));
+        setMobDropsConfig(new HLConfig(plugin, "Items/spartanweaponry/mob_drops.yml"));
 
         setModuleItems(new ModuleItems(this));
         setModuleRecipes(new ModuleRecipes(this, plugin));

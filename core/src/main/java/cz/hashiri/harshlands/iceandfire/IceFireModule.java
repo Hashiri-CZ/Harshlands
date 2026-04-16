@@ -55,6 +55,8 @@ public class IceFireModule extends HLModule {
         setUserConfig(new HLConfig(plugin, "Settings/iceandfire.yml"));
         setItemConfig(new HLConfig(plugin, "Items/iceandfire/items.yml"));
         setRecipeConfig(new HLConfig(plugin, "Items/iceandfire/recipes.yml"));
+        setBlockDropsConfig(new HLConfig(plugin, "Items/iceandfire/block_drops.yml"));
+        setMobDropsConfig(new HLConfig(plugin, "Items/iceandfire/mob_drops.yml"));
         setModuleItems(new ModuleItems(this));
         setModuleRecipes(new ModuleRecipes(this, plugin));
 

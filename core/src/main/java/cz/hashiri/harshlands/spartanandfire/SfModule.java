@@ -46,6 +46,8 @@ public class SfModule extends HLModule {
         setUserConfig(new HLConfig(plugin, "Settings/spartanandfire.yml"));
         setItemConfig(new HLConfig(plugin, "Items/spartanandfire/items.yml"));
         setRecipeConfig(new HLConfig(plugin, "Items/spartanandfire/recipes.yml"));
+        setBlockDropsConfig(new HLConfig(plugin, "Items/spartanandfire/block_drops.yml"));
+        setMobDropsConfig(new HLConfig(plugin, "Items/spartanandfire/mob_drops.yml"));
 
         setModuleItems(new ModuleItems(this));
         setModuleRecipes(new ModuleRecipes(this, plugin));

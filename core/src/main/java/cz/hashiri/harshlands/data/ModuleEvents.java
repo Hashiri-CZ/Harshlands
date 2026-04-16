@@ -77,7 +77,10 @@ public abstract class ModuleEvents implements Listener {
             if (shouldEventBeRan(block.getWorld())) {
                 ItemStack itemMainHand = event.getPlayer().getInventory().getItemInMainHand();
 
-                ConfigurationSection blockDrops = config.getConfigurationSection("BlockDrops");
+                FileConfiguration dropsSource = module.getBlockDropsConfig() != null
+                        ? module.getBlockDropsConfig().getConfig()
+                        : config;
+                ConfigurationSection blockDrops = dropsSource.getConfigurationSection("BlockDrops");
 
                 if (blockDrops != null) {
                     if (blockDrops.getKeys(false).contains(mat)) {
@@ -101,11 +104,11 @@ public abstract class ModuleEvents implements Listener {
                             }
 
                             if (conditionsMet) {
-                                if (config.getBoolean("BlockDrops." + mat + "." + drop + ".ReplaceDefaultDrop")) {
+                                if (dropsSource.getBoolean("BlockDrops." + mat + "." + drop + ".ReplaceDefaultDrop")) {
                                     event.setDropItems(false);
                                 }
 
-                                Utils.dropFortune(config.getConfigurationSection("BlockDrops." + mat + "." + drop), HLItem.getItem(drop), itemMainHand, block.getLocation());
+                                Utils.dropFortune(dropsSource.getConfigurationSection("BlockDrops." + mat + "." + drop), HLItem.getItem(drop), itemMainHand, block.getLocation());
                             }
                         }
                     }
@@ -119,14 +122,17 @@ public abstract class ModuleEvents implements Listener {
         LivingEntity entity = event.getEntity();
 
         if (shouldEventBeRan(entity)) {
-            ConfigurationSection mobDrops = config.getConfigurationSection("MobDrops");
+            FileConfiguration dropsSource = module.getMobDropsConfig() != null
+                    ? module.getMobDropsConfig().getConfig()
+                    : config;
+            ConfigurationSection mobDrops = dropsSource.getConfigurationSection("MobDrops");
 
             if (mobDrops != null) {
                 Set<String> mobKeys = mobDrops.getKeys(false);
 
                 if (mobKeys.contains(entity.getType().toString())) {
                     if (entity.getType().toString() != null) {
-                        ConfigurationSection section = config.getConfigurationSection("MobDrops." + entity.getType());
+                        ConfigurationSection section = dropsSource.getConfigurationSection("MobDrops." + entity.getType());
                         Set<String> itemKeys = section.getKeys(false);
 
                         ItemStack tool = entity.getKiller() == null ? null : entity.getKiller().getInventory().getItemInMainHand();

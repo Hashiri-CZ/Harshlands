@@ -45,6 +45,8 @@ public class FaModule extends HLModule {
         setUserConfig(new HLConfig(plugin, "Settings/firstaid.yml"));
         setItemConfig(new HLConfig(plugin, "Items/firstaid/items.yml"));
         setRecipeConfig(new HLConfig(plugin, "Items/firstaid/recipes.yml"));
+        setBlockDropsConfig(new HLConfig(plugin, "Items/firstaid/block_drops.yml"));
+        setMobDropsConfig(new HLConfig(plugin, "Items/firstaid/mob_drops.yml"));
 
         setModuleItems(new ModuleItems(this));
         setModuleRecipes(new ModuleRecipes(this, plugin));

@@ -46,6 +46,8 @@ public class NtpModule extends HLModule {
         setUserConfig(new HLConfig(plugin, "Settings/notreepunching.yml"));
         setItemConfig(new HLConfig(plugin, "Items/notreepunching/items.yml"));
         setRecipeConfig(new HLConfig(plugin, "Items/notreepunching/recipes.yml"));
+        setBlockDropsConfig(new HLConfig(plugin, "Items/notreepunching/block_drops.yml"));
+        setMobDropsConfig(new HLConfig(plugin, "Items/notreepunching/mob_drops.yml"));
         setModuleItems(new ModuleItems(this));
         setModuleRecipes(new ModuleRecipes(this, plugin));
 
