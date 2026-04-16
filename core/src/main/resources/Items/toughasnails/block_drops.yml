@@ -1,0 +1,30 @@
+BlockDrops:
+  ICE:
+    ice_cube:
+      Type: "Common"
+      Chance: 0.33
+      ReplaceDefaultDrop: true # Will prevent whatever items normally drop from dropping if set to true
+      IgnoreSilkTouchEnchant: false # If set to false, item will only drop if a block when mined with a tool without silk touch
+      RequireRightTool: true # If set to true, item will only drop if block can be mined with the tool in player's hand
+  PACKED_ICE:
+    ice_cube:
+      Type: "Common"
+      Chance: 0.67
+      ReplaceDefaultDrop: true
+      IgnoreSilkTouchEnchant: false
+      RequireRightTool: true
+  BLUE_ICE:
+    ice_cube:
+      Type: "Common"
+      Chance: 1.00
+      ReplaceDefaultDrop: true
+      IgnoreSilkTouchEnchant: false
+      RequireRightTool: true
+  MAGMA_BLOCK:
+    magma_shard:
+      Type: "Common"
+      Chance: 0.33
+      ReplaceDefaultDrop: true
+      IgnoreSilkTouchEnchant: false
+      RequireRightTool: true
+

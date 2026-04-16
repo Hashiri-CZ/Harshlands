@@ -1,0 +1,49 @@
+BlockDrops:
+  STONE:
+    stone_rock:
+      Type: "Range"
+      MinAmount: 2
+      MaxAmount: 4
+      ReplaceDefaultDrop: true # Will prevent whatever items normally drop from dropping if set to true
+      IgnoreSilkTouchEnchant: false # If set to false, item will only drop if a block when mined with a tool without silk touch
+      RequireRightTool: true # If set to true, item will only drop if block can be mined with the tool in player's hand
+  ANDESITE:
+    andesite_rock:
+      Type: "Range"
+      MinAmount: 2
+      MaxAmount: 4
+      ReplaceDefaultDrop: true
+      IgnoreSilkTouchEnchant: false
+      RequireRightTool: true
+  SANDSTONE:
+    sandstone_rock:
+      Type: "Range"
+      MinAmount: 2
+      MaxAmount: 4
+      ReplaceDefaultDrop: true
+      IgnoreSilkTouchEnchant: false
+      RequireRightTool: true
+  RED_SANDSTONE:
+    red_sandstone_rock:
+      Type: "Range"
+      MinAmount: 2
+      MaxAmount: 4
+      ReplaceDefaultDrop: true
+      IgnoreSilkTouchEnchant: false
+      RequireRightTool: true
+  GRANITE:
+    granite_rock:
+      Type: "Range"
+      MinAmount: 2
+      MaxAmount: 4
+      ReplaceDefaultDrop: true
+      IgnoreSilkTouchEnchant: false
+      RequireRightTool: true
+  DIORITE:
+    diorite_rock:
+      Type: "Range"
+      MinAmount: 2
+      MaxAmount: 4
+      ReplaceDefaultDrop: true
+      IgnoreSilkTouchEnchant: false
+      RequireRightTool: true

@@ -1,0 +1,9 @@
+BlockDrops:
+# BARRIER:
+#   handle:
+#     Type: "Rare"
+#     Chance: 0.00
+#     ReplaceDefaultDrop: true            # Will prevent whatever items normally drop from dropping if set to true
+#     IgnoreSilkTouchEnchant: false       # If set to false, item will only drop if a block when mined with a tool without silk touch
+#     RequireRightTool: true              # If set to true, item will only drop if block can be mined with the tool in player's hand
+

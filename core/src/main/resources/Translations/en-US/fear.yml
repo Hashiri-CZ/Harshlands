@@ -1,0 +1,22 @@
+fear:
+  initialize:
+    message: "&6[Harshlands] &fInitializing &e%name% &fmodule"
+  shutdown:
+    message: "&6[Harshlands] &fShutting down &e%name% &fmodule"
+  character_overrides:
+    fear_actionbar: "%fear_bar%%arrow%  "
+    fear_brain: ""
+    fear_bar0: "\uE840"
+    fear_bar1: "\uE841"
+    fear_bar2: "\uE841"
+    fear_bar3: "\uE842"
+    fear_bar4: "\uE843"
+    fear_bar5: "\uE844"
+    fear_bar6: "\uE845"
+    fear_bar7: "\uE846"
+    fear_bar8: "\uE847"
+    fear_bar9: "\uE848"
+    fear_bar10: "\uE849"
+    fear_arrow_up: "\uE84B"
+    fear_arrow_down: "\uE84A"
+    fear_arrow_stable: ""

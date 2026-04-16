@@ -86,22 +86,38 @@ Each module has its own configuration file. Mix and match to create the exact ex
 
 ---
 
-## ⚙️ Configuration
+## ⚙️ Configuration layout
 
-Every module is independently configurable. After first launch, you'll find configuration files in:
+On first boot, Harshlands creates the following directory structure under `plugins/Harshlands/`:
 
 ```
 plugins/Harshlands/
-├── config.yml              # Master config — enable/disable modules
-├── tough-as-nails.yml      # Temperature & thirst settings
-├── no-tree-punching.yml    # Early-game progression rules
-├── ice-and-fire.yml        # Creature spawning & loot tables
-├── spartan-weaponry.yml    # Weapon stats & recipes
-├── baubles.yml             # Trinket effects & drop rates
-└── fear.yml                # Darkness mechanics & intensity
+├── config.yml              # Main plugin config (locale, performance, database)
+├── Settings/               # Per-module gameplay tuning (one YAML per module)
+├── Translations/
+│   └── en-US/              # Ships with English. Copy to add a new language.
+├── Items/                  # Item definitions, recipes, and mob/block drop tables
+├── Presets/                # Shared presets (lore templates, AuraSkills requirements)
+└── Data/                   # Database file (H2) and runtime YAML data
 ```
 
 Want a server that's hard but not *RLCraft* hard? Turn off Fear and reduce temperature damage. Want pure chaos? Crank everything to max. The choice is yours.
+
+### Upgrading from a pre-reorganization install
+
+Existing servers with the old flat layout auto-migrate on first boot after upgrade. The migration:
+- Splits each legacy module YAML into `Settings/`, `Translations/`, and `Items/` files.
+- Moves `data.mv.db` into `Data/`.
+- Renames old files to `<name>.yml.migrated` (preserved as backups — never deleted).
+
+If migration fails the plugin refuses to enable; check the server log for the failing file and resolve manually, then restart.
+
+### Adding a language
+
+1. Copy `plugins/Harshlands/Translations/en-US/` to `plugins/Harshlands/Translations/<code>/` (e.g., `cs-CZ`, `de-DE`).
+2. Edit each YAML in the new folder to translate the string values.
+3. Set `Locale: "<code>"` in `config.yml`.
+4. Run `/hl reload` — new strings take effect immediately.
 
 ---
 

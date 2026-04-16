@@ -18,6 +18,7 @@ package cz.hashiri.harshlands.spartanweaponry;
 
 import cz.hashiri.harshlands.data.HLModule;
 import cz.hashiri.harshlands.HLPlugin;
+import cz.hashiri.harshlands.locale.Messages;
 import cz.hashiri.harshlands.spartanandfire.BurnTask;
 import cz.hashiri.harshlands.spartanandfire.ElectrocuteTask;
 import cz.hashiri.harshlands.spartanandfire.FreezeTask;
@@ -289,7 +290,9 @@ public class ThrowWeaponTask extends BukkitRunnable {
                             }
                             else {
                                 if (config.getBoolean("MaxDistanceReached.Enabled")) {
-                                    entity.sendMessage(Utils.translateMsg(config.getString("MaxDistanceReached.Message"), entity, Map.of("MAX_DISTANCE", Math.round(Math.sqrt(maxDistanceSquared)))));
+                                    entity.sendMessage(Messages.of("spartanweaponry.max_distance_reached.message")
+                                            .with("max_distance", Math.round(Math.sqrt(maxDistanceSquared)))
+                                            .build());
                                 }
                                 dropWeaponTask(armorStand, entity, item.clone());
                             }
@@ -341,7 +344,11 @@ public class ThrowWeaponTask extends BukkitRunnable {
         as.remove();
 
         if (config.getBoolean("WeaponDropped.Enabled")) {
-            entity.sendMessage(Utils.translateMsg(config.getString("WeaponDropped.Message"), this.entity, Map.of("X_COORD", (int) Math.round(loc.getX()), "Y_COORD", (int) Math.round(loc.getY()), "Z_COORD", (int) Math.round(loc.getZ()))));
+            entity.sendMessage(Messages.of("spartanweaponry.weapon_dropped.message")
+                    .with("x_coord", (int) Math.round(loc.getX()))
+                    .with("y_coord", (int) Math.round(loc.getY()))
+                    .with("z_coord", (int) Math.round(loc.getZ()))
+                    .build());
         }
 
         tasks.remove(entity.getUniqueId());

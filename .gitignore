@@ -137,3 +137,6 @@ run/
 
 # Superpowers design docs (local only)
 docs/superpowers/
+
+# Local-only store listing draft
+STORE_LISTING.md

@@ -56,8 +56,8 @@ public class FoodExpansionModule extends HLModule {
 
     @Override
     public void initialize() {
-        setUserConfig(new HLConfig(plugin, "foodexpansion.yml"));
-        Utils.logModuleLifecycle("Initializing", NAME);
+        setUserConfig(new HLConfig(plugin, "Settings/foodexpansion.yml"));
+        Utils.logModuleInit("foodexpansion", NAME);
 
         // Create shared attribute modifier keys
         keyMaxHealth = new NamespacedKey(plugin, "nutrition_max_health");
@@ -144,6 +144,7 @@ public class FoodExpansionModule extends HLModule {
         }
         standaloneAboveActionBarHuds.clear();
         playerHuds.clear();
+        Utils.logModuleShutdown("foodexpansion", NAME);
     }
 
     private void loadFoodMap() {

@@ -19,11 +19,11 @@ package cz.hashiri.harshlands.comfort;
 import cz.hashiri.harshlands.data.HLPlayer;
 import cz.hashiri.harshlands.data.cabinfever.DataModule;
 import cz.hashiri.harshlands.HLPlugin;
+import cz.hashiri.harshlands.locale.Messages;
 import cz.hashiri.harshlands.tan.ThirstCalculateTask;
 import net.kyori.adventure.audience.Audience;
 import net.kyori.adventure.text.serializer.legacy.LegacyComponentSerializer;
 import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
 import org.bukkit.GameMode;
 import org.bukkit.NamespacedKey;
 import org.bukkit.Registry;
@@ -216,12 +216,8 @@ public class CabinFeverSubsystem {
 
         // RESTLESS and above: speed debuff + action bar warning
         applySpeedModifier(player);
-        String msgKey = "CabinFever.Messages." + stage.name().charAt(0) + stage.name().substring(1).toLowerCase();
-        String msg = config.getString(msgKey, "");
-        if (!msg.isEmpty()) {
-            String colored = ChatColor.translateAlternateColorCodes('&', msg);
-            ((Audience) player).sendActionBar(LegacyComponentSerializer.legacySection().deserialize(colored));
-        }
+        String stageMsg = Messages.get("comfort.cabin_fever.messages." + stage.name().toLowerCase());
+        ((Audience) player).sendActionBar(LegacyComponentSerializer.legacySection().deserialize(stageMsg));
 
         if (stage == CabinFeverStage.RISK || stage == CabinFeverStage.FULL) {
             int nauseaInterval = (stage == CabinFeverStage.FULL) ? nauseaFullInterval : nauseaRiskInterval;
@@ -317,10 +313,7 @@ public class CabinFeverSubsystem {
         updateThirstTask(player.getUniqueId(), false);
         lastNauseaTick.remove(player.getUniqueId());
 
-        String msg = config.getString("CabinFever.Messages.Cured", "");
-        if (!msg.isEmpty()) {
-            player.sendMessage(ChatColor.translateAlternateColorCodes('&', msg));
-        }
+        Messages.of("comfort.cabin_fever.messages.cured").send(player);
 
         cz.hashiri.harshlands.debug.DebugManager debugMgr = plugin.getDebugManager();
         if (debugMgr.isActive("Comfort", "CabinFever", player.getUniqueId())) {

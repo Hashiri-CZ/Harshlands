@@ -17,6 +17,7 @@
 package cz.hashiri.harshlands.integrations;
 
 import cz.hashiri.harshlands.HLPlugin;
+import cz.hashiri.harshlands.locale.Messages;
 import cz.hashiri.harshlands.utils.HLItem;
 import cz.hashiri.harshlands.utils.Utils;
 import org.bukkit.Bukkit;
@@ -342,16 +343,13 @@ public class AuraSkillsRequirementsListener implements Listener {
 
     @Nonnull
     private String buildFailureMessage(@Nonnull Player player, @Nonnull String action, @Nullable String identifier, @Nonnull RequirementFailure failure) {
-        FileConfiguration integrationConfig = plugin.getIntegrationsConfig();
-        String path = "AuraSkills.Requirements.Message";
-        String raw = integrationConfig.getString(path, "&cYou need %SKILL% level %REQUIRED_LEVEL% to %ACTION% %ITEM%. Current level: %CURRENT_LEVEL%.");
-        return Utils.translateMsg(raw, player, Map.of(
-                "ACTION", action,
-                "ITEM", identifier == null || identifier.isBlank() ? "item" : identifier,
-                "SKILL", failure.skill,
-                "REQUIRED_LEVEL", failure.requiredLevel,
-                "CURRENT_LEVEL", failure.currentLevel
-        ));
+        return Messages.of("integrations.aura_skills.requirements.message")
+                .with("action", action)
+                .with("item", identifier == null || identifier.isBlank() ? "item" : identifier)
+                .with("skill", failure.skill)
+                .with("required_level", failure.requiredLevel)
+                .with("current_level", failure.currentLevel)
+                .build();
     }
 
     private boolean isArmorItem(@Nullable ItemStack item) {

@@ -1,0 +1,7 @@
+integrations:
+  placeholder_api:
+    error:
+      message: "&cThe placeholder, %placeholder%, does not exist or is being used incorrectly"
+  aura_skills:
+    requirements:
+      message: "&cYou need %skill% level %required_level% to %action% %item%. Current level: %current_level%."

@@ -44,14 +44,14 @@ public class BaubleModule extends HLModule {
     public BaubleModule(HLPlugin plugin) {
         super(NAME, plugin, Map.of(), Map.of(HLModule.getModule(IceFireModule.NAME), "Detected disabled Ice and Fire module. Dragon's eye recipe will be partially disabled."));
         this.plugin = plugin;
-        this.config = new HLConfig(plugin, "resources/baubles/playerdata.yml");
+        this.config = new HLConfig(plugin, "Items/baubles/playerdata.yml");
     }
 
     @Override
     public void initialize() {
-        setUserConfig(new HLConfig(plugin, "baubles.yml"));
-        setItemConfig(new HLConfig(plugin, "resources/baubles/items.yml"));
-        setRecipeConfig(new HLConfig(plugin, "resources/baubles/recipes.yml"));
+        setUserConfig(new HLConfig(plugin, "Settings/baubles.yml"));
+        setItemConfig(new HLConfig(plugin, "Items/baubles/items.yml"));
+        setRecipeConfig(new HLConfig(plugin, "Items/baubles/recipes.yml"));
         setModuleItems(new ModuleItems(this));
         setModuleRecipes(new ModuleRecipes(this, plugin));
 
@@ -62,7 +62,7 @@ public class BaubleModule extends HLModule {
 
         FileConfiguration config = getUserConfig().getConfig();
         if (config.getBoolean("Initialize.Enabled")) {
-            Utils.logModuleLifecycle("Initializing", NAME);
+            Utils.logModuleInit("baubles", NAME);
         }
 
         events = new BaubleEvents(this, plugin);
@@ -78,7 +78,7 @@ public class BaubleModule extends HLModule {
     public void shutdown() {
         FileConfiguration config = getUserConfig().getConfig();
         if (config.getBoolean("Shutdown.Enabled")) {
-            Utils.logModuleLifecycle("Shutting down", NAME);
+            Utils.logModuleShutdown("baubles", NAME);
         }
     }
 

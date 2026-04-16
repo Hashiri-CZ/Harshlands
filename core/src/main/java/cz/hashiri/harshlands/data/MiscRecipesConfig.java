@@ -20,7 +20,7 @@ import cz.hashiri.harshlands.HLPlugin;
 
 public class MiscRecipesConfig extends HLConfig {
 
-    public static final String PATH = "resources/misc_recipes.yml";
+    public static final String PATH = "Items/misc/recipes.yml";
     public static final boolean REPLACE = false;
     public static final boolean UPDATE = true;
 

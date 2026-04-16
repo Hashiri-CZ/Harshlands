@@ -21,6 +21,7 @@ import cz.hashiri.harshlands.fear.FearModule;
 import cz.hashiri.harshlands.iceandfire.IceFireModule;
 import cz.hashiri.harshlands.integrations.CompatiblePlugin;
 import cz.hashiri.harshlands.integrations.PAPI;
+import cz.hashiri.harshlands.locale.Messages;
 import cz.hashiri.harshlands.tan.TanModule;
 import me.clip.placeholderapi.PlaceholderAPI;
 import net.kyori.adventure.text.serializer.legacy.LegacyComponentSerializer;
@@ -132,29 +133,15 @@ public class CharacterValues {
         templateTempOnly    = (tanConfig != null) ? tanConfig.getString("CharacterOverrides.TemperatureActionbar", "") : "";
         templateThirstOnly  = (tanConfig != null) ? tanConfig.getString("CharacterOverrides.ThirstActionbar", "") : "";
 
-        HLModule fearModuleRef = HLModule.getModule(FearModule.NAME);
-        FileConfiguration fearConfig = (fearModuleRef != null && fearModuleRef.isGloballyEnabled())
-                ? fearModuleRef.getUserConfig().getConfig()
-                : null;
-
         fearBarGlyphs = new String[11];
-        if (fearConfig != null) {
-            for (int i = 0; i <= 10; i++) {
-                fearBarGlyphs[i] = toLegacySection(fearConfig.getString("CharacterOverrides.FearBar" + i));
-            }
-            fearBrainGlyph        = toLegacySection(fearConfig.getString("CharacterOverrides.FearBrain"));
-            fearArrowUpGlyph      = toLegacySection(fearConfig.getString("CharacterOverrides.FearArrowUp"));
-            fearArrowDownGlyph    = toLegacySection(fearConfig.getString("CharacterOverrides.FearArrowDown"));
-            fearArrowStableGlyph  = toLegacySection(fearConfig.getString("CharacterOverrides.FearArrowStable"));
-            templateFearActionbar = fearConfig.getString("CharacterOverrides.FearActionbar", "");
-        } else {
-            for (int i = 0; i <= 10; i++) fearBarGlyphs[i] = "";
-            fearBrainGlyph        = "";
-            fearArrowUpGlyph      = "";
-            fearArrowDownGlyph    = "";
-            fearArrowStableGlyph  = "";
-            templateFearActionbar = "";
+        for (int i = 0; i <= 10; i++) {
+            fearBarGlyphs[i] = Messages.get("fear.character_overrides.fear_bar" + i);
         }
+        fearBrainGlyph        = Messages.get("fear.character_overrides.fear_brain");
+        fearArrowUpGlyph      = Messages.get("fear.character_overrides.fear_arrow_up");
+        fearArrowDownGlyph    = Messages.get("fear.character_overrides.fear_arrow_down");
+        fearArrowStableGlyph  = Messages.get("fear.character_overrides.fear_arrow_stable");
+        templateFearActionbar = Messages.get("fear.character_overrides.fear_actionbar");
     }
 
     private static String toLegacySection(String raw) {
@@ -239,14 +226,15 @@ public class CharacterValues {
 
     @Nonnull
     public String getFearActionbar(double fearLevel, boolean fearIncreasing, boolean fearDecreasing) {
-        if (templateFearActionbar.isEmpty()) return "";
+        if (templateFearActionbar.isEmpty() || templateFearActionbar.startsWith("[")) return "";
         int barIndex = Math.max(0, Math.min(10, (int) Math.round(fearLevel / 10.0)));
         String arrow = fearIncreasing ? fearArrowUpGlyph
                      : fearDecreasing ? fearArrowDownGlyph
                      : fearArrowStableGlyph;
-        return templateFearActionbar
-                .replace("%BRAIN%",    fearBrainGlyph)
-                .replace("%FEAR_BAR%", fearBarGlyphs[barIndex])
-                .replace("%ARROW%",    arrow);
+        return Messages.of("fear.character_overrides.fear_actionbar")
+                .with("brain", fearBrainGlyph)
+                .with("fear_bar", fearBarGlyphs[barIndex])
+                .with("arrow", arrow)
+                .build();
     }
 }

@@ -18,11 +18,11 @@ package cz.hashiri.harshlands.baubles;
 
 import cz.hashiri.harshlands.data.baubles.GUI;
 import cz.hashiri.harshlands.HLPlugin;
+import cz.hashiri.harshlands.locale.Messages;
 import cz.hashiri.harshlands.utils.HLItem;
 import cz.hashiri.harshlands.utils.Utils;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
-import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
@@ -35,12 +35,10 @@ public class WormholeInventory extends GUI {
 
     private final NavigableMap<UUID, Integer> players = new TreeMap<>();
     private final Collection<Integer> notAllowed = List.of(17, 18, 26, 27, 35, 36);
-    private final FileConfiguration config;
     private int nextSlot = 10;
 
     public WormholeInventory(HLPlugin plugin, BaubleModule module) {
         super(null, 54, "Wormhole Inventory");
-        this.config = module.getUserConfig().getConfig();
         Inventory inv = getInventory();
 
         ItemStack guiGlass = HLItem.getItem("gui_glass");
@@ -65,7 +63,7 @@ public class WormholeInventory extends GUI {
             ((SkullMeta) meta).setOwningPlayer(Bukkit.getOfflinePlayer(id));
         }
 
-        meta.setDisplayName(Utils.translateMsg(config.getString("WormholeInventory.SkullName"), player, Map.of("PLAYER_NAME", player.getDisplayName())));
+        meta.setDisplayName(Messages.of("baubles.wormhole_inventory.skull_name").with("player_name", player.getDisplayName()).build());
 
         skull.setItemMeta(meta);
         if (!players.containsKey(id)) {

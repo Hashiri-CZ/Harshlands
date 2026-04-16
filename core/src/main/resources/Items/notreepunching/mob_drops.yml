@@ -1,0 +1,7 @@
+# Used to specify custom item drops for any mob
+# By default, there is no use for this, so the chance is set to 0.00
+MobDrops:
+# WITHER:
+#   flint_shard:
+#     Type: "Rare"
+#     Chance: 0.00

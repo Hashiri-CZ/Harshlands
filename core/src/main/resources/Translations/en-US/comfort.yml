@@ -1,0 +1,18 @@
+comfort:
+  initialize:
+    message: "&6[Harshlands] &fInitializing &e%name% &fmodule"
+  shutdown:
+    message: "&6[Harshlands] &fShutting down &e%name% &fmodule"
+  module_disabled: "&c[Harshlands] Comfort module is not enabled."
+  messages:
+    no_comfort: "§7No comfort nearby."
+    buff_applied: "§aComfort: §f%score% §7(%tier%) §a- Resting buff for %minutes%min"
+    comfort_check: "§7Comfort Score: §f%score% §7(%tier%)"
+    comfort_breakdown: "§7Nearby: §f%categories%"
+  cabin_fever:
+    messages:
+      restless: "&eYou feel restless from being indoors too long..."
+      risk: "&6Cabin fever is setting in. Go outside!"
+      full: "&cYou have cabin fever! Get outdoors to recover."
+      sleep_denied: "&cYou're too restless to sleep. Go outside first."
+      cured: "&aThe fresh air clears your mind. Cabin fever cured!"

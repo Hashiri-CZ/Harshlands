@@ -16,10 +16,7 @@
  */
 package cz.hashiri.harshlands.comfort;
 
-import cz.hashiri.harshlands.data.HLPlayer;
-import cz.hashiri.harshlands.data.cabinfever.DataModule;
-import org.bukkit.ChatColor;
-import org.bukkit.configuration.file.FileConfiguration;
+import cz.hashiri.harshlands.locale.Messages;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
@@ -36,15 +33,11 @@ public class CabinFeverEvents implements Listener {
     private final CabinFeverSubsystem subsystem;
     @Nonnull
     private final ComfortModule module;
-    @Nonnull
-    private final FileConfiguration config;
 
     public CabinFeverEvents(@Nonnull CabinFeverSubsystem subsystem,
-                            @Nonnull ComfortModule module,
-                            @Nonnull FileConfiguration config) {
+                            @Nonnull ComfortModule module) {
         this.subsystem = subsystem;
         this.module = module;
-        this.config = config;
     }
 
     @EventHandler(priority = EventPriority.HIGH, ignoreCancelled = true)
@@ -61,10 +54,7 @@ public class CabinFeverEvents implements Listener {
         CabinFeverSubsystem.CabinFeverStage stage = subsystem.getPlayerStage(player);
         if (stage == CabinFeverSubsystem.CabinFeverStage.FULL) {
             event.setCancelled(true);
-            String msg = config.getString("CabinFever.Messages.SleepDenied", "");
-            if (!msg.isEmpty()) {
-                player.sendMessage(ChatColor.translateAlternateColorCodes('&', msg));
-            }
+            Messages.of("comfort.cabin_fever.messages.sleep_denied").send(player);
         }
     }
 

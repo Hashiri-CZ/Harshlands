@@ -17,6 +17,7 @@
 package cz.hashiri.harshlands.spartanweaponry;
 
 import cz.hashiri.harshlands.data.HLModule;
+import cz.hashiri.harshlands.locale.Messages;
 import cz.hashiri.harshlands.utils.HLItem;
 import cz.hashiri.harshlands.utils.Utils;
 import org.bukkit.Location;
@@ -28,8 +29,6 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.util.Vector;
-
-import java.util.Map;
 
 public class ReturnWeaponTask extends BukkitRunnable {
 
@@ -82,11 +81,17 @@ public class ReturnWeaponTask extends BukkitRunnable {
                         Location dropLoc = dropItem(asLocation);
 
                         if (config.getBoolean("MaxReturnDistanceReached.Enabled")) {
-                            entity.sendMessage(Utils.translateMsg(config.getString("MaxReturnDistanceReached.Message"), entity, Map.of("MAX_DISTANCE", Math.round(maxReturnDistance))));
+                            entity.sendMessage(Messages.of("spartanweaponry.max_return_distance_reached.message")
+                                    .with("max_distance", Math.round(maxReturnDistance))
+                                    .build());
                         }
 
                         if (config.getBoolean("WeaponDropped.Enabled")) {
-                            entity.sendMessage(Utils.translateMsg(config.getString("WeaponDropped.Message"), entity, Map.of("X_COORD", (int) Math.round(dropLoc.getX()), "Y_COORD", (int) Math.round(dropLoc.getY()), "Z_COORD", (int) Math.round(dropLoc.getZ()))));
+                            entity.sendMessage(Messages.of("spartanweaponry.weapon_dropped.message")
+                                    .with("x_coord", (int) Math.round(dropLoc.getX()))
+                                    .with("y_coord", (int) Math.round(dropLoc.getY()))
+                                    .with("z_coord", (int) Math.round(dropLoc.getZ()))
+                                    .build());
                         }
 
                         stop();
@@ -117,7 +122,11 @@ public class ReturnWeaponTask extends BukkitRunnable {
 
                         if (isInvFull) {
                             if (config.getBoolean("FullInventoryWeaponDropped.Enabled")) {
-                                entity.sendMessage(Utils.translateMsg(config.getString("FullInventoryWeaponDropped.Message"), entity, Map.of("X_COORD", (int) Math.round(pLocation.getX()), "Y_COORD", (int) Math.round(pLocation.getY()), "Z_COORD", (int) Math.round(pLocation.getZ()))));
+                                entity.sendMessage(Messages.of("spartanweaponry.full_inventory_weapon_dropped.message")
+                                        .with("x_coord", (int) Math.round(pLocation.getX()))
+                                        .with("y_coord", (int) Math.round(pLocation.getY()))
+                                        .with("z_coord", (int) Math.round(pLocation.getZ()))
+                                        .build());
                             }
                             dropItem(pLocation);
                         }

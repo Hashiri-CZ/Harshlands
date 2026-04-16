@@ -52,9 +52,9 @@ public class IceFireModule extends HLModule {
 
     @Override
     public void initialize() {
-        setUserConfig(new HLConfig(plugin, "iceandfire.yml"));
-        setItemConfig(new HLConfig(plugin, "resources/iceandfire/items.yml"));
-        setRecipeConfig(new HLConfig(plugin, "resources/iceandfire/recipes.yml"));
+        setUserConfig(new HLConfig(plugin, "Settings/iceandfire.yml"));
+        setItemConfig(new HLConfig(plugin, "Items/iceandfire/items.yml"));
+        setRecipeConfig(new HLConfig(plugin, "Items/iceandfire/recipes.yml"));
         setModuleItems(new ModuleItems(this));
         setModuleRecipes(new ModuleRecipes(this, plugin));
 
@@ -65,7 +65,7 @@ public class IceFireModule extends HLModule {
 
         FileConfiguration config = getUserConfig().getConfig();
         if (config.getBoolean("Initialize.Enabled")) {
-            Utils.logModuleLifecycle("Initializing", NAME);
+            Utils.logModuleInit("iceandfire", NAME);
         }
 
         events = new IceFireEvents(this, plugin);
@@ -79,7 +79,7 @@ public class IceFireModule extends HLModule {
     public void shutdown() {
         FileConfiguration config = getUserConfig().getConfig();
         if (config.getBoolean("Shutdown.Enabled")) {
-            Utils.logModuleLifecycle("Shutting down", NAME);
+            Utils.logModuleShutdown("iceandfire", NAME);
         }
     }
 

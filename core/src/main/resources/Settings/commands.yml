@@ -1,0 +1,107 @@
+﻿#######################################
+#          Commands                   #
+#######################################
+
+ConfigId: "1.2.16-RELEASE" # Used for config syncing purposes, do NOT edit
+
+# Permissions
+EnableCommandBlockUsage: true
+EnableCommandBlockMinecartUsage: true
+
+# Commands
+Give:
+  TooFewItems:
+    Enabled: true
+  TooManyItems:
+    Enabled: true
+    MaxValue: 100
+  CorrectExecution:
+    Enabled: true
+    Sound:
+      Enabled: true
+      Sound: "ENTITY_ITEM_PICKUP"
+      Volume: 1.0
+      Pitch: 1.0
+
+Reload:
+  CorrectExecution:
+    Enabled: true
+
+SpawnItem:
+  CheckStackSize: true
+  TooFewItems:
+    Enabled: true
+  TooManyItems:
+    Enabled: true
+    MaxValue: 64
+  ExceedsStackSize:
+    Enabled: true
+  CorrectExecution:
+    Enabled: true
+
+Summon:
+  RequiredModulesDisabled:
+    Enabled: true
+  MisspelledMob:
+    Enabled: true
+  CorrectExecution:
+    Enabled: true
+
+Temperature:
+  BelowMinValue:
+    Enabled: true
+  AboveMaxValue:
+    Enabled: true
+  TanModuleDisabled:
+    Enabled: true
+  CorrectExecution:
+    Enabled: true
+
+Thirst:
+  BelowMinValue:
+    Enabled: true
+  AboveMaxValue:
+    Enabled: true
+  TanModuleDisabled:
+    Enabled: true
+  CorrectExecution:
+    Enabled: true
+
+ResetItem:
+  NoValidItemsFound:
+    Enabled: true
+  CorrectExecution:
+    Enabled: true
+
+UpdateItem:
+  NoValidItemsFound:
+    Enabled: true
+  CorrectExecution:
+    Enabled: true
+    Options:
+      Material: true
+      MaterialData: false
+      DisplayName: true
+      Lore: true
+      Unbreakability: true
+      AttributeModifiers: true
+      LocalizedName: true
+      CustomModelData: true
+      ItemModel: true
+      EquippableComponent: true
+      Enchants:
+        Enabled: true
+        PreserveExistingEnchants: true
+      ItemFlags:
+        Enabled: true
+        PreserveExistingItemFlags: true
+      VanillaDurability: false
+      NbtTags:
+        Enabled: true
+        Module: true
+        CustomDurability: false
+        CustomMaxDurability: true
+
+# Tab completer
+Count: "[<count>]"
+

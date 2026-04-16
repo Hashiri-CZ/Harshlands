@@ -59,7 +59,7 @@ public class ComfortModule extends HLModule {
 
     @Override
     public void initialize() {
-        setUserConfig(new HLConfig(plugin, "comfort.yml"));
+        setUserConfig(new HLConfig(plugin, "Settings/comfort.yml"));
 
         HLPlugin.getPlugin().getDebugManager().registerProvider(new cz.hashiri.harshlands.debug.DebugProvider() {
             @Override public String getModuleName() { return NAME; }
@@ -69,7 +69,7 @@ public class ComfortModule extends HLModule {
         FileConfiguration config = getUserConfig().getConfig();
 
         if (config.getBoolean("Initialize.Enabled")) {
-            Utils.logModuleLifecycle("Initializing", NAME);
+            Utils.logModuleInit("comfort", NAME);
         }
 
         calculator = new ComfortScoreCalculator(config, plugin.getLogger());
@@ -79,7 +79,7 @@ public class ComfortModule extends HLModule {
         if (config.getBoolean("CabinFever.Enabled", false)) {
             cabinFeverSubsystem = new CabinFeverSubsystem(plugin, config);
             cabinFeverSubsystem.initialize();
-            cabinFeverEvents = new CabinFeverEvents(cabinFeverSubsystem, this, config);
+            cabinFeverEvents = new CabinFeverEvents(cabinFeverSubsystem, this);
             Bukkit.getPluginManager().registerEvents(cabinFeverEvents, plugin);
         }
     }
@@ -88,7 +88,7 @@ public class ComfortModule extends HLModule {
     public void shutdown() {
         FileConfiguration config = getUserConfig() != null ? getUserConfig().getConfig() : null;
         if (config != null && config.getBoolean("Shutdown.Enabled")) {
-            Utils.logModuleLifecycle("Shutting down", NAME);
+            Utils.logModuleShutdown("comfort", NAME);
         }
 
         if (cabinFeverSubsystem != null) {

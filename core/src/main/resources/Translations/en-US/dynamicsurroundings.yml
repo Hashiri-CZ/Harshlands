@@ -1,0 +1,5 @@
+dynamicsurroundings:
+  initialize:
+    message: "&6[Harshlands] &fInitializing &e%name% &fmodule"
+  shutdown:
+    message: "&6[Harshlands] &fShutting down &e%name% &fmodule"

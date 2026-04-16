@@ -37,7 +37,7 @@ public class DynamicSurroundingsModule extends HLModule {
 
     @Override
     public void initialize() {
-        setUserConfig(new HLConfig(plugin, "dynamicsurroundings.yml"));
+        setUserConfig(new HLConfig(plugin, "Settings/dynamicsurroundings.yml"));
 
         HLPlugin.getPlugin().getDebugManager().registerProvider(new cz.hashiri.harshlands.debug.DebugProvider() {
             @Override public String getModuleName() { return NAME; }
@@ -46,7 +46,7 @@ public class DynamicSurroundingsModule extends HLModule {
 
         FileConfiguration config = getUserConfig().getConfig();
         if (config.getBoolean("Initialize.Enabled")) {
-            Utils.logModuleLifecycle("Initializing", NAME);
+            Utils.logModuleInit("dynamicsurroundings", NAME);
         }
 
         FootstepHandler footstepHandler = config.getBoolean("Footsteps.Enabled", true)
@@ -69,7 +69,7 @@ public class DynamicSurroundingsModule extends HLModule {
     public void shutdown() {
         FileConfiguration config = getUserConfig().getConfig();
         if (config.getBoolean("Shutdown.Enabled")) {
-            Utils.logModuleLifecycle("Shutting down", NAME);
+            Utils.logModuleShutdown("dynamicsurroundings", NAME);
         }
     }
 

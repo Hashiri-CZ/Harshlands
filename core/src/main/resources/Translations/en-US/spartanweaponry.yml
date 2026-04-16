@@ -1,0 +1,13 @@
+spartanweaponry:
+  initialize:
+    message: "&6[Harshlands] &fInitializing &e%name% &fmodule"
+  shutdown:
+    message: "&6[Harshlands] &fShutting down &e%name% &fmodule"
+  max_distance_reached:
+    message: "&fYour weapon has reached the max distance of &b%max_distance% &fblocks!"
+  max_return_distance_reached:
+    message: "&fYour weapon has not been returned since you're too far!"
+  full_inventory_weapon_dropped:
+    message: "&fInventory full! Your weapon has been dropped instead at &bx&f: &b%x_coord%&f, &by&f: &b%y_coord%&f, &bz&f: &b%z_coord%&f."
+  weapon_dropped:
+    message: "&fWeapon dropped at &bx&f: &b%x_coord%&f, &by&f: &b%y_coord%&f, &bz&f: &b%z_coord%&f."

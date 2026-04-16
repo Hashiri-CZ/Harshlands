@@ -1,0 +1,214 @@
+# Used to specify custom item drops for any mob
+MobDrops:
+  ALLAY:
+    polarized_stone:
+      Type: "Rare"
+      Chance: 0.01
+    ring_fairies:
+      Type: "Rare"
+      Chance: 0.01
+    stone_negative_gravity:
+      Type: "Rare"
+      Chance: 0.01
+  BAT:
+    polarized_stone:
+      Type: "Rare"
+      Chance: 0.01
+    ring_fairies:
+      Type: "Rare"
+      Chance: 0.01
+    stone_negative_gravity:
+      Type: "Rare"
+      Chance: 0.01
+  BEE:
+    ring_fairies:
+      Type: "Rare"
+      Chance: 0.01
+    stone_negative_gravity:
+      Type: "Rare"
+      Chance: 0.01
+  BLAZE:
+    ring_fairies:
+      Type: "Rare"
+      Chance: 0.01
+    spectral_silt:
+      Type: "Rare"
+      Chance: 0.01
+    stone_negative_gravity:
+      Type: "Rare"
+      Chance: 0.01
+  CAT:
+    stone_inertia_null:
+      Type: "Rare"
+      Chance: 0.01
+  CAVE_SPIDER:
+    bezoar:
+      Type: "Rare"
+      Chance: 0.05
+    spectral_silt:
+      Type: "Rare"
+      Chance: 0.01
+  ELDER_GUARDIAN:
+    spectral_silt:
+      Type: "Common"
+      Chance: 0.8
+    vitamins:
+      Type: "Rare"
+      Chance: 1.00
+  ENDERMAN:
+    spectral_silt:
+      Type: "Rare"
+      Chance: 0.01
+  ENDER_DRAGON:
+    ender_dragonscale:
+      Type: "Rare"
+      Chance: 1.00
+    ring_fairies:
+      Type: "Rare"
+      Chance: 0.10
+    spectral_silt:
+      Type: "Range"
+      MinAmount: 2
+      MaxAmount: 4
+    stone_negative_gravity:
+      Type: "Rare"
+      Chance: 0.10
+  EVOKER:
+    spectral_silt:
+      Type: "Rare"
+      Chance: 0.02
+  GHAST:
+    ring_fairies:
+      Type: "Rare"
+      Chance: 0.01
+    spectral_silt:
+      Type: "Rare"
+      Chance: 0.02
+    stone_negative_gravity:
+      Type: "Rare"
+      Chance: 0.01
+  HORSE:
+    stone_greater_inertia:
+      Type: "Rare"
+      Chance: 0.01
+  HUSK:
+    forbidden_fruit:
+      Type: "Rare"
+      Chance: 0.025
+  ILLUSIONER:
+    spectral_silt:
+      Type: "Rare"
+      Chance: 0.01
+  IRON_GOLEM:
+    stone_inertia_null:
+      Type: "Rare"
+      Chance: 0.01
+  MAGMA_CUBE:
+    stone_greater_inertia:
+      Type: "Rare"
+      Chance: 0.01
+  OCELOT:
+    stone_inertia_null:
+      Type: "Rare"
+      Chance: 0.01
+  PARROT:
+    ring_fairies:
+      Type: "Rare"
+      Chance: 0.01
+    stone_negative_gravity:
+      Type: "Rare"
+      Chance: 0.01
+  PHANTOM:
+    ring_fairies:
+      Type: "Rare"
+      Chance: 0.01
+    stone_negative_gravity:
+      Type: "Rare"
+      Chance: 0.01
+  PIGLIN_BRUTE:
+    spectral_silt:
+      Type: "Rare"
+      Chance: 0.02
+  PILLAGER:
+    spectral_silt:
+      Type: "Rare"
+      Chance: 0.01
+  RAVAGER:
+    spectral_silt:
+      Type: "Rare"
+      Chance: 0.02
+  SHULKER:
+    shulker_heart:
+      Type: "Rare"
+      Chance: 1.00
+  SILVERFISH:
+    phantom_prism:
+      Type: "Rare"
+      Chance: 0.10
+    ring_dwarves:
+      Type: "Rare"
+      Chance: 0.01
+  SLIME:
+    stone_greater_inertia:
+      Type: "Rare"
+      Chance: 0.01
+  SNOWMAN:
+    stone_inertia_null:
+      Type: "Rare"
+      Chance: 0.01
+  STRAY:
+    ring_overclocking:
+      Type: "Rare"
+      Chance: 0.03
+  VEX:
+    ring_fairies:
+      Type: "Rare"
+      Chance: 0.01
+    spectral_silt:
+      Type: "Rare"
+      Chance: 0.01
+    stone_negative_gravity:
+      Type: "Rare"
+      Chance: 0.01
+  VINDICATOR:
+    spectral_silt:
+      Type: "Rare"
+      Chance: 0.01
+  WANDERING_TRADER:
+    phantom_prism:
+      Type: "Rare"
+      Chance: 0.10
+  WARDEN:
+    spectral_silt:
+      Type: "Range"
+      MinAmount: 4
+      MaxAmount: 7
+    stone_inertia_null:
+      Type: "Rare"
+      Chance: 0.10
+  WITHER_SKELETON:
+    spectral_silt:
+      Type: "Rare"
+      Chance: 0.01
+  WITCH:
+    phantom_prism:
+      Type: "Rare"
+      Chance: 0.01
+    stone_greater_inertia:
+      Type: "Rare"
+      Chance: 0.01
+  WITHER:
+    ring_fairies:
+      Type: "Rare"
+      Chance: 0.10
+    spectral_silt:
+      Type: "Range"
+      MinAmount: 2
+      MaxAmount: 4
+    stone_negative_gravity:
+      Type: "Rare"
+      Chance: 0.10
+  ZOMBIFIED_PIGLIN:
+    ring_dwarves:
+      Type: "Rare"
+      Chance: 0.01

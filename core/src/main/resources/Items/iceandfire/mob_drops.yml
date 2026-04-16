@@ -1,0 +1,11 @@
+# Used to specify custom item drops for any mob
+MobDrops:
+  WITHER:
+    witherbone:
+      Type: "Range"
+      MinAmount: 20
+      MaxAmount: 40
+  WITHER_SKELETON:
+    witherbone:
+      Type: "Rare"
+      Chance: 0.01

@@ -43,9 +43,9 @@ public class NtpModule extends HLModule {
 
     @Override
     public void initialize() {
-        setUserConfig(new HLConfig(plugin, "notreepunching.yml"));
-        setItemConfig(new HLConfig(plugin, "resources/notreepunching/items.yml"));
-        setRecipeConfig(new HLConfig(plugin, "resources/notreepunching/recipes.yml"));
+        setUserConfig(new HLConfig(plugin, "Settings/notreepunching.yml"));
+        setItemConfig(new HLConfig(plugin, "Items/notreepunching/items.yml"));
+        setRecipeConfig(new HLConfig(plugin, "Items/notreepunching/recipes.yml"));
         setModuleItems(new ModuleItems(this));
         setModuleRecipes(new ModuleRecipes(this, plugin));
 
@@ -56,7 +56,7 @@ public class NtpModule extends HLModule {
 
         FileConfiguration config = getUserConfig().getConfig();
         if (config.getBoolean("Initialize.Enabled")) {
-            Utils.logModuleLifecycle("Initializing", NAME);
+            Utils.logModuleInit("notreepunching", NAME);
         }
 
         events = new NtpEvents(this, plugin);
@@ -102,7 +102,7 @@ public class NtpModule extends HLModule {
     public void shutdown() {
         FileConfiguration config = getUserConfig().getConfig();
         if (config.getBoolean("Shutdown.Enabled")) {
-            Utils.logModuleLifecycle("Shutting down", NAME);
+            Utils.logModuleShutdown("notreepunching", NAME);
         }
     }
 

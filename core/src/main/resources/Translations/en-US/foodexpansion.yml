@@ -1,0 +1,88 @@
+foodexpansion:
+  initialize:
+    message: "&6[Harshlands] &fInitializing &e%name% &fmodule"
+  shutdown:
+    message: "&6[Harshlands] &fShutting down &e%name% &fmodule"
+  food_expansion:
+    overeating:
+      messages:
+        warning_text: "&7You're getting tired of &f%food%&7..."
+        severe_text: "&7You can barely stomach more &f%food%&7."
+        blocked_text: "&cYou can't eat any more &f%food%&c right now."
+    custom_foods:
+      bacon:
+        display_name: "&fBacon"
+      cooked_bacon:
+        display_name: "&fCrispy Bacon"
+      horse_meat:
+        display_name: "&fHorse Meat"
+      cooked_horse_meat:
+        display_name: "&fCooked Horse Meat"
+      wolf_meat:
+        display_name: "&fWolf Meat"
+      cooked_wolf_meat:
+        display_name: "&fCooked Wolf Meat"
+      ocelot_meat:
+        display_name: "&fOcelot Meat"
+      cooked_ocelot_meat:
+        display_name: "&fCooked Ocelot Meat"
+      parrot_meat:
+        display_name: "&fRaw Parrot"
+      cooked_parrot_meat:
+        display_name: "&fCooked Parrot"
+      llama_meat:
+        display_name: "&fRaw Llama"
+      cooked_llama_meat:
+        display_name: "&fLlama Steak"
+      polar_bear_meat:
+        display_name: "&fRaw Polar Bear"
+      cooked_polar_bear_meat:
+        display_name: "&fPolar Bear Steak"
+      bat_wing:
+        display_name: "&fBat Wing"
+      cooked_bat_wing:
+        display_name: "&fCooked Bat Wing"
+      squid:
+        display_name: "&fRaw Squid"
+      cooked_squid:
+        display_name: "&fCooked Squid"
+      carrot_seed_soup:
+        display_name: "&fCarrot Soup"
+      spider_soup:
+        display_name: "&fSpider Eye Stew"
+      nether_wart_soup:
+        display_name: "&fNether Wart Stew"
+      blaze_cream:
+        display_name: "&fBlaze Cream Soup"
+      melon_salad:
+        display_name: "&fMelon Salad"
+      beetroot_noodles:
+        display_name: "&fBeetroot Noodles"
+      veggie_stew:
+        display_name: "&fVeggie Stew"
+      bat_soup:
+        display_name: "&fBat Soup"
+      golden_feast:
+        display_name: "&6Golden Feast"
+      chocolate_bar:
+        display_name: "&fChocolate Bar"
+      lollipop:
+        display_name: "&fLollipop"
+      jelly:
+        display_name: "&fGreen Jelly"
+      fried_egg:
+        display_name: "&fFried Egg"
+      bacon_and_egg:
+        display_name: "&fBacon and Egg"
+      compressed_flesh:
+        display_name: "&fDried Flesh"
+      cactus_fruit:
+        display_name: "&fCactus Fruit"
+      cooked_mushroom:
+        display_name: "&fCooked Mushroom"
+      carrot_pie:
+        display_name: "&fCarrot Cake"
+      roasted_seed:
+        display_name: "&fRoasted Seed"
+      dough:
+        display_name: "&fDough"

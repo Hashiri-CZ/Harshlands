@@ -5,6 +5,13 @@
 #                                                                         #
 ###########################################################################
 
+# ────────────────────────────────────────────────────────────────────────────
+# Locale for user-facing messages. Maps to a folder under Translations/.
+# Ship with "en-US"; admins can copy Translations/en-US/ to Translations/<code>/
+# and translate to add a new language, then set Locale below.
+# ────────────────────────────────────────────────────────────────────────────
+Locale: "en-US"
+
 ##############################
 #          Messages          #
 ##############################

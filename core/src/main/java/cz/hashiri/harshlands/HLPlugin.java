@@ -16,6 +16,7 @@
  */
 package cz.hashiri.harshlands;
 
+import cz.hashiri.harshlands.migration.FolderLayoutMigration;
 import cz.hashiri.harshlands.debug.DebugManager;
 import cz.hashiri.harshlands.baubles.BaubleModule;
 import cz.hashiri.harshlands.comfort.ComfortModule;
@@ -72,23 +73,48 @@ public class HLPlugin extends JavaPlugin {
     private HLScheduler scheduler;
     private HLDatabase database;
     private DebugManager debugManager;
+    private cz.hashiri.harshlands.locale.LocaleManager localeManager;
 
     @Override
     public void onEnable() {
         plugin = this;
         StartupLog.resetTimer();
         StartupLog.printBanner();
+
+        // Run folder layout migration first thing, before any config/database init
+        if (!getDataFolder().exists() && !getDataFolder().mkdirs()) {
+            getLogger().severe("Could not create data folder at " + getDataFolder());
+            getServer().getPluginManager().disablePlugin(this);
+            return;
+        }
+        try {
+            new FolderLayoutMigration(getDataFolder().toPath(), getLogger()).run();
+        } catch (RuntimeException e) {
+            getLogger().severe("Folder layout migration failed; aborting enable. " + e.getMessage());
+            getServer().getPluginManager().disablePlugin(this);
+            return;
+        }
+
         this.config = new PluginConfig(this);
 
-        lorePresetConfig = new HLConfig(this, "lorepresets.yml");
-        this.miscItemsConfig = new HLConfig(this, "resources/misc_items.yml");
-        this.miscRecipesConfig = new HLConfig(this, "resources/misc_recipes.yml");
-        this.integrationsConfig = new HLConfig(this, "integrations.yml");
-        this.commandsConfig = new HLConfig(this, "commands.yml");
-        this.auraSkillsRequirementsConfig = new HLConfig(this, "auraskills_requirements.yml");
+        // Ensure shipped Translations/ directory is materialized into the data folder.
+        ensureTranslationDefaults();
+        String locale = getConfig().getString("Locale", "en-US");
+        this.localeManager = new cz.hashiri.harshlands.locale.LocaleManager(
+                getDataFolder().toPath().resolve("Translations"),
+                locale,
+                getLogger());
+        this.localeManager.load();
+        cz.hashiri.harshlands.locale.Messages.bind(this.localeManager);
+
+        lorePresetConfig = new HLConfig(this, "Presets/lore.yml");
+        this.miscItemsConfig = new HLConfig(this, "Items/misc/items.yml");
+        this.miscRecipesConfig = new HLConfig(this, "Items/misc/recipes.yml");
+        this.integrationsConfig = new HLConfig(this, "Settings/integrations.yml");
+        this.commandsConfig = new HLConfig(this, "Settings/commands.yml");
+        this.auraSkillsRequirementsConfig = new HLConfig(this, "Presets/auraskills_requirements.yml");
         migrateAuraSkillsRequirementsConfig();
         ensureResourcePackDefaults();
-        ensureIntegrationDefaults();
 
         util = new Utils(this);
 
@@ -304,6 +330,20 @@ public class HLPlugin extends JavaPlugin {
         return debugManager;
     }
 
+    private void ensureTranslationDefaults() {
+        java.util.List<String> modules = java.util.List.of(
+                "commands", "toughasnails", "baubles", "fear", "iceandfire",
+                "spartanweaponry", "spartanandfire", "foodexpansion", "comfort",
+                "notreepunching", "firstaid", "dynamicsurroundings", "integrations");
+        for (String m : modules) {
+            String resourcePath = "Translations/en-US/" + m + ".yml";
+            java.io.File target = new java.io.File(getDataFolder(), resourcePath);
+            if (!target.exists()) {
+                saveResource(resourcePath, false);
+            }
+        }
+    }
+
     private void ensureFearDefaults() {
         FileConfiguration cfg = getConfig();
         boolean changed = false;
@@ -424,30 +464,6 @@ public class HLPlugin extends JavaPlugin {
                 cfg.save(getConfigFile());
             } catch (IOException exception) {
                 getLogger().warning("Failed to write ResourcePack defaults to config.yml: " + exception.getMessage());
-            }
-        }
-    }
-
-    private void ensureIntegrationDefaults() {
-        if (integrationsConfig == null) {
-            return;
-        }
-
-        FileConfiguration cfg = integrationsConfig.getConfig();
-        boolean changed = false;
-
-        String requirementsMessagePath = "AuraSkills.Requirements.Message";
-        if (!cfg.contains(requirementsMessagePath)) {
-            cfg.set(requirementsMessagePath, "&cYou need %SKILL% level %REQUIRED_LEVEL% to %ACTION% %ITEM%. Current level: %CURRENT_LEVEL%.");
-            changed = true;
-        }
-
-        if (changed) {
-            try {
-                cfg.save(integrationsConfig.getFile());
-                integrationsConfig.reloadConfig();
-            } catch (IOException exception) {
-                getLogger().warning("Failed to write AuraSkills integration defaults: " + exception.getMessage());
             }
         }
     }

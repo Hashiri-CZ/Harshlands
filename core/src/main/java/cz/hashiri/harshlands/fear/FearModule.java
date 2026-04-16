@@ -56,10 +56,10 @@ public class FearModule extends HLModule {
 
     @Override
     public void initialize() {
-        setUserConfig(new HLConfig(plugin, "fear.yml"));
+        setUserConfig(new HLConfig(plugin, "Settings/fear.yml"));
         migrateFearUserConfig();
-        setItemConfig(new HLConfig(plugin, "resources/fear/items.yml"));
-        setRecipeConfig(new HLConfig(plugin, "resources/fear/recipes.yml"));
+        setItemConfig(new HLConfig(plugin, "Items/fear/items.yml"));
+        setRecipeConfig(new HLConfig(plugin, "Items/fear/recipes.yml"));
         migrateFearItemConfig();
         setModuleItems(new ModuleItems(this));
         setModuleRecipes(new ModuleRecipes(this, plugin));
@@ -71,7 +71,7 @@ public class FearModule extends HLModule {
 
         FileConfiguration config = getUserConfig().getConfig();
         if (config.getBoolean("Initialize.Enabled")) {
-            Utils.logModuleLifecycle("Initializing", NAME);
+            Utils.logModuleInit("fear", NAME);
         }
 
         getModuleItems().initialize();
@@ -146,7 +146,7 @@ public class FearModule extends HLModule {
     public void shutdown() {
         FileConfiguration config = getUserConfig().getConfig();
         if (config.getBoolean("Shutdown.Enabled")) {
-            Utils.logModuleLifecycle("Shutting down", NAME);
+            Utils.logModuleShutdown("fear", NAME);
         }
 
         if (soundEcologySubsystem != null) {

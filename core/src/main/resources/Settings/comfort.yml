@@ -1,0 +1,255 @@
+# ============================================================
+# Harshlands — Comfort & Resting System
+# ============================================================
+# Inspired by Valheim's comfort mechanic.
+# Sleeping in a bed near comfort-providing blocks/entities
+# grants temporary buff effects based on the comfort score.
+# ============================================================
+
+ConfigId: "1.2.16"
+
+# ── General ──────────────────────────────────────────────────
+Initialize:
+  Enabled: true
+Shutdown:
+  Enabled: true
+
+# Radius (in blocks) around the bed to scan for comfort items.
+SearchRadius: 8
+
+# PAPI cache duration in seconds (per-player).
+CacheSeconds: 5
+
+# ── Categories ───────────────────────────────────────────────
+# Each category contributes its Points ONCE, even if multiple
+# matching blocks/entities exist nearby. Duplicates do not stack.
+#
+# Material names use Bukkit Material enum names (1.21).
+# EntityType names use Bukkit EntityType enum names.
+#
+# Special flags per category:
+#   RequireLit   — block must be lit (Campfire / Candle)
+#   PrefixMatch  — match material names starting with given prefix
+#                  (used for flower pots: POTTED_*)
+Categories:
+  Bed:
+    Points: 3
+    Materials:
+      - WHITE_BED
+      - ORANGE_BED
+      - MAGENTA_BED
+      - LIGHT_BLUE_BED
+      - YELLOW_BED
+      - LIME_BED
+      - PINK_BED
+      - GRAY_BED
+      - LIGHT_GRAY_BED
+      - CYAN_BED
+      - PURPLE_BED
+      - BLUE_BED
+      - BROWN_BED
+      - GREEN_BED
+      - RED_BED
+      - BLACK_BED
+  Carpet:
+    Points: 1
+    Materials:
+      - WHITE_CARPET
+      - ORANGE_CARPET
+      - MAGENTA_CARPET
+      - LIGHT_BLUE_CARPET
+      - YELLOW_CARPET
+      - LIME_CARPET
+      - PINK_CARPET
+      - GRAY_CARPET
+      - LIGHT_GRAY_CARPET
+      - CYAN_CARPET
+      - PURPLE_CARPET
+      - BLUE_CARPET
+      - BROWN_CARPET
+      - GREEN_CARPET
+      - RED_CARPET
+      - BLACK_CARPET
+  Banner:
+    Points: 1
+    Materials:
+      - WHITE_BANNER
+      - ORANGE_BANNER
+      - MAGENTA_BANNER
+      - LIGHT_BLUE_BANNER
+      - YELLOW_BANNER
+      - LIME_BANNER
+      - PINK_BANNER
+      - GRAY_BANNER
+      - LIGHT_GRAY_BANNER
+      - CYAN_BANNER
+      - PURPLE_BANNER
+      - BLUE_BANNER
+      - BROWN_BANNER
+      - GREEN_BANNER
+      - RED_BANNER
+      - BLACK_BANNER
+      - WHITE_WALL_BANNER
+      - ORANGE_WALL_BANNER
+      - MAGENTA_WALL_BANNER
+      - LIGHT_BLUE_WALL_BANNER
+      - YELLOW_WALL_BANNER
+      - LIME_WALL_BANNER
+      - PINK_WALL_BANNER
+      - GRAY_WALL_BANNER
+      - LIGHT_GRAY_WALL_BANNER
+      - CYAN_WALL_BANNER
+      - PURPLE_WALL_BANNER
+      - BLUE_WALL_BANNER
+      - BROWN_WALL_BANNER
+      - GREEN_WALL_BANNER
+      - RED_WALL_BANNER
+      - BLACK_WALL_BANNER
+  Campfire:
+    Points: 3
+    RequireLit: true
+    Materials:
+      - CAMPFIRE
+      - SOUL_CAMPFIRE
+  Candle:
+    Points: 1
+    RequireLit: true
+    Materials:
+      - CANDLE
+      - WHITE_CANDLE
+      - ORANGE_CANDLE
+      - MAGENTA_CANDLE
+      - LIGHT_BLUE_CANDLE
+      - YELLOW_CANDLE
+      - LIME_CANDLE
+      - PINK_CANDLE
+      - GRAY_CANDLE
+      - LIGHT_GRAY_CANDLE
+      - CYAN_CANDLE
+      - PURPLE_CANDLE
+      - BLUE_CANDLE
+      - BROWN_CANDLE
+      - GREEN_CANDLE
+      - RED_CANDLE
+      - BLACK_CANDLE
+  Crafting:
+    Points: 2
+    Materials:
+      - CRAFTING_TABLE
+  Bookshelf:
+    Points: 2
+    Materials:
+      - BOOKSHELF
+      - CHISELED_BOOKSHELF
+  FlowerPot:
+    Points: 1
+    PrefixMatch: "POTTED_"
+  Jukebox:
+    Points: 2
+    Materials:
+      - JUKEBOX
+  BrewingStand:
+    Points: 1
+    Materials:
+      - BREWING_STAND
+  DecoratedPot:
+    Points: 1
+    Materials:
+      - DECORATED_POT
+  Anvil:
+    Points: 1
+    Materials:
+      - ANVIL
+      - CHIPPED_ANVIL
+      - DAMAGED_ANVIL
+  Lantern:
+    Points: 1
+    Materials:
+      - LANTERN
+      - SOUL_LANTERN
+  Painting:
+    Points: 1
+    EntityTypes:
+      - PAINTING
+  ArmorStand:
+    Points: 1
+    EntityTypes:
+      - ARMOR_STAND
+  ItemFrame:
+    Points: 1
+    EntityTypes:
+      - ITEM_FRAME
+      - GLOW_ITEM_FRAME
+  Loom:
+    Points: 1
+    Materials:
+      - LOOM
+  Barrel:
+    Points: 1
+    Materials:
+      - BARREL
+
+# ── Tiers ────────────────────────────────────────────────────
+# Score ranges (inclusive). Duration is in ticks (20 ticks = 1 second).
+# Effects use Bukkit PotionEffectType names (lowercase for Registry lookup).
+Tiers:
+  SHELTER:
+    MinScore: 1
+    MaxScore: 3
+    Duration: 6000
+    Effects:
+      regeneration: 0
+  HOME:
+    MinScore: 4
+    MaxScore: 6
+    Duration: 12000
+    Effects:
+      regeneration: 0
+      resistance: 0
+  COZY:
+    MinScore: 7
+    MaxScore: 10
+    Duration: 18000
+    Effects:
+      regeneration: 0
+      resistance: 0
+      saturation: 0
+  LUXURY:
+    MinScore: 11
+    MaxScore: 999
+    Duration: 24000
+    Effects:
+      regeneration: 1
+      resistance: 0
+      saturation: 0
+
+# ── Cabin Fever ─────────────────────────────────────────────
+# Players who stay indoors too long suffer escalating debuffs.
+# Inspired by The Long Dark's cabin fever mechanic.
+CabinFever:
+  Enabled: true
+  CheckIntervalTicks: 600
+  RoofCheckHeight: 4
+  ExemptEnvironments:
+    - NETHER
+    - THE_END
+  OutdoorResetTicks: 6000
+  Thresholds:
+    Restless: 48000
+    Risk: 72000
+    Full: 96000
+  ComfortDelayTicks: 24000
+  CureTicks: 24000
+  Effects:
+    SpeedPenalty: -0.05
+    Nausea:
+      RiskIntervalTicks: 6000
+      FullIntervalTicks: 2400
+      DurationTicks: 40
+    FullEffects:
+      weakness: 0
+      mining_fatigue: 0
+    ThirstExhaustionMultiplier: 1.3
+  ResetOnDeath: false
+  # Deprecated: Use /hl debug Comfort.CabinFever instead. This flag is ignored.
+  Debug: false

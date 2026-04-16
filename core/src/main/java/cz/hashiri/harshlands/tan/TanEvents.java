@@ -53,6 +53,8 @@ import org.bukkit.persistence.PersistentDataType;
 import org.bukkit.potion.PotionType;
 import org.bukkit.util.RayTraceResult;
 
+import cz.hashiri.harshlands.locale.Messages;
+
 import java.util.*;
 
 public class TanEvents extends ModuleEvents implements Listener {
@@ -132,21 +134,23 @@ public class TanEvents extends ModuleEvents implements Listener {
 
             if (module.getDehydrationDeath().contains(id)) {
                 if (config.getBoolean("DehydrationDeath.Enabled")) {
-                    List<String> deathMessages = config.getStringList("DehydrationDeath.Messages");
-
-                    int num = Utils.getRandomNum(0, deathMessages.size() - 1);
-
-                    event.setDeathMessage(Utils.translateMsg(deathMessages.get(num), player, Map.of("PLAYER_NAME", player.getDisplayName())));
+                    List<String> deathMessages = Messages.getList("toughasnails.dehydration_death.messages");
+                    if (!deathMessages.isEmpty()) {
+                        int num = Utils.getRandomNum(0, deathMessages.size() - 1);
+                        String picked = deathMessages.get(num).replace("%player_name%", player.getDisplayName());
+                        event.setDeathMessage(picked);
+                    }
                 }
                 module.getDehydrationDeath().remove(id);
             }
             else if (module.getParasiteDeath().contains(id)) {
                 if (config.getBoolean("ParasiteDeath.Enabled")) {
-                    List<String> deathMessages = config.getStringList("ParasiteDeath.Messages");
-
-                    int num = Utils.getRandomNum(0, deathMessages.size() - 1);
-
-                    event.setDeathMessage(Utils.translateMsg(deathMessages.get(num), player, Map.of("PLAYER_NAME", player.getDisplayName())));
+                    List<String> deathMessages = Messages.getList("toughasnails.parasite_death.messages");
+                    if (!deathMessages.isEmpty()) {
+                        int num = Utils.getRandomNum(0, deathMessages.size() - 1);
+                        String picked = deathMessages.get(num).replace("%player_name%", player.getDisplayName());
+                        event.setDeathMessage(picked);
+                    }
                 }
                 module.getParasiteDeath().remove(id);
             }
@@ -157,21 +161,23 @@ public class TanEvents extends ModuleEvents implements Listener {
 
             if (module.getHyperthermiaDeath().contains(id)) {
                 if (config.getBoolean("HyperthermiaDeath.Enabled")) {
-                    List<String> deathMessages = config.getStringList("HyperthermiaDeath.Messages");
-
-                    int num = Utils.getRandomNum(0, deathMessages.size() - 1);
-
-                    event.setDeathMessage(Utils.translateMsg(deathMessages.get(num), player, Map.of("PLAYER_NAME", player.getDisplayName())));
+                    List<String> deathMessages = Messages.getList("toughasnails.hyperthermia_death.messages");
+                    if (!deathMessages.isEmpty()) {
+                        int num = Utils.getRandomNum(0, deathMessages.size() - 1);
+                        String picked = deathMessages.get(num).replace("%player_name%", player.getDisplayName());
+                        event.setDeathMessage(picked);
+                    }
                 }
                 module.getHyperthermiaDeath().remove(id);
             }
             else if (module.getHypothermiaDeath().contains(id)) {
                 if (config.getBoolean("HypothermiaDeath.Enabled")) {
-                    List<String> deathMessages = config.getStringList("HypothermiaDeath.Messages");
-
-                    int num = Utils.getRandomNum(0, deathMessages.size() - 1);
-
-                    event.setDeathMessage(Utils.translateMsg(deathMessages.get(num), player, Map.of("PLAYER_NAME", player.getDisplayName())));
+                    List<String> deathMessages = Messages.getList("toughasnails.hypothermia_death.messages");
+                    if (!deathMessages.isEmpty()) {
+                        int num = Utils.getRandomNum(0, deathMessages.size() - 1);
+                        String picked = deathMessages.get(num).replace("%player_name%", player.getDisplayName());
+                        event.setDeathMessage(picked);
+                    }
                 }
                 module.getHypothermiaDeath().remove(id);
             }

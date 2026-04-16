@@ -17,6 +17,7 @@
 package cz.hashiri.harshlands.comfort;
 
 import cz.hashiri.harshlands.HLPlugin;
+import cz.hashiri.harshlands.locale.Messages;
 import org.bukkit.NamespacedKey;
 import org.bukkit.Registry;
 import org.bukkit.configuration.ConfigurationSection;
@@ -95,8 +96,7 @@ public class ComfortEvents implements Listener {
         ComfortScoreCalculator.ComfortResult result = calculator.calculate(event.getBed().getLocation());
 
         if (result.getScore() == 0) {
-            String noComfortMsg = config.getString("Messages.NoComfort", "§7No comfort nearby.");
-            player.sendMessage(noComfortMsg);
+            Messages.of("comfort.messages.no_comfort").send(player);
             return;
         }
 
@@ -146,12 +146,11 @@ public class ComfortEvents implements Listener {
             }
         }
 
-        String msg = config.getString("Messages.BuffApplied",
-                "§aComfort: §f{score} §7({tier}) §a- Resting buff for {minutes}min");
-        msg = msg.replace("{score}", String.valueOf(result.getScore()));
-        msg = msg.replace("{tier}", tier.getDisplayName());
-        msg = msg.replace("{minutes}", String.valueOf(durationMinutes));
-        player.sendMessage(msg);
+        Messages.of("comfort.messages.buff_applied")
+                .with("score", result.getScore())
+                .with("tier", tier.getDisplayName())
+                .with("minutes", durationMinutes)
+                .send(player);
     }
 
     @EventHandler

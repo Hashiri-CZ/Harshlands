@@ -1,0 +1,111 @@
+commands:
+  no_permission: "&cYou do not have permission to do this!"
+  invalid_target: "&cNo valid target was found"
+  misspelled_item_name: "&cUnknown item '%misspelled_name%'"
+  misspelled_world: "&cUnknown world '%misspelled_world%'"
+  invalid_argument: "&cIncorrect argument for command"
+  incomplete_command: "&cUnknown or incomplete command"
+  give:
+    too_few_items:
+      message: "&cThe number of items cannot be less than 1"
+    too_many_items:
+      message: "&cThe number of items cannot be greater than %maximum_value%"
+    correct_execution:
+      single_target_message: "&fGave %value% [%display_name%] to %player_name%"
+      multiple_target_message: "&fGave %value% [%display_name%]"
+  help:
+    - "&6-----Harshlands Command Help-----"
+    - "&6/harshlands &freload"
+    - "&6/harshlands &fgive player item &b*&6&famount"
+    - "&6/harshlands &fspawnitem item amount &b~x &b~y &b~z &b*&fworld"
+    - "&6/harshlands &fsummon mob &b~x &b~y &b~z &b*&fworld"
+    - "&6/harshlands &ftemperature player &b~amount"
+    - "&6/harshlands &fthirst player &b~amount"
+    - "&6/harshlands &fresetitem &b*player &b*all"
+    - "&6/harshlands &fupdateitem &b*player &b*all"
+    - "&6/harshlands &fversion"
+    - "&b~ &fdenotes a relative position"
+    - "&b* &fmeans that argument is optional"
+    - "&6/hl &fcan be used as a shorthand"
+  reload:
+    correct_execution:
+      message: "&6[Harshlands] &fPlugin reloaded! Note that some config changes require a server restart to take effect."
+  spawn_item:
+    too_few_items:
+      message: "&cThe number of items cannot be less than 1"
+    too_many_items:
+      message: "&cThe number of items cannot be greater than %maximum_value%"
+    exceeds_stack_size:
+      message: "&cThe number of items cannot be greater than %stack_size%"
+    correct_execution:
+      message: "&fSummoned new %item_name%"
+  summon:
+    required_modules_disabled:
+      message: "&cThe following modules must be enabled to spawn the specified mob: %required_modules%"
+    misspelled_mob:
+      message: "&cUnknown entity '%misspelled_name%'"
+    correct_execution:
+      message: "&fSummoned new %mob_name%"
+  temperature:
+    below_min_value:
+      message: "&cTemperature cannot be less than %minimum_value%"
+    above_max_value:
+      message: "&cTemperature cannot be greater than %maximum_value%"
+    tan_module_disabled:
+      message: "&eTough as Nails &cmust be enabled to set a player's temperature"
+    correct_execution:
+      single_target_message: "&fSuccessfully set the temperature of %player_name%"
+      multiple_target_message: "&fSuccessfully set the temperature of the specified targets"
+      single_target_relative_message: "&fSuccessfully set the temperature of %player_name%"
+      multiple_target_relative_message: "&fSuccessfully changed the temperature of the specified targets"
+  thirst:
+    below_min_value:
+      message: "&cThirst cannot be less than %minimum_value%"
+    above_max_value:
+      message: "&cThirst cannot be greater than %maximum_value%"
+    tan_module_disabled:
+      message: "&eTough as Nails &cmust be enabled to set a player's thirst"
+    correct_execution:
+      single_target_message: "&fSuccessfully set the thirst of %player_name%"
+      multiple_target_message: "&fSuccessfully set the thirst of the specified targets"
+      single_target_relative_message: "&fSuccessfully set the thirst of %player_name%"
+      multiple_target_relative_message: "&fSuccessfully changed the thirst of the specified targets"
+  reset_item:
+    no_valid_items_found:
+      main_hand:
+        single_target_message: "&cNo valid Harshlands item was found"
+        multiple_target_message: "&cNo valid Harshlands item was found"
+      inventory:
+        single_target_message: "&cNo valid Harshlands items were found"
+        multiple_target_message: "&cNo valid Harshlands items were found"
+    correct_execution:
+      main_hand:
+        single_target_message: "&fSuccessfully reset the Harshlands item"
+        multiple_target_message: "&fSuccessfully reset the Harshlands item"
+      inventory:
+        single_target_message: "&fSuccessfully reset all Harshlands items in the inventory"
+        multiple_target_message: "&fSuccessfully reset all Harshlands items in the specified players' inventories"
+  update_item:
+    no_valid_items_found:
+      main_hand:
+        single_target_message: "&cNo valid Harshlands item was found"
+        multiple_target_message: "&cNo valid Harshlands item was found"
+      inventory:
+        single_target_message: "&cNo valid Harshlands items were found"
+        multiple_target_message: "&cNo valid Harshlands items were found"
+    correct_execution:
+      main_hand:
+        single_target_message: "&fSuccessfully updated the Harshlands item"
+        multiple_target_message: "&fSuccessfully updated the Harshlands item"
+      inventory:
+        single_target_message: "&fSuccessfully updated all Harshlands items in the inventory"
+        multiple_target_message: "&fSuccessfully updated all Harshlands items in the specified players' inventories"
+  version: "&6[Harshlands] &fYou're running on version %plugin_version%"
+  fear:
+    fear_level: "&6[Harshlands] &f%player%'s fear level: &e%fear_level%&f / &e100.00"
+    module_disabled: "&c[Harshlands] Fear module is not enabled."
+    player_not_found: "&cPlayer not found."
+    set_fear:
+      success: "&6[Harshlands] &fSet %player%'s fear to &e%fear_level%&f."
+      invalid_amount: "&c[Harshlands] Amount must be a number between 0 and 100."
+      usage: "&c[Harshlands] Usage: /hl setfear <player> <amount>"

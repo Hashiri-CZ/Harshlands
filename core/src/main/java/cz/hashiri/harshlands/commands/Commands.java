@@ -21,6 +21,7 @@ import cz.hashiri.harshlands.data.HLModule;
 import cz.hashiri.harshlands.data.HLPlayer;
 import cz.hashiri.harshlands.comfort.ComfortModule;
 import cz.hashiri.harshlands.comfort.ComfortScoreCalculator;
+import cz.hashiri.harshlands.locale.Messages;
 import cz.hashiri.harshlands.fear.FearModule;
 import cz.hashiri.harshlands.iceandfire.IceFireModule;
 import cz.hashiri.harshlands.HLPlugin;
@@ -50,7 +51,6 @@ import org.bukkit.inventory.PlayerInventory;
 import javax.annotation.Nonnull;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 import java.util.UUID;
 
 import static cz.hashiri.harshlands.HLPlugin.NAME;
@@ -76,6 +76,10 @@ public class Commands implements CommandExecutor {
         this.plugin = plugin;
         this.config = plugin.getCommandsConfig();
     }
+
+    // -------------------------------------------------------------------------
+    // Private message helpers — all user-facing feedback now via Messages API
+    // -------------------------------------------------------------------------
 
     /**
      * Performs various actions depending on what the player types as a command
@@ -137,7 +141,9 @@ public class Commands implements CommandExecutor {
                                 && feModule.getCustomFoodRegistry().getDefinition(args[2]) != null) {
                             customItem = feModule.getCustomFoodRegistry().createItemStack(args[2], 1);
                         } else {
-                            sender.sendMessage(Utils.translateMsg(config.getString("MisspelledItemName"), sender, Map.of("MISSPELLED_NAME", args[2])));
+                            Messages.of("commands.misspelled_item_name")
+                                    .with("misspelled_name", args[2])
+                                    .send(sender);
                             return true;
                         }
                     }
@@ -155,14 +161,15 @@ public class Commands implements CommandExecutor {
 
                     if (amount < 1) {
                         if (config.getBoolean("Give.TooFewItems.Enabled"))
-                            sender.sendMessage(Utils.translateMsg(config.getString("Give.TooFewItems.Message"), sender, null));
+                            Messages.of("commands.give.too_few_items.message").send(sender);
                         return true;
                     }
 
                     if (amount > config.getInt("Give.TooManyItems.MaxValue")) {
                         if (config.getBoolean("Give.TooManyItems.Enabled")) {
-                            Map<String, Object> placeholders = Map.of("MAXIMUM_VALUE", config.getInt("Give.TooManyItems.MaxValue"));
-                            sender.sendMessage(Utils.translateMsg(config.getString("Give.TooManyItems.Message"), sender, placeholders));
+                            Messages.of("commands.give.too_many_items.message")
+                                    .with("maximum_value", config.getInt("Give.TooManyItems.MaxValue"))
+                                    .send(sender);
                         }
                         return true;
                     }
@@ -196,12 +203,17 @@ public class Commands implements CommandExecutor {
                         org.bukkit.inventory.meta.ItemMeta giveMeta = customItem.getItemMeta();
                         String displayName = giveMeta != null ? giveMeta.getDisplayName() : "";
                         if (filteredTargets.size() == 1) {
-                            Map<String, Object> placeholders = Map.of("VALUE", amount, "DISPLAY_NAME", displayName, "PLAYER_NAME", filteredTargets.get(0).getDisplayName());
-                            sender.sendMessage(Utils.translateMsg(config.getString("Give.CorrectExecution.SingleTargetMessage"), sender, placeholders));
+                            Messages.of("commands.give.correct_execution.single_target_message")
+                                    .with("value", amount)
+                                    .with("display_name", displayName)
+                                    .with("player_name", filteredTargets.get(0).getDisplayName())
+                                    .send(sender);
                         }
                         else {
-                            Map<String, Object> placeholders = Map.of("VALUE", amount, "DISPLAY_NAME", displayName);
-                            sender.sendMessage(Utils.translateMsg(config.getString("Give.CorrectExecution.MultipleTargetMessage"), sender, placeholders));
+                            Messages.of("commands.give.correct_execution.multiple_target_message")
+                                    .with("value", amount)
+                                    .with("display_name", displayName)
+                                    .send(sender);
                         }
                     }
 
@@ -215,10 +227,11 @@ public class Commands implements CommandExecutor {
                         return true;
                     }
 
+                    cz.hashiri.harshlands.locale.Messages.reload();
                     HLConfig.getConfigList().forEach(config -> config.reloadConfig());
 
                     if (config.getBoolean("Reload.CorrectExecution.Enabled"))
-                        sender.sendMessage(Utils.translateMsg(config.getString("Reload.CorrectExecution.Message"), sender, null));
+                        Messages.of("commands.reload.correct_execution.message").send(sender);
 
                     return true;
                 }
@@ -243,7 +256,9 @@ public class Commands implements CommandExecutor {
                      *          /harshlands spawnitem flint_hatchet --> valid item name
                      */
                     if (!Utils.isItemReal(item)) {
-                        sender.sendMessage(Utils.translateMsg(config.getString("MisspelledItemName"), sender, Map.of("MISSPELLED_NAME", args[1])));
+                        Messages.of("commands.misspelled_item_name")
+                                .with("misspelled_name", args[1])
+                                .send(sender);
                         return true;
                     }
 
@@ -306,28 +321,30 @@ public class Commands implements CommandExecutor {
                     }
 
                     if (world == null) {
-                        sender.sendMessage(Utils.translateMsg(config.getString("MisspelledWorld"), sender, null));
+                        Messages.of("commands.misspelled_world").send(sender);
                         return true;
                     }
 
                     if (amount < 1) {
                         if (config.getBoolean("SpawnItem.TooFewItems.Enabled"))
-                            sender.sendMessage(Utils.translateMsg(config.getString("SpawnItem.TooFewItems.Message"), sender, null));
+                            Messages.of("commands.spawn_item.too_few_items.message").send(sender);
                         return true;
                     }
 
                     if (amount > item.getMaxStackSize()) {
                         if (config.getBoolean("SpawnItem.ExceedsStackSize.Enabled")) {
-                            Map<String, Object> placeholders = Map.of("STACK_SIZE", item.getMaxStackSize());
-                            sender.sendMessage(Utils.translateMsg(config.getString("SpawnItem.ExceedsStackSize.Message"), sender, placeholders));
+                            Messages.of("commands.spawn_item.exceeds_stack_size.message")
+                                    .with("stack_size", item.getMaxStackSize())
+                                    .send(sender);
                         }
                         return true;
                     }
 
                     if (amount > config.getInt("SpawnItem.TooManyItems.MaxValue")) {
                         if (config.getBoolean("SpawnItem.TooManyItems.Enabled")) {
-                            Map<String, Object> placeholders = Map.of("MAXIMUM_VALUE", config.getInt("SpawnItem.TooManyItems.MaxValue"));
-                            sender.sendMessage(Utils.translateMsg(config.getString("SpawnItem.TooManyItems.Message"), sender, placeholders));
+                            Messages.of("commands.spawn_item.too_many_items.message")
+                                    .with("maximum_value", config.getInt("SpawnItem.TooManyItems.MaxValue"))
+                                    .send(sender);
                         }
                         return true;
                     }
@@ -343,8 +360,9 @@ public class Commands implements CommandExecutor {
                     world.dropItemNaturally(new Location(world, x, y, z), item);
 
                     if (config.getBoolean("SpawnItem.CorrectExecution.Enabled")) {
-                        Map<String, Object> placeholders = Map.of("ITEM_NAME", item.hasItemMeta() ? item.getItemMeta().getDisplayName() : args[1], "X_COORD", x, "Y_COORD", y, "Z_COORD", z, "WORLD_NAME", world.getName());
-                        sender.sendMessage(Utils.translateMsg(config.getString("SpawnItem.CorrectExecution.Message"), sender, placeholders));
+                        Messages.of("commands.spawn_item.correct_execution.message")
+                                .with("item_name", item.hasItemMeta() ? item.getItemMeta().getDisplayName() : args[1])
+                                .send(sender);
                     }
 
                     return true;
@@ -417,7 +435,7 @@ public class Commands implements CommandExecutor {
                     }
 
                     if (world == null) {
-                        sender.sendMessage(Utils.translateMsg(config.getString("MisspelledWorld"), sender, null));
+                        Messages.of("commands.misspelled_world").send(sender);
                         return true;
                     }
 
@@ -435,7 +453,9 @@ public class Commands implements CommandExecutor {
 
                     if (mob == null) {
                         if (config.getBoolean("Summon.MisspelledMob.Enabled"))
-                            sender.sendMessage(Utils.translateMsg(config.getString("Summon.MisspelledMob.Message"), sender, Map.of("MISSPELLED_NAME", mobName)));
+                            Messages.of("commands.summon.misspelled_mob.message")
+                                    .with("misspelled_name", mobName)
+                                    .send(sender);
                         return true;
                     }
 
@@ -443,8 +463,9 @@ public class Commands implements CommandExecutor {
                         case "fire_dragon", "ice_dragon", "lightning_dragon", "sea_serpent", "siren" -> {
                             if (!HLModule.getModule(IceFireModule.NAME).isEnabled(world)) {
                                 if (config.getBoolean("Summon.RequiredModulesDisabled.Enabled")) {
-                                    Map<String, Object> placeholders = Map.of("REQUIRED_MODULES", String.join(", ", mob.getRequiredModules()));
-                                    sender.sendMessage(Utils.translateMsg(config.getString("Summon.RequiredModulesDisabled.Message"), sender, placeholders));
+                                    Messages.of("commands.summon.required_modules_disabled.message")
+                                            .with("required_modules", String.join(", ", mob.getRequiredModules()))
+                                            .send(sender);
                                 }
                                 return true;
                             }
@@ -454,8 +475,9 @@ public class Commands implements CommandExecutor {
                     mob.addEntityToWorld(world);
 
                     if (config.getBoolean("Summon.CorrectExecution.Enabled")) {
-                        Map<String, Object> placeholders = Map.of("MOB_NAME", StringUtils.capitalize(mobName.replaceAll("_", "")), "X_COORD", x, "Y_COORD", y, "Z_COORD", z, "WORLD_NAME", world.getName());
-                        sender.sendMessage(Utils.translateMsg(config.getString("Summon.CorrectExecution.Message"), sender, placeholders));
+                        Messages.of("commands.summon.correct_execution.message")
+                                .with("mob_name", StringUtils.capitalize(mobName.replaceAll("_", "")))
+                                .send(sender);
                     }
                     return true;
                 }
@@ -483,7 +505,7 @@ public class Commands implements CommandExecutor {
 
                     if (!HLModule.getModule(TanModule.NAME).isGloballyEnabled()) {
                         if (config.getBoolean("Temperature.TanModuleDisabled.Enabled"))
-                            sender.sendMessage(Utils.translateMsg(config.getString("Temperature.TanModuleDisabled.Message"), sender, null));
+                            Messages.of("commands.temperature.tan_module_disabled.message").send(sender);
                         return true;
                     }
 
@@ -519,16 +541,18 @@ public class Commands implements CommandExecutor {
 
                     if (temperature < TemperatureCalculateTask.MINIMUM_TEMPERATURE) {
                         if (config.getBoolean("Temperature.BelowMinValue.Enabled")) {
-                            Map<String, Object> placeholders = Map.of("MINIMUM_VALUE", TemperatureCalculateTask.MINIMUM_TEMPERATURE);
-                            sender.sendMessage(Utils.translateMsg(config.getString("Temperature.BelowMinValue.Message"), sender, placeholders));
+                            Messages.of("commands.temperature.below_min_value.message")
+                                    .with("minimum_value", TemperatureCalculateTask.MINIMUM_TEMPERATURE)
+                                    .send(sender);
                         }
                         return true;
                     }
 
                     if (temperature > TemperatureCalculateTask.MAXIMUM_TEMPERATURE) {
                         if (config.getBoolean("Temperature.AboveMaxValue.Enabled")) {
-                            Map<String, Object> placeholders = Map.of("MAXIMUM_VALUE", TemperatureCalculateTask.MAXIMUM_TEMPERATURE);
-                            sender.sendMessage(Utils.translateMsg(config.getString("Temperature.AboveMaxValue.Message"), sender, placeholders));
+                            Messages.of("commands.temperature.above_max_value.message")
+                                    .with("maximum_value", TemperatureCalculateTask.MAXIMUM_TEMPERATURE)
+                                    .send(sender);
                         }
                         return true;
                     }
@@ -547,23 +571,23 @@ public class Commands implements CommandExecutor {
                     if (config.getBoolean("Temperature.CorrectExecution.Enabled")) {
                         if (filteredTargets.size() == 1) {
                             if (isRelative) {
-                                Map<String, Object> placeholders = Map.of("PLAYER_NAME", filteredTargets.get(0).getDisplayName(), "OLD_TEMPERATURE", oldTemp, "NEW_TEMPERATURE", temperature, "CHANGE", addition);
-                                sender.sendMessage(Utils.translateMsg(config.getString("Temperature.CorrectExecution.SingleTargetRelativeMessage"), sender, placeholders));
+                                Messages.of("commands.temperature.correct_execution.single_target_relative_message")
+                                        .with("player_name", filteredTargets.get(0).getDisplayName())
+                                        .send(sender);
                             }
                             else {
-                                Map<String, Object> placeholders = Map.of("PLAYER_NAME", filteredTargets.get(0).getDisplayName(), "OLD_TEMPERATURE", oldTemp, "NEW_TEMPERATURE", temperature);
-                                sender.sendMessage(Utils.translateMsg(config.getString("Temperature.CorrectExecution.SingleTargetMessage"), sender, placeholders));
+                                Messages.of("commands.temperature.correct_execution.single_target_message")
+                                        .with("player_name", filteredTargets.get(0).getDisplayName())
+                                        .send(sender);
                             }
 
                         }
                         else {
                             if (isRelative) {
-                                Map<String, Object> placeholders = Map.of("CHANGE", addition);
-                                sender.sendMessage(Utils.translateMsg(config.getString("Temperature.CorrectExecution.MultipleTargetRelativeMessage"), sender, placeholders));
+                                Messages.of("commands.temperature.correct_execution.multiple_target_relative_message").send(sender);
                             }
                             else {
-                                Map<String, Object> placeholders = Map.of("NEW_TEMPERATURE", temperature);
-                                sender.sendMessage(Utils.translateMsg(config.getString("Temperature.CorrectExecution.MultipleTargetMessage"), sender, placeholders));
+                                Messages.of("commands.temperature.correct_execution.multiple_target_message").send(sender);
                             }
                         }
                     }
@@ -593,7 +617,7 @@ public class Commands implements CommandExecutor {
 
                     if (!HLModule.getModule(TanModule.NAME).isGloballyEnabled()) {
                         if (config.getBoolean("Thirst.TanModuleDisabled.Enabled"))
-                            sender.sendMessage(Utils.translateMsg(config.getString("Thirst.TanModuleDisabled.Message"), sender, null));
+                            Messages.of("commands.thirst.tan_module_disabled.message").send(sender);
                         return true;
                     }
 
@@ -629,16 +653,18 @@ public class Commands implements CommandExecutor {
 
                     if (thirst < ThirstCalculateTask.MINIMUM_THIRST) {
                         if (config.getBoolean("Thirst.BelowMinValue.Enabled")) {
-                            Map<String, Object> placeholders = Map.of("MINIMUM_VALUE", ThirstCalculateTask.MINIMUM_THIRST);
-                            sender.sendMessage(Utils.translateMsg(config.getString("Thirst.BelowMinValue.Message"), sender, placeholders));
+                            Messages.of("commands.thirst.below_min_value.message")
+                                    .with("minimum_value", ThirstCalculateTask.MINIMUM_THIRST)
+                                    .send(sender);
                         }
                         return true;
                     }
 
                     if (thirst > ThirstCalculateTask.MAXIMUM_THIRST) {
                         if (config.getBoolean("Thirst.AboveMaxValue.Enabled")) {
-                            Map<String, Object> placeholders = Map.of("MAXIMUM_VALUE", ThirstCalculateTask.MAXIMUM_THIRST);
-                            sender.sendMessage(Utils.translateMsg(config.getString("Thirst.AboveMaxValue.Message"), sender, placeholders));
+                            Messages.of("commands.thirst.above_max_value.message")
+                                    .with("maximum_value", ThirstCalculateTask.MAXIMUM_THIRST)
+                                    .send(sender);
                         }
                         return true;
                     }
@@ -657,23 +683,23 @@ public class Commands implements CommandExecutor {
                     if (config.getBoolean("Thirst.CorrectExecution.Enabled")) {
                         if (filteredTargets.size() == 1) {
                             if (isRelative) {
-                                Map<String, Object> placeholders = Map.of("PLAYER_NAME", filteredTargets.get(0).getDisplayName(), "OLD_THIRST", oldThirst, "NEW_THIRST", thirst, "CHANGE", addition);
-                                sender.sendMessage(Utils.translateMsg(config.getString("Thirst.CorrectExecution.SingleTargetRelativeMessage"), sender, placeholders));
+                                Messages.of("commands.thirst.correct_execution.single_target_relative_message")
+                                        .with("player_name", filteredTargets.get(0).getDisplayName())
+                                        .send(sender);
                             }
                             else {
-                                Map<String, Object> placeholders = Map.of("PLAYER_NAME", filteredTargets.get(0).getDisplayName(), "OLD_THIRST", oldThirst, "NEW_THIRST", thirst);
-                                sender.sendMessage(Utils.translateMsg(config.getString("Thirst.CorrectExecution.SingleTargetMessage"), sender, placeholders));
+                                Messages.of("commands.thirst.correct_execution.single_target_message")
+                                        .with("player_name", filteredTargets.get(0).getDisplayName())
+                                        .send(sender);
                             }
 
                         }
                         else {
                             if (isRelative) {
-                                Map<String, Object> placeholders = Map.of("CHANGE", addition);
-                                sender.sendMessage(Utils.translateMsg(config.getString("Thirst.CorrectExecution.MultipleTargetRelativeMessage"), sender, placeholders));
+                                Messages.of("commands.thirst.correct_execution.multiple_target_relative_message").send(sender);
                             }
                             else {
-                                Map<String, Object> placeholders = Map.of("NEW_THIRST", thirst);
-                                sender.sendMessage(Utils.translateMsg(config.getString("Thirst.CorrectExecution.MultipleTargetMessage"), sender, placeholders));
+                                Messages.of("commands.thirst.correct_execution.multiple_target_message").send(sender);
                             }
                         }
                     }
@@ -695,12 +721,12 @@ public class Commands implements CommandExecutor {
                                 inv.setItemInMainHand(HLItem.convertItemStackToHLItem(itemMainHand));
                                 player.updateInventory();
                                 if (config.getBoolean("ResetItem.CorrectExecution.Enabled")) {
-                                    sender.sendMessage(Utils.translateMsg(config.getString("ResetItem.CorrectExecution.MainHand.SingleTargetMessage"), sender, null));
+                                    Messages.of("commands.reset_item.correct_execution.main_hand.single_target_message").send(sender);
                                 }
                             }
                             else {
                                 if (config.getBoolean("ResetItem.NoValidItemsFound.Enabled")) {
-                                    sender.sendMessage(Utils.translateMsg(config.getString("ResetItem.NoValidItemsFound.MainHand.SingleTargetMessage"), sender, null));
+                                    Messages.of("commands.reset_item.no_valid_items_found.main_hand.single_target_message").send(sender);
                                 }
                             }
                             return true;
@@ -755,12 +781,14 @@ public class Commands implements CommandExecutor {
                         player.updateInventory();
                     }
 
-                    String execution = reset ? "CorrectExecution" : "NoValidItemsFound";
-                    String single = filteredTargets.size() == 1 ? "SingleTargetMessage" : "MultipleTargetMessage";
-                    String mainHand = checkEntireInv ? "Inventory" : "MainHand";
-
-                    if (config.getBoolean("ResetItem." + execution + ".Enabled")) {
-                        sender.sendMessage(Utils.translateMsg(config.getString("ResetItem." + execution + "." + mainHand + "." + single), sender, null));
+                    {
+                        String executionKey = reset ? "correct_execution" : "no_valid_items_found";
+                        String slotKey = checkEntireInv ? "inventory" : "main_hand";
+                        String countKey = filteredTargets.size() == 1 ? "single_target_message" : "multiple_target_message";
+                        String enabledFlag = reset ? "ResetItem.CorrectExecution.Enabled" : "ResetItem.NoValidItemsFound.Enabled";
+                        if (config.getBoolean(enabledFlag)) {
+                            Messages.of("commands.reset_item." + executionKey + "." + slotKey + "." + countKey).send(sender);
+                        }
                     }
                     return true;
                 }
@@ -780,12 +808,12 @@ public class Commands implements CommandExecutor {
                                 Utils.updateItem(itemMainHand);
                                 player.updateInventory();
                                 if (config.getBoolean("UpdateItem.CorrectExecution.Enabled")) {
-                                    sender.sendMessage(Utils.translateMsg(config.getString("UpdateItem.CorrectExecution.MainHand.SingleTargetMessage"), sender, null));
+                                    Messages.of("commands.update_item.correct_execution.main_hand.single_target_message").send(sender);
                                 }
                             }
                             else {
                                 if (config.getBoolean("UpdateItem.NoValidItemsFound.Enabled")) {
-                                    sender.sendMessage(Utils.translateMsg(config.getString("UpdateItem.NoValidItemsFound.MainHand.SingleTargetMessage"), sender, null));
+                                    Messages.of("commands.update_item.no_valid_items_found.main_hand.single_target_message").send(sender);
                                 }
                             }
                             return true;
@@ -840,12 +868,14 @@ public class Commands implements CommandExecutor {
                         player.updateInventory();
                     }
 
-                    String execution = reset ? "CorrectExecution" : "NoValidItemsFound";
-                    String single = filteredTargets.size() == 1 ? "SingleTargetMessage" : "MultipleTargetMessage";
-                    String mainHand = checkEntireInv ? "Inventory" : "MainHand";
-
-                    if (config.getBoolean("UpdateItem." + execution + ".Enabled")) {
-                        sender.sendMessage(Utils.translateMsg(config.getString("UpdateItem." + execution + "." + mainHand + "." + single), sender, null));
+                    {
+                        String executionKey = reset ? "correct_execution" : "no_valid_items_found";
+                        String slotKey = checkEntireInv ? "inventory" : "main_hand";
+                        String countKey = filteredTargets.size() == 1 ? "single_target_message" : "multiple_target_message";
+                        String enabledFlag = reset ? "UpdateItem.CorrectExecution.Enabled" : "UpdateItem.NoValidItemsFound.Enabled";
+                        if (config.getBoolean(enabledFlag)) {
+                            Messages.of("commands.update_item." + executionKey + "." + slotKey + "." + countKey).send(sender);
+                        }
                     }
                     return true;
                 }
@@ -857,8 +887,7 @@ public class Commands implements CommandExecutor {
 
                     HLModule fearMod = HLModule.getModule(FearModule.NAME);
                     if (fearMod == null || !fearMod.isGloballyEnabled()) {
-                        sender.sendMessage(Utils.translateMsg(
-                            config.getString("Fear.ModuleDisabled", "&c[Harshlands] Fear module is not enabled."), sender, null));
+                        Messages.of("commands.fear.module_disabled").send(sender);
                         return true;
                     }
 
@@ -870,8 +899,7 @@ public class Commands implements CommandExecutor {
                         }
                         target = Bukkit.getPlayer(args[1]);
                         if (target == null) {
-                            sender.sendMessage(Utils.translateMsg(
-                                config.getString("Fear.PlayerNotFound", "&cPlayer not found."), sender, null));
+                            Messages.of("commands.fear.player_not_found").send(sender);
                             return true;
                         }
                     } else {
@@ -884,23 +912,20 @@ public class Commands implements CommandExecutor {
 
                     HLPlayer hlTarget = HLPlayer.getPlayers().get(target.getUniqueId());
                     if (hlTarget == null) {
-                        sender.sendMessage(Utils.translateMsg(
-                            config.getString("Fear.PlayerNotFound", "&cPlayer not found."), sender, null));
+                        Messages.of("commands.fear.player_not_found").send(sender);
                         return true;
                     }
 
                     cz.hashiri.harshlands.data.fear.DataModule dm = hlTarget.getFearDataModule();
                     if (dm == null) {
-                        sender.sendMessage(Utils.translateMsg(
-                            config.getString("Fear.ModuleDisabled", "&c[Harshlands] Fear module is not enabled."), sender, null));
+                        Messages.of("commands.fear.module_disabled").send(sender);
                         return true;
                     }
 
-                    sender.sendMessage(Utils.translateMsg(
-                        config.getString("Fear.FearLevel", "&6[Harshlands] &f%PLAYER%'s fear: &e%FEAR_LEVEL%"),
-                        null,
-                        Map.of("PLAYER", target.getName(), "FEAR_LEVEL", String.format("%.2f", dm.getFearLevel()))
-                    ));
+                    Messages.of("commands.fear.fear_level")
+                            .with("player", target.getName())
+                            .with("fear_level", String.format("%.2f", dm.getFearLevel()))
+                            .send(sender);
                     return true;
                 }
                 case "setfear" -> {
@@ -911,21 +936,18 @@ public class Commands implements CommandExecutor {
 
                     HLModule fearModSf = HLModule.getModule(FearModule.NAME);
                     if (fearModSf == null || !fearModSf.isGloballyEnabled()) {
-                        sender.sendMessage(Utils.translateMsg(
-                            config.getString("Fear.ModuleDisabled", "&c[Harshlands] Fear module is not enabled."), sender, null));
+                        Messages.of("commands.fear.module_disabled").send(sender);
                         return true;
                     }
 
                     if (args.length < 3) {
-                        sender.sendMessage(Utils.translateMsg(
-                            config.getString("Fear.SetFear.Usage", "&c[Harshlands] Usage: /hl setfear <player> <amount>"), sender, null));
+                        Messages.of("commands.fear.set_fear.usage").send(sender);
                         return true;
                     }
 
                     Player sfTarget = Bukkit.getPlayer(args[1]);
                     if (sfTarget == null) {
-                        sender.sendMessage(Utils.translateMsg(
-                            config.getString("Fear.PlayerNotFound", "&cPlayer not found."), sender, null));
+                        Messages.of("commands.fear.player_not_found").send(sender);
                         return true;
                     }
 
@@ -933,39 +955,34 @@ public class Commands implements CommandExecutor {
                     try {
                         sfAmount = Double.parseDouble(args[2]);
                     } catch (NumberFormatException e) {
-                        sender.sendMessage(Utils.translateMsg(
-                            config.getString("Fear.SetFear.InvalidAmount", "&c[Harshlands] Amount must be a number between 0 and 100."), sender, null));
+                        Messages.of("commands.fear.set_fear.invalid_amount").send(sender);
                         return true;
                     }
 
                     if (sfAmount < 0 || sfAmount > 100) {
-                        sender.sendMessage(Utils.translateMsg(
-                            config.getString("Fear.SetFear.InvalidAmount", "&c[Harshlands] Amount must be a number between 0 and 100."), sender, null));
+                        Messages.of("commands.fear.set_fear.invalid_amount").send(sender);
                         return true;
                     }
 
                     HLPlayer sfHlTarget = HLPlayer.getPlayers().get(sfTarget.getUniqueId());
                     if (sfHlTarget == null) {
-                        sender.sendMessage(Utils.translateMsg(
-                            config.getString("Fear.PlayerNotFound", "&cPlayer not found."), sender, null));
+                        Messages.of("commands.fear.player_not_found").send(sender);
                         return true;
                     }
 
                     cz.hashiri.harshlands.data.fear.DataModule sfDm = sfHlTarget.getFearDataModule();
                     if (sfDm == null) {
-                        sender.sendMessage(Utils.translateMsg(
-                            config.getString("Fear.ModuleDisabled", "&c[Harshlands] Fear module is not enabled."), sender, null));
+                        Messages.of("commands.fear.module_disabled").send(sender);
                         return true;
                     }
 
                     sfDm.setFearLevel(sfAmount);
                     plugin.getScheduler().runAsync(() -> sfDm.saveData());
 
-                    sender.sendMessage(Utils.translateMsg(
-                        config.getString("Fear.SetFear.Success", "&6[Harshlands] &fSet %PLAYER%'s fear to &e%FEAR_LEVEL%&f."),
-                        null,
-                        Map.of("PLAYER", sfTarget.getName(), "FEAR_LEVEL", String.format("%.2f", sfAmount))
-                    ));
+                    Messages.of("commands.fear.set_fear.success")
+                            .with("player", sfTarget.getName())
+                            .with("fear_level", String.format("%.2f", sfAmount))
+                            .send(sender);
                     return true;
                 }
                 case "comfort" -> {
@@ -981,32 +998,29 @@ public class Commands implements CommandExecutor {
 
                     HLModule comfortMod = HLModule.getModule(ComfortModule.NAME);
                     if (comfortMod == null || !comfortMod.isEnabled(player.getWorld())) {
-                        sender.sendMessage(Utils.translateMsg(
-                            config.getString("Comfort.ModuleDisabled", "&c[Harshlands] Comfort module is not enabled."), sender, null));
+                        Messages.of("comfort.module_disabled").send(sender);
                         return true;
                     }
 
                     ComfortModule comfortModule = (ComfortModule) comfortMod;
                     ComfortScoreCalculator calc = comfortModule.getCalculator();
                     if (calc == null) {
-                        sender.sendMessage(Utils.translateMsg(
-                            config.getString("Comfort.ModuleDisabled", "&c[Harshlands] Comfort module is not enabled."), sender, null));
+                        Messages.of("comfort.module_disabled").send(sender);
                         return true;
                     }
 
                     ComfortScoreCalculator.ComfortResult result = calc.calculate(player.getLocation());
                     comfortModule.updateCache(player, result);
-                    FileConfiguration comfortConfig = comfortModule.getUserConfig().getConfig();
 
-                    String checkMsg = comfortConfig.getString("Messages.ComfortCheck", "\u00a77Comfort Score: \u00a7f{score} \u00a77({tier})");
-                    checkMsg = checkMsg.replace("{score}", String.valueOf(result.getScore()));
-                    checkMsg = checkMsg.replace("{tier}", result.getTier().getDisplayName());
-                    player.sendMessage(checkMsg);
+                    Messages.of("comfort.messages.comfort_check")
+                            .with("score", result.getScore())
+                            .with("tier", result.getTier().getDisplayName())
+                            .send(player);
 
                     if (!result.getFoundCategories().isEmpty()) {
-                        String breakdownMsg = comfortConfig.getString("Messages.ComfortBreakdown", "\u00a77Nearby: \u00a7f{categories}");
-                        breakdownMsg = breakdownMsg.replace("{categories}", String.join(", ", result.getFoundCategories()));
-                        player.sendMessage(breakdownMsg);
+                        Messages.of("comfort.messages.comfort_breakdown")
+                                .with("categories", String.join(", ", result.getFoundCategories()))
+                                .send(player);
                     }
                     return true;
                 }
@@ -1016,7 +1030,9 @@ public class Commands implements CommandExecutor {
                         sendNoPermissionMessage(sender);
                         return true;
                     }
-                    config.getStringList("Help").forEach(msg -> sender.sendMessage(Utils.translateMsg(msg, sender, null)));
+                    for (String line : Messages.getList("commands.help")) {
+                        sender.sendMessage(line);
+                    }
                     return true;
                 }
                 case "version" -> {
@@ -1025,8 +1041,9 @@ public class Commands implements CommandExecutor {
                         sendNoPermissionMessage(sender);
                         return true;
                     }
-                    Map<String, Object> placeholders = Map.of("PLUGIN_VERSION", plugin.getDescription().getVersion());
-                    sender.sendMessage(Utils.translateMsg(config.getString("Version"), sender, placeholders));
+                    Messages.of("commands.version")
+                            .with("plugin_version", plugin.getDescription().getVersion())
+                            .send(sender);
                     Bukkit.getServer().dispatchCommand(sender, "version");
                     return true;
                 }
@@ -1238,19 +1255,19 @@ public class Commands implements CommandExecutor {
     }
 
     private void sendInvalidTargetMsg(CommandSender sender) {
-        sender.sendMessage(Utils.translateMsg(config.getString("InvalidTarget"), sender, null));
+        Messages.of("commands.invalid_target").send(sender);
     }
 
     private void sendInvalidArgumentMsg(CommandSender sender) {
-        sender.sendMessage(Utils.translateMsg(config.getString("InvalidArgument"), sender, null));
+        Messages.of("commands.invalid_argument").send(sender);
     }
 
     private void sendIncompleteCommandMsg(CommandSender sender) {
-        sender.sendMessage(Utils.translateMsg(config.getString("IncompleteCommand"), sender, null));
+        Messages.of("commands.incomplete_command").send(sender);
     }
 
     private void sendNoPermissionMessage(CommandSender sender) {
-        sender.sendMessage(Utils.translateMsg(config.getString("NoPermission"), sender, null));
+        Messages.of("commands.no_permission").send(sender);
     }
 
     private void playSound(Player player) {

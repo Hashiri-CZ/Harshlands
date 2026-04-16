@@ -40,9 +40,9 @@ public class SwModule extends HLModule {
 
     @Override
     public void initialize() {
-        setUserConfig(new HLConfig(plugin, "spartanweaponry.yml"));
-        setItemConfig(new HLConfig(plugin, "resources/spartanweaponry/items.yml"));
-        setRecipeConfig(new HLConfig(plugin, "resources/spartanweaponry/recipes.yml"));
+        setUserConfig(new HLConfig(plugin, "Settings/spartanweaponry.yml"));
+        setItemConfig(new HLConfig(plugin, "Items/spartanweaponry/items.yml"));
+        setRecipeConfig(new HLConfig(plugin, "Items/spartanweaponry/recipes.yml"));
 
         setModuleItems(new ModuleItems(this));
         setModuleRecipes(new ModuleRecipes(this, plugin));
@@ -54,7 +54,7 @@ public class SwModule extends HLModule {
 
         FileConfiguration config = getUserConfig().getConfig();
         if (config.getBoolean("Initialize.Enabled")) {
-            Utils.logModuleLifecycle("Initializing", NAME);
+            Utils.logModuleInit("spartanweaponry", NAME);
         }
 
         events = new SwEvents(this, plugin);
@@ -68,7 +68,7 @@ public class SwModule extends HLModule {
     public void shutdown() {
         FileConfiguration config = getUserConfig().getConfig();
         if (config.getBoolean("Shutdown.Enabled")) {
-            Utils.logModuleLifecycle("Shutting down", NAME);
+            Utils.logModuleShutdown("spartanweaponry", NAME);
         }
     }
 
