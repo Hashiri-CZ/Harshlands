@@ -751,9 +751,9 @@ FoodExpansion:
       Recipe:
         Type: SHAPED
         Pattern:
-          - " SS"
-          - " SS"
-          - "W  "
+          - "SS"
+          - "SS"
+          - "W "
         Key:
           S: SUGAR
           W: STICK
