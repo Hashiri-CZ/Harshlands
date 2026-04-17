@@ -138,5 +138,8 @@ run/
 # Superpowers design docs (local only)
 docs/superpowers/
 
+# Git worktrees
+.worktrees/
+
 # Local-only store listing draft
 STORE_LISTING.md
