@@ -29,6 +29,25 @@ public class HLSmithingRecipe extends SmithingRecipe implements HLRecipe {
     public HLSmithingRecipe(@Nonnull FileConfiguration config, @Nonnull String name, @Nonnull HLPlugin plugin) {
         super(new NamespacedKey(plugin, name), HLRecipe.getResult(config, name),
                 HLRecipe.getRecipeChoice((config.getString(name + ".Base"))), new RecipeIngredient((config.getString(name + ".Addition"))).getRecipeChoice());
+        RecipeDisplayRegistry registry = plugin.getRecipeDisplayRegistry();
+        if (registry != null) {
+            String baseRaw = config.getString(name + ".Base");
+            if (baseRaw != null && cz.hashiri.harshlands.utils.Ingredient.isValid(baseRaw)) {
+                RecipeIngredient base = new RecipeIngredient(baseRaw);
+                if (!base.getItems().isEmpty()) {
+                    registry.register(this.getKey(), 1,
+                            new java.util.ArrayList<org.bukkit.inventory.ItemStack>(base.getItems()));
+                }
+            }
+            String additionRaw = config.getString(name + ".Addition");
+            if (additionRaw != null && cz.hashiri.harshlands.utils.Ingredient.isValid(additionRaw)) {
+                RecipeIngredient addition = new RecipeIngredient(additionRaw);
+                if (!addition.getItems().isEmpty()) {
+                    registry.register(this.getKey(), 2,
+                            new java.util.ArrayList<org.bukkit.inventory.ItemStack>(addition.getItems()));
+                }
+            }
+        }
     }
 }
 
