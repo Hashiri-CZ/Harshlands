@@ -16,8 +16,10 @@
  */
 package cz.hashiri.harshlands.utils;
 
+import cz.hashiri.harshlands.HLPlugin;
 import cz.hashiri.harshlands.baubles.EndermanAlly;
 import cz.hashiri.harshlands.iceandfire.*;
+import cz.hashiri.harshlands.utils.recipe.RecipeDisplayRegistry;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.sounds.SoundEvents;
@@ -40,6 +42,7 @@ import org.bukkit.craftbukkit.entity.CraftPlayer;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
+import org.bukkit.event.HandlerList;
 import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.inventory.Recipe;
 import org.bukkit.inventory.SmithingInventory;
@@ -48,6 +51,8 @@ import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.components.EquippableComponent;
 
 public class v26_1_R1 extends InternalsProvider {
+
+    private RecipeDisplayPatcher_v26_1_R1 recipeDisplayPatcher;
 
     @Override
     public EndermanAlly spawnEndermanAlly(Player owner, Location loc) {
@@ -296,5 +301,19 @@ public class v26_1_R1 extends InternalsProvider {
         double d2 = enderman.getY() + (double)(random.nextInt(16) - 8) - vec3d.y * 16.0;
         double d3 = enderman.getZ() + (random.nextDouble() - 0.5) * 8.0 - vec3d.z * 16.0;
         return teleport(enderman, d1, d2, d3);
+    }
+
+    @Override
+    public void installRecipeDisplayPatcher(HLPlugin plugin, RecipeDisplayRegistry registry) {
+        this.recipeDisplayPatcher = new RecipeDisplayPatcher_v26_1_R1(plugin, registry);
+        org.bukkit.Bukkit.getPluginManager().registerEvents(this.recipeDisplayPatcher, plugin);
+    }
+
+    @Override
+    public void uninstallRecipeDisplayPatcher() {
+        if (this.recipeDisplayPatcher != null) {
+            HandlerList.unregisterAll(this.recipeDisplayPatcher);
+            this.recipeDisplayPatcher = null;
+        }
     }
 }
