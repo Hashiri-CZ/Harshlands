@@ -16,8 +16,10 @@
  */
 package cz.hashiri.harshlands.utils;
 
+import cz.hashiri.harshlands.HLPlugin;
 import cz.hashiri.harshlands.baubles.EndermanAlly;
 import cz.hashiri.harshlands.iceandfire.*;
+import cz.hashiri.harshlands.utils.recipe.RecipeDisplayRegistry;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
@@ -77,6 +79,23 @@ public abstract class InternalsProvider {
     public abstract void setEquippableComponentModel(ItemMeta meta, NamespacedKey key, EquipmentSlot slot);
 
     public abstract boolean assignInvestigateNoiseGoal(org.bukkit.entity.Mob mob, Location target);
+
+    /**
+     * Installs the version-specific recipe display patcher that fixes the recipe
+     * book / preview rendering of Harshlands custom items. Default no-op for
+     * versions that do not need the fix.
+     */
+    public void installRecipeDisplayPatcher(@javax.annotation.Nonnull HLPlugin plugin,
+                                            @javax.annotation.Nonnull RecipeDisplayRegistry registry) {
+        // no-op default
+    }
+
+    /**
+     * Uninstalls the patcher installed by {@link #installRecipeDisplayPatcher}.
+     */
+    public void uninstallRecipeDisplayPatcher() {
+        // no-op default
+    }
 }
 
 
