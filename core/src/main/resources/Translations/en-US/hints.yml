@@ -1,0 +1,9 @@
+hints:
+  Prefix: "&f[&5Harshlands&f] &7» &f"
+  Hints:
+    FistOnLog: "You need an axe to harvest logs. Craft a %item_flint_hatchet% &f(flint shard + plant string + stick)."
+    FirstFlintShard: "Combine flint shards with plant string and a stick to craft a %item_flint_hatchet%&f."
+    FirstFlintHatchetCrafted: "Hold your %item_flint_hatchet% &fto break logs. Right-click upward on a log for a chance to split planks."
+    FirstLog: "Right-click upward on a log with your axe for a chance to drop planks. Right-click planks for sticks."
+    FirstPlankAndStick: "Craft a %item_saw% &ffor guaranteed output. In the crafting table: saw + log = 4 planks, saw + planks = 4 sticks."
+    FirstSawCrafted: "Place the saw with a log in the crafting grid for 4 planks. With planks for 4 sticks. Guaranteed output."
