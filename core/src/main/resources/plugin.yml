@@ -13,7 +13,6 @@ commands:
     description: The home command of the Harshlands plugin
     usage: /harshlands
     aliases: [hl]
-    permission: harshlands.command.*
 
 permissions:
   harshlands.iceandfire.resistance.sirenvisual:
