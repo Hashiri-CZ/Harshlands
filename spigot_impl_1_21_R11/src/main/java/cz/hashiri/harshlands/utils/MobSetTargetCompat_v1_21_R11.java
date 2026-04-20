@@ -6,11 +6,11 @@ import org.bukkit.event.entity.EntityTargetEvent;
 
 import java.lang.reflect.Method;
 
-// Paper 1.21.11+ removed the `boolean fireEvent` parameter from Mob#setTarget.
+// Paper 1.21.11 removed the `boolean fireEvent` parameter from Mob#setTarget.
 // Spigot still exposes the 3-arg overload; compiling against Spigot and running
 // on Paper/Purpur throws NoSuchMethodError. Bind whichever overload exists at
 // class-load time and route calls through it.
-public final class MobSetTargetCompat {
+public final class MobSetTargetCompat_v1_21_R11 {
 
     private static final Method METHOD;
     private static final boolean HAS_FIRE_EVENT_PARAM;
@@ -34,7 +34,7 @@ public final class MobSetTargetCompat {
         HAS_FIRE_EVENT_PARAM = hasFireEvent;
     }
 
-    private MobSetTargetCompat() {
+    private MobSetTargetCompat_v1_21_R11() {
     }
 
     public static void setTarget(Mob mob, LivingEntity target, EntityTargetEvent.TargetReason reason) {

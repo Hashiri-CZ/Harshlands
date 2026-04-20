@@ -127,7 +127,7 @@ public class InvestigateNoiseGoal_v26_1_R1 extends Goal {
             List<Player> players = mob.level().getEntitiesOfClass(Player.class, scanBox,
                     p -> !p.isSpectator() && !p.isCreative() && mob.hasLineOfSight(p));
             if (!players.isEmpty()) {
-                MobSetTargetCompat.setTarget(mob, players.getFirst(),
+                MobSetTargetCompat_v26_1_R1.setTarget(mob, players.getFirst(),
                         org.bukkit.event.entity.EntityTargetEvent.TargetReason.CLOSEST_PLAYER);
                 state = State.COMPLETED;
                 return;
