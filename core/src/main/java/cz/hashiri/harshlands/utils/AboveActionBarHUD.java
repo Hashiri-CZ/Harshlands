@@ -32,6 +32,10 @@ public final class AboveActionBarHUD {
 
     private static final String GROUP_ID = "aboveactionbar_group";
 
+    private static final String PREVIEW_ID = "aboveactionbar_preview";
+
+    private boolean previewActive = false;
+
     private final int centerX;
     private final int iconWidth;
     private final int iconSpacing;
@@ -80,6 +84,36 @@ public final class AboveActionBarHUD {
     }
 
     // -------------------------------------------------------------------------
+    /**
+     * Activates preview mode and renders the given row at the icon group's center X.
+     * While active, the P/C/F slots are excluded from the group element; the WETNESS
+     * slot continues to render normally (it shares the group but is unaffected by
+     * the preview-mode gate).
+     *
+     * @param rowContent    the full preview row Component (built by NutritionPreviewLayout)
+     * @param totalAdvance  pixel advance width of the row, used for X centering
+     */
+    public void setPreviewContent(Component rowContent, int totalAdvance) {
+        this.previewActive = true;
+        int effectiveCenterX = centerX + offsetForCount(3); // preview always has 3 cells
+        int startX = effectiveCenterX - totalAdvance / 2;
+        hud.setElement(PREVIEW_ID, startX, rowContent, totalAdvance);
+        relayout();
+    }
+
+    /** Deactivates preview mode. Low-icon state is restored from the stored visibility map. */
+    public void clearPreview() {
+        if (!previewActive) return;
+        this.previewActive = false;
+        hud.removeElement(PREVIEW_ID);
+        relayout();
+    }
+
+    /** Testing / introspection only. */
+    public boolean isPreviewActive() {
+        return previewActive;
+    }
+
     private void relayout() {
         Slot[] all = Slot.values();
 
@@ -88,10 +122,12 @@ public final class AboveActionBarHUD {
             hud.removeElement("aboveactionbar_" + s.name().toLowerCase());
         }
 
-        // Collect visible slots in enum order.
+        // Collect visible slots in enum order, excluding P/C/F when preview is active.
         java.util.List<Slot> visible = new java.util.ArrayList<>();
         for (Slot s : all) {
-            if (visibility.get(s)) visible.add(s);
+            if (!visibility.get(s)) continue;
+            if (previewActive && (s == Slot.PROTEIN || s == Slot.CARBS || s == Slot.FAT)) continue;
+            visible.add(s);
         }
 
         int visibleCount = visible.size();
@@ -101,8 +137,6 @@ public final class AboveActionBarHUD {
         }
 
         // Build one content component: icon_1 + shift(spacing) + icon_2 + ... + icon_N.
-        // Icons inherit the DEFAULT_FONT forced by BossbarHUD; shift components retain
-        // their own NEGATIVE_SPACE_FONT explicitly, so nesting is safe.
         Component content = Component.empty();
         for (int i = 0; i < visibleCount; i++) {
             content = content.append(Component.text(visible.get(i).codepoint));
