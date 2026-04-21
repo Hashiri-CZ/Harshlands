@@ -191,17 +191,13 @@ class NutritionPreviewLayoutTest {
         @Test void row_has_all_three_labels_and_values() {
             NutritionPreviewLayout.Row row = NutritionPreviewLayout.buildRow(
                     new NutrientProfile(8, 0, 2),
-                    23, 41, 67,       // currents
-                    1.0,              // comfortMult
-                    15, 30, 60, 80,   // tier thresholds
+                    23, 41, 67,
+                    1.0,
+                    15, 30, 60, 80,
                     "Protein", "Carbs", "Fat",
-                    32,               // iconWidth
-                    4,                // iconTextGap
-                    24);              // cellSpacing
+                    24);
 
             String plain = net.kyori.adventure.text.serializer.plain.PlainTextComponentSerializer.plainText().serialize(row.component());
-            // Icon codepoints are not printable; plain serializer emits them as their raw char.
-            // We assert the *text* segments are all present in order.
             org.junit.jupiter.api.Assertions.assertTrue(plain.contains("Protein 23 (+8)"),
                     "row should contain protein cell text; was: " + plain);
             org.junit.jupiter.api.Assertions.assertTrue(plain.contains("Carbs 41 (+0)"),
@@ -217,17 +213,12 @@ class NutritionPreviewLayoutTest {
                     1.0,
                     15, 30, 60, 80,
                     "Protein", "Carbs", "Fat",
-                    32, 4, 24);
+                    24);
 
-            // Expected = 3*iconWidth + 2*cellSpacing + 3*iconTextGap + sum(text advances)
-            // text advances:
-            //   "Protein 23 (+8)" — details computed by measureTextAdvance
-            //   "Carbs 41 (+0)"
-            //   "Fat 67 (+2)"
             int pText = NutritionPreviewLayout.measureTextAdvance("Protein 23 (+8)");
             int cText = NutritionPreviewLayout.measureTextAdvance("Carbs 41 (+0)");
             int fText = NutritionPreviewLayout.measureTextAdvance("Fat 67 (+2)");
-            int expected = 3 * 32 + 2 * 24 + 3 * 4 + pText + cText + fText;
+            int expected = 2 * 24 + pText + cText + fText;
 
             assertEquals(expected, row.advance());
         }
@@ -239,7 +230,7 @@ class NutritionPreviewLayoutTest {
                     1.0,
                     15, 30, 60, 80,
                     "Protein", "Carbs", "Fat",
-                    32, 4, 24);
+                    24);
             String plain = net.kyori.adventure.text.serializer.plain.PlainTextComponentSerializer.plainText().serialize(row.component());
             org.junit.jupiter.api.Assertions.assertTrue(plain.contains("Protein 95 (+5)"));
             org.junit.jupiter.api.Assertions.assertTrue(plain.contains("Carbs 100 (+0)"));

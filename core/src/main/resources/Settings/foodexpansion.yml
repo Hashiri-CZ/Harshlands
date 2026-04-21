@@ -76,8 +76,6 @@ FoodExpansion:
       RefreshTicks: 10
       # Horizontal gap in pixels between macro cells (Protein | Carbs | Fat).
       CellSpacing: 24
-      # Gap in pixels between each macro's icon and its text.
-      IconTextGap: 4
 
   Foods:
     COOKED_BEEF:

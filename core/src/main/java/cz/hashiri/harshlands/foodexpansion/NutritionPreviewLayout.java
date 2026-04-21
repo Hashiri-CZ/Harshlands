@@ -104,17 +104,10 @@ public final class NutritionPreviewLayout {
     /** A built preview row: the Adventure Component plus its total pixel advance (for X centering). */
     public record Row(net.kyori.adventure.text.Component component, int advance) {}
 
-    // Icon codepoints — copied from AboveActionBarHUD.Slot to keep this class Bukkit-free.
-    // If those codepoints ever change, update them here too.
-    private static final String PROTEIN_ICON = "\uE8B1";
-    private static final String CARBS_ICON   = "\uE8B2";
-    private static final String FAT_ICON     = "\uE8B3";
-
     /**
-     * Builds the full three-cell preview row.
-     *
-     * @return a {@link Row} with the component (ready to hand to BossbarHUD.setElement)
-     *         and the total pixel advance of the row's rendered content.
+     * Builds the full three-cell preview row as a text-only component ready to render at the
+     * bossbar baseline. Cells are separated by {@code cellSpacing}-pixel negative-space shifts
+     * (no Component.space() glue) so the reported advance is exact.
      */
     public static Row buildRow(
             NutrientProfile profile,
@@ -122,27 +115,28 @@ public final class NutritionPreviewLayout {
             double comfortMult,
             double severeT, double malnourishedT, double wellT, double peakT,
             String labelP, String labelC, String labelF,
-            int iconWidth, int iconTextGap, int cellSpacing) {
+            int cellSpacing) {
 
         double deltaP = computeDelta(profile.protein(), currentP, comfortMult);
         double deltaC = computeDelta(profile.carbs(),   currentC, comfortMult);
         double deltaF = computeDelta(profile.fats(),    currentF, comfortMult);
 
-        net.kyori.adventure.text.Component cellP = buildCell(PROTEIN_ICON, labelP, currentP, deltaP,
-                severeT, malnourishedT, wellT, peakT);
-        net.kyori.adventure.text.Component cellC = buildCell(CARBS_ICON, labelC, currentC, deltaC,
-                severeT, malnourishedT, wellT, peakT);
-        net.kyori.adventure.text.Component cellF = buildCell(FAT_ICON, labelF, currentF, deltaF,
-                severeT, malnourishedT, wellT, peakT);
+        net.kyori.adventure.text.format.NamedTextColor colorP = pickCurrentColor(
+                currentP, severeT, malnourishedT, wellT, peakT);
+        net.kyori.adventure.text.format.NamedTextColor colorC = pickCurrentColor(
+                currentC, severeT, malnourishedT, wellT, peakT);
+        net.kyori.adventure.text.format.NamedTextColor colorF = pickCurrentColor(
+                currentF, severeT, malnourishedT, wellT, peakT);
 
-        // Combine with a plain-text space-as-spacing approximation. The exact X positioning
-        // happens via BossbarHUD's negative-space shifts at the call site; here we only need
-        // the glue Component and the advance.
+        net.kyori.adventure.text.Component cellP = buildCellText(labelP, currentP, deltaP, colorP, pickDeltaColor(deltaP));
+        net.kyori.adventure.text.Component cellC = buildCellText(labelC, currentC, deltaC, colorC, pickDeltaColor(deltaC));
+        net.kyori.adventure.text.Component cellF = buildCellText(labelF, currentF, deltaF, colorF, pickDeltaColor(deltaF));
+
         net.kyori.adventure.text.Component combined = net.kyori.adventure.text.Component.text()
                 .append(cellP)
-                .append(net.kyori.adventure.text.Component.space()) // placeholder glue; real spacing applied by caller via advance
+                .append(cz.hashiri.harshlands.utils.BossbarHUD.NegativeSpaceHelper.shift(cellSpacing))
                 .append(cellC)
-                .append(net.kyori.adventure.text.Component.space())
+                .append(cz.hashiri.harshlands.utils.BossbarHUD.NegativeSpaceHelper.shift(cellSpacing))
                 .append(cellF)
                 .build();
 
@@ -150,23 +144,9 @@ public final class NutritionPreviewLayout {
         int cTextAdvance = measureTextAdvance(makeCellText(labelC, currentC, deltaC));
         int fTextAdvance = measureTextAdvance(makeCellText(labelF, currentF, deltaF));
 
-        int totalAdvance = 3 * iconWidth + 2 * cellSpacing + 3 * iconTextGap
-                + pTextAdvance + cTextAdvance + fTextAdvance;
+        int totalAdvance = 2 * cellSpacing + pTextAdvance + cTextAdvance + fTextAdvance;
 
         return new Row(combined, totalAdvance);
-    }
-
-    private static net.kyori.adventure.text.Component buildCell(
-            String iconCodepoint, String label, double current, double delta,
-            double severeT, double malnourishedT, double wellT, double peakT) {
-        net.kyori.adventure.text.format.NamedTextColor valueColor = pickCurrentColor(
-                current, severeT, malnourishedT, wellT, peakT);
-        net.kyori.adventure.text.format.NamedTextColor deltaColor = pickDeltaColor(delta);
-        return net.kyori.adventure.text.Component.text()
-                .append(net.kyori.adventure.text.Component.text(iconCodepoint))
-                .append(net.kyori.adventure.text.Component.space())
-                .append(buildCellText(label, current, delta, valueColor, deltaColor))
-                .build();
     }
 
     /** Shared text-only form used both for display and advance measurement. */

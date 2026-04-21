@@ -24,16 +24,12 @@ public class NutritionPreviewController extends BukkitRunnable {
     private AboveActionBarHUD aboveHud; // lazily obtained
     private String lastSignature = null; // no-op guard
 
-    private final int iconWidth;
-    private final int iconTextGap;
     private final int cellSpacing;
 
     public NutritionPreviewController(Player player, FoodExpansionModule module) {
         this.player = player;
         this.module = module;
         org.bukkit.configuration.file.FileConfiguration cfg = module.getUserConfig().getConfig();
-        this.iconWidth   = cfg.getInt("FoodExpansion.HUD.IconWidth", 32);
-        this.iconTextGap = cfg.getInt("FoodExpansion.HUD.Preview.IconTextGap", 4);
         this.cellSpacing = cfg.getInt("FoodExpansion.HUD.Preview.CellSpacing", 24);
     }
 
@@ -109,7 +105,7 @@ public class NutritionPreviewController extends BukkitRunnable {
                 Messages.get("foodexpansion.food_expansion.preview.protein"),
                 Messages.get("foodexpansion.food_expansion.preview.carbs"),
                 Messages.get("foodexpansion.food_expansion.preview.fat"),
-                iconWidth, iconTextGap, cellSpacing);
+                cellSpacing);
 
         if (aboveHud == null) {
             aboveHud = module.getOrCreateAboveActionBarHud(player);
