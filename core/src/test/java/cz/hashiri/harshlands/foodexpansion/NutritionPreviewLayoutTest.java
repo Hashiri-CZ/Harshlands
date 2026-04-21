@@ -154,4 +154,35 @@ class NutritionPreviewLayoutTest {
             assertEquals(0, NutritionPreviewLayout.measureTextAdvance(""));
         }
     }
+
+    @Nested
+    class CellText {
+        @Test void builds_expected_string() {
+            net.kyori.adventure.text.Component c = NutritionPreviewLayout.buildCellText(
+                    "Protein", 23, 8,
+                    net.kyori.adventure.text.format.NamedTextColor.GOLD,
+                    net.kyori.adventure.text.format.NamedTextColor.GREEN);
+            String plain = net.kyori.adventure.text.serializer.plain.PlainTextComponentSerializer.plainText().serialize(c);
+            assertEquals("Protein 23 (+8)", plain);
+        }
+
+        @Test void zero_delta_formats_as_plus_zero() {
+            net.kyori.adventure.text.Component c = NutritionPreviewLayout.buildCellText(
+                    "Fat", 80, 0,
+                    net.kyori.adventure.text.format.NamedTextColor.AQUA,
+                    net.kyori.adventure.text.format.NamedTextColor.GRAY);
+            String plain = net.kyori.adventure.text.serializer.plain.PlainTextComponentSerializer.plainText().serialize(c);
+            assertEquals("Fat 80 (+0)", plain);
+        }
+
+        @Test void rounds_down_to_integer() {
+            // Display values are whole numbers, even though internal math is double
+            net.kyori.adventure.text.Component c = NutritionPreviewLayout.buildCellText(
+                    "Carbs", 41.7, 2.4,
+                    net.kyori.adventure.text.format.NamedTextColor.YELLOW,
+                    net.kyori.adventure.text.format.NamedTextColor.GREEN);
+            String plain = net.kyori.adventure.text.serializer.plain.PlainTextComponentSerializer.plainText().serialize(c);
+            assertEquals("Carbs 41 (+2)", plain);
+        }
+    }
 }

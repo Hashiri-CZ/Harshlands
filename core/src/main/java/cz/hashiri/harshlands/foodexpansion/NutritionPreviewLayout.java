@@ -79,4 +79,25 @@ public final class NutritionPreviewLayout {
         }
         return total;
     }
+
+    /**
+     * Builds the text portion of one preview cell: {@code "Label value (+delta)"} where
+     * {@code value} is colored by {@code valueColor} and {@code (+delta)} by {@code deltaColor}.
+     * The leading label is in white. Values are floored to integers for display.
+     */
+    public static net.kyori.adventure.text.Component buildCellText(
+            String label, double current, double delta,
+            net.kyori.adventure.text.format.NamedTextColor valueColor,
+            net.kyori.adventure.text.format.NamedTextColor deltaColor) {
+        int intCurrent = (int) Math.floor(current);
+        int intDelta = (int) Math.floor(delta);
+        return net.kyori.adventure.text.Component.text()
+                .append(net.kyori.adventure.text.Component.text(
+                        label + " ", net.kyori.adventure.text.format.NamedTextColor.WHITE))
+                .append(net.kyori.adventure.text.Component.text(
+                        Integer.toString(intCurrent), valueColor))
+                .append(net.kyori.adventure.text.Component.text(
+                        " (+" + intDelta + ")", deltaColor))
+                .build();
+    }
 }
