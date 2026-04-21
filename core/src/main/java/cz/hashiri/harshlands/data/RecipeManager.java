@@ -19,7 +19,6 @@ package cz.hashiri.harshlands.data;
 import cz.hashiri.harshlands.HLPlugin;
 import cz.hashiri.harshlands.utils.Utils;
 import cz.hashiri.harshlands.utils.recipe.*;
-import org.bukkit.Bukkit;
 import org.bukkit.Keyed;
 import org.bukkit.NamespacedKey;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -177,10 +176,8 @@ public class RecipeManager {
 
     public void addRecipe(Recipe r) {
         if (r != null && !(r instanceof HLBrewingRecipe || r instanceof HLAnvilRecipe)) {
-            if (r instanceof Keyed keyed) {
-                if (Bukkit.getRecipe(keyed.getKey()) == null) {
-                    Bukkit.addRecipe(r);
-                }
+            if (r instanceof Keyed) {
+                plugin.enqueueRecipe(r);
             }
         }
     }

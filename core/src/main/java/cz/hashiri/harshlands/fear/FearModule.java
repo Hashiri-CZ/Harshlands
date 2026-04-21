@@ -78,7 +78,7 @@ public class FearModule extends HLModule {
         getModuleRecipes().initialize();
 
         if (config.getBoolean("TorchSystem.RemoveVanillaTorchRecipe")) {
-            Bukkit.removeRecipe(new NamespacedKey(NamespacedKey.MINECRAFT, "torch"));
+            plugin.enqueueRecipeRemoval(new NamespacedKey(NamespacedKey.MINECRAFT, "torch"));
         }
 
         boolean fearMeterEnabled = config.getBoolean("FearMeter.Enabled", true);

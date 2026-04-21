@@ -79,7 +79,7 @@ public class CustomFoodRecipes implements Listener {
             recipe.addIngredient(choice);
         }
 
-        Bukkit.addRecipe(recipe);
+        plugin.enqueueRecipe(recipe);
         registeredKeys.add(key);
     }
 
@@ -102,7 +102,7 @@ public class CustomFoodRecipes implements Listener {
             }
         }
 
-        Bukkit.addRecipe(recipe);
+        plugin.enqueueRecipe(recipe);
         registeredKeys.add(key);
     }
 
@@ -125,19 +125,19 @@ public class CustomFoodRecipes implements Listener {
         // Furnace
         NamespacedKey furnaceKey = new NamespacedKey(plugin, "food_" + foodId.toLowerCase());
         FurnaceRecipe furnace = new FurnaceRecipe(furnaceKey, result, inputChoice, xp, cookTime);
-        Bukkit.addRecipe(furnace);
+        plugin.enqueueRecipe(furnace);
         registeredKeys.add(furnaceKey);
 
         // Campfire (3x cook time)
         NamespacedKey campfireKey = new NamespacedKey(plugin, "food_" + foodId.toLowerCase() + "_campfire");
         CampfireRecipe campfire = new CampfireRecipe(campfireKey, result, inputChoice, xp, cookTime * 3);
-        Bukkit.addRecipe(campfire);
+        plugin.enqueueRecipe(campfire);
         registeredKeys.add(campfireKey);
 
         // Smoker (0.5x cook time)
         NamespacedKey smokerKey = new NamespacedKey(plugin, "food_" + foodId.toLowerCase() + "_smoker");
         SmokingRecipe smoker = new SmokingRecipe(smokerKey, result, inputChoice, xp, cookTime / 2);
-        Bukkit.addRecipe(smoker);
+        plugin.enqueueRecipe(smoker);
         registeredKeys.add(smokerKey);
     }
 
@@ -271,17 +271,17 @@ public class CustomFoodRecipes implements Listener {
 
                 // Furnace
                 NamespacedKey furnaceKey = new NamespacedKey(plugin, "food_bonus_" + key);
-                Bukkit.addRecipe(new FurnaceRecipe(furnaceKey, result, inputChoice, xp, cookTime));
+                plugin.enqueueRecipe(new FurnaceRecipe(furnaceKey, result, inputChoice, xp, cookTime));
                 registeredKeys.add(furnaceKey);
 
                 // Campfire (3x cook time)
                 NamespacedKey campfireKey = new NamespacedKey(plugin, "food_bonus_" + key + "_campfire");
-                Bukkit.addRecipe(new CampfireRecipe(campfireKey, result, inputChoice, xp, cookTime * 3));
+                plugin.enqueueRecipe(new CampfireRecipe(campfireKey, result, inputChoice, xp, cookTime * 3));
                 registeredKeys.add(campfireKey);
 
                 // Smoker (0.5x cook time)
                 NamespacedKey smokerKey = new NamespacedKey(plugin, "food_bonus_" + key + "_smoker");
-                Bukkit.addRecipe(new SmokingRecipe(smokerKey, result, inputChoice, xp, cookTime / 2));
+                plugin.enqueueRecipe(new SmokingRecipe(smokerKey, result, inputChoice, xp, cookTime / 2));
                 registeredKeys.add(smokerKey);
             } catch (Exception e) {
                 logger.warning("BonusRecipe '" + key + "': failed to register: " + e.getMessage());
@@ -291,7 +291,7 @@ public class CustomFoodRecipes implements Listener {
 
     public void shutdown() {
         for (NamespacedKey key : registeredKeys) {
-            Bukkit.removeRecipe(key);
+            plugin.enqueueRecipeRemoval(key);
         }
         registeredKeys.clear();
     }

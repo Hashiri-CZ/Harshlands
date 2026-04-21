@@ -22,7 +22,6 @@ import cz.hashiri.harshlands.data.HLConfig;
 import cz.hashiri.harshlands.data.HLModule;
 import cz.hashiri.harshlands.HLPlugin;
 import cz.hashiri.harshlands.utils.Utils;
-import org.bukkit.Bukkit;
 import org.bukkit.NamespacedKey;
 import org.bukkit.configuration.file.FileConfiguration;
 
@@ -68,35 +67,35 @@ public class NtpModule extends HLModule {
         events.initialize();
 
         if (config.getBoolean("Lumberjack.RemovePlankRecipes")) {
-            Bukkit.removeRecipe(new NamespacedKey(NamespacedKey.MINECRAFT, "acacia_planks"));
-            Bukkit.removeRecipe(new NamespacedKey(NamespacedKey.MINECRAFT, "birch_planks"));
-            Bukkit.removeRecipe(new NamespacedKey(NamespacedKey.MINECRAFT, "crimson_planks"));
-            Bukkit.removeRecipe(new NamespacedKey(NamespacedKey.MINECRAFT, "dark_oak_planks"));
-            Bukkit.removeRecipe(new NamespacedKey(NamespacedKey.MINECRAFT, "jungle_planks"));
-            Bukkit.removeRecipe(new NamespacedKey(NamespacedKey.MINECRAFT, "mangrove_planks"));
-            Bukkit.removeRecipe(new NamespacedKey(NamespacedKey.MINECRAFT, "oak_planks"));
-            Bukkit.removeRecipe(new NamespacedKey(NamespacedKey.MINECRAFT, "spruce_planks"));
-            Bukkit.removeRecipe(new NamespacedKey(NamespacedKey.MINECRAFT, "warped_planks"));
-            Bukkit.removeRecipe(new NamespacedKey(NamespacedKey.MINECRAFT, "cherry_planks"));
-            Bukkit.removeRecipe(new NamespacedKey(NamespacedKey.MINECRAFT, "bamboo_planks"));
-            Bukkit.removeRecipe(new NamespacedKey(NamespacedKey.MINECRAFT, "pale_oak_planks"));
+            plugin.enqueueRecipeRemoval(new NamespacedKey(NamespacedKey.MINECRAFT, "acacia_planks"));
+            plugin.enqueueRecipeRemoval(new NamespacedKey(NamespacedKey.MINECRAFT, "birch_planks"));
+            plugin.enqueueRecipeRemoval(new NamespacedKey(NamespacedKey.MINECRAFT, "crimson_planks"));
+            plugin.enqueueRecipeRemoval(new NamespacedKey(NamespacedKey.MINECRAFT, "dark_oak_planks"));
+            plugin.enqueueRecipeRemoval(new NamespacedKey(NamespacedKey.MINECRAFT, "jungle_planks"));
+            plugin.enqueueRecipeRemoval(new NamespacedKey(NamespacedKey.MINECRAFT, "mangrove_planks"));
+            plugin.enqueueRecipeRemoval(new NamespacedKey(NamespacedKey.MINECRAFT, "oak_planks"));
+            plugin.enqueueRecipeRemoval(new NamespacedKey(NamespacedKey.MINECRAFT, "spruce_planks"));
+            plugin.enqueueRecipeRemoval(new NamespacedKey(NamespacedKey.MINECRAFT, "warped_planks"));
+            plugin.enqueueRecipeRemoval(new NamespacedKey(NamespacedKey.MINECRAFT, "cherry_planks"));
+            plugin.enqueueRecipeRemoval(new NamespacedKey(NamespacedKey.MINECRAFT, "bamboo_planks"));
+            plugin.enqueueRecipeRemoval(new NamespacedKey(NamespacedKey.MINECRAFT, "pale_oak_planks"));
         }
 
         if (config.getBoolean("Lumberjack.RemoveStickRecipes")) {
-            Bukkit.removeRecipe(new NamespacedKey(NamespacedKey.MINECRAFT, "stick"));
+            plugin.enqueueRecipeRemoval(new NamespacedKey(NamespacedKey.MINECRAFT, "stick"));
         }
 
         if (config.getBoolean("FireStarter.RemoveVanillaCampfireRecipes")) {
-            Bukkit.removeRecipe(new NamespacedKey(NamespacedKey.MINECRAFT, "campfire"));
-            Bukkit.removeRecipe(new NamespacedKey(NamespacedKey.MINECRAFT, "soul_campfire"));
+            plugin.enqueueRecipeRemoval(new NamespacedKey(NamespacedKey.MINECRAFT, "campfire"));
+            plugin.enqueueRecipeRemoval(new NamespacedKey(NamespacedKey.MINECRAFT, "soul_campfire"));
         }
 
         if (config.getBoolean("Pottery.RemoveFlowerPotRecipe")) {
-            Bukkit.removeRecipe(new NamespacedKey(NamespacedKey.MINECRAFT, "flower_pot"));
+            plugin.enqueueRecipeRemoval(new NamespacedKey(NamespacedKey.MINECRAFT, "flower_pot"));
         }
 
         if (config.getBoolean("Pottery.RemoveBrickSmeltingRecipe")) {
-            Bukkit.removeRecipe(new NamespacedKey(NamespacedKey.MINECRAFT, "brick"));
+            plugin.enqueueRecipeRemoval(new NamespacedKey(NamespacedKey.MINECRAFT, "brick"));
         }
     }
 

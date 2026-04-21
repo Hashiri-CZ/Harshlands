@@ -43,8 +43,11 @@ import cz.hashiri.harshlands.utils.StartupLog;
 import cz.hashiri.harshlands.utils.Utils;
 import cz.hashiri.harshlands.utils.recipe.RecipeDisplayRegistry;
 import org.bukkit.Bukkit;
+import org.bukkit.Keyed;
+import org.bukkit.NamespacedKey;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.inventory.Recipe;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitRunnable;
@@ -53,7 +56,10 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayDeque;
 import java.util.Collection;
+import java.util.Deque;
+import java.util.logging.Level;
 
 public class HLPlugin extends JavaPlugin {
 
@@ -77,6 +83,9 @@ public class HLPlugin extends JavaPlugin {
     private HLDatabase database;
     private DebugManager debugManager;
     private cz.hashiri.harshlands.locale.LocaleManager localeManager;
+    private final Deque<Recipe> pendingRecipes = new ArrayDeque<>();
+    private final Deque<NamespacedKey> pendingRemovals = new ArrayDeque<>();
+    private volatile boolean recipesFlushed = false;
 
     @Override
     public void onEnable() {
@@ -230,6 +239,69 @@ public class HLPlugin extends JavaPlugin {
         } catch (Throwable t) {
             getLogger().log(java.util.logging.Level.WARNING,
                     "Recipe display patcher could not be installed; custom items will appear as their base material in the recipe book.", t);
+        }
+
+        // Defer all Bukkit recipe mutations until after every plugin's onEnable has run.
+        // Paper's Bukkit.addRecipe()/removeRecipe() each trigger a tag-registry freeze cascade
+        // (finalizeRecipeLoading -> PlayerList.reloadTagData -> RegistryAccess.freeze).
+        // If another plugin (e.g. aiyatsbus) has mutated registry tags during its own onEnable,
+        // that freeze fails with "Tags already present before freezing".
+        Bukkit.getScheduler().runTask(this, () -> {
+            while (!pendingRecipes.isEmpty()) {
+                registerRecipeNow(pendingRecipes.poll());
+            }
+            while (!pendingRemovals.isEmpty()) {
+                removeRecipeNow(pendingRemovals.poll());
+            }
+            recipesFlushed = true;
+        });
+    }
+
+    public void enqueueRecipe(Recipe r) {
+        if (r == null) {
+            return;
+        }
+        if (recipesFlushed) {
+            registerRecipeNow(r);
+        } else {
+            pendingRecipes.offer(r);
+        }
+    }
+
+    public void enqueueRecipeRemoval(NamespacedKey key) {
+        if (key == null) {
+            return;
+        }
+        if (recipesFlushed) {
+            removeRecipeNow(key);
+        } else {
+            pendingRemovals.offer(key);
+        }
+    }
+
+    private void registerRecipeNow(Recipe r) {
+        if (r == null) {
+            return;
+        }
+        try {
+            if (r instanceof Keyed keyed && Bukkit.getRecipe(keyed.getKey()) != null) {
+                return;
+            }
+            Bukkit.addRecipe(r);
+        } catch (Throwable t) {
+            String key = (r instanceof Keyed k) ? k.getKey().toString() : r.getClass().getSimpleName();
+            getLogger().log(Level.WARNING, "Failed to register recipe " + key + ": " + t.getMessage(), t);
+        }
+    }
+
+    private void removeRecipeNow(NamespacedKey key) {
+        if (key == null) {
+            return;
+        }
+        try {
+            Bukkit.removeRecipe(key);
+        } catch (Throwable t) {
+            getLogger().log(Level.WARNING, "Failed to remove recipe " + key + ": " + t.getMessage(), t);
         }
     }
 
