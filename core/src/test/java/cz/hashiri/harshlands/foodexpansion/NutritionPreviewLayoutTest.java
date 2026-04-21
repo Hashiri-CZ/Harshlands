@@ -108,4 +108,50 @@ class NutritionPreviewLayoutTest {
                     NutritionPreviewLayout.pickDeltaColor(0.5));
         }
     }
+
+    @Nested
+    class TextAdvance {
+        @Test void space_is_4() {
+            assertEquals(4, NutritionPreviewLayout.measureTextAdvance(" "));
+        }
+
+        @Test void lowercase_i_is_narrow() {
+            // 'i' = 2 advance (classic Minecraft narrow glyph)
+            assertEquals(2, NutritionPreviewLayout.measureTextAdvance("i"));
+        }
+
+        @Test void digit_is_6() {
+            assertEquals(6, NutritionPreviewLayout.measureTextAdvance("5"));
+        }
+
+        @Test void plus_sign_is_6() {
+            assertEquals(6, NutritionPreviewLayout.measureTextAdvance("+"));
+        }
+
+        @Test void open_paren_is_5() {
+            assertEquals(5, NutritionPreviewLayout.measureTextAdvance("("));
+        }
+
+        @Test void close_paren_is_5() {
+            assertEquals(5, NutritionPreviewLayout.measureTextAdvance(")"));
+        }
+
+        @Test void sums_characters() {
+            // "Fat" = F(6) + a(6) + t(4) = 16
+            assertEquals(16, NutritionPreviewLayout.measureTextAdvance("Fat"));
+        }
+
+        @Test void protein_word() {
+            // "Protein" = P(6) + r(6) + o(6) + t(4) + e(6) + i(2) + n(6) = 36
+            assertEquals(36, NutritionPreviewLayout.measureTextAdvance("Protein"));
+        }
+
+        @Test void unknown_char_falls_back_to_6() {
+            assertEquals(6, NutritionPreviewLayout.measureTextAdvance("ñ"));
+        }
+
+        @Test void empty_string_is_zero() {
+            assertEquals(0, NutritionPreviewLayout.measureTextAdvance(""));
+        }
+    }
 }

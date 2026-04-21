@@ -47,4 +47,36 @@ public final class NutritionPreviewLayout {
                 ? net.kyori.adventure.text.format.NamedTextColor.GREEN
                 : net.kyori.adventure.text.format.NamedTextColor.GRAY;
     }
+
+    // Advance widths (in pixels) for characters used by the preview strip.
+    // Values derived from Minecraft's default font; unknown characters default to 6.
+    // Each advance includes the 1-pixel trailing space between glyphs.
+    private static final java.util.Map<Character, Integer> ADVANCE = buildAdvanceTable();
+
+    private static java.util.Map<Character, Integer> buildAdvanceTable() {
+        java.util.Map<Character, Integer> m = new java.util.HashMap<>();
+        m.put(' ', 4);
+        // Digits — all 6 in the vanilla default font
+        for (char c = '0'; c <= '9'; c++) m.put(c, 6);
+        // Punctuation used in the preview
+        m.put('+', 6);
+        m.put('(', 5);
+        m.put(')', 5);
+        // Narrow lowercase glyphs commonly present in "Protein"/"Carbs"/"Fat"
+        m.put('i', 2);
+        m.put('t', 4);
+        m.put('l', 3);
+        // All other letters used in labels ("Protein", "Carbs", "Fat") are 6 wide
+        // and fall through the default case below.
+        return m;
+    }
+
+    /** Sum of per-character advance widths in pixels. Unknown characters contribute 6. */
+    public static int measureTextAdvance(String text) {
+        int total = 0;
+        for (int i = 0; i < text.length(); i++) {
+            total += ADVANCE.getOrDefault(text.charAt(i), 6);
+        }
+        return total;
+    }
 }
