@@ -2,9 +2,11 @@ ConfigId: "1.3.0-RELEASE"
 
 FoodExpansion:
   Defaults:
-    Protein: 100.0
-    Carbs: 100.0
-    Fats: 100.0
+    # Max value that keeps the player in NORMAL tier (no bonus hearts).
+    # At >=60 players enter WELL_NOURISHED (+1 heart); at >=80 PEAK_NUTRITION (+2 hearts).
+    Protein: 59.0
+    Carbs: 59.0
+    Fats: 59.0
 
   DeathPenalty:
     ResetValue: 50.0
