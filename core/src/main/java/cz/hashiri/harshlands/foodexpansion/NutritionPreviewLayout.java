@@ -100,4 +100,77 @@ public final class NutritionPreviewLayout {
                         " (+" + intDelta + ")", deltaColor))
                 .build();
     }
+
+    /** A built preview row: the Adventure Component plus its total pixel advance (for X centering). */
+    public record Row(net.kyori.adventure.text.Component component, int advance) {}
+
+    // Icon codepoints — copied from AboveActionBarHUD.Slot to keep this class Bukkit-free.
+    // If those codepoints ever change, update them here too.
+    private static final String PROTEIN_ICON = "\uE8B1";
+    private static final String CARBS_ICON   = "\uE8B2";
+    private static final String FAT_ICON     = "\uE8B3";
+
+    /**
+     * Builds the full three-cell preview row.
+     *
+     * @return a {@link Row} with the component (ready to hand to BossbarHUD.setElement)
+     *         and the total pixel advance of the row's rendered content.
+     */
+    public static Row buildRow(
+            NutrientProfile profile,
+            double currentP, double currentC, double currentF,
+            double comfortMult,
+            double severeT, double malnourishedT, double wellT, double peakT,
+            String labelP, String labelC, String labelF,
+            int iconWidth, int iconTextGap, int cellSpacing) {
+
+        double deltaP = computeDelta(profile.protein(), currentP, comfortMult);
+        double deltaC = computeDelta(profile.carbs(),   currentC, comfortMult);
+        double deltaF = computeDelta(profile.fats(),    currentF, comfortMult);
+
+        net.kyori.adventure.text.Component cellP = buildCell(PROTEIN_ICON, labelP, currentP, deltaP,
+                severeT, malnourishedT, wellT, peakT);
+        net.kyori.adventure.text.Component cellC = buildCell(CARBS_ICON, labelC, currentC, deltaC,
+                severeT, malnourishedT, wellT, peakT);
+        net.kyori.adventure.text.Component cellF = buildCell(FAT_ICON, labelF, currentF, deltaF,
+                severeT, malnourishedT, wellT, peakT);
+
+        // Combine with a plain-text space-as-spacing approximation. The exact X positioning
+        // happens via BossbarHUD's negative-space shifts at the call site; here we only need
+        // the glue Component and the advance.
+        net.kyori.adventure.text.Component combined = net.kyori.adventure.text.Component.text()
+                .append(cellP)
+                .append(net.kyori.adventure.text.Component.space()) // placeholder glue; real spacing applied by caller via advance
+                .append(cellC)
+                .append(net.kyori.adventure.text.Component.space())
+                .append(cellF)
+                .build();
+
+        int pTextAdvance = measureTextAdvance(makeCellText(labelP, currentP, deltaP));
+        int cTextAdvance = measureTextAdvance(makeCellText(labelC, currentC, deltaC));
+        int fTextAdvance = measureTextAdvance(makeCellText(labelF, currentF, deltaF));
+
+        int totalAdvance = 3 * iconWidth + 2 * cellSpacing + 3 * iconTextGap
+                + pTextAdvance + cTextAdvance + fTextAdvance;
+
+        return new Row(combined, totalAdvance);
+    }
+
+    private static net.kyori.adventure.text.Component buildCell(
+            String iconCodepoint, String label, double current, double delta,
+            double severeT, double malnourishedT, double wellT, double peakT) {
+        net.kyori.adventure.text.format.NamedTextColor valueColor = pickCurrentColor(
+                current, severeT, malnourishedT, wellT, peakT);
+        net.kyori.adventure.text.format.NamedTextColor deltaColor = pickDeltaColor(delta);
+        return net.kyori.adventure.text.Component.text()
+                .append(net.kyori.adventure.text.Component.text(iconCodepoint))
+                .append(net.kyori.adventure.text.Component.space())
+                .append(buildCellText(label, current, delta, valueColor, deltaColor))
+                .build();
+    }
+
+    /** Shared text-only form used both for display and advance measurement. */
+    private static String makeCellText(String label, double current, double delta) {
+        return label + " " + ((int) Math.floor(current)) + " (+" + ((int) Math.floor(delta)) + ")";
+    }
 }
