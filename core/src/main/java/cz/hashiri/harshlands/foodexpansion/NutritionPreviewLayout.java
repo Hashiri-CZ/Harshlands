@@ -80,10 +80,20 @@ public final class NutritionPreviewLayout {
         return total;
     }
 
+    /** Font key for preview text. Rendered via the RP's harshlands:preview_text font,
+     *  which aliases vanilla ASCII bitmap glyphs with the shader-encoded "above action bar"
+     *  ascent so the preview lines up with the P/C/F icon row. */
+    private static final net.kyori.adventure.key.Key PREVIEW_FONT =
+            net.kyori.adventure.key.Key.key("harshlands", "preview_text");
+
     /**
      * Builds the text portion of one preview cell: {@code "Label value (+delta)"} where
      * {@code value} is colored by {@code valueColor} and {@code (+delta)} by {@code deltaColor}.
      * The leading label is in white. Values are floored to integers for display.
+     *
+     * <p>The root Component's font is set to {@link #PREVIEW_FONT}. This survives
+     * {@code BossbarHUD}'s outer font reset (which only touches the root of the element's
+     * content Component, not its children), so the preview text renders above the action bar.</p>
      */
     public static net.kyori.adventure.text.Component buildCellText(
             String label, double current, double delta,
@@ -92,6 +102,7 @@ public final class NutritionPreviewLayout {
         int intCurrent = (int) Math.floor(current);
         int intDelta = (int) Math.floor(delta);
         return net.kyori.adventure.text.Component.text()
+                .font(PREVIEW_FONT)
                 .append(net.kyori.adventure.text.Component.text(
                         label + " ", net.kyori.adventure.text.format.NamedTextColor.WHITE))
                 .append(net.kyori.adventure.text.Component.text(
