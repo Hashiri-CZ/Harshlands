@@ -73,6 +73,8 @@ public class FoodExpansionEvents implements Listener {
     private final Map<UUID, BukkitTask> decayTasks = new ConcurrentHashMap<>();
     private final Map<UUID, NutritionEffectTask> effectTasks = new ConcurrentHashMap<>();
     private final Map<UUID, BukkitTask> effectBukkitTasks = new ConcurrentHashMap<>();
+    private final Map<UUID, NutritionPreviewController> previewControllers = new ConcurrentHashMap<>();
+    private final Map<UUID, BukkitTask> previewBukkitTasks = new ConcurrentHashMap<>();
 
     // Overeating state
     private final Set<UUID> forceEatingPlayers = new HashSet<>();
@@ -433,6 +435,14 @@ public class FoodExpansionEvents implements Listener {
         BukkitTask effectBukkit = effectTask.runTaskTimer(plugin, 40L, 40L);
         effectTasks.put(uuid, effectTask);
         effectBukkitTasks.put(uuid, effectBukkit);
+
+        if (config.getBoolean("FoodExpansion.HUD.Preview.Enabled", true)) {
+            int refreshTicks = config.getInt("FoodExpansion.HUD.Preview.RefreshTicks", 10);
+            NutritionPreviewController preview = new NutritionPreviewController(player, module);
+            BukkitTask previewBukkit = preview.runTaskTimer(plugin, refreshTicks, refreshTicks);
+            previewControllers.put(uuid, preview);
+            previewBukkitTasks.put(uuid, previewBukkit);
+        }
     }
 
     public void stopTasks(UUID uuid) {
@@ -447,6 +457,11 @@ public class FoodExpansionEvents implements Listener {
 
         BukkitTask effectBukkit = effectBukkitTasks.remove(uuid);
         if (effectBukkit != null) effectBukkit.cancel();
+
+        NutritionPreviewController preview = previewControllers.remove(uuid);
+        if (preview != null) preview.clear();
+        BukkitTask previewBukkit = previewBukkitTasks.remove(uuid);
+        if (previewBukkit != null) previewBukkit.cancel();
 
         module.removeHud(uuid);
     }
