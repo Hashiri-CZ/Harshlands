@@ -11,6 +11,13 @@ Shutdown:
   Enabled: true
 
 BodyParts:
+  # ─── Severity threshold behaviour ───────────────────────────────────────
+  # Each body part can define Symptom1 and Symptom2 blocks. Both are applied
+  # whenever the part's HP is AT OR BELOW the block's RequiredHealth value.
+  # As HP drops, higher-threshold symptoms trigger first and lower-threshold
+  # symptoms stack on top — so a part at 0 HP typically has both Symptom1
+  # and Symptom2 active simultaneously. This is intentional.
+  # ────────────────────────────────────────────────────────────────────────
   AbsorptionHealthBoost: # Decides how extra health from absorption or health boost will be distributed
     Priority: # Body parts at the top of list will receive health first, followed by the parts below
       - "HEAD" # Parts can be removed from the list if you don't want them to receive boosts
