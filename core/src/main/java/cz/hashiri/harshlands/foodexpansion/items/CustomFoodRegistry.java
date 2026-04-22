@@ -3,14 +3,15 @@ package cz.hashiri.harshlands.foodexpansion.items;
 import cz.hashiri.harshlands.foodexpansion.NutrientProfile;
 import cz.hashiri.harshlands.locale.Messages;
 import cz.hashiri.harshlands.utils.Utils;
+import org.bukkit.ChatColor;
 import org.bukkit.Material;
+import org.bukkit.NamespacedKey;
+import org.bukkit.Registry;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.persistence.PersistentDataType;
 import org.bukkit.potion.PotionEffectType;
-import org.bukkit.NamespacedKey;
-import org.bukkit.Registry;
 
 import javax.annotation.Nullable;
 import java.util.*;
@@ -87,9 +88,11 @@ public class CustomFoodRegistry {
                 effects.add(new FoodEffect(effectType, duration, amplifier, chance));
             }
 
+            List<String> warningLore = foodSec.getStringList("WarningLore");
+
             CustomFoodDefinition def = new CustomFoodDefinition(
                 id, displayName, baseMaterial, cmd, hunger, saturation,
-                macros, flags, effects, isFood
+                macros, flags, effects, warningLore, isFood
             );
             definitions.put(id.toLowerCase(), def);
         }
@@ -105,6 +108,15 @@ public class CustomFoodRegistry {
         if (meta == null) return stack;
 
         meta.setDisplayName(def.getDisplayName());
+
+        List<String> warningLines = def.getWarningLore();
+        if (!warningLines.isEmpty()) {
+            List<String> lore = new ArrayList<>();
+            for (String line : warningLines) {
+                lore.add(ChatColor.translateAlternateColorCodes('&', line));
+            }
+            meta.setLore(lore);
+        }
 
         if (def.getCustomModelData() > 0) {
             Utils.setCustomModelData(meta, def.getCustomModelData());

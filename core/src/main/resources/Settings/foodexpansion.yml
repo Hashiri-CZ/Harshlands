@@ -486,6 +486,8 @@ FoodExpansion:
           Duration: 200
           Amplifier: 0
           Chance: 0.5
+      WarningLore:
+        - "&cRaw. 50% chance to cause hunger."
     cooked_bat_wing:
       BaseMaterial: COOKED_CHICKEN
       CustomModelData: 10019
@@ -503,6 +505,8 @@ FoodExpansion:
           Duration: 200
           Amplifier: 0
           Chance: 0.14
+      WarningLore:
+        - "&eCooked bat pathogens may linger (14% hunger risk)."
       Recipe:
         Type: FURNACE
         Input: bat_wing
@@ -785,6 +789,8 @@ FoodExpansion:
           Duration: 200
           Amplifier: 0
           Chance: 1.0
+      WarningLore:
+        - "&cTastes strange. Causes nausea."
       Recipe:
         Type: SHAPELESS
         Ingredients:
