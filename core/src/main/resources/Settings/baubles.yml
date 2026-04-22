@@ -137,6 +137,10 @@ Items:
       MaxHealthPercent: 0.5
       MinAmount: 1
       MaxAmount: 3
+      # Hard cap on how many enderman allies can be alive at once per wearer.
+      # New spawns are skipped if the wearer already has this many live allies,
+      # preventing farm-the-tank-for-infinite-endermen exploits.
+      MaxConcurrentAllies: 5
     WaterContact:
       Enabled: true
       Chance: 1.0 # Chance per "Delay" to take damage when submerged in water

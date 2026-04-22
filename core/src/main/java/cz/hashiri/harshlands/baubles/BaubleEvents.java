@@ -309,6 +309,19 @@ public class BaubleEvents extends ModuleEvents implements Listener {
         }
     }
 
+    /**
+     * Removes a dying enderman ally from its owner's live-ally tracking set.
+     * This keeps the concurrent-ally cap accurate as allies die in combat.
+     */
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
+    public void onEndermanAllyDeath(EntityDeathEvent event) {
+        Entity entity = event.getEntity();
+        if (!EndermanAllyUtils.isEndermanAlly(entity))
+            return;
+        UUID ownerId = EndermanAllyUtils.getOwnerId(entity);
+        EnderCrownTask.removeAlly(ownerId, entity.getUniqueId());
+    }
+
     @EventHandler(priority = EventPriority.MONITOR)
     public void onDeath(PlayerDeathEvent event) {
         Player player = event.getEntity();

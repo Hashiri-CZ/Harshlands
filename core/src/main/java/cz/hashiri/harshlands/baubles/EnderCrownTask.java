@@ -33,6 +33,8 @@ import org.bukkit.scheduler.BukkitRunnable;
 import javax.annotation.Nullable;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.Map;
 import java.util.UUID;
@@ -41,6 +43,8 @@ import java.util.function.Predicate;
 public class EnderCrownTask extends BukkitRunnable implements HLTask {
 
     private static final Map<UUID, EnderCrownTask> tasks = new ConcurrentHashMap<>();
+    /** Per-wearer set of live ally entity UUIDs, for concurrent-ally cap tracking. */
+    private static final Map<UUID, Set<UUID>> liveAllies = new ConcurrentHashMap<>();
 
     private final HLPlayer hlPlayer;
     private final UUID id;
@@ -53,6 +57,7 @@ public class EnderCrownTask extends BukkitRunnable implements HLTask {
     private final double allySpawnChance;
     private final int minAllies;
     private final int maxAllies;
+    private final int maxConcurrentAllies;
     private final int allyDelay;
     private final Collection<String> allowedWorlds;
     private final boolean shouldTakeWaterDamage;
@@ -76,6 +81,9 @@ public class EnderCrownTask extends BukkitRunnable implements HLTask {
         this.alliesEnabled = config.getBoolean("Items.ender_queens_crown.SummonEndermenAllies.Enabled");
         this.minAllies = config.getInt("Items.ender_queens_crown.SummonEndermenAllies.MinAmount");
         this.maxAllies = config.getInt("Items.ender_queens_crown.SummonEndermenAllies.MaxAmount");
+        this.maxConcurrentAllies = config.contains("Items.ender_queens_crown.SummonEndermenAllies.MaxConcurrentAllies")
+                ? config.getInt("Items.ender_queens_crown.SummonEndermenAllies.MaxConcurrentAllies")
+                : 5;
         this.allySpawnChance = config.getDouble("Items.ender_queens_crown.SummonEndermenAllies.Chance");
         this.allyDelay = config.getInt("Items.ender_queens_crown.SummonEndermenAllies.Delay");
         this.maxHealthPercent = config.getDouble("Items.ender_queens_crown.SummonEndermenAllies.MaxHealthPercent");
@@ -177,14 +185,40 @@ public class EnderCrownTask extends BukkitRunnable implements HLTask {
         Location loc = player.getLocation();
         World world = player.getWorld();
 
+        // Prune any allies that are no longer valid (died or despawned but cleanup missed them)
+        Set<UUID> myAllies = liveAllies.computeIfAbsent(id, k -> ConcurrentHashMap.newKeySet());
+        myAllies.removeIf(allyId -> {
+            Entity e = player.getServer().getEntity(allyId);
+            return e == null || !e.isValid();
+        });
+
         int numAllies = Utils.getRandomNum(minAllies, maxAllies);
 
         for (int i = 0; i < numAllies; i++) {
+            if (maxConcurrentAllies >= 0 && myAllies.size() >= maxConcurrentAllies) {
+                break; // cap reached — skip remaining spawns this tick
+            }
             EndermanAlly ally = Utils.spawnEndermanAlly(player, loc);
             ally.addEntityToWorld(world);
             Utils.randomTpSafely(ally.getEntity(), maxDist);
+            myAllies.add(ally.getEntity().getUniqueId());
             allyTicks = 0;
         }
+    }
+
+    /**
+     * Removes a dead/removed ally from the live-ally tracking set for its owner.
+     * Called from entity death/remove event listeners in BaubleEvents.
+     */
+    public static void removeAlly(UUID ownerId, UUID allyId) {
+        Set<UUID> set = liveAllies.get(ownerId);
+        if (set != null) {
+            set.remove(allyId);
+        }
+    }
+
+    public static Map<UUID, Set<UUID>> getLiveAllies() {
+        return liveAllies;
     }
 }
 
