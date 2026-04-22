@@ -2,6 +2,8 @@ package cz.hashiri.harshlands.foodexpansion;
 
 import cz.hashiri.harshlands.data.HLModule;
 import cz.hashiri.harshlands.data.HLPlayer;
+import cz.hashiri.harshlands.hints.HintKey;
+import cz.hashiri.harshlands.hints.HintsModule;
 import cz.hashiri.harshlands.HLPlugin;
 import cz.hashiri.harshlands.tan.TanModule;
 import cz.hashiri.harshlands.utils.AboveActionBarHUD;
@@ -128,6 +130,19 @@ public class NutritionEffectTask extends BukkitRunnable {
             removeAllModifiers();
             applyModifiers(newTier);
             data.setCachedTier(newTier);
+
+            // Nutrition lifecycle hints
+            HintsModule hints = (HintsModule) HLModule.getModule(HintsModule.NAME);
+            if (hints != null) {
+                if (newTier == NutrientTier.MALNOURISHED
+                        || newTier == NutrientTier.SEVERELY_MALNOURISHED
+                        || newTier == NutrientTier.STARVING) {
+                    hints.sendHint(player, HintKey.FIRST_MACRO_LOW);
+                }
+                if (newTier == NutrientTier.WELL_NOURISHED || newTier == NutrientTier.PEAK_NUTRITION) {
+                    hints.sendHint(player, HintKey.FIRST_WELL_NOURISHED);
+                }
+            }
         }
 
         // 4. Starvation damage

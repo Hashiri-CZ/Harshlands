@@ -47,3 +47,15 @@ Hints:
     Enabled: true
     CooldownSeconds: 300
     Sound: "ENTITY_PLAYER_BURP"
+  FIRST_MACRO_LOW:
+    Enabled: true
+    Sound: "ENTITY_PLAYER_HURT"
+  FIRST_WELL_NOURISHED:
+    Enabled: true
+    Sound: "UI_TOAST_CHALLENGE_COMPLETE"
+  FIRST_OVEREATING:
+    Enabled: true
+    Sound: "ENTITY_PLAYER_BURP"
+  FIRST_PET_EATEN:
+    Enabled: true
+    Sound: "ENTITY_WOLF_WHINE"

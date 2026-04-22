@@ -21,6 +21,10 @@ hints:
     FirstThirstWarning: "&bYour throat is dry. &fWater source blocks and canteens quench thirst — but beware, untreated water can make you sick."
     FirstParasite: "&cYou feel cramps. &fSomething was in that water. Drink %item_purified_water_bottle% or wait it out."
     ParasiteCured: "&aYour stomach settles. The parasites are gone."
+    FirstMacroLow: "&cOne of your macros is low. &fCheck &e/hl nutrition&f. Eat different foods — protein, carbs, and fats each matter."
+    FirstWellNourished: "&aYou're well nourished. &fExtra hearts and a little extra speed as long as you eat varied meals."
+    FirstOvereating: "&7You're tired of that food. &fVary your diet or wait a few minutes before eating it again."
+    FirstPetEaten: "&8A quiet guilt settles in. &7You ate something that had a name once."
   # Obtain instructions — shown on /hl obtain <item>, also previewed in hint hovers.
   # Each entry: Name (pretty display name) + Lines (multi-line description).
   # Lines may contain %item_<key>% placeholders — they render as clickable tags.

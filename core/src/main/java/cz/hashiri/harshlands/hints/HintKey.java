@@ -20,7 +20,12 @@ public enum HintKey {
     // Task 1.5 — thirst & parasite hints
     FIRST_THIRST_WARNING("FirstThirstWarning", false, 0L, Sound.BLOCK_WATER_AMBIENT),
     FIRST_PARASITE("FirstParasite", true, 300_000L, Sound.ENTITY_SPIDER_AMBIENT),
-    PARASITE_CURED("ParasiteCured", true, 300_000L, Sound.ENTITY_PLAYER_BURP);
+    PARASITE_CURED("ParasiteCured", true, 300_000L, Sound.ENTITY_PLAYER_BURP),
+    // Task 1.6 — nutrition & overeating hints
+    FIRST_MACRO_LOW("FirstMacroLow", false, 0L, Sound.ENTITY_PLAYER_HURT),
+    FIRST_WELL_NOURISHED("FirstWellNourished", false, 0L, Sound.UI_TOAST_CHALLENGE_COMPLETE),
+    FIRST_OVEREATING("FirstOvereating", false, 0L, Sound.ENTITY_PLAYER_BURP),
+    FIRST_PET_EATEN("FirstPetEaten", false, 0L, Sound.ENTITY_WOLF_WHINE);
 
     private final String translationKey;
     private final boolean repeating;

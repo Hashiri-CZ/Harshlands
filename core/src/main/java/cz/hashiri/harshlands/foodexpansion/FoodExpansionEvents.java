@@ -6,6 +6,8 @@ import cz.hashiri.harshlands.comfort.ComfortTier;
 import cz.hashiri.harshlands.data.HLModule;
 import cz.hashiri.harshlands.data.HLPlayer;
 import cz.hashiri.harshlands.data.foodexpansion.DataModule;
+import cz.hashiri.harshlands.hints.HintKey;
+import cz.hashiri.harshlands.hints.HintsModule;
 import cz.hashiri.harshlands.HLPlugin;
 import cz.hashiri.harshlands.locale.Messages;
 import org.bukkit.Bukkit;
@@ -124,6 +126,10 @@ public class FoodExpansionEvents implements Listener {
 
     // --- Food Consumption ---
 
+    // TODO(1.4): wire FIRST_PET_EATEN once pet-origin tracking exists.
+    // CustomFoodDrops does not distinguish tamed vs wild entities — all WOLF/OCELOT/PARROT drops
+    // are identical items with no NBT marking tamed origin. Until drop-loot stamps an
+    // hl_tamed_origin=true PDC tag on the item, we cannot reliably detect this at eat time.
     @EventHandler(priority = EventPriority.HIGH, ignoreCancelled = true)
     public void onPlayerConsume(PlayerItemConsumeEvent event) {
         Player player = event.getPlayer();
@@ -516,6 +522,11 @@ public class FoodExpansionEvents implements Listener {
         String msg = null;
         if (satiationCount >= msgBlockedThreshold) {
             msg = msgBlockedText;
+            // Fire the "first overeating blocked" hint
+            HintsModule hints = (HintsModule) HLModule.getModule(HintsModule.NAME);
+            if (hints != null) {
+                hints.sendHint(player, HintKey.FIRST_OVEREATING);
+            }
         } else if (satiationCount >= msgSevereThreshold) {
             msg = msgSevereText;
         } else if (satiationCount >= msgWarningThreshold) {
