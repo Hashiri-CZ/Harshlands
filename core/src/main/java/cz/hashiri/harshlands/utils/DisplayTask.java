@@ -120,7 +120,7 @@ public class DisplayTask extends BukkitRunnable implements HLTask {
         hypothermiaUseVanillaFreeze    = tanConfig != null && tanConfig.getBoolean("Temperature.Hypothermia.ScreenTinting.UseVanillaFreezeEffect");
         hypothermiaFreezeTickCount     = tanConfig != null ? tanConfig.getInt("VisualTickPeriod") + 5 : 5;
         hyperthermiaScreenEnabled      = tanConfig != null && tanConfig.getBoolean("Temperature.Hyperthermia.ScreenTinting");
-        thirstDehydrationScreenEnabled = tanConfig != null && tanConfig.getBoolean("Thirst.Dehydration.ScreenTinting");
+        thirstDehydrationScreenEnabled = tanConfig != null && tanConfig.getBoolean("Thirst.Effects.Tiers.Dehydrated.ScreenTinting");
     }
 
     @Override
