@@ -1263,11 +1263,17 @@ public class Commands implements CommandExecutor {
                     }
 
                     // Determine whether this is a self-reset or an others-reset
+                    if (args.length < 3 && !(sender instanceof Player)) {
+                        sendIncompleteCommandMsg(sender);
+                        return true;
+                    }
+
                     boolean isSelfReset = args.length < 3
                             || (sender instanceof Player p2 && args[2].equalsIgnoreCase(p2.getName()));
 
                     if (isSelfReset) {
-                        if (!sender.hasPermission("harshlands.command.hints.reset.self")) {
+                        if (!sender.hasPermission("harshlands.command.hints.reset.self")
+                                && !sender.hasPermission("harshlands.admin.hints")) {
                             sendNoPermissionMessage(sender);
                             return true;
                         }
