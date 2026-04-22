@@ -210,7 +210,28 @@ BodyParts:
 # Customize weapon and armor traits of the First Aid items
 
 Items:
+  bandage:
+    Enabled:
+      Enabled_1_21_11: true
+  splint:
+    Enabled:
+      Enabled_1_21_11: true
+  medical_kit:
+    Enabled:
+      Enabled_1_21_11: true
 
 # Customize recipes
 # Requires restart upon changing
 Recipes:
+  bandage:
+    Enabled:
+      Enabled_1_21_11: true
+    Unlock: true
+  splint:
+    Enabled:
+      Enabled_1_21_11: true
+    Unlock: true
+  medical_kit:
+    Enabled:
+      Enabled_1_21_11: true
+    Unlock: true

@@ -6,3 +6,43 @@ ConfigId: "1.2.16-RELEASE" # Used for config syncing purposes, do NOT edit
 
 # Edit carefully, following the Harshlands-Reloaded wiki item guide.
 
+bandage:
+  Material: "PAPER"
+  DisplayName: "&fBandage"
+  CustomModelData: 84001
+  ItemModel: "DEFAULT"
+  Lore:
+    - "&7A rough strip of cloth for stopping bleeding."
+    - "&7Restores 2 HP to a damaged arm or leg when used."
+    - "&8&o(Healing active once BodyHealth integration lands.)"
+  NBTTags:
+    hlitem: "bandage"
+    hlmodule: "firstaid"
+
+splint:
+  Material: "STICK"
+  DisplayName: "&fSplint"
+  CustomModelData: 84002
+  ItemModel: "DEFAULT"
+  Lore:
+    - "&7Sticks and string lashed for bracing a broken leg."
+    - "&7Restores 4 HP to a leg when used."
+    - "&8&o(Healing active once BodyHealth integration lands.)"
+  NBTTags:
+    hlitem: "splint"
+    hlmodule: "firstaid"
+
+medical_kit:
+  Material: "LEATHER"
+  DisplayName: "&fMedical Kit"
+  CustomModelData: 84003
+  ItemModel: "DEFAULT"
+  Lore:
+    - "&7Bandages, splints, and clean cloth in a leather pouch."
+    - "&7Fully restores every damaged body part when used."
+    - "&7Rare. Consumed on use."
+    - "&8&o(Healing active once BodyHealth integration lands.)"
+  NBTTags:
+    hlitem: "medical_kit"
+    hlmodule: "firstaid"
+

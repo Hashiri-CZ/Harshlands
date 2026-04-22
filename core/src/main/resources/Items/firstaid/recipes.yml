@@ -6,3 +6,33 @@ ConfigId: "1.2.16-RELEASE" # Used for config syncing purposes, do NOT edit
 
 # Edit carefully, following the Harshlands-Reloaded wiki recipe guide.
 
+bandage:
+  Type: "Shapeless"
+  Result:
+    Item: "bandage"
+    Amount: 2
+  Ingredients:
+    - "PAPER"
+    - "STRING"
+    - "STRING"
+
+splint:
+  Type: "Shaped"
+  Result:
+    Item: "splint"
+    Amount: 1
+  Ingredients:
+    - "STICK|STRING|STICK"
+    - "STRING|STRING|STRING"
+    - "STICK|STRING|STICK"
+
+medical_kit:
+  Type: "Shaped"
+  Result:
+    Item: "medical_kit"
+    Amount: 1
+  Ingredients:
+    - "bandage|LEATHER|bandage"
+    - "LEATHER|splint|LEATHER"
+    - "bandage|LEATHER|bandage"
+
