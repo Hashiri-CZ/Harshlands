@@ -23,6 +23,7 @@ import cz.hashiri.harshlands.data.baubles.BaubleSlot;
 import cz.hashiri.harshlands.data.baubles.DataModule;
 import cz.hashiri.harshlands.hints.HintKey;
 import cz.hashiri.harshlands.hints.HintsModule;
+import cz.hashiri.harshlands.locale.Messages;
 import cz.hashiri.harshlands.misc.PlayerItemAcquireEvent;
 import cz.hashiri.harshlands.HLPlugin;
 import cz.hashiri.harshlands.utils.PlayerJumpEvent;
@@ -52,6 +53,8 @@ import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.util.Vector;
 
 import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
 import java.util.UUID;
@@ -72,6 +75,9 @@ public class BaubleEvents extends ModuleEvents implements Listener {
     private final HLPlugin plugin;
     private final FileConfiguration config;
     private final BaubleModule module;
+
+    /** UUID → number of baubles dropped on death, cleared after respawn message fires. */
+    private final Map<UUID, Integer> pendingDropCountByVictim = new HashMap<>();
 
     // constructing the BaubleEvents class
     public BaubleEvents(BaubleModule module, HLPlugin plugin) {
@@ -295,13 +301,35 @@ public class BaubleEvents extends ModuleEvents implements Listener {
         if (!(shouldEventBeRan(player) && config.getBoolean("DropBaublesUponDeath.Enabled") && HLPlayer.isValidPlayer(player)))
             return;
 
+        BaubleInventory bag = HLPlayer.getPlayers().get(player.getUniqueId()).getBaubleDataModule().getBaubleBag();
+        boolean willDrop = false;
+
         if (player.getWorld().getGameRuleValue(GameRule.KEEP_INVENTORY)) {
             if (config.getBoolean("DropBaublesUponDeath.IgnoreKeepInventoryGamerule")) {
-                HLPlayer.getPlayers().get(player.getUniqueId()).getBaubleDataModule().getBaubleBag().removeAndDropAllBaubles(player.getLocation());
+                willDrop = true;
             }
         }
         else {
-            HLPlayer.getPlayers().get(player.getUniqueId()).getBaubleDataModule().getBaubleBag().removeAndDropAllBaubles(player.getLocation());
+            willDrop = true;
+        }
+
+        if (willDrop) {
+            int count = bag.getAllBaubles().size();
+            bag.removeAndDropAllBaubles(player.getLocation());
+            if (count > 0) {
+                pendingDropCountByVictim.put(player.getUniqueId(), count);
+            }
+        }
+    }
+
+    @EventHandler(priority = EventPriority.MONITOR)
+    public void onRespawn(PlayerRespawnEvent event) {
+        Player player = event.getPlayer();
+        UUID id = player.getUniqueId();
+
+        Integer count = pendingDropCountByVictim.remove(id);
+        if (count != null) {
+            Messages.of("baubles.death.baubles_dropped").with("count", count).send(player);
         }
     }
 

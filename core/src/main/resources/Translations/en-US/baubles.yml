@@ -5,3 +5,5 @@ baubles:
     message: "&fShutting down %name% module"
   wormhole_inventory:
     skull_name: "&e%player_name%"
+  death:
+    baubles_dropped: "&cYou dropped %count% bauble(s). Recover them before they despawn."
