@@ -3,6 +3,7 @@ package cz.hashiri.harshlands.foodexpansion.items;
 import cz.hashiri.harshlands.HLPlugin;
 import cz.hashiri.harshlands.foodexpansion.FoodExpansionModule;
 import cz.hashiri.harshlands.utils.Utils;
+import cz.hashiri.harshlands.utils.recipe.RecipeDisplayRegistry;
 import org.bukkit.*;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.entity.Player;
@@ -74,9 +75,19 @@ public class CustomFoodRecipes implements Listener {
         ShapelessRecipe recipe = new ShapelessRecipe(key, result);
 
         List<String> ingredients = recipeSec.getStringList("Ingredients");
+        RecipeDisplayRegistry displayRegistry = plugin.getRecipeDisplayRegistry();
+        int slotIndex = 0;
         for (String ing : ingredients) {
             RecipeChoice choice = resolveIngredient(ing);
             recipe.addIngredient(choice);
+
+            if (displayRegistry != null) {
+                ItemStack displayStack = customIngredientDisplay(ing);
+                if (displayStack != null) {
+                    displayRegistry.register(key, slotIndex, List.of(displayStack));
+                }
+            }
+            slotIndex++;
         }
 
         plugin.enqueueRecipe(recipe);
@@ -94,16 +105,56 @@ public class CustomFoodRecipes implements Listener {
         recipe.shape(pattern.toArray(new String[0]));
 
         ConfigurationSection keySec = recipeSec.getConfigurationSection("Key");
+        Map<Character, String> ingredientNameByChar = new HashMap<>();
         if (keySec != null) {
             for (String k : keySec.getKeys(false)) {
                 String ingName = keySec.getString(k);
                 RecipeChoice choice = resolveIngredient(ingName);
                 recipe.setIngredient(k.charAt(0), choice);
+                ingredientNameByChar.put(k.charAt(0), ingName);
             }
         }
 
         plugin.enqueueRecipe(recipe);
         registeredKeys.add(key);
+
+        RecipeDisplayRegistry displayRegistry = plugin.getRecipeDisplayRegistry();
+        if (displayRegistry != null && !pattern.isEmpty()) {
+            // NMS trims the recipe to its bounding box and indexes slots as row*effectiveWidth+col.
+            int rows = pattern.size();
+            int cols = 0;
+            for (String row : pattern) cols = Math.max(cols, row.length());
+            int minRow = rows, maxRow = -1, minCol = cols, maxCol = -1;
+            for (int r = 0; r < rows; r++) {
+                String row = pattern.get(r);
+                for (int c = 0; c < row.length(); c++) {
+                    char ch = row.charAt(c);
+                    if (ch != ' ') {
+                        if (r < minRow) minRow = r;
+                        if (r > maxRow) maxRow = r;
+                        if (c < minCol) minCol = c;
+                        if (c > maxCol) maxCol = c;
+                    }
+                }
+            }
+            if (maxRow >= 0) {
+                int effectiveWidth = maxCol - minCol + 1;
+                for (int r = minRow; r <= maxRow; r++) {
+                    String row = pattern.get(r);
+                    for (int c = minCol; c <= maxCol; c++) {
+                        if (c >= row.length()) continue;
+                        char ch = row.charAt(c);
+                        if (ch == ' ') continue;
+                        String ingName = ingredientNameByChar.get(ch);
+                        if (ingName == null) continue;
+                        ItemStack displayStack = customIngredientDisplay(ingName);
+                        if (displayStack == null) continue;
+                        int slotIndex = (r - minRow) * effectiveWidth + (c - minCol);
+                        displayRegistry.register(key, slotIndex, List.of(displayStack));
+                    }
+                }
+            }
+        }
     }
 
     private void registerFurnace(String foodId, ConfigurationSection recipeSec) {
@@ -139,6 +190,30 @@ public class CustomFoodRecipes implements Listener {
         SmokingRecipe smoker = new SmokingRecipe(smokerKey, result, inputChoice, xp, cookTime / 2);
         plugin.enqueueRecipe(smoker);
         registeredKeys.add(smokerKey);
+
+        RecipeDisplayRegistry displayRegistry = plugin.getRecipeDisplayRegistry();
+        if (displayRegistry != null) {
+            ItemStack displayStack = customIngredientDisplay(inputName);
+            if (displayStack != null) {
+                List<ItemStack> stacks = List.of(displayStack);
+                displayRegistry.register(furnaceKey, 0, stacks);
+                displayRegistry.register(campfireKey, 0, stacks);
+                displayRegistry.register(smokerKey, 0, stacks);
+            }
+        }
+    }
+
+    /**
+     * Returns the custom-food display ItemStack for a single ingredient name, or null if
+     * the name refers to a vanilla Material (comma-lists and raw materials need no rewrite).
+     * Used to feed RecipeDisplayRegistry so the recipe-book patcher can swap the
+     * base-material icon for the real custom item.
+     */
+    private ItemStack customIngredientDisplay(String name) {
+        if (name == null || name.isEmpty() || name.contains(",")) return null;
+        CustomFoodDefinition def = registry.getDefinition(name);
+        if (def == null) return null;
+        return registry.createItemStack(name, 1);
     }
 
     private RecipeChoice resolveIngredient(String name) {
@@ -283,6 +358,17 @@ public class CustomFoodRecipes implements Listener {
                 NamespacedKey smokerKey = new NamespacedKey(plugin, "food_bonus_" + key + "_smoker");
                 plugin.enqueueRecipe(new SmokingRecipe(smokerKey, result, inputChoice, xp, cookTime / 2));
                 registeredKeys.add(smokerKey);
+
+                RecipeDisplayRegistry displayRegistry = plugin.getRecipeDisplayRegistry();
+                if (displayRegistry != null) {
+                    ItemStack displayStack = customIngredientDisplay(inputName);
+                    if (displayStack != null) {
+                        List<ItemStack> stacks = List.of(displayStack);
+                        displayRegistry.register(furnaceKey, 0, stacks);
+                        displayRegistry.register(campfireKey, 0, stacks);
+                        displayRegistry.register(smokerKey, 0, stacks);
+                    }
+                }
             } catch (Exception e) {
                 logger.warning("BonusRecipe '" + key + "': failed to register: " + e.getMessage());
             }
