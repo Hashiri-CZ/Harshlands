@@ -571,25 +571,37 @@ Thirst:
   DefaultSaturation: 5 # Amount of saturation a player will automatically spawn with
   DefaultExhaustion: 0.0
   DefaultExhaustionTickTimer: 0
-  Dehydration:
-    Enabled: true
-    ScreenTinting: true # Should the screen be tinted gray when a player has thirst?
-    PotionEffects:
-      Enabled: false
-      Effects:
-        WEAKNESS:
-          Amplifier: 2
-          Duration: 160
-        NAUSEA:
-          Amplifier: 0
-          Duration: 160
-    Duration: 240 # Number of ticks in which the player can take damage from dehydration
-    TickPeriod: 80 # Player will take damage each time this many number of ticks passes
-    Thirst: 0.4 # At what thirst level or lower should the player be dehydrated
-    Damage:
-      Enabled: true
-      Cutoff: -1.0 # The player will stop taking damage from dehydration if their health is below this value
-      Amount: 1.0
+  Effects:
+    Enabled: true # Master kill-switch for all thirst tier effects and Dehydrated damage
+    TickPeriod: 80 # How often (in ticks) the effects task re-evaluates the tier and re-applies effects
+    EffectDurationBuffer: 40 # Each PotionEffect lasts TickPeriod + this many ticks (default 120 ticks = 6s). Gives ~2s overlap while in-tier and ~2s natural decay after leaving a tier.
+    Tiers:
+      Thirsty:
+        Threshold: 10 # Tier activates when thirst <= this (half bar)
+        PotionEffects:
+          SLOWNESS:
+            Amplifier: 0 # Slowness I
+      Parched:
+        Threshold: 5 # Tier activates when thirst <= this (quarter bar)
+        PotionEffects:
+          NAUSEA:
+            Amplifier: 0 # Nausea I
+          MINING_FATIGUE:
+            Amplifier: 0 # Mining Fatigue I
+      Dehydrated:
+        Threshold: 0.4 # Tier activates when thirst <= this (empty bar)
+        ScreenTinting: true # Should the screen be tinted gray when dehydrated?
+        PotionEffects:
+          SLOWNESS:
+            Amplifier: 0 # Slowness I
+          NAUSEA:
+            Amplifier: 0 # Nausea I
+          WEAKNESS:
+            Amplifier: 2 # Weakness III
+        Damage:
+          Enabled: true # Apply damage while dehydrated
+          Cutoff: -1.0 # Stop damaging if player HP falls below this
+          Amount: 1.0 # HP removed per TickPeriod
   Parasites:
     UnpurifiedWaterBottle:
       Enabled: true
