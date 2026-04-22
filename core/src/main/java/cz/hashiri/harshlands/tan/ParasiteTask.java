@@ -16,7 +16,10 @@
  */
 package cz.hashiri.harshlands.tan;
 
+import cz.hashiri.harshlands.data.HLModule;
 import cz.hashiri.harshlands.data.HLPlayer;
+import cz.hashiri.harshlands.hints.HintKey;
+import cz.hashiri.harshlands.hints.HintsModule;
 import cz.hashiri.harshlands.HLPlugin;
 import cz.hashiri.harshlands.utils.DisplayTask;
 import cz.hashiri.harshlands.utils.HLTask;
@@ -87,6 +90,13 @@ public class ParasiteTask extends BukkitRunnable implements HLTask {
             ticks += tickPeriod;
 
             DisplayTask.getTasks().get(id).setParasitesActive(true);
+            // Check if this tick just crossed the duration boundary (parasite cured naturally)
+            if (ticks >= duration) {
+                HintsModule hints = (HintsModule) HLModule.getModule(HintsModule.NAME);
+                if (hints != null) {
+                    hints.sendHint(player, HintKey.PARASITE_CURED);
+                }
+            }
 
             if (!player.hasPermission("harshlands.toughasnails.resistance.parasite.damage")) {
                 if (damageEnabled) {
@@ -127,6 +137,12 @@ public class ParasiteTask extends BukkitRunnable implements HLTask {
             if (potionEffectsEnabled) {
                 player.addPotionEffects(potionEffects);
             }
+        }
+
+        // Parasite onset hint
+        HintsModule hints = (HintsModule) HLModule.getModule(HintsModule.NAME);
+        if (hints != null) {
+            hints.sendHint(player, HintKey.FIRST_PARASITE);
         }
 
         this.runTaskTimer(plugin, 0L, tickPeriod);

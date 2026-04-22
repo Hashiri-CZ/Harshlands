@@ -19,6 +19,8 @@ package cz.hashiri.harshlands.tan;
 import cz.hashiri.harshlands.comfort.ComfortModule;
 import cz.hashiri.harshlands.data.HLModule;
 import cz.hashiri.harshlands.data.HLPlayer;
+import cz.hashiri.harshlands.hints.HintKey;
+import cz.hashiri.harshlands.hints.HintsModule;
 import cz.hashiri.harshlands.HLPlugin;
 import cz.hashiri.harshlands.utils.HLTask;
 import cz.hashiri.harshlands.utils.Utils;
@@ -164,6 +166,14 @@ public class ThirstCalculateTask extends BukkitRunnable implements HLTask {
             thirstManager.setExhaustion(player, exhaustionLvl);
             thirstManager.setSaturation(player, saturationLvl);
             thirstManager.setTickTimer(player, tickTimer);
+
+            // Thirst warning hint
+            if (thirstLvl < 8) {
+                HintsModule hints = (HintsModule) HLModule.getModule(HintsModule.NAME);
+                if (hints != null) {
+                    hints.sendHint(player, HintKey.FIRST_THIRST_WARNING);
+                }
+            }
 
             // Debug instrumentation
             cz.hashiri.harshlands.debug.DebugManager debugMgr = plugin.getDebugManager();
