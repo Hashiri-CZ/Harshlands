@@ -24,6 +24,21 @@ Player-experience polish pass addressing 130 findings from the 1.3.0 review. Foc
 ### Fixed
 
 - `FIRST_SHIVERING` hint originally wired to the cold-breath particle visual; now correctly fires on the SoundEcology shivering-noise event (matches the hint's text and review intent).
+- Fear triggers now clamp per-check via `MaxGainPerCheck` (default 3.0) so Darkness + Cave + Night + Enemies can no longer spike fear to 100 in <10s. `AllowPartialDecayUnderTriggers` lets PassiveDecay apply at half-rate when trigger load is light.
+- Fear's `EatCookedFood` list now accepts Harshlands custom foods (cooked bacon, soups, bat soup, etc.) — not just vanilla cooked items.
+- FakeMobSounds rate dropped from 0.05 → 0.012 per effects tick and `ENTITY_CREEPER_PRIMED` removed from the pool (it was driving players backward into actual traps). Heartbeat now has a 60-tick cooldown and quieter volume.
+- Comfort tier thresholds raised: SHELTER 2-5, HOME 6-10, COZY 11-16, LUXURY 17+. New `DiminishingReturns` scoring (Factor 0.5, Cap 2×) makes spamming one category less rewarding. The easy 14-point LUXURY loadout now lands in COZY.
+- Cabin fever no longer triggers under forest canopies (leaves/vines/glow-lichen/snow/mangrove-roots are excluded when `RequireMaterialRoof: true`).
+- Macro starvation damage gated behind vanilla hunger threshold — players no longer take HP damage with a full hunger bar. Action-bar warning fires instead.
+- Only water-type potions (WATER / MUNDANE / AWKWARD / THICK) now restore thirst. The brewing-stand-as-water-fountain loophole is closed.
+- Thrown weapons returning to a full inventory are now owner-locked for 10 seconds with extended despawn (180s), so a throwable dropped over lava or in a contested area is recoverable.
+
+### Added (Phase 2)
+
+- Bauble drop-on-death chat notice on respawn (`baubles.death.baubles_dropped`) — tells the victim how many baubles dropped.
+- `/hl comfort` now shows the delta to the next tier (`next_tier_hint`) or confirms max tier (`at_max_tier`).
+- Tough As Nails death messages rewritten to match the Harshlands tone (dehydration / parasites / hyperthermia / hypothermia).
+- Macro decay values now documented inline (units per minute of idle).
 
 ### Known backlog (deferred to later releases)
 
