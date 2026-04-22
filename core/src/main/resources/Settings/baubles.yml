@@ -301,7 +301,9 @@ Items:
   golden_crown:
     Enabled:
       Enabled_1_21_11: true
-    Armor: 13.0
+    # Was 13.0 pre-1.3.1 — close to a full netherite set's armor value from a
+    # single head slot. Scaled to 4.0 so it feels like a prestige hat, not godmode.
+    Armor: 4.0
   flare_gun:
     Enabled:
       Enabled_1_21_11: true

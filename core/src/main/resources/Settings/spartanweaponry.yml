@@ -86,7 +86,9 @@ Items:
     Attributes:
       AttackDamage: 4.0
       AttackSpeed: 2.4
-    UnarmoredDamageMultiplier: 3.0
+    # Tier-scaled multiplier (1.3.1): low tiers keep the flat 3.0 surprise,
+    # high tiers trend toward 2.0 so they don't one-shot unarmored targets.
+    UnarmoredDamageMultiplier: 2.0
     Protection:
       PercentAbsorbed: 0.25 # How much does the rapier absorb damage taken (0.25 = 25%)
       DamageDurability: 2 # Durability used up when attacked
@@ -97,7 +99,7 @@ Items:
     Attributes:
       AttackDamage: 3.5
       AttackSpeed: 2.4
-    UnarmoredDamageMultiplier: 3.0
+    UnarmoredDamageMultiplier: 2.25
     Protection:
       PercentAbsorbed: 0.25
       DamageDurability: 2
@@ -108,7 +110,7 @@ Items:
     Attributes:
       AttackDamage: 2.4
       AttackSpeed: 2.4
-    UnarmoredDamageMultiplier: 3.0
+    UnarmoredDamageMultiplier: 2.5
     Protection:
       PercentAbsorbed: 0.25
       DamageDurability: 2
@@ -119,7 +121,7 @@ Items:
     Attributes:
       AttackDamage: 3.0
       AttackSpeed: 2.4
-    UnarmoredDamageMultiplier: 3.0
+    UnarmoredDamageMultiplier: 2.5
     Protection:
       PercentAbsorbed: 0.25
       DamageDurability: 2
@@ -130,7 +132,7 @@ Items:
     Attributes:
       AttackDamage: 2.75
       AttackSpeed: 2.4
-    UnarmoredDamageMultiplier: 3.0
+    UnarmoredDamageMultiplier: 2.75
     Protection:
       PercentAbsorbed: 0.25
       DamageDurability: 2

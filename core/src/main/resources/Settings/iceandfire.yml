@@ -21,7 +21,10 @@ Dragon:
   # Set to 1.0 for always-I&F, -1.0 to disable.
   SpawnChance: 0.3
   Info:
-    Name: "Harshlands %VARIANT% Dragon" # All internal placeholders: %VARIANT%, %BREED%, %GENDER%, %AGE%, %STAGE%
+    # Placeholders: %VARIANT%, %BREED%, %GENDER%, %AGE%, %STAGE%
+    # Brand prefix dropped in 1.3.1; stage appended so players can read the
+    # dragon's danger level on hover/damage. CustomNameVisible stays false.
+    Name: "%VARIANT% Dragon — Stage %STAGE%"
     CustomNameVisible: false
     Health:
       Stage1:
@@ -43,8 +46,8 @@ Dragon:
     Dragonscales:
       Stage1:
         Type: "Range"
-        MinAmount: 0
-        MaxAmount: 0
+        MinAmount: 1
+        MaxAmount: 3
       Stage2:
         Type: "Range"
         MinAmount: 1
