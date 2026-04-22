@@ -1,4 +1,5 @@
 foodexpansion:
+  starvation_warning_actionbar: "&cMalnourished \u2014 eat varied food or you'll starve even with hunger."
   initialize:
     message: "&fInitializing %name% module"
   shutdown:

@@ -5,8 +5,11 @@ import cz.hashiri.harshlands.data.HLPlayer;
 import cz.hashiri.harshlands.hints.HintKey;
 import cz.hashiri.harshlands.hints.HintsModule;
 import cz.hashiri.harshlands.HLPlugin;
+import cz.hashiri.harshlands.locale.Messages;
 import cz.hashiri.harshlands.tan.TanModule;
 import cz.hashiri.harshlands.utils.AboveActionBarHUD;
+import net.kyori.adventure.audience.Audience;
+import net.kyori.adventure.text.serializer.legacy.LegacyComponentSerializer;
 
 import org.bukkit.GameMode;
 import org.bukkit.NamespacedKey;
@@ -52,6 +55,10 @@ public class NutritionEffectTask extends BukkitRunnable {
 
     private final double starvationDamage;
     private final int starvationInterval;
+    private final boolean requireVanillaHungerLow;
+    private final int vanillaHungerThreshold;
+    // Tracks the last server tick an action-bar starvation warning was sent (rate-limit: 5s = 100 ticks)
+    private long lastStarvationWarnTick = -100L;
 
     private final double lowThreshold;
     private final long lingerTicks;
@@ -86,6 +93,8 @@ public class NutritionEffectTask extends BukkitRunnable {
 
         this.starvationDamage = config.getDouble("FoodExpansion.Effects.Starving.DamagePerTick", 1.0);
         this.starvationInterval = config.getInt("FoodExpansion.Effects.Starving.DamageInterval", 80);
+        this.requireVanillaHungerLow = config.getBoolean("FoodExpansion.Effects.Starving.RequireVanillaHungerLow", true);
+        this.vanillaHungerThreshold = config.getInt("FoodExpansion.Effects.Starving.VanillaHungerThreshold", 4);
 
         this.lowThreshold = config.getDouble("FoodExpansion.HUD.LowThreshold", 40);
         this.lingerTicks = config.getLong("FoodExpansion.HUD.LingerSeconds", 5) * 20L;
@@ -145,12 +154,23 @@ public class NutritionEffectTask extends BukkitRunnable {
             }
         }
 
-        // 4. Starvation damage
+        // 4. Starvation damage (gated by vanilla hunger when RequireVanillaHungerLow is true)
         if (newTier == NutrientTier.STARVING) {
             data.incrementStarvationTickCounter(40); // this task runs every 40 ticks
             if (data.getStarvationTickCounter() >= starvationInterval) {
                 data.setStarvationTickCounter(0);
-                player.damage(starvationDamage);
+                boolean vanillaHungerLow = player.getFoodLevel() <= vanillaHungerThreshold;
+                if (!requireVanillaHungerLow || vanillaHungerLow) {
+                    player.damage(starvationDamage);
+                } else {
+                    // Macros starving but vanilla hunger is high — send action-bar warning (rate-limited to once per 5s)
+                    long currentTick = player.getWorld().getGameTime();
+                    if (currentTick - lastStarvationWarnTick >= 100L) {
+                        lastStarvationWarnTick = currentTick;
+                        ((Audience) player).sendActionBar(LegacyComponentSerializer.legacySection().deserialize(
+                            Messages.get("foodexpansion.starvation_warning_actionbar")));
+                    }
+                }
             }
         } else {
             data.setStarvationTickCounter(0);

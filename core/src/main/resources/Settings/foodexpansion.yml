@@ -53,6 +53,12 @@ FoodExpansion:
     Starving:
       DamagePerTick: 1.0
       DamageInterval: 80
+      # When true, macro-starvation damage only applies if vanilla hunger is also
+      # low (<= VanillaHungerThreshold). Prevents "full hunger bar, dying anyway"
+      # confusion. When macros are starving but vanilla hunger is high, an action-bar
+      # warning fires instead.
+      RequireVanillaHungerLow: true
+      VanillaHungerThreshold: 4
 
   DefaultFood:
     Protein: 2.0
