@@ -18,7 +18,7 @@ hints:
     FirstColdExposure: "&bYour body is losing heat. &fFind shelter, stand near a %item_campfire%, or craft warmer armour before it kills you."
     FirstHeatExposure: "&6You're overheating. &fGet into shade or water. %item_jelled_slime% armour and soul fire blocks cool you down."
     FirstShivering: "&bYou're shivering — mobs can hear it. &fWarm up or move carefully."
-    FirstThirstWarning: "&bYour throat is dry. &fWater source blocks and canteens quench thirst — but beware, untreated water can make you sick."
+    FirstThirstWarning: "&bYour throat is dry — that's why you feel slow. &fDrink from water source blocks or canteens to recover. Beware: untreated water can make you sick."
     FirstParasite: "&cYou feel cramps. &fSomething was in that water. Drink %item_purified_water_bottle% or wait it out."
     ParasiteCured: "&aYour stomach settles. The parasites are gone."
     FirstMacroLow: "&cOne of your macros is low. &fCheck &e/hl nutrition&f. Eat different foods — protein, carbs, and fats each matter."

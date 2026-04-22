@@ -168,7 +168,7 @@ public class ThirstCalculateTask extends BukkitRunnable implements HLTask {
             thirstManager.setTickTimer(player, tickTimer);
 
             // Thirst warning hint
-            if (thirstLvl < 8) {
+            if (thirstLvl <= 10) {
                 HintsModule hints = (HintsModule) HLModule.getModule(HintsModule.NAME);
                 if (hints != null) {
                     hints.sendHint(player, HintKey.FIRST_THIRST_WARNING);
