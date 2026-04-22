@@ -35,7 +35,7 @@ All of this is modular — every system below can be turned off, tuned, or left 
 - **Tough As Nails** — body temperature, thirst, hypothermia, heatstroke, parasites. Biomes matter. Seasons matter if you run RealisticSeasons. Water isn't infinite anymore.
 - **No Tree Punching** — bare hands don't fell oaks. Knap a rock against another rock, make a crude hatchet, work your way up. Early game becomes an actual phase instead of a two-minute formality.
 - **Food Expansion** — hunger is replaced with three macros (protein, carbs, fats). Eat a balanced diet and you get bonus hearts; live on one food and you rot. A tiny nutrition preview above the hotbar shows what a food will give before you commit.
-- **First Aid** — damage hits specific body parts. A broken leg slows you; a broken arm wrecks your aim. Bandages and splints become things you actually want in a chest.
+- **First Aid** — damage hits specific body parts. A broken leg slows you; a broken arm wrecks your aim. Bandages, splints, and medical kits are craftable — full body-part HP tracking arrives with the BodyHealth integration in a later release.
 - **Comfort** — Valheim-style resting. Sleep near a campfire, a bed, some flowers, a crafted chair, and you earn a short buff. Sleep alone in a hole and you don't.
 
 **Combat & creatures**
@@ -50,7 +50,7 @@ All of this is modular — every system below can be turned off, tuned, or left 
 - **Sound Ecology** — loud activity (mining, fighting, sprinting) attracts hostile attention. Sneaking through a cave is different from bulldozing it.
 
 **Helpful bits**
-- **Progressive Hints** — clickable in-chat tips that only appear when new players hit the things the plugin changed (like punching a tree and getting nothing). Hints fade out once the player's figured it out.
+- **Progressive Hints** — clickable in-chat tips that appear the first time a player hits something the plugin changed: punching a tree, freezing in a biome, drinking from a dirty river, breaking a limb, earning a comfort buff, catching cabin fever, or crossing the fear threshold. `/hl obtain <item>` looks up crafting guides on demand. `/hl hints reset` replays them.
 - **Integrations** — PlaceholderAPI, WorldGuard, RealisticSeasons, and AuraSkills are all picked up automatically if they're on the server.
 
 ---

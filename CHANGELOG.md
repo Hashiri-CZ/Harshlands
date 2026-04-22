@@ -1,8 +1,8 @@
 # Harshlands Changelog
 
-## 1.3.1 — Polish Update (WIP)
+## 1.3.1 — Polish Update
 
-Player-experience polish pass addressing 130 findings from the 1.3.0 review. Focus on new-player onboarding, translation coverage, balance tuning, and tone consistency. No new gameplay systems.
+Player-experience polish pass addressing 130 findings from the 1.3.0 review. Focus on new-player onboarding, translation coverage, balance tuning, and tone consistency. No new gameplay systems. Resource pack remains required.
 
 ### Added
 
