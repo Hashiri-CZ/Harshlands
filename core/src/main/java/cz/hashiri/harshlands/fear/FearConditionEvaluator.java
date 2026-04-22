@@ -102,12 +102,28 @@ public class FearConditionEvaluator {
         double nearFire    = config.getBoolean("FearMeter.Reductions.NearFireSource.Enabled", true) ? evalNearFireSource(player) : 0.0;
         double companions  = config.getBoolean("FearMeter.Reductions.NearCompanions.Enabled", true) ? evalNearCompanions(snapshot) : 0.0;
 
-        double netDelta = darkness + cave + underground + lowHealth + enemies + cold + storm + night + malnourished
-                        - brightLight - nearFire - companions;
+        // Sum raw trigger gain and clamp it to MaxGainPerCheck before applying
+        double grossGain = darkness + cave + underground + lowHealth + enemies + cold + storm + night + malnourished;
+        double maxGain = config.getDouble("FearMeter.MaxGainPerCheck", 3.0);
+        double clampedGain = Math.min(grossGain, maxGain);
 
+        double reductions = brightLight + nearFire + companions;
+
+        double decayAmount = 0.0;
         if (config.getBoolean("FearMeter.PassiveDecay.Enabled", true)) {
-            netDelta -= config.getDouble("FearMeter.PassiveDecay.Rate", 0.5);
+            double decayRate = config.getDouble("FearMeter.PassiveDecay.Rate", 0.5);
+            if (grossGain == 0.0) {
+                // No triggers firing — apply full passive decay
+                decayAmount = decayRate;
+            } else if (config.getBoolean("FearMeter.AllowPartialDecayUnderTriggers", true)
+                    && grossGain < maxGain / 2.0) {
+                // Triggers active but gain is modest — apply half decay so caves don't freeze progress
+                decayAmount = decayRate * 0.5;
+            }
+            // If grossGain >= maxGain/2, no decay — triggers dominate
         }
+
+        double netDelta = clampedGain - reductions - decayAmount;
 
         if (netDelta > 0.0) {
             dm.increaseFear(netDelta);
@@ -118,12 +134,12 @@ public class FearConditionEvaluator {
         cz.hashiri.harshlands.debug.DebugManager debugManager = plugin.getDebugManager();
         if (debugManager.isActive("Fear", "FearMeter", player.getUniqueId())) {
             double prevFear = dm.getFearLevel() - netDelta;
-            String chatLine = String.format("\u00a75[Fear.Meter] \u00a7f%s: %.1f \u2192 %.1f (%+.1f) dark=%+.1f mob=%+.1f light=%+.1f",
-                player.getName(), prevFear, dm.getFearLevel(), netDelta, darkness, enemies, -brightLight);
+            String chatLine = String.format("\u00a75[Fear.Meter] \u00a7f%s: %.1f \u2192 %.1f (%+.1f) dark=%+.1f mob=%+.1f light=%+.1f gross=%.1f->capped=%.1f",
+                player.getName(), prevFear, dm.getFearLevel(), netDelta, darkness, enemies, -brightLight, grossGain, clampedGain);
             String consoleLine = String.format(
-                "dark=%.2f cave=%.2f ugnd=%.2f lhp=%.2f mob=%.2f cold=%.2f storm=%.2f night=%.2f | -light=%.2f -fire=%.2f -comp=%.2f | net=%.2f | total=%.2f dir=%s",
+                "dark=%.2f cave=%.2f ugnd=%.2f lhp=%.2f mob=%.2f cold=%.2f storm=%.2f night=%.2f | gross=%.2f capped=%.2f | -light=%.2f -fire=%.2f -comp=%.2f -decay=%.2f | net=%.2f | total=%.2f dir=%s",
                 darkness, cave, underground, lowHealth, enemies, cold, storm, night,
-                brightLight, nearFire, companions, netDelta, dm.getFearLevel(),
+                grossGain, clampedGain, brightLight, nearFire, companions, decayAmount, netDelta, dm.getFearLevel(),
                 netDelta > 0 ? "UP" : netDelta < 0 ? "DOWN" : "STABLE");
             debugManager.send("Fear", "FearMeter", player.getUniqueId(), chatLine, consoleLine);
         }

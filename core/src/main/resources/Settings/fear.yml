@@ -37,6 +37,16 @@ FearMeter:
     Enabled: true
     Rate: 0.5     # fear units removed per check interval when no net gain
 
+  # Clamp on net fear gain per CheckIntervalTicks. Prevents runaway stacking
+  # when multiple triggers fire in the same tick (Darkness + Cave + Night + ...).
+  MaxGainPerCheck: 3.0
+
+  # When true, PassiveDecay still applies at HALF its normal rate even when
+  # triggers fire, as long as the gross trigger gain is below MaxGainPerCheck/2.
+  # Prevents the "no-decay-while-exploring-a-cave" trap without removing the
+  # tension the trigger system is designed to create.
+  AllowPartialDecayUnderTriggers: true
+
   Conditions:
     Darkness:
       Enabled: true
