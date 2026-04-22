@@ -63,7 +63,7 @@ public class BaubleInventory extends GUI {
         for (BaubleSlot slot: values) {
             for (int i : slot.getValues()) {
                 ItemStack item = getInventory().getItem(i);
-                if (HLItem.isHLItem(item)) {
+                if (isRealBauble(item)) {
                     items.add(item);
                 }
             }
@@ -80,17 +80,20 @@ public class BaubleInventory extends GUI {
         for (BaubleSlot slot: values) {
             for (int i : slot.getValues()) {
                 ItemStack item = inv.getItem(i);
-                if (HLItem.isHLItem(item)) {
-                    switch (HLItem.getNameFromItem(item)) {
-                        case "gui_glass", "body_slot", "ring_slot", "charm_slot", "belt_slot", "amulet_slot", "head_slot" -> {}
-                        default -> {
-                            world.dropItemNaturally(loc, item);
-                            inv.setItem(i, slot.getItem());
-                        }
-                    }
+                if (isRealBauble(item)) {
+                    world.dropItemNaturally(loc, item);
+                    inv.setItem(i, slot.getItem());
                 }
             }
         }
+    }
+
+    private static boolean isRealBauble(ItemStack item) {
+        if (!HLItem.isHLItem(item)) return false;
+        return switch (HLItem.getNameFromItem(item)) {
+            case "gui_glass", "body_slot", "ring_slot", "charm_slot", "belt_slot", "amulet_slot", "head_slot" -> false;
+            default -> true;
+        };
     }
 
     public void removeAllBaubles() {
