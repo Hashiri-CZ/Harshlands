@@ -16,7 +16,10 @@ Shutdown:
 
 Dragon:
   Enabled: true
-  SpawnChance: 0.8 # Chance of an ice and fire (I&F) dragon replacing a vanilla ender dragon spawn; set to 1.0 if you only want I&F dragons and -1.0 to disable I&F dragon spawning
+  # Chance of an Ice and Fire dragon replacing a vanilla-style dragon spawn.
+  # 0.3 = gentler first contact for new servers; raise to 0.8+ for RLCraft-grade danger.
+  # Set to 1.0 for always-I&F, -1.0 to disable.
+  SpawnChance: 0.3
   Info:
     Name: "Harshlands %VARIANT% Dragon" # All internal placeholders: %VARIANT%, %BREED%, %GENDER%, %AGE%, %STAGE%
     CustomNameVisible: false

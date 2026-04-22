@@ -54,14 +54,14 @@ Lumberjack:
   RemoveStickRecipes: true
   PlankDrops:
     Type: "Range"
-    Chance: 0.4 # Chance to break a log into planks when right-clicking a log with an axe
+    Chance: 0.6 # Chance to break a log into planks when right-clicking a log with an axe
     MinAmount: 2
-    MaxAmount: 4
+    MaxAmount: 3
   StickDrops:
     Type: "Range"
-    Chance: 0.4 # Chance to break a plank into sticks when right-clicking a log with an axe
+    Chance: 0.6 # Chance to break a plank into sticks when right-clicking a plank with an axe
     MinAmount: 2
-    MaxAmount: 4
+    MaxAmount: 3
   EnableSawPlankRecipes: true
   EnableSawStickRecipes: true
 
