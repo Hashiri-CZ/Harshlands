@@ -149,10 +149,10 @@ public class ThirstCalculateTask extends BukkitRunnable implements HLTask {
                 thirstLvl = Math.max(MAXIMUM_THIRST, thirstLvl);
             }
             else {
-                if (config.getBoolean("Thirst.Dehydration.Enabled")) {
-                    if (thirstLvl <= config.getDouble("Thirst.Dehydration.Thirst")) {
-                        if (!DehydrationTask.hasTask(id)) {
-                            new DehydrationTask(module, plugin, this.player).start();
+                if (config.getBoolean("Thirst.Effects.Enabled")) {
+                    if (thirstLvl <= config.getDouble("Thirst.Effects.Tiers.Thirsty.Threshold")) {
+                        if (!ThirstEffectsTask.hasTask(id)) {
+                            new ThirstEffectsTask(module, plugin, this.player).start();
                         }
                     }
                 }
