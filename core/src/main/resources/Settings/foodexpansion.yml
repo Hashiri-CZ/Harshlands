@@ -11,10 +11,13 @@ FoodExpansion:
   DeathPenalty:
     ResetValue: 50.0
 
+  # Macro decay values are "units lost per macro-tick" (the module's internal tick
+  # loop, currently one pass per minute of in-game time). Activity multipliers
+  # below amplify decay when the player is active.
   Decay:
-    Protein: 1.0
-    Carbs: 1.5
-    Fats: 0.5
+    Protein: 1.0  # units lost per minute of idle
+    Carbs: 1.5    # units lost per minute of idle
+    Fats: 0.5     # units lost per minute of idle
 
   Activity:
     ExhaustionThreshold: 4.0
