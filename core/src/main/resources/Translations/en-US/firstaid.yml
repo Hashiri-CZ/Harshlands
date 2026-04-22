@@ -3,3 +3,15 @@ firstaid:
     message: "&fInitializing %name% module"
   shutdown:
     message: "&fShutting down %name% module"
+  damage:
+    head_critical: "&cYou take a vicious blow to the head — everything blurs."
+    torso_critical: "&cYour ribs crack — breathing hurts."
+    left_arm_broken: "&cYour left arm is broken. Aim is unreliable."
+    right_arm_broken: "&cYour right arm is broken. Aim is unreliable."
+    left_leg_broken: "&cYour left leg gives out. You can't sprint normally."
+    right_leg_broken: "&cYour right leg gives out. You can't sprint normally."
+    both_legs_broken: "&4Both legs are broken. You can barely move."
+    left_foot_broken: "&eYour left foot is shredded."
+    right_foot_broken: "&eYour right foot is shredded."
+  use:
+    patch_success: "&7You patch up your wounds."

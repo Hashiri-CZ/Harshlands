@@ -16,8 +16,13 @@
  */
 package cz.hashiri.harshlands.firstaid;
 
+import cz.hashiri.harshlands.data.HLModule;
+import cz.hashiri.harshlands.hints.HintKey;
+import cz.hashiri.harshlands.hints.HintsModule;
+import cz.hashiri.harshlands.locale.Messages;
 import org.bukkit.Location;
 import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.entity.Player;
 
 import javax.annotation.Nonnegative;
 import javax.annotation.Nonnull;
@@ -66,8 +71,103 @@ public class Body {
         health = Math.max(health, 0); // ensure health is non-negative
 
         switch (organType) {
-            case LEFT_LEG -> leftLegHealth = health;
+            case LEFT_LEG   -> leftLegHealth  = health;
+            case RIGHT_LEG  -> rightLegHealth = health;
+            case LEFT_ARM   -> leftArmHealth  = health;
+            case RIGHT_ARM  -> rightArmHealth = health;
+            case LEFT_FOOT  -> leftFootHealth  = health;
+            case RIGHT_FOOT -> rightFootHealth = health;
+            case TORSO      -> torsoHealth = health;
+            case HEAD       -> headHealth  = health;
         }
+    }
+
+    /**
+     * Applies damage to the given body part. When the part's HP transitions from >0 to ≤0
+     * (a "break"), sends the appropriate injury chat message to the player and fires the
+     * FIRST_BROKEN_LIMB hint. Head/torso fire their critical messages when HP reaches ≤1
+     * (since those parts being fully at 0 means death — the warn fires before that).
+     *
+     * @param organType the body part being damaged
+     * @param amount    raw damage amount (positive)
+     * @param player    the owning player (for messages and hints)
+     * @return true if this damage caused a break/critical transition
+     */
+    public boolean applyDamage(@Nonnull BodyPart organType, @Nonnegative double amount, @Nonnull Player player) {
+        double before = getHealth(organType);
+        double after  = Math.max(before - amount, 0);
+        setHealth(organType, after);
+
+        boolean transitioned = false;
+
+        switch (organType) {
+            case HEAD -> {
+                // Critical when HP drops to ≤1 (lethal before 0)
+                if (before > 1.0 && after <= 1.0) {
+                    player.sendMessage(Messages.get("firstaid.damage.head_critical"));
+                    transitioned = true;
+                }
+            }
+            case TORSO -> {
+                if (before > 1.0 && after <= 1.0) {
+                    player.sendMessage(Messages.get("firstaid.damage.torso_critical"));
+                    transitioned = true;
+                }
+            }
+            case LEFT_LEG -> {
+                if (before > 0.0 && after <= 0.0) {
+                    // Check if right leg is also already broken for combined message
+                    if (rightLegHealth <= 0.0) {
+                        player.sendMessage(Messages.get("firstaid.damage.both_legs_broken"));
+                    } else {
+                        player.sendMessage(Messages.get("firstaid.damage.left_leg_broken"));
+                    }
+                    transitioned = true;
+                }
+            }
+            case RIGHT_LEG -> {
+                if (before > 0.0 && after <= 0.0) {
+                    if (leftLegHealth <= 0.0) {
+                        player.sendMessage(Messages.get("firstaid.damage.both_legs_broken"));
+                    } else {
+                        player.sendMessage(Messages.get("firstaid.damage.right_leg_broken"));
+                    }
+                    transitioned = true;
+                }
+            }
+            case LEFT_ARM -> {
+                if (before > 0.0 && after <= 0.0) {
+                    player.sendMessage(Messages.get("firstaid.damage.left_arm_broken"));
+                    transitioned = true;
+                }
+            }
+            case RIGHT_ARM -> {
+                if (before > 0.0 && after <= 0.0) {
+                    player.sendMessage(Messages.get("firstaid.damage.right_arm_broken"));
+                    transitioned = true;
+                }
+            }
+            case LEFT_FOOT -> {
+                if (before > 0.0 && after <= 0.0) {
+                    player.sendMessage(Messages.get("firstaid.damage.left_foot_broken"));
+                    transitioned = true;
+                }
+            }
+            case RIGHT_FOOT -> {
+                if (before > 0.0 && after <= 0.0) {
+                    player.sendMessage(Messages.get("firstaid.damage.right_foot_broken"));
+                    transitioned = true;
+                }
+            }
+        }
+
+        // Fire FIRST_BROKEN_LIMB hint on first limb break (not head/torso criticals)
+        if (transitioned && organType != BodyPart.HEAD && organType != BodyPart.TORSO) {
+            HintsModule hints = (HintsModule) HLModule.getModule(HintsModule.NAME);
+            if (hints != null) hints.sendHint(player, HintKey.FIRST_BROKEN_LIMB);
+        }
+
+        return transitioned;
     }
 
 
