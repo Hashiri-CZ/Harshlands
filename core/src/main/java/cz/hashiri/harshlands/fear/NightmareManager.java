@@ -17,6 +17,9 @@
 package cz.hashiri.harshlands.fear;
 
 import cz.hashiri.harshlands.HLPlugin;
+import cz.hashiri.harshlands.data.HLModule;
+import cz.hashiri.harshlands.hints.HintKey;
+import cz.hashiri.harshlands.hints.HintsModule;
 import org.bukkit.Bukkit;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
@@ -144,6 +147,10 @@ public class NightmareManager {
 
         activeNightmares.put(player.getUniqueId(), new NightmareEntry(enderman.getUniqueId()));
         plugin.getLogger().info("[Fear] Nightmare Enderman spawned for player " + player.getName() + ".");
+
+        // FIRST_NIGHTMARE hint — fires once per player on first successful nightmare spawn
+        HintsModule hintsModule = (HintsModule) HLModule.getModule(HintsModule.NAME);
+        if (hintsModule != null) hintsModule.sendHint(player, HintKey.FIRST_NIGHTMARE);
 
         // Debug instrumentation
         cz.hashiri.harshlands.debug.DebugManager debugMgr = plugin.getDebugManager();

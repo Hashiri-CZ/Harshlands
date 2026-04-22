@@ -22,6 +22,8 @@ import cz.hashiri.harshlands.data.ModuleRecipes;
 import cz.hashiri.harshlands.data.HLConfig;
 import cz.hashiri.harshlands.data.HLModule;
 import cz.hashiri.harshlands.data.db.HLDatabase;
+import cz.hashiri.harshlands.hints.HintKey;
+import cz.hashiri.harshlands.hints.HintsModule;
 import cz.hashiri.harshlands.HLPlugin;
 import cz.hashiri.harshlands.soundecology.SoundEcologySubsystem;
 import cz.hashiri.harshlands.utils.Utils;
@@ -93,6 +95,7 @@ public class FearModule extends HLModule {
 
             // Periodic fear check — evaluates all conditions and applies fear delta
             Bukkit.getScheduler().runTaskTimer(plugin, () -> {
+                HintsModule hints = (HintsModule) HLModule.getModule(HintsModule.NAME);
                 for (HLPlayer hlPlayer : new ArrayList<>(HLPlayer.getPlayers().values())) {
                     Player p = hlPlayer.getPlayer();
                     if (p == null || !p.isOnline()) continue;
@@ -100,8 +103,14 @@ public class FearModule extends HLModule {
                     if (!isEnabled(p.getWorld())) continue;
                     cz.hashiri.harshlands.data.fear.DataModule dm = hlPlayer.getFearDataModule();
                     if (dm == null) continue;
+                    double fearBefore = dm.getFearLevel();
                     evaluator.evaluate(p, dm);
-                    nightmareManager.checkSpawnOrDespawn(p, dm.getFearLevel());
+                    double fearAfter = dm.getFearLevel();
+                    // FIRST_FEAR_HIGH: fire when fear crosses 50 on the way up
+                    if (hints != null && fearBefore < 50.0 && fearAfter >= 50.0) {
+                        hints.sendHint(p, HintKey.FIRST_FEAR_HIGH);
+                    }
+                    nightmareManager.checkSpawnOrDespawn(p, fearAfter);
                 }
             }, checkInterval, checkInterval);
 

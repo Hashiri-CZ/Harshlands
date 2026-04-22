@@ -59,3 +59,12 @@ Hints:
   FIRST_PET_EATEN:
     Enabled: true
     Sound: "ENTITY_WOLF_WHINE"
+  FIRST_BROKEN_LIMB:
+    Enabled: true
+    Sound: "ENTITY_PLAYER_HURT"
+  FIRST_FEAR_HIGH:
+    Enabled: true
+    Sound: "ENTITY_ENDERMAN_STARE"
+  FIRST_NIGHTMARE:
+    Enabled: true
+    Sound: "ENTITY_ENDERMAN_SCREAM"

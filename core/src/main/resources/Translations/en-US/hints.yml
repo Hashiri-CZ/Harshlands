@@ -25,6 +25,9 @@ hints:
     FirstWellNourished: "&aYou're well nourished. &fExtra hearts and a little extra speed as long as you eat varied meals."
     FirstOvereating: "&7You're tired of that food. &fVary your diet or wait a few minutes before eating it again."
     FirstPetEaten: "&8A quiet guilt settles in. &7You ate something that had a name once."
+    FirstBrokenLimb: "&cA body part is badly hurt. &fIt'll slow you until you patch it. Craft a %item_bandage% or %item_splint%."
+    FirstFearHigh: "&8The dark is pressing in. &7Fear past half. Find light, a fire, or company before it summons something worse."
+    FirstNightmare: "&8You hear it now. &7Something came for you. Run."
   # Obtain instructions — shown on /hl obtain <item>, also previewed in hint hovers.
   # Each entry: Name (pretty display name) + Lines (multi-line description).
   # Lines may contain %item_<key>% placeholders — they render as clickable tags.
@@ -137,5 +140,15 @@ hints:
       Lines:
         - "&7Craft from iron ingots."
         - "&7Holds several drinks of water at once."
+    bandage:
+      Name: "Bandage"
+      Lines:
+        - "&7Craft from paper and string."
+        - "&7Right-click to heal a damaged limb by 2 HP."
+    splint:
+      Name: "Splint"
+      Lines:
+        - "&7Craft from sticks and string (3x3 pattern)."
+        - "&7Right-click to brace a broken leg for 4 HP."
   # Shown by /hl obtain when the item key is not recognised.
-  UnknownItem: "&cUnknown item: &e%name%&c. Try one of: axe, flint_hatchet, flint_shard, flint, plant_string, plant_fiber, dagger, knife, stick, log, plank, saw, campfire, jelled_slime, fire_starter, purified_water_bottle, charcoal_filter, canteen_empty."
+  UnknownItem: "&cUnknown item: &e%name%&c. Try one of: axe, flint_hatchet, flint_shard, flint, plant_string, plant_fiber, dagger, knife, stick, log, plank, saw, campfire, jelled_slime, fire_starter, purified_water_bottle, charcoal_filter, canteen_empty, bandage, splint."

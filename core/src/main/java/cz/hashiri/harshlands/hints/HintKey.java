@@ -25,7 +25,11 @@ public enum HintKey {
     FIRST_MACRO_LOW("FirstMacroLow", false, 0L, Sound.ENTITY_PLAYER_HURT),
     FIRST_WELL_NOURISHED("FirstWellNourished", false, 0L, Sound.UI_TOAST_CHALLENGE_COMPLETE),
     FIRST_OVEREATING("FirstOvereating", false, 0L, Sound.ENTITY_PLAYER_BURP),
-    FIRST_PET_EATEN("FirstPetEaten", false, 0L, Sound.ENTITY_WOLF_WHINE);
+    FIRST_PET_EATEN("FirstPetEaten", false, 0L, Sound.ENTITY_WOLF_WHINE),
+    // Task 1.7 — first-aid & fear hints
+    FIRST_BROKEN_LIMB("FirstBrokenLimb", false, 0L, Sound.ENTITY_PLAYER_HURT),
+    FIRST_FEAR_HIGH("FirstFearHigh", false, 0L, Sound.ENTITY_ENDERMAN_STARE),
+    FIRST_NIGHTMARE("FirstNightmare", false, 0L, Sound.ENTITY_ENDERMAN_SCREAM);
 
     private final String translationKey;
     private final boolean repeating;
