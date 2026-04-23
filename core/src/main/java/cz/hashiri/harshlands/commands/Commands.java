@@ -231,6 +231,13 @@ public class Commands implements CommandExecutor {
                     cz.hashiri.harshlands.locale.Messages.reload();
                     HLConfig.getConfigList().forEach(config -> config.reloadConfig());
 
+                    // Invalidate guide book cache on config reload
+                    cz.hashiri.harshlands.data.HLModule gm =
+                        cz.hashiri.harshlands.data.HLModule.getModule(cz.hashiri.harshlands.guide.GuideModule.NAME);
+                    if (gm instanceof cz.hashiri.harshlands.guide.GuideModule guideMod) {
+                        guideMod.clearCache();
+                    }
+
                     if (config.getBoolean("Reload.CorrectExecution.Enabled"))
                         Messages.of("commands.reload.correct_execution.message").send(sender);
 
