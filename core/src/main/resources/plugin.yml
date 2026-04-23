@@ -214,4 +214,6 @@ permissions:
       harshlands.admin.hints: true
       harshlands.command.hints.reset.self: true
       harshlands.command.guide: true
+      harshlands.command.guide.give: true
+      harshlands.command.guide.reset: true
 

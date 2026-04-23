@@ -22,6 +22,7 @@ commands:
     - "&6/hl &fobtain &b<item> &7— how to craft or find an item"
     - "&7Self-service"
     - "&6/hl &fhints reset &7— replay the beginner hints you've seen"
+    - "&6/hl &fguide &7— open the survival guide book"
     - "&6/hl &fversion &7— plugin version"
     - "&6/hl &fdebug &7— toggle debug overlays for yourself"
     - "&7Admin commands (requires op)"

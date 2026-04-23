@@ -109,6 +109,12 @@ Hints:
     world: true
     world_nether: true
     world_the_end: true
+Guide:
+  Enabled: true
+  Worlds:
+    world: true
+    world_nether: true
+    world_the_end: true
 DynamicSurroundings:
   Enabled: false   # optional module — admin must explicitly opt in
   ResourcePack:
