@@ -178,6 +178,15 @@ permissions:
   harshlands.command.hints.reset.self:
     description: Allows resetting your own progressive-hint state
     default: true
+  harshlands.command.guide:
+    description: Allows users to open the Harshlands survival guide book
+    default: true
+  harshlands.command.guide.give:
+    description: Allows users to give the guide book to another player
+    default: op
+  harshlands.command.guide.reset:
+    description: Allows resetting a player's guide-seen state
+    default: op
   harshlands.command.*:
     description: Wildcard permission
     default: op
@@ -204,4 +213,5 @@ permissions:
       harshlands.command.nutrition.reset: true
       harshlands.admin.hints: true
       harshlands.command.hints.reset.self: true
+      harshlands.command.guide: true
 

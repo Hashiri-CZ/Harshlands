@@ -1334,6 +1334,94 @@ public class Commands implements CommandExecutor {
                         return true;
                     }
                 }
+                case "guide" -> {
+                    if (!sender.hasPermission("harshlands.command.guide")) {
+                        sendNoPermissionMessage(sender);
+                        return true;
+                    }
+                    cz.hashiri.harshlands.data.HLModule gm =
+                        cz.hashiri.harshlands.data.HLModule.getModule(cz.hashiri.harshlands.guide.GuideModule.NAME);
+                    if (!(gm instanceof cz.hashiri.harshlands.guide.GuideModule guideMod) || !gm.isGloballyEnabled()) {
+                        sender.sendMessage(ChatColor.translateAlternateColorCodes('&',
+                            "&f[&5Harshlands&f] &7» &cGuide module is disabled."));
+                        return true;
+                    }
+                    if (!guideMod.getUserConfig().getConfig().getBoolean("Command.Enabled", true)) {
+                        sender.sendMessage(ChatColor.translateAlternateColorCodes('&',
+                            "&f[&5Harshlands&f] &7» &cGuide command is disabled."));
+                        return true;
+                    }
+
+                    // /hl guide — open for self
+                    if (args.length == 1) {
+                        if (!(sender instanceof Player p)) {
+                            sender.sendMessage(ChatColor.translateAlternateColorCodes('&',
+                                "&f[&5Harshlands&f] &7» &cOnly players can open the guide."));
+                            return true;
+                        }
+                        p.openBook(guideMod.buildBook());
+                        return true;
+                    }
+
+                    // /hl guide give [player]
+                    if (args[1].equalsIgnoreCase("give")) {
+                        boolean opOnly = guideMod.getUserConfig().getConfig().getBoolean("Command.GiveSubcommandOpOnly", true);
+                        if (opOnly && !sender.hasPermission("harshlands.command.guide.give")) {
+                            sendNoPermissionMessage(sender);
+                            return true;
+                        }
+                        Player target;
+                        if (args.length >= 3) {
+                            target = Bukkit.getPlayerExact(args[2]);
+                            if (target == null) {
+                                sendInvalidTargetMsg(sender);
+                                return true;
+                            }
+                        } else if (sender instanceof Player p) {
+                            target = p;
+                        } else {
+                            sendInvalidArgumentMsg(sender);
+                            return true;
+                        }
+                        ItemStack book = guideMod.buildBook();
+                        if (target.getInventory().firstEmpty() == -1) {
+                            target.getWorld().dropItemNaturally(target.getLocation(), book);
+                        } else {
+                            target.getInventory().addItem(book);
+                        }
+                        sender.sendMessage(ChatColor.translateAlternateColorCodes('&',
+                            "&f[&5Harshlands&f] &7» &fGuide given to " + target.getName() + "."));
+                        return true;
+                    }
+
+                    // /hl guide reset <player>
+                    if (args[1].equalsIgnoreCase("reset")) {
+                        boolean opOnly = guideMod.getUserConfig().getConfig().getBoolean("Command.ResetSubcommandOpOnly", true);
+                        if (opOnly && !sender.hasPermission("harshlands.command.guide.reset")) {
+                            sendNoPermissionMessage(sender);
+                            return true;
+                        }
+                        if (args.length < 3) {
+                            sendIncompleteCommandMsg(sender);
+                            return true;
+                        }
+                        Player target = Bukkit.getPlayerExact(args[2]);
+                        if (target == null) {
+                            sendInvalidTargetMsg(sender);
+                            return true;
+                        }
+                        HLPlayer hl = HLPlayer.getPlayers().get(target.getUniqueId());
+                        if (hl != null && hl.getGuideDataModule() != null) {
+                            hl.getGuideDataModule().resetSeen();
+                        }
+                        sender.sendMessage(ChatColor.translateAlternateColorCodes('&',
+                            "&f[&5Harshlands&f] &7» &fGuide state reset for " + target.getName() + "."));
+                        return true;
+                    }
+
+                    sendInvalidArgumentMsg(sender);
+                    return true;
+                }
                 default -> {
                     return true;
                 }
