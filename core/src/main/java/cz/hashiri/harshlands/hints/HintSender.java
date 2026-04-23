@@ -86,6 +86,20 @@ public class HintSender {
         return builder.create();
     }
 
+    /** Variant of {@link #renderClickable(String)} that lets callers override the tag style + hover. */
+    public static BaseComponent[] renderClickable(String raw, String tagTemplate, String hoverText) {
+        ComponentBuilder builder = new ComponentBuilder();
+        Matcher m = ITEM_PLACEHOLDER.matcher(raw);
+        int last = 0;
+        while (m.find()) {
+            appendLegacy(builder, raw.substring(last, m.start()));
+            appendItemTag(builder, m.group(1).toLowerCase(), tagTemplate, hoverText);
+            last = m.end();
+        }
+        appendLegacy(builder, raw.substring(last));
+        return builder.create();
+    }
+
     private static void appendLegacy(ComponentBuilder builder, String text) {
         if (text.isEmpty()) return;
         for (BaseComponent bc : TextComponent.fromLegacyText(text)) {
@@ -97,6 +111,22 @@ public class HintSender {
         String pretty = displayNameFor(itemKey);
         String tagText = Messages.get("hints.ItemTag", Map.of("name", pretty));
         String hoverText = Messages.get("hints.ClickHint");
+
+        TextComponent wrapper = new TextComponent();
+        for (BaseComponent bc : TextComponent.fromLegacyText(tagText)) {
+            wrapper.addExtra(bc);
+        }
+        wrapper.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT,
+                new Text(TextComponent.fromLegacyText(hoverText))));
+        wrapper.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/hl obtain " + itemKey));
+
+        builder.append(wrapper, ComponentBuilder.FormatRetention.NONE);
+    }
+
+    private static void appendItemTag(ComponentBuilder builder, String itemKey, String tagTemplate, String hoverText) {
+        String pretty = displayNameFor(itemKey);
+        // Replace %name% token in the template (same placeholder convention Messages.get uses)
+        String tagText = tagTemplate.replace("%name%", pretty);
 
         TextComponent wrapper = new TextComponent();
         for (BaseComponent bc : TextComponent.fromLegacyText(tagText)) {

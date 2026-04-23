@@ -47,15 +47,18 @@ public final class GuideBookBuilder {
     public static List<BaseComponent[]> buildPages(FileConfiguration cfg) {
         ConfigurationSection root = cfg.getConfigurationSection("guide");
         if (root == null) {
-            return singlePage(fallbackPage("Missing."));
+            return singlePage(fallbackPage("Missing.", "&e%name%", ""));
         }
 
         ConfigurationSection chaptersSection = root.getConfigurationSection("Chapters");
         List<Map<?, ?>> tocEntries = root.getMapList("Contents.Entries");
 
+        String itemTagTemplate = root.getString("ItemTag", "&e%name%");
+        String clickHint = root.getString("ClickHint", "&7Click for obtain instructions");
+
         if (chaptersSection == null || tocEntries.isEmpty()) {
             String fallback = root.getString("MissingContentFallback", "Missing.");
-            return singlePage(fallbackPage(fallback));
+            return singlePage(fallbackPage(fallback, itemTagTemplate, clickHint));
         }
 
         String backLabel = root.getString("BackToContentsLabel", "");
@@ -85,7 +88,7 @@ public final class GuideBookBuilder {
         List<BaseComponent[]> pages = new ArrayList<>();
 
         // Cover
-        pages.add(renderPage(joinLines(root.getStringList("Cover")), /*trailing*/ null));
+        pages.add(renderPage(joinLines(root.getStringList("Cover")), /*trailing*/ null, itemTagTemplate, clickHint));
 
         // ToC
         pages.add(buildTocPage(root.getString("Contents.Heading", "Contents"), chapters));
@@ -96,15 +99,16 @@ public final class GuideBookBuilder {
                 String raw = ch.pages.get(i);
                 boolean isLast = (i == ch.pages.size() - 1);
                 String trailing = (isLast && !backLabel.isEmpty()) ? backLabel : null;
-                pages.add(renderPage(raw, trailing));
+                pages.add(renderPage(raw, trailing, itemTagTemplate, clickHint));
             }
         }
 
         return pages;
     }
 
-    private static BaseComponent[] fallbackPage(String message) {
-        return HintSender.renderClickable(message);
+    private static BaseComponent[] fallbackPage(String message, String itemTagTemplate, String clickHint) {
+        String translated = ChatColor.translateAlternateColorCodes('&', message);
+        return HintSender.renderClickable(translated, itemTagTemplate, clickHint);
     }
 
     private static List<BaseComponent[]> singlePage(BaseComponent[] page) {
@@ -115,13 +119,15 @@ public final class GuideBookBuilder {
 
     private static BaseComponent[] buildTocPage(String heading, List<ChapterResolved> chapters) {
         ComponentBuilder builder = new ComponentBuilder();
-        for (BaseComponent bc : TextComponent.fromLegacyText(heading + "\n\n")) {
+        String translatedHeading = ChatColor.translateAlternateColorCodes('&', heading);
+        for (BaseComponent bc : TextComponent.fromLegacyText(translatedHeading + "\n\n")) {
             builder.append(bc, ComponentBuilder.FormatRetention.NONE);
         }
 
         for (ChapterResolved ch : chapters) {
             TextComponent link = new TextComponent();
-            for (BaseComponent bc : TextComponent.fromLegacyText(ch.label)) {
+            String translatedLabel = ChatColor.translateAlternateColorCodes('&', ch.label);
+            for (BaseComponent bc : TextComponent.fromLegacyText(translatedLabel)) {
                 link.addExtra(bc);
             }
             link.setClickEvent(new ClickEvent(ClickEvent.Action.CHANGE_PAGE, Integer.toString(ch.startPage)));
@@ -132,9 +138,12 @@ public final class GuideBookBuilder {
         return builder.create();
     }
 
-    private static BaseComponent[] renderPage(String raw, String trailingBackLabel) {
+    private static BaseComponent[] renderPage(String raw, String trailingBackLabel,
+                                              String itemTagTemplate, String clickHint) {
+        // Translate & color codes before feeding to fromLegacyText / HintSender.
+        String translated = ChatColor.translateAlternateColorCodes('&', raw);
         // Use the hints renderer to parse %item_<key>% tokens into clickable tags.
-        BaseComponent[] body = HintSender.renderClickable(raw);
+        BaseComponent[] body = HintSender.renderClickable(translated, itemTagTemplate, clickHint);
 
         if (trailingBackLabel == null) return body;
 
@@ -143,7 +152,8 @@ public final class GuideBookBuilder {
         builder.append("\n\n", ComponentBuilder.FormatRetention.NONE);
 
         TextComponent back = new TextComponent();
-        for (BaseComponent bc : TextComponent.fromLegacyText(trailingBackLabel)) {
+        String translatedBack = ChatColor.translateAlternateColorCodes('&', trailingBackLabel);
+        for (BaseComponent bc : TextComponent.fromLegacyText(translatedBack)) {
             back.addExtra(bc);
         }
         back.setClickEvent(new ClickEvent(ClickEvent.Action.CHANGE_PAGE, "2"));
