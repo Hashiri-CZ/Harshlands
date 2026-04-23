@@ -30,11 +30,11 @@ public class DataModule implements HLDataModule {
         return loaded;
     }
 
-    public int getLastSeenVersion() {
+    public synchronized int getLastSeenVersion() {
         return lastSeenVersion;
     }
 
-    public long getLastOpenedAt() {
+    public synchronized long getLastOpenedAt() {
         return lastOpenedAt;
     }
 
