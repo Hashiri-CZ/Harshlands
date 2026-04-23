@@ -1,0 +1,255 @@
+guide:
+  initialize:
+    message: "&fInitializing %name% module"
+  shutdown:
+    message: "&fShutting down %name% module"
+
+  Title: "&5Harshlands Field Manual"
+  Author: "Harshlands"
+  BackToContentsLabel: "&7« Contents"
+  MissingContentFallback: "&cGuide content missing — contact an admin."
+
+  Cover:
+    - ""
+    - "&5&lHARSHLANDS"
+    - "&7Field Manual"
+    - ""
+    - "&8A book that will save"
+    - "&8your life twice, if you"
+    - "&8bother to read it once."
+    - ""
+    - "&7Turn the page."
+
+  Contents:
+    Heading: "&5&lContents"
+    Entries:
+      - { key: "axe",         label: "&01. The Axe" }
+      - { key: "nutrition",   label: "&02. Food & Macros" }
+      - { key: "thirst",      label: "&03. Water" }
+      - { key: "fear",        label: "&04. The Dark" }
+      - { key: "temperature", label: "&05. Cold & Heat" }
+      - { key: "comfort",     label: "&06. Comfort" }
+      - { key: "baubles",     label: "&07. Baubles" }
+      - { key: "creatures",   label: "&08. Things To Avoid" }
+      - { key: "ecology",     label: "&09. Sound & Silence" }
+      - { key: "commands",    label: "&010. Commands" }
+
+  Chapters:
+    axe:
+      - |
+        &5&lThe Axe
+
+        &8Your hands can't fell
+        &8an oak. They can bruise
+        &8on one.
+
+        &0Craft a %item_flint_hatchet%:
+        &0• %item_flint_shard%
+        &0• %item_plant_string%
+        &0• %item_stick%
+      - |
+        &5&lThe Axe &7(2/2)
+
+        &0Break a %item_log% with
+        &0your hatchet.
+
+        &0Right-click upward on
+        &0a log for a chance of
+        &0%item_plank%s. Right-click
+        &0a plank for %item_stick%s.
+
+        &0Craft a %item_saw% for
+        &0guaranteed output.
+    nutrition:
+      - |
+        &5&lFood & Macros
+
+        &8Hunger is three numbers
+        &8now. Eat one food forever
+        &8and you rot.
+
+        &0Protein, Carbs, Fats.
+        &0Each drains on its own.
+        &0Eat varied meals.
+      - |
+        &5&lFood & Macros &7(2/3)
+
+        &0Type &e/hl nutrition&0 to
+        &0see your current macros.
+
+        &0Eat the same food too
+        &0often and you'll get
+        &0tired of it — smaller
+        &0macro refills each time.
+      - |
+        &5&lFood & Macros &7(3/3)
+
+        &0All three macros above
+        &0threshold = &aWell Nourished&0:
+        &0bonus hearts, slight speed.
+
+        &8A quiet guilt settles in
+        &8when you eat something
+        &8that had a name once.
+    thirst:
+      - |
+        &5&lWater
+
+        &8Water is a resource now.
+        &8Drink wrong and it
+        &8drinks you back.
+
+        &0Drink from a water source
+        &0by right-clicking it, or
+        &0carry a %item_canteen_empty%.
+      - |
+        &5&lWater &7(2/2)
+
+        &0Raw water can give you
+        &0parasites — cramps and
+        &0damage for 30 seconds.
+
+        &0Purify with a
+        &0%item_charcoal_filter% to make
+        &0a %item_purified_water_bottle%.
+    fear:
+      - |
+        &5&lThe Dark
+
+        &8The dark has opinions.
+        &8Feed it a torch or it
+        &8feeds on you.
+
+        &0Fear builds when you're
+        &0in darkness, caves, alone
+        &0underground, at night,
+        &0or low on health.
+      - |
+        &5&lThe Dark &7(2/3)
+
+        &0Past half-bar: projectiles
+        &0go wide. Your aim is
+        &0wrong now.
+
+        &0Past the top: something
+        &0finds you. A Nightmare.
+        &0Faster than you.
+      - |
+        &5&lThe Dark &7(3/3)
+
+        &0Lower Fear with:
+        &0• Light (a %item_campfire% helps)
+        &0• Cooked food
+        &0• Sleep in a safe bed
+
+        &0Keep a %item_fire_starter%
+        &0on you for emergencies.
+    temperature:
+      - |
+        &5&lCold & Heat
+
+        &8The biome wants you
+        &8dead before the mobs do.
+
+        &0Cold biomes freeze you.
+        &0Hot biomes cook you.
+        &0Both damage at extremes.
+      - |
+        &5&lCold & Heat &7(2/2)
+
+        &0Craft a %item_thermometer%
+        &0to check your temperature.
+
+        &0Cold: %item_campfire%s, warmer
+        &0armour, stay out of rain.
+        &0Hot: shade, water,
+        &0%item_jelled_slime% armour.
+
+        &8Shivering makes noise.
+        &8Mobs hear it.
+    comfort:
+      - |
+        &5&lComfort
+
+        &8Sleep in a hole and
+        &8you sleep like you're
+        &8in a hole.
+
+        &0Near your bed, add decor:
+        &0chairs, bookshelves,
+        &0paintings, a campfire.
+
+        &0More comfort = longer
+        &0resting buffs after sleep.
+    baubles:
+      - |
+        &5&lBaubles
+
+        &8Six slots your armour
+        &8doesn't know about.
+
+        &0Head, Amulet, Body,
+        &0Belt, Charm, Ring.
+
+        &0Craft a %item_bauble_bag%
+        &0to open the slot UI.
+      - |
+        &5&lBaubles &7(2/2)
+
+        &0Each bauble is a
+        &0passive effect while
+        &0equipped in its slot.
+
+        &0Right-click the bag
+        &0to open it. Drop baubles
+        &0into their slot to wear.
+    creatures:
+      - |
+        &5&lThings To Avoid
+
+        &8Not everything that moves
+        &8wants to eat you. Just
+        &8most things.
+
+        &0Sea serpents in deep water —
+        &0they drag you under.
+
+        &0Dragons roam far and high.
+        &0Fire, Ice, Lightning.
+      - |
+        &5&lThings To Avoid &7(2/2)
+
+        &0Don't fight what you
+        &0can't outrun at dawn.
+
+        &0Iron gear minimum before
+        &0you pick a fight with
+        &0anything mythical.
+
+        &8The dark amplifies every
+        &8mistake you make.
+    ecology:
+      - |
+        &5&lSound & Silence
+
+        &8The cave hears you mine.
+
+        &0Loud actions — mining,
+        &0fighting, sprinting —
+        &0pull nearby hostiles.
+
+        &0Sneaking is quieter.
+        &0Shivering adds noise.
+    commands:
+      - |
+        &5&lCommands
+
+        &0&e/hl nutrition&0 — macros
+        &0&e/hl fear&0 — fear level
+        &0&e/hl comfort&0 — comfort tier
+        &0&e/hl obtain <item>&0 — recipe
+        &0&e/hl hints reset&0 — replay tips
+        &0&e/hl guide&0 — reopen this book
+
+        &8When in doubt,
+        &8ask the book.

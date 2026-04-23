@@ -1,0 +1,38 @@
+# ──────────────────────────────────────────────────────────────────────────
+# Harshlands Survival Guide — delivery configuration
+# Content lives in Translations/<locale>/guide.yml
+# ──────────────────────────────────────────────────────────────────────────
+Enabled: true
+
+Initialize:
+  Enabled: true
+
+Guide:
+  # Bump this integer when guide content changes and you want existing
+  # players to receive the new edition.
+  Version: 1
+  # Internal ID used by /hl guide give — not player-facing.
+  Title: "guide_book"
+
+Delivery:
+  # Open the book UI on first join after a short delay.
+  OpenOnFirstJoin: true
+  # Also place a physical copy in the player's inventory.
+  GiveItemOnFirstJoin: true
+  # Re-open the book UI when Guide.Version is bumped. Default off to be quieter.
+  OpenOnVersionBump: false
+  # Re-give the physical book when Guide.Version is bumped.
+  GiveItemOnVersionBump: true
+  # Ticks to wait before openBook() fires — avoids colliding with the resource-pack prompt.
+  OpenDelayTicks: 40
+  # If the player's inventory is full on delivery, drop at feet instead of skipping.
+  DropIfInventoryFull: true
+
+Command:
+  Enabled: true
+  GiveSubcommandOpOnly: true
+  ResetSubcommandOpOnly: true
+
+Validation:
+  # At startup, warn if any rendered page exceeds 14 lines or 114px line width.
+  WarnOnLongPages: true
