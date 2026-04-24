@@ -179,3 +179,160 @@ items:
       display_name: "&fCeramic Bucket of Axolotl"
     ceramic_cod_bucket:
       display_name: "&fCeramic Bucket of Cod"
+  baubles:
+    dragons_eye:
+      display_name: "&fDragon's Eye"
+    poison_stone:
+      display_name: "&fPoison Stone"
+    potion_ring:
+      display_name: "&fPotion Ring"
+    potion_ring_resistance:
+      display_name: "&fPotion Ring of Resistance"
+    potion_ring_regeneration:
+      display_name: "&fPotion Ring of Regeneration"
+    potion_ring_haste:
+      display_name: "&fPotion Ring of Haste"
+    potion_ring_strength:
+      display_name: "&fPotion Ring of Strength"
+    potion_ring_speed:
+      display_name: "&fPotion Ring of Speed"
+    potion_ring_jump_boost:
+      display_name: "&fPotion Ring of Jump Boost"
+    ender_queens_crown:
+      display_name: "&bEnder Queen's Crown"
+    sunglasses:
+      display_name: "&fSunglasses"
+    balloon:
+      display_name: "&fBalloon"
+    cobalt_shield:
+      display_name: "&fCobalt Shield"
+    obsidian_skull:
+      display_name: "&fObsidian Skull"
+    obsidian_shield:
+      display_name: "&fObsidian Shield"
+    forbidden_fruit:
+      display_name: "&fForbidden Fruit"
+    vitamins:
+      display_name: "&fVitamins"
+    ring_overclocking:
+      display_name: "&fRing of Overclocking"
+    shulker_heart:
+      display_name: "&fShulker Heart"
+    ring_free_action:
+      display_name: "&fRing of Free Action"
+    bezoar:
+      display_name: "&fBezoar"
+    ender_dragonscale:
+      display_name: "&fEnder Dragon Scale"
+    cracked_black_dragonscale:
+      display_name: "&fCracked Black Dragon Scale"
+    black_dragonscale_bauble:
+      display_name: "&fBlack Dragon Scale"
+    mixed_color_dragonscale:
+      display_name: "&fMixed Color Dragon Scale"
+    ankh_charm:
+      display_name: "&fAnkh Charm"
+    ankh_shield:
+      display_name: "&fAnkh Shield"
+    iron_ring:
+      display_name: "&fIron Ring"
+    magic_mirror:
+      display_name: "&fMagic Mirror"
+    recall_potion:
+      display_name: "&fRecall Potion"
+    wormhole_mirror:
+      display_name: "&fWormhole Mirror"
+    wormhole_potion:
+      display_name: "&fWormhole Potion"
+    lucky_horseshoe:
+      display_name: "&fLucky Horseshoe"
+    scarlite_ring:
+      display_name: "&fScarlite Ring"
+    spectral_silt:
+      display_name: "&fSpectral Silt"
+    disintegration_tablet:
+      display_name: "&fDisintegration Tablet"
+    broken_heart:
+      display_name: "&fBroken Heart"
+    cross_necklace:
+      display_name: "&fCross Necklace"
+    wrath_pendant:
+      display_name: "&fWrath Pendant"
+    pride_pendant:
+      display_name: "&fPride Pendant"
+    gluttony_pendant:
+      display_name: "&fGluttony Pendant"
+    sin_pendant:
+      display_name: "&fSin Pendant"
+    golden_crown:
+      display_name: "&fGolden Crown"
+    flare_gun:
+      display_name: "&fFlare Gun"
+    flare:
+      display_name: "&fFlare"
+    phytoprostasia_amulet:
+      display_name: "&fPhytoprostasia Amulet"
+    emerald_ring:
+      display_name: "&fEmerald Ring"
+    emerald_amulet:
+      display_name: "&fEmerald Amulet"
+    glowing_ingot:
+      display_name: "&fGlowing Ingot"
+    glowing_powder:
+      display_name: "&fGlowing Powder"
+    glowing_gem:
+      display_name: "&fGlowing Gem"
+    dwarf_stout:
+      display_name: "&fDwarf Stout"
+    fairy_dew:
+      display_name: "&fFairy Dew"
+    stone_negative_gravity:
+      display_name: "&bStone of Negative Gravity"
+    stone_inertia_null:
+      display_name: "&bStone of Inertia Null"
+    stone_greater_inertia:
+      display_name: "&bStone of Greater Inertia"
+    ring_enchanted_eyes:
+      display_name: "&bRing of Enchanted Eyes"
+    stone_sea:
+      display_name: "&bStone of the Sea"
+    polarized_stone:
+      display_name: "&bPolarized Stone"
+    ring_fairies:
+      display_name: "&bRing of the Fairies"
+    ring_dwarves:
+      display_name: "&bRing of the Dwarves"
+    wither_ring:
+      display_name: "&bWither Ring"
+    shield_honor:
+      display_name: "&bShield of Honor"
+    miners_ring:
+      display_name: "&bMiner's Ring"
+    warped_scroll:
+      display_name: "&fWarped Scroll"
+    bound_scroll:
+      display_name: "&fBound Scroll"
+    return_scroll:
+      display_name: "&fReturn Scroll"
+    body_slot:
+      display_name: "&7 "
+    charm_slot:
+      display_name: "&7 "
+    belt_slot:
+      display_name: "&7 "
+    ring_slot:
+      display_name: "&7 "
+    head_slot:
+      display_name: "&7 "
+    amulet_slot:
+      display_name: "&7 "
+    phantom_prism:
+      display_name: "&fPhantom Prism"
+    gui_glass:
+      display_name: "&7 "
+    bauble_bag:
+      display_name: "&fBauble Bag"
+    next_page:
+      display_name: "&eNext Page"
+    back_page:
+      display_name: "&eBack Page"

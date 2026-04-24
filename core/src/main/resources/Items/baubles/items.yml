@@ -8,7 +8,7 @@ ConfigId: "1.3.1-RELEASE" # Used for config syncing purposes, do NOT edit
 
 dragons_eye:
   Material: "PRISMARINE_SHARD"
-  DisplayName: "&fDragon's Eye"
+  DisplayName: "i18n:items.baubles.dragons_eye.display_name"
   CustomModelData: 83650
   ItemModel: "DEFAULT"
   Lore:
@@ -20,7 +20,7 @@ dragons_eye:
     hlbaubleslot: "Head"
 poison_stone:
   Material: "PRISMARINE_SHARD"
-  DisplayName: "&fPoison Stone"
+  DisplayName: "i18n:items.baubles.poison_stone.display_name"
   CustomModelData: 83651
   ItemModel: "DEFAULT"
   Lore:
@@ -32,7 +32,7 @@ poison_stone:
     hlbaubleslot: "Any"
 potion_ring:
   Material: "PRISMARINE_SHARD"
-  DisplayName: "&fPotion Ring"
+  DisplayName: "i18n:items.baubles.potion_ring.display_name"
   CustomModelData: 83690
   ItemModel: "DEFAULT"
   Lore:
@@ -43,7 +43,7 @@ potion_ring:
     hlbaubleslot: "Ring"
 potion_ring_resistance:
   Material: "PRISMARINE_SHARD"
-  DisplayName: "&fPotion Ring of Resistance"
+  DisplayName: "i18n:items.baubles.potion_ring_resistance.display_name"
   CustomModelData: 83652
   ItemModel: "DEFAULT"
   Enchantments:
@@ -59,7 +59,7 @@ potion_ring_resistance:
     hlbaubleslot: "Ring"
 potion_ring_regeneration:
   Material: "PRISMARINE_SHARD"
-  DisplayName: "&fPotion Ring of Regeneration"
+  DisplayName: "i18n:items.baubles.potion_ring_regeneration.display_name"
   CustomModelData: 83653
   ItemModel: "DEFAULT"
   Enchantments:
@@ -75,7 +75,7 @@ potion_ring_regeneration:
     hlbaubleslot: "Ring"
 potion_ring_haste:
   Material: "PRISMARINE_SHARD"
-  DisplayName: "&fPotion Ring of Haste"
+  DisplayName: "i18n:items.baubles.potion_ring_haste.display_name"
   CustomModelData: 83654
   ItemModel: "DEFAULT"
   Enchantments:
@@ -91,7 +91,7 @@ potion_ring_haste:
     hlbaubleslot: "Ring"
 potion_ring_strength:
   Material: "PRISMARINE_SHARD"
-  DisplayName: "&fPotion Ring of Strength"
+  DisplayName: "i18n:items.baubles.potion_ring_strength.display_name"
   CustomModelData: 83655
   ItemModel: "DEFAULT"
   Enchantments:
@@ -107,7 +107,7 @@ potion_ring_strength:
     hlbaubleslot: "Ring"
 potion_ring_speed:
   Material: "PRISMARINE_SHARD"
-  DisplayName: "&fPotion Ring of Speed"
+  DisplayName: "i18n:items.baubles.potion_ring_speed.display_name"
   CustomModelData: 83656
   ItemModel: "DEFAULT"
   Enchantments:
@@ -123,7 +123,7 @@ potion_ring_speed:
     hlbaubleslot: "Ring"
 potion_ring_jump_boost:
   Material: "PRISMARINE_SHARD"
-  DisplayName: "&fPotion Ring of Jump Boost"
+  DisplayName: "i18n:items.baubles.potion_ring_jump_boost.display_name"
   CustomModelData: 83657
   ItemModel: "DEFAULT"
   Enchantments:
@@ -139,7 +139,7 @@ potion_ring_jump_boost:
     hlbaubleslot: "Ring"
 ender_queens_crown:
   Material: "PRISMARINE_SHARD"
-  DisplayName: "&bEnder Queen's Crown"
+  DisplayName: "i18n:items.baubles.ender_queens_crown.display_name"
   CustomModelData: 83661
   ItemModel: "DEFAULT"
   Lore:
@@ -152,7 +152,7 @@ ender_queens_crown:
     hlbaubleslot: "Head"
 sunglasses:
   Material: "LEATHER_HELMET"
-  DisplayName: "&fSunglasses"
+  DisplayName: "i18n:items.baubles.sunglasses.display_name"
   CustomModelData: 83650
   ItemModel: "DEFAULT"
   EquippableComponentModel: "DEFAULT"
@@ -165,7 +165,7 @@ sunglasses:
     hlbaubleslot: "Head"
 balloon:
   Material: "PRISMARINE_SHARD"
-  DisplayName: "&fBalloon"
+  DisplayName: "i18n:items.baubles.balloon.display_name"
   CustomModelData: 83662
   ItemModel: "DEFAULT"
   Lore:
@@ -176,7 +176,7 @@ balloon:
     hlbaubleslot: "Any"
 cobalt_shield:
   Material: "SHIELD"
-  DisplayName: "&fCobalt Shield"
+  DisplayName: "i18n:items.baubles.cobalt_shield.display_name"
   CustomModelData: 83650
   ItemModel: "DEFAULT"
   Lore:
@@ -187,7 +187,7 @@ cobalt_shield:
     hlbaubleslot: "Any"
 obsidian_skull:
   Material: "PRISMARINE_SHARD"
-  DisplayName: "&fObsidian Skull"
+  DisplayName: "i18n:items.baubles.obsidian_skull.display_name"
   CustomModelData: 83663
   ItemModel: "DEFAULT"
   Lore:
@@ -200,7 +200,7 @@ obsidian_skull:
     hlbaubleslot: "Any"
 obsidian_shield:
   Material: "SHIELD"
-  DisplayName: "&fObsidian Shield"
+  DisplayName: "i18n:items.baubles.obsidian_shield.display_name"
   CustomModelData: 83651
   ItemModel: "DEFAULT"
   Lore:
@@ -212,7 +212,7 @@ obsidian_shield:
     hlbaubleslot: "Any"
 forbidden_fruit:
   Material: "PRISMARINE_SHARD"
-  DisplayName: "&fForbidden Fruit"
+  DisplayName: "i18n:items.baubles.forbidden_fruit.display_name"
   CustomModelData: 83664
   ItemModel: "DEFAULT"
   Lore:
@@ -223,7 +223,7 @@ forbidden_fruit:
     hlbaubleslot: "Any"
 vitamins:
   Material: "PRISMARINE_SHARD"
-  DisplayName: "&fVitamins"
+  DisplayName: "i18n:items.baubles.vitamins.display_name"
   CustomModelData: 83665
   ItemModel: "DEFAULT"
   Lore:
@@ -234,7 +234,7 @@ vitamins:
     hlbaubleslot: "Any"
 ring_overclocking:
   Material: "PRISMARINE_SHARD"
-  DisplayName: "&fRing of Overclocking"
+  DisplayName: "i18n:items.baubles.ring_overclocking.display_name"
   CustomModelData: 83666
   ItemModel: "DEFAULT"
   Lore:
@@ -246,7 +246,7 @@ ring_overclocking:
     hlbaubleslot: "Ring"
 shulker_heart:
   Material: "PRISMARINE_SHARD"
-  DisplayName: "&fShulker Heart"
+  DisplayName: "i18n:items.baubles.shulker_heart.display_name"
   CustomModelData: 83667
   ItemModel: "DEFAULT"
   Lore:
@@ -258,7 +258,7 @@ shulker_heart:
     hlbaubleslot: "Any"
 ring_free_action:
   Material: "PRISMARINE_SHARD"
-  DisplayName: "&fRing of Free Action"
+  DisplayName: "i18n:items.baubles.ring_free_action.display_name"
   CustomModelData: 83668
   ItemModel: "DEFAULT"
   Lore:
@@ -270,7 +270,7 @@ ring_free_action:
     hlbaubleslot: "Ring"
 bezoar:
   Material: "PRISMARINE_SHARD"
-  DisplayName: "&fBezoar"
+  DisplayName: "i18n:items.baubles.bezoar.display_name"
   CustomModelData: 83669
   ItemModel: "DEFAULT"
   Lore:
@@ -281,7 +281,7 @@ bezoar:
     hlbaubleslot: "Any"
 ender_dragonscale:
   Material: "PRISMARINE_SHARD"
-  DisplayName: "&fEnder Dragon Scale"
+  DisplayName: "i18n:items.baubles.ender_dragonscale.display_name"
   CustomModelData: 83670
   ItemModel: "DEFAULT"
   Lore:
@@ -289,7 +289,7 @@ ender_dragonscale:
     - "&7Can be forged into dragonscale baubles."
 cracked_black_dragonscale:
   Material: "PRISMARINE_SHARD"
-  DisplayName: "&fCracked Black Dragon Scale"
+  DisplayName: "i18n:items.baubles.cracked_black_dragonscale.display_name"
   CustomModelData: 83671
   ItemModel: "DEFAULT"
   Lore:
@@ -297,7 +297,7 @@ cracked_black_dragonscale:
     - "&acould be repaired?"
 black_dragonscale_bauble:
   Material: "PRISMARINE_SHARD"
-  DisplayName: "&fBlack Dragon Scale"
+  DisplayName: "i18n:items.baubles.black_dragonscale_bauble.display_name"
   CustomModelData: 83672
   ItemModel: "DEFAULT"
   Lore:
@@ -308,7 +308,7 @@ black_dragonscale_bauble:
     hlbaubleslot: "Any"
 mixed_color_dragonscale:
   Material: "PRISMARINE_SHARD"
-  DisplayName: "&fMixed Color Dragon Scale"
+  DisplayName: "i18n:items.baubles.mixed_color_dragonscale.display_name"
   CustomModelData: 83673
   ItemModel: "DEFAULT"
   Lore:
@@ -321,7 +321,7 @@ mixed_color_dragonscale:
     hlbaubleslot: "Any"
 ankh_charm:
   Material: "PRISMARINE_SHARD"
-  DisplayName: "&fAnkh Charm"
+  DisplayName: "i18n:items.baubles.ankh_charm.display_name"
   CustomModelData: 83674
   ItemModel: "DEFAULT"
   Lore:
@@ -332,7 +332,7 @@ ankh_charm:
     hlbaubleslot: "Any"
 ankh_shield:
   Material: "SHIELD"
-  DisplayName: "&fAnkh Shield"
+  DisplayName: "i18n:items.baubles.ankh_shield.display_name"
   CustomModelData: 83652
   ItemModel: "DEFAULT"
   Lore:
@@ -344,14 +344,14 @@ ankh_shield:
     hlbaubleslot: "Any"
 iron_ring:
   Material: "PRISMARINE_SHARD"
-  DisplayName: "&fIron Ring"
+  DisplayName: "i18n:items.baubles.iron_ring.display_name"
   CustomModelData: 83675
   ItemModel: "DEFAULT"
   Lore:
     - "&9Crafting component"
 magic_mirror:
   Material: "PRISMARINE_SHARD"
-  DisplayName: "&fMagic Mirror"
+  DisplayName: "i18n:items.baubles.magic_mirror.display_name"
   CustomModelData: 83676
   ItemModel: "DEFAULT"
   Lore:
@@ -360,7 +360,7 @@ magic_mirror:
     - "&aunfortunately for you."
 recall_potion:
   Material: "POTION"
-  DisplayName: "&fRecall Potion"
+  DisplayName: "i18n:items.baubles.recall_potion.display_name"
   CustomModelData: 83650
   ItemModel: "DEFAULT"
   Lore:
@@ -369,7 +369,7 @@ recall_potion:
     - "HIDE_POTION_EFFECTS"
 wormhole_mirror:
   Material: "PRISMARINE_SHARD"
-  DisplayName: "&fWormhole Mirror"
+  DisplayName: "i18n:items.baubles.wormhole_mirror.display_name"
   CustomModelData: 83677
   ItemModel: "DEFAULT"
   Lore:
@@ -378,7 +378,7 @@ wormhole_mirror:
     - "&aYou can feel the void staring back at you."
 wormhole_potion:
   Material: "POTION"
-  DisplayName: "&fWormhole Potion"
+  DisplayName: "i18n:items.baubles.wormhole_potion.display_name"
   CustomModelData: 83651
   ItemModel: "DEFAULT"
   Lore:
@@ -388,7 +388,7 @@ wormhole_potion:
     - "HIDE_POTION_EFFECTS"
 lucky_horseshoe:
   Material: "PRISMARINE_SHARD"
-  DisplayName: "&fLucky Horseshoe"
+  DisplayName: "i18n:items.baubles.lucky_horseshoe.display_name"
   CustomModelData: 83678
   ItemModel: "DEFAULT"
   Lore:
@@ -400,7 +400,7 @@ lucky_horseshoe:
     hlbaubleslot: "Any"
 scarlite_ring:
   Material: "PRISMARINE_SHARD"
-  DisplayName: "&fScarlite Ring"
+  DisplayName: "i18n:items.baubles.scarlite_ring.display_name"
   CustomModelData: 83679
   ItemModel: "DEFAULT"
   Lore:
@@ -411,7 +411,7 @@ scarlite_ring:
     hlbaubleslot: "Ring"
 spectral_silt:
   Material: "PRISMARINE_SHARD"
-  DisplayName: "&fSpectral Silt"
+  DisplayName: "i18n:items.baubles.spectral_silt.display_name"
   CustomModelData: 83680
   ItemModel: "DEFAULT"
   Enchantments:
@@ -422,14 +422,14 @@ spectral_silt:
     - "&9Crafting component"
 disintegration_tablet:
   Material: "PRISMARINE_SHARD"
-  DisplayName: "&fDisintegration Tablet"
+  DisplayName: "i18n:items.baubles.disintegration_tablet.display_name"
   CustomModelData: 83681
   ItemModel: "DEFAULT"
   Lore:
     - "&9Craft with dungeon loot to convert it into spectral silt"
 broken_heart:
   Material: "PRISMARINE_SHARD"
-  DisplayName: "&fBroken Heart"
+  DisplayName: "i18n:items.baubles.broken_heart.display_name"
   CustomModelData: 83739
   ItemModel: "DEFAULT"
   Lore:
@@ -445,7 +445,7 @@ broken_heart:
     hlbaubleslot: "Any"
 cross_necklace:
   Material: "PRISMARINE_SHARD"
-  DisplayName: "&fCross Necklace"
+  DisplayName: "i18n:items.baubles.cross_necklace.display_name"
   CustomModelData: 83682
   ItemModel: "DEFAULT"
   Lore:
@@ -456,7 +456,7 @@ cross_necklace:
     hlbaubleslot: "Amulet"
 wrath_pendant:
   Material: "PRISMARINE_SHARD"
-  DisplayName: "&fWrath Pendant"
+  DisplayName: "i18n:items.baubles.wrath_pendant.display_name"
   CustomModelData: 83683
   ItemModel: "DEFAULT"
   Lore:
@@ -468,7 +468,7 @@ wrath_pendant:
     hlbaubleslot: "Amulet"
 pride_pendant:
   Material: "PRISMARINE_SHARD"
-  DisplayName: "&fPride Pendant"
+  DisplayName: "i18n:items.baubles.pride_pendant.display_name"
   CustomModelData: 83684
   ItemModel: "DEFAULT"
   Lore:
@@ -481,7 +481,7 @@ pride_pendant:
     hlbaubleslot: "Amulet"
 gluttony_pendant:
   Material: "PRISMARINE_SHARD"
-  DisplayName: "&fGluttony Pendant"
+  DisplayName: "i18n:items.baubles.gluttony_pendant.display_name"
   CustomModelData: 83685
   ItemModel: "DEFAULT"
   Lore:
@@ -493,7 +493,7 @@ gluttony_pendant:
     hlbaubleslot: "Amulet"
 sin_pendant:
   Material: "PRISMARINE_SHARD"
-  DisplayName: "&fSin Pendant"
+  DisplayName: "i18n:items.baubles.sin_pendant.display_name"
   CustomModelData: 83686
   ItemModel: "DEFAULT"
   Lore:
@@ -506,7 +506,7 @@ sin_pendant:
     hlbaubleslot: "Amulet"
 golden_crown:
   Material: "GOLDEN_HELMET"
-  DisplayName: "&fGolden Crown"
+  DisplayName: "i18n:items.baubles.golden_crown.display_name"
   CustomModelData: 83650
   ItemModel: "DEFAULT"
   EquippableComponentModel: "DEFAULT"
@@ -519,7 +519,7 @@ golden_crown:
     hlmaxdurability: 275
 flare_gun:
   Material: "PRISMARINE_SHARD"
-  DisplayName: "&fFlare Gun"
+  DisplayName: "i18n:items.baubles.flare_gun.display_name"
   CustomModelData: 83687
   ItemModel: "DEFAULT"
   Lore:
@@ -531,14 +531,14 @@ flare_gun:
     hlmaxdurability: 384
 flare:
   Material: "PRISMARINE_SHARD"
-  DisplayName: "&fFlare"
+  DisplayName: "i18n:items.baubles.flare.display_name"
   CustomModelData: 83688
   ItemModel: "DEFAULT"
   Lore:
     - "&9Ammo for the Flare Gun."
 phytoprostasia_amulet:
   Material: "PRISMARINE_SHARD"
-  DisplayName: "&fPhytoprostasia Amulet"
+  DisplayName: "i18n:items.baubles.phytoprostasia_amulet.display_name"
   CustomModelData: 83689
   ItemModel: "DEFAULT"
   Lore:
@@ -549,7 +549,7 @@ phytoprostasia_amulet:
     hlbaubleslot: "Amulet"
 emerald_ring:
   Material: "PRISMARINE_SHARD"
-  DisplayName: "&fEmerald Ring"
+  DisplayName: "i18n:items.baubles.emerald_ring.display_name"
   CustomModelData: 83691
   ItemModel: "DEFAULT"
   Lore:
@@ -560,7 +560,7 @@ emerald_ring:
     hlbaubleslot: "Ring"
 emerald_amulet:
   Material: "PRISMARINE_SHARD"
-  DisplayName: "&fEmerald Amulet"
+  DisplayName: "i18n:items.baubles.emerald_amulet.display_name"
   CustomModelData: 83692
   ItemModel: "DEFAULT"
   Lore:
@@ -571,28 +571,28 @@ emerald_amulet:
     hlbaubleslot: "Amulet"
 glowing_ingot:
   Material: "PRISMARINE_SHARD"
-  DisplayName: "&fGlowing Ingot"
+  DisplayName: "i18n:items.baubles.glowing_ingot.display_name"
   CustomModelData: 83693
   ItemModel: "DEFAULT"
   Lore:
     - "&7Crafting component. Can be ground into glowing powder."
 glowing_powder:
   Material: "PRISMARINE_SHARD"
-  DisplayName: "&fGlowing Powder"
+  DisplayName: "i18n:items.baubles.glowing_powder.display_name"
   CustomModelData: 83694
   ItemModel: "DEFAULT"
   Lore:
     - "&7Crafting component. Refined from glowing ingots."
 glowing_gem:
   Material: "PRISMARINE_SHARD"
-  DisplayName: "&fGlowing Gem"
+  DisplayName: "i18n:items.baubles.glowing_gem.display_name"
   CustomModelData: 83695
   ItemModel: "DEFAULT"
   Lore:
     - "&7Crafting component. Used in advanced bauble recipes."
 dwarf_stout:
   Material: "PRISMARINE_SHARD"
-  DisplayName: "&fDwarf Stout"
+  DisplayName: "i18n:items.baubles.dwarf_stout.display_name"
   CustomModelData: 83696
   ItemModel: "DEFAULT"
   Lore:
@@ -601,7 +601,7 @@ dwarf_stout:
     - "&7No active effect in 1.3.1 — mechanic pending."
 fairy_dew:
   Material: "PRISMARINE_SHARD"
-  DisplayName: "&fFairy Dew"
+  DisplayName: "i18n:items.baubles.fairy_dew.display_name"
   CustomModelData: 83697
   ItemModel: "DEFAULT"
   Lore:
@@ -610,7 +610,7 @@ fairy_dew:
     - "&7No active effect in 1.3.1 — mechanic pending."
 stone_negative_gravity:
   Material: "PRISMARINE_SHARD"
-  DisplayName: "&bStone of Negative Gravity"
+  DisplayName: "i18n:items.baubles.stone_negative_gravity.display_name"
   CustomModelData: 83698
   ItemModel: "DEFAULT"
   Lore:
@@ -622,7 +622,7 @@ stone_negative_gravity:
     hlbaubleslot: "Any"
 stone_inertia_null:
   Material: "PRISMARINE_SHARD"
-  DisplayName: "&bStone of Inertia Null"
+  DisplayName: "i18n:items.baubles.stone_inertia_null.display_name"
   CustomModelData: 83699
   ItemModel: "DEFAULT"
   Lore:
@@ -633,7 +633,7 @@ stone_inertia_null:
     hlbaubleslot: "Any"
 stone_greater_inertia:
   Material: "PRISMARINE_SHARD"
-  DisplayName: "&bStone of Greater Inertia"
+  DisplayName: "i18n:items.baubles.stone_greater_inertia.display_name"
   CustomModelData: 83700
   ItemModel: "DEFAULT"
   Lore:
@@ -645,7 +645,7 @@ stone_greater_inertia:
     hlbaubleslot: "Any"
 ring_enchanted_eyes:
   Material: "PRISMARINE_SHARD"
-  DisplayName: "&bRing of Enchanted Eyes"
+  DisplayName: "i18n:items.baubles.ring_enchanted_eyes.display_name"
   CustomModelData: 83701
   ItemModel: "DEFAULT"
   Lore:
@@ -656,7 +656,7 @@ ring_enchanted_eyes:
     hlbaubleslot: "Any"
 stone_sea:
   Material: "PRISMARINE_SHARD"
-  DisplayName: "&bStone of the Sea"
+  DisplayName: "i18n:items.baubles.stone_sea.display_name"
   CustomModelData: 83702
   ItemModel: "DEFAULT"
   Lore:
@@ -668,7 +668,7 @@ stone_sea:
     hlbaubleslot: "Amulet"
 polarized_stone:
   Material: "PRISMARINE_SHARD"
-  DisplayName: "&bPolarized Stone"
+  DisplayName: "i18n:items.baubles.polarized_stone.display_name"
   CustomModelData: 83703
   ItemModel: "DEFAULT"
   Lore:
@@ -680,7 +680,7 @@ polarized_stone:
     hlbaubleslot: "Amulet"
 ring_fairies:
   Material: "PRISMARINE_SHARD"
-  DisplayName: "&bRing of the Fairies"
+  DisplayName: "i18n:items.baubles.ring_fairies.display_name"
   CustomModelData: 83704
   ItemModel: "DEFAULT"
   Lore:
@@ -692,7 +692,7 @@ ring_fairies:
     hlbaubleslot: "Ring"
 ring_dwarves:
   Material: "PRISMARINE_SHARD"
-  DisplayName: "&bRing of the Dwarves"
+  DisplayName: "i18n:items.baubles.ring_dwarves.display_name"
   CustomModelData: 83705
   ItemModel: "DEFAULT"
   Lore:
@@ -704,7 +704,7 @@ ring_dwarves:
     hlbaubleslot: "Ring"
 wither_ring:
   Material: "PRISMARINE_SHARD"
-  DisplayName: "&bWither Ring"
+  DisplayName: "i18n:items.baubles.wither_ring.display_name"
   CustomModelData: 83706
   ItemModel: "DEFAULT"
   Lore:
@@ -715,7 +715,7 @@ wither_ring:
     hlbaubleslot: "Ring"
 shield_honor:
   Material: "PRISMARINE_SHARD"
-  DisplayName: "&bShield of Honor"
+  DisplayName: "i18n:items.baubles.shield_honor.display_name"
   CustomModelData: 83707
   ItemModel: "DEFAULT"
   Lore:
@@ -727,7 +727,7 @@ shield_honor:
     hlbaubleslot: "Body"
 miners_ring:
   Material: "PRISMARINE_SHARD"
-  DisplayName: "&bMiner's Ring"
+  DisplayName: "i18n:items.baubles.miners_ring.display_name"
   CustomModelData: 83708
   ItemModel: "DEFAULT"
   Lore:
@@ -738,64 +738,64 @@ miners_ring:
     hlbaubleslot: "Ring"
 warped_scroll:
   Material: "PRISMARINE_SHARD"
-  DisplayName: "&fWarped Scroll"
+  DisplayName: "i18n:items.baubles.warped_scroll.display_name"
   CustomModelData: 83709
   ItemModel: "DEFAULT"
 bound_scroll:
   Material: "PRISMARINE_SHARD"
-  DisplayName: "&fBound Scroll"
+  DisplayName: "i18n:items.baubles.bound_scroll.display_name"
   CustomModelData: 83713
   ItemModel: "DEFAULT"
 return_scroll:
   Material: "PRISMARINE_SHARD"
-  DisplayName: "&fReturn Scroll"
+  DisplayName: "i18n:items.baubles.return_scroll.display_name"
   CustomModelData: 83714
   ItemModel: "DEFAULT"
 body_slot:
   Material: "PRISMARINE_SHARD"
-  DisplayName: "&7 "
+  DisplayName: "i18n:items.baubles.body_slot.display_name"
   CustomModelData: 83718
   ItemModel: "DEFAULT"
   NBTTags:
     hlbaubleslot: "Body"
 charm_slot:
   Material: "PRISMARINE_SHARD"
-  DisplayName: "&7 "
+  DisplayName: "i18n:items.baubles.charm_slot.display_name"
   CustomModelData: 83719
   ItemModel: "DEFAULT"
   NBTTags:
     hlbaubleslot: "Charm"
 belt_slot:
   Material: "PRISMARINE_SHARD"
-  DisplayName: "&7 "
+  DisplayName: "i18n:items.baubles.belt_slot.display_name"
   CustomModelData: 83720
   ItemModel: "DEFAULT"
   NBTTags:
     hlbaubleslot: "Belt"
 ring_slot:
   Material: "PRISMARINE_SHARD"
-  DisplayName: "&7 "
+  DisplayName: "i18n:items.baubles.ring_slot.display_name"
   CustomModelData: 83721
   ItemModel: "DEFAULT"
   NBTTags:
     hlbaubleslot: "Ring"
 head_slot:
   Material: "PRISMARINE_SHARD"
-  DisplayName: "&7 "
+  DisplayName: "i18n:items.baubles.head_slot.display_name"
   CustomModelData: 83722
   ItemModel: "DEFAULT"
   NBTTags:
     hlbaubleslot: "Head"
 amulet_slot:
   Material: "PRISMARINE_SHARD"
-  DisplayName: "&7 "
+  DisplayName: "i18n:items.baubles.amulet_slot.display_name"
   CustomModelData: 83723
   ItemModel: "DEFAULT"
   NBTTags:
     hlbaubleslot: "Amulet"
 phantom_prism:
   Material: "PRISMARINE_SHARD"
-  DisplayName: "&fPhantom Prism"
+  DisplayName: "i18n:items.baubles.phantom_prism.display_name"
   CustomModelData: 83724
   ItemModel: "DEFAULT"
   Lore:
@@ -806,19 +806,19 @@ phantom_prism:
     hlbaubleslot: "Any"
 gui_glass:
   Material: "GRAY_STAINED_GLASS_PANE"
-  DisplayName: "&7 "
+  DisplayName: "i18n:items.baubles.gui_glass.display_name"
 bauble_bag:
   Material: "PRISMARINE_SHARD"
-  DisplayName: "&fBauble Bag"
+  DisplayName: "i18n:items.baubles.bauble_bag.display_name"
   CustomModelData: 83738
   ItemModel: "DEFAULT"
 next_page:
   Material: "GREEN_STAINED_GLASS_PANE"
-  DisplayName: "&eNext Page"
+  DisplayName: "i18n:items.baubles.next_page.display_name"
   Lore:
     - "&eClick to go the next page."
 back_page:
   Material: "RED_STAINED_GLASS_PANE"
-  DisplayName: "&eBack Page"
+  DisplayName: "i18n:items.baubles.back_page.display_name"
   Lore:
     - "&eClick to go back."
