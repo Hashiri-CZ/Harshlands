@@ -1,0 +1,8 @@
+items:
+  fear:
+    glowstone_crystal:
+      display_name: "&fGlowstone Crystal"
+    unlit_torch:
+      display_name: "&fUnlit Torch"
+    lit_torch:
+      display_name: "&fTorch"
