@@ -753,42 +753,42 @@ return_scroll:
   ItemModel: "DEFAULT"
 body_slot:
   Material: "PRISMARINE_SHARD"
-  DisplayName: "&7"
+  DisplayName: "&7 "
   CustomModelData: 83718
   ItemModel: "DEFAULT"
   NBTTags:
     hlbaubleslot: "Body"
 charm_slot:
   Material: "PRISMARINE_SHARD"
-  DisplayName: "&7"
+  DisplayName: "&7 "
   CustomModelData: 83719
   ItemModel: "DEFAULT"
   NBTTags:
     hlbaubleslot: "Charm"
 belt_slot:
   Material: "PRISMARINE_SHARD"
-  DisplayName: "&7"
+  DisplayName: "&7 "
   CustomModelData: 83720
   ItemModel: "DEFAULT"
   NBTTags:
     hlbaubleslot: "Belt"
 ring_slot:
   Material: "PRISMARINE_SHARD"
-  DisplayName: "&7"
+  DisplayName: "&7 "
   CustomModelData: 83721
   ItemModel: "DEFAULT"
   NBTTags:
     hlbaubleslot: "Ring"
 head_slot:
   Material: "PRISMARINE_SHARD"
-  DisplayName: "&7"
+  DisplayName: "&7 "
   CustomModelData: 83722
   ItemModel: "DEFAULT"
   NBTTags:
     hlbaubleslot: "Head"
 amulet_slot:
   Material: "PRISMARINE_SHARD"
-  DisplayName: "&7"
+  DisplayName: "&7 "
   CustomModelData: 83723
   ItemModel: "DEFAULT"
   NBTTags:
@@ -806,7 +806,7 @@ phantom_prism:
     hlbaubleslot: "Any"
 gui_glass:
   Material: "GRAY_STAINED_GLASS_PANE"
-  DisplayName: "&7"
+  DisplayName: "&7 "
 bauble_bag:
   Material: "PRISMARINE_SHARD"
   DisplayName: "&fBauble Bag"
