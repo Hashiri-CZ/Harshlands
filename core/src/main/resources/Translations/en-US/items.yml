@@ -657,3 +657,308 @@ items:
       display_name: "&fCestus"
     studded_cestus:
       display_name: "&fStudded Cestus"
+  iceandfire:
+    dragonbone:
+      display_name: "&fDragonbone"
+    witherbone:
+      display_name: "&fWitherbone"
+    dragonscale_blue:
+      display_name: "&fDragon Scales"
+    dragonscale_bronze:
+      display_name: "&fDragon Scales"
+    dragonscale_gray:
+      display_name: "&fDragon Scales"
+    dragonscale_emerald:
+      display_name: "&fDragon Scales"
+    dragonscale_red:
+      display_name: "&fDragon Scales"
+    dragonscale_sapphire:
+      display_name: "&fDragon Scales"
+    dragonscale_silver:
+      display_name: "&fDragon Scales"
+    dragonscale_white:
+      display_name: "&fDragon Scales"
+    dragonscale_amethyst:
+      display_name: "&fDragon Scales"
+    dragonscale_black:
+      display_name: "&fDragon Scales"
+    dragonscale_copper:
+      display_name: "&fDragon Scales"
+    dragonscale_electric:
+      display_name: "&fDragon Scales"
+    sea_serpent_scale_blue:
+      display_name: "&fSea Serpent Scales"
+    sea_serpent_scale_bronze:
+      display_name: "&fSea Serpent Scales"
+    sea_serpent_scale_deepblue:
+      display_name: "&fSea Serpent Scales"
+    sea_serpent_scale_green:
+      display_name: "&fSea Serpent Scales"
+    sea_serpent_scale_purple:
+      display_name: "&fSea Serpent Scales"
+    sea_serpent_scale_red:
+      display_name: "&fSea Serpent Scales"
+    sea_serpent_scale_teal:
+      display_name: "&fSea Serpent Scales"
+    shiny_scale:
+      display_name: "&fShiny Scale"
+    dragon_blood_fire:
+      display_name: "&fFire Dragon Blood"
+    dragon_blood_ice:
+      display_name: "&fIce Dragon Blood"
+    dragon_blood_lightning:
+      display_name: "&fLightning Dragon Blood"
+    dragon_heart_fire:
+      display_name: "&fFire Dragon Heart"
+    dragon_heart_ice:
+      display_name: "&fIce Dragon Heart"
+    dragon_heart_lightning:
+      display_name: "&fLightning Dragon Heart"
+    dragon_skull_fire:
+      display_name: "&fDragon Skull"
+    dragon_skull_ice:
+      display_name: "&fDragon Skull"
+    dragon_skull_lightning:
+      display_name: "&fDragon Skull"
+    dragon_flesh_fire:
+      display_name: "&fFire Dragon Flesh"
+    dragon_flesh_ice:
+      display_name: "&fIce Dragon Flesh"
+    dragon_flesh_lightning:
+      display_name: "&fLightning Dragon Flesh"
+    dragonsteel_fire_ingot:
+      display_name: "&fFire Dragonsteel Ingot"
+    dragonsteel_ice_ingot:
+      display_name: "&fIce Dragonsteel Ingot"
+    dragonsteel_lightning_ingot:
+      display_name: "&fLightning Dragonsteel Ingot"
+    dragonscale_helmet_blue:
+      display_name: "&fDragon Scale Helmet"
+    dragonscale_chestplate_blue:
+      display_name: "&fDragon Scale Chestplate"
+    dragonscale_leggings_blue:
+      display_name: "&fDragon Scale Leggings"
+    dragonscale_boots_blue:
+      display_name: "&fDragon Scale Boots"
+    dragonscale_helmet_bronze:
+      display_name: "&fDragon Scale Helmet"
+    dragonscale_chestplate_bronze:
+      display_name: "&fDragon Scale Chestplate"
+    dragonscale_leggings_bronze:
+      display_name: "&fDragon Scale Leggings"
+    dragonscale_boots_bronze:
+      display_name: "&fDragon Scale Boots"
+    dragonscale_helmet_gray:
+      display_name: "&fDragon Scale Helmet"
+    dragonscale_chestplate_gray:
+      display_name: "&fDragon Scale Chestplate"
+    dragonscale_leggings_gray:
+      display_name: "&fDragon Scale Leggings"
+    dragonscale_boots_gray:
+      display_name: "&fDragon Scale Boots"
+    dragonscale_helmet_emerald:
+      display_name: "&fDragon Scale Helmet"
+    dragonscale_chestplate_emerald:
+      display_name: "&fDragon Scale Chestplate"
+    dragonscale_leggings_emerald:
+      display_name: "&fDragon Scale Leggings"
+    dragonscale_boots_emerald:
+      display_name: "&fDragon Scale Boots"
+    dragonscale_helmet_red:
+      display_name: "&fDragon Scale Helmet"
+    dragonscale_chestplate_red:
+      display_name: "&fDragon Scale Chestplate"
+    dragonscale_leggings_red:
+      display_name: "&fDragon Scale Leggings"
+    dragonscale_boots_red:
+      display_name: "&fDragon Scale Boots"
+    dragonscale_helmet_sapphire:
+      display_name: "&fDragon Scale Helmet"
+    dragonscale_chestplate_sapphire:
+      display_name: "&fDragon Scale Chestplate"
+    dragonscale_leggings_sapphire:
+      display_name: "&fDragon Scale Leggings"
+    dragonscale_boots_sapphire:
+      display_name: "&fDragon Scale Boots"
+    dragonscale_helmet_silver:
+      display_name: "&fDragon Scale Helmet"
+    dragonscale_chestplate_silver:
+      display_name: "&fDragon Scale Chestplate"
+    dragonscale_leggings_silver:
+      display_name: "&fDragon Scale Leggings"
+    dragonscale_boots_silver:
+      display_name: "&fDragon Scale Boots"
+    dragonscale_helmet_white:
+      display_name: "&fDragon Scale Helmet"
+    dragonscale_chestplate_white:
+      display_name: "&fDragon Scale Chestplate"
+    dragonscale_leggings_white:
+      display_name: "&fDragon Scale Leggings"
+    dragonscale_boots_white:
+      display_name: "&fDragon Scale Boots"
+    dragonscale_helmet_amethyst:
+      display_name: "&fDragon Scale Helmet"
+    dragonscale_chestplate_amethyst:
+      display_name: "&fDragon Scale Chestplate"
+    dragonscale_leggings_amethyst:
+      display_name: "&fDragon Scale Leggings"
+    dragonscale_boots_amethyst:
+      display_name: "&fDragon Scale Boots"
+    dragonscale_helmet_black:
+      display_name: "&fDragon Scale Helmet"
+    dragonscale_chestplate_black:
+      display_name: "&fDragon Scale Chestplate"
+    dragonscale_leggings_black:
+      display_name: "&fDragon Scale Leggings"
+    dragonscale_boots_black:
+      display_name: "&fDragon Scale Boots"
+    dragonscale_helmet_copper:
+      display_name: "&fDragon Scale Helmet"
+    dragonscale_chestplate_copper:
+      display_name: "&fDragon Scale Chestplate"
+    dragonscale_leggings_copper:
+      display_name: "&fDragon Scale Leggings"
+    dragonscale_boots_copper:
+      display_name: "&fDragon Scale Boots"
+    dragonscale_helmet_electric:
+      display_name: "&fDragon Scale Helmet"
+    dragonscale_chestplate_electric:
+      display_name: "&fDragon Scale Chestplate"
+    dragonscale_leggings_electric:
+      display_name: "&fDragon Scale Leggings"
+    dragonscale_boots_electric:
+      display_name: "&fDragon Scale Boots"
+    tide_guardian_helmet_blue:
+      display_name: "&fTide Guardian Helmet"
+    tide_guardian_chestplate_blue:
+      display_name: "&fTide Guardian Chestplate"
+    tide_guardian_leggings_blue:
+      display_name: "&fTide Guardian Leggings"
+    tide_guardian_boots_blue:
+      display_name: "&fTide Guardian Boots"
+    tide_guardian_helmet_bronze:
+      display_name: "&fTide Guardian Helmet"
+    tide_guardian_chestplate_bronze:
+      display_name: "&fTide Guardian Chestplate"
+    tide_guardian_leggings_bronze:
+      display_name: "&fTide Guardian Leggings"
+    tide_guardian_boots_bronze:
+      display_name: "&fTide Guardian Boots"
+    tide_guardian_helmet_deepblue:
+      display_name: "&fTide Guardian Helmet"
+    tide_guardian_chestplate_deepblue:
+      display_name: "&fTide Guardian Chestplate"
+    tide_guardian_leggings_deepblue:
+      display_name: "&fTide Guardian Leggings"
+    tide_guardian_boots_deepblue:
+      display_name: "&fTide Guardian Boots"
+    tide_guardian_helmet_green:
+      display_name: "&fTide Guardian Helmet"
+    tide_guardian_chestplate_green:
+      display_name: "&fTide Guardian Chestplate"
+    tide_guardian_leggings_green:
+      display_name: "&fTide Guardian Leggings"
+    tide_guardian_boots_green:
+      display_name: "&fTide Guardian Boots"
+    tide_guardian_helmet_purple:
+      display_name: "&fTide Guardian Helmet"
+    tide_guardian_chestplate_purple:
+      display_name: "&fTide Guardian Chestplate"
+    tide_guardian_leggings_purple:
+      display_name: "&fTide Guardian Leggings"
+    tide_guardian_boots_purple:
+      display_name: "&fTide Guardian Boots"
+    tide_guardian_helmet_red:
+      display_name: "&fTide Guardian Helmet"
+    tide_guardian_chestplate_red:
+      display_name: "&fTide Guardian Chestplate"
+    tide_guardian_leggings_red:
+      display_name: "&fTide Guardian Leggings"
+    tide_guardian_boots_red:
+      display_name: "&fTide Guardian Boots"
+    tide_guardian_helmet_teal:
+      display_name: "&fTide Guardian Helmet"
+    tide_guardian_chestplate_teal:
+      display_name: "&fTide Guardian Chestplate"
+    tide_guardian_leggings_teal:
+      display_name: "&fTide Guardian Leggings"
+    tide_guardian_boots_teal:
+      display_name: "&fTide Guardian Boots"
+    dragonbone_pickaxe:
+      display_name: "&fDragonbone Pickaxe"
+    dragonbone_axe:
+      display_name: "&fDragonbone Axe"
+    dragonbone_shovel:
+      display_name: "&fDragonbone Shovel"
+    dragonbone_hoe:
+      display_name: "&fDragonbone Hoe"
+    dragonbone_sword:
+      display_name: "&fDragonbone Sword"
+    dragonbone_bow:
+      display_name: "&fDragonbone Bow"
+    dragonbone_flamed_sword:
+      display_name: "&fFlamed Dragonbone Sword"
+    dragonbone_iced_sword:
+      display_name: "&fIced Dragonbone Sword"
+    dragonbone_lightning_sword:
+      display_name: "&fLightning Dragonbone Sword"
+    dragonsteel_fire_sword:
+      display_name: "&fFire Dragonsteel Sword"
+    dragonsteel_fire_pickaxe:
+      display_name: "&fFire Dragonsteel Pickaxe"
+    dragonsteel_fire_axe:
+      display_name: "&fFire Dragonsteel Axe"
+    dragonsteel_fire_shovel:
+      display_name: "&fFire Dragonsteel Shovel"
+    dragonsteel_fire_hoe:
+      display_name: "&fFire Dragonsteel Hoe"
+    dragonsteel_ice_sword:
+      display_name: "&fIce Dragonsteel Sword"
+    dragonsteel_ice_pickaxe:
+      display_name: "&fIce Dragonsteel Pickaxe"
+    dragonsteel_ice_axe:
+      display_name: "&fIce Dragonsteel Axe"
+    dragonsteel_ice_shovel:
+      display_name: "&fIce Dragonsteel Shovel"
+    dragonsteel_ice_hoe:
+      display_name: "&fIce Dragonsteel Hoe"
+    dragonsteel_lightning_sword:
+      display_name: "&fLightning Dragonsteel Sword"
+    dragonsteel_lightning_pickaxe:
+      display_name: "&fLightning Dragonsteel Pickaxe"
+    dragonsteel_lightning_axe:
+      display_name: "&fLightning Dragonsteel Axe"
+    dragonsteel_lightning_shovel:
+      display_name: "&fLightning Dragonsteel Shovel"
+    dragonsteel_lightning_hoe:
+      display_name: "&fLightning Dragonsteel Hoe"
+    dragonsteel_fire_helmet:
+      display_name: "&fFire Dragonsteel Helmet"
+    dragonsteel_fire_chestplate:
+      display_name: "&fFire Dragonsteel Chestplate"
+    dragonsteel_fire_leggings:
+      display_name: "&fFire Dragonsteel Leggings"
+    dragonsteel_fire_boots:
+      display_name: "&fFire Dragonsteel Boots"
+    dragonsteel_ice_helmet:
+      display_name: "&fIce Dragonsteel Helmet"
+    dragonsteel_ice_chestplate:
+      display_name: "&fIce Dragonsteel Chestplate"
+    dragonsteel_ice_leggings:
+      display_name: "&fIce Dragonsteel Leggings"
+    dragonsteel_ice_boots:
+      display_name: "&fIce Dragonsteel Boots"
+    dragonsteel_lightning_helmet:
+      display_name: "&fLightning Dragonsteel Helmet"
+    dragonsteel_lightning_chestplate:
+      display_name: "&fLightning Dragonsteel Chestplate"
+    dragonsteel_lightning_leggings:
+      display_name: "&fLightning Dragonsteel Leggings"
+    dragonsteel_lightning_boots:
+      display_name: "&fLightning Dragonsteel Boots"
+    dragonsteel_fire_block:
+      display_name: "&fFire Dragonsteel Block"
+    dragonsteel_ice_block:
+      display_name: "&fIce Dragonsteel Block"
+    dragonsteel_lightning_block:
+      display_name: "&fLightning Dragonsteel Block"

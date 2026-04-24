@@ -8,230 +8,230 @@ ConfigId: "1.3.1-RELEASE" # Used for config syncing purposes, do NOT edit
 
 dragonbone:
   Material: "PRISMARINE_SHARD"
-  DisplayName: "&fDragonbone"
+  DisplayName: "i18n:items.iceandfire.dragonbone.display_name"
   CustomModelData: 83784
   ItemModel: "DEFAULT"
 witherbone:
   Material: "PRISMARINE_SHARD"
-  DisplayName: "&fWitherbone"
+  DisplayName: "i18n:items.iceandfire.witherbone.display_name"
   CustomModelData: 83785
   ItemModel: "DEFAULT"
 dragonscale_blue:
   Material: "PRISMARINE_SHARD"
-  DisplayName: "&fDragon Scales"
+  DisplayName: "i18n:items.iceandfire.dragonscale_blue.display_name"
   CustomModelData: 83798
   ItemModel: "DEFAULT"
   Lore:
     - "LOREPRESET.BLUE_DRAGON_SCALE"
 dragonscale_bronze:
   Material: "PRISMARINE_SHARD"
-  DisplayName: "&fDragon Scales"
+  DisplayName: "i18n:items.iceandfire.dragonscale_bronze.display_name"
   CustomModelData: 83799
   ItemModel: "DEFAULT"
   Lore:
     - "LOREPRESET.BRONZE_DRAGON_SCALE"
 dragonscale_gray:
   Material: "PRISMARINE_SHARD"
-  DisplayName: "&fDragon Scales"
+  DisplayName: "i18n:items.iceandfire.dragonscale_gray.display_name"
   CustomModelData: 83800
   ItemModel: "DEFAULT"
   Lore:
     - "LOREPRESET.GRAY_DRAGON_SCALE"
 dragonscale_emerald:
   Material: "PRISMARINE_SHARD"
-  DisplayName: "&fDragon Scales"
+  DisplayName: "i18n:items.iceandfire.dragonscale_emerald.display_name"
   CustomModelData: 83801
   ItemModel: "DEFAULT"
   Lore:
     - "LOREPRESET.GREEN_DRAGON_SCALE"
 dragonscale_red:
   Material: "PRISMARINE_SHARD"
-  DisplayName: "&fDragon Scales"
+  DisplayName: "i18n:items.iceandfire.dragonscale_red.display_name"
   CustomModelData: 83802
   ItemModel: "DEFAULT"
   Lore:
     - "LOREPRESET.RED_DRAGON_SCALE"
 dragonscale_sapphire:
   Material: "PRISMARINE_SHARD"
-  DisplayName: "&fDragon Scales"
+  DisplayName: "i18n:items.iceandfire.dragonscale_sapphire.display_name"
   CustomModelData: 83803
   ItemModel: "DEFAULT"
   Lore:
     - "LOREPRESET.SAPPHIRE_DRAGON_SCALE"
 dragonscale_silver:
   Material: "PRISMARINE_SHARD"
-  DisplayName: "&fDragon Scales"
+  DisplayName: "i18n:items.iceandfire.dragonscale_silver.display_name"
   CustomModelData: 83804
   ItemModel: "DEFAULT"
   Lore:
     - "LOREPRESET.SILVER_DRAGON_SCALE"
 dragonscale_white:
   Material: "PRISMARINE_SHARD"
-  DisplayName: "&fDragon Scales"
+  DisplayName: "i18n:items.iceandfire.dragonscale_white.display_name"
   CustomModelData: 83805
   ItemModel: "DEFAULT"
   Lore:
     - "LOREPRESET.WHITE_DRAGON_SCALE"
 dragonscale_amethyst:
   Material: "PRISMARINE_SHARD"
-  DisplayName: "&fDragon Scales"
+  DisplayName: "i18n:items.iceandfire.dragonscale_amethyst.display_name"
   CustomModelData: 83806
   ItemModel: "DEFAULT"
   Lore:
     - "LOREPRESET.AMETHYST_DRAGON_SCALE"
 dragonscale_black:
   Material: "PRISMARINE_SHARD"
-  DisplayName: "&fDragon Scales"
+  DisplayName: "i18n:items.iceandfire.dragonscale_black.display_name"
   CustomModelData: 83807
   ItemModel: "DEFAULT"
   Lore:
     - "LOREPRESET.BLACK_DRAGON_SCALE"
 dragonscale_copper:
   Material: "PRISMARINE_SHARD"
-  DisplayName: "&fDragon Scales"
+  DisplayName: "i18n:items.iceandfire.dragonscale_copper.display_name"
   CustomModelData: 83808
   ItemModel: "DEFAULT"
   Lore:
     - "LOREPRESET.COPPER_DRAGON_SCALE"
 dragonscale_electric:
   Material: "PRISMARINE_SHARD"
-  DisplayName: "&fDragon Scales"
+  DisplayName: "i18n:items.iceandfire.dragonscale_electric.display_name"
   CustomModelData: 83809
   ItemModel: "DEFAULT"
   Lore:
     - "LOREPRESET.ELECTRIC_DRAGON_SCALE"
 sea_serpent_scale_blue:
   Material: "PRISMARINE_SHARD"
-  DisplayName: "&fSea Serpent Scales"
+  DisplayName: "i18n:items.iceandfire.sea_serpent_scale_blue.display_name"
   CustomModelData: 83810
   ItemModel: "DEFAULT"
   Lore:
     - "LOREPRESET.BLUE_SEA_SERPENT_SCALE"
 sea_serpent_scale_bronze:
   Material: "PRISMARINE_SHARD"
-  DisplayName: "&fSea Serpent Scales"
+  DisplayName: "i18n:items.iceandfire.sea_serpent_scale_bronze.display_name"
   CustomModelData: 83811
   ItemModel: "DEFAULT"
   Lore:
     - "LOREPRESET.BRONZE_SEA_SERPENT_SCALE"
 sea_serpent_scale_deepblue:
   Material: "PRISMARINE_SHARD"
-  DisplayName: "&fSea Serpent Scales"
+  DisplayName: "i18n:items.iceandfire.sea_serpent_scale_deepblue.display_name"
   CustomModelData: 83812
   ItemModel: "DEFAULT"
   Lore:
     - "LOREPRESET.DEEPBLUE_SEA_SERPENT_SCALE"
 sea_serpent_scale_green:
   Material: "PRISMARINE_SHARD"
-  DisplayName: "&fSea Serpent Scales"
+  DisplayName: "i18n:items.iceandfire.sea_serpent_scale_green.display_name"
   CustomModelData: 83813
   ItemModel: "DEFAULT"
   Lore:
     - "LOREPRESET.GREEN_SEA_SERPENT_SCALE"
 sea_serpent_scale_purple:
   Material: "PRISMARINE_SHARD"
-  DisplayName: "&fSea Serpent Scales"
+  DisplayName: "i18n:items.iceandfire.sea_serpent_scale_purple.display_name"
   CustomModelData: 83814
   ItemModel: "DEFAULT"
   Lore:
     - "LOREPRESET.PURPLE_SEA_SERPENT_SCALE"
 sea_serpent_scale_red:
   Material: "PRISMARINE_SHARD"
-  DisplayName: "&fSea Serpent Scales"
+  DisplayName: "i18n:items.iceandfire.sea_serpent_scale_red.display_name"
   CustomModelData: 83815
   ItemModel: "DEFAULT"
   Lore:
     - "LOREPRESET.RED_SEA_SERPENT_SCALE"
 sea_serpent_scale_teal:
   Material: "PRISMARINE_SHARD"
-  DisplayName: "&fSea Serpent Scales"
+  DisplayName: "i18n:items.iceandfire.sea_serpent_scale_teal.display_name"
   CustomModelData: 83816
   ItemModel: "DEFAULT"
   Lore:
     - "LOREPRESET.TEAL_SEA_SERPENT_SCALE"
 shiny_scale:
   Material: "PRISMARINE_SHARD"
-  DisplayName: "&fShiny Scale"
+  DisplayName: "i18n:items.iceandfire.shiny_scale.display_name"
   CustomModelData: 83817
   ItemModel: "DEFAULT"
 dragon_blood_fire:
   Material: "PRISMARINE_SHARD"
-  DisplayName: "&fFire Dragon Blood"
+  DisplayName: "i18n:items.iceandfire.dragon_blood_fire.display_name"
   CustomModelData: 83792
   ItemModel: "DEFAULT"
 dragon_blood_ice:
   Material: "PRISMARINE_SHARD"
-  DisplayName: "&fIce Dragon Blood"
+  DisplayName: "i18n:items.iceandfire.dragon_blood_ice.display_name"
   CustomModelData: 83793
   ItemModel: "DEFAULT"
 dragon_blood_lightning:
   Material: "PRISMARINE_SHARD"
-  DisplayName: "&fLightning Dragon Blood"
+  DisplayName: "i18n:items.iceandfire.dragon_blood_lightning.display_name"
   CustomModelData: 83794
   ItemModel: "DEFAULT"
 dragon_heart_fire:
   Material: "PRISMARINE_SHARD"
-  DisplayName: "&fFire Dragon Heart"
+  DisplayName: "i18n:items.iceandfire.dragon_heart_fire.display_name"
   CustomModelData: 83788
   ItemModel: "DEFAULT"
 dragon_heart_ice:
   Material: "PRISMARINE_SHARD"
-  DisplayName: "&fIce Dragon Heart"
+  DisplayName: "i18n:items.iceandfire.dragon_heart_ice.display_name"
   CustomModelData: 83789
   ItemModel: "DEFAULT"
 dragon_heart_lightning:
   Material: "PRISMARINE_SHARD"
-  DisplayName: "&fLightning Dragon Heart"
+  DisplayName: "i18n:items.iceandfire.dragon_heart_lightning.display_name"
   CustomModelData: 83790
   ItemModel: "DEFAULT"
 dragon_skull_fire:
   Material: "PRISMARINE_SHARD"
-  DisplayName: "&fDragon Skull"
+  DisplayName: "i18n:items.iceandfire.dragon_skull_fire.display_name"
   CustomModelData: 83658
   ItemModel: "DEFAULT"
 dragon_skull_ice:
   Material: "PRISMARINE_SHARD"
-  DisplayName: "&fDragon Skull"
+  DisplayName: "i18n:items.iceandfire.dragon_skull_ice.display_name"
   CustomModelData: 83659
   ItemModel: "DEFAULT"
 dragon_skull_lightning:
   Material: "PRISMARINE_SHARD"
-  DisplayName: "&fDragon Skull"
+  DisplayName: "i18n:items.iceandfire.dragon_skull_lightning.display_name"
   CustomModelData: 83660
   ItemModel: "DEFAULT"
 dragon_flesh_fire:
   Material: "COOKED_BEEF"
-  DisplayName: "&fFire Dragon Flesh"
+  DisplayName: "i18n:items.iceandfire.dragon_flesh_fire.display_name"
   CustomModelData: 83650
   ItemModel: "DEFAULT"
 dragon_flesh_ice:
   Material: "COOKED_BEEF"
-  DisplayName: "&fIce Dragon Flesh"
+  DisplayName: "i18n:items.iceandfire.dragon_flesh_ice.display_name"
   CustomModelData: 83651
   ItemModel: "DEFAULT"
 dragon_flesh_lightning:
   Material: "COOKED_BEEF"
-  DisplayName: "&fLightning Dragon Flesh"
+  DisplayName: "i18n:items.iceandfire.dragon_flesh_lightning.display_name"
   CustomModelData: 83652
   ItemModel: "DEFAULT"
 dragonsteel_fire_ingot:
   Material: "PRISMARINE_SHARD"
-  DisplayName: "&fFire Dragonsteel Ingot"
+  DisplayName: "i18n:items.iceandfire.dragonsteel_fire_ingot.display_name"
   CustomModelData: 83795
   ItemModel: "DEFAULT"
 dragonsteel_ice_ingot:
   Material: "PRISMARINE_SHARD"
-  DisplayName: "&fIce Dragonsteel Ingot"
+  DisplayName: "i18n:items.iceandfire.dragonsteel_ice_ingot.display_name"
   CustomModelData: 83796
   ItemModel: "DEFAULT"
 dragonsteel_lightning_ingot:
   Material: "PRISMARINE_SHARD"
-  DisplayName: "&fLightning Dragonsteel Ingot"
+  DisplayName: "i18n:items.iceandfire.dragonsteel_lightning_ingot.display_name"
   CustomModelData: 83797
   ItemModel: "DEFAULT"
 dragonscale_helmet_blue:
   Material: "DIAMOND_HELMET"
-  DisplayName: "&fDragon Scale Helmet"
+  DisplayName: "i18n:items.iceandfire.dragonscale_helmet_blue.display_name"
   CustomModelData: 83650
   ItemModel: "DEFAULT"
   EquippableComponentModel: "DEFAULT"
@@ -248,7 +248,7 @@ dragonscale_helmet_blue:
   RepairIngredients: "dragonscale_blue"
 dragonscale_chestplate_blue:
   Material: "DIAMOND_CHESTPLATE"
-  DisplayName: "&fDragon Scale Chestplate"
+  DisplayName: "i18n:items.iceandfire.dragonscale_chestplate_blue.display_name"
   CustomModelData: 83650
   ItemModel: "DEFAULT"
   EquippableComponentModel: "DEFAULT"
@@ -265,7 +265,7 @@ dragonscale_chestplate_blue:
   RepairIngredients: "dragonscale_blue"
 dragonscale_leggings_blue:
   Material: "DIAMOND_LEGGINGS"
-  DisplayName: "&fDragon Scale Leggings"
+  DisplayName: "i18n:items.iceandfire.dragonscale_leggings_blue.display_name"
   CustomModelData: 83650
   ItemModel: "DEFAULT"
   EquippableComponentModel: "DEFAULT"
@@ -282,7 +282,7 @@ dragonscale_leggings_blue:
   RepairIngredients: "dragonscale_blue"
 dragonscale_boots_blue:
   Material: "DIAMOND_BOOTS"
-  DisplayName: "&fDragon Scale Boots"
+  DisplayName: "i18n:items.iceandfire.dragonscale_boots_blue.display_name"
   CustomModelData: 83650
   ItemModel: "DEFAULT"
   EquippableComponentModel: "DEFAULT"
@@ -299,7 +299,7 @@ dragonscale_boots_blue:
   RepairIngredients: "dragonscale_blue"
 dragonscale_helmet_bronze:
   Material: "DIAMOND_HELMET"
-  DisplayName: "&fDragon Scale Helmet"
+  DisplayName: "i18n:items.iceandfire.dragonscale_helmet_bronze.display_name"
   CustomModelData: 83651
   ItemModel: "DEFAULT"
   EquippableComponentModel: "DEFAULT"
@@ -316,7 +316,7 @@ dragonscale_helmet_bronze:
   RepairIngredients: "dragonscale_bronze"
 dragonscale_chestplate_bronze:
   Material: "DIAMOND_CHESTPLATE"
-  DisplayName: "&fDragon Scale Chestplate"
+  DisplayName: "i18n:items.iceandfire.dragonscale_chestplate_bronze.display_name"
   CustomModelData: 83651
   ItemModel: "DEFAULT"
   EquippableComponentModel: "DEFAULT"
@@ -333,7 +333,7 @@ dragonscale_chestplate_bronze:
   RepairIngredients: "dragonscale_bronze"
 dragonscale_leggings_bronze:
   Material: "DIAMOND_LEGGINGS"
-  DisplayName: "&fDragon Scale Leggings"
+  DisplayName: "i18n:items.iceandfire.dragonscale_leggings_bronze.display_name"
   CustomModelData: 83651
   ItemModel: "DEFAULT"
   EquippableComponentModel: "DEFAULT"
@@ -350,7 +350,7 @@ dragonscale_leggings_bronze:
   RepairIngredients: "dragonscale_bronze"
 dragonscale_boots_bronze:
   Material: "DIAMOND_BOOTS"
-  DisplayName: "&fDragon Scale Boots"
+  DisplayName: "i18n:items.iceandfire.dragonscale_boots_bronze.display_name"
   CustomModelData: 83651
   ItemModel: "DEFAULT"
   EquippableComponentModel: "DEFAULT"
@@ -367,7 +367,7 @@ dragonscale_boots_bronze:
   RepairIngredients: "dragonscale_bronze"
 dragonscale_helmet_gray:
   Material: "DIAMOND_HELMET"
-  DisplayName: "&fDragon Scale Helmet"
+  DisplayName: "i18n:items.iceandfire.dragonscale_helmet_gray.display_name"
   CustomModelData: 83652
   ItemModel: "DEFAULT"
   EquippableComponentModel: "DEFAULT"
@@ -384,7 +384,7 @@ dragonscale_helmet_gray:
   RepairIngredients: "dragonscale_gray"
 dragonscale_chestplate_gray:
   Material: "DIAMOND_CHESTPLATE"
-  DisplayName: "&fDragon Scale Chestplate"
+  DisplayName: "i18n:items.iceandfire.dragonscale_chestplate_gray.display_name"
   CustomModelData: 83652
   ItemModel: "DEFAULT"
   EquippableComponentModel: "DEFAULT"
@@ -401,7 +401,7 @@ dragonscale_chestplate_gray:
   RepairIngredients: "dragonscale_gray"
 dragonscale_leggings_gray:
   Material: "DIAMOND_LEGGINGS"
-  DisplayName: "&fDragon Scale Leggings"
+  DisplayName: "i18n:items.iceandfire.dragonscale_leggings_gray.display_name"
   CustomModelData: 83652
   ItemModel: "DEFAULT"
   EquippableComponentModel: "DEFAULT"
@@ -418,7 +418,7 @@ dragonscale_leggings_gray:
   RepairIngredients: "dragonscale_gray"
 dragonscale_boots_gray:
   Material: "DIAMOND_BOOTS"
-  DisplayName: "&fDragon Scale Boots"
+  DisplayName: "i18n:items.iceandfire.dragonscale_boots_gray.display_name"
   CustomModelData: 83652
   ItemModel: "DEFAULT"
   EquippableComponentModel: "DEFAULT"
@@ -435,7 +435,7 @@ dragonscale_boots_gray:
   RepairIngredients: "dragonscale_gray"
 dragonscale_helmet_emerald:
   Material: "DIAMOND_HELMET"
-  DisplayName: "&fDragon Scale Helmet"
+  DisplayName: "i18n:items.iceandfire.dragonscale_helmet_emerald.display_name"
   CustomModelData: 83653
   ItemModel: "DEFAULT"
   EquippableComponentModel: "DEFAULT"
@@ -452,7 +452,7 @@ dragonscale_helmet_emerald:
   RepairIngredients: "dragonscale_emerald"
 dragonscale_chestplate_emerald:
   Material: "DIAMOND_CHESTPLATE"
-  DisplayName: "&fDragon Scale Chestplate"
+  DisplayName: "i18n:items.iceandfire.dragonscale_chestplate_emerald.display_name"
   CustomModelData: 83653
   ItemModel: "DEFAULT"
   EquippableComponentModel: "DEFAULT"
@@ -469,7 +469,7 @@ dragonscale_chestplate_emerald:
   RepairIngredients: "dragonscale_emerald"
 dragonscale_leggings_emerald:
   Material: "DIAMOND_LEGGINGS"
-  DisplayName: "&fDragon Scale Leggings"
+  DisplayName: "i18n:items.iceandfire.dragonscale_leggings_emerald.display_name"
   CustomModelData: 83653
   ItemModel: "DEFAULT"
   EquippableComponentModel: "DEFAULT"
@@ -486,7 +486,7 @@ dragonscale_leggings_emerald:
   RepairIngredients: "dragonscale_emerald"
 dragonscale_boots_emerald:
   Material: "DIAMOND_BOOTS"
-  DisplayName: "&fDragon Scale Boots"
+  DisplayName: "i18n:items.iceandfire.dragonscale_boots_emerald.display_name"
   CustomModelData: 83653
   ItemModel: "DEFAULT"
   EquippableComponentModel: "DEFAULT"
@@ -503,7 +503,7 @@ dragonscale_boots_emerald:
   RepairIngredients: "dragonscale_emerald"
 dragonscale_helmet_red:
   Material: "DIAMOND_HELMET"
-  DisplayName: "&fDragon Scale Helmet"
+  DisplayName: "i18n:items.iceandfire.dragonscale_helmet_red.display_name"
   CustomModelData: 83654
   ItemModel: "DEFAULT"
   EquippableComponentModel: "DEFAULT"
@@ -520,7 +520,7 @@ dragonscale_helmet_red:
   RepairIngredients: "dragonscale_red"
 dragonscale_chestplate_red:
   Material: "DIAMOND_CHESTPLATE"
-  DisplayName: "&fDragon Scale Chestplate"
+  DisplayName: "i18n:items.iceandfire.dragonscale_chestplate_red.display_name"
   CustomModelData: 83654
   ItemModel: "DEFAULT"
   EquippableComponentModel: "DEFAULT"
@@ -537,7 +537,7 @@ dragonscale_chestplate_red:
   RepairIngredients: "dragonscale_red"
 dragonscale_leggings_red:
   Material: "DIAMOND_LEGGINGS"
-  DisplayName: "&fDragon Scale Leggings"
+  DisplayName: "i18n:items.iceandfire.dragonscale_leggings_red.display_name"
   CustomModelData: 83654
   ItemModel: "DEFAULT"
   EquippableComponentModel: "DEFAULT"
@@ -554,7 +554,7 @@ dragonscale_leggings_red:
   RepairIngredients: "dragonscale_red"
 dragonscale_boots_red:
   Material: "DIAMOND_BOOTS"
-  DisplayName: "&fDragon Scale Boots"
+  DisplayName: "i18n:items.iceandfire.dragonscale_boots_red.display_name"
   CustomModelData: 83654
   ItemModel: "DEFAULT"
   EquippableComponentModel: "DEFAULT"
@@ -571,7 +571,7 @@ dragonscale_boots_red:
   RepairIngredients: "dragonscale_red"
 dragonscale_helmet_sapphire:
   Material: "DIAMOND_HELMET"
-  DisplayName: "&fDragon Scale Helmet"
+  DisplayName: "i18n:items.iceandfire.dragonscale_helmet_sapphire.display_name"
   CustomModelData: 83655
   ItemModel: "DEFAULT"
   EquippableComponentModel: "DEFAULT"
@@ -588,7 +588,7 @@ dragonscale_helmet_sapphire:
   RepairIngredients: "dragonscale_sapphire"
 dragonscale_chestplate_sapphire:
   Material: "DIAMOND_CHESTPLATE"
-  DisplayName: "&fDragon Scale Chestplate"
+  DisplayName: "i18n:items.iceandfire.dragonscale_chestplate_sapphire.display_name"
   CustomModelData: 83655
   ItemModel: "DEFAULT"
   EquippableComponentModel: "DEFAULT"
@@ -605,7 +605,7 @@ dragonscale_chestplate_sapphire:
   RepairIngredients: "dragonscale_sapphire"
 dragonscale_leggings_sapphire:
   Material: "DIAMOND_LEGGINGS"
-  DisplayName: "&fDragon Scale Leggings"
+  DisplayName: "i18n:items.iceandfire.dragonscale_leggings_sapphire.display_name"
   CustomModelData: 83655
   ItemModel: "DEFAULT"
   EquippableComponentModel: "DEFAULT"
@@ -622,7 +622,7 @@ dragonscale_leggings_sapphire:
   RepairIngredients: "dragonscale_sapphire"
 dragonscale_boots_sapphire:
   Material: "DIAMOND_BOOTS"
-  DisplayName: "&fDragon Scale Boots"
+  DisplayName: "i18n:items.iceandfire.dragonscale_boots_sapphire.display_name"
   CustomModelData: 83655
   ItemModel: "DEFAULT"
   EquippableComponentModel: "DEFAULT"
@@ -639,7 +639,7 @@ dragonscale_boots_sapphire:
   RepairIngredients: "dragonscale_sapphire"
 dragonscale_helmet_silver:
   Material: "DIAMOND_HELMET"
-  DisplayName: "&fDragon Scale Helmet"
+  DisplayName: "i18n:items.iceandfire.dragonscale_helmet_silver.display_name"
   CustomModelData: 83656
   ItemModel: "DEFAULT"
   EquippableComponentModel: "DEFAULT"
@@ -656,7 +656,7 @@ dragonscale_helmet_silver:
   RepairIngredients: "dragonscale_silver"
 dragonscale_chestplate_silver:
   Material: "DIAMOND_CHESTPLATE"
-  DisplayName: "&fDragon Scale Chestplate"
+  DisplayName: "i18n:items.iceandfire.dragonscale_chestplate_silver.display_name"
   CustomModelData: 83656
   ItemModel: "DEFAULT"
   EquippableComponentModel: "DEFAULT"
@@ -673,7 +673,7 @@ dragonscale_chestplate_silver:
   RepairIngredients: "dragonscale_silver"
 dragonscale_leggings_silver:
   Material: "DIAMOND_LEGGINGS"
-  DisplayName: "&fDragon Scale Leggings"
+  DisplayName: "i18n:items.iceandfire.dragonscale_leggings_silver.display_name"
   CustomModelData: 83656
   ItemModel: "DEFAULT"
   EquippableComponentModel: "DEFAULT"
@@ -690,7 +690,7 @@ dragonscale_leggings_silver:
   RepairIngredients: "dragonscale_silver"
 dragonscale_boots_silver:
   Material: "DIAMOND_BOOTS"
-  DisplayName: "&fDragon Scale Boots"
+  DisplayName: "i18n:items.iceandfire.dragonscale_boots_silver.display_name"
   CustomModelData: 83656
   ItemModel: "DEFAULT"
   EquippableComponentModel: "DEFAULT"
@@ -707,7 +707,7 @@ dragonscale_boots_silver:
   RepairIngredients: "dragonscale_silver"
 dragonscale_helmet_white:
   Material: "DIAMOND_HELMET"
-  DisplayName: "&fDragon Scale Helmet"
+  DisplayName: "i18n:items.iceandfire.dragonscale_helmet_white.display_name"
   CustomModelData: 83657
   ItemModel: "DEFAULT"
   EquippableComponentModel: "DEFAULT"
@@ -724,7 +724,7 @@ dragonscale_helmet_white:
   RepairIngredients: "dragonscale_white"
 dragonscale_chestplate_white:
   Material: "DIAMOND_CHESTPLATE"
-  DisplayName: "&fDragon Scale Chestplate"
+  DisplayName: "i18n:items.iceandfire.dragonscale_chestplate_white.display_name"
   CustomModelData: 83657
   ItemModel: "DEFAULT"
   EquippableComponentModel: "DEFAULT"
@@ -741,7 +741,7 @@ dragonscale_chestplate_white:
   RepairIngredients: "dragonscale_white"
 dragonscale_leggings_white:
   Material: "DIAMOND_LEGGINGS"
-  DisplayName: "&fDragon Scale Leggings"
+  DisplayName: "i18n:items.iceandfire.dragonscale_leggings_white.display_name"
   CustomModelData: 83657
   ItemModel: "DEFAULT"
   EquippableComponentModel: "DEFAULT"
@@ -758,7 +758,7 @@ dragonscale_leggings_white:
   RepairIngredients: "dragonscale_white"
 dragonscale_boots_white:
   Material: "DIAMOND_BOOTS"
-  DisplayName: "&fDragon Scale Boots"
+  DisplayName: "i18n:items.iceandfire.dragonscale_boots_white.display_name"
   CustomModelData: 83657
   ItemModel: "DEFAULT"
   EquippableComponentModel: "DEFAULT"
@@ -775,7 +775,7 @@ dragonscale_boots_white:
   RepairIngredients: "dragonscale_white"
 dragonscale_helmet_amethyst:
   Material: "DIAMOND_HELMET"
-  DisplayName: "&fDragon Scale Helmet"
+  DisplayName: "i18n:items.iceandfire.dragonscale_helmet_amethyst.display_name"
   CustomModelData: 83658
   ItemModel: "DEFAULT"
   EquippableComponentModel: "DEFAULT"
@@ -792,7 +792,7 @@ dragonscale_helmet_amethyst:
   RepairIngredients: "dragonscale_amethyst"
 dragonscale_chestplate_amethyst:
   Material: "DIAMOND_CHESTPLATE"
-  DisplayName: "&fDragon Scale Chestplate"
+  DisplayName: "i18n:items.iceandfire.dragonscale_chestplate_amethyst.display_name"
   CustomModelData: 83658
   ItemModel: "DEFAULT"
   EquippableComponentModel: "DEFAULT"
@@ -809,7 +809,7 @@ dragonscale_chestplate_amethyst:
   RepairIngredients: "dragonscale_amethyst"
 dragonscale_leggings_amethyst:
   Material: "DIAMOND_LEGGINGS"
-  DisplayName: "&fDragon Scale Leggings"
+  DisplayName: "i18n:items.iceandfire.dragonscale_leggings_amethyst.display_name"
   CustomModelData: 83658
   ItemModel: "DEFAULT"
   EquippableComponentModel: "DEFAULT"
@@ -826,7 +826,7 @@ dragonscale_leggings_amethyst:
   RepairIngredients: "dragonscale_amethyst"
 dragonscale_boots_amethyst:
   Material: "DIAMOND_BOOTS"
-  DisplayName: "&fDragon Scale Boots"
+  DisplayName: "i18n:items.iceandfire.dragonscale_boots_amethyst.display_name"
   CustomModelData: 83658
   ItemModel: "DEFAULT"
   EquippableComponentModel: "DEFAULT"
@@ -843,7 +843,7 @@ dragonscale_boots_amethyst:
   RepairIngredients: "dragonscale_amethyst"
 dragonscale_helmet_black:
   Material: "DIAMOND_HELMET"
-  DisplayName: "&fDragon Scale Helmet"
+  DisplayName: "i18n:items.iceandfire.dragonscale_helmet_black.display_name"
   CustomModelData: 83659
   ItemModel: "DEFAULT"
   EquippableComponentModel: "DEFAULT"
@@ -860,7 +860,7 @@ dragonscale_helmet_black:
   RepairIngredients: "dragonscale_black"
 dragonscale_chestplate_black:
   Material: "DIAMOND_CHESTPLATE"
-  DisplayName: "&fDragon Scale Chestplate"
+  DisplayName: "i18n:items.iceandfire.dragonscale_chestplate_black.display_name"
   CustomModelData: 83659
   ItemModel: "DEFAULT"
   EquippableComponentModel: "DEFAULT"
@@ -877,7 +877,7 @@ dragonscale_chestplate_black:
   RepairIngredients: "dragonscale_black"
 dragonscale_leggings_black:
   Material: "DIAMOND_LEGGINGS"
-  DisplayName: "&fDragon Scale Leggings"
+  DisplayName: "i18n:items.iceandfire.dragonscale_leggings_black.display_name"
   CustomModelData: 83659
   ItemModel: "DEFAULT"
   EquippableComponentModel: "DEFAULT"
@@ -894,7 +894,7 @@ dragonscale_leggings_black:
   RepairIngredients: "dragonscale_black"
 dragonscale_boots_black:
   Material: "DIAMOND_BOOTS"
-  DisplayName: "&fDragon Scale Boots"
+  DisplayName: "i18n:items.iceandfire.dragonscale_boots_black.display_name"
   CustomModelData: 83659
   ItemModel: "DEFAULT"
   EquippableComponentModel: "DEFAULT"
@@ -911,7 +911,7 @@ dragonscale_boots_black:
   RepairIngredients: "dragonscale_black"
 dragonscale_helmet_copper:
   Material: "DIAMOND_HELMET"
-  DisplayName: "&fDragon Scale Helmet"
+  DisplayName: "i18n:items.iceandfire.dragonscale_helmet_copper.display_name"
   CustomModelData: 83660
   ItemModel: "DEFAULT"
   EquippableComponentModel: "DEFAULT"
@@ -928,7 +928,7 @@ dragonscale_helmet_copper:
   RepairIngredients: "dragonscale_copper"
 dragonscale_chestplate_copper:
   Material: "DIAMOND_CHESTPLATE"
-  DisplayName: "&fDragon Scale Chestplate"
+  DisplayName: "i18n:items.iceandfire.dragonscale_chestplate_copper.display_name"
   CustomModelData: 83660
   ItemModel: "DEFAULT"
   EquippableComponentModel: "DEFAULT"
@@ -945,7 +945,7 @@ dragonscale_chestplate_copper:
   RepairIngredients: "dragonscale_copper"
 dragonscale_leggings_copper:
   Material: "DIAMOND_LEGGINGS"
-  DisplayName: "&fDragon Scale Leggings"
+  DisplayName: "i18n:items.iceandfire.dragonscale_leggings_copper.display_name"
   CustomModelData: 83660
   ItemModel: "DEFAULT"
   EquippableComponentModel: "DEFAULT"
@@ -962,7 +962,7 @@ dragonscale_leggings_copper:
   RepairIngredients: "dragonscale_copper"
 dragonscale_boots_copper:
   Material: "DIAMOND_BOOTS"
-  DisplayName: "&fDragon Scale Boots"
+  DisplayName: "i18n:items.iceandfire.dragonscale_boots_copper.display_name"
   CustomModelData: 83660
   ItemModel: "DEFAULT"
   EquippableComponentModel: "DEFAULT"
@@ -979,7 +979,7 @@ dragonscale_boots_copper:
   RepairIngredients: "dragonscale_copper"
 dragonscale_helmet_electric:
   Material: "DIAMOND_HELMET"
-  DisplayName: "&fDragon Scale Helmet"
+  DisplayName: "i18n:items.iceandfire.dragonscale_helmet_electric.display_name"
   CustomModelData: 83661
   ItemModel: "DEFAULT"
   EquippableComponentModel: "DEFAULT"
@@ -996,7 +996,7 @@ dragonscale_helmet_electric:
   RepairIngredients: "dragonscale_electric"
 dragonscale_chestplate_electric:
   Material: "DIAMOND_CHESTPLATE"
-  DisplayName: "&fDragon Scale Chestplate"
+  DisplayName: "i18n:items.iceandfire.dragonscale_chestplate_electric.display_name"
   CustomModelData: 83661
   ItemModel: "DEFAULT"
   EquippableComponentModel: "DEFAULT"
@@ -1013,7 +1013,7 @@ dragonscale_chestplate_electric:
   RepairIngredients: "dragonscale_electric"
 dragonscale_leggings_electric:
   Material: "DIAMOND_LEGGINGS"
-  DisplayName: "&fDragon Scale Leggings"
+  DisplayName: "i18n:items.iceandfire.dragonscale_leggings_electric.display_name"
   CustomModelData: 83661
   ItemModel: "DEFAULT"
   EquippableComponentModel: "DEFAULT"
@@ -1030,7 +1030,7 @@ dragonscale_leggings_electric:
   RepairIngredients: "dragonscale_electric"
 dragonscale_boots_electric:
   Material: "DIAMOND_BOOTS"
-  DisplayName: "&fDragon Scale Boots"
+  DisplayName: "i18n:items.iceandfire.dragonscale_boots_electric.display_name"
   CustomModelData: 83661
   ItemModel: "DEFAULT"
   EquippableComponentModel: "DEFAULT"
@@ -1047,7 +1047,7 @@ dragonscale_boots_electric:
   RepairIngredients: "dragonscale_electric"
 tide_guardian_helmet_blue:
   Material: "DIAMOND_HELMET"
-  DisplayName: "&fTide Guardian Helmet"
+  DisplayName: "i18n:items.iceandfire.tide_guardian_helmet_blue.display_name"
   CustomModelData: 83662
   ItemModel: "DEFAULT"
   EquippableComponentModel: "DEFAULT"
@@ -1064,7 +1064,7 @@ tide_guardian_helmet_blue:
   RepairIngredients: "sea_serpent_scale_blue"
 tide_guardian_chestplate_blue:
   Material: "DIAMOND_CHESTPLATE"
-  DisplayName: "&fTide Guardian Chestplate"
+  DisplayName: "i18n:items.iceandfire.tide_guardian_chestplate_blue.display_name"
   CustomModelData: 83662
   ItemModel: "DEFAULT"
   EquippableComponentModel: "DEFAULT"
@@ -1081,7 +1081,7 @@ tide_guardian_chestplate_blue:
   RepairIngredients: "sea_serpent_scale_blue"
 tide_guardian_leggings_blue:
   Material: "DIAMOND_LEGGINGS"
-  DisplayName: "&fTide Guardian Leggings"
+  DisplayName: "i18n:items.iceandfire.tide_guardian_leggings_blue.display_name"
   CustomModelData: 83662
   ItemModel: "DEFAULT"
   EquippableComponentModel: "DEFAULT"
@@ -1098,7 +1098,7 @@ tide_guardian_leggings_blue:
   RepairIngredients: "sea_serpent_scale_blue"
 tide_guardian_boots_blue:
   Material: "DIAMOND_BOOTS"
-  DisplayName: "&fTide Guardian Boots"
+  DisplayName: "i18n:items.iceandfire.tide_guardian_boots_blue.display_name"
   CustomModelData: 83662
   ItemModel: "DEFAULT"
   EquippableComponentModel: "DEFAULT"
@@ -1115,7 +1115,7 @@ tide_guardian_boots_blue:
   RepairIngredients: "sea_serpent_scale_blue"
 tide_guardian_helmet_bronze:
   Material: "DIAMOND_HELMET"
-  DisplayName: "&fTide Guardian Helmet"
+  DisplayName: "i18n:items.iceandfire.tide_guardian_helmet_bronze.display_name"
   CustomModelData: 83663
   ItemModel: "DEFAULT"
   EquippableComponentModel: "DEFAULT"
@@ -1132,7 +1132,7 @@ tide_guardian_helmet_bronze:
   RepairIngredients: "sea_serpent_scale_bronze"
 tide_guardian_chestplate_bronze:
   Material: "DIAMOND_CHESTPLATE"
-  DisplayName: "&fTide Guardian Chestplate"
+  DisplayName: "i18n:items.iceandfire.tide_guardian_chestplate_bronze.display_name"
   CustomModelData: 83663
   ItemModel: "DEFAULT"
   EquippableComponentModel: "DEFAULT"
@@ -1149,7 +1149,7 @@ tide_guardian_chestplate_bronze:
   RepairIngredients: "sea_serpent_scale_bronze"
 tide_guardian_leggings_bronze:
   Material: "DIAMOND_LEGGINGS"
-  DisplayName: "&fTide Guardian Leggings"
+  DisplayName: "i18n:items.iceandfire.tide_guardian_leggings_bronze.display_name"
   CustomModelData: 83663
   ItemModel: "DEFAULT"
   EquippableComponentModel: "DEFAULT"
@@ -1166,7 +1166,7 @@ tide_guardian_leggings_bronze:
   RepairIngredients: "sea_serpent_scale_bronze"
 tide_guardian_boots_bronze:
   Material: "DIAMOND_BOOTS"
-  DisplayName: "&fTide Guardian Boots"
+  DisplayName: "i18n:items.iceandfire.tide_guardian_boots_bronze.display_name"
   CustomModelData: 83663
   ItemModel: "DEFAULT"
   EquippableComponentModel: "DEFAULT"
@@ -1183,7 +1183,7 @@ tide_guardian_boots_bronze:
   RepairIngredients: "sea_serpent_scale_bronze"
 tide_guardian_helmet_deepblue:
   Material: "DIAMOND_HELMET"
-  DisplayName: "&fTide Guardian Helmet"
+  DisplayName: "i18n:items.iceandfire.tide_guardian_helmet_deepblue.display_name"
   CustomModelData: 83664
   ItemModel: "DEFAULT"
   EquippableComponentModel: "DEFAULT"
@@ -1200,7 +1200,7 @@ tide_guardian_helmet_deepblue:
   RepairIngredients: "sea_serpent_scale_deepblue"
 tide_guardian_chestplate_deepblue:
   Material: "DIAMOND_CHESTPLATE"
-  DisplayName: "&fTide Guardian Chestplate"
+  DisplayName: "i18n:items.iceandfire.tide_guardian_chestplate_deepblue.display_name"
   CustomModelData: 83664
   ItemModel: "DEFAULT"
   EquippableComponentModel: "DEFAULT"
@@ -1217,7 +1217,7 @@ tide_guardian_chestplate_deepblue:
   RepairIngredients: "sea_serpent_scale_deepblue"
 tide_guardian_leggings_deepblue:
   Material: "DIAMOND_LEGGINGS"
-  DisplayName: "&fTide Guardian Leggings"
+  DisplayName: "i18n:items.iceandfire.tide_guardian_leggings_deepblue.display_name"
   CustomModelData: 83664
   ItemModel: "DEFAULT"
   EquippableComponentModel: "DEFAULT"
@@ -1234,7 +1234,7 @@ tide_guardian_leggings_deepblue:
   RepairIngredients: "sea_serpent_scale_deepblue"
 tide_guardian_boots_deepblue:
   Material: "DIAMOND_BOOTS"
-  DisplayName: "&fTide Guardian Boots"
+  DisplayName: "i18n:items.iceandfire.tide_guardian_boots_deepblue.display_name"
   CustomModelData: 83664
   ItemModel: "DEFAULT"
   EquippableComponentModel: "DEFAULT"
@@ -1251,7 +1251,7 @@ tide_guardian_boots_deepblue:
   RepairIngredients: "sea_serpent_scale_deepblue"
 tide_guardian_helmet_green:
   Material: "DIAMOND_HELMET"
-  DisplayName: "&fTide Guardian Helmet"
+  DisplayName: "i18n:items.iceandfire.tide_guardian_helmet_green.display_name"
   CustomModelData: 83665
   ItemModel: "DEFAULT"
   EquippableComponentModel: "DEFAULT"
@@ -1268,7 +1268,7 @@ tide_guardian_helmet_green:
   RepairIngredients: "sea_serpent_scale_green"
 tide_guardian_chestplate_green:
   Material: "DIAMOND_CHESTPLATE"
-  DisplayName: "&fTide Guardian Chestplate"
+  DisplayName: "i18n:items.iceandfire.tide_guardian_chestplate_green.display_name"
   CustomModelData: 83665
   ItemModel: "DEFAULT"
   EquippableComponentModel: "DEFAULT"
@@ -1285,7 +1285,7 @@ tide_guardian_chestplate_green:
   RepairIngredients: "sea_serpent_scale_green"
 tide_guardian_leggings_green:
   Material: "DIAMOND_LEGGINGS"
-  DisplayName: "&fTide Guardian Leggings"
+  DisplayName: "i18n:items.iceandfire.tide_guardian_leggings_green.display_name"
   CustomModelData: 83665
   ItemModel: "DEFAULT"
   EquippableComponentModel: "DEFAULT"
@@ -1302,7 +1302,7 @@ tide_guardian_leggings_green:
   RepairIngredients: "sea_serpent_scale_green"
 tide_guardian_boots_green:
   Material: "DIAMOND_BOOTS"
-  DisplayName: "&fTide Guardian Boots"
+  DisplayName: "i18n:items.iceandfire.tide_guardian_boots_green.display_name"
   CustomModelData: 83665
   ItemModel: "DEFAULT"
   EquippableComponentModel: "DEFAULT"
@@ -1319,7 +1319,7 @@ tide_guardian_boots_green:
   RepairIngredients: "sea_serpent_scale_green"
 tide_guardian_helmet_purple:
   Material: "DIAMOND_HELMET"
-  DisplayName: "&fTide Guardian Helmet"
+  DisplayName: "i18n:items.iceandfire.tide_guardian_helmet_purple.display_name"
   CustomModelData: 83666
   ItemModel: "DEFAULT"
   EquippableComponentModel: "DEFAULT"
@@ -1336,7 +1336,7 @@ tide_guardian_helmet_purple:
   RepairIngredients: "sea_serpent_scale_purple"
 tide_guardian_chestplate_purple:
   Material: "DIAMOND_CHESTPLATE"
-  DisplayName: "&fTide Guardian Chestplate"
+  DisplayName: "i18n:items.iceandfire.tide_guardian_chestplate_purple.display_name"
   CustomModelData: 83666
   ItemModel: "DEFAULT"
   EquippableComponentModel: "DEFAULT"
@@ -1353,7 +1353,7 @@ tide_guardian_chestplate_purple:
   RepairIngredients: "sea_serpent_scale_purple"
 tide_guardian_leggings_purple:
   Material: "DIAMOND_LEGGINGS"
-  DisplayName: "&fTide Guardian Leggings"
+  DisplayName: "i18n:items.iceandfire.tide_guardian_leggings_purple.display_name"
   CustomModelData: 83666
   ItemModel: "DEFAULT"
   EquippableComponentModel: "DEFAULT"
@@ -1370,7 +1370,7 @@ tide_guardian_leggings_purple:
   RepairIngredients: "sea_serpent_scale_purple"
 tide_guardian_boots_purple:
   Material: "DIAMOND_BOOTS"
-  DisplayName: "&fTide Guardian Boots"
+  DisplayName: "i18n:items.iceandfire.tide_guardian_boots_purple.display_name"
   CustomModelData: 83666
   ItemModel: "DEFAULT"
   EquippableComponentModel: "DEFAULT"
@@ -1387,7 +1387,7 @@ tide_guardian_boots_purple:
   RepairIngredients: "sea_serpent_scale_purple"
 tide_guardian_helmet_red:
   Material: "DIAMOND_HELMET"
-  DisplayName: "&fTide Guardian Helmet"
+  DisplayName: "i18n:items.iceandfire.tide_guardian_helmet_red.display_name"
   CustomModelData: 83667
   ItemModel: "DEFAULT"
   EquippableComponentModel: "DEFAULT"
@@ -1404,7 +1404,7 @@ tide_guardian_helmet_red:
   RepairIngredients: "sea_serpent_scale_red"
 tide_guardian_chestplate_red:
   Material: "DIAMOND_CHESTPLATE"
-  DisplayName: "&fTide Guardian Chestplate"
+  DisplayName: "i18n:items.iceandfire.tide_guardian_chestplate_red.display_name"
   CustomModelData: 83667
   ItemModel: "DEFAULT"
   EquippableComponentModel: "DEFAULT"
@@ -1421,7 +1421,7 @@ tide_guardian_chestplate_red:
   RepairIngredients: "sea_serpent_scale_red"
 tide_guardian_leggings_red:
   Material: "DIAMOND_LEGGINGS"
-  DisplayName: "&fTide Guardian Leggings"
+  DisplayName: "i18n:items.iceandfire.tide_guardian_leggings_red.display_name"
   CustomModelData: 83667
   ItemModel: "DEFAULT"
   EquippableComponentModel: "DEFAULT"
@@ -1438,7 +1438,7 @@ tide_guardian_leggings_red:
   RepairIngredients: "sea_serpent_scale_red"
 tide_guardian_boots_red:
   Material: "DIAMOND_BOOTS"
-  DisplayName: "&fTide Guardian Boots"
+  DisplayName: "i18n:items.iceandfire.tide_guardian_boots_red.display_name"
   CustomModelData: 83667
   ItemModel: "DEFAULT"
   EquippableComponentModel: "DEFAULT"
@@ -1455,7 +1455,7 @@ tide_guardian_boots_red:
   RepairIngredients: "sea_serpent_scale_red"
 tide_guardian_helmet_teal:
   Material: "DIAMOND_HELMET"
-  DisplayName: "&fTide Guardian Helmet"
+  DisplayName: "i18n:items.iceandfire.tide_guardian_helmet_teal.display_name"
   CustomModelData: 83668
   ItemModel: "DEFAULT"
   EquippableComponentModel: "DEFAULT"
@@ -1472,7 +1472,7 @@ tide_guardian_helmet_teal:
   RepairIngredients: "sea_serpent_scale_teal"
 tide_guardian_chestplate_teal:
   Material: "DIAMOND_CHESTPLATE"
-  DisplayName: "&fTide Guardian Chestplate"
+  DisplayName: "i18n:items.iceandfire.tide_guardian_chestplate_teal.display_name"
   CustomModelData: 83668
   ItemModel: "DEFAULT"
   EquippableComponentModel: "DEFAULT"
@@ -1489,7 +1489,7 @@ tide_guardian_chestplate_teal:
   RepairIngredients: "sea_serpent_scale_teal"
 tide_guardian_leggings_teal:
   Material: "DIAMOND_LEGGINGS"
-  DisplayName: "&fTide Guardian Leggings"
+  DisplayName: "i18n:items.iceandfire.tide_guardian_leggings_teal.display_name"
   CustomModelData: 83668
   ItemModel: "DEFAULT"
   EquippableComponentModel: "DEFAULT"
@@ -1506,7 +1506,7 @@ tide_guardian_leggings_teal:
   RepairIngredients: "sea_serpent_scale_teal"
 tide_guardian_boots_teal:
   Material: "DIAMOND_BOOTS"
-  DisplayName: "&fTide Guardian Boots"
+  DisplayName: "i18n:items.iceandfire.tide_guardian_boots_teal.display_name"
   CustomModelData: 83668
   ItemModel: "DEFAULT"
   EquippableComponentModel: "DEFAULT"
@@ -1523,7 +1523,7 @@ tide_guardian_boots_teal:
   RepairIngredients: "sea_serpent_scale_teal"
 dragonbone_pickaxe:
   Material: "DIAMOND_PICKAXE"
-  DisplayName: "&fDragonbone Pickaxe"
+  DisplayName: "i18n:items.iceandfire.dragonbone_pickaxe.display_name"
   CustomModelData: 83650
   ItemModel: "DEFAULT"
   ItemFlags:
@@ -1536,7 +1536,7 @@ dragonbone_pickaxe:
   RepairIngredients: "dragonbone"
 dragonbone_axe:
   Material: "DIAMOND_AXE"
-  DisplayName: "&fDragonbone Axe"
+  DisplayName: "i18n:items.iceandfire.dragonbone_axe.display_name"
   CustomModelData: 83650
   ItemModel: "DEFAULT"
   ItemFlags:
@@ -1549,7 +1549,7 @@ dragonbone_axe:
   RepairIngredients: "dragonbone"
 dragonbone_shovel:
   Material: "DIAMOND_SHOVEL"
-  DisplayName: "&fDragonbone Shovel"
+  DisplayName: "i18n:items.iceandfire.dragonbone_shovel.display_name"
   CustomModelData: 83650
   ItemModel: "DEFAULT"
   ItemFlags:
@@ -1562,7 +1562,7 @@ dragonbone_shovel:
   RepairIngredients: "dragonbone"
 dragonbone_hoe:
   Material: "DIAMOND_HOE"
-  DisplayName: "&fDragonbone Hoe"
+  DisplayName: "i18n:items.iceandfire.dragonbone_hoe.display_name"
   CustomModelData: 83650
   ItemModel: "DEFAULT"
   ItemFlags:
@@ -1575,7 +1575,7 @@ dragonbone_hoe:
   RepairIngredients: "dragonbone"
 dragonbone_sword:
   Material: "DIAMOND_SWORD"
-  DisplayName: "&fDragonbone Sword"
+  DisplayName: "i18n:items.iceandfire.dragonbone_sword.display_name"
   CustomModelData: 83650
   ItemModel: "DEFAULT"
   ItemFlags:
@@ -1588,7 +1588,7 @@ dragonbone_sword:
   RepairIngredients: "dragonbone"
 dragonbone_bow:
   Material: "BOW"
-  DisplayName: "&fDragonbone Bow"
+  DisplayName: "i18n:items.iceandfire.dragonbone_bow.display_name"
   CustomModelData: 83650
   ItemModel: "DEFAULT"
   NBTTags:
@@ -1597,7 +1597,7 @@ dragonbone_bow:
   RepairIngredients: "dragonbone"
 dragonbone_flamed_sword:
   Material: "DIAMOND_SWORD"
-  DisplayName: "&fFlamed Dragonbone Sword"
+  DisplayName: "i18n:items.iceandfire.dragonbone_flamed_sword.display_name"
   CustomModelData: 83651
   ItemModel: "DEFAULT"
   Lore:
@@ -1614,7 +1614,7 @@ dragonbone_flamed_sword:
   RepairIngredients: "dragonbone"
 dragonbone_iced_sword:
   Material: "DIAMOND_SWORD"
-  DisplayName: "&fIced Dragonbone Sword"
+  DisplayName: "i18n:items.iceandfire.dragonbone_iced_sword.display_name"
   CustomModelData: 83652
   ItemModel: "DEFAULT"
   Lore:
@@ -1631,7 +1631,7 @@ dragonbone_iced_sword:
   RepairIngredients: "dragonbone"
 dragonbone_lightning_sword:
   Material: "DIAMOND_SWORD"
-  DisplayName: "&fLightning Dragonbone Sword"
+  DisplayName: "i18n:items.iceandfire.dragonbone_lightning_sword.display_name"
   CustomModelData: 83653
   ItemModel: "DEFAULT"
   Lore:
@@ -1648,7 +1648,7 @@ dragonbone_lightning_sword:
   RepairIngredients: "dragonbone"
 dragonsteel_fire_sword:
   Material: "NETHERITE_SWORD"
-  DisplayName: "&fFire Dragonsteel Sword"
+  DisplayName: "i18n:items.iceandfire.dragonsteel_fire_sword.display_name"
   CustomModelData: 83650
   ItemModel: "DEFAULT"
   Lore:
@@ -1663,7 +1663,7 @@ dragonsteel_fire_sword:
   RepairIngredients: "dragonsteel_fire_ingot"
 dragonsteel_fire_pickaxe:
   Material: "NETHERITE_PICKAXE"
-  DisplayName: "&fFire Dragonsteel Pickaxe"
+  DisplayName: "i18n:items.iceandfire.dragonsteel_fire_pickaxe.display_name"
   CustomModelData: 83650
   ItemModel: "DEFAULT"
   Lore:
@@ -1678,7 +1678,7 @@ dragonsteel_fire_pickaxe:
   RepairIngredients: "dragonsteel_fire_ingot"
 dragonsteel_fire_axe:
   Material: "NETHERITE_AXE"
-  DisplayName: "&fFire Dragonsteel Axe"
+  DisplayName: "i18n:items.iceandfire.dragonsteel_fire_axe.display_name"
   CustomModelData: 83650
   ItemModel: "DEFAULT"
   Lore:
@@ -1693,7 +1693,7 @@ dragonsteel_fire_axe:
   RepairIngredients: "dragonsteel_fire_ingot"
 dragonsteel_fire_shovel:
   Material: "NETHERITE_SHOVEL"
-  DisplayName: "&fFire Dragonsteel Shovel"
+  DisplayName: "i18n:items.iceandfire.dragonsteel_fire_shovel.display_name"
   CustomModelData: 83650
   ItemModel: "DEFAULT"
   Lore:
@@ -1708,7 +1708,7 @@ dragonsteel_fire_shovel:
   RepairIngredients: "dragonsteel_fire_ingot"
 dragonsteel_fire_hoe:
   Material: "NETHERITE_HOE"
-  DisplayName: "&fFire Dragonsteel Hoe"
+  DisplayName: "i18n:items.iceandfire.dragonsteel_fire_hoe.display_name"
   CustomModelData: 83650
   ItemModel: "DEFAULT"
   Lore:
@@ -1723,7 +1723,7 @@ dragonsteel_fire_hoe:
   RepairIngredients: "dragonsteel_fire_ingot"
 dragonsteel_ice_sword:
   Material: "NETHERITE_SWORD"
-  DisplayName: "&fIce Dragonsteel Sword"
+  DisplayName: "i18n:items.iceandfire.dragonsteel_ice_sword.display_name"
   CustomModelData: 83651
   ItemModel: "DEFAULT"
   Lore:
@@ -1738,7 +1738,7 @@ dragonsteel_ice_sword:
   RepairIngredients: "dragonsteel_ice_ingot"
 dragonsteel_ice_pickaxe:
   Material: "NETHERITE_PICKAXE"
-  DisplayName: "&fIce Dragonsteel Pickaxe"
+  DisplayName: "i18n:items.iceandfire.dragonsteel_ice_pickaxe.display_name"
   CustomModelData: 83651
   ItemModel: "DEFAULT"
   Lore:
@@ -1753,7 +1753,7 @@ dragonsteel_ice_pickaxe:
   RepairIngredients: "dragonsteel_ice_ingot"
 dragonsteel_ice_axe:
   Material: "NETHERITE_AXE"
-  DisplayName: "&fIce Dragonsteel Axe"
+  DisplayName: "i18n:items.iceandfire.dragonsteel_ice_axe.display_name"
   CustomModelData: 83651
   ItemModel: "DEFAULT"
   Lore:
@@ -1768,7 +1768,7 @@ dragonsteel_ice_axe:
   RepairIngredients: "dragonsteel_ice_ingot"
 dragonsteel_ice_shovel:
   Material: "NETHERITE_SHOVEL"
-  DisplayName: "&fIce Dragonsteel Shovel"
+  DisplayName: "i18n:items.iceandfire.dragonsteel_ice_shovel.display_name"
   CustomModelData: 83651
   ItemModel: "DEFAULT"
   Lore:
@@ -1783,7 +1783,7 @@ dragonsteel_ice_shovel:
   RepairIngredients: "dragonsteel_ice_ingot"
 dragonsteel_ice_hoe:
   Material: "NETHERITE_HOE"
-  DisplayName: "&fIce Dragonsteel Hoe"
+  DisplayName: "i18n:items.iceandfire.dragonsteel_ice_hoe.display_name"
   CustomModelData: 83651
   ItemModel: "DEFAULT"
   Lore:
@@ -1798,7 +1798,7 @@ dragonsteel_ice_hoe:
   RepairIngredients: "dragonsteel_ice_ingot"
 dragonsteel_lightning_sword:
   Material: "NETHERITE_SWORD"
-  DisplayName: "&fLightning Dragonsteel Sword"
+  DisplayName: "i18n:items.iceandfire.dragonsteel_lightning_sword.display_name"
   CustomModelData: 83652
   ItemModel: "DEFAULT"
   Lore:
@@ -1813,7 +1813,7 @@ dragonsteel_lightning_sword:
   RepairIngredients: "dragonsteel_lightning_ingot"
 dragonsteel_lightning_pickaxe:
   Material: "NETHERITE_PICKAXE"
-  DisplayName: "&fLightning Dragonsteel Pickaxe"
+  DisplayName: "i18n:items.iceandfire.dragonsteel_lightning_pickaxe.display_name"
   CustomModelData: 83652
   ItemModel: "DEFAULT"
   Lore:
@@ -1828,7 +1828,7 @@ dragonsteel_lightning_pickaxe:
   RepairIngredients: "dragonsteel_lightning_ingot"
 dragonsteel_lightning_axe:
   Material: "NETHERITE_AXE"
-  DisplayName: "&fLightning Dragonsteel Axe"
+  DisplayName: "i18n:items.iceandfire.dragonsteel_lightning_axe.display_name"
   CustomModelData: 83652
   ItemModel: "DEFAULT"
   Lore:
@@ -1843,7 +1843,7 @@ dragonsteel_lightning_axe:
   RepairIngredients: "dragonsteel_lightning_ingot"
 dragonsteel_lightning_shovel:
   Material: "NETHERITE_SHOVEL"
-  DisplayName: "&fLightning Dragonsteel Shovel"
+  DisplayName: "i18n:items.iceandfire.dragonsteel_lightning_shovel.display_name"
   CustomModelData: 83652
   ItemModel: "DEFAULT"
   Lore:
@@ -1858,7 +1858,7 @@ dragonsteel_lightning_shovel:
   RepairIngredients: "dragonsteel_lightning_ingot"
 dragonsteel_lightning_hoe:
   Material: "NETHERITE_HOE"
-  DisplayName: "&fLightning Dragonsteel Hoe"
+  DisplayName: "i18n:items.iceandfire.dragonsteel_lightning_hoe.display_name"
   CustomModelData: 83652
   ItemModel: "DEFAULT"
   Lore:
@@ -1873,7 +1873,7 @@ dragonsteel_lightning_hoe:
   RepairIngredients: "dragonsteel_lightning_ingot"
 dragonsteel_fire_helmet:
   Material: "NETHERITE_HELMET"
-  DisplayName: "&fFire Dragonsteel Helmet"
+  DisplayName: "i18n:items.iceandfire.dragonsteel_fire_helmet.display_name"
   CustomModelData: 83650
   ItemModel: "DEFAULT"
   EquippableComponentModel: "DEFAULT"
@@ -1889,7 +1889,7 @@ dragonsteel_fire_helmet:
   RepairIngredients: "dragonsteel_fire_ingot"
 dragonsteel_fire_chestplate:
   Material: "NETHERITE_CHESTPLATE"
-  DisplayName: "&fFire Dragonsteel Chestplate"
+  DisplayName: "i18n:items.iceandfire.dragonsteel_fire_chestplate.display_name"
   CustomModelData: 83650
   ItemModel: "DEFAULT"
   EquippableComponentModel: "DEFAULT"
@@ -1905,7 +1905,7 @@ dragonsteel_fire_chestplate:
   RepairIngredients: "dragonsteel_fire_ingot"
 dragonsteel_fire_leggings:
   Material: "NETHERITE_LEGGINGS"
-  DisplayName: "&fFire Dragonsteel Leggings"
+  DisplayName: "i18n:items.iceandfire.dragonsteel_fire_leggings.display_name"
   CustomModelData: 83650
   EquippableComponentModel: "DEFAULT"
   ItemModel: "DEFAULT"
@@ -1921,7 +1921,7 @@ dragonsteel_fire_leggings:
   RepairIngredients: "dragonsteel_fire_ingot"
 dragonsteel_fire_boots:
   Material: "NETHERITE_BOOTS"
-  DisplayName: "&fFire Dragonsteel Boots"
+  DisplayName: "i18n:items.iceandfire.dragonsteel_fire_boots.display_name"
   CustomModelData: 83650
   EquippableComponentModel: "DEFAULT"
   ItemModel: "DEFAULT"
@@ -1937,7 +1937,7 @@ dragonsteel_fire_boots:
   RepairIngredients: "dragonsteel_fire_ingot"
 dragonsteel_ice_helmet:
   Material: "NETHERITE_HELMET"
-  DisplayName: "&fIce Dragonsteel Helmet"
+  DisplayName: "i18n:items.iceandfire.dragonsteel_ice_helmet.display_name"
   CustomModelData: 83651
   EquippableComponentModel: "DEFAULT"
   ItemModel: "DEFAULT"
@@ -1953,7 +1953,7 @@ dragonsteel_ice_helmet:
   RepairIngredients: "dragonsteel_ice_ingot"
 dragonsteel_ice_chestplate:
   Material: "NETHERITE_CHESTPLATE"
-  DisplayName: "&fIce Dragonsteel Chestplate"
+  DisplayName: "i18n:items.iceandfire.dragonsteel_ice_chestplate.display_name"
   CustomModelData: 83651
   EquippableComponentModel: "DEFAULT"
   ItemModel: "DEFAULT"
@@ -1969,7 +1969,7 @@ dragonsteel_ice_chestplate:
   RepairIngredients: "dragonsteel_ice_ingot"
 dragonsteel_ice_leggings:
   Material: "NETHERITE_LEGGINGS"
-  DisplayName: "&fIce Dragonsteel Leggings"
+  DisplayName: "i18n:items.iceandfire.dragonsteel_ice_leggings.display_name"
   CustomModelData: 83651
   EquippableComponentModel: "DEFAULT"
   ItemModel: "DEFAULT"
@@ -1985,7 +1985,7 @@ dragonsteel_ice_leggings:
   RepairIngredients: "dragonsteel_ice_ingot"
 dragonsteel_ice_boots:
   Material: "NETHERITE_BOOTS"
-  DisplayName: "&fIce Dragonsteel Boots"
+  DisplayName: "i18n:items.iceandfire.dragonsteel_ice_boots.display_name"
   CustomModelData: 83651
   EquippableComponentModel: "DEFAULT"
   ItemModel: "DEFAULT"
@@ -2001,7 +2001,7 @@ dragonsteel_ice_boots:
   RepairIngredients: "dragonsteel_ice_ingot"
 dragonsteel_lightning_helmet:
   Material: "NETHERITE_HELMET"
-  DisplayName: "&fLightning Dragonsteel Helmet"
+  DisplayName: "i18n:items.iceandfire.dragonsteel_lightning_helmet.display_name"
   CustomModelData: 83652
   EquippableComponentModel: "DEFAULT"
   ItemModel: "DEFAULT"
@@ -2017,7 +2017,7 @@ dragonsteel_lightning_helmet:
   RepairIngredients: "dragonsteel_lightning_ingot"
 dragonsteel_lightning_chestplate:
   Material: "NETHERITE_CHESTPLATE"
-  DisplayName: "&fLightning Dragonsteel Chestplate"
+  DisplayName: "i18n:items.iceandfire.dragonsteel_lightning_chestplate.display_name"
   CustomModelData: 83652
   EquippableComponentModel: "DEFAULT"
   ItemModel: "DEFAULT"
@@ -2033,7 +2033,7 @@ dragonsteel_lightning_chestplate:
   RepairIngredients: "dragonsteel_lightning_ingot"
 dragonsteel_lightning_leggings:
   Material: "NETHERITE_LEGGINGS"
-  DisplayName: "&fLightning Dragonsteel Leggings"
+  DisplayName: "i18n:items.iceandfire.dragonsteel_lightning_leggings.display_name"
   CustomModelData: 83652
   EquippableComponentModel: "DEFAULT"
   ItemModel: "DEFAULT"
@@ -2049,7 +2049,7 @@ dragonsteel_lightning_leggings:
   RepairIngredients: "dragonsteel_lightning_ingot"
 dragonsteel_lightning_boots:
   Material: "NETHERITE_BOOTS"
-  DisplayName: "&fLightning Dragonsteel Boots"
+  DisplayName: "i18n:items.iceandfire.dragonsteel_lightning_boots.display_name"
   CustomModelData: 83652
   EquippableComponentModel: "DEFAULT"
   ItemModel: "DEFAULT"
@@ -2065,16 +2065,16 @@ dragonsteel_lightning_boots:
   RepairIngredients: "dragonsteel_lightning_ingot"
 dragonsteel_fire_block:
   Material: "PRISMARINE_SHARD"
-  DisplayName: "&fFire Dragonsteel Block"
+  DisplayName: "i18n:items.iceandfire.dragonsteel_fire_block.display_name"
   CustomModelData: 83710
   ItemModel: "DEFAULT"
 dragonsteel_ice_block:
   Material: "PRISMARINE_SHARD"
-  DisplayName: "&fIce Dragonsteel Block"
+  DisplayName: "i18n:items.iceandfire.dragonsteel_ice_block.display_name"
   CustomModelData: 83711
   ItemModel: "DEFAULT"
 dragonsteel_lightning_block:
   Material: "PRISMARINE_SHARD"
-  DisplayName: "&fLightning Dragonsteel Block"
+  DisplayName: "i18n:items.iceandfire.dragonsteel_lightning_block.display_name"
   CustomModelData: 83712
   ItemModel: "DEFAULT"
