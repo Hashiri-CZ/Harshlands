@@ -17,6 +17,7 @@
 package cz.hashiri.harshlands.utils;
 
 import cz.hashiri.harshlands.HLPlugin;
+import cz.hashiri.harshlands.locale.Messages;
 import org.apache.commons.lang.StringUtils;
 import org.bukkit.Material;
 import org.bukkit.attribute.Attribute;
@@ -556,12 +557,17 @@ public class LorePresets {
     public static void addGearStats(List<String> lore, Attribute atr, double value) {
         DecimalFormat df = new DecimalFormat("0.#", DecimalFormatSymbols.getInstance(Locale.ENGLISH));
 
-        if (!Utils.doublesEquals(value, 0D)) {
-            if (atr == Attribute.ATTACK_DAMAGE) lore.add(Utils.translateMsg("&2 " + df.format(value) + " Attack Damage", null, null));
-            else if (atr == Attribute.ATTACK_SPEED) lore.add(Utils.translateMsg("&2 " + df.format(value) + " Attack Speed", null, null));
-            else if (atr == Attribute.ARMOR) lore.add(Utils.translateMsg("&9+" + df.format(value) + " Armor", null, null));
-            else if (atr == Attribute.ARMOR_TOUGHNESS) lore.add(Utils.translateMsg("&9+" + df.format(value) + " Armor Toughness", null, null));
-        }
+        if (Utils.doublesEquals(value, 0D)) return;
+
+        java.util.Map<String, Object> placeholders = java.util.Map.of("VALUE", df.format(value));
+        String key = null;
+        if (atr == Attribute.ATTACK_DAMAGE) key = "item_stats.attack_damage";
+        else if (atr == Attribute.ATTACK_SPEED) key = "item_stats.attack_speed";
+        else if (atr == Attribute.ARMOR) key = "item_stats.armor";
+        else if (atr == Attribute.ARMOR_TOUGHNESS) key = "item_stats.armor_toughness";
+        if (key == null) return;
+
+        lore.add(Utils.translateMsg(Messages.get(key, placeholders), null, null));
     }
 
     public static void useLorePreset(List<String> lore, String weaponType, ConfigurationSection section) {
