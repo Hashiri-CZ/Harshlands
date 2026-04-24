@@ -1,3 +1,35 @@
+Harshlands — Additional Terms Under GNU GPL Version 3, Section 7
+
+The following additional terms apply to this program ("Harshlands")
+pursuant to section 7 of the GNU General Public License Version 3,
+and are permissible additional terms as enumerated in section 7(b),
+7(c), and 7(e) of that License.
+
+  (b) You must preserve all reasonable legal notices displayed by
+      or contained within the program, including the copyright notice
+      "Copyright (C) 2025 Hashiri_" and the reference to this License
+      in per-file GPL headers.
+
+  (c) You may not misrepresent the origin of this program. Modified
+      versions must be clearly marked as modified and must not be
+      represented as the original work. Modified versions distributed
+      as a Bukkit, Spigot, or Paper plugin MUST use a distinct value
+      in the `name:` field of `plugin.yml` that does not contain
+      "Harshlands" or any recognizable variant.
+
+  (e) No rights are granted under trademark law for use of the name
+      "Harshlands" or any confusingly similar name. Modified versions
+      must not use "Harshlands" or any recognizable variant as a
+      product name, plugin identifier, or user-facing branding.
+
+These additional terms are permissible under GPL v3 Section 7, are
+compatible with the GPL, and do not constitute "further restrictions"
+within the meaning of Section 10. Recipients who wish to remove these
+additional terms may do so only by exercising the procedure described
+in Section 7, paragraph 3.
+
+================================================================================
+
                     GNU GENERAL PUBLIC LICENSE
                        Version 3, 29 June 2007
 
