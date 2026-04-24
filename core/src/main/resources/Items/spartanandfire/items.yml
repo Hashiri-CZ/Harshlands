@@ -8,7 +8,7 @@ ConfigId: "1.3.1-RELEASE" # Used for config syncing purposes, do NOT edit
 
 dragonbone_rapier:
   Material: "DIAMOND_SWORD"
-  DisplayName: "&fDragonbone Rapier"
+  DisplayName: "i18n:items.spartanandfire.dragonbone_rapier.display_name"
   CustomModelData: 83654
   ItemModel: "DEFAULT"
   Lore:
@@ -23,7 +23,7 @@ dragonbone_rapier:
   RepairIngredients: "dragonbone"
 dragonbone_katana:
   Material: "DIAMOND_SWORD"
-  DisplayName: "&fDragonbone Katana"
+  DisplayName: "i18n:items.spartanandfire.dragonbone_katana.display_name"
   CustomModelData: 83655
   ItemModel: "DEFAULT"
   Lore:
@@ -38,7 +38,7 @@ dragonbone_katana:
   RepairIngredients: "dragonbone"
 dragonbone_greatsword:
   Material: "DIAMOND_SWORD"
-  DisplayName: "&fDragonbone Greatsword"
+  DisplayName: "i18n:items.spartanandfire.dragonbone_greatsword.display_name"
   CustomModelData: 83656
   ItemModel: "DEFAULT"
   Lore:
@@ -53,7 +53,7 @@ dragonbone_greatsword:
   RepairIngredients: "dragonbone"
 dragonbone_longsword:
   Material: "DIAMOND_SWORD"
-  DisplayName: "&fDragonbone Longsword"
+  DisplayName: "i18n:items.spartanandfire.dragonbone_longsword.display_name"
   CustomModelData: 83657
   ItemModel: "DEFAULT"
   Lore:
@@ -68,7 +68,7 @@ dragonbone_longsword:
   RepairIngredients: "dragonbone"
 dragonbone_spear:
   Material: "DIAMOND_SWORD"
-  DisplayName: "&fDragonbone Spear"
+  DisplayName: "i18n:items.spartanandfire.dragonbone_spear.display_name"
   CustomModelData: 83658
   ItemModel: "DEFAULT"
   Lore:
@@ -83,7 +83,7 @@ dragonbone_spear:
   RepairIngredients: "dragonbone"
 dragonbone_saber:
   Material: "DIAMOND_SWORD"
-  DisplayName: "&fDragonbone Saber"
+  DisplayName: "i18n:items.spartanandfire.dragonbone_saber.display_name"
   CustomModelData: 83659
   ItemModel: "DEFAULT"
   Lore:
@@ -98,7 +98,7 @@ dragonbone_saber:
   RepairIngredients: "dragonbone"
 dragonbone_boomerang:
   Material: "DIAMOND_SWORD"
-  DisplayName: "&fDragonbone Boomerang"
+  DisplayName: "i18n:items.spartanandfire.dragonbone_boomerang.display_name"
   CustomModelData: 83660
   ItemModel: "DEFAULT"
   Lore:
@@ -113,7 +113,7 @@ dragonbone_boomerang:
   RepairIngredients: "dragonbone"
 dragonbone_dagger:
   Material: "DIAMOND_SWORD"
-  DisplayName: "&fDragonbone Dagger"
+  DisplayName: "i18n:items.spartanandfire.dragonbone_dagger.display_name"
   CustomModelData: 83661
   ItemModel: "DEFAULT"
   Lore:
@@ -128,7 +128,7 @@ dragonbone_dagger:
   RepairIngredients: "dragonbone"
 dragonbone_glaive:
   Material: "DIAMOND_SWORD"
-  DisplayName: "&fDragonbone Glaive"
+  DisplayName: "i18n:items.spartanandfire.dragonbone_glaive.display_name"
   CustomModelData: 83662
   ItemModel: "DEFAULT"
   Lore:
@@ -143,7 +143,7 @@ dragonbone_glaive:
   RepairIngredients: "dragonbone"
 dragonbone_halberd:
   Material: "DIAMOND_SWORD"
-  DisplayName: "&fDragonbone Halberd"
+  DisplayName: "i18n:items.spartanandfire.dragonbone_halberd.display_name"
   CustomModelData: 83663
   ItemModel: "DEFAULT"
   Lore:
@@ -158,7 +158,7 @@ dragonbone_halberd:
   RepairIngredients: "dragonbone"
 dragonbone_hammer:
   Material: "DIAMOND_SWORD"
-  DisplayName: "&fDragonbone Hammer"
+  DisplayName: "i18n:items.spartanandfire.dragonbone_hammer.display_name"
   CustomModelData: 83664
   ItemModel: "DEFAULT"
   Lore:
@@ -173,7 +173,7 @@ dragonbone_hammer:
   RepairIngredients: "dragonbone"
 dragonbone_javelin:
   Material: "DIAMOND_SWORD"
-  DisplayName: "&fDragonbone Javelin"
+  DisplayName: "i18n:items.spartanandfire.dragonbone_javelin.display_name"
   CustomModelData: 83665
   ItemModel: "DEFAULT"
   Lore:
@@ -188,7 +188,7 @@ dragonbone_javelin:
   RepairIngredients: "dragonbone"
 dragonbone_lance:
   Material: "DIAMOND_SWORD"
-  DisplayName: "&fDragonbone Lance"
+  DisplayName: "i18n:items.spartanandfire.dragonbone_lance.display_name"
   CustomModelData: 83666
   ItemModel: "DEFAULT"
   Lore:
@@ -203,7 +203,7 @@ dragonbone_lance:
   RepairIngredients: "dragonbone"
 dragonbone_mace:
   Material: "DIAMOND_SWORD"
-  DisplayName: "&fDragonbone Flanged Mace"
+  DisplayName: "i18n:items.spartanandfire.dragonbone_mace.display_name"
   CustomModelData: 83667
   ItemModel: "DEFAULT"
   Lore:
@@ -218,7 +218,7 @@ dragonbone_mace:
   RepairIngredients: "dragonbone"
 dragonbone_pike:
   Material: "DIAMOND_SWORD"
-  DisplayName: "&fDragonbone Pike"
+  DisplayName: "i18n:items.spartanandfire.dragonbone_pike.display_name"
   CustomModelData: 83668
   ItemModel: "DEFAULT"
   Lore:
@@ -233,7 +233,7 @@ dragonbone_pike:
   RepairIngredients: "dragonbone"
 dragonbone_quarterstaff:
   Material: "DIAMOND_SWORD"
-  DisplayName: "&fDragonbone Quarterstaff"
+  DisplayName: "i18n:items.spartanandfire.dragonbone_quarterstaff.display_name"
   CustomModelData: 83669
   ItemModel: "DEFAULT"
   Lore:
@@ -248,7 +248,7 @@ dragonbone_quarterstaff:
   RepairIngredients: "dragonbone"
 dragonbone_tomahawk:
   Material: "DIAMOND_SWORD"
-  DisplayName: "&fDragonbone Tomahawk"
+  DisplayName: "i18n:items.spartanandfire.dragonbone_tomahawk.display_name"
   CustomModelData: 83670
   ItemModel: "DEFAULT"
   Lore:
@@ -263,7 +263,7 @@ dragonbone_tomahawk:
   RepairIngredients: "dragonbone"
 dragonbone_throwing_knife:
   Material: "DIAMOND_SWORD"
-  DisplayName: "&fDragonbone Throwing Knife"
+  DisplayName: "i18n:items.spartanandfire.dragonbone_throwing_knife.display_name"
   CustomModelData: 83671
   ItemModel: "DEFAULT"
   Lore:
@@ -278,7 +278,7 @@ dragonbone_throwing_knife:
   RepairIngredients: "dragonbone"
 dragonbone_warhammer:
   Material: "DIAMOND_SWORD"
-  DisplayName: "&fDragonbone Warhammer"
+  DisplayName: "i18n:items.spartanandfire.dragonbone_warhammer.display_name"
   CustomModelData: 83672
   ItemModel: "DEFAULT"
   Lore:
@@ -293,7 +293,7 @@ dragonbone_warhammer:
   RepairIngredients: "dragonbone"
 dragonbone_battleaxe:
   Material: "DIAMOND_AXE"
-  DisplayName: "&fDragonbone Battleaxe"
+  DisplayName: "i18n:items.spartanandfire.dragonbone_battleaxe.display_name"
   CustomModelData: 83651
   ItemModel: "DEFAULT"
   Lore:
@@ -308,7 +308,7 @@ dragonbone_battleaxe:
   RepairIngredients: "dragonbone"
 dragonbone_longbow:
   Material: "BOW"
-  DisplayName: "&fDragonbone-Strengthened Longbow"
+  DisplayName: "i18n:items.spartanandfire.dragonbone_longbow.display_name"
   CustomModelData: 83651
   ItemModel: "DEFAULT"
   Lore:
@@ -317,7 +317,7 @@ dragonbone_longbow:
     hldurability: 2490
 dragonbone_crossbow:
   Material: "CROSSBOW"
-  DisplayName: "&fDragonbone-Strengthened Crossbow"
+  DisplayName: "i18n:items.spartanandfire.dragonbone_crossbow.display_name"
   CustomModelData: 83650
   ItemModel: "DEFAULT"
   Lore:
@@ -326,7 +326,7 @@ dragonbone_crossbow:
     hldurability: 2490
 dragonbone_flamed_rapier:
   Material: "DIAMOND_SWORD"
-  DisplayName: "&fFlamed Dragonbone Rapier"
+  DisplayName: "i18n:items.spartanandfire.dragonbone_flamed_rapier.display_name"
   CustomModelData: 83673
   ItemModel: "DEFAULT"
   Lore:
@@ -338,7 +338,7 @@ dragonbone_flamed_rapier:
     UseModuleConfig: true
 dragonbone_flamed_katana:
   Material: "DIAMOND_SWORD"
-  DisplayName: "&fFlamed Dragonbone Katana"
+  DisplayName: "i18n:items.spartanandfire.dragonbone_flamed_katana.display_name"
   CustomModelData: 83674
   ItemModel: "DEFAULT"
   Lore:
@@ -354,7 +354,7 @@ dragonbone_flamed_katana:
   RepairIngredients: "dragonbone"
 dragonbone_flamed_greatsword:
   Material: "DIAMOND_SWORD"
-  DisplayName: "&fFlamed Dragonbone Greatsword"
+  DisplayName: "i18n:items.spartanandfire.dragonbone_flamed_greatsword.display_name"
   CustomModelData: 83675
   ItemModel: "DEFAULT"
   Lore:
@@ -370,7 +370,7 @@ dragonbone_flamed_greatsword:
   RepairIngredients: "dragonbone"
 dragonbone_flamed_longsword:
   Material: "DIAMOND_SWORD"
-  DisplayName: "&fFlamed Dragonbone Longsword"
+  DisplayName: "i18n:items.spartanandfire.dragonbone_flamed_longsword.display_name"
   CustomModelData: 83676
   ItemModel: "DEFAULT"
   Lore:
@@ -386,7 +386,7 @@ dragonbone_flamed_longsword:
   RepairIngredients: "dragonbone"
 dragonbone_flamed_spear:
   Material: "DIAMOND_SWORD"
-  DisplayName: "&fFlamed Dragonbone Spear"
+  DisplayName: "i18n:items.spartanandfire.dragonbone_flamed_spear.display_name"
   CustomModelData: 83677
   ItemModel: "DEFAULT"
   Lore:
@@ -402,7 +402,7 @@ dragonbone_flamed_spear:
   RepairIngredients: "dragonbone"
 dragonbone_flamed_saber:
   Material: "DIAMOND_SWORD"
-  DisplayName: "&fFlamed Dragonbone Saber"
+  DisplayName: "i18n:items.spartanandfire.dragonbone_flamed_saber.display_name"
   CustomModelData: 83678
   ItemModel: "DEFAULT"
   Lore:
@@ -418,7 +418,7 @@ dragonbone_flamed_saber:
   RepairIngredients: "dragonbone"
 dragonbone_flamed_boomerang:
   Material: "DIAMOND_SWORD"
-  DisplayName: "&fFlamed Dragonbone Boomerang"
+  DisplayName: "i18n:items.spartanandfire.dragonbone_flamed_boomerang.display_name"
   CustomModelData: 83679
   ItemModel: "DEFAULT"
   Lore:
@@ -434,7 +434,7 @@ dragonbone_flamed_boomerang:
   RepairIngredients: "dragonbone"
 dragonbone_flamed_dagger:
   Material: "DIAMOND_SWORD"
-  DisplayName: "&fFlamed Dragonbone Dagger"
+  DisplayName: "i18n:items.spartanandfire.dragonbone_flamed_dagger.display_name"
   CustomModelData: 83680
   ItemModel: "DEFAULT"
   Lore:
@@ -450,7 +450,7 @@ dragonbone_flamed_dagger:
   RepairIngredients: "dragonbone"
 dragonbone_flamed_glaive:
   Material: "DIAMOND_SWORD"
-  DisplayName: "&fFlamed Dragonbone Glaive"
+  DisplayName: "i18n:items.spartanandfire.dragonbone_flamed_glaive.display_name"
   CustomModelData: 83681
   ItemModel: "DEFAULT"
   Lore:
@@ -466,7 +466,7 @@ dragonbone_flamed_glaive:
   RepairIngredients: "dragonbone"
 dragonbone_flamed_halberd:
   Material: "DIAMOND_SWORD"
-  DisplayName: "&fFlamed Dragonbone Halberd"
+  DisplayName: "i18n:items.spartanandfire.dragonbone_flamed_halberd.display_name"
   CustomModelData: 83682
   ItemModel: "DEFAULT"
   Lore:
@@ -482,7 +482,7 @@ dragonbone_flamed_halberd:
   RepairIngredients: "dragonbone"
 dragonbone_flamed_hammer:
   Material: "DIAMOND_SWORD"
-  DisplayName: "&fFlamed Dragonbone Hammer"
+  DisplayName: "i18n:items.spartanandfire.dragonbone_flamed_hammer.display_name"
   CustomModelData: 83683
   ItemModel: "DEFAULT"
   Lore:
@@ -498,7 +498,7 @@ dragonbone_flamed_hammer:
   RepairIngredients: "dragonbone"
 dragonbone_flamed_javelin:
   Material: "DIAMOND_SWORD"
-  DisplayName: "&fFlamed Dragonbone Javelin"
+  DisplayName: "i18n:items.spartanandfire.dragonbone_flamed_javelin.display_name"
   CustomModelData: 83684
   ItemModel: "DEFAULT"
   Lore:
@@ -514,7 +514,7 @@ dragonbone_flamed_javelin:
   RepairIngredients: "dragonbone"
 dragonbone_flamed_lance:
   Material: "DIAMOND_SWORD"
-  DisplayName: "&fFlamed Dragonbone Lance"
+  DisplayName: "i18n:items.spartanandfire.dragonbone_flamed_lance.display_name"
   CustomModelData: 83685
   ItemModel: "DEFAULT"
   Lore:
@@ -530,7 +530,7 @@ dragonbone_flamed_lance:
   RepairIngredients: "dragonbone"
 dragonbone_flamed_mace:
   Material: "DIAMOND_SWORD"
-  DisplayName: "&fFlamed Dragonbone Flanged Mace"
+  DisplayName: "i18n:items.spartanandfire.dragonbone_flamed_mace.display_name"
   CustomModelData: 83686
   ItemModel: "DEFAULT"
   Lore:
@@ -546,7 +546,7 @@ dragonbone_flamed_mace:
   RepairIngredients: "dragonbone"
 dragonbone_flamed_pike:
   Material: "DIAMOND_SWORD"
-  DisplayName: "&fFlamed Dragonbone Pike"
+  DisplayName: "i18n:items.spartanandfire.dragonbone_flamed_pike.display_name"
   CustomModelData: 83687
   ItemModel: "DEFAULT"
   Lore:
@@ -562,7 +562,7 @@ dragonbone_flamed_pike:
   RepairIngredients: "dragonbone"
 dragonbone_flamed_quarterstaff:
   Material: "DIAMOND_SWORD"
-  DisplayName: "&fFlamed Dragonbone Quarterstaff"
+  DisplayName: "i18n:items.spartanandfire.dragonbone_flamed_quarterstaff.display_name"
   CustomModelData: 83688
   ItemModel: "DEFAULT"
   Lore:
@@ -578,7 +578,7 @@ dragonbone_flamed_quarterstaff:
   RepairIngredients: "dragonbone"
 dragonbone_flamed_tomahawk:
   Material: "DIAMOND_SWORD"
-  DisplayName: "&fFlamed Dragonbone Tomahawk"
+  DisplayName: "i18n:items.spartanandfire.dragonbone_flamed_tomahawk.display_name"
   CustomModelData: 83689
   ItemModel: "DEFAULT"
   Lore:
@@ -594,7 +594,7 @@ dragonbone_flamed_tomahawk:
   RepairIngredients: "dragonbone"
 dragonbone_flamed_throwing_knife:
   Material: "DIAMOND_SWORD"
-  DisplayName: "&fFlamed Dragonbone Throwing Knife"
+  DisplayName: "i18n:items.spartanandfire.dragonbone_flamed_throwing_knife.display_name"
   CustomModelData: 83690
   ItemModel: "DEFAULT"
   Lore:
@@ -610,7 +610,7 @@ dragonbone_flamed_throwing_knife:
   RepairIngredients: "dragonbone"
 dragonbone_flamed_warhammer:
   Material: "DIAMOND_SWORD"
-  DisplayName: "&fFlamed Dragonbone Warhammer"
+  DisplayName: "i18n:items.spartanandfire.dragonbone_flamed_warhammer.display_name"
   CustomModelData: 83691
   ItemModel: "DEFAULT"
   Lore:
@@ -626,7 +626,7 @@ dragonbone_flamed_warhammer:
   RepairIngredients: "dragonbone"
 dragonbone_flamed_battleaxe:
   Material: "DIAMOND_AXE"
-  DisplayName: "&fFlamed Dragonbone Battleaxe"
+  DisplayName: "i18n:items.spartanandfire.dragonbone_flamed_battleaxe.display_name"
   CustomModelData: 83652
   ItemModel: "DEFAULT"
   Lore:
@@ -642,7 +642,7 @@ dragonbone_flamed_battleaxe:
   RepairIngredients: "dragonbone"
 dragonbone_flamed_longbow:
   Material: "BOW"
-  DisplayName: "&fFlamed Dragonbone-Strengthened Longbow"
+  DisplayName: "i18n:items.spartanandfire.dragonbone_flamed_longbow.display_name"
   CustomModelData: 83652
   ItemModel: "DEFAULT"
   Lore:
@@ -652,7 +652,7 @@ dragonbone_flamed_longbow:
     hldurability: 3000
 dragonbone_flamed_crossbow:
   Material: "CROSSBOW"
-  DisplayName: "&fFlamed Dragonbone-Strengthened Crossbow"
+  DisplayName: "i18n:items.spartanandfire.dragonbone_flamed_crossbow.display_name"
   CustomModelData: 83651
   ItemModel: "DEFAULT"
   Lore:
@@ -662,7 +662,7 @@ dragonbone_flamed_crossbow:
     hldurability: 3000
 dragonbone_iced_rapier:
   Material: "DIAMOND_SWORD"
-  DisplayName: "&fIced Dragonbone Rapier"
+  DisplayName: "i18n:items.spartanandfire.dragonbone_iced_rapier.display_name"
   CustomModelData: 83692
   ItemModel: "DEFAULT"
   Lore:
@@ -678,7 +678,7 @@ dragonbone_iced_rapier:
   RepairIngredients: "dragonbone"
 dragonbone_iced_katana:
   Material: "DIAMOND_SWORD"
-  DisplayName: "&fIced Dragonbone Katana"
+  DisplayName: "i18n:items.spartanandfire.dragonbone_iced_katana.display_name"
   CustomModelData: 83693
   ItemModel: "DEFAULT"
   Lore:
@@ -694,7 +694,7 @@ dragonbone_iced_katana:
   RepairIngredients: "dragonbone"
 dragonbone_iced_greatsword:
   Material: "DIAMOND_SWORD"
-  DisplayName: "&fIced Dragonbone Greatsword"
+  DisplayName: "i18n:items.spartanandfire.dragonbone_iced_greatsword.display_name"
   CustomModelData: 83694
   ItemModel: "DEFAULT"
   Lore:
@@ -706,7 +706,7 @@ dragonbone_iced_greatsword:
   RepairIngredients: "dragonbone"
 dragonbone_iced_longsword:
   Material: "DIAMOND_SWORD"
-  DisplayName: "&fIced Dragonbone Longsword"
+  DisplayName: "i18n:items.spartanandfire.dragonbone_iced_longsword.display_name"
   CustomModelData: 83695
   ItemModel: "DEFAULT"
   Lore:
@@ -722,7 +722,7 @@ dragonbone_iced_longsword:
   RepairIngredients: "dragonbone"
 dragonbone_iced_spear:
   Material: "DIAMOND_SWORD"
-  DisplayName: "&fIced Dragonbone Spear"
+  DisplayName: "i18n:items.spartanandfire.dragonbone_iced_spear.display_name"
   CustomModelData: 83696
   ItemModel: "DEFAULT"
   Lore:
@@ -738,7 +738,7 @@ dragonbone_iced_spear:
   RepairIngredients: "dragonbone"
 dragonbone_iced_saber:
   Material: "DIAMOND_SWORD"
-  DisplayName: "&fIced Dragonbone Saber"
+  DisplayName: "i18n:items.spartanandfire.dragonbone_iced_saber.display_name"
   CustomModelData: 83697
   ItemModel: "DEFAULT"
   Lore:
@@ -754,7 +754,7 @@ dragonbone_iced_saber:
   RepairIngredients: "dragonbone"
 dragonbone_iced_boomerang:
   Material: "DIAMOND_SWORD"
-  DisplayName: "&fIced Dragonbone Boomerang"
+  DisplayName: "i18n:items.spartanandfire.dragonbone_iced_boomerang.display_name"
   CustomModelData: 83698
   ItemModel: "DEFAULT"
   Lore:
@@ -770,7 +770,7 @@ dragonbone_iced_boomerang:
   RepairIngredients: "dragonbone"
 dragonbone_iced_dagger:
   Material: "DIAMOND_SWORD"
-  DisplayName: "&fIced Dragonbone Dagger"
+  DisplayName: "i18n:items.spartanandfire.dragonbone_iced_dagger.display_name"
   CustomModelData: 83699
   ItemModel: "DEFAULT"
   Lore:
@@ -786,7 +786,7 @@ dragonbone_iced_dagger:
   RepairIngredients: "dragonbone"
 dragonbone_iced_glaive:
   Material: "DIAMOND_SWORD"
-  DisplayName: "&fIced Dragonbone Glaive"
+  DisplayName: "i18n:items.spartanandfire.dragonbone_iced_glaive.display_name"
   CustomModelData: 83700
   ItemModel: "DEFAULT"
   Lore:
@@ -802,7 +802,7 @@ dragonbone_iced_glaive:
   RepairIngredients: "dragonbone"
 dragonbone_iced_halberd:
   Material: "DIAMOND_SWORD"
-  DisplayName: "&fIced Dragonbone Halberd"
+  DisplayName: "i18n:items.spartanandfire.dragonbone_iced_halberd.display_name"
   CustomModelData: 83701
   ItemModel: "DEFAULT"
   Lore:
@@ -818,7 +818,7 @@ dragonbone_iced_halberd:
   RepairIngredients: "dragonbone"
 dragonbone_iced_hammer:
   Material: "DIAMOND_SWORD"
-  DisplayName: "&fIced Dragonbone Hammer"
+  DisplayName: "i18n:items.spartanandfire.dragonbone_iced_hammer.display_name"
   CustomModelData: 83702
   ItemModel: "DEFAULT"
   Lore:
@@ -834,7 +834,7 @@ dragonbone_iced_hammer:
   RepairIngredients: "dragonbone"
 dragonbone_iced_javelin:
   Material: "DIAMOND_SWORD"
-  DisplayName: "&fIced Dragonbone Javelin"
+  DisplayName: "i18n:items.spartanandfire.dragonbone_iced_javelin.display_name"
   CustomModelData: 83703
   ItemModel: "DEFAULT"
   Lore:
@@ -850,7 +850,7 @@ dragonbone_iced_javelin:
   RepairIngredients: "dragonbone"
 dragonbone_iced_lance:
   Material: "DIAMOND_SWORD"
-  DisplayName: "&fIced Dragonbone Lance"
+  DisplayName: "i18n:items.spartanandfire.dragonbone_iced_lance.display_name"
   CustomModelData: 83704
   ItemModel: "DEFAULT"
   Lore:
@@ -866,7 +866,7 @@ dragonbone_iced_lance:
   RepairIngredients: "dragonbone"
 dragonbone_iced_mace:
   Material: "DIAMOND_SWORD"
-  DisplayName: "&fIced Dragonbone Flanged Mace"
+  DisplayName: "i18n:items.spartanandfire.dragonbone_iced_mace.display_name"
   CustomModelData: 83705
   ItemModel: "DEFAULT"
   Lore:
@@ -882,7 +882,7 @@ dragonbone_iced_mace:
   RepairIngredients: "dragonbone"
 dragonbone_iced_pike:
   Material: "DIAMOND_SWORD"
-  DisplayName: "&fIced Dragonbone Pike"
+  DisplayName: "i18n:items.spartanandfire.dragonbone_iced_pike.display_name"
   CustomModelData: 83706
   ItemModel: "DEFAULT"
   Lore:
@@ -898,7 +898,7 @@ dragonbone_iced_pike:
   RepairIngredients: "dragonbone"
 dragonbone_iced_quarterstaff:
   Material: "DIAMOND_SWORD"
-  DisplayName: "&fIced Dragonbone Quarterstaff"
+  DisplayName: "i18n:items.spartanandfire.dragonbone_iced_quarterstaff.display_name"
   CustomModelData: 83707
   ItemModel: "DEFAULT"
   Lore:
@@ -914,7 +914,7 @@ dragonbone_iced_quarterstaff:
   RepairIngredients: "dragonbone"
 dragonbone_iced_tomahawk:
   Material: "DIAMOND_SWORD"
-  DisplayName: "&fIced Dragonbone Tomahawk"
+  DisplayName: "i18n:items.spartanandfire.dragonbone_iced_tomahawk.display_name"
   CustomModelData: 83708
   ItemModel: "DEFAULT"
   Lore:
@@ -930,7 +930,7 @@ dragonbone_iced_tomahawk:
   RepairIngredients: "dragonbone"
 dragonbone_iced_throwing_knife:
   Material: "DIAMOND_SWORD"
-  DisplayName: "&fIced Dragonbone Throwing Knife"
+  DisplayName: "i18n:items.spartanandfire.dragonbone_iced_throwing_knife.display_name"
   CustomModelData: 83709
   ItemModel: "DEFAULT"
   Lore:
@@ -946,7 +946,7 @@ dragonbone_iced_throwing_knife:
   RepairIngredients: "dragonbone"
 dragonbone_iced_warhammer:
   Material: "DIAMOND_SWORD"
-  DisplayName: "&fIced Dragonbone Warhammer"
+  DisplayName: "i18n:items.spartanandfire.dragonbone_iced_warhammer.display_name"
   CustomModelData: 83710
   ItemModel: "DEFAULT"
   Lore:
@@ -962,7 +962,7 @@ dragonbone_iced_warhammer:
   RepairIngredients: "dragonbone"
 dragonbone_iced_battleaxe:
   Material: "DIAMOND_AXE"
-  DisplayName: "&fIced Dragonbone Battleaxe"
+  DisplayName: "i18n:items.spartanandfire.dragonbone_iced_battleaxe.display_name"
   CustomModelData: 83653
   ItemModel: "DEFAULT"
   Lore:
@@ -978,7 +978,7 @@ dragonbone_iced_battleaxe:
   RepairIngredients: "dragonbone"
 dragonbone_iced_longbow:
   Material: "BOW"
-  DisplayName: "&fIced Dragonbone-Strengthened Longbow"
+  DisplayName: "i18n:items.spartanandfire.dragonbone_iced_longbow.display_name"
   CustomModelData: 83653
   ItemModel: "DEFAULT"
   Lore:
@@ -988,7 +988,7 @@ dragonbone_iced_longbow:
     hldurability: 3000
 dragonbone_iced_crossbow:
   Material: "CROSSBOW"
-  DisplayName: "&fIced Dragonbone-Strengthened Crossbow"
+  DisplayName: "i18n:items.spartanandfire.dragonbone_iced_crossbow.display_name"
   CustomModelData: 83652
   ItemModel: "DEFAULT"
   Lore:
@@ -998,7 +998,7 @@ dragonbone_iced_crossbow:
     hldurability: 3000
 dragonbone_lightning_rapier:
   Material: "DIAMOND_SWORD"
-  DisplayName: "&fLightning Dragonbone Rapier"
+  DisplayName: "i18n:items.spartanandfire.dragonbone_lightning_rapier.display_name"
   CustomModelData: 83711
   ItemModel: "DEFAULT"
   Lore:
@@ -1014,7 +1014,7 @@ dragonbone_lightning_rapier:
   RepairIngredients: "dragonbone"
 dragonbone_lightning_katana:
   Material: "DIAMOND_SWORD"
-  DisplayName: "&fLightning Dragonbone Katana"
+  DisplayName: "i18n:items.spartanandfire.dragonbone_lightning_katana.display_name"
   CustomModelData: 83712
   ItemModel: "DEFAULT"
   Lore:
@@ -1030,7 +1030,7 @@ dragonbone_lightning_katana:
   RepairIngredients: "dragonbone"
 dragonbone_lightning_greatsword:
   Material: "DIAMOND_SWORD"
-  DisplayName: "&fLightning Dragonbone Greatsword"
+  DisplayName: "i18n:items.spartanandfire.dragonbone_lightning_greatsword.display_name"
   CustomModelData: 83713
   ItemModel: "DEFAULT"
   Lore:
@@ -1046,7 +1046,7 @@ dragonbone_lightning_greatsword:
   RepairIngredients: "dragonbone"
 dragonbone_lightning_longsword:
   Material: "DIAMOND_SWORD"
-  DisplayName: "&fLightning Dragonbone Longsword"
+  DisplayName: "i18n:items.spartanandfire.dragonbone_lightning_longsword.display_name"
   CustomModelData: 83714
   ItemModel: "DEFAULT"
   Lore:
@@ -1062,7 +1062,7 @@ dragonbone_lightning_longsword:
   RepairIngredients: "dragonbone"
 dragonbone_lightning_spear:
   Material: "DIAMOND_SWORD"
-  DisplayName: "&fLightning Dragonbone Spear"
+  DisplayName: "i18n:items.spartanandfire.dragonbone_lightning_spear.display_name"
   CustomModelData: 83715
   ItemModel: "DEFAULT"
   Lore:
@@ -1078,7 +1078,7 @@ dragonbone_lightning_spear:
   RepairIngredients: "dragonbone"
 dragonbone_lightning_saber:
   Material: "DIAMOND_SWORD"
-  DisplayName: "&fLightning Dragonbone Saber"
+  DisplayName: "i18n:items.spartanandfire.dragonbone_lightning_saber.display_name"
   CustomModelData: 83716
   ItemModel: "DEFAULT"
   Lore:
@@ -1094,7 +1094,7 @@ dragonbone_lightning_saber:
   RepairIngredients: "dragonbone"
 dragonbone_lightning_boomerang:
   Material: "DIAMOND_SWORD"
-  DisplayName: "&fLightning Dragonbone Boomerang"
+  DisplayName: "i18n:items.spartanandfire.dragonbone_lightning_boomerang.display_name"
   CustomModelData: 83717
   ItemModel: "DEFAULT"
   Lore:
@@ -1110,7 +1110,7 @@ dragonbone_lightning_boomerang:
   RepairIngredients: "dragonbone"
 dragonbone_lightning_dagger:
   Material: "DIAMOND_SWORD"
-  DisplayName: "&fLightning Dragonbone Dagger"
+  DisplayName: "i18n:items.spartanandfire.dragonbone_lightning_dagger.display_name"
   CustomModelData: 83718
   ItemModel: "DEFAULT"
   Lore:
@@ -1126,7 +1126,7 @@ dragonbone_lightning_dagger:
   RepairIngredients: "dragonbone"
 dragonbone_lightning_glaive:
   Material: "DIAMOND_SWORD"
-  DisplayName: "&fLightning Dragonbone Glaive"
+  DisplayName: "i18n:items.spartanandfire.dragonbone_lightning_glaive.display_name"
   CustomModelData: 83719
   ItemModel: "DEFAULT"
   Lore:
@@ -1142,7 +1142,7 @@ dragonbone_lightning_glaive:
   RepairIngredients: "dragonbone"
 dragonbone_lightning_halberd:
   Material: "DIAMOND_SWORD"
-  DisplayName: "&fLightning Dragonbone Halberd"
+  DisplayName: "i18n:items.spartanandfire.dragonbone_lightning_halberd.display_name"
   CustomModelData: 83720
   ItemModel: "DEFAULT"
   Lore:
@@ -1158,7 +1158,7 @@ dragonbone_lightning_halberd:
   RepairIngredients: "dragonbone"
 dragonbone_lightning_hammer:
   Material: "DIAMOND_SWORD"
-  DisplayName: "&fLightning Dragonbone Hammer"
+  DisplayName: "i18n:items.spartanandfire.dragonbone_lightning_hammer.display_name"
   CustomModelData: 83721
   ItemModel: "DEFAULT"
   Lore:
@@ -1174,7 +1174,7 @@ dragonbone_lightning_hammer:
   RepairIngredients: "dragonbone"
 dragonbone_lightning_javelin:
   Material: "DIAMOND_SWORD"
-  DisplayName: "&fLightning Dragonbone Javelin"
+  DisplayName: "i18n:items.spartanandfire.dragonbone_lightning_javelin.display_name"
   CustomModelData: 83722
   ItemModel: "DEFAULT"
   Lore:
@@ -1190,7 +1190,7 @@ dragonbone_lightning_javelin:
   RepairIngredients: "dragonbone"
 dragonbone_lightning_lance:
   Material: "DIAMOND_SWORD"
-  DisplayName: "&fLightning Dragonbone Lance"
+  DisplayName: "i18n:items.spartanandfire.dragonbone_lightning_lance.display_name"
   CustomModelData: 83723
   ItemModel: "DEFAULT"
   Lore:
@@ -1206,7 +1206,7 @@ dragonbone_lightning_lance:
   RepairIngredients: "dragonbone"
 dragonbone_lightning_mace:
   Material: "DIAMOND_SWORD"
-  DisplayName: "&fLightning Dragonbone Flanged Mace"
+  DisplayName: "i18n:items.spartanandfire.dragonbone_lightning_mace.display_name"
   CustomModelData: 83724
   ItemModel: "DEFAULT"
   Lore:
@@ -1222,7 +1222,7 @@ dragonbone_lightning_mace:
   RepairIngredients: "dragonbone"
 dragonbone_lightning_pike:
   Material: "DIAMOND_SWORD"
-  DisplayName: "&fLightning Dragonbone Pike"
+  DisplayName: "i18n:items.spartanandfire.dragonbone_lightning_pike.display_name"
   CustomModelData: 83725
   ItemModel: "DEFAULT"
   Lore:
@@ -1238,7 +1238,7 @@ dragonbone_lightning_pike:
   RepairIngredients: "dragonbone"
 dragonbone_lightning_quarterstaff:
   Material: "DIAMOND_SWORD"
-  DisplayName: "&fLightning Dragonbone Quarterstaff"
+  DisplayName: "i18n:items.spartanandfire.dragonbone_lightning_quarterstaff.display_name"
   CustomModelData: 83726
   ItemModel: "DEFAULT"
   Lore:
@@ -1254,7 +1254,7 @@ dragonbone_lightning_quarterstaff:
   RepairIngredients: "dragonbone"
 dragonbone_lightning_tomahawk:
   Material: "DIAMOND_SWORD"
-  DisplayName: "&fLightning Dragonbone Tomahawk"
+  DisplayName: "i18n:items.spartanandfire.dragonbone_lightning_tomahawk.display_name"
   CustomModelData: 83727
   ItemModel: "DEFAULT"
   Lore:
@@ -1270,7 +1270,7 @@ dragonbone_lightning_tomahawk:
   RepairIngredients: "dragonbone"
 dragonbone_lightning_throwing_knife:
   Material: "DIAMOND_SWORD"
-  DisplayName: "&fLightning Dragonbone Throwing Knife"
+  DisplayName: "i18n:items.spartanandfire.dragonbone_lightning_throwing_knife.display_name"
   CustomModelData: 83728
   ItemModel: "DEFAULT"
   Lore:
@@ -1286,7 +1286,7 @@ dragonbone_lightning_throwing_knife:
   RepairIngredients: "dragonbone"
 dragonbone_lightning_warhammer:
   Material: "DIAMOND_SWORD"
-  DisplayName: "&fLightning Dragonbone Warhammer"
+  DisplayName: "i18n:items.spartanandfire.dragonbone_lightning_warhammer.display_name"
   CustomModelData: 83729
   ItemModel: "DEFAULT"
   Lore:
@@ -1302,7 +1302,7 @@ dragonbone_lightning_warhammer:
   RepairIngredients: "dragonbone"
 dragonbone_lightning_battleaxe:
   Material: "DIAMOND_AXE"
-  DisplayName: "&fLightning Dragonbone Battleaxe"
+  DisplayName: "i18n:items.spartanandfire.dragonbone_lightning_battleaxe.display_name"
   CustomModelData: 83654
   ItemModel: "DEFAULT"
   Lore:
@@ -1318,7 +1318,7 @@ dragonbone_lightning_battleaxe:
   RepairIngredients: "dragonbone"
 dragonbone_lightning_longbow:
   Material: "BOW"
-  DisplayName: "&fLightning Dragonbone-Strengthened Longbow"
+  DisplayName: "i18n:items.spartanandfire.dragonbone_lightning_longbow.display_name"
   CustomModelData: 83654
   ItemModel: "DEFAULT"
   Lore:
@@ -1328,7 +1328,7 @@ dragonbone_lightning_longbow:
     hldurability: 3000
 dragonbone_lightning_crossbow:
   Material: "CROSSBOW"
-  DisplayName: "&fLightning Dragonbone-Strengthened Crossbow"
+  DisplayName: "i18n:items.spartanandfire.dragonbone_lightning_crossbow.display_name"
   CustomModelData: 83653
   ItemModel: "DEFAULT"
   Lore:
@@ -1338,7 +1338,7 @@ dragonbone_lightning_crossbow:
     hldurability: 3000
 dragonsteel_fire_rapier:
   Material: "NETHERITE_SWORD"
-  DisplayName: "&fFire Dragonsteel Rapier"
+  DisplayName: "i18n:items.spartanandfire.dragonsteel_fire_rapier.display_name"
   CustomModelData: 83653
   ItemModel: "DEFAULT"
   Lore:
@@ -1354,7 +1354,7 @@ dragonsteel_fire_rapier:
   RepairIngredients: "dragonsteel_fire_ingot"
 dragonsteel_fire_katana:
   Material: "NETHERITE_SWORD"
-  DisplayName: "&fFire Dragonsteel Katana"
+  DisplayName: "i18n:items.spartanandfire.dragonsteel_fire_katana.display_name"
   CustomModelData: 83654
   ItemModel: "DEFAULT"
   Lore:
@@ -1370,7 +1370,7 @@ dragonsteel_fire_katana:
   RepairIngredients: "dragonsteel_fire_ingot"
 dragonsteel_fire_greatsword:
   Material: "NETHERITE_SWORD"
-  DisplayName: "&fFire Dragonsteel Greatsword"
+  DisplayName: "i18n:items.spartanandfire.dragonsteel_fire_greatsword.display_name"
   CustomModelData: 83655
   ItemModel: "DEFAULT"
   Lore:
@@ -1386,7 +1386,7 @@ dragonsteel_fire_greatsword:
   RepairIngredients: "dragonsteel_fire_ingot"
 dragonsteel_fire_longsword:
   Material: "NETHERITE_SWORD"
-  DisplayName: "&fFire Dragonsteel Longsword"
+  DisplayName: "i18n:items.spartanandfire.dragonsteel_fire_longsword.display_name"
   CustomModelData: 83656
   ItemModel: "DEFAULT"
   Lore:
@@ -1402,7 +1402,7 @@ dragonsteel_fire_longsword:
   RepairIngredients: "dragonsteel_fire_ingot"
 dragonsteel_fire_spear:
   Material: "NETHERITE_SWORD"
-  DisplayName: "&fFire Dragonsteel Spear"
+  DisplayName: "i18n:items.spartanandfire.dragonsteel_fire_spear.display_name"
   CustomModelData: 83657
   ItemModel: "DEFAULT"
   Lore:
@@ -1418,7 +1418,7 @@ dragonsteel_fire_spear:
   RepairIngredients: "dragonsteel_fire_ingot"
 dragonsteel_fire_saber:
   Material: "NETHERITE_SWORD"
-  DisplayName: "&fFire Dragonsteel Saber"
+  DisplayName: "i18n:items.spartanandfire.dragonsteel_fire_saber.display_name"
   CustomModelData: 83658
   ItemModel: "DEFAULT"
   Lore:
@@ -1434,7 +1434,7 @@ dragonsteel_fire_saber:
   RepairIngredients: "dragonsteel_fire_ingot"
 dragonsteel_fire_boomerang:
   Material: "NETHERITE_SWORD"
-  DisplayName: "&fFire Dragonsteel Boomerang"
+  DisplayName: "i18n:items.spartanandfire.dragonsteel_fire_boomerang.display_name"
   CustomModelData: 83659
   ItemModel: "DEFAULT"
   Lore:
@@ -1450,7 +1450,7 @@ dragonsteel_fire_boomerang:
   RepairIngredients: "dragonsteel_fire_ingot"
 dragonsteel_fire_dagger:
   Material: "NETHERITE_SWORD"
-  DisplayName: "&fFire Dragonsteel Dagger"
+  DisplayName: "i18n:items.spartanandfire.dragonsteel_fire_dagger.display_name"
   CustomModelData: 83660
   ItemModel: "DEFAULT"
   Lore:
@@ -1466,7 +1466,7 @@ dragonsteel_fire_dagger:
   RepairIngredients: "dragonsteel_fire_ingot"
 dragonsteel_fire_glaive:
   Material: "NETHERITE_SWORD"
-  DisplayName: "&fFire Dragonsteel Glaive"
+  DisplayName: "i18n:items.spartanandfire.dragonsteel_fire_glaive.display_name"
   CustomModelData: 83661
   ItemModel: "DEFAULT"
   Lore:
@@ -1482,7 +1482,7 @@ dragonsteel_fire_glaive:
   RepairIngredients: "dragonsteel_fire_ingot"
 dragonsteel_fire_halberd:
   Material: "NETHERITE_SWORD"
-  DisplayName: "&fFire Dragonsteel Halberd"
+  DisplayName: "i18n:items.spartanandfire.dragonsteel_fire_halberd.display_name"
   CustomModelData: 83662
   ItemModel: "DEFAULT"
   Lore:
@@ -1498,7 +1498,7 @@ dragonsteel_fire_halberd:
   RepairIngredients: "dragonsteel_fire_ingot"
 dragonsteel_fire_hammer:
   Material: "NETHERITE_SWORD"
-  DisplayName: "&fFire Dragonsteel Hammer"
+  DisplayName: "i18n:items.spartanandfire.dragonsteel_fire_hammer.display_name"
   CustomModelData: 83663
   ItemModel: "DEFAULT"
   Lore:
@@ -1514,7 +1514,7 @@ dragonsteel_fire_hammer:
   RepairIngredients: "dragonsteel_fire_ingot"
 dragonsteel_fire_javelin:
   Material: "NETHERITE_SWORD"
-  DisplayName: "&fFire Dragonsteel Javelin"
+  DisplayName: "i18n:items.spartanandfire.dragonsteel_fire_javelin.display_name"
   CustomModelData: 83664
   ItemModel: "DEFAULT"
   Lore:
@@ -1530,7 +1530,7 @@ dragonsteel_fire_javelin:
   RepairIngredients: "dragonsteel_fire_ingot"
 dragonsteel_fire_lance:
   Material: "NETHERITE_SWORD"
-  DisplayName: "&fFire Dragonsteel Lance"
+  DisplayName: "i18n:items.spartanandfire.dragonsteel_fire_lance.display_name"
   CustomModelData: 83665
   ItemModel: "DEFAULT"
   Lore:
@@ -1546,7 +1546,7 @@ dragonsteel_fire_lance:
   RepairIngredients: "dragonsteel_fire_ingot"
 dragonsteel_fire_mace:
   Material: "NETHERITE_SWORD"
-  DisplayName: "&fFire Dragonsteel Flanged Mace"
+  DisplayName: "i18n:items.spartanandfire.dragonsteel_fire_mace.display_name"
   CustomModelData: 83666
   ItemModel: "DEFAULT"
   Lore:
@@ -1562,7 +1562,7 @@ dragonsteel_fire_mace:
   RepairIngredients: "dragonsteel_fire_ingot"
 dragonsteel_fire_pike:
   Material: "NETHERITE_SWORD"
-  DisplayName: "&fFire Dragonsteel Pike"
+  DisplayName: "i18n:items.spartanandfire.dragonsteel_fire_pike.display_name"
   CustomModelData: 83667
   ItemModel: "DEFAULT"
   Lore:
@@ -1578,7 +1578,7 @@ dragonsteel_fire_pike:
   RepairIngredients: "dragonsteel_fire_ingot"
 dragonsteel_fire_quarterstaff:
   Material: "NETHERITE_SWORD"
-  DisplayName: "&fFire Dragonsteel Quarterstaff"
+  DisplayName: "i18n:items.spartanandfire.dragonsteel_fire_quarterstaff.display_name"
   CustomModelData: 83668
   ItemModel: "DEFAULT"
   Lore:
@@ -1594,7 +1594,7 @@ dragonsteel_fire_quarterstaff:
   RepairIngredients: "dragonsteel_fire_ingot"
 dragonsteel_fire_tomahawk:
   Material: "NETHERITE_SWORD"
-  DisplayName: "&fFire Dragonsteel Tomahawk"
+  DisplayName: "i18n:items.spartanandfire.dragonsteel_fire_tomahawk.display_name"
   CustomModelData: 83669
   ItemModel: "DEFAULT"
   Lore:
@@ -1610,7 +1610,7 @@ dragonsteel_fire_tomahawk:
   RepairIngredients: "dragonsteel_fire_ingot"
 dragonsteel_fire_throwing_knife:
   Material: "NETHERITE_SWORD"
-  DisplayName: "&fFire Dragonsteel Throwing Knife"
+  DisplayName: "i18n:items.spartanandfire.dragonsteel_fire_throwing_knife.display_name"
   CustomModelData: 83670
   ItemModel: "DEFAULT"
   Lore:
@@ -1626,7 +1626,7 @@ dragonsteel_fire_throwing_knife:
   RepairIngredients: "dragonsteel_fire_ingot"
 dragonsteel_fire_warhammer:
   Material: "NETHERITE_SWORD"
-  DisplayName: "&fFire Dragonsteel Warhammer"
+  DisplayName: "i18n:items.spartanandfire.dragonsteel_fire_warhammer.display_name"
   CustomModelData: 83671
   ItemModel: "DEFAULT"
   Lore:
@@ -1642,7 +1642,7 @@ dragonsteel_fire_warhammer:
   RepairIngredients: "dragonsteel_fire_ingot"
 dragonsteel_fire_battleaxe:
   Material: "NETHERITE_AXE"
-  DisplayName: "&fFire Dragonsteel Battleaxe"
+  DisplayName: "i18n:items.spartanandfire.dragonsteel_fire_battleaxe.display_name"
   CustomModelData: 83653
   ItemModel: "DEFAULT"
   Lore:
@@ -1658,7 +1658,7 @@ dragonsteel_fire_battleaxe:
   RepairIngredients: "dragonsteel_fire_ingot"
 dragonsteel_fire_longbow:
   Material: "BOW"
-  DisplayName: "&fFire Dragonsteel-Strengthened Longbow"
+  DisplayName: "i18n:items.spartanandfire.dragonsteel_fire_longbow.display_name"
   CustomModelData: 83655
   ItemModel: "DEFAULT"
   Lore:
@@ -1670,7 +1670,7 @@ dragonsteel_fire_longbow:
   RepairIngredients: "dragonsteel_fire_ingot"
 dragonsteel_fire_crossbow:
   Material: "CROSSBOW"
-  DisplayName: "&fFire Dragonsteel-Strengthened Crossbow"
+  DisplayName: "i18n:items.spartanandfire.dragonsteel_fire_crossbow.display_name"
   CustomModelData: 83654
   ItemModel: "DEFAULT"
   Lore:
@@ -1682,7 +1682,7 @@ dragonsteel_fire_crossbow:
   RepairIngredients: "dragonsteel_fire_ingot"
 dragonsteel_ice_rapier:
   Material: "NETHERITE_SWORD"
-  DisplayName: "&fIce Dragonsteel Rapier"
+  DisplayName: "i18n:items.spartanandfire.dragonsteel_ice_rapier.display_name"
   CustomModelData: 83672
   ItemModel: "DEFAULT"
   Lore:
@@ -1698,7 +1698,7 @@ dragonsteel_ice_rapier:
   RepairIngredients: "dragonsteel_ice_ingot"
 dragonsteel_ice_katana:
   Material: "NETHERITE_SWORD"
-  DisplayName: "&fIce Dragonsteel Katana"
+  DisplayName: "i18n:items.spartanandfire.dragonsteel_ice_katana.display_name"
   CustomModelData: 83673
   ItemModel: "DEFAULT"
   Lore:
@@ -1714,7 +1714,7 @@ dragonsteel_ice_katana:
   RepairIngredients: "dragonsteel_ice_ingot"
 dragonsteel_ice_greatsword:
   Material: "NETHERITE_SWORD"
-  DisplayName: "&fIce Dragonsteel Greatsword"
+  DisplayName: "i18n:items.spartanandfire.dragonsteel_ice_greatsword.display_name"
   CustomModelData: 83674
   ItemModel: "DEFAULT"
   Lore:
@@ -1730,7 +1730,7 @@ dragonsteel_ice_greatsword:
   RepairIngredients: "dragonsteel_ice_ingot"
 dragonsteel_ice_longsword:
   Material: "NETHERITE_SWORD"
-  DisplayName: "&fIce Dragonsteel Longsword"
+  DisplayName: "i18n:items.spartanandfire.dragonsteel_ice_longsword.display_name"
   CustomModelData: 83675
   ItemModel: "DEFAULT"
   Lore:
@@ -1746,7 +1746,7 @@ dragonsteel_ice_longsword:
   RepairIngredients: "dragonsteel_ice_ingot"
 dragonsteel_ice_spear:
   Material: "NETHERITE_SWORD"
-  DisplayName: "&fIce Dragonsteel Spear"
+  DisplayName: "i18n:items.spartanandfire.dragonsteel_ice_spear.display_name"
   CustomModelData: 83676
   ItemModel: "DEFAULT"
   Lore:
@@ -1762,7 +1762,7 @@ dragonsteel_ice_spear:
   RepairIngredients: "dragonsteel_ice_ingot"
 dragonsteel_ice_saber:
   Material: "NETHERITE_SWORD"
-  DisplayName: "&fIce Dragonsteel Saber"
+  DisplayName: "i18n:items.spartanandfire.dragonsteel_ice_saber.display_name"
   CustomModelData: 83677
   ItemModel: "DEFAULT"
   Lore:
@@ -1778,7 +1778,7 @@ dragonsteel_ice_saber:
   RepairIngredients: "dragonsteel_ice_ingot"
 dragonsteel_ice_boomerang:
   Material: "NETHERITE_SWORD"
-  DisplayName: "&fIce Dragonsteel Boomerang"
+  DisplayName: "i18n:items.spartanandfire.dragonsteel_ice_boomerang.display_name"
   CustomModelData: 83678
   ItemModel: "DEFAULT"
   Lore:
@@ -1794,7 +1794,7 @@ dragonsteel_ice_boomerang:
   RepairIngredients: "dragonsteel_ice_ingot"
 dragonsteel_ice_dagger:
   Material: "NETHERITE_SWORD"
-  DisplayName: "&fIce Dragonsteel Dagger"
+  DisplayName: "i18n:items.spartanandfire.dragonsteel_ice_dagger.display_name"
   CustomModelData: 83679
   ItemModel: "DEFAULT"
   Lore:
@@ -1810,7 +1810,7 @@ dragonsteel_ice_dagger:
   RepairIngredients: "dragonsteel_ice_ingot"
 dragonsteel_ice_glaive:
   Material: "NETHERITE_SWORD"
-  DisplayName: "&fIce Dragonsteel Glaive"
+  DisplayName: "i18n:items.spartanandfire.dragonsteel_ice_glaive.display_name"
   CustomModelData: 83680
   ItemModel: "DEFAULT"
   Lore:
@@ -1826,7 +1826,7 @@ dragonsteel_ice_glaive:
   RepairIngredients: "dragonsteel_ice_ingot"
 dragonsteel_ice_halberd:
   Material: "NETHERITE_SWORD"
-  DisplayName: "&fIce Dragonsteel Halberd"
+  DisplayName: "i18n:items.spartanandfire.dragonsteel_ice_halberd.display_name"
   CustomModelData: 83681
   ItemModel: "DEFAULT"
   Lore:
@@ -1842,7 +1842,7 @@ dragonsteel_ice_halberd:
   RepairIngredients: "dragonsteel_ice_ingot"
 dragonsteel_ice_hammer:
   Material: "NETHERITE_SWORD"
-  DisplayName: "&fIce Dragonsteel Hammer"
+  DisplayName: "i18n:items.spartanandfire.dragonsteel_ice_hammer.display_name"
   CustomModelData: 83682
   ItemModel: "DEFAULT"
   Lore:
@@ -1858,7 +1858,7 @@ dragonsteel_ice_hammer:
   RepairIngredients: "dragonsteel_ice_ingot"
 dragonsteel_ice_javelin:
   Material: "NETHERITE_SWORD"
-  DisplayName: "&fIce Dragonsteel Javelin"
+  DisplayName: "i18n:items.spartanandfire.dragonsteel_ice_javelin.display_name"
   CustomModelData: 83683
   ItemModel: "DEFAULT"
   Lore:
@@ -1874,7 +1874,7 @@ dragonsteel_ice_javelin:
   RepairIngredients: "dragonsteel_ice_ingot"
 dragonsteel_ice_lance:
   Material: "NETHERITE_SWORD"
-  DisplayName: "&fIce Dragonsteel Lance"
+  DisplayName: "i18n:items.spartanandfire.dragonsteel_ice_lance.display_name"
   CustomModelData: 83684
   ItemModel: "DEFAULT"
   Lore:
@@ -1890,7 +1890,7 @@ dragonsteel_ice_lance:
   RepairIngredients: "dragonsteel_ice_ingot"
 dragonsteel_ice_mace:
   Material: "NETHERITE_SWORD"
-  DisplayName: "&fIce Dragonsteel Flanged Mace"
+  DisplayName: "i18n:items.spartanandfire.dragonsteel_ice_mace.display_name"
   CustomModelData: 83685
   ItemModel: "DEFAULT"
   Lore:
@@ -1906,7 +1906,7 @@ dragonsteel_ice_mace:
   RepairIngredients: "dragonsteel_ice_ingot"
 dragonsteel_ice_pike:
   Material: "NETHERITE_SWORD"
-  DisplayName: "&fIce Dragonsteel Pike"
+  DisplayName: "i18n:items.spartanandfire.dragonsteel_ice_pike.display_name"
   CustomModelData: 83686
   ItemModel: "DEFAULT"
   Lore:
@@ -1922,7 +1922,7 @@ dragonsteel_ice_pike:
   RepairIngredients: "dragonsteel_ice_ingot"
 dragonsteel_ice_quarterstaff:
   Material: "NETHERITE_SWORD"
-  DisplayName: "&fIce Dragonsteel Quarterstaff"
+  DisplayName: "i18n:items.spartanandfire.dragonsteel_ice_quarterstaff.display_name"
   CustomModelData: 83687
   ItemModel: "DEFAULT"
   Lore:
@@ -1938,7 +1938,7 @@ dragonsteel_ice_quarterstaff:
   RepairIngredients: "dragonsteel_ice_ingot"
 dragonsteel_ice_tomahawk:
   Material: "NETHERITE_SWORD"
-  DisplayName: "&fIce Dragonsteel Tomahawk"
+  DisplayName: "i18n:items.spartanandfire.dragonsteel_ice_tomahawk.display_name"
   CustomModelData: 83688
   ItemModel: "DEFAULT"
   Lore:
@@ -1954,7 +1954,7 @@ dragonsteel_ice_tomahawk:
   RepairIngredients: "dragonsteel_ice_ingot"
 dragonsteel_ice_throwing_knife:
   Material: "NETHERITE_SWORD"
-  DisplayName: "&fIce Dragonsteel Throwing Knife"
+  DisplayName: "i18n:items.spartanandfire.dragonsteel_ice_throwing_knife.display_name"
   CustomModelData: 83689
   ItemModel: "DEFAULT"
   Lore:
@@ -1970,7 +1970,7 @@ dragonsteel_ice_throwing_knife:
   RepairIngredients: "dragonsteel_ice_ingot"
 dragonsteel_ice_warhammer:
   Material: "NETHERITE_SWORD"
-  DisplayName: "&fIce Dragonsteel Warhammer"
+  DisplayName: "i18n:items.spartanandfire.dragonsteel_ice_warhammer.display_name"
   CustomModelData: 83690
   ItemModel: "DEFAULT"
   Lore:
@@ -1986,7 +1986,7 @@ dragonsteel_ice_warhammer:
   RepairIngredients: "dragonsteel_ice_ingot"
 dragonsteel_ice_battleaxe:
   Material: "NETHERITE_AXE"
-  DisplayName: "&fIce Dragonsteel Battleaxe"
+  DisplayName: "i18n:items.spartanandfire.dragonsteel_ice_battleaxe.display_name"
   CustomModelData: 83654
   ItemModel: "DEFAULT"
   Lore:
@@ -2002,7 +2002,7 @@ dragonsteel_ice_battleaxe:
   RepairIngredients: "dragonsteel_ice_ingot"
 dragonsteel_ice_longbow:
   Material: "BOW"
-  DisplayName: "&fIce Dragonsteel-Strengthened Longbow"
+  DisplayName: "i18n:items.spartanandfire.dragonsteel_ice_longbow.display_name"
   CustomModelData: 83656
   ItemModel: "DEFAULT"
   Lore:
@@ -2014,7 +2014,7 @@ dragonsteel_ice_longbow:
   RepairIngredients: "dragonsteel_ice_ingot"
 dragonsteel_ice_crossbow:
   Material: "CROSSBOW"
-  DisplayName: "&fIce Dragonsteel-Strengthened Crossbow"
+  DisplayName: "i18n:items.spartanandfire.dragonsteel_ice_crossbow.display_name"
   CustomModelData: 83655
   ItemModel: "DEFAULT"
   Lore:
@@ -2026,7 +2026,7 @@ dragonsteel_ice_crossbow:
   RepairIngredients: "dragonsteel_ice_ingot"
 dragonsteel_lightning_rapier:
   Material: "NETHERITE_SWORD"
-  DisplayName: "&fLightning Dragonsteel Rapier"
+  DisplayName: "i18n:items.spartanandfire.dragonsteel_lightning_rapier.display_name"
   CustomModelData: 83691
   ItemModel: "DEFAULT"
   Lore:
@@ -2042,7 +2042,7 @@ dragonsteel_lightning_rapier:
   RepairIngredients: "dragonsteel_lightning_ingot"
 dragonsteel_lightning_katana:
   Material: "NETHERITE_SWORD"
-  DisplayName: "&fLightning Dragonsteel Katana"
+  DisplayName: "i18n:items.spartanandfire.dragonsteel_lightning_katana.display_name"
   CustomModelData: 83692
   ItemModel: "DEFAULT"
   Lore:
@@ -2058,7 +2058,7 @@ dragonsteel_lightning_katana:
   RepairIngredients: "dragonsteel_lightning_ingot"
 dragonsteel_lightning_greatsword:
   Material: "NETHERITE_SWORD"
-  DisplayName: "&fLightning Dragonsteel Greatsword"
+  DisplayName: "i18n:items.spartanandfire.dragonsteel_lightning_greatsword.display_name"
   CustomModelData: 83693
   ItemModel: "DEFAULT"
   Lore:
@@ -2074,7 +2074,7 @@ dragonsteel_lightning_greatsword:
   RepairIngredients: "dragonsteel_lightning_ingot"
 dragonsteel_lightning_longsword:
   Material: "NETHERITE_SWORD"
-  DisplayName: "&fLightning Dragonsteel Longsword"
+  DisplayName: "i18n:items.spartanandfire.dragonsteel_lightning_longsword.display_name"
   CustomModelData: 83694
   ItemModel: "DEFAULT"
   Lore:
@@ -2090,7 +2090,7 @@ dragonsteel_lightning_longsword:
   RepairIngredients: "dragonsteel_lightning_ingot"
 dragonsteel_lightning_spear:
   Material: "NETHERITE_SWORD"
-  DisplayName: "&fLightning Dragonsteel Spear"
+  DisplayName: "i18n:items.spartanandfire.dragonsteel_lightning_spear.display_name"
   CustomModelData: 83695
   ItemModel: "DEFAULT"
   Lore:
@@ -2106,7 +2106,7 @@ dragonsteel_lightning_spear:
   RepairIngredients: "dragonsteel_lightning_ingot"
 dragonsteel_lightning_saber:
   Material: "NETHERITE_SWORD"
-  DisplayName: "&fLightning Dragonsteel Saber"
+  DisplayName: "i18n:items.spartanandfire.dragonsteel_lightning_saber.display_name"
   CustomModelData: 83696
   ItemModel: "DEFAULT"
   Lore:
@@ -2122,7 +2122,7 @@ dragonsteel_lightning_saber:
   RepairIngredients: "dragonsteel_lightning_ingot"
 dragonsteel_lightning_boomerang:
   Material: "NETHERITE_SWORD"
-  DisplayName: "&fLightning Dragonsteel Boomerang"
+  DisplayName: "i18n:items.spartanandfire.dragonsteel_lightning_boomerang.display_name"
   CustomModelData: 83697
   ItemModel: "DEFAULT"
   Lore:
@@ -2138,7 +2138,7 @@ dragonsteel_lightning_boomerang:
   RepairIngredients: "dragonsteel_lightning_ingot"
 dragonsteel_lightning_dagger:
   Material: "NETHERITE_SWORD"
-  DisplayName: "&fLightning Dragonsteel Dagger"
+  DisplayName: "i18n:items.spartanandfire.dragonsteel_lightning_dagger.display_name"
   CustomModelData: 83698
   ItemModel: "DEFAULT"
   Lore:
@@ -2154,7 +2154,7 @@ dragonsteel_lightning_dagger:
   RepairIngredients: "dragonsteel_lightning_ingot"
 dragonsteel_lightning_glaive:
   Material: "NETHERITE_SWORD"
-  DisplayName: "&fLightning Dragonsteel Glaive"
+  DisplayName: "i18n:items.spartanandfire.dragonsteel_lightning_glaive.display_name"
   CustomModelData: 83699
   ItemModel: "DEFAULT"
   Lore:
@@ -2170,7 +2170,7 @@ dragonsteel_lightning_glaive:
   RepairIngredients: "dragonsteel_lightning_ingot"
 dragonsteel_lightning_halberd:
   Material: "NETHERITE_SWORD"
-  DisplayName: "&fLightning Dragonsteel Halberd"
+  DisplayName: "i18n:items.spartanandfire.dragonsteel_lightning_halberd.display_name"
   CustomModelData: 83700
   ItemModel: "DEFAULT"
   Lore:
@@ -2186,7 +2186,7 @@ dragonsteel_lightning_halberd:
   RepairIngredients: "dragonsteel_lightning_ingot"
 dragonsteel_lightning_hammer:
   Material: "NETHERITE_SWORD"
-  DisplayName: "&fLightning Dragonsteel Hammer"
+  DisplayName: "i18n:items.spartanandfire.dragonsteel_lightning_hammer.display_name"
   CustomModelData: 83701
   ItemModel: "DEFAULT"
   Lore:
@@ -2202,7 +2202,7 @@ dragonsteel_lightning_hammer:
   RepairIngredients: "dragonsteel_lightning_ingot"
 dragonsteel_lightning_javelin:
   Material: "NETHERITE_SWORD"
-  DisplayName: "&fLightning Dragonsteel Javelin"
+  DisplayName: "i18n:items.spartanandfire.dragonsteel_lightning_javelin.display_name"
   CustomModelData: 83702
   ItemModel: "DEFAULT"
   Lore:
@@ -2218,7 +2218,7 @@ dragonsteel_lightning_javelin:
   RepairIngredients: "dragonsteel_lightning_ingot"
 dragonsteel_lightning_lance:
   Material: "NETHERITE_SWORD"
-  DisplayName: "&fLightning Dragonsteel Lance"
+  DisplayName: "i18n:items.spartanandfire.dragonsteel_lightning_lance.display_name"
   CustomModelData: 83703
   ItemModel: "DEFAULT"
   Lore:
@@ -2234,7 +2234,7 @@ dragonsteel_lightning_lance:
   RepairIngredients: "dragonsteel_lightning_ingot"
 dragonsteel_lightning_mace:
   Material: "NETHERITE_SWORD"
-  DisplayName: "&fLightning Dragonsteel Flanged Mace"
+  DisplayName: "i18n:items.spartanandfire.dragonsteel_lightning_mace.display_name"
   CustomModelData: 83704
   ItemModel: "DEFAULT"
   Lore:
@@ -2250,7 +2250,7 @@ dragonsteel_lightning_mace:
   RepairIngredients: "dragonsteel_lightning_ingot"
 dragonsteel_lightning_pike:
   Material: "NETHERITE_SWORD"
-  DisplayName: "&fLightning Dragonsteel Pike"
+  DisplayName: "i18n:items.spartanandfire.dragonsteel_lightning_pike.display_name"
   CustomModelData: 83705
   ItemModel: "DEFAULT"
   Lore:
@@ -2266,7 +2266,7 @@ dragonsteel_lightning_pike:
   RepairIngredients: "dragonsteel_lightning_ingot"
 dragonsteel_lightning_quarterstaff:
   Material: "NETHERITE_SWORD"
-  DisplayName: "&fLightning Dragonsteel Quarterstaff"
+  DisplayName: "i18n:items.spartanandfire.dragonsteel_lightning_quarterstaff.display_name"
   CustomModelData: 83706
   ItemModel: "DEFAULT"
   Lore:
@@ -2282,7 +2282,7 @@ dragonsteel_lightning_quarterstaff:
   RepairIngredients: "dragonsteel_lightning_ingot"
 dragonsteel_lightning_tomahawk:
   Material: "NETHERITE_SWORD"
-  DisplayName: "&fLightning Dragonsteel Tomahawk"
+  DisplayName: "i18n:items.spartanandfire.dragonsteel_lightning_tomahawk.display_name"
   CustomModelData: 83707
   ItemModel: "DEFAULT"
   Lore:
@@ -2298,7 +2298,7 @@ dragonsteel_lightning_tomahawk:
   RepairIngredients: "dragonsteel_lightning_ingot"
 dragonsteel_lightning_throwing_knife:
   Material: "NETHERITE_SWORD"
-  DisplayName: "&fLightning Dragonsteel Throwing Knife"
+  DisplayName: "i18n:items.spartanandfire.dragonsteel_lightning_throwing_knife.display_name"
   CustomModelData: 83708
   ItemModel: "DEFAULT"
   Lore:
@@ -2314,7 +2314,7 @@ dragonsteel_lightning_throwing_knife:
   RepairIngredients: "dragonsteel_lightning_ingot"
 dragonsteel_lightning_warhammer:
   Material: "NETHERITE_SWORD"
-  DisplayName: "&fLightning Dragonsteel Warhammer"
+  DisplayName: "i18n:items.spartanandfire.dragonsteel_lightning_warhammer.display_name"
   CustomModelData: 83709
   ItemModel: "DEFAULT"
   Lore:
@@ -2330,7 +2330,7 @@ dragonsteel_lightning_warhammer:
   RepairIngredients: "dragonsteel_lightning_ingot"
 dragonsteel_lightning_battleaxe:
   Material: "NETHERITE_AXE"
-  DisplayName: "&fLightning Dragonsteel Battleaxe"
+  DisplayName: "i18n:items.spartanandfire.dragonsteel_lightning_battleaxe.display_name"
   CustomModelData: 83655
   ItemModel: "DEFAULT"
   Lore:
@@ -2346,7 +2346,7 @@ dragonsteel_lightning_battleaxe:
   RepairIngredients: "dragonsteel_lightning_ingot"
 dragonsteel_lightning_longbow:
   Material: "BOW"
-  DisplayName: "&fLightning Dragonsteel-Strengthened Longbow"
+  DisplayName: "i18n:items.spartanandfire.dragonsteel_lightning_longbow.display_name"
   CustomModelData: 83657
   ItemModel: "DEFAULT"
   Lore:
@@ -2358,7 +2358,7 @@ dragonsteel_lightning_longbow:
   RepairIngredients: "dragonsteel_lightning_ingot"
 dragonsteel_lightning_crossbow:
   Material: "CROSSBOW"
-  DisplayName: "&fLightning Dragonsteel-Strengthened Crossbow"
+  DisplayName: "i18n:items.spartanandfire.dragonsteel_lightning_crossbow.display_name"
   CustomModelData: 83656
   ItemModel: "DEFAULT"
   Lore:
@@ -2370,11 +2370,11 @@ dragonsteel_lightning_crossbow:
   RepairIngredients: "dragonsteel_lightning_ingot"
 witherbone_handle:
   Material: "PRISMARINE_SHARD"
-  DisplayName: "&fWitherbone Handle"
+  DisplayName: "i18n:items.spartanandfire.witherbone_handle.display_name"
   CustomModelData: 83727
   ItemModel: "DEFAULT"
 witherbone_pole:
   Material: "PRISMARINE_SHARD"
-  DisplayName: "&fWitherbone Pole"
+  DisplayName: "i18n:items.spartanandfire.witherbone_pole.display_name"
   CustomModelData: 83728
   ItemModel: "DEFAULT"

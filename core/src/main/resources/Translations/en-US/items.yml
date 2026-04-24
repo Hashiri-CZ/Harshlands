@@ -962,3 +962,316 @@ items:
       display_name: "&fIce Dragonsteel Block"
     dragonsteel_lightning_block:
       display_name: "&fLightning Dragonsteel Block"
+  spartanandfire:
+    dragonbone_rapier:
+      display_name: "&fDragonbone Rapier"
+    dragonbone_katana:
+      display_name: "&fDragonbone Katana"
+    dragonbone_greatsword:
+      display_name: "&fDragonbone Greatsword"
+    dragonbone_longsword:
+      display_name: "&fDragonbone Longsword"
+    dragonbone_spear:
+      display_name: "&fDragonbone Spear"
+    dragonbone_saber:
+      display_name: "&fDragonbone Saber"
+    dragonbone_boomerang:
+      display_name: "&fDragonbone Boomerang"
+    dragonbone_dagger:
+      display_name: "&fDragonbone Dagger"
+    dragonbone_glaive:
+      display_name: "&fDragonbone Glaive"
+    dragonbone_halberd:
+      display_name: "&fDragonbone Halberd"
+    dragonbone_hammer:
+      display_name: "&fDragonbone Hammer"
+    dragonbone_javelin:
+      display_name: "&fDragonbone Javelin"
+    dragonbone_lance:
+      display_name: "&fDragonbone Lance"
+    dragonbone_mace:
+      display_name: "&fDragonbone Flanged Mace"
+    dragonbone_pike:
+      display_name: "&fDragonbone Pike"
+    dragonbone_quarterstaff:
+      display_name: "&fDragonbone Quarterstaff"
+    dragonbone_tomahawk:
+      display_name: "&fDragonbone Tomahawk"
+    dragonbone_throwing_knife:
+      display_name: "&fDragonbone Throwing Knife"
+    dragonbone_warhammer:
+      display_name: "&fDragonbone Warhammer"
+    dragonbone_battleaxe:
+      display_name: "&fDragonbone Battleaxe"
+    dragonbone_longbow:
+      display_name: "&fDragonbone-Strengthened Longbow"
+    dragonbone_crossbow:
+      display_name: "&fDragonbone-Strengthened Crossbow"
+    dragonbone_flamed_rapier:
+      display_name: "&fFlamed Dragonbone Rapier"
+    dragonbone_flamed_katana:
+      display_name: "&fFlamed Dragonbone Katana"
+    dragonbone_flamed_greatsword:
+      display_name: "&fFlamed Dragonbone Greatsword"
+    dragonbone_flamed_longsword:
+      display_name: "&fFlamed Dragonbone Longsword"
+    dragonbone_flamed_spear:
+      display_name: "&fFlamed Dragonbone Spear"
+    dragonbone_flamed_saber:
+      display_name: "&fFlamed Dragonbone Saber"
+    dragonbone_flamed_boomerang:
+      display_name: "&fFlamed Dragonbone Boomerang"
+    dragonbone_flamed_dagger:
+      display_name: "&fFlamed Dragonbone Dagger"
+    dragonbone_flamed_glaive:
+      display_name: "&fFlamed Dragonbone Glaive"
+    dragonbone_flamed_halberd:
+      display_name: "&fFlamed Dragonbone Halberd"
+    dragonbone_flamed_hammer:
+      display_name: "&fFlamed Dragonbone Hammer"
+    dragonbone_flamed_javelin:
+      display_name: "&fFlamed Dragonbone Javelin"
+    dragonbone_flamed_lance:
+      display_name: "&fFlamed Dragonbone Lance"
+    dragonbone_flamed_mace:
+      display_name: "&fFlamed Dragonbone Flanged Mace"
+    dragonbone_flamed_pike:
+      display_name: "&fFlamed Dragonbone Pike"
+    dragonbone_flamed_quarterstaff:
+      display_name: "&fFlamed Dragonbone Quarterstaff"
+    dragonbone_flamed_tomahawk:
+      display_name: "&fFlamed Dragonbone Tomahawk"
+    dragonbone_flamed_throwing_knife:
+      display_name: "&fFlamed Dragonbone Throwing Knife"
+    dragonbone_flamed_warhammer:
+      display_name: "&fFlamed Dragonbone Warhammer"
+    dragonbone_flamed_battleaxe:
+      display_name: "&fFlamed Dragonbone Battleaxe"
+    dragonbone_flamed_longbow:
+      display_name: "&fFlamed Dragonbone-Strengthened Longbow"
+    dragonbone_flamed_crossbow:
+      display_name: "&fFlamed Dragonbone-Strengthened Crossbow"
+    dragonbone_iced_rapier:
+      display_name: "&fIced Dragonbone Rapier"
+    dragonbone_iced_katana:
+      display_name: "&fIced Dragonbone Katana"
+    dragonbone_iced_greatsword:
+      display_name: "&fIced Dragonbone Greatsword"
+    dragonbone_iced_longsword:
+      display_name: "&fIced Dragonbone Longsword"
+    dragonbone_iced_spear:
+      display_name: "&fIced Dragonbone Spear"
+    dragonbone_iced_saber:
+      display_name: "&fIced Dragonbone Saber"
+    dragonbone_iced_boomerang:
+      display_name: "&fIced Dragonbone Boomerang"
+    dragonbone_iced_dagger:
+      display_name: "&fIced Dragonbone Dagger"
+    dragonbone_iced_glaive:
+      display_name: "&fIced Dragonbone Glaive"
+    dragonbone_iced_halberd:
+      display_name: "&fIced Dragonbone Halberd"
+    dragonbone_iced_hammer:
+      display_name: "&fIced Dragonbone Hammer"
+    dragonbone_iced_javelin:
+      display_name: "&fIced Dragonbone Javelin"
+    dragonbone_iced_lance:
+      display_name: "&fIced Dragonbone Lance"
+    dragonbone_iced_mace:
+      display_name: "&fIced Dragonbone Flanged Mace"
+    dragonbone_iced_pike:
+      display_name: "&fIced Dragonbone Pike"
+    dragonbone_iced_quarterstaff:
+      display_name: "&fIced Dragonbone Quarterstaff"
+    dragonbone_iced_tomahawk:
+      display_name: "&fIced Dragonbone Tomahawk"
+    dragonbone_iced_throwing_knife:
+      display_name: "&fIced Dragonbone Throwing Knife"
+    dragonbone_iced_warhammer:
+      display_name: "&fIced Dragonbone Warhammer"
+    dragonbone_iced_battleaxe:
+      display_name: "&fIced Dragonbone Battleaxe"
+    dragonbone_iced_longbow:
+      display_name: "&fIced Dragonbone-Strengthened Longbow"
+    dragonbone_iced_crossbow:
+      display_name: "&fIced Dragonbone-Strengthened Crossbow"
+    dragonbone_lightning_rapier:
+      display_name: "&fLightning Dragonbone Rapier"
+    dragonbone_lightning_katana:
+      display_name: "&fLightning Dragonbone Katana"
+    dragonbone_lightning_greatsword:
+      display_name: "&fLightning Dragonbone Greatsword"
+    dragonbone_lightning_longsword:
+      display_name: "&fLightning Dragonbone Longsword"
+    dragonbone_lightning_spear:
+      display_name: "&fLightning Dragonbone Spear"
+    dragonbone_lightning_saber:
+      display_name: "&fLightning Dragonbone Saber"
+    dragonbone_lightning_boomerang:
+      display_name: "&fLightning Dragonbone Boomerang"
+    dragonbone_lightning_dagger:
+      display_name: "&fLightning Dragonbone Dagger"
+    dragonbone_lightning_glaive:
+      display_name: "&fLightning Dragonbone Glaive"
+    dragonbone_lightning_halberd:
+      display_name: "&fLightning Dragonbone Halberd"
+    dragonbone_lightning_hammer:
+      display_name: "&fLightning Dragonbone Hammer"
+    dragonbone_lightning_javelin:
+      display_name: "&fLightning Dragonbone Javelin"
+    dragonbone_lightning_lance:
+      display_name: "&fLightning Dragonbone Lance"
+    dragonbone_lightning_mace:
+      display_name: "&fLightning Dragonbone Flanged Mace"
+    dragonbone_lightning_pike:
+      display_name: "&fLightning Dragonbone Pike"
+    dragonbone_lightning_quarterstaff:
+      display_name: "&fLightning Dragonbone Quarterstaff"
+    dragonbone_lightning_tomahawk:
+      display_name: "&fLightning Dragonbone Tomahawk"
+    dragonbone_lightning_throwing_knife:
+      display_name: "&fLightning Dragonbone Throwing Knife"
+    dragonbone_lightning_warhammer:
+      display_name: "&fLightning Dragonbone Warhammer"
+    dragonbone_lightning_battleaxe:
+      display_name: "&fLightning Dragonbone Battleaxe"
+    dragonbone_lightning_longbow:
+      display_name: "&fLightning Dragonbone-Strengthened Longbow"
+    dragonbone_lightning_crossbow:
+      display_name: "&fLightning Dragonbone-Strengthened Crossbow"
+    dragonsteel_fire_rapier:
+      display_name: "&fFire Dragonsteel Rapier"
+    dragonsteel_fire_katana:
+      display_name: "&fFire Dragonsteel Katana"
+    dragonsteel_fire_greatsword:
+      display_name: "&fFire Dragonsteel Greatsword"
+    dragonsteel_fire_longsword:
+      display_name: "&fFire Dragonsteel Longsword"
+    dragonsteel_fire_spear:
+      display_name: "&fFire Dragonsteel Spear"
+    dragonsteel_fire_saber:
+      display_name: "&fFire Dragonsteel Saber"
+    dragonsteel_fire_boomerang:
+      display_name: "&fFire Dragonsteel Boomerang"
+    dragonsteel_fire_dagger:
+      display_name: "&fFire Dragonsteel Dagger"
+    dragonsteel_fire_glaive:
+      display_name: "&fFire Dragonsteel Glaive"
+    dragonsteel_fire_halberd:
+      display_name: "&fFire Dragonsteel Halberd"
+    dragonsteel_fire_hammer:
+      display_name: "&fFire Dragonsteel Hammer"
+    dragonsteel_fire_javelin:
+      display_name: "&fFire Dragonsteel Javelin"
+    dragonsteel_fire_lance:
+      display_name: "&fFire Dragonsteel Lance"
+    dragonsteel_fire_mace:
+      display_name: "&fFire Dragonsteel Flanged Mace"
+    dragonsteel_fire_pike:
+      display_name: "&fFire Dragonsteel Pike"
+    dragonsteel_fire_quarterstaff:
+      display_name: "&fFire Dragonsteel Quarterstaff"
+    dragonsteel_fire_tomahawk:
+      display_name: "&fFire Dragonsteel Tomahawk"
+    dragonsteel_fire_throwing_knife:
+      display_name: "&fFire Dragonsteel Throwing Knife"
+    dragonsteel_fire_warhammer:
+      display_name: "&fFire Dragonsteel Warhammer"
+    dragonsteel_fire_battleaxe:
+      display_name: "&fFire Dragonsteel Battleaxe"
+    dragonsteel_fire_longbow:
+      display_name: "&fFire Dragonsteel-Strengthened Longbow"
+    dragonsteel_fire_crossbow:
+      display_name: "&fFire Dragonsteel-Strengthened Crossbow"
+    dragonsteel_ice_rapier:
+      display_name: "&fIce Dragonsteel Rapier"
+    dragonsteel_ice_katana:
+      display_name: "&fIce Dragonsteel Katana"
+    dragonsteel_ice_greatsword:
+      display_name: "&fIce Dragonsteel Greatsword"
+    dragonsteel_ice_longsword:
+      display_name: "&fIce Dragonsteel Longsword"
+    dragonsteel_ice_spear:
+      display_name: "&fIce Dragonsteel Spear"
+    dragonsteel_ice_saber:
+      display_name: "&fIce Dragonsteel Saber"
+    dragonsteel_ice_boomerang:
+      display_name: "&fIce Dragonsteel Boomerang"
+    dragonsteel_ice_dagger:
+      display_name: "&fIce Dragonsteel Dagger"
+    dragonsteel_ice_glaive:
+      display_name: "&fIce Dragonsteel Glaive"
+    dragonsteel_ice_halberd:
+      display_name: "&fIce Dragonsteel Halberd"
+    dragonsteel_ice_hammer:
+      display_name: "&fIce Dragonsteel Hammer"
+    dragonsteel_ice_javelin:
+      display_name: "&fIce Dragonsteel Javelin"
+    dragonsteel_ice_lance:
+      display_name: "&fIce Dragonsteel Lance"
+    dragonsteel_ice_mace:
+      display_name: "&fIce Dragonsteel Flanged Mace"
+    dragonsteel_ice_pike:
+      display_name: "&fIce Dragonsteel Pike"
+    dragonsteel_ice_quarterstaff:
+      display_name: "&fIce Dragonsteel Quarterstaff"
+    dragonsteel_ice_tomahawk:
+      display_name: "&fIce Dragonsteel Tomahawk"
+    dragonsteel_ice_throwing_knife:
+      display_name: "&fIce Dragonsteel Throwing Knife"
+    dragonsteel_ice_warhammer:
+      display_name: "&fIce Dragonsteel Warhammer"
+    dragonsteel_ice_battleaxe:
+      display_name: "&fIce Dragonsteel Battleaxe"
+    dragonsteel_ice_longbow:
+      display_name: "&fIce Dragonsteel-Strengthened Longbow"
+    dragonsteel_ice_crossbow:
+      display_name: "&fIce Dragonsteel-Strengthened Crossbow"
+    dragonsteel_lightning_rapier:
+      display_name: "&fLightning Dragonsteel Rapier"
+    dragonsteel_lightning_katana:
+      display_name: "&fLightning Dragonsteel Katana"
+    dragonsteel_lightning_greatsword:
+      display_name: "&fLightning Dragonsteel Greatsword"
+    dragonsteel_lightning_longsword:
+      display_name: "&fLightning Dragonsteel Longsword"
+    dragonsteel_lightning_spear:
+      display_name: "&fLightning Dragonsteel Spear"
+    dragonsteel_lightning_saber:
+      display_name: "&fLightning Dragonsteel Saber"
+    dragonsteel_lightning_boomerang:
+      display_name: "&fLightning Dragonsteel Boomerang"
+    dragonsteel_lightning_dagger:
+      display_name: "&fLightning Dragonsteel Dagger"
+    dragonsteel_lightning_glaive:
+      display_name: "&fLightning Dragonsteel Glaive"
+    dragonsteel_lightning_halberd:
+      display_name: "&fLightning Dragonsteel Halberd"
+    dragonsteel_lightning_hammer:
+      display_name: "&fLightning Dragonsteel Hammer"
+    dragonsteel_lightning_javelin:
+      display_name: "&fLightning Dragonsteel Javelin"
+    dragonsteel_lightning_lance:
+      display_name: "&fLightning Dragonsteel Lance"
+    dragonsteel_lightning_mace:
+      display_name: "&fLightning Dragonsteel Flanged Mace"
+    dragonsteel_lightning_pike:
+      display_name: "&fLightning Dragonsteel Pike"
+    dragonsteel_lightning_quarterstaff:
+      display_name: "&fLightning Dragonsteel Quarterstaff"
+    dragonsteel_lightning_tomahawk:
+      display_name: "&fLightning Dragonsteel Tomahawk"
+    dragonsteel_lightning_throwing_knife:
+      display_name: "&fLightning Dragonsteel Throwing Knife"
+    dragonsteel_lightning_warhammer:
+      display_name: "&fLightning Dragonsteel Warhammer"
+    dragonsteel_lightning_battleaxe:
+      display_name: "&fLightning Dragonsteel Battleaxe"
+    dragonsteel_lightning_longbow:
+      display_name: "&fLightning Dragonsteel-Strengthened Longbow"
+    dragonsteel_lightning_crossbow:
+      display_name: "&fLightning Dragonsteel-Strengthened Crossbow"
+    witherbone_handle:
+      display_name: "&fWitherbone Handle"
+    witherbone_pole:
+      display_name: "&fWitherbone Pole"
