@@ -71,11 +71,21 @@ public final class NutritionPreviewLayout {
         return m;
     }
 
-    /** Sum of per-character advance widths in pixels. Unknown characters contribute 6. */
+    /**
+     * Sum of per-character advance widths in pixels. ASCII glyphs use the per-character
+     * map above. Codepoints above {@code \u00FF} are assumed to be rendered by Minecraft's
+     * unifont fallback and use a fixed 12-px advance (8-px glyph + 4-px trailing space).
+     * Unmapped 8-bit codepoints (Latin-1 Supplement etc.) keep the 6-px ASCII default.
+     */
     public static int measureTextAdvance(String text) {
         int total = 0;
         for (int i = 0; i < text.length(); i++) {
-            total += ADVANCE.getOrDefault(text.charAt(i), 6);
+            char c = text.charAt(i);
+            if (c > '\u00FF') {
+                total += 12;
+            } else {
+                total += ADVANCE.getOrDefault(c, 6);
+            }
         }
         return total;
     }

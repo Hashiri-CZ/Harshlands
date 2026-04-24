@@ -187,6 +187,39 @@ class NutritionPreviewLayoutTest {
     }
 
     @Nested
+    class AdvanceWidthUnicode {
+        @Test void cjk_char_is_twelve_pixels() {
+            // "\u86CB" = "蛋" - expect unifont width 12
+            assertEquals(12, NutritionPreviewLayout.measureTextAdvance("\u86CB"));
+        }
+
+        @Test void cjk_string_sums_each_glyph() {
+            // "\u86CB\u767D\u8D28" = "蛋白质" - 3 × 12 = 36
+            assertEquals(36, NutritionPreviewLayout.measureTextAdvance("\u86CB\u767D\u8D28"));
+        }
+
+        @Test void cyrillic_char_is_twelve_pixels() {
+            // "\u0411" = "Б" - above U+00FF so unifont width applies
+            assertEquals(12, NutritionPreviewLayout.measureTextAdvance("\u0411"));
+        }
+
+        @Test void ascii_digit_stays_six_pixels() {
+            // regression guard: existing ASCII widths not broken
+            assertEquals(6, NutritionPreviewLayout.measureTextAdvance("5"));
+        }
+
+        @Test void latin_supplement_falls_back_to_default() {
+            // "\u00E4" = "ä" - Latin-1 Supplement, default 6 px until explicitly mapped
+            assertEquals(6, NutritionPreviewLayout.measureTextAdvance("\u00E4"));
+        }
+
+        @Test void mixed_ascii_and_cjk_sums_correctly() {
+            // "\u86CB 50" = 12 + 4 + 6 + 6 = 28
+            assertEquals(28, NutritionPreviewLayout.measureTextAdvance("\u86CB 50"));
+        }
+    }
+
+    @Nested
     class RowBuilder {
         @Test void row_has_all_three_labels_and_values() {
             NutritionPreviewLayout.Row row = NutritionPreviewLayout.buildRow(
