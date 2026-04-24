@@ -69,7 +69,6 @@ public class DataModule implements HLDataModule {
                 Map<String, Map<String, Object>> serializedItems = GSON.fromJson(jsonString, newType);
 
                 if (serializedItems == null || serializedItems.isEmpty()) {
-                    LOGGER.warning("[Baubles] JSON was parsed but empty for " + id + ". Filling defaults.");
                     baubleBag.fillDefaultItems();
                     return;
                 }
