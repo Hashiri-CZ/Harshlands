@@ -1372,6 +1372,21 @@ public class Utils {
         }
     }
 
+    /**
+     * Thin wrapper around {@link InternalsProvider#applyItemModel} that
+     * guards against a null internals instance during very early startup.
+     */
+    public static void applyItemModel(
+            @Nonnull ItemMeta meta,
+            int customModelData,
+            @Nullable NamespacedKey itemModelKey,
+            @Nullable NamespacedKey equippableModel,
+            @Nullable EquipmentSlot equippableSlot) {
+        if (internals != null) {
+            internals.applyItemModel(meta, customModelData, itemModelKey, equippableModel, equippableSlot);
+        }
+    }
+
     public static boolean isBestTool(@Nonnull Block block, @Nullable ItemStack tool) {
         Tool bestTool = getBestTool(block.getType());
 

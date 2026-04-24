@@ -78,6 +78,28 @@ public abstract class InternalsProvider {
 
     public abstract void setEquippableComponentModel(ItemMeta meta, NamespacedKey key, EquipmentSlot slot);
 
+    /**
+     * Version-specific dispatcher that applies custom model data, item_model,
+     * and equippable-component model in a single call. Each implementation is
+     * responsible for the version-appropriate NMS path for each component.
+     *
+     * <p>Called from the item construction path at plugin startup and when
+     * items are requested on demand (e.g. via /hl give). All per-version
+     * differences in item rendering components live behind this method.
+     *
+     * @param meta                   target item meta (mutated in place)
+     * @param customModelData        legacy CustomModelData value; applied only if &gt; 0
+     * @param itemModelKey           namespaced key for the item_model component; applied only if non-null
+     * @param equippableModel        namespaced key for the equippable component model; applied only if non-null
+     * @param equippableSlot         slot to bind the equippable model to; required when equippableModel is non-null, ignored otherwise
+     */
+    public abstract void applyItemModel(
+            @javax.annotation.Nonnull ItemMeta meta,
+            int customModelData,
+            @javax.annotation.Nullable NamespacedKey itemModelKey,
+            @javax.annotation.Nullable NamespacedKey equippableModel,
+            @javax.annotation.Nullable EquipmentSlot equippableSlot);
+
     public abstract boolean assignInvestigateNoiseGoal(org.bukkit.entity.Mob mob, Location target);
 
     /**

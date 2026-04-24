@@ -2,6 +2,7 @@ package cz.hashiri.harshlands.foodexpansion.items;
 
 import cz.hashiri.harshlands.foodexpansion.NutrientProfile;
 import cz.hashiri.harshlands.locale.Messages;
+import cz.hashiri.harshlands.utils.HLItem;
 import cz.hashiri.harshlands.utils.Utils;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -118,12 +119,12 @@ public class CustomFoodRegistry {
             meta.setLore(lore);
         }
 
-        if (def.getCustomModelData() > 0) {
-            Utils.setCustomModelData(meta, def.getCustomModelData());
-        }
-
-        // Set ItemModel for 1.21+ resource pack lookup
-        Utils.setItemModel(meta, new NamespacedKey("harshlands", "foodexpansion/" + def.getId()));
+        Utils.applyItemModel(
+                meta,
+                def.getCustomModelData(),
+                new NamespacedKey(HLItem.MODEL_NAMESPACE_HARSHLANDS, "foodexpansion/" + def.getId()),
+                null,
+                null);
 
         stack.setItemMeta(meta);
 

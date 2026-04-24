@@ -211,6 +211,28 @@ public class v1_21_R11 extends InternalsProvider {
     }
 
     @Override
+    public void applyItemModel(
+            @javax.annotation.Nonnull ItemMeta meta,
+            int customModelData,
+            @javax.annotation.Nullable NamespacedKey itemModelKey,
+            @javax.annotation.Nullable NamespacedKey equippableModel,
+            @javax.annotation.Nullable EquipmentSlot equippableSlot) {
+        if (customModelData > 0) {
+            meta.setCustomModelData(customModelData);
+            org.bukkit.inventory.meta.components.CustomModelDataComponent component =
+                    meta.getCustomModelDataComponent();
+            component.setFloats(java.util.List.of((float) customModelData));
+            meta.setCustomModelDataComponent(component);
+        }
+        if (itemModelKey != null) {
+            setItemModel(meta, itemModelKey);
+        }
+        if (equippableModel != null && equippableSlot != null) {
+            setEquippableComponentModel(meta, equippableModel, equippableSlot);
+        }
+    }
+
+    @Override
     public boolean assignInvestigateNoiseGoal(org.bukkit.entity.Mob mob, org.bukkit.Location target) {
         try {
             net.minecraft.world.entity.Mob nmsMob = ((org.bukkit.craftbukkit.v1_21_R7.entity.CraftMob) mob).getHandle();

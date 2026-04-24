@@ -221,17 +221,12 @@ public class HLItem extends ItemStack {
         if (!newLore.isEmpty()) {
             meta.setLore(newLore);
         }
-        if (customModelData > 0) {
-            Utils.setCustomModelData(meta, customModelData);
-        }
-
-        if (itemModelKey != null) {
-            Utils.setItemModel(meta, itemModelKey);
-        }
-
-        if (ecmKey != null) {
-            Utils.setEquippableComponentModel(meta, ecmKey, Utils.getEquipmentSlotFromMaterial(material));
-        }
+        Utils.applyItemModel(
+                meta,
+                customModelData,
+                itemModelKey,
+                ecmKey,
+                Utils.getEquipmentSlotFromMaterial(material));
 
         this.setItemMeta(meta);
 
