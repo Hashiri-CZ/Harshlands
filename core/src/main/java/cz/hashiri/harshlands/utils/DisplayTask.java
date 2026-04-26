@@ -166,19 +166,18 @@ public class DisplayTask extends BukkitRunnable implements HLTask {
 
                 boolean isUnderwater = player.getRemainingAir() < 300 || player.getEyeLocation().getBlock().getType() == Material.WATER;
 
-                if (tempManager.isTempEnabled(player) && thirstManager.isThirstEnabled(player)) {
+                boolean tempEnabled = tempManager.isTempEnabled(player);
+                boolean thirstEnabled = thirstManager.isThirstEnabled(player);
+                if (tempEnabled && thirstEnabled) {
                     actionbarText += characterValues.getTemperatureThirstActionbar(player, tempInt, thirstInt, isUnderwater, parasitesActive);
                 }
-                else {
-                    // only temperature is enabled
-                    if (tempManager.isTempEnabled(player)) {
-                        actionbarText += characterValues.getTemperatureOnlyActionbar(player, tempInt);
-                    }
-                    // only thirst is enabled
-                    else {
-                        actionbarText += characterValues.getThirstOnlyActionbar(player, thirstInt, isUnderwater, parasitesActive);
-                    }
+                else if (tempEnabled) {
+                    actionbarText += characterValues.getTemperatureOnlyActionbar(player, tempInt);
                 }
+                else if (thirstEnabled) {
+                    actionbarText += characterValues.getThirstOnlyActionbar(player, thirstInt, isUnderwater, parasitesActive);
+                }
+                // else: both features disabled in this world — render nothing
 
                 if (temperature < 6) {
                     if (hypothermiaScreenEnabled && !rs.disableHypothermiaTinting()) {
