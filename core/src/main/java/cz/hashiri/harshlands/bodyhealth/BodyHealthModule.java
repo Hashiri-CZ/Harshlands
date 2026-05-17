@@ -55,7 +55,16 @@ public final class BodyHealthModule extends HLModule implements HudImpl.State {
 
         Utils.logModuleInit("bodyhealth", NAME);
 
-        if (!Bukkit.getPluginManager().isPluginEnabled("PlaceholderAPI")) {
+        // We deliberately check getPlugin() != null instead of isPluginEnabled().
+        // Harshlands' plugin.yml sets load: STARTUP, so we initialize before the
+        // POSTWORLD plugins (including PlaceholderAPI) have run their onEnable.
+        // isPluginEnabled would always return false at this point and we would
+        // bail out without ever registering HarshlandsAPI - so consumers like
+        // BodyHealth would silently see inst() == null and never call Hud.add.
+        // The render task is already defensive about unresolved placeholders
+        // (returns FULL), and by the time the Bukkit scheduler starts ticking
+        // PAPI's onEnable has long since run.
+        if (Bukkit.getPluginManager().getPlugin("PlaceholderAPI") == null) {
             warnPapiMissing();
             return;
         }
@@ -179,7 +188,11 @@ public final class BodyHealthModule extends HLModule implements HudImpl.State {
     }
 
     private void warnPapiMissing() {
-        if (!Bukkit.getPluginManager().isPluginEnabled("BodyHealth")) {
+        // Match the load-phase asymmetry in initialize() - check loaded, not enabled.
+        // During STARTUP, BodyHealth (POSTWORLD) isn't enabled yet either, so a
+        // strict isPluginEnabled gate here would suppress the warning even when
+        // BodyHealth IS installed.
+        if (Bukkit.getPluginManager().getPlugin("BodyHealth") == null) {
             // BodyHealth itself isn't installed — nothing to warn about. Stay silent.
             return;
         }
