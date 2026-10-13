@@ -19,6 +19,7 @@
         <module>spigot_impl_1_21_R11</module>
         <module>spigot_impl_26_1_R1</module>
         <module>spigot_impl_26_2_R1</module>
+        <module>spigot_impl_26_3_R1</module>
         <module>dist</module>
     </modules>
 
@@ -36,7 +37,7 @@
                 <!--
                   Shared JDK toolchain definition for the Minecraft 26.x impl modules.
 
-                  WHY: spigot_impl_26_1_R1 and spigot_impl_26_2_R1 compile with
+                  WHY: the spigot_impl_26_* modules (26_1_R1, 26_2_R1, 26_3_R1) compile with
                   `<release>25</release>`. javac can only emit release-25 bytecode when
                   javac itself runs on JDK 25 or newer. The rest of the reactor
                   (harshlands-api, core, spigot_impl_1_21_R11, dist) targets Java 21 and
