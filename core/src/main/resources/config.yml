@@ -1,6 +1,6 @@
 ###########################################################################
 #                                                                         #
-#   Harshlands   MC 1.21.11 / 26.1.2 / 26.2                             #
+#   Harshlands   MC 1.21.11 / 26.1.2 / 26.2 / 26.3                      #
 #   Made by: Hashiri_ | Original Author of RS: Val_Mobile                #
 #                                                                         #
 ###########################################################################
@@ -37,7 +37,7 @@ DeveloperBuildVersion:
 # Resource pack is disabled by default to allow for integration of it into
 # your own custom server pack if needed
 # NOTE: You must restart the server after enabling or disabling any feature
-# NOTE: Supports Minecraft 1.21.11, 26.1.2 and 26.2. Multiple resource pack URLs are supported (main + optional DynamicSurroundings pack).
+# NOTE: Supports Minecraft 1.21.11, 26.1.2, 26.2 and 26.3. Multiple resource pack URLs are supported (main + optional DynamicSurroundings pack).
 ResourcePack:
   Enabled: true
   Url: "https://www.dropbox.com/scl/fi/wahuvtmvaiwxbfio407bx/Harshlands_RP_1.3.3.zip?rlkey=bm0j11dkv8vre85n4yp8mflvr&st=7nh9mruh&dl=1"

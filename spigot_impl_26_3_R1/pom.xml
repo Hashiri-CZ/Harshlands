@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>harshlands-spigot_impl_26_3_R1</artifactId>
+    <packaging>jar</packaging>
+
+    <parent>
+        <groupId>cz.hashiri.harshlands</groupId>
+        <artifactId>harshlands-parent</artifactId>
+        <version>1.3.3</version>
+    </parent>
+
+    <dependencies>
+        <!--
+            Installed by running BuildTools (#201) for rev 26.3 with the remapped option
+            (Spigot build 4663) - see README.md for the exact command. Same "<exact MC version>-R0.<n>-SNAPSHOT" shape as the
+            sibling modules (26.2-R0.1-SNAPSHOT, 26.1.2-R0.1-SNAPSHOT, 1.21.11-R0.2-SNAPSHOT).
+
+            Like MC 26.1 and 26.2 — and unlike 1.21.11 — the 26.3 artifact ships
+            Mojang-mapped with no remapped-mojang classifier, so this module deliberately
+            carries NO <classifier> and NO specialsource-maven-plugin remap executions.
+
+            Spigot jars are not published to any public Maven repository — every
+            developer must install this locally with BuildTools (see README.md).
+        -->
+        <dependency>
+            <groupId>org.spigotmc</groupId>
+            <artifactId>spigot</artifactId>
+            <version>26.3-R0.1-SNAPSHOT</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>cz.hashiri.harshlands</groupId>
+            <artifactId>harshlands-core</artifactId>
+            <version>${project.parent.version}</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.14.1</version>
+                <configuration>
+                    <!--
+                        Mirrors spigot_impl_26_2_R1. MC 26.3 still requires Java 25. Do NOT
+                        lower it to make the module build on an older JDK — that silently
+                        changes the bytecode level that ships to users. Raising it is fine
+                        if a future 26.x server requires a newer Java.
+                    -->
+                    <release>25</release>
+                </configuration>
+            </plugin>
+            <!--
+                Forks compilation onto a JDK 25+ toolchain. Version, executions and the
+                auto-discovery settings are defined once in the parent pom's
+                <pluginManagement> — see the comment there for the rationale and for what
+                to do when the build reports that no matching JDK toolchain was found.
+            -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-toolchains-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>

@@ -79,6 +79,7 @@ public class NtpModule extends HLModule {
             plugin.enqueueRecipeRemoval(new NamespacedKey(NamespacedKey.MINECRAFT, "cherry_planks"));
             plugin.enqueueRecipeRemoval(new NamespacedKey(NamespacedKey.MINECRAFT, "bamboo_planks"));
             plugin.enqueueRecipeRemoval(new NamespacedKey(NamespacedKey.MINECRAFT, "pale_oak_planks"));
+            plugin.enqueueRecipeRemoval(new NamespacedKey(NamespacedKey.MINECRAFT, "poplar_planks")); // MC 26.3+
         }
 
         if (config.getBoolean("Lumberjack.RemoveStickRecipes")) {

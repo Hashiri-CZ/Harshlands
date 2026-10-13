@@ -59,7 +59,7 @@ All of this is modular — every system below can be turned off, tuned, or left 
 
 | Requirement | Version |
 |-------------|---------|
-| Minecraft   | `1.21.11`, `26.1.2`, `26.2` |
+| Minecraft   | `1.21.11`, `26.1.2`, `26.2`, `26.3` |
 | Server      | Spigot, Paper, or Purpur |
 | Java        | 21+ |
 
@@ -70,7 +70,7 @@ All of this is modular — every system below can be turned off, tuned, or left 
 5. `/hl reload`.
 
 > [!NOTE]
-> One jar covers all three of `1.21.11`, `26.1.2` and `26.2`. The plugin picks the right implementation at startup.
+> One jar covers all four of `1.21.11`, `26.1.2`, `26.2` and `26.3`. The plugin picks the right implementation at startup.
 
 ---
 
@@ -114,7 +114,7 @@ Non-ASCII scripts (Chinese, Cyrillic, Greek, Arabic, etc.) render through Minecr
 
 ## 🗺️ Roadmap
 
-- [x] Multi-version support (1.21.11, 26.1.2 and 26.2)
+- [x] Multi-version support (1.21.11, 26.1.2, 26.2 and 26.3)
 - [x] Food expansion with macronutrients
 - [x] First Aid body-parts damage
 - [x] Comfort system
@@ -149,6 +149,7 @@ curl -sSLO https://hub.spigotmc.org/jenkins/job/BuildTools/lastSuccessfulBuild/a
 java -jar BuildTools.jar --rev 1.21.11 --remapped
 java -jar BuildTools.jar --rev 26.1.2  --remapped
 java -jar BuildTools.jar --rev 26.2    --remapped
+java -jar BuildTools.jar --rev 26.3    --remapped
 ```
 
 Check what landed in your local repo — the exact version labels are what the module POMs must
@@ -161,8 +162,8 @@ ls ~/.m2/repository/org/spigotmc/minecraft-server/
 
 You also need a **JDK 25 or newer** installed alongside your normal JDK 21: `core`,
 `harshlands-api`, `spigot_impl_1_21_R11` and `dist` compile at release 21, while
-`spigot_impl_26_1_R1` and `spigot_impl_26_2_R1` compile at release 25. Maven forks those two
-modules onto a JDK 25+ toolchain automatically via `maven-toolchains-plugin`'s JDK
+`spigot_impl_26_1_R1`, `spigot_impl_26_2_R1` and `spigot_impl_26_3_R1` compile at release 25.
+Maven forks those modules onto a JDK 25+ toolchain automatically via `maven-toolchains-plugin`'s JDK
 auto-discovery — no `~/.m2/toolchains.xml` entry and no hardcoded path is needed. To see which
 JDKs discovery finds:
 
@@ -177,7 +178,7 @@ mvn clean package -pl core,dist -am
 # -> target/harshlands-<version>.jar
 ```
 
-All three implementation modules are built by default, so the build needs all three Spigot
+All four implementation modules are built by default, so the build needs all four Spigot
 artifacts above in your local `~/.m2`. If one is missing, Maven fails with
 `Could not find artifact org.spigotmc:spigot:jar:<version>` — run the corresponding
 BuildTools command.

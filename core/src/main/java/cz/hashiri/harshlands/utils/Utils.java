@@ -1155,8 +1155,23 @@ public class Utils {
             case "BAMBOO_BLOCK", "STRIPPED_BAMBOO_BLOCK" -> Material.valueOf("BAMBOO_PLANKS");
             case "CHERRY_WOOD", "CHERRY_LOG", "STRIPPED_CHERRY_WOOD", "STRIPPED_CHERRY_LOG" -> Material.valueOf("CHERRY_PLANKS");
             case "PALE_OAK_WOOD", "PALE_OAK_LOG", "STRIPPED_PALE_OAK_WOOD", "STRIPPED_PALE_OAK_LOG" -> Material.valueOf("PALE_OAK_PLANKS");
-            default -> null;
+            case "POPLAR_WOOD", "POPLAR_LOG", "STRIPPED_POPLAR_WOOD", "STRIPPED_POPLAR_LOG" -> Material.valueOf("POPLAR_PLANKS");
+            // Wood types added by a Minecraft release newer than this switch are still in
+            // Tag.LOGS, so callers reach here with them — derive the plank by name.
+            default -> {
+                String plankName = derivePlankName(wood.toString());
+                yield plankName == null ? null : Material.getMaterial(plankName);
+            }
         };
+    }
+
+    private static final Pattern LOG_NAME_PATTERN = Pattern.compile("(?:STRIPPED_)?(.+)_(?:LOG|WOOD|STEM|HYPHAE)");
+
+    /** {@code [STRIPPED_]<type>_(LOG|WOOD|STEM|HYPHAE)} → {@code <type>_PLANKS}; anything else → null. */
+    @Nullable
+    static String derivePlankName(@Nonnull String woodName) {
+        Matcher m = LOG_NAME_PATTERN.matcher(woodName);
+        return m.matches() ? m.group(1) + "_PLANKS" : null;
     }
 
     // checks if a material matches a string that represents a string or tag

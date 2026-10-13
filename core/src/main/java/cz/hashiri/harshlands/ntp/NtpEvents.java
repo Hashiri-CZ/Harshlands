@@ -153,8 +153,9 @@ public class NtpEvents extends ModuleEvents implements Listener {
                     }
                     Location blockLoc = block.getLocation();
                     Location pLoc = player.getLocation();
-                    if (Utils.getBlockFace(player) == BlockFace.UP && pLoc.distanceSquared(blockLoc) < 2.25D && Utils.roll(config.getDouble("Lumberjack.PlankDrops.Chance"))) {
-                        ItemStack drop = new ItemStack(Utils.getRespectivePlank(blockMat));
+                    Material plank = Utils.getRespectivePlank(blockMat);
+                    if (plank != null && Utils.getBlockFace(player) == BlockFace.UP && pLoc.distanceSquared(blockLoc) < 2.25D && Utils.roll(config.getDouble("Lumberjack.PlankDrops.Chance"))) {
+                        ItemStack drop = new ItemStack(plank);
                         Utils.dropFortune(config.getConfigurationSection("Lumberjack.PlankDrops"), drop, event.getItem(), block.getLocation());
                         block.setType(Material.AIR);
                         event.setCancelled(true);
@@ -395,7 +396,7 @@ public class NtpEvents extends ModuleEvents implements Listener {
 
                 if (key.getNamespace().equals(NamespacedKey.MINECRAFT)) {
                     switch (key.getKey()) {
-                        case "acacia_planks", "birch_planks", "crimson_planks", "dark_oak_planks", "jungle_planks", "mangrove_planks", "oak_planks", "spruce_planks", "warped_planks", "cherry_planks", "bamboo_planks", "pale_oak_planks" -> {
+                        case "acacia_planks", "birch_planks", "crimson_planks", "dark_oak_planks", "jungle_planks", "mangrove_planks", "oak_planks", "spruce_planks", "warped_planks", "cherry_planks", "bamboo_planks", "pale_oak_planks", "poplar_planks" -> {
                             if (config.getBoolean("Lumberjack.DisablePlankRecipes"))
                                 event.getInventory().setResult(null);
                         }
@@ -475,7 +476,8 @@ public class NtpEvents extends ModuleEvents implements Listener {
             event.getInventory().setResult(clayBrick);
         }
 
-        if (config.getBoolean("Lumberjack.EnableSawPlankRecipes") && sawIndex > -1 && woodIndex > -1) {
+        Material sawnPlank = woodIndex > -1 ? Utils.getRespectivePlank(matrix[woodIndex].getType()) : null;
+        if (config.getBoolean("Lumberjack.EnableSawPlankRecipes") && sawIndex > -1 && sawnPlank != null) {
             ItemStack saw = matrix[sawIndex];
             ItemStack wood = matrix[woodIndex];
 
@@ -483,10 +485,10 @@ public class NtpEvents extends ModuleEvents implements Listener {
             int durability = Utils.getCustomDurability(saw);
 
             if (durability - woodAmount < 0) {
-                event.getInventory().setResult(new ItemStack(Utils.getRespectivePlank(wood.getType()), durability * 4));
+                event.getInventory().setResult(new ItemStack(sawnPlank, durability * 4));
             }
             else {
-                event.getInventory().setResult(new ItemStack(Utils.getRespectivePlank(wood.getType()), woodAmount * 4));
+                event.getInventory().setResult(new ItemStack(sawnPlank, woodAmount * 4));
             }
         }
 
